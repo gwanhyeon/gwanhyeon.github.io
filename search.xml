@@ -3,8 +3,7 @@
   <entry>
     <title>프로그래머스 가장 큰 수</title>
     <url>/2019/11/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%ED%81%B0%EC%88%98/</url>
-    <content><![CDATA[<h1 id="프로그래머스-가장-큰-수"><a class="markdownIt-Anchor" href="#프로그래머스-가장-큰-수"></a> 프로그래머스 가장 큰 수</h1>
-<h2 id="프로그래머스-가장-큰-수-문제"><a class="markdownIt-Anchor" href="#프로그래머스-가장-큰-수-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42746" target="_blank" rel="noopener">프로그래머스 가장 큰 수 문제</a></h2>
+    <content><![CDATA[<h2 id="프로그래머스-가장-큰-수-문제"><a class="markdownIt-Anchor" href="#프로그래머스-가장-큰-수-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42746" target="_blank" rel="noopener">프로그래머스 가장 큰 수 문제</a></h2>
 <h2 id="컴퓨팅적-스킬"><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
 <li>0 또는 양의 정수 1 &lt;= numbers_length &lt;= 100,000, 0 &lt;= numbers &lt;= 1000 를 보고 O(N^2) 복잡도 불가할 것이라 예측하였습니다. 왜냐하면 (100,000)^ = 약 100억</li>
@@ -47,8 +46,7 @@
   <entry>
     <title>프로그래머스 H-index</title>
     <url>/2019/11/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4H-INDEX/</url>
-    <content><![CDATA[<h1 id="프로그래머스-h-index"><a class="markdownIt-Anchor" href="#프로그래머스-h-index"></a> 프로그래머스 H-index</h1>
-<h2 id="프로그래머스-h-index-문제"><a class="markdownIt-Anchor" href="#프로그래머스-h-index-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42747" target="_blank" rel="noopener">프로그래머스 H-index 문제</a></h2>
+    <content><![CDATA[<h2 id="프로그래머스-h-index-문제"><a class="markdownIt-Anchor" href="#프로그래머스-h-index-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42747" target="_blank" rel="noopener">프로그래머스 H-index 문제</a></h2>
 <h2 id="컴퓨팅적-스킬"><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
 <li>정렬문제인 만큼 <strong>#include <algorithm> 헤더에 있는 sort를 이용하면 됩니다.</strong></li>
@@ -164,8 +162,7 @@
   <entry>
     <title>프로그래머스 위장</title>
     <url>/2019/11/15/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%EC%9C%84%EC%9E%A5/</url>
-    <content><![CDATA[<h1 id="프로그래머스-위장"><a class="markdownIt-Anchor" href="#프로그래머스-위장"></a> 프로그래머스 위장</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42578" target="_blank" rel="noopener">프로그래머스 위장문제</a></p>
+    <content><![CDATA[<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42578" target="_blank" rel="noopener">프로그래머스 위장문제</a></p>
 <hr />
 <h2 id="컴퓨팅적-스킬"><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -224,7 +221,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo Command</title>
+    <title>Hexo 명령어</title>
     <url>/2019/11/10/hexo-%20command/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
