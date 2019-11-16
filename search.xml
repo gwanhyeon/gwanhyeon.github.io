@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>프로그래머스 가장 큰수</title>
+    <url>/2019/11/16/%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3%20%E1%84%80%E1%85%A1%E1%84%8C%E1%85%A1%E1%86%BC%20%E1%84%8F%E1%85%B3%E1%86%AB%E1%84%89%E1%85%AE/</url>
+    <content><![CDATA[<h1 id="프로그래머스-가장-큰-수"><a class="markdownIt-Anchor" href="#프로그래머스-가장-큰-수"></a> 프로그래머스 가장 큰 수</h1>
+<h2 id="프로그래머스-가장-큰-수-문제"><a class="markdownIt-Anchor" href="#프로그래머스-가장-큰-수-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42746" target="_blank" rel="noopener">프로그래머스 가장 큰 수 문제</a></h2>
+<h2 id="컴퓨팅적-스킬"><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>0 또는 양의 정수 1 &lt;= numbers_length &lt;= 100,000, 0 &lt;= numbers &lt;= 1000 를 보고 O(N^2) 복잡도 불가할 것이라 예측하였습니다. 왜냐하면 (100,000)^ = 약 100억</li>
+<li>String to int 변환 함수 atoi(str.c_str()), int to String 변환함수 to_string(number)
+<ul>
+<li>“String&quot; - ‘0’ =&gt; 숫자로 변경이 가능합니다. 단, 범위는 0~9까지</li>
+<li>Number + ‘0’ =&gt; 문자로 변경이 가능합니다. 단, 범위는 0~9까지</li>
+<li>숫자가 10이 나왔을 경우에는 dec = dec * 10 + str[i] - '0’의 형식으로 해주어야합니다. 유사문제로는 카카오 셔틀버스 문제가 있습니다.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s1, <span class="keyword">const</span> <span class="built_in">string</span> &amp;s2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s1 + s2 &gt; s2 + s1 ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s1, <span class="keyword">const</span> <span class="built_in">string</span> &amp;s2)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(s1 &gt; s2)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<h2 id="컴퓨팅적-사고"><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>string기준으로 문제를 해결해야한다.</li>
+<li>맨 처음 순열과 같이 <strong>DFS로 완전탐색</strong>을 하였지만 <strong>시간초과</strong> 가 나서 sort()함수 사용해봤지만 테스트케이스는 맞지만 시간초과는 그대로여서 시간복잡도에 고민을 한번 더 하였습니다.</li>
+<li>Sort Compare로 비교 후 정렬값들을 가지고 문자열끼리 append시켜주었으면 쉽게 해결하였을 문제였습니다.</li>
+<li>compare 함수 기본 형식(기본적으로 오름차순을 적용시킵니다.) 굳이 if문을 쓰지 않고 바로 return s1 &gt; s2형식으로 해주어도 됩니다.</li>
+</ul>
+<hr />
+<h2 id="풀이"><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="1-dfs풀이시간초과"><a class="markdownIt-Anchor" href="#1-dfs풀이시간초과"></a> 1. DFS풀이(시간초과)</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  가장큰수.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 14/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">bool</span> check[<span class="number">100001</span>];</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">100001</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; value_v;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;a, <span class="keyword">const</span> <span class="built_in">string</span> b)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(b.<span class="built_in">size</span>() &gt; a.<span class="built_in">size</span>())&#123;</span><br><span class="line">        <span class="keyword">return</span> b &gt; a;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> b &lt; a;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> idx,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//len개를 모두 선택하였을 경우</span></span><br><span class="line">    <span class="keyword">if</span>(idx == len)&#123;</span><br><span class="line">        <span class="built_in">string</span> str = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">            str += to_string(value_v[i]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> comp = atoi(str.c_str());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(comp &gt; ans)&#123;</span><br><span class="line">            ans = comp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(check[i])&#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">        value_v.push_back(v[i]);</span><br><span class="line">        dfs(idx+<span class="number">1</span>, v, len);</span><br><span class="line">        value_v.pop_back();</span><br><span class="line">        check[i] = <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; s;</span><br><span class="line">    s.push_back(<span class="string">"3"</span>); s.push_back(<span class="string">"30"</span>); s.push_back(<span class="string">"34"</span>);s.push_back(<span class="string">"5"</span>);s.push_back(<span class="string">"9"</span>);</span><br><span class="line">    <span class="keyword">int</span> len = s.<span class="built_in">size</span>();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(len);</span><br><span class="line">    sort(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>(), compare);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        v[i] = atoi(s[i].c_str());</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">0</span>,v,len);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; to_string(ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="string-정렬-비교시간초과-x-정답"><a class="markdownIt-Anchor" href="#string-정렬-비교시간초과-x-정답"></a> String 정렬 비교(시간초과 X 정답)</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s1, <span class="keyword">const</span> <span class="built_in">string</span> &amp;s2)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s1 + s2;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s2 + s1 &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> s1 + s2 &gt; s2 + s1 ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> ans = <span class="string">""</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; numbers;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; s;</span><br><span class="line">    numbers.push_back(<span class="number">3</span>); numbers.push_back(<span class="number">30</span>); numbers.push_back(<span class="number">34</span>);numbers.push_back(<span class="number">5</span>);numbers.push_back(<span class="number">9</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> numbers_len = numbers.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;numbers_len; i++)&#123;</span><br><span class="line">        s.push_back(to_string(numbers[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>(), compare);</span><br><span class="line">    <span class="keyword">int</span> s_len = s.<span class="built_in">size</span>();</span><br><span class="line">  </span><br><span class="line">   </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s_len; i++)&#123;</span><br><span class="line">          ans += s[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ans[<span class="number">0</span>] == <span class="string">'0'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; ans;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>유사문제: <a href="https://www.acmicpc.net/problem/1422" target="_blank" rel="noopener">백준 1422 숫자의 신</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>알고리즘</category>
+      </categories>
+      <tags>
+        <tag>프로그래머스</tag>
+        <tag>알고리즘</tag>
+        <tag>가장큰수</tag>
+        <tag>레벨2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>프로그래머스 H-index</title>
+    <url>/2019/11/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4H-INDEX/</url>
+    <content><![CDATA[<h1 id="프로그래머스-h-index"><a class="markdownIt-Anchor" href="#프로그래머스-h-index"></a> 프로그래머스 H-index</h1>
+<h2 id="프로그래머스-h-index-문제"><a class="markdownIt-Anchor" href="#프로그래머스-h-index-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42747" target="_blank" rel="noopener">프로그래머스 H-index 문제</a></h2>
+<h2 id="컴퓨팅적-스킬"><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>정렬문제인 만큼 <strong>#include <algorithm> 헤더에 있는 sort를 이용하면 됩니다.</strong></li>
+<li>sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 옵션을 주지 않아도 오름차순 정렬을 하게 됩니다. 그리고 내림차순정렬을 이용 할 때는 다음과 같은 두가지 방법을 사용할 수 있습니다.</li>
+</ul>
+<blockquote>
+<p>1.compare함수를 이용한 내림차순 방법</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bool compare(int v1,int v2)&#123;</span><br><span class="line">    return v1 &lt; v2;</span><br><span class="line">&#125;</span><br><span class="line">sort(citations.begin(),citations.end(),compare);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol start="2">
+<li>greater<int>() 함수 옵션을 사용한 내림차순 정렬</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sort(citations.begin(),citations.end(),compare);</span><br></pre></td></tr></table></figure>
+<hr />
+<h2 id="컴퓨팅적-사고"><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>H-index 의 개념을 알고가셔야 합니다. 논문 n편중 h번이상 인용된 논문이 h편이상이고 h번 이하 인용되었다면 h가 H-index가 됩니다.</li>
+<li>첫번째 테스트 케이스인 [3,0,6,1,5]로 예를 들어 설명하겠습니다.</li>
+</ul>
+<blockquote>
+<p>내림차순 정렬 전</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">DATA</th>
+<th style="text-align:left">INDEX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:left">4</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p>내림차순 정렬 후</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">DATA</th>
+<th style="text-align:left">INDEX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:left">4</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<ul>
+<li>정렬전과 정렬후의 과정입니다. H-index라는것을 맨처음에 모든 값의 합을 나눈 평균의 값이 H-Index라고 생각을 하여 아주 단순하게 생각했습니다. 당연히 틀린것이였습니다.</li>
+<li><em>index</em>를 가지고 생각했어야 했는데, 값을 가지고 생각을 하였습니다. 위의 테스트케이스는 총 5편의 논문이 쓰여졌으며  **인덱스값이 DATA의 값보다 커지는 시점 *(index &gt; data)*을 찾아야 합니다. 그 시점이 H-index지점입니다. 오름차순의 경우에는 인덱스가 정확하지 않다고 생각하는데, 테스트케이스는 돌아가는것을 보고 의문이 조금 남긴했습니다만, 진행하겠습니다.</li>
+<li><strong>index&gt;data</strong>의 지점에 index는 3의 값을 반환하게 됩니다. 이 값은 결국 h-index의 값을 나타내는것이며 총 5편의 논문과 3회이상의 인용된 논문 3편, 3회 이하 인용된 논문 2편이 되게 됩니다. 따라서 h-index의 값을 정확하게 도출해냈다고 할 수 있습니다.</li>
+<li>문제들을 너무 어렵게 생각하여 풀었는데, index에 대해 유연하게 접근하면 쉽게 풀 수 있었던 문제라고 생각합니다.</li>
+</ul>
+<hr />
+<h2 id="풀이"><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="1-정렬-풀이"><a class="markdownIt-Anchor" href="#1-정렬-풀이"></a> 1. 정렬 풀이</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> v1,<span class="keyword">int</span> v2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1 &lt; v2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; citations;</span><br><span class="line">    citations.push_back(<span class="number">3</span>);</span><br><span class="line">    citations.push_back(<span class="number">0</span>);</span><br><span class="line">    citations.push_back(<span class="number">6</span>);</span><br><span class="line">    citations.push_back(<span class="number">1</span>);</span><br><span class="line">    citations.push_back(<span class="number">5</span>);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    sort(citations.<span class="built_in">begin</span>(),citations.<span class="built_in">end</span>(),compare);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;citations.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt; citations[citations.<span class="built_in">size</span>()-i<span class="number">-1</span>])&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>알고리즘</category>
+      </categories>
+      <tags>
+        <tag>프로그래머스</tag>
+        <tag>알고리즘</tag>
+        <tag>레벨2</tag>
+        <tag>H-INDEX</tag>
+        <tag>정렬</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>프로그래머스 위장</title>
+    <url>/2019/11/15/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%EC%9C%84%EC%9E%A5/</url>
+    <content><![CDATA[<h1 id="프로그래머스-위장"><a class="markdownIt-Anchor" href="#프로그래머스-위장"></a> 프로그래머스 위장</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42578" target="_blank" rel="noopener">프로그래머스 위장문제</a></p>
+<hr />
+<h2 id="컴퓨팅적-스킬"><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>
+<p>옷 종류 = KEY, 옷 이름= VALUE를 두고 문제를 해결해야 한다고 생각하였습니다.</p>
+</li>
+<li>
+<p><strong>#include&lt;unordered_map&gt;</strong> 헤더에 포함된 <strong>unordered_map&lt;string,int&gt;</strong> 형태로 사용하려고 하였습니다.</p>
+<ul>
+<li>unordered와 map중 unordered 자료구조를 사용한 이유는 map은 balanced tree의 형태를 가지고 있고, unordered_map는 hash형태로 이루어져있기 때문에 성능차이의 이슈로 특별한 이유가 없는 한 unordered_map을 사용하려고 합니다.</li>
+<li>주어진 파라미터 <em>vector&lt;vector<string>&gt; clothes;</em> 의 형태가 주어졌는데요. 헷갈리는 부분이 있어서 설명하고 넘어가겠습니다. <em>vector&lt;vector<string></em>  2차원 벡터는 2차원 배열과 형태가 같습니다.</li>
+<li>그리고, 2차원 벡터에 값을 넣게 될경우 주의해야할 점이 한가지 있습니다. 직접 접근해서 벡터값을 넣지 못하게 되어있다는것입니다. <em>clothes[0].push_back(“yellow_hat”)</em> 처럼 값을 넣으려고 하였지만, Xcode에서 <em>Invalid operands to binary expression</em> 에러가 나타났습니다. 직접적으로 2차원벡터에 값을 바로 접근하기가 불가능한 모양입니다. 그래서 1차원 벡터를 생성시킨 후 값을 넣어준 다음, 2차원 벡터에 값이 들어간 벡터를 넣었습니다. <s>프로그래머스에서 테스트케이스로 바로 Input을 주기 때문에 이러한 과정이 필요없지만, 직접 소스코드를 Xcode에 작성하면서 디버깅도 해보는편이라 저런형식으로 넣어주게 되었습니다.</s></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; clothes;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v1;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v2;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v3;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">v1.push_back(<span class="string">"yellow_hat"</span>); v1.push_back(<span class="string">"headgear"</span>);</span><br><span class="line">v2.push_back(<span class="string">"blue_sunglasses"</span>); v2.push_back(<span class="string">"eyewear"</span>);</span><br><span class="line">v3.push_back(<span class="string">"green_turban"</span>); v3.push_back(<span class="string">"headgear"</span>);</span><br><span class="line">clothes.push_back(v1);</span><br><span class="line">clothes.push_back(v2);</span><br><span class="line">clothes.push_back(v3);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1차원 행부분에서 열부분을 참고하시면 모든값들을 가져올 수 있겠습니다. 그리고, auto를 사용하셔서 값들을 가져올 수도 있습니다.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>아래와 같은 3가지 형식으로 사용하시면 됩니다.</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;clothes.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">    m[clothes[i][<span class="number">1</span>]]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">or</span> </span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> p : clothes)&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; p.at(<span class="number">0</span>);</span><br><span class="line">  	<span class="built_in">cout</span>&lt;&lt; p[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">or</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; s : clothes)&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; s[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>map에 있는 값들을 모두 확인하기 위해서는<strong>iterator</strong> 를 사용하셔야 합니다. 사용하실 방식은 다음과 같습니다. map과 map::iterator를 선언시켜줍니다. 그리고 iter 변수를 사용해서 unordered_map에 있는 모든 값들을 탐색을 시작하게 됩니다. iter-&gt;first, iter-&gt;second로 참조하여 접근하게 되면 해당 맵의 &lt;string,int&gt;형태로 저장된 값을 가져올 수 있습니다.</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line"><span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line"><span class="keyword">for</span>(iter=m.<span class="built_in">begin</span>(); iter != m.<span class="built_in">end</span>(); iter++)&#123;</span><br><span class="line">    answer *= (iter-&gt;second+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>–</p>
+<h2 id="컴퓨팅적-사고"><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>
+<p>첫번째 테스트 케이스를 예시로 설명해보겠습니다. [headergear, eyewear] 의 두가지 종류가 있습니다. headgear를 입거나 안입는 경우 headgear = 2가지 경우, eyewear를 입거나 안입는 경우 1가지 경우입니다. 이것을 경우의 수로 적용시켜보겠습니다. (headgear +1)* (eyewear + 1)로 적용시키면 (2+1) * (1+1) = 6 - 1 = 5가지가 됩니다.</p>
+<ul>
+<li>이때 +1을 왜 더하는거야? 라고 생각하실분이 있으실 것입니다. 그 이유는 의상을 입을까? 말까? 라는 경우를 고려해주어야하기 때문입니다. 그래서 +1을 해주게 되는것입니다.</li>
+<li>마지막에 -1은 또 왜해주나요? 적어도 하나의 의상을 입어야하므로 모두 입지않는 경우의 수인 1가지 경우를 빼주어야 결국 모든 경우의 수의 조합이 나오게 될 것입니다.</li>
+</ul>
+</li>
+<li>
+<p>모든 원소는 문자열로 이루어져있고, clothes는 [의상의 이름, 의상의 종류]의 형태를 가지고 있다. 따라서 해시 자료구조형을 사용해서 접근하면 된다. 처음에는 조합개념으로 dfs를 진행하려고 하였지만, 선택한 개수가 매번달라지는 경우때문에 dfs를 사용하지 않았습니다.</p>
+</li>
+</ul>
+<hr />
+<h2 id="풀이"><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<hr />
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  위장문제.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 15/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; clothes;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v1;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v2;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v3;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    v1.push_back(<span class="string">"yellow_hat"</span>); v1.push_back(<span class="string">"headgear"</span>);</span><br><span class="line">    v2.push_back(<span class="string">"blue_sunglasses"</span>); v2.push_back(<span class="string">"eyewear"</span>);</span><br><span class="line">    v3.push_back(<span class="string">"green_turban"</span>); v3.push_back(<span class="string">"headgear"</span>);</span><br><span class="line">    clothes.push_back(v1);</span><br><span class="line">    clothes.push_back(v2);</span><br><span class="line">    clothes.push_back(v3);</span><br><span class="line">    </span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;clothes.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        m[clothes[i][<span class="number">1</span>]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> answer = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line">    <span class="keyword">for</span>(iter=m.<span class="built_in">begin</span>(); iter != m.<span class="built_in">end</span>(); iter++)&#123;</span><br><span class="line">        answer *= (iter-&gt;second+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; answer<span class="number">-1</span>;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>알고리즘</category>
+      </categories>
+      <tags>
+        <tag>프로그래머스</tag>
+        <tag>알고리즘</tag>
+        <tag>레벨2</tag>
+        <tag>위장</tag>
+        <tag>해시</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Command</title>
+    <url>/2019/11/10/hexo-%20command/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
+<h3 id="front-formatter"><a class="markdownIt-Anchor" href="#front-formatter"></a> front formatter</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># post.md 머리말</span></span><br><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tags:</span><br><span class="line">- 태그명 #(예) 헥소</span><br><span class="line">- 깃허브</span><br><span class="line"></span><br><span class="line"># 또는 아래와 같이 사용 할수 있다.</span><br><span class="line">tags: [헥소, 깃허브]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- 카테고리명 #(예) 깃허브</span><br><span class="line">- 서브카테고리명 #(예) 헥소</span><br><span class="line"></span><br><span class="line"># 또는 아래 처럼 사용 할수 있다.</span><br><span class="line">categories: [깃허브, 헥소]</span><br></pre></td></tr></table></figure>
+<h3 id=""><a class="markdownIt-Anchor" href="#"></a> </h3>
+<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new post <span class="string">"My New Post"</span></span><br><span class="line">$ hexo new draft <span class="string">"My new Draft"</span></span><br><span class="line">$ hexo new layout <span class="string">"My New layout"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server post</span><br><span class="line">$ hexo server draft</span><br><span class="line">$ hexo server layout</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="generate-static-files-and-deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#generate-static-files-and-deploy-to-remote-sites"></a> Generate static files and Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
+<h3 id="image-files-path"><a class="markdownIt-Anchor" href="#image-files-path"></a> image files path</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source/images/image file path</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>HEXO</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>command</tag>
+      </tags>
+  </entry>
+</search>
