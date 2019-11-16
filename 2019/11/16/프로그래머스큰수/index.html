@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="KGH IT LOG">
 <meta property="og:description" content="프로그래머스 가장 큰 수 문제  컴퓨팅적 스킬  0 또는 양의 정수 1 &amp;lt;= numbers_length &amp;lt;= 100,000, 0 &amp;lt;= numbers &amp;lt;= 1000 를 보고 O(N^2) 복잡도 불가할 것이라 예측하였습니다. 왜냐하면 (100,000)^ = 약 100억 String to int 변환 함수 atoi(str.c_str()),">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-16T00:17:35.061Z">
+<meta property="og:updated_time" content="2019-11-16T01:25:11.422Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -201,7 +201,7 @@ ga('send', 'pageview');
 <ul>
 <li>“String&quot; - ‘0’ =&gt; 숫자로 변경이 가능합니다. 단, 범위는 0~9까지</li>
 <li>Number + ‘0’ =&gt; 문자로 변경이 가능합니다. 단, 범위는 0~9까지</li>
-<li>숫자가 10이 나왔을 경우에는 dec = dec * 10 + str[i] - '0’의 형식으로 해주어야합니다. 유사문제로는 카카오 셔틀버스 문제가 있습니다.</li>
+<li>숫자가 10이 나왔을 경우에는 <code>dec = dec * 10 + str[i] - '0'</code>의 형식으로 해주어야합니다. 유사문제로는 카카오 셔틀버스 문제가 있습니다.</li>
 </ul>
 </li>
 </ul>
@@ -210,7 +210,7 @@ ga('send', 'pageview');
 <h2 id="컴퓨팅적-사고"><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ul>
 <li>string기준으로 문제를 해결해야한다.</li>
-<li>맨 처음 순열과 같이 <strong>DFS로 완전탐색</strong>을 하였지만 <strong>시간초과</strong> 가 나서 sort()함수 사용해봤지만 테스트케이스는 맞지만 시간초과는 그대로여서 시간복잡도에 고민을 한번 더 하였습니다.</li>
+<li>맨 처음 순열과 같이 <code>DFS로 완전탐색</code>을 하였지만 <code>시간초과</code> 가 나서 sort()함수 사용해봤지만 테스트케이스는 맞지만 시간초과는 그대로여서 시간복잡도에 고민을 한번 더 하였습니다.</li>
 <li>Sort Compare로 비교 후 정렬값들을 가지고 문자열끼리 append시켜주었으면 쉽게 해결하였을 문제였습니다.</li>
 <li>compare 함수 기본 형식(기본적으로 오름차순을 적용시킵니다.) 굳이 if문을 쓰지 않고 바로 return s1 &gt; s2형식으로 해주어도 됩니다.</li>
 </ul>
