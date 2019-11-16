@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="KGH IT LOG">
 <meta property="og:description" content="프로그래머스 H-index 문제  컴퓨팅적 스킬  정렬문제인 만큼 #include  헤더에 있는 sort를 이용하면 됩니다. sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 옵션을 주지 않아도 오름차순 정렬을 하게 됩니다. 그리고 내림차순정렬을 이용 할 때는 다음과 같은 두가지 방법을 사용할 수 있습니다.   1.compare함수를 이용한 내">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-16T00:17:26.567Z">
+<meta property="og:updated_time" content="2019-11-16T00:21:18.694Z">
 <meta name="twitter:card" content="summary">
     
 
@@ -284,7 +284,7 @@ ga('send', 'pageview');
 <h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
 <ul>
 <li>정렬전과 정렬후의 과정입니다. H-index라는것을 맨처음에 모든 값의 합을 나눈 평균의 값이 H-Index라고 생각을 하여 아주 단순하게 생각했습니다. 당연히 틀린것이였습니다.</li>
-<li><em>index</em>를 가지고 생각했어야 했는데, 값을 가지고 생각을 하였습니다. 위의 테스트케이스는 총 5편의 논문이 쓰여졌으며  **인덱스값이 DATA의 값보다 커지는 시점 *(index &gt; data)*을 찾아야 합니다. 그 시점이 H-index지점입니다. 오름차순의 경우에는 인덱스가 정확하지 않다고 생각하는데, 테스트케이스는 돌아가는것을 보고 의문이 조금 남긴했습니다만, 진행하겠습니다.</li>
+<li><em>index</em>를 가지고 생각했어야 했는데, 값을 가지고 생각을 하였습니다. 위의 테스트케이스는 총 5편의 논문이 쓰여졌으며  <strong>인덱스값이 DATA의 값보다 커지는 시점</strong> <em>index &gt; data</em>을 찾아야 합니다. 그 시점이 H-index지점입니다. 오름차순의 경우에는 인덱스가 정확하지 않다고 생각하는데, 테스트케이스는 돌아가는것을 보고 의문이 조금 남긴했습니다만, 진행하겠습니다.</li>
 <li><strong>index&gt;data</strong>의 지점에 index는 3의 값을 반환하게 됩니다. 이 값은 결국 h-index의 값을 나타내는것이며 총 5편의 논문과 3회이상의 인용된 논문 3편, 3회 이하 인용된 논문 2편이 되게 됩니다. 따라서 h-index의 값을 정확하게 도출해냈다고 할 수 있습니다.</li>
 <li>문제들을 너무 어렵게 생각하여 풀었는데, index에 대해 유연하게 접근하면 쉽게 풀 수 있었던 문제라고 생각합니다.</li>
 </ul>
