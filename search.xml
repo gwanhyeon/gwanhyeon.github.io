@@ -86,7 +86,7 @@
 </li>
 <li>
 <p>왼쪽 자식 노드-&gt;루트-&gt;오른쪽 자식 노드</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">pre-order-tree-walk(left[x])</span><br><span class="line"><span class="built_in">print</span> key[x]</span><br><span class="line">pre-order-tree-wal(right[x])</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">pre-order-tree-walk(left[x])</span><br><span class="line"><span class="built_in">print</span> key[x]</span><br><span class="line">pre-order-tree-walk(right[x])</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -98,7 +98,7 @@
 </li>
 <li>
 <p>루트 노드-&gt;왼쪽 자식 노드-&gt;오른쪽 자식 노드</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span> key[x]</span><br><span class="line">pre-order-tree-walk(left[x])</span><br><span class="line">pre-order-tree-wal(right[x])</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span> key[x]</span><br><span class="line">pre-order-tree-walk(left[x])</span><br><span class="line">pre-order-tree-walk(right[x])</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -110,7 +110,7 @@
 </li>
 <li>
 <p>왼쪽 자식 노드-&gt;루트 노드-&gt;중간 자식 노드</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">pre-order-tree-walk(left[x])</span><br><span class="line">pre-order-tree-wal(right[x])</span><br><span class="line"><span class="built_in">print</span> key[x]</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">pre-order-tree-walk(left[x])</span><br><span class="line">pre-order-tree-walk(right[x])</span><br><span class="line"><span class="built_in">print</span> key[x]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
