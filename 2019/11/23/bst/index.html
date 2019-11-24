@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="KGH IT LOG">
 <meta property="og:description" content="검색트리 Search Tree  계층적인 구조를 표현  조직도 디렉토리와 서브디렉토리 구조 가계도   트리의 특징  트리는 노드(node)들과 노드들을 연결하는 링크(link)들로 구성됩니다. 맨 위의 노드를 &amp;quot;루트(root)&amp;quot;라고 부릅니다. 노드를 연결하는 선을 &amp;quot;link&amp;quot;, &amp;quot;edge&amp;quot;,&amp;quot;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-22T17:08:18.274Z">
+<meta property="og:updated_time" content="2019-11-24T11:21:11.199Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -323,7 +323,104 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ul>
+<h3 id="dynamic-set"><a class="markdownIt-Anchor" href="#dynamic-set"></a> Dynamic Set</h3>
+<ul>
+<li>
+<p>여러개의 데이터의 집합을 뜻하는 말을 일컫습니다.</p>
+</li>
+<li>
+<p>여러 개의 키(Key)를 저장합니다.</p>
+</li>
+<li>
+<p>다음과 같은 연산들을 지원하는 자료구조입니다.</p>
+<ul>
+<li>INSERT - 새로운 키의 삽입</li>
+<li>SEARCH - 키 탐색</li>
+<li>DELETE - 키의 삭제</li>
+</ul>
+</li>
+<li>
+<p>예: 심볼 테이블</p>
+</li>
+</ul>
+<h3 id="배열"><a class="markdownIt-Anchor" href="#배열"></a> 배열</h3>
+<ul>
+<li>정렬 O
+<ul>
+<li>검색: O(logN)</li>
+<li>삽입: O(N)</li>
+<li>삭제: O(N)</li>
+</ul>
+</li>
+<li>정렬 X
+<ul>
+<li>검색: O(N)</li>
+<li>삽입: O(1), O(N)</li>
+<li>삭제: O(1)</li>
+</ul>
+</li>
+</ul>
+<h3 id="연결리스트"><a class="markdownIt-Anchor" href="#연결리스트"></a> 연결리스트</h3>
+<ul>
+<li>
+<p>정렬 O</p>
+<ul>
+<li>검색: O(N), O(logN)</li>
+<li>삽입: O(N)</li>
+<li>삭제: O(1)</li>
+</ul>
+</li>
+<li>
+<p>정렬 X</p>
+<ul>
+<li>검색: O(N)</li>
+<li>삽입: O(1)</li>
+<li>삭제: O(1)</li>
+</ul>
+</li>
+</ul>
+<p>정렬이 이루어지면 이진검색 O(logN)의 시간복잡도 만큼수행된다. 예를 들면, 1,2,4,8 의 형식으로 트리의 노드의 개수가 증가된다고 하면 2^k = N으로 나타낼 수 있다. k는 시행횟수이며, N은 입력된 개수입니다. 이것을 K = log2N으로 나타낼 수 있습니다. 이때 시간복잡도에서는 상수를 무시하기 때문에 K=logN으로 나타낼 수 있습니다. 따라서, 이진탐색의 시간복잡도는 O(logN) 입니다.</p>
+<h3 id="다양한-방법들"><a class="markdownIt-Anchor" href="#다양한-방법들"></a> 다양한 방법들</h3>
+<ul>
+<li>정렬된 혹은 정렬되지 않은 배열 혹은 연결 리스트를 사용할 경우 INSERT, SEARCH, DELETE 중 적어도 하나는 O(N)</li>
+<li>이진탐색트리(Binary Search Tree), 레드-블랙트리, AVL-트리 등의 트리에 기반한 구조들</li>
+<li>Direct Address Table, 해쉬 테이블 등</li>
+</ul>
+<h3 id="검색트리"><a class="markdownIt-Anchor" href="#검색트리"></a> 검색트리</h3>
+<ul>
+<li>Dynamic set을 트리의 형태로 구현</li>
+<li>일반적으로 SEARCH, INSERT, DELETE 연산이 트리의 높이(height)에 비례하는 시간복잡도를 가짐</li>
+<li>이진검색트리(Binary Search Tree), 레드-블랙 트리(Red-black tree), B-트리 등</li>
+</ul>
 <h1 id="이진탐색트리-binary-search-tree"><a class="markdownIt-Anchor" href="#이진탐색트리-binary-search-tree"></a> 이진탐색트리 Binary Search Tree</h1>
+<h3 id="이전검색트리bst-특징"><a class="markdownIt-Anchor" href="#이전검색트리bst-특징"></a> 이전검색트리(BST) 특징</h3>
+<ul>
+<li>
+<p>이진트리이면서 각노드에 하나의 키를 저장</p>
+</li>
+<li>
+<p>각 노드 v에 대해서 그 노드의 왼쪽 부트리(subtree)에 있는 키들은 key[v]보다 작거나 같고, 오른쪽 부트리에 있는 값은 크거나 같다.</p>
+</li>
+<li>
+<p>중위 순회의 값을 갖는다</p>
+</li>
+<li>
+<p>각 노드의 왼쪽 서브트리에는 해당 노드의 값보다 작은 값을 지닌 노드들로 이루어져 있다.</p>
+</li>
+<li>
+<p>각 노드의 오른쪽 서브트리에는 해당 노드의 값보다 큰 값을 지닌 노드들로 이루어져 있다.</p>
+</li>
+<li>
+<p>중복된 노드가 없어야 한다.</p>
+</li>
+<li>
+<p>왼쪽 서브트리, 오른쪽 서브트리 또한 이진탐색트리이다.</p>
+</li>
+</ul>
+<h3 id="1search"><a class="markdownIt-Anchor" href="#1search"></a> 1.SEARCH</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">RECURSIVE</span><br><span class="line"></span><br><span class="line">TREE-SEARCH(x,k) x = 루트노드, k = 찾는값</span><br><span class="line">	<span class="comment">// x가 null이거나 k == key[x]를 찾은 경우(원하는 값을 찾은 경우)</span></span><br><span class="line">	<span class="keyword">if</span> x == <span class="literal">NULL</span> || k == key[x]</span><br><span class="line">		then <span class="keyword">return</span> x;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 키보다 작을 경우</span></span><br><span class="line">	<span class="keyword">if</span> k &lt; key[x]</span><br><span class="line">		then <span class="keyword">return</span> TREE-SEARCH(left[x],k)</span><br><span class="line">	<span class="comment">// 키보다 클경우</span></span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		then <span class="keyword">return</span> TREE-SEARCH(right[x],k)</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NONE RECURSIVE</span><br><span class="line"></span><br><span class="line">ITERATIVE-TREE-SEARCH(x,k)</span><br><span class="line">	While x != <span class="literal">NULL</span> <span class="keyword">and</span> K != key[x]</span><br><span class="line">		<span class="keyword">do</span> <span class="keyword">if</span> k &lt; key[x]</span><br><span class="line">				then x &lt;- left[x]</span><br><span class="line">				<span class="keyword">else</span> x &lt;- rgiht[x]</span><br><span class="line">	<span class="keyword">return</span> x;</span><br></pre></td></tr></table></figure>
+<p>시간복잡도: O(h), h = 트리의 높이</p>
 
         </div>
         <footer class="article-footer">
@@ -400,7 +497,7 @@ ga('send', 'pageview');
         "genre": "알고리즘",
         "datePublished": "2019-11-23",
         "dateCreated": "2019-11-23",
-        "dateModified": "2019-11-23",
+        "dateModified": "2019-11-24",
         "url": "http://gwanhyeon.github.io.com/2019/11/23/bst/",
         "description": " 검색트리 Search Tree
  계층적인 구조를 표현
@@ -414,7 +511,7 @@ ga('send', 'pageview');
 트리는 노드(node)들과 노드들을 연결하는 링크(link)들로 구성됩니다.
 맨 위의 노드를 &quot;루트(root)&quot;라고 부릅니다.
 노드를 연결하는 선을 &quot;link&quot;, &quot;edge&quot;,&quot;",
-        "wordCount": 379
+        "wordCount": 733
     }
 </script>
 
