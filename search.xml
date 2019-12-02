@@ -9,7 +9,7 @@
 <li>값을 저장 시킬 vector<int> v;</li>
 <li>연산자의 개수를 1,2,3,4 의 값으로 넣을 vector<int> cal;</li>
 <li>#include<algorithm>헤더에 minmax_element으로 최대값과 최소값 구해줍니다.<br />
-`minmax_element()를 사용하여 간단하게 최대값과 최소값을 구할 수 있습니다.</li>
+<code>minmax_element()</code>를 사용하여 간단하게 최대값과 최소값을 구할 수 있습니다.</li>
 </ul>
 <h2 id="컴퓨팅-사고"><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2>
 <ul>
