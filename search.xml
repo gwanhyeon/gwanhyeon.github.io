@@ -5,7 +5,9 @@
     <url>/2019/12/17/%EB%B0%B1%EC%A4%80%ED%87%B4%EC%82%AC14501/</url>
     <content><![CDATA[<h2 id="백준퇴사14501"><a class="markdownIt-Anchor" href="#백준퇴사14501"></a> <a href="https://www.acmicpc.net/problem/14501" target="_blank" rel="noopener">백준퇴사14501</a></h2>
 <h2 id="컴퓨팅-스킬"><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
-<p>백트래킹 재귀호출</p>
+<ul>
+<li>백트래킹 재귀호출</li>
+</ul>
 <h2 id="컴퓨팅-사고"><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2>
 <ul>
 <li>맨 처음에 조합으로 next_permutation을 사용해서 해당 T[i]만큼 false를 만들면서 오는 경우를 찾으면 어떨까 라고 생각하였지만, 직감적으로 쉽지않다는것을 느꼈습니다. 그래서 재귀함수로 풀어보자 라는 생각으로 풀게되었습니다.</li>
