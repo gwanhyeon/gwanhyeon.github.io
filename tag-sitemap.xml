@@ -3,22 +3,29 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io.com/tags/dfs/</loc>
+        <lastmod>2019-12-19T15:23:30.325Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io.com/tags/%25EB%25B0%25B1%25ED%258A%25B8%25EB%259E%2598%25ED%2582%25B9/</loc>
-        <lastmod>2019-12-17T08:25:45.193Z</lastmod>
+        <lastmod>2019-12-19T15:23:30.325Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io.com/tags/%25EB%25B8%258C%25EB%25A3%25A8%25ED%258A%25B8%25ED%258F%25AC%25EC%258A%25A4/</loc>
-        <lastmod>2019-12-17T08:25:45.193Z</lastmod>
+        <lastmod>2019-12-19T15:23:30.325Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io.com/tags/%25EB%25B0%25B1%25EC%25A4%2580/</loc>
-        <lastmod>2019-12-17T08:25:45.193Z</lastmod>
+        <lastmod>2019-12-19T15:23:30.325Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -54,13 +61,6 @@
     <url>
         <loc>http://gwanhyeon.github.io.com/tags/%25EA%25B2%2580%25EC%2583%2589%25ED%258A%25B8%25EB%25A6%25AC/</loc>
         <lastmod>2019-11-24T16:40:26.471Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io.com/tags/dfs/</loc>
-        <lastmod>2019-11-22T16:03:46.307Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
