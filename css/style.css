@@ -343,12 +343,11 @@ code {
 #main .main-body-content:after {
   clear: both;
 }
-#header,
 #     background: ../images/header.png,
-#    banner-url: images/header.png {
+#    banner-url: images/header.png,
+#    background: #FFFFFF,
+#header {
   background: #26272b;
-}
-#    background: #FFFFFF {
   padding-bottom: 60px;
   position: relative;
 }
