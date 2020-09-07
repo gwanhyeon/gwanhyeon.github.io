@@ -343,9 +343,10 @@ code {
 #main .main-body-content:after {
   clear: both;
 }
-#header,
-#   background: color-header-background {
-  background: #fff;
+#header {
+  background: #26272b;
+}
+#    background: #FFFFFF {
   padding-bottom: 60px;
   position: relative;
 }
@@ -377,7 +378,7 @@ code {
   margin-left: 20px;
 }
 #header-title .subtitle {
-  font-size: 20px;
+  font-size: 24px;
   font-style: italic;
   line-height: 260px;
   color: rgba(255,255,255,0.7);
