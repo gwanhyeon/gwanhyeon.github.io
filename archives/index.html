@@ -4,7 +4,7 @@
     
 
     
-    <title>Archive | Ethan Kim IT Blog</title>
+    <title>아카이브 | Ethan Kim IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -14,7 +14,7 @@
 <meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io.com&#x2F;archives&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="ko">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -83,7 +83,7 @@ ga('send', 'pageview');
                         <ul id="main-nav">
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Home</a>
+                                    <a class="main-nav-list-link" href="/">홈</a>
                                 </li>
                             
                                         <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/hexo/">HEXO</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a></li></ul>
@@ -97,7 +97,7 @@ ga('send', 'pageview');
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -116,10 +116,10 @@ ga('send', 'pageview');
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: '포스트',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -145,7 +145,7 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>Archive
+    <i class="icon fa fa-archive"></i>아카이브
     </h1>
 </div>
 
@@ -448,16 +448,17 @@ N까지의 값을 vector에 넣어서 next_permutation을 수행합니다. next_
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80%EC%B0%A8%EC%9D%B4%EB%A5%BC%EC%B5%9C%EB%8C%80%EB%A1%9C10819/">백준차이를최대로10819</a>
+        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80123%EB%8D%94%ED%95%98%EA%B8%B09095/">백준123더하기9095</a>
         </h1>
     
 
         <p class="article-excerpt">
-             백준 차이를최대로 10819
- 컴퓨팅 스킬
+             백준 1,2,3더하기 9095
+ 컴퓨팅적 스킬
 
-#include헤더에 있는 next_permutation()함수를 호출하여 순열과조합을 구현합니다.
-next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위에 해당하는 다음 순열을 구하고 true를 반환한다. 다음 순열이 없다면(다음에 나온 순열이 순서상 이전 순열보다 작다면) false를
+DFS 재귀함수 이용
+vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.
+dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 
         </p>
     </div>
 </article>
@@ -483,17 +484,16 @@ next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80123%EB%8D%94%ED%95%98%EA%B8%B09095/">백준123더하기9095</a>
+        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80%EC%B0%A8%EC%9D%B4%EB%A5%BC%EC%B5%9C%EB%8C%80%EB%A1%9C10819/">백준차이를최대로10819</a>
         </h1>
     
 
         <p class="article-excerpt">
-             백준 1,2,3더하기 9095
- 컴퓨팅적 스킬
+             백준 차이를최대로 10819
+ 컴퓨팅 스킬
 
-DFS 재귀함수 이용
-vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.
-dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 
+#include헤더에 있는 next_permutation()함수를 호출하여 순열과조합을 구현합니다.
+next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위에 해당하는 다음 순열을 구하고 true를 반환한다. 다음 순열이 없다면(다음에 나온 순열이 순서상 이전 순열보다 작다면) false를
         </p>
     </div>
 </article>
@@ -515,21 +515,16 @@ dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80%EB%82%A0%EC%A7%9C%EA%B3%84%EC%82%B01476/">백준날짜계산1476</a>
+        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80%EC%9D%BC%EA%B3%B1%EB%82%9C%EC%9F%81%EC%9D%B42309/">백준일곱난쟁이2309</a>
         </h1>
     
 
         <p class="article-excerpt">
-             백준 날짜계산 1476
+             백준 일곱난쟁이 2309
  컴퓨팅적 스킬
 
-단순 반복문과 조건문을 이용한 사칙연산 문제
-while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;
-
- 컴퓨팅적 사고
-
-년도가 증가할때마다 E,S,M이 1씩 증가한다.
-지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19의 범위를 벗어나게 된다면 해당 
+do while ~ (next_permutation)으로 계속해서 다음 조합의 경우의 수를 찾는다.
+vector v, check변수를 선언하여 permutation을 수행한다. 9명중 7명을 뽑아야하므로 7명만큼 check=true로 변경해서 수행한다. next_permutation을 수행하면서 값들이 계속변경되
         </p>
     </div>
 </article>
@@ -552,7 +547,7 @@ while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 bre
                     <aside id="sidebar">
     <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
     <div class="sidebar-top">
-        <p>follow:</p>
+        <p>팔로우:</p>
         <ul class="social-links">
             
                 
@@ -575,7 +570,7 @@ while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 bre
             
                 
     <div class="widget-wrap">
-        <h3 class="widget-title">recents</h3>
+        <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
                 
@@ -631,7 +626,7 @@ while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 bre
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">categories</h3>
+        <h3 class="widget-title">카테고리</h3>
         <div class="widget">
             <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">HEXO</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a><span class="category-list-count">17</span></li></ul>
         </div>
@@ -641,9 +636,9 @@ while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 bre
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">archives</h3>
+        <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">11</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">12월 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -651,7 +646,7 @@ while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 bre
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">tags</h3>
+        <h3 class="widget-title">태그</h3>
         <div class="widget">
             <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/bst/" rel="tag">BST</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">DFS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h-index/" rel="tag">H-INDEX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">검색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A0%88%EB%B2%A82/" rel="tag">레벨2</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" rel="tag">백트래킹</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" rel="tag">우선순위큐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%9E%A5/" rel="tag">위장</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">이진탐색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EB%A0%AC/" rel="tag">정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A1%B0%ED%95%A9/" rel="tag">조합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%B4%EC%8B%9C/" rel="tag">해시</a><span class="tag-list-count">1</span></li></ul>
         </div>
@@ -661,7 +656,7 @@ while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 bre
             
                 
     <div class="widget-wrap widget-float">
-        <h3 class="widget-title">tag cloud</h3>
+        <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
             <a href="/tags/bst/" style="font-size: 10px;">BST</a> <a href="/tags/dfs/" style="font-size: 12px;">DFS</a> <a href="/tags/h-index/" style="font-size: 10px;">H-INDEX</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">검색트리</a> <a href="/tags/%EB%A0%88%EB%B2%A82/" style="font-size: 14px;">레벨2</a> <a href="/tags/%EB%B0%B1%EC%A4%80/" style="font-size: 20px;">백준</a> <a href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" style="font-size: 16px;">백트래킹</a> <a href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" style="font-size: 18px;">브루트포스</a> <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 16px;">알고리즘</a> <a href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" style="font-size: 10px;">우선순위큐</a> <a href="/tags/%EC%9C%84%EC%9E%A5/" style="font-size: 10px;">위장</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">이진탐색트리</a> <a href="/tags/%EC%A0%95%EB%A0%AC/" style="font-size: 10px;">정렬</a> <a href="/tags/%EC%A1%B0%ED%95%A9/" style="font-size: 10px;">조합</a> <a href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" style="font-size: 14px;">프로그래머스</a> <a href="/tags/%ED%95%B4%EC%8B%9C/" style="font-size: 10px;">해시</a>
         </div>
@@ -671,7 +666,7 @@ while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 bre
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
+        <h3 class="widget-title">링크</h3>
         <div class="widget">
             <ul>
                 
