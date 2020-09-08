@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>test</title>
+    <url>/2020/09/08/test/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>SRING/SPRINGBOOT</category>
+      </categories>
+  </entry>
+  <entry>
     <title>백준연산자끼워넣기2-15658</title>
     <url>/2019/12/20/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B02-15658/</url>
     <content><![CDATA[<p><a href="https://www.acmicpc.net/problem/15658" target="_blank" rel="noopener">연산자끼워넣기(2)15658</a></p>
@@ -847,9 +855,9 @@
         <category>알고리즘</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -891,9 +899,9 @@
         <category>알고리즘</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -1005,9 +1013,9 @@
         <category>알고리즘</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -1066,10 +1074,10 @@
         <category>알고리즘</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
-        <tag>위장</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
+        <tag>위장</tag>
         <tag>해시</tag>
       </tags>
   </entry>
