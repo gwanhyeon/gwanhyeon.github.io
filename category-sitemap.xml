@@ -2,20 +2,20 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://gwanhyeon.github.io.com</loc>
+        <loc>http://gwanhyeon.github.io</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io.com/categories/%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598/</loc>
+        <loc>http://gwanhyeon.github.io/categories/%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598/</loc>
         <lastmod>2020-09-07T21:04:32.332Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io.com/categories/hexo/</loc>
+        <loc>http://gwanhyeon.github.io/categories/hexo/</loc>
         <lastmod>2020-09-07T21:02:27.353Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
