@@ -343,9 +343,6 @@ code {
 #main .main-body-content:after {
   clear: both;
 }
-#     background: ../images/header.png,
-#    banner-url: images/header.png,
-#    background: #FFFFFF,
 #header {
   background: #26272b;
   padding-bottom: 60px;
@@ -379,7 +376,7 @@ code {
   margin-left: 20px;
 }
 #header-title .subtitle {
-  font-size: 24px;
+  font-size: 16px;
   font-style: italic;
   line-height: 168px;
   color: rgba(255,255,255,0.7);
