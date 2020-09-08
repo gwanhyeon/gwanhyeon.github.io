@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="https://www.w3.org/2005/Atom">
-  <title>Gwan Blog</title>
+  <title>Gwan-Hyeon Kim</title>
   
-  <subtitle>Gwan Blog</subtitle>
+  <subtitle>Gwan-Hyeon Kim</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io.com/"/>
