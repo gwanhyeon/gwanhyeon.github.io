@@ -64,7 +64,24 @@
 <ul>
 <li>버전별 루트 패키지</li>
 </ul>
-<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">|<span class="string">버전</span>|<span class="string">패키지</span>|</span><br><span class="line">|<span class="string">-----</span>|<span class="string">------</span>|</span><br><span class="line">|<span class="string">1.x</span>|<span class="string">rx</span>|</span><br><span class="line">|<span class="string">2.x</span>|<span class="string">io.reactivex</span>|</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>버전</th>
+<th>패키지</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.x</td>
+<td>rx</td>
+</tr>
+<tr>
+<td>2.x</td>
+<td>io.reactivex</td>
+</tr>
+</tbody>
+</table>
 <p>따라서, RxJava의 두 버전을 같은 프로젝트에 함께 사용할 수는 있으나 프로젝트 내부에서 Rxjav에 의존하는 다른 라이브러리를 사용한다면 라이브러리가 어떤 버전을 지원하느냐에 따라 두 버전을 함께 사용하지 못할 수도 있습니다.</p>
 <ul>
 <li>두 버전을 사용하는것은 바람직 하지 않습니다.</li>
