@@ -10,13 +10,13 @@
     
     <meta name="keywords" content="백준,브루트포스,DFS,백트래킹" />
     
-    <meta name="description" content="연산자끼워넣기(2)15658  컴퓨팅 스킬  DFS   재귀호출로 백트래킹으로 구해줍니다. 연산자끼워넣기 1번문제와 같은 원리입니다. 정답 또한 같습니다.  1.  컴퓨팅 사고  DFS 백트래킹   맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에 대한">
+    <meta name="description" content="연산자끼워넣기(2)15658 1.  컴퓨팅 스킬  DFS   재귀호출로 백트래킹으로 구해줍니다. 연산자끼워넣기 1번문제와 같은 원리입니다. 정답 또한 같습니다.  2.  컴퓨팅 사고  DFS 백트래킹   맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에">
 <meta name="keywords" content="백준,브루트포스,DFS,백트래킹">
 <meta property="og:type" content="article">
 <meta property="og:title" content="백준연산자끼워넣기2-15658">
 <meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B02-15658&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="연산자끼워넣기(2)15658  컴퓨팅 스킬  DFS   재귀호출로 백트래킹으로 구해줍니다. 연산자끼워넣기 1번문제와 같은 원리입니다. 정답 또한 같습니다.  1.  컴퓨팅 사고  DFS 백트래킹   맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에 대한">
+<meta property="og:description" content="연산자끼워넣기(2)15658 1.  컴퓨팅 스킬  DFS   재귀호출로 백트래킹으로 구해줍니다. 연산자끼워넣기 1번문제와 같은 원리입니다. 정답 또한 같습니다.  2.  컴퓨팅 사고  DFS 백트래킹   맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에">
 <meta property="og:locale" content="ko">
 <meta property="og:updated_time" content="2020-09-07T21:04:32.332Z">
 <meta name="twitter:card" content="summary">
@@ -195,7 +195,7 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p><a href="https://www.acmicpc.net/problem/15658" target="_blank" rel="noopener">연산자끼워넣기(2)15658</a></p>
-<h2 id="컴퓨팅-스킬"><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
+<h2 id="컴퓨팅-스킬"><a href="#컴퓨팅-스킬" class="header-anchor"></a>1. <a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <blockquote>
 <p>DFS</p>
 </blockquote>
@@ -203,7 +203,7 @@ ga('send', 'pageview');
 <li>재귀호출로 백트래킹으로 구해줍니다.</li>
 <li>연산자끼워넣기 1번문제와 같은 원리입니다. 정답 또한 같습니다.</li>
 </ul>
-<h2 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2>
+<h2 id="컴퓨팅-사고"><a href="#컴퓨팅-사고" class="header-anchor"></a>2. <a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2>
 <blockquote>
 <p>DFS 백트래킹</p>
 </blockquote>
@@ -219,7 +219,7 @@ ga('send', 'pageview');
 다른분들의 풀이를 보니 이런식으로 사용하시는것을 보고 배우게 되었습니다.</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000000000</span> + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> maxResult = -MAX, minResult = MAX;</span><br><span class="line"> maxResult = <span class="built_in">max</span>(maxResult, sum);</span><br><span class="line"> minResult = <span class="built_in">min</span>(minResult, sum);</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; maxResult &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; minResult &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="dfs-baegteuraeking-puli"><a href="#dfs-baegteuraeking-puli" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#dfs-백트래킹-풀이"></a> DFS 백트래킹 풀이</h3>
+<h3 id="dfs-백트래킹-풀이"><a href="#dfs-백트래킹-풀이" class="header-anchor"></a>2.1. <a class="markdownIt-Anchor" href="#dfs-백트래킹-풀이"></a> DFS 백트래킹 풀이</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  12_백준_연산자끼워넣기2_15658.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 20/12/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v, <span class="keyword">int</span> sum, <span class="keyword">int</span> idx, <span class="keyword">int</span> plus, <span class="keyword">int</span> minus, <span class="keyword">int</span> multi, <span class="keyword">int</span> div)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(idx == v.<span class="built_in">size</span>())&#123;</span><br><span class="line">        res.push_back(sum);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(plus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,sum+v[idx],idx+<span class="number">1</span>, plus<span class="number">-1</span>,minus,multi,div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(minus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,sum-v[idx],idx+<span class="number">1</span>, plus,minus<span class="number">-1</span>,multi,div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(multi &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,sum*v[idx],idx+<span class="number">1</span>, plus,minus,multi<span class="number">-1</span>,div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(div &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,sum/v[idx],idx+<span class="number">1</span>, plus,minus,multi,div<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="keyword">int</span> plus=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> minus=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> multi=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> div=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> cal=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; cal;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">            plus = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">            minus = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">2</span>)&#123;</span><br><span class="line">            multi = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            div = cal;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    dfs(v, v[<span class="number">0</span>],<span class="number">1</span>,plus, minus, multi, div);</span><br><span class="line">    <span class="keyword">auto</span> p = minmax_element(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p.second &lt;&lt; <span class="string">" "</span> &lt;&lt;  *p.first;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -300,7 +300,7 @@ ga('send', 'pageview');
         "dateModified": "2020-09-08",
         "url": "http://gwanhyeon.github.io/2019/12/20/백준연산자끼워넣기2-15658/",
         "description": "연산자끼워넣기(2)15658
- 컴퓨팅 스킬
+1.  컴퓨팅 스킬
 
 DFS
 
@@ -308,13 +308,13 @@ DFS
 재귀호출로 백트래킹으로 구해줍니다.
 연산자끼워넣기 1번문제와 같은 원리입니다. 정답 또한 같습니다.
 
-1.  컴퓨팅 사고
+2.  컴퓨팅 사고
 
 DFS 백트래킹
 
 
-맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에 대한",
-        "wordCount": 956
+맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에",
+        "wordCount": 959
     }
 </script>
 
@@ -381,10 +381,10 @@ DFS 백트래킹
             
                 
 <div class="widget-wrap widget-list">
-    <h3 class="widget-title">Catalogue</h3>
+    <h3 class="widget-title">Catalog</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#컴퓨팅-스킬"><span class="toc-number">1.</span> <span class="toc-text"> 컴퓨팅 스킬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keompyuting-sago"><span class="toc-number">2.</span> <span class="toc-text">1.  컴퓨팅 사고</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dfs-baegteuraeking-puli"><span class="toc-number">2.1.</span> <span class="toc-text">1.1.  DFS 백트래킹 풀이</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#컴퓨팅-스킬"><span class="toc-number">1.</span> <span class="toc-text">1.  컴퓨팅 스킬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#컴퓨팅-사고"><span class="toc-number">2.</span> <span class="toc-text">2.  컴퓨팅 사고</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dfs-백트래킹-풀이"><span class="toc-number">2.1.</span> <span class="toc-text">2.1.  DFS 백트래킹 풀이</span></a></li></ol></li></ol>
         </div>
     </div>
 </div>
