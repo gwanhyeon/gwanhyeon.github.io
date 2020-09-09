@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="https://www.w3.org/2005/Atom">
   <title>Ethan Kim IT Blog</title>
   
   <subtitle>Ethan Kim IT Blog</subtitle>
-  <link href="/feed.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
   <updated>2020-09-09T15:47:20.575Z</updated>
