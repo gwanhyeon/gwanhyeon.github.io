@@ -203,13 +203,13 @@ ga('send', 'pageview');
 <blockquote>
 <p>1.compare함수를 이용한 내림차순 방법</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bool compare(int v1,int v2)&#123;</span><br><span class="line">    return v1 &lt; v2;</span><br><span class="line">&#125;</span><br><span class="line">sort(citations.begin(),citations.end(),compare);</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> v1,<span class="keyword">int</span> v2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1 &lt; v2;</span><br><span class="line">&#125;</span><br><span class="line">sort(citations.<span class="built_in">begin</span>(),citations.<span class="built_in">end</span>(),compare);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ol start="2">
 <li>greater<int>() 함수 옵션을 사용한 내림차순 정렬</int></li>
 </ol>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort(citations.begin(),citations.end(),greater&lt;int&gt;());</span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort(<span class="name">citations</span>.begin(),citations.end(),greater&lt;int&gt;())<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ul>
@@ -378,7 +378,7 @@ ga('send', 'pageview');
 
 정렬문제인 만큼 #include &lt;algorithm&gt; 헤더에 있는 sort를 이용하면 됩니다.
 sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 옵션을 주지 않아도 오름차순 정렬을 하게 됩니다. 그 외 내림차순정렬을 이용 할 때는 다음과 같은 두가지 방법을 사용할 수 있습니",
-        "wordCount": 534
+        "wordCount": 545
     }
 </script>
 
@@ -420,8 +420,9 @@ sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 �
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
     
     
-    {% githubCard user:gwanhyeon repo:hexo-github-card %}
     
+    {% githubCard user [gwanhyeon] [width = 400] [theme] %}
+
     
         
 <nav id="article-nav">

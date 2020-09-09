@@ -200,7 +200,7 @@ ga('send', 'pageview');
 <li>이번 문제를 해결하기 위해서는 단순 sort를 사용하는것이 아니라 우선순위큐 <code>priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt;&gt;</code>  오름차순 형식으로 써주어야합니다.</li>
 <li>단순히 while문을 통해서 안에서 sort를 처리하려고 하였지만 16번 테스트케이스를 통과하지 못하였고 효율성에서는 시간초과가 발생하였습니다. 또한, 범위값이 너무 제한적이였다. 그래서 우선순위큐를 사용하였습니다.</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scoville의 길이는 1 이상 1,000,000 이하입니다.</span><br><span class="line">K는 0 이상 1,000,000,000 이하입니다.</span><br><span class="line">scoville의 원소는 각각 0 이상 1,000,000 이하입니다.</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scoville의 길이는 <span class="number">1</span> 이상 <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span> 이하입니다.</span><br><span class="line">K는 <span class="number">0</span> 이상 <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span>,<span class="number">000</span> 이하입니다.</span><br><span class="line">scoville의 원소는 각각 <span class="number">0</span> 이상 <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span> 이하입니다.</span><br></pre></td></tr></table></figure>
 <ul>
 <li>주의해야할점은 <code>우선순위큐 push는 맨앞으로 들어간다는것과 top에 있는것도 0번째 인덱스에 있는 값</code>입니다.</li>
 </ul>
@@ -210,7 +210,7 @@ ga('send', 'pageview');
 <li>스코빌 벡터에 있는 값을 우선순위큐에 넣어준다. <code>greater&lt;int&gt;</code>를 옵션으로 지정하였기 때문에 자동으로 오름차순으로 정렬해줍니다. 만약 내림차순으로 하고 싶은경우 less<int>옵션을 사용하시면 됩니다.</int></li>
 <li><code>첫번째, 두번째값을 통하여 스코빌 지수</code>를 구합니다. <code>단 q.top()의 값이 K보다 작아야합니다.</code> 반복문 조건</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">예시</span><br><span class="line">스코빌 1 2 3 9 10일경우  </span><br><span class="line">(1 + 2 * 2) 5 3 9 10 으로 변경됩니다. 우선순위큐 이므로 3 5 9 10 정렬됩니다.</span><br><span class="line">(3 + 5 * 2) 13 9 10 으로 변경됩니다. 우선순위큐 이므로 9 10 13 정렬됩니다.</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">예시</span><br><span class="line">스코빌 <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">9</span> <span class="number">10</span>일경우  </span><br><span class="line">(<span class="number">1</span> + <span class="number">2</span> * <span class="number">2</span>) <span class="number">5</span> <span class="number">3</span> <span class="number">9</span> <span class="number">10</span> 으로 변경됩니다. 우선순위큐 이므로 <span class="number">3</span> <span class="number">5</span> <span class="number">9</span> <span class="number">10</span> 정렬됩니다.</span><br><span class="line">(<span class="number">3</span> + <span class="number">5</span> * <span class="number">2</span>) <span class="number">13</span> <span class="number">9</span> <span class="number">10</span> 으로 변경됩니다. 우선순위큐 이므로 <span class="number">9</span> <span class="number">10</span> <span class="number">13</span> 정렬됩니다.</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>기존의 while문에서는 sort를 다시해주어야하는데 우선순위 큐가 자동으로 정렬시켜주기때문에 필요없는 과정입니다.</li>
 <li>만약 우선순위큐의 사이즈가 2이하가 되면 더이상 구할 수 없으므로 Return -1을 실행합니다. 그게 아니라면 계속 진행하고 q.top()의 값이 K보다 큰 경우가 있으면 더이상 반복문을 반복하지 않습니다.</li>
@@ -304,7 +304,7 @@ ga('send', 'pageview');
 
 이번 문제를 해결하기 위해서는 단순 sort를 사용하는것이 아니라 우선순위큐 priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt;&gt;  오름차순 형식으로 써주어야합니다.
 단순히 while문을 통해서 안에서 sort를 처리하려고 하였지만 16번 테",
-        "wordCount": 1256
+        "wordCount": 1294
     }
 </script>
 
@@ -346,8 +346,9 @@ ga('send', 'pageview');
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
     
     
-    {% githubCard user:gwanhyeon repo:hexo-github-card %}
     
+    {% githubCard user [gwanhyeon] [width = 400] [theme] %}
+
     
         
 <nav id="article-nav">
