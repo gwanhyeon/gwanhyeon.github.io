@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/%25EB%25A6%25AC%25EC%2595%25A1%25ED%258B%25B0%25EB%25B8%258C%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D/</loc>
+        <lastmod>2020-09-09T15:47:20.575Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/rxjava/</loc>
+        <lastmod>2020-09-09T15:47:20.575Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/boj/</loc>
         <lastmod>2020-09-09T15:40:51.874Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -26,20 +40,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598/</loc>
         <lastmod>2020-09-09T15:40:51.874Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EB%25A6%25AC%25EC%2595%25A1%25ED%258B%25B0%25EB%25B8%258C%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D/</loc>
-        <lastmod>2020-09-09T15:32:51.541Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/rxjava/</loc>
-        <lastmod>2020-09-09T15:32:51.541Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
