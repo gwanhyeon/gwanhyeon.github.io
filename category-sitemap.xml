@@ -8,22 +8,36 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/algorithm/</loc>
+        <lastmod>2020-09-09T17:06:42.434Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/etc/</loc>
+        <lastmod>2020-09-09T17:06:22.928Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/boj/</loc>
+        <lastmod>2020-09-09T17:04:58.972Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/programmers/</loc>
+        <lastmod>2020-09-09T17:03:45.087Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/rxjava/</loc>
-        <lastmod>2020-09-09T16:44:22.761Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598/</loc>
-        <lastmod>2020-09-09T15:40:51.874Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/hexo/</loc>
-        <lastmod>2020-09-07T21:02:27.353Z</lastmod>
+        <lastmod>2020-09-09T17:02:44.838Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

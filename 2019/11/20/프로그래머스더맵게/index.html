@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  프로그래머스 더 맵게 문제 2.  컴퓨팅적 스킬  이번 문제를 해결하기 위해서는 단순 sort를 사용하는것이 아니라 우선순위큐 priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,greater&amp;lt;int&amp;gt;&amp;gt;  오름차순 형식으로 써주어야합니다. 단순히 while문을 통해서 안에서 sort를 처리하려고 하였지만 16번 테">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-09-07T21:03:19.697Z">
+<meta property="og:updated_time" content="2020-09-09T17:03:45.087Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -90,7 +90,7 @@ ga('send', 'pageview');
                                     <a class="main-nav-list-link" href="/">홈</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/hexo/">HEXO</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/rxjava/">RxJava</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/boj/">BOJ</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/etc/">ETC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programmers/">Programmers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/rxjava/">RXJAVA</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about">About</a>
@@ -149,7 +149,7 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>
+    <a class="page-title-link" href="/categories/programmers/">Programmers</a>
     </h1>
 </div>
 
@@ -200,7 +200,7 @@ ga('send', 'pageview');
 <li>이번 문제를 해결하기 위해서는 단순 sort를 사용하는것이 아니라 우선순위큐 <code>priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt;&gt;</code>  오름차순 형식으로 써주어야합니다.</li>
 <li>단순히 while문을 통해서 안에서 sort를 처리하려고 하였지만 16번 테스트케이스를 통과하지 못하였고 효율성에서는 시간초과가 발생하였습니다. 또한, 범위값이 너무 제한적이였다. 그래서 우선순위큐를 사용하였습니다.</li>
 </ul>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scoville의 길이는 <span class="number">1</span> 이상 <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span> 이하입니다.</span><br><span class="line">K는 <span class="number">0</span> 이상 <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span>,<span class="number">000</span> 이하입니다.</span><br><span class="line">scoville의 원소는 각각 <span class="number">0</span> 이상 <span class="number">1</span>,<span class="number">000</span>,<span class="number">000</span> 이하입니다.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scoville의 길이는 1 이상 1,000,000 이하입니다.</span><br><span class="line">K는 0 이상 1,000,000,000 이하입니다.</span><br><span class="line">scoville의 원소는 각각 0 이상 1,000,000 이하입니다.</span><br></pre></td></tr></table></figure>
 <ul>
 <li>주의해야할점은 <code>우선순위큐 push는 맨앞으로 들어간다는것과 top에 있는것도 0번째 인덱스에 있는 값</code>입니다.</li>
 </ul>
@@ -210,7 +210,7 @@ ga('send', 'pageview');
 <li>스코빌 벡터에 있는 값을 우선순위큐에 넣어준다. <code>greater&lt;int&gt;</code>를 옵션으로 지정하였기 때문에 자동으로 오름차순으로 정렬해줍니다. 만약 내림차순으로 하고 싶은경우 less<int>옵션을 사용하시면 됩니다.</int></li>
 <li><code>첫번째, 두번째값을 통하여 스코빌 지수</code>를 구합니다. <code>단 q.top()의 값이 K보다 작아야합니다.</code> 반복문 조건</li>
 </ol>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">예시</span><br><span class="line">스코빌 <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">9</span> <span class="number">10</span>일경우  </span><br><span class="line">(<span class="number">1</span> + <span class="number">2</span> * <span class="number">2</span>) <span class="number">5</span> <span class="number">3</span> <span class="number">9</span> <span class="number">10</span> 으로 변경됩니다. 우선순위큐 이므로 <span class="number">3</span> <span class="number">5</span> <span class="number">9</span> <span class="number">10</span> 정렬됩니다.</span><br><span class="line">(<span class="number">3</span> + <span class="number">5</span> * <span class="number">2</span>) <span class="number">13</span> <span class="number">9</span> <span class="number">10</span> 으로 변경됩니다. 우선순위큐 이므로 <span class="number">9</span> <span class="number">10</span> <span class="number">13</span> 정렬됩니다.</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">예시</span><br><span class="line">스코빌 1 2 3 9 10일경우  </span><br><span class="line">(1 + 2 * 2) 5 3 9 10 으로 변경됩니다. 우선순위큐 이므로 3 5 9 10 정렬됩니다.</span><br><span class="line">(3 + 5 * 2) 13 9 10 으로 변경됩니다. 우선순위큐 이므로 9 10 13 정렬됩니다.</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>기존의 while문에서는 sort를 다시해주어야하는데 우선순위 큐가 자동으로 정렬시켜주기때문에 필요없는 과정입니다.</li>
 <li>만약 우선순위큐의 사이즈가 2이하가 되면 더이상 구할 수 없으므로 Return -1을 실행합니다. 그게 아니라면 계속 진행하고 q.top()의 값이 K보다 큰 경우가 있으면 더이상 반복문을 반복하지 않습니다.</li>
@@ -294,17 +294,17 @@ ga('send', 'pageview');
         "headline": "프로그래머스 더 맵게",
         "image": "http://gwanhyeon.github.io",
         "keywords": "프로그래머스 알고리즘 레벨2 우선순위큐",
-        "genre": "알고리즘",
+        "genre": "Programmers",
         "datePublished": "2019-11-20",
         "dateCreated": "2019-11-20",
-        "dateModified": "2020-09-08",
+        "dateModified": "2020-09-10",
         "url": "http://gwanhyeon.github.io/2019/11/20/프로그래머스더맵게/",
         "description": "1.  프로그래머스 더 맵게 문제
 2.  컴퓨팅적 스킬
 
 이번 문제를 해결하기 위해서는 단순 sort를 사용하는것이 아니라 우선순위큐 priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt;&gt;  오름차순 형식으로 써주어야합니다.
 단순히 while문을 통해서 안에서 sort를 처리하려고 하였지만 16번 테",
-        "wordCount": 1294
+        "wordCount": 1256
     }
 </script>
 
@@ -351,7 +351,7 @@ ga('send', 'pageview');
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            N-Queen 문제
+            알고리즘 N-Queen 문제
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
@@ -371,15 +371,6 @@ ga('send', 'pageview');
         
             
                 
-<div class="widget-wrap widget-list">
-    <h3 class="widget-title">Catalogue</h3>
-    <div class="widget">
-        <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#peurogeuraemeoseu-deo-maebge-munje"><span class="toc-number">1.</span> <span class="toc-text">1.  프로그래머스 더 맵게 문제</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keompyutingjeog-seukil"><span class="toc-number">2.</span> <span class="toc-text">2.  컴퓨팅적 스킬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keompyutingjeog-sago"><span class="toc-number">3.</span> <span class="toc-text">3.  컴퓨팅적 사고</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#puli"><span class="toc-number">4.</span> <span class="toc-text">4.  풀이</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ilbanjeogin-sort-puli-sigancogwa"><span class="toc-number">4.1.</span> <span class="toc-text">4.1.  1. 일반적인 sort 풀이(시간초과)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useonsunwikyu-sayong"><span class="toc-number">4.2.</span> <span class="toc-text">4.2.  우선순위큐 사용</span></a></li></ol></li></ol>
-        </div>
-    </div>
-</div>
-
 
             
                 
@@ -391,7 +382,7 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/rxjava/">RxJava</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/rxjava/">RXJAVA</a></p>
                             <p class="item-title"><a href="/2020/09/09/reactive-programming-section01/" class="title">01.Rxjava와 리액티브 프로그래밍</a></p>
                             <p class="item-date"><time datetime="2020-09-09T13:01:58.000Z" itemprop="datePublished">2020-09-09</time></p>
                         </div>
@@ -400,7 +391,7 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/boj/">BOJ</a></p>
                             <p class="item-title"><a href="/2020/09/08/beakjoon-laboratory-14502/" class="title">[삼성 SW 역량테스트] 백준 연구소 14502</a></p>
                             <p class="item-date"><time datetime="2020-09-08T11:48:16.781Z" itemprop="datePublished">2020-09-08</time></p>
                         </div>
@@ -409,8 +400,8 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a></p>
-                            <p class="item-title"><a href="/2019/12/20/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B02-15658/" class="title">백준연산자끼워넣기2-15658</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/boj/">BOJ</a></p>
+                            <p class="item-title"><a href="/2019/12/20/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B02-15658/" class="title">백준 연산자끼워넣기2 15658</a></p>
                             <p class="item-date"><time datetime="2019-12-19T16:31:17.000Z" itemprop="datePublished">2019-12-20</time></p>
                         </div>
                     </li>
@@ -418,8 +409,8 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a></p>
-                            <p class="item-title"><a href="/2019/12/17/%EB%B0%B1%EC%A4%80%ED%87%B4%EC%82%AC14501/" class="title">백준퇴사14501</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/2019/12/17/%EB%B0%B1%EC%A4%80%ED%87%B4%EC%82%AC14501/" class="title">백준 퇴사 14501</a></p>
                             <p class="item-date"><time datetime="2019-12-17T08:09:56.000Z" itemprop="datePublished">2019-12-17</time></p>
                         </div>
                     </li>
@@ -427,8 +418,8 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a></p>
-                            <p class="item-title"><a href="/2019/12/17/%EB%B0%B1%EC%A4%80%EB%B6%80%EB%B6%84%EC%88%98%EC%97%B4%EC%9D%98%ED%95%A91182/" class="title">백준부분수열의합1182</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/boj/">BOJ</a></p>
+                            <p class="item-title"><a href="/2019/12/17/%EB%B0%B1%EC%A4%80%EB%B6%80%EB%B6%84%EC%88%98%EC%97%B4%EC%9D%98%ED%95%A91182/" class="title">백준 부분수열의합 1182</a></p>
                             <p class="item-date"><time datetime="2019-12-16T16:45:40.000Z" itemprop="datePublished">2019-12-17</time></p>
                         </div>
                     </li>
@@ -442,7 +433,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">HEXO</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/rxjava/">RxJava</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a><span class="category-list-count">18</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">Algorithm</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/boj/">BOJ</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">ETC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programmers/">Programmers</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/rxjava/">RXJAVA</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
