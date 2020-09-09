@@ -194,8 +194,8 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
-<h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
+            <h2 id="백준-차이를최대로-10819"><a href="#백준-차이를최대로-10819" class="header-anchor"></a>1. <a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
+<h2 id="컴퓨팅-스킬"><a href="#컴퓨팅-스킬" class="header-anchor"></a>2. <a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
 <li>#include<algorithm>헤더에 있는 next_permutation()함수를 호출하여 순열과조합을 구현합니다.</algorithm></li>
 <li>next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위에 해당하는 다음 순열을 구하고 true를 반환한다. 다음 순열이 없다면(다음에 나온 순열이 순서상 이전 순열보다 작다면) false를 반환합니다.</li>
@@ -204,7 +204,7 @@ ga('send', 'pageview');
 <li></li>
 </ul>
 <p><code>반드시 정렬이 수행되어야만 올바를 결과값을 얻을 수 있습니다.</code></p>
-<h2 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2>
+<h2 id="컴퓨팅-사고"><a href="#컴퓨팅-사고" class="header-anchor"></a>3. <a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2>
 <ul>
 <li>|A[0] - A[1]| + |A[1] - A[2]| + … + |A[N-2] - A[N-1]|의 조건에 따라 반복문을 통하여 해당조건에 순열의 첫번째 경우, 두번째 경우, …마지막 경우에 따라 int sum의 값에 저장한 후 그 값을 max값과 비교한다. 최대값을 구해야하므로 이러한 일련의 과정이 필요합니다.</li>
 <li>sum += abs(v[i] - v[i+1]); 의 식으로 현재 순열과조합의 경우에서 값들의 합을 구합니다. 이때 i값과 i+1값의 범위가 벗어나지 않는지 반드시 확인합니다. for문을 v.size()만큼 순회하면 오버플로우가 발생합니다.</li>
@@ -212,8 +212,8 @@ ga('send', 'pageview');
 <li>next_permutation의 수행이 모두 끝나면 현재 max을 출력합니다. 현재 최대값이 저장되어 있습니다.</li>
 </ul>
 <hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="next-permutationeul-sayonghan-puli"><a href="#next-permutationeul-sayonghan-puli" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#next_permutation을-사용한-풀이"></a> next_permutation을 사용한 풀이</h3>
+<h2 id="풀이"><a href="#풀이" class="header-anchor"></a>4. <a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="next_permutation을-사용한-풀이"><a href="#next_permutation을-사용한-풀이" class="header-anchor"></a>4.1. <a class="markdownIt-Anchor" href="#next_permutation을-사용한-풀이"></a> next_permutation을 사용한 풀이</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  05_백준_차이를최대로_10819.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            sum += <span class="built_in">abs</span>(v[i] - v[i+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">max</span> &lt; sum)&#123;</span><br><span class="line">            <span class="built_in">max</span> = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()));</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">max</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -340,20 +340,20 @@ next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위�
         
 <nav id="article-nav">
     
-        <a href="/2019/12/02/%EB%B0%B1%EC%A4%80%EC%99%B8%EC%9B%90%ED%8C%90%EC%88%9C%ED%9A%8C2-10971/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80123%EB%8D%94%ED%95%98%EA%B8%B09095/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            백준외원판순회2-10971
+            백준123더하기9095
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80123%EB%8D%94%ED%95%98%EA%B8%B09095/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/11/28/%EB%B0%B1%EC%A4%80%EB%82%A0%EC%A7%9C%EA%B3%84%EC%82%B01476/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">백준123더하기9095</p>
+        <p class="article-nav-title">백준날짜계산1476</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -368,7 +368,7 @@ next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위�
     <h3 class="widget-title">Catalog</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#baegjun-caireulcoedaero-10819"><span class="toc-number">1.</span> <span class="toc-text">1.  백준 차이를최대로 10819</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keompyuting-seukil"><span class="toc-number">2.</span> <span class="toc-text">2.  컴퓨팅 스킬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keompyuting-sago"><span class="toc-number">3.</span> <span class="toc-text">3.  컴퓨팅 사고</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#puli"><span class="toc-number">4.</span> <span class="toc-text">4.  풀이</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#next-permutationeul-sayonghan-puli"><span class="toc-number">4.1.</span> <span class="toc-text">4.1.  next_permutation을 사용한 풀이</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#백준-차이를최대로-10819"><span class="toc-number">1.</span> <span class="toc-text">1.  백준 차이를최대로 10819</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#컴퓨팅-스킬"><span class="toc-number">2.</span> <span class="toc-text">2.  컴퓨팅 스킬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#컴퓨팅-사고"><span class="toc-number">3.</span> <span class="toc-text">3.  컴퓨팅 사고</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#풀이"><span class="toc-number">4.</span> <span class="toc-text">4.  풀이</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#next_permutation을-사용한-풀이"><span class="toc-number">4.1.</span> <span class="toc-text">4.1.  next_permutation을 사용한 풀이</span></a></li></ol></li></ol>
         </div>
     </div>
 </div>

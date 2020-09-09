@@ -8,10 +8,10 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="알고리즘,레벨2,프로그래머스,H-INDEX,정렬" />
+    <meta name="keywords" content="프로그래머스,알고리즘,레벨2,H-INDEX,정렬" />
     
     <meta name="description" content="1.  프로그래머스 H-index 문제 2.  컴퓨팅적 스킬  정렬문제인 만큼 #include &amp;lt;algorithm&amp;gt; 헤더에 있는 sort를 이용하면 됩니다. sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 옵션을 주지 않아도 오름차순 정렬을 하게 됩니다. 그 외 내림차순정렬을 이용 할 때는 다음과 같은 두가지 방법을 사용할 수 있습니">
-<meta name="keywords" content="알고리즘,레벨2,프로그래머스,H-INDEX,정렬">
+<meta name="keywords" content="프로그래머스,알고리즘,레벨2,H-INDEX,정렬">
 <meta property="og:type" content="article">
 <meta property="og:title" content="프로그래머스 H-index">
 <meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;2019&#x2F;11&#x2F;16&#x2F;%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4H-INDEX&#x2F;index.html">
@@ -194,8 +194,8 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="peurogeuraemeoseu-h-index-munje"><a href="#peurogeuraemeoseu-h-index-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-h-index-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42747" target="_blank" rel="noopener">프로그래머스 H-index 문제</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+            <h2 id="프로그래머스-h-index-문제"><a href="#프로그래머스-h-index-문제" class="header-anchor"></a>1. <a class="markdownIt-Anchor" href="#프로그래머스-h-index-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42747" target="_blank" rel="noopener">프로그래머스 H-index 문제</a></h2>
+<h2 id="컴퓨팅적-스킬"><a href="#컴퓨팅적-스킬" class="header-anchor"></a>2. <a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
 <li>정렬문제인 만큼 <code>#include &lt;algorithm&gt; 헤더에 있는 sort를 이용하면 됩니다.</code></li>
 <li>sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 옵션을 주지 않아도 오름차순 정렬을 하게 됩니다. 그 외 <code>내림차순정렬</code>을 이용 할 때는 다음과 같은 두가지 방법을 사용할 수 있습니다.</li>
@@ -211,7 +211,7 @@ ga('send', 'pageview');
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort(citations.begin(),citations.end(),greater&lt;int&gt;());</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<h2 id="컴퓨팅적-사고"><a href="#컴퓨팅적-사고" class="header-anchor"></a>3. <a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ul>
 <li><code>H-index</code>의 개념을 알고가셔야 합니다. 논문 n편중 h번이상 인용된 논문이 h편이상이고 h번 이하 인용되었다면 h가 H-index가 됩니다.</li>
 <li>첫번째 <code>테스트 케이스인 [3,0,6,1,5]</code>로 예를 들어 설명하겠습니다.</li>
@@ -284,7 +284,7 @@ ga('send', 'pageview');
 </tbody>
 </table>
 <hr>
-<h2 id><a href="#" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#"></a> </h2>
+<h2 id><a href="#" class="header-anchor"></a>4. <a class="markdownIt-Anchor" href="#"></a> </h2>
 <ul>
 <li>정렬전과 정렬후의 과정입니다.<code>H-index</code>라는것을 맨처음에 모든 값의 합을 나눈 평균의 값이 H-Index라고 생각을 하여 아주 단순하게 생각했습니다. 당연히 틀린것이였습니다.</li>
 <li><em>index</em>를 가지고 생각했어야 했는데, 값을 가지고 생각을 하였습니다. 위의 테스트케이스는 총 5편의 논문이 쓰여졌으며  <code>인덱스값이 DATA의 값보다 커지는 시점</code> <code>index &gt; data</code>을 찾아야 합니다. 그 시점이 H-index지점입니다.데이터값은 뒤에서부터 비교하고 인덱스값은 앞에서 비교하게 됩니다. 따라서 citations.size()-i-1의 형식이 나오게됩니다. -1을 해주는이유는 for문에서는citiation-1지점까지만 순회하기때문에 이에 따라 -1을 붙여준것입니다. 어디서부터 시작하고 어디서부터 끝내는지에 대해서 한번더 고민해보시면 되겠습니다.</li>
@@ -292,8 +292,8 @@ ga('send', 'pageview');
 <li>문제들을 너무 어렵게 생각하여 풀었는데, <code>index</code>에 대해 유연하게 접근하면 쉽게 풀 수 있었던 문제라고 생각합니다.</li>
 </ul>
 <hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="1-jeongryeol-puli"><a href="#1-jeongryeol-puli" class="header-anchor">5.1. </a><a class="markdownIt-Anchor" href="#1-정렬-풀이"></a> 1. 정렬 풀이</h3>
+<h2 id="풀이"><a href="#풀이" class="header-anchor"></a>5. <a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="1-정렬-풀이"><a href="#1-정렬-풀이" class="header-anchor"></a>5.1. <a class="markdownIt-Anchor" href="#1-정렬-풀이"></a> 1. 정렬 풀이</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">// 오름차순 정렬, 내림차순은 그 반대 v1 &gt; v2</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> v1,<span class="keyword">int</span> v2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1 &lt; v2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; citations;</span><br><span class="line">    citations.push_back(<span class="number">3</span>);</span><br><span class="line">    citations.push_back(<span class="number">0</span>);</span><br><span class="line">    citations.push_back(<span class="number">6</span>);</span><br><span class="line">    citations.push_back(<span class="number">1</span>);</span><br><span class="line">    citations.push_back(<span class="number">5</span>);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    sort(citations.<span class="built_in">begin</span>(),citations.<span class="built_in">end</span>(),compare);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;citations.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= citations[citations.<span class="built_in">size</span>()-i<span class="number">-1</span>])&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -367,7 +367,7 @@ ga('send', 'pageview');
         },
         "headline": "프로그래머스 H-index",
         "image": "http://gwanhyeon.github.io",
-        "keywords": "알고리즘 레벨2 프로그래머스 H-INDEX 정렬",
+        "keywords": "프로그래머스 알고리즘 레벨2 H-INDEX 정렬",
         "genre": "알고리즘",
         "datePublished": "2019-11-16",
         "dateCreated": "2019-11-16",
@@ -448,7 +448,7 @@ sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 �
     <h3 class="widget-title">Catalog</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#peurogeuraemeoseu-h-index-munje"><span class="toc-number">1.</span> <span class="toc-text">1.  프로그래머스 H-index 문제</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keompyutingjeog-seukil"><span class="toc-number">2.</span> <span class="toc-text">2.  컴퓨팅적 스킬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keompyutingjeog-sago"><span class="toc-number">3.</span> <span class="toc-text">3.  컴퓨팅적 사고</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">4.</span> <span class="toc-text">4.  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#puli"><span class="toc-number">5.</span> <span class="toc-text">5.  풀이</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jeongryeol-puli"><span class="toc-number">5.1.</span> <span class="toc-text">5.1.  1. 정렬 풀이</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#프로그래머스-h-index-문제"><span class="toc-number">1.</span> <span class="toc-text">1.  프로그래머스 H-index 문제</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#컴퓨팅적-스킬"><span class="toc-number">2.</span> <span class="toc-text">2.  컴퓨팅적 스킬</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#컴퓨팅적-사고"><span class="toc-number">3.</span> <span class="toc-text">3.  컴퓨팅적 사고</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">4.</span> <span class="toc-text">4.  </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#풀이"><span class="toc-number">5.</span> <span class="toc-text">5.  풀이</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-정렬-풀이"><span class="toc-number">5.1.</span> <span class="toc-text">5.1.  1. 정렬 풀이</span></a></li></ol></li></ol>
         </div>
     </div>
 </div>
