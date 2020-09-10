@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>01.Rxjava와 리액티브 프로그래밍</title>
-    <url>/2020/09/09/reactive-programming-section01/</url>
+    <url>/reactive-programming-section01/</url>
     <content><![CDATA[<h1 id="what-is-rxjava"><a href="#what-is-rxjava" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#what-is-rxjava"></a> What is RxJava?</h1>
 <p>자바(Java)에서 리액티브 프로그래밍(Reactive Programming)을 구현하는데 사용하는 <code>라이브러리</code>입니다.</p>
 <p>이벤트 처리와 같은 <code>비동기</code> 처리에 최적화됐으며, <code>2.0버전부터 Reactive Streams 사양을 구현</code>합니다. Reactive Streams 사양을 구현합니다. Reactive Streams는 어떤 라이브러리나 프레임워크라도 데이터 스트림을 비동기로 처리하는 공통 메커니즘을 인터페이스로 제공합니다.</p>
@@ -114,7 +114,7 @@
   </entry>
   <entry>
     <title>[삼성 SW 역량테스트] 백준 연구소 14502</title>
-    <url>/2020/09/08/beakjoon-laboratory-14502/</url>
+    <url>/beakjoon-laboratory-14502/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/14502" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 연구소 14502</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -164,7 +164,7 @@
   </entry>
   <entry>
     <title>백준 연산자끼워넣기2 15658</title>
-    <url>/2019/12/20/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B02-15658/</url>
+    <url>/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B02-15658/</url>
     <content><![CDATA[<p><a href="https://www.acmicpc.net/problem/15658" target="_blank" rel="noopener">연산자끼워넣기(2)15658</a></p>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <blockquote>
@@ -205,7 +205,7 @@
   </entry>
   <entry>
     <title>백준 퇴사 14501</title>
-    <url>/2019/12/17/%EB%B0%B1%EC%A4%80%ED%87%B4%EC%82%AC14501/</url>
+    <url>/%EB%B0%B1%EC%A4%80%ED%87%B4%EC%82%AC14501/</url>
     <content><![CDATA[<h2 id="baegjuntoesa14501"><a href="#baegjuntoesa14501" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준퇴사14501"></a> <a href="https://www.acmicpc.net/problem/14501" target="_blank" rel="noopener">백준퇴사14501</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -237,7 +237,7 @@
   </entry>
   <entry>
     <title>백준 부분수열의합 1182</title>
-    <url>/2019/12/17/%EB%B0%B1%EC%A4%80%EB%B6%80%EB%B6%84%EC%88%98%EC%97%B4%EC%9D%98%ED%95%A91182/</url>
+    <url>/%EB%B0%B1%EC%A4%80%EB%B6%80%EB%B6%84%EC%88%98%EC%97%B4%EC%9D%98%ED%95%A91182/</url>
     <content><![CDATA[<h2 id="baegjun-bubunsuyeolyihab-1182"><a href="#baegjun-bubunsuyeolyihab-1182" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-부분수열의합-1182"></a> <a href="https://www.acmicpc.net/problem/1182" target="_blank" rel="noopener">백준 부분수열의합 1182</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -282,7 +282,7 @@
   </entry>
   <entry>
     <title>백준 암호만들기 1759</title>
-    <url>/2019/12/03/%EB%B0%B1%EC%A4%80%EC%95%94%ED%98%B8%EB%A7%8C%EB%93%A4%EA%B8%B01759/</url>
+    <url>/%EB%B0%B1%EC%A4%80%EC%95%94%ED%98%B8%EB%A7%8C%EB%93%A4%EA%B8%B01759/</url>
     <content><![CDATA[<h2 id="baegjunamhomandeulgi1759"><a href="#baegjunamhomandeulgi1759" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준암호만들기1759"></a> <a href="https://www.acmicpc.net/problem/1759" target="_blank" rel="noopener">백준암호만들기1759</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -349,7 +349,7 @@
   </entry>
   <entry>
     <title>백준 연산자끼워넣기 14888</title>
-    <url>/2019/12/02/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B014888/</url>
+    <url>/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B014888/</url>
     <content><![CDATA[<h2 id="yeonsanjaggiweoneohgi14888"><a href="#yeonsanjaggiweoneohgi14888" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#연산자끼워넣기14888"></a> <a href="https://www.acmicpc.net/problem/14888" target="_blank" rel="noopener">연산자끼워넣기14888</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <blockquote>
@@ -412,7 +412,7 @@
   </entry>
   <entry>
     <title>백준 로또 6603</title>
-    <url>/2019/12/02/%EB%B0%B1%EC%A4%806603%EB%A1%9C%EB%98%90/</url>
+    <url>/%EB%B0%B1%EC%A4%806603%EB%A1%9C%EB%98%90/</url>
     <content><![CDATA[<h2 id="roddo6603"><a href="#roddo6603" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#로또6603"></a> <a href="https://www.acmicpc.net/problem/6603" target="_blank" rel="noopener">로또6603</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -446,7 +446,7 @@
   </entry>
   <entry>
     <title>백준 외원판순회2 10971</title>
-    <url>/2019/12/02/%EB%B0%B1%EC%A4%80%EC%99%B8%EC%9B%90%ED%8C%90%EC%88%9C%ED%9A%8C2-10971/</url>
+    <url>/%EB%B0%B1%EC%A4%80%EC%99%B8%EC%9B%90%ED%8C%90%EC%88%9C%ED%9A%8C2-10971/</url>
     <content><![CDATA[<h2 id="baegjunoeweonpansunhoe2-10971"><a href="#baegjunoeweonpansunhoe2-10971" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준외원판순회2-10971"></a> <a href="https://www.acmicpc.net/problem/10971" target="_blank" rel="noopener">백준외원판순회2 10971</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -479,7 +479,7 @@
   </entry>
   <entry>
     <title>백준 차이를최대로 10819</title>
-    <url>/2019/11/28/%EB%B0%B1%EC%A4%80%EC%B0%A8%EC%9D%B4%EB%A5%BC%EC%B5%9C%EB%8C%80%EB%A1%9C10819/</url>
+    <url>/%EB%B0%B1%EC%A4%80%EC%B0%A8%EC%9D%B4%EB%A5%BC%EC%B5%9C%EB%8C%80%EB%A1%9C10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -512,7 +512,7 @@
   </entry>
   <entry>
     <title>백준 123더하기 9095</title>
-    <url>/2019/11/28/%EB%B0%B1%EC%A4%80123%EB%8D%94%ED%95%98%EA%B8%B09095/</url>
+    <url>/%EB%B0%B1%EC%A4%80123%EB%8D%94%ED%95%98%EA%B8%B09095/</url>
     <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -544,7 +544,7 @@
   </entry>
   <entry>
     <title>백준 일곱난쟁이 2309</title>
-    <url>/2019/11/28/%EB%B0%B1%EC%A4%80%EC%9D%BC%EA%B3%B1%EB%82%9C%EC%9F%81%EC%9D%B42309/</url>
+    <url>/%EB%B0%B1%EC%A4%80%EC%9D%BC%EA%B3%B1%EB%82%9C%EC%9F%81%EC%9D%B42309/</url>
     <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -577,7 +577,7 @@
   </entry>
   <entry>
     <title>백준 날짜계산 1476</title>
-    <url>/2019/11/28/%EB%B0%B1%EC%A4%80%EB%82%A0%EC%A7%9C%EA%B3%84%EC%82%B01476/</url>
+    <url>/%EB%B0%B1%EC%A4%80%EB%82%A0%EC%A7%9C%EA%B3%84%EC%82%B01476/</url>
     <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -607,7 +607,7 @@
   </entry>
   <entry>
     <title>이진 탐색 트리 BST</title>
-    <url>/2019/11/23/bst/</url>
+    <url>/bst/</url>
     <content><![CDATA[<h1 id="geomsaegteuri-search-tree"><a href="#geomsaegteuri-search-tree" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#검색트리-search-tree"></a> 검색트리 Search Tree</h1>
 <h3 id="gyeceungjeogin-gujoreul-pyohyeon"><a href="#gyeceungjeogin-gujoreul-pyohyeon" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#계층적인-구조를-표현"></a> 계층적인 구조를 표현</h3>
 <ul>
@@ -848,7 +848,7 @@
   </entry>
   <entry>
     <title>알고리즘 N-Queen 문제</title>
-    <url>/2019/11/23/n-queen/</url>
+    <url>/n-queen/</url>
     <content><![CDATA[<h2 id="n-queenmunje"><a href="#n-queenmunje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#n-queen문제"></a> <a href="https://www.acmicpc.net/problem/9663" target="_blank" rel="noopener">N-Queen문제</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -976,7 +976,7 @@
   </entry>
   <entry>
     <title>프로그래머스 더 맵게</title>
-    <url>/2019/11/20/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%EB%8D%94%EB%A7%B5%EA%B2%8C/</url>
+    <url>/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%EB%8D%94%EB%A7%B5%EA%B2%8C/</url>
     <content><![CDATA[<h2 id="peurogeuraemeoseu-deo-maebge-munje"><a href="#peurogeuraemeoseu-deo-maebge-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-더-맵게-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42626" target="_blank" rel="noopener">프로그래머스 더 맵게 문제</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -1017,7 +1017,7 @@
   </entry>
   <entry>
     <title>프로그래머스 가장 큰 수</title>
-    <url>/2019/11/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%ED%81%B0%EC%88%98/</url>
+    <url>/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%ED%81%B0%EC%88%98/</url>
     <content><![CDATA[<h2 id="peurogeuraemeoseu-gajang-keun-su-munje"><a href="#peurogeuraemeoseu-gajang-keun-su-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-가장-큰-수-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42746" target="_blank" rel="noopener">프로그래머스 가장 큰 수 문제</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -1060,7 +1060,7 @@
   </entry>
   <entry>
     <title>프로그래머스 H-index</title>
-    <url>/2019/11/16/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4H-INDEX/</url>
+    <url>/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4H-INDEX/</url>
     <content><![CDATA[<h2 id="peurogeuraemeoseu-h-index-munje"><a href="#peurogeuraemeoseu-h-index-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-h-index-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42747" target="_blank" rel="noopener">프로그래머스 H-index 문제</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -1176,7 +1176,7 @@
   </entry>
   <entry>
     <title>프로그래머스 위장</title>
-    <url>/2019/11/15/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%EC%9C%84%EC%9E%A5/</url>
+    <url>/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%EC%9C%84%EC%9E%A5/</url>
     <content><![CDATA[<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42578" target="_blank" rel="noopener">프로그래머스 위장문제</a></p>
 <hr>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
@@ -1237,7 +1237,7 @@
   </entry>
   <entry>
     <title>Hexo Command</title>
-    <url>/2019/11/10/hexo-%20command/</url>
+    <url>/hexo-%20command/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="quick-start"><a href="#quick-start" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
 <h3 id="front-formatter"><a href="#front-formatter" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#front-formatter"></a> front formatter</h3>
