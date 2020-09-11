@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/failure-rate/</loc>
+        <lastmod>2020-09-11T16:07:23.909Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/beakjoon-laboratory-14502/</loc>
         <lastmod>2020-09-11T13:25:04.418Z</lastmod>
         <changefreq>weekly</changefreq>
