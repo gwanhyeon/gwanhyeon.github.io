@@ -40,34 +40,18 @@
 </ul>
 <h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
 <ul>
-<li>
-<p>두개의 동일한 인형일 경우 바구니 remove</p>
-</li>
-<li>
-<p><strong>빈곳일 경우 아무일도 일어나지 않는다. 즉, 크레인에서 뽑은 값은 인형 N*N에서 value 를 0 으로 초기화</strong></p>
-</li>
-<li>
-<p>바구니 크기는 충분하다</p>
-</li>
-<li>
-<p>board range (5 &lt; board &lt; 30)</p>
-</li>
-<li>
-<p>moves range(1 &lt; moves &lt; 1000</p>
-</li>
-<li>
-<p>board value range(1 &lt; board value &lt; 100)</p>
-</li>
-<li>
-<p>stack의 empty조건과 인형맵에서 값이 있을 경우만 로직을 진행</p>
-</li>
-<li>
-<p>로직이 모두 진행되고나서 0으로 초기화 후 해당 로직을 빠져오는것이 가장 중요한 포인트였다.</p>
-</li>
-<li>
-<p>Stack 자료구조를 사용한다.</p>
-</li>
+<li>두개의 동일한 인형일 경우 바구니 remove</li>
+<li><strong>빈곳일 경우 아무일도 일어나지 않는다. 즉, 크레인에서 뽑은 값은 인형 N*N에서 value 를 0 으로 초기화</strong></li>
+<li>바구니 크기는 충분하다</li>
+<li>board range (5 &lt; board &lt; 30)</li>
+<li>moves range(1 &lt; moves &lt; 1000</li>
+<li>board value range(1 &lt; board value &lt; 100)</li>
+<li>stack의 empty조건과 인형맵에서 값이 있을 경우만 로직을 진행</li>
+<li>로직이 모두 진행되고나서 0으로 초기화 후 해당 로직을 빠져오는것이 가장 중요한 포인트였다.</li>
 </ul>
+<blockquote>
+<p>Stack 자료구조를 사용한다.</p>
+</blockquote>
 <p>이 크레인인형뽑기의 문제에서 가장 중요했던 부분은 Stack을 사용하여 바구니의 역할을 하게 해야한다. 그리고 그 바구니가 비어있는지의 조건을 무조건 체크하고 들어가고, 비어있으면서도 값이 있는 경우를 조건으로 처리해야한다. 그 이유는 한가지 조건만 만족시키면 문제의 조건과 stack의 조건을 만족시키지 못한다</p>
 <p>그리고, 바구니에 들어져 있는 값이 현재 뽑은 인형과의 값을 비교하여 바구니의 값을 빼주면서 answer의 값을 +2 를 해준다. 그 이유는 바구니에 들어가 있는 값(+1)과 크레인이 뽑은 값(+1)이 동일한 인형이기 때문에 이 경우 answer에다가 값을 +2를 해주었다. 결국 바구니의 값과 크레인의 값이 같으니 2개의 인형이 remove되었다고 생각하면 된다.</p>
 <blockquote>
