@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/beakjoon-laboratory-14502/</loc>
+        <lastmod>2020-09-11T13:25:04.418Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/robot-vacuum-cleaner/</loc>
+        <lastmod>2020-09-11T13:24:54.809Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/open-chat-room/</loc>
         <lastmod>2020-09-11T13:23:15.415Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,24 +48,8 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/robot-vacuum-cleaner/</loc>
-        <lastmod>2020-09-11T06:55:05.396Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/%EB%B0%B1%EC%A4%80%ED%87%B4%EC%82%AC14501/</loc>
         <lastmod>2020-09-09T17:13:32.712Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/beakjoon-laboratory-14502/</loc>
-        <lastmod>2020-09-09T17:12:27.735Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
