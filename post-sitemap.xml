@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/open-chat-room/</loc>
+        <lastmod>2020-09-11T13:20:38.062Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/crane-claw-machine-game/</loc>
         <lastmod>2020-09-11T11:22:03.276Z</lastmod>
         <changefreq>weekly</changefreq>
