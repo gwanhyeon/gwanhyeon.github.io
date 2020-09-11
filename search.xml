@@ -42,15 +42,15 @@
 <blockquote>
 <p>스테이지에 도달했지만 클리어 하지 못한 플레이어 수</p>
 </blockquote>
-<p>스테이지에 도달했지만 클리어 하지 못한 플레이어 수를 체크 하였다. 스테이지별로 순회하는 값과 스테이지에 있는 값이 같을 경우 스테이지에 도달은 하였지만 클리어를 하지 못한 수이다.</p>
+<p>스테이지에 <code>도달했지만 클리어 하지 못한 플레이어 수를 체크</code> 하였다. 스테이지별로 순회하는 값과 스테이지에 있는 값이 같을 경우 스테이지에 도달은 하였지만 클리어를 하지 못한 수이다.</p>
 <blockquote>
 <p>스테이지에 도달한 플레이어 수</p>
 </blockquote>
-<p>현재 스테이지를 순회하면서 그 값과 같거나 그 이상인 값은 스테이지에 도달한 플레이어 수 라고 생각할 수 있다.</p>
+<p>현재 스테이지를 순회하면서 <code>그 값과 같거나 그 이상인 값은 스테이지에 도달한 플레이어 수</code> 라고 생각할 수 있다.</p>
 <blockquote>
 <p>스테이지에 도달했지만 클리어 하지 못한 수가 0일 경우</p>
 </blockquote>
-<p>스테이지에 도달했지만 클리어 하지 못한 수가 0일 경우 실패율을 0으로 놓는다. 실패율 0의 값과 현재 스테이지를 리스트에 담아준다</p>
+<p>스테이지에 도달했지만 클리어 하지 못한 수가 <code>0일 경우 실패율을 0으로 놓는다.</code> 실패율 0의 값과 현재 스테이지를 리스트에 담아준다</p>
 <blockquote>
 <p>스테이지에 도달했지만 클리어 하지 못한 수가 0이 아닐 경우</p>
 </blockquote>
@@ -58,10 +58,10 @@
 <blockquote>
 <p>Arrays.sort VS Collections.sort</p>
 </blockquote>
-<p>Arrays.sort()는 Primitive Type이나 Object Type의 Array를 정렬할때 사용합니다. 그리고Collections.sort()는 Collection의 List를 정렬할 때 사용합니다.</p>
-<p>기본적으로 둘 다 오름차순 정렬이고, 인자로서 Array 또는 List를 넣어주면 인자로 넘겨진 객체의 내용 자체가 바뀐다. 둘 다 static method이므로 Arrays나 Collections객체를 바로 호출한다.</p>
-<p>공통점으로는 Arrays.sort(), Collections.sort() 모두 Comparator를 통한 커스터마이징을 지원합니다.</p>
-<p>Collections.reverse()는 내림차순 정렬이 아닌, 리스트의 구성을 반대로 뒤집는 것이다.</p>
+<p><code>Arrays.sort()</code>는 Primitive Type이나 Object Type의 Array를 정렬할때 사용합니다. 그리고<code>Collections.sort()</code>는 Collection의 List를 정렬할 때 사용합니다.</p>
+<p>기본적으로 둘 다 <code>오름차순 정렬</code>이고, 인자로서 Array 또는 List를 넣어주면 인자로 넘겨진 객체의 내용 자체가 바뀐다. 둘 다 static method이므로 <code>Arrays나 Collections객체</code>를 바로 호출한다.</p>
+<p>공통점으로는 <code>Arrays.sort(), Collections.sort()</code> 모두 <code>Comparator</code>를 통한 커스터마이징을 지원합니다.</p>
+<p><code>Collections.reverse()</code>는 내림차순 정렬이 아닌, 리스트의 구성을 반대로 뒤집는 것이다.</p>
 <blockquote>
 <p>내림차순 정렬로 바꾸려면 어떤 형식으로 리턴을 해주어야할까?</p>
 </blockquote>
