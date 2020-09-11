@@ -37,9 +37,9 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">4</span>] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>&#125;;</span><br></pre></td></tr></table></figure>
 <p>현재 위치가 0번 즉, 북쪽을 바라보고 있습니다. 북쪽을 바라보고 있으면서 이제 로봇청소기가 왼쪽으로 탐색을 진행해야하기때문에 서쪽방향으로 이동할 수 있어야합니다. 그러면 현재 (1,1)의 위치에서 (현재 R 위치-1),(현재 C위치 - 0) 의 방향으로 이동을 시키면 왼쪽으로 이동시킬 수 있겠습니다.</p>
 <p>그래서 dx,dy의 값의 기준도 (북→서, 서→남, 남→동, 동→북) 의 형식으로 dx,dy의 값을 기준을 잡았습니다.</p>
-<ul>
-<li>방향 회전</li>
-</ul>
+<blockquote>
+<p>방향 회전</p>
+</blockquote>
 <p>그러면 이것을 방향회전하는 경우로 바꾸려면 어떻게 진행해야 할까요? 현재 북쪽을 제외한 나머지는 차이가 1이나는것을 확인할 수 있습니다.</p>
 <p><code>북(0) → 서(3), 서(3) → 남(2), 남(2) → 동(1), 동(1) → 북(0)</code></p>
 <p>이것을 코드로 표현한다면 북쪽을 제외한 나머지는 차이가 d-1만큼 차이가 나게됩니다. 그러면 북쪽의 값은 d-1이 음수가 되는경우 즉, d가 0(북쪽)일 경우 이 값을 3으로 변경해주면 됩니다.</p>
@@ -52,9 +52,9 @@
 <p>의 형태로도 나타낼 수 있습니다.</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">d = (<span class="number">0</span> + <span class="number">3</span>) % <span class="number">4</span></span><br><span class="line"></span><br><span class="line">몫: <span class="number">0</span> 나머지: <span class="number">3</span></span><br><span class="line"></span><br><span class="line">d = (<span class="number">1</span> + <span class="number">3</span> )% <span class="number">4</span></span><br><span class="line"></span><br><span class="line">몫: <span class="number">1</span> 나머지: <span class="number">0</span> </span><br><span class="line"></span><br><span class="line">d = (<span class="number">2</span> + <span class="number">3</span>) % <span class="number">4</span></span><br><span class="line"></span><br><span class="line">몫: <span class="number">1</span> 나머지: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">d = (<span class="number">3</span> + <span class="number">3</span>) % <span class="number">4</span>  </span><br><span class="line"></span><br><span class="line">몫: <span class="number">1</span> 나머지: <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <p>의 형태를 띄기 때문에 이것을 표현한 것과 같습니다.</p>
-<ul>
-<li>방향 후진</li>
-</ul>
+<blockquote>
+<p>방향 후진</p>
+</blockquote>
 <p>방향 후진의 경우에는 모든 4개의 방향을 탐색하고 나고나서도 청소가 되어있으면 다시 제자리로 돌아와서 후진을 해주면됩니다.</p>
 <p>예를 들어서 서쪽 기준으로 (남,동,북,서)를 탐색한다고 생각을 하면 모든 방향이 청소가 되어 있거나 벽일 경우면 다시 제자리 서쪽으로 돌아오게 될 것입니다. 이제 서쪽기준으로 후진을 하게 되면 (1,0) 만큼 후진을 진행하게 될 것입니다. 남쪽 기준으로 탐색을 한다고 하면 다시 남쪽으로 돌아온다면 (0,-1)만큼 후진을 진행하면 됩니다.</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> back_dx[<span class="number">4</span>] = &#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> back_dy[<span class="number">4</span>] = &#123;<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br></pre></td></tr></table></figure>
