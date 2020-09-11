@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/spring-mvc-environment/</loc>
+        <lastmod>2020-09-11T07:59:11.317Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/robot-vacuum-cleaner/</loc>
         <lastmod>2020-09-11T06:55:05.396Z</lastmod>
         <changefreq>weekly</changefreq>
