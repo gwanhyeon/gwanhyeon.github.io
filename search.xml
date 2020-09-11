@@ -54,20 +54,22 @@
 <ul>
 <li>하나의 Hashmap을 생성하여 (Key,Value)의 값을 (유저아이디, 유저닉네임 값으로 저장시켰습니다.</li>
 <li>그리고 하나의 Queue를 생성하여 <code>Enter, Leave, Change</code>세개의 명령어들을 담게 하였습니다. 그 이유는 하나의 Queue에 <code>Pair의 값으로 (행동, 유저아이디)</code>값을 담게하여 모든 유저의 행동의 값들을 모두 담을 수 있게하였습니다. Map을 사용하게 되면 키 값이 <code>중복되는것이 허용되지 않기때문에</code> <code>Queue값으로 들어온 순서</code>대로 채팅방 화면을 처리했습니다.</li>
-<li>채팅방에 입장</li>
 </ul>
+<blockquote>
+<p>채팅방에 입장</p>
+</blockquote>
 <p>채팅방에 입장하였을때는 <code>Queue와 Map에 (명령어, 유저아이디), (유저아이디, 닉네임)</code> 값을 담게하였습니다. 공통의 값은 유저아이디이기 때문에 나중에 값을 출력할때 <code>유저아이디 공통의 키</code>값으로 출력시켜주기 위함입니다.</p>
-<ul>
-<li>채팅방에 퇴장</li>
-</ul>
+<blockquote>
+<p>채팅방에 퇴장</p>
+</blockquote>
 <p>이미 들어온 유저였기때문에 Queue에만 해당 (명령어, 유저아이디) 값을 담아주게 하였습니다.</p>
-<ul>
-<li>채팅방 닉네임 변경</li>
-</ul>
+<blockquote>
+<p>채팅방 닉네임 변경</p>
+</blockquote>
 <p>채팅방에서 닉네임을 변경하였을때는 Map에만 값을 변경시켜주었는데요. 예를 들어 <code>(UserId, 1) → (UserId, 2)</code>로 변경을 시켜주면 해당 유저의 닉네임만 변경시켜줄 수 있도록 하였습니다. <code>Queue에는 값을 넣어주지않은 이유</code>는 Change값에 따른 값을 출력해줄 필요가 없기때문에 해당 <code>닉네임값만</code> 변경하였습니다.</p>
-<ul>
-<li>실수한 점</li>
-</ul>
+<blockquote>
+<p>실수한 점</p>
+</blockquote>
 <p>결과적으로 <code>Queue의 값이 비지않을때</code> 까지 값을 반복하면서 값을 꺼내줍니다. 이쪽에서 제가 실수한 부분은 q.poll.x, q.poll.y 로 값을 꺼내주게 되었는데 poll을 해줄때마다 <code>하나의 Pair의 전체(x,y)를 가져오게</code> 되었습니다. 그래서 디버깅을 통하여 잘못된점을 인지하고 Pair p를 선언하여 하나의 <code>Pair에 있는 x,y의 값</code>을 꺼내주면서 진행하였습니다.</p>
 <p><code>닉네임 님이 들어왔습니다. 닉네임 님이 나갔습니다.</code></p>
 <p>와 같이 결과를 출력해주었어야했으므로 answer의 배열을 Queue의 사이즈만큼 할당한 후에 Queue의 y값 <code>즉, Map의 키값인 닉네임값을 뽑게하였습니다.</code></p>
