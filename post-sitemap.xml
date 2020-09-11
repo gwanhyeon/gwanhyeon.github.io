@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/crane-claw-machine-game/</loc>
+        <lastmod>2020-09-11T11:20:28.380Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/spring-mvc-environment/</loc>
         <lastmod>2020-09-11T08:15:43.577Z</lastmod>
         <changefreq>weekly</changefreq>
