@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>프로그래머스 완주하지못한 선수</title>
+    <url>/uncompleted-player/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42576?language=java" target="_blank" rel="noopener">프로그래머스 완주하지못한 선수</a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.</p>
+<p>제한사항<br>
+마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.<br>
+completion의 길이는 participant의 길이보다 1 작습니다.<br>
+참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.<br>
+참가자 중에는 동명이인이 있을 수 있습니다.</p>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<p>이 문제에 있어서 가장 중요했던 점은 hashmap을 사용할 수 있는지 여부를 확인하는 문제였습니다. 참가자와 완주자의 명단이 주어졌을때 완주자의 명단을 Key, 완주자의 등장횟수를 Value로 두면 쉽게 풀 수 있습니다.</p>
+<blockquote>
+<p>완주자의 명단을 HashMap에 저장하기<br>
+완주자의 명단을 HashMap에 저장합니다. 예를 들면, 참가자[leo, kiki, eden]  완주자  [eden, kiki]의 값이 주어졌다고 생각을 하겠습니다. 완주자 &lt;eden, 1&gt;, &lt;kiki,1&gt;의 값으로 저장시킵니다.</p>
+</blockquote>
+<blockquote>
+<p>참가자의 명단에서 참가했지만 완주하지 못한 선수 찾아내기<br>
+완주한 명단 즉, 완주한 사람의 이름 Key값이 참가자의 명단에 없을 경우 그 사람은 참가는 했지만 완주하지 못한 경우가 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>동명이인 찾아내기<br>
+레오가 두명이 등장하는 참가자 [leo, leo, kiki, eden] 완주자[leo, eden, kiki] 라고 가정하겠습니다. 레오 같은 경우는 완주자의 명단에는 한명이 존재하고 참가자의 명단에는 두명이 존재하게됩니다. 즉, 완주자 1명, 참가자 2명이기때문에 레오의 동명이인이 참가자이지만 완주자의 명단에 오르지 못했다는것을 알 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>이것을 소스코드로 어떻게 표현했을까요<br>
+? leo의 키값을 찾은 후에 leo의 등장하면 현재 Hashmap 즉, 완주자 명단에 있는 value의 값을 가져오게 됩니다. 그중에서 leo라는 값이 두번등장하게 되면 음수값이 되므로 결국 leo는 동명이인이며 2명중 1명만 참가하는것이 됩니다.</p>
+</blockquote>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">solution</span><span class="params">(String[] participant, String[] completion)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Integer&gt; m = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        String answer = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;completion.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!m.containsKey(completion[i]))&#123;</span><br><span class="line">                m.put(completion[i],<span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = m.get(completion[i]);</span><br><span class="line">                m.put(completion[i], tmp+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;participant.length; i++)&#123;</span><br><span class="line">            <span class="comment">// 완주자와 참가명단에서 못찾았으면</span></span><br><span class="line">            <span class="keyword">if</span>(!m.containsKey(participant[i]))&#123;</span><br><span class="line">                answer = participant[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 동명이인일 경우 값을 하나씩 줄였을때 0보다 작으면 그 사람이 완주자, 동명이인 체크해주기</span></span><br><span class="line">                <span class="keyword">int</span> tmp = m.get(participant[i]);</span><br><span class="line">                m.put(participant[i],tmp-<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span>(m.get(participant[i])&lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    answer = participant[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">solution</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; participant, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; completion)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">string</span> answer = <span class="string">""</span>;</span><br><span class="line">     <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;completion.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="comment">// 완주자 없는 경우</span></span><br><span class="line">        <span class="keyword">if</span>(m.<span class="built_in">find</span>(completion[i]) == m.<span class="built_in">end</span>())&#123;</span><br><span class="line">            m.insert(make_pair(completion[i], <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 완주자 있는 경우</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 완주자 수 카운팅</span></span><br><span class="line">            m[completion[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;participant.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="comment">// 완주자와 참가자 명단에서 못찾았을 경우</span></span><br><span class="line">        <span class="keyword">if</span>(m.<span class="built_in">find</span>(participant[i]) == m.<span class="built_in">end</span>())&#123;</span><br><span class="line">            answer = participant[i];        <span class="comment">// 못찾은 사람이 정답</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 동명이인일 경우 값을 하나씩 줄였을때 0보다 작으면 그 사람이 완주자, 동명이인 체크해주기</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            m[participant[i]]--;</span><br><span class="line">            <span class="keyword">if</span>(m[participant[i]] &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                answer = participant[i];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Programmers</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
+        <tag>해시</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>프로그래머스 예산</title>
     <url>/budget/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
@@ -27,8 +70,8 @@
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
         <tag>그리디</tag>
       </tags>
@@ -114,8 +157,8 @@
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -199,8 +242,8 @@
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -271,8 +314,8 @@
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -1065,6 +1108,36 @@
       </tags>
   </entry>
   <entry>
+    <title>백준 날짜계산 1476</title>
+    <url>/%EB%B0%B1%EC%A4%80%EB%82%A0%EC%A7%9C%EA%B3%84%EC%82%B01476/</url>
+    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
+<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
+<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
+<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
+<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
+<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 일곱난쟁이 2309</title>
     <url>/%EB%B0%B1%EC%A4%80%EC%9D%BC%EA%B3%B1%EB%82%9C%EC%9F%81%EC%9D%B42309/</url>
     <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
@@ -1088,36 +1161,6 @@
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 날짜계산 1476</title>
-    <url>/%EB%B0%B1%EC%A4%80%EB%82%A0%EC%A7%9C%EA%B3%84%EC%82%B01476/</url>
-    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
-<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
-<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
-<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
-<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
-<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -1531,9 +1574,9 @@
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -1575,9 +1618,9 @@
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -1689,9 +1732,9 @@
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -1750,10 +1793,10 @@
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
-        <tag>위장</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
+        <tag>위장</tag>
         <tag>해시</tag>
       </tags>
   </entry>
