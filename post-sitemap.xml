@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/mock-test/</loc>
+        <lastmod>2020-09-15T03:35:35.647Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/uncompleted-player/</loc>
-        <lastmod>2020-09-14T13:46:12.764Z</lastmod>
+        <lastmod>2020-09-14T15:08:46.618Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
