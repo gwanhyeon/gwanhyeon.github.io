@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>03.Kotlin DataTypes</title>
+    <title>03.Kotlin Data Types</title>
     <url>/datatype-03/</url>
     <content><![CDATA[<ol>
 <li>숫자 – Byte, Short, Int, Long, Float, Double</li>
