@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Kotlin 데이터 유형</title>
+    <title>03.Kotlin DataTypes</title>
     <url>/datatype-03/</url>
     <content><![CDATA[<ol>
 <li>숫자 – Byte, Short, Int, Long, Float, Double</li>
@@ -64,7 +64,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Kotlin 변수</title>
+    <title>02.Kotlin Variables</title>
     <url>/variable-02/</url>
     <content><![CDATA[<p>변수에는 변경 가능(mutable)과 불변(immutable)의 두 가지 유형이 있습니다. 불변 변수(immutable)은 값을 변경할 수없는 변수로, 변경 불가능 또는 읽기 전용 변수라고도합니다. 반면에 가변 변수의 값은 변경 될 수 있습니다.</p>
 <h1 id="bulbyeon-byeonsu-val-kiweodeu"><a href="#bulbyeon-byeonsu-val-kiweodeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#불변-변수-val-키워드"></a> 불변 변수 : val 키워드</h1>
@@ -108,7 +108,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Kotlin 정의 및 InteliJ환경설정</title>
+    <title>01.What is Kotlin and Why use it?</title>
     <url>/kotlin-envirenment-01/</url>
     <content><![CDATA[<h1 id="kotliniran"><a href="#kotliniran" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#kotlin이란"></a> Kotlin이란?</h1>
 <p>JetBrains에서 개발 한 정적으로 형식화 된 프로그래밍 언어입니다. 자바에 대한 기본지식 있다면 Kotilin을 금방 배울 수 있습니다.</p>
