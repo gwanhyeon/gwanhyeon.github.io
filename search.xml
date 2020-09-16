@@ -108,7 +108,7 @@
       </tags>
   </entry>
   <entry>
-    <title>kotlin-envirenment-01</title>
+    <title>Kotlin 정의 및 InteliJ환경설정</title>
     <url>/kotlin-envirenment-01/</url>
     <content><![CDATA[<h1 id="kotliniran"><a href="#kotliniran" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#kotlin이란"></a> Kotlin이란?</h1>
 <p>JetBrains에서 개발 한 정적으로 형식화 된 프로그래밍 언어입니다. 자바에 대한 기본지식 있다면 Kotilin을 금방 배울 수 있습니다.</p>
