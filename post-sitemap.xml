@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/budget/</loc>
+        <lastmod>2020-09-16T08:06:13.022Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/uncompleted-player/</loc>
+        <lastmod>2020-09-16T08:06:02.072Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/mock-test/</loc>
+        <lastmod>2020-09-16T08:05:44.056Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/dragon-curve/</loc>
         <lastmod>2020-09-16T08:03:53.876Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,30 +42,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/k-number/</loc>
         <lastmod>2020-09-16T04:46:21.577Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/mock-test/</loc>
-        <lastmod>2020-09-15T03:35:35.647Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/uncompleted-player/</loc>
-        <lastmod>2020-09-14T15:08:46.618Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/budget/</loc>
-        <lastmod>2020-09-12T04:33:53.759Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
