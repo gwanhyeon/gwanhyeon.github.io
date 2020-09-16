@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/%25ED%2599%2598%25EA%25B2%25BD%25EC%2584%25A4%25EC%25A0%2595/</loc>
+        <lastmod>2020-09-16T14:52:04.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/kotlin/</loc>
+        <lastmod>2020-09-16T14:52:04.472Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/boj/</loc>
         <lastmod>2020-09-16T08:32:11.570Z</lastmod>
         <changefreq>weekly</changefreq>

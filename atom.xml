@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2020-09-16T08:32:11.570Z</updated>
+  <updated>2020-09-16T14:52:04.472Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kotlin-envirenment-01</title>
+    <link href="http://gwanhyeon.github.io/kotlin-envirenment-01/"/>
+    <id>http://gwanhyeon.github.io/kotlin-envirenment-01/</id>
+    <published>2020-09-16T14:50:58.000Z</published>
+    <updated>2020-09-16T14:52:04.472Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="kotliniran"><a href="#kotliniran" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#kotlin이란"></a> Kotlin이란?</h1><p>JetBrains에서 개발 한 정적으로 형식화 된 프로그래밍 언어입니다. 자바에 대한 기본지식 있다면 Kotilin을 금방 배울 수 있습니다.</p><p>Kotlin과 자바는 상호 운용이 가능하므로 프로젝트에서 함께 사용할 수 있으며 Kotlin에서 자바 코드를 효율적으로 다시 작성할 수 있습니다. Kotlin은 특히 Java보다 간결합니다.</p><h1 id="kotlinyi-teugjing"><a href="#kotlinyi-teugjing" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#kotlin의-특징"></a> Kotlin의 특징</h1><ul><li>간결성</li></ul><p>Kotlin은 자바보다 간결하며 자바에 비해 40% 적은 코드 라인을 작성할 수 있습니다.</p><ul><li>상호 운용성</li></ul><p>Kotlin은 Java와 상호 운용성이 뛰어납니다. Java프로젝트에서 사용하는데 어려움이 없습니다.</p><ul><li>오픈소스</li></ul><p>Kotlin은 오픈소스 프로그래밍 언어</p><ul><li>높은 신뢰도</li></ul><p>Kotlin은 유명하고 잘 알려진 회사 인 JetBrains에서 개발한 것이므로 신뢰도가 높습니다.</p><ul><li>다양한 기능</li></ul><p>Kotlin은 연산자 오버로딩, Lambda 표현식, 문자열 템플릿 등과 같은 여러 고급기능들을 제공합니다.</p><ul><li>배우기가 쉽습니다.</li></ul><p>Java환경과 유사하므로 처음에 진입장벽이 없습니다.</p><ul><li>오류발생 가능성이 적습니다.</li></ul><p>Kotlin은 정적으로 형식화 된 프로그래밍 언어로, 정적으로 형식화 된 프로그래밍 언어가 컴파일 타임에 형식 검사를 수행하므로 컴파일 타임에 오류를 포착할 수 있습니다.</p><hr><h1 id="intellij-ideaeseo-kotlin-peurojegteu-saengseong-mic-silhaeng"><a href="#intellij-ideaeseo-kotlin-peurojegteu-saengseong-mic-silhaeng" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#intellij-idea에서-kotlin-프로젝트-생성-및-실행"></a> IntelliJ IDEA에서 Kotlin 프로젝트 생성 및 실행</h1><p>공식 Jetbrains 웹 사이트 의 <a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="noopener">다운로드 페이지</a> 로 이동합니다 . 운영 체제를 선택하고 커뮤니티 에디션을 다운로드하십시오.</p><h2 id="1dangye"><a href="#1dangye" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#1단계"></a> 1단계</h2><p>&quot;새 프로젝트 만들기&quot;를 선택합니다.</p><h2 id="2dangye"><a href="#2dangye" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#2단계"></a> 2단계</h2><p>&quot;추가 라이브러리 및 프레임 워크&quot;섹션에서 Kotlin / JVM을 선택 하고 &quot;다음&quot;을 클릭합니다.</p><h2 id="3dangye"><a href="#3dangye" class="header-anchor">3.3. </a><a class="markdownIt-Anchor" href="#3단계"></a> 3단계</h2><p>3 단계 : 프로젝트 이름을 입력하고 &quot;마침&quot;을 클릭합니다.</p><h2 id="4dangye"><a href="#4dangye" class="header-anchor">3.4. </a><a class="markdownIt-Anchor" href="#4단계"></a> 4단계</h2><p>단계 : Kotlin 프로젝트의 'src’폴더에 새 Kotlin 파일을 만듭니다.</p><h2 id="5dangye"><a href="#5dangye" class="header-anchor">3.5. </a><a class="markdownIt-Anchor" href="#5단계"></a> 5단계</h2><p>코드 입력 후 Kotlin 파일을 실행하려면 왼쪽에 있는 Kotlin 아이콘을 클릭합니다 . ‘코틀린 파일’(.kt)실행을 선택하여 실행합니다.</p><h2 id="6dangye"><a href="#6dangye" class="header-anchor">3.6. </a><a class="markdownIt-Anchor" href="#6단계"></a> 6단계</h2><p>올바르게 프로그램 출력이 되는지를 확인합니다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;kotliniran&quot;&gt;&lt;a href=&quot;#kotliniran&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#kotlin이란&quot;&gt;&lt;/a&gt; Kotlin이란?&lt;/h1&gt;
+&lt;p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Kotlin" scheme="http://gwanhyeon.github.io/categories/kotlin/"/>
+    
+    
+      <category term="Kotlin" scheme="http://gwanhyeon.github.io/tags/kotlin/"/>
+    
+      <category term="환경설정" scheme="http://gwanhyeon.github.io/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/"/>
+    
+  </entry>
   
   <entry>
     <title>삼성 SW 역량테스트 백준 드래곤커브 15685</title>
@@ -74,9 +103,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -105,9 +134,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="해시" scheme="http://gwanhyeon.github.io/tags/%ED%95%B4%EC%8B%9C/"/>
     
@@ -136,9 +165,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -167,9 +196,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -259,9 +288,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -292,9 +321,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
@@ -321,9 +350,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
     
@@ -417,9 +446,9 @@
     
       <category term="브루트포스" scheme="http://gwanhyeon.github.io/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/"/>
     
-      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
-    
       <category term="백트래킹" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"/>
+    
+      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
     
   </entry>
   
@@ -541,9 +570,9 @@
     
       <category term="브루트포스" scheme="http://gwanhyeon.github.io/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/"/>
     
-      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
-    
       <category term="백트래킹" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"/>
+    
+      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
     
   </entry>
   
@@ -589,34 +618,6 @@
       
       
         &lt;h2 id=&quot;baegjunoeweonpansunhoe2-10971&quot;&gt;&lt;a href=&quot;#baegjunoeweonpansunhoe2-10971&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; hr
-      
-    
-    </summary>
-    
-    
-      <category term="BOJ" scheme="http://gwanhyeon.github.io/categories/boj/"/>
-    
-    
-      <category term="백준" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%EC%A4%80/"/>
-    
-      <category term="브루트포스" scheme="http://gwanhyeon.github.io/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>백준 123더하기 9095</title>
-    <link href="http://gwanhyeon.github.io/%EB%B0%B1%EC%A4%80123%EB%8D%94%ED%95%98%EA%B8%B09095/"/>
-    <id>http://gwanhyeon.github.io/%EB%B0%B1%EC%A4%80123%EB%8D%94%ED%95%98%EA%B8%B09095/</id>
-    <published>2019-11-28T14:57:13.000Z</published>
-    <updated>2020-09-09T17:04:44.818Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2><h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2><ul><li>DFS 재귀함수 이용</li><li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li><li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br><a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li></ul><h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2><ul><li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li><li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li><li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li><li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br><code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li></ul><hr><h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2><h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;baegjun-1-2-3deohagi-9095&quot;&gt;&lt;a href=&quot;#baegjun-1-2-3deohagi-9095&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#백준-
       
     
     </summary>
