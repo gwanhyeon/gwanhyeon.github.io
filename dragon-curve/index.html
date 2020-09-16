@@ -4,25 +4,27 @@
     
 
     
-    <title>프로그래머스 크레인 인형뽑기 | Ethan Kim IT Blog</title>
+    <title>삼성 SW 역량테스트 백준 드래곤커브 15685 | Ethan Kim IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="프로그래머스,알고리즘,카카오" />
+    <meta name="keywords" content="알고리즘,백준,브루트포스,삼성SW역량테스트,BOJ" />
     
-    <meta name="description" content="1.  문제 링크 프로그래머스 크레인 인형뽑기 게임 2.  문제 조건   게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다.   만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형">
-<meta name="keywords" content="프로그래머스,알고리즘,카카오">
+    <meta name="description" content="1.  문제 링크 삼성 SW 역량테스트 기출 백준 드래곤커브 15685 2.  문제 조건 드래곤 커브는 다음과 같은 세 가지 속성으로 이루어져 있으며, 이차원 좌표 평면 위에서 정의된다. 좌표 평면의 x축은 → 방향, y축은 ↓ 방향이다.  시작 점 시작 방향 세대  0세대 드래곤 커브는 아래 그림과 같은 길이가 1인 선분이다. 아래 그림은 (0, 0)에서">
+<meta name="keywords" content="알고리즘,백준,브루트포스,삼성SW역량테스트,BOJ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="프로그래머스 크레인 인형뽑기">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;crane-claw-machine-game&#x2F;index.html">
+<meta property="og:title" content="삼성 SW 역량테스트 백준 드래곤커브 15685">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;dragon-curve&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="1.  문제 링크 프로그래머스 크레인 인형뽑기 게임 2.  문제 조건   게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다.   만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형">
+<meta property="og:description" content="1.  문제 링크 삼성 SW 역량테스트 기출 백준 드래곤커브 15685 2.  문제 조건 드래곤 커브는 다음과 같은 세 가지 속성으로 이루어져 있으며, 이차원 좌표 평면 위에서 정의된다. 좌표 평면의 x축은 → 방향, y축은 ↓ 방향이다.  시작 점 시작 방향 세대  0세대 드래곤 커브는 아래 그림과 같은 길이가 1인 선분이다. 아래 그림은 (0, 0)에서">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-09-11T11:22:03.276Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;onlinejudgeimages.s3-ap-northeast-1.amazonaws.com&#x2F;problem&#x2F;15685&#x2F;1.png">
+<meta property="og:updated_time" content="2020-09-16T08:03:53.876Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;onlinejudgeimages.s3-ap-northeast-1.amazonaws.com&#x2F;problem&#x2F;15685&#x2F;1.png">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/crane-claw-machine-game/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/dragon-curve/"/>
     
 
     
@@ -149,19 +151,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/programmers/">Programmers</a>
+    <a class="page-title-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-crane-claw-machine-game" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-dragon-curve" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        프로그래머스 크레인 인형뽑기
+        삼성 SW 역량테스트 백준 드래곤커브 15685
         </h1>
     
 
@@ -172,8 +174,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/crane-claw-machine-game/" class="article-date">
-         <time datetime="2020-09-11T11:13:36.000Z" itemprop="datePublished">2020-09-11</time>
+      <a href="/dragon-curve/" class="article-date">
+         <time datetime="2020-09-16T07:59:52.000Z" itemprop="datePublished">2020-09-16</time>
       </a>
     </div>
 
@@ -183,7 +185,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>, <a class="tag-link" href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" rel="tag">카카오</a>, <a class="tag-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a>
+        <a class="tag-link" href="/tags/boj/" rel="tag">BOJ</a>, <a class="tag-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a>, <a class="tag-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a>, <a class="tag-link" href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" rel="tag">삼성SW역량테스트</a>, <a class="tag-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>
     </div>
 
                 
@@ -195,64 +197,97 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/64061" target="_blank" rel="noopener">프로그래머스 크레인 인형뽑기 게임</a></p>
+<p><a href="https://www.acmicpc.net/problem/15685" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 드래곤커브 15685</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>드래곤 커브는 다음과 같은 세 가지 속성으로 이루어져 있으며, 이차원 좌표 평면 위에서 정의된다. <code>좌표 평면의 x축은 → 방향, y축은 ↓ 방향</code>이다.</p>
+<ol>
+<li>시작 점</li>
+<li>시작 방향</li>
+<li>세대</li>
+</ol>
+<p>0세대 드래곤 커브는 아래 그림과 같은 길이가 1인 선분이다. 아래 그림은 (0, 0)에서 시작하고, 시작 방향은 오른쪽인 0세대 드래곤 커브이다.</p>
+<p><img src="http://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/1.png" alt="http://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/1.png"></p>
+<p>1세대 드래곤 커브는 0세대 드래곤 커브를 끝 점을 기준으로 시계 방향으로 90도 회전시킨 다음 0세대 드래곤 커브의 끝 점에 붙인 것이다. 끝 점이란 시작 점에서 선분을 타고 이동했을 때, 가장 먼 거리에 있는 점을 의미한다.</p>
+<p><img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/2.png" alt="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/2.png"></p>
+<p>2세대 드래곤 커브도 1세대를 만든 방법을 이용해서 만들 수 있다. (파란색 선분은 새로 추가된 선분을 나타낸다)</p>
+<p><img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/3.png" alt="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/3.png"></p>
+<p>3세대 드래곤 커브도 2세대 드래곤 커브를 이용해 만들 수 있다. 아래 그림은 3세대 드래곤 커브이다.</p>
+<p><img src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/4.png" alt="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/4.png"></p>
+<p>즉, K(K &gt; 1)세대 드래곤 커브는 K-1세대 드래곤 커브를 끝 점을 기준으로 90도 시계 방향 회전 시킨 다음, 그것을 끝 점에 붙인 것이다.</p>
+<p><code>크기가 100×100</code>인 격자 위에 드래곤 커브가 N개 있다. 이때, 크기가 1×1인 정사각형의 네 꼭짓점이 모두 드래곤 커브의 일부인 정사각형의 개수를 구하는 프로그램을 작성하시오. 격자의 좌표는 (x, y)로 나타내며, 0 ≤ x ≤ 100, 0 ≤ y ≤ 100만 유효한 좌표이다.</p>
+<h2 id="ibryeog"><a href="#ibryeog" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#입력"></a> 입력</h2>
+<p>첫째 줄에 드래곤 커브의 개수 N(1 ≤ N ≤ 20)이 주어진다. 둘째 줄부터 N개의 줄에는 드래곤 커브의 정보가 주어진다. <code>드래곤 커브의 정보는 네 정수 x, y, d, g로 이루어져 있다. x와 y는 드래곤 커브의 시작 점, d는 시작 방향, g는 세대이다.</code> (0 ≤ x, y ≤ 100, 0 ≤ d ≤ 3, 0 ≤ g ≤ 10)</p>
+<p>입력으로 주어지는 드래곤 커브는 격자 밖으로 벗어나지 않는다. 드래곤 커브는 서로 겹칠 수 있다.</p>
+<p>방향은 <code>0, 1, 2, 3</code> 중 하나이고, 다음을 의미한다.</p>
 <ul>
-<li>
-<p>게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다.</p>
-</li>
-<li>
-<p>만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형 두 개가 없어집니다.</p>
-</li>
-<li>
-<p>크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다.</p>
-</li>
-<li>
-<p>제한 사항</p>
-</li>
-<li>
-<p>board 배열은 2차원 배열로 크기는  이상  이하입니다.</p>
-<p>5 x 5</p>
-<p>30 x 30</p>
-</li>
-<li>
-<p>board의 각 칸에는 0 이상 100 이하인 정수가 담겨있습니다.</p>
-<ul>
-<li>0은 빈 칸을 나타냅니다.</li>
-<li>1 ~ 100의 각 숫자는 각기 다른 인형의 모양을 의미하며 같은 숫자는 같은 모양의 인형을 나타냅니다.</li>
-</ul>
-</li>
-<li>
-<p>moves 배열의 크기는 1 이상 1,000 이하입니다.</p>
-</li>
-<li>
-<p>moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.</p>
-</li>
+<li>0: x좌표가 증가하는 방향 (→)</li>
+<li>1: y좌표가 감소하는 방향 (↑)</li>
+<li>2: x좌표가 감소하는 방향 (←)</li>
+<li>3: y좌표가 증가하는 방향 (↓)</li>
 </ul>
 <h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
 <ul>
-<li>두개의 동일한 인형일 경우 바구니 remove</li>
-<li><strong>빈곳일 경우 아무일도 일어나지 않는다. 즉, 크레인에서 뽑은 값은 인형 N*N에서 value 를 0 으로 초기화</strong></li>
-<li>바구니 크기는 충분하다</li>
-<li>board range (5 &lt; board &lt; 30)</li>
-<li>moves range(1 &lt; moves &lt; 1000</li>
-<li>board value range(1 &lt; board value &lt; 100)</li>
-<li>stack의 empty조건과 인형맵에서 값이 있을 경우만 로직을 진행</li>
-<li>로직이 모두 진행되고나서 0으로 초기화 후 해당 로직을 빠져오는것이 가장 중요한 포인트였다.</li>
+<li>드래곤 커브라는것은 세가지 속성을 갖고 있습니다. <code>좌표평면위에 X축은 → 방향, Y축은 ↓ 방향</code>으로 나타내며 일단 문제의 정의를 정확히 파악해야하는 문제입니다.</li>
+<li>속성 3가지는 <code>시작점(x,y), 시작방향(상하좌우), 세대(0~3세대)</code>를 나타냅니다. 세대는 총 0,1,2,3세대까지 나타낼 수 있습니다.</li>
+<li>문제를 접근하였을때 끝점을 기준으로 좌표가 어떤식으로 규칙을 띄고 있는지를 확인하였습니다. 하지만 제대로된 규칙을 찾을 수 없었습니다. 결국 상하좌우의 방향에 따라서 규칙성을 찾아보면 어떨까라는 생각을 하게 되었습니다.</li>
 </ul>
 <blockquote>
-<p>Stack 자료구조를 사용한다.</p>
+<p>세대의 규칙</p>
 </blockquote>
-<p>이 크레인인형뽑기의 문제에서 가장 중요했던 부분은 Stack을 사용하여 바구니의 역할을 하게 해야한다. 그리고 그 바구니가 비어있는지의 조건을 무조건 체크하고 들어가고, 비어있으면서도 값이 있는 경우를 조건으로 처리해야한다. 그 이유는 한가지 조건만 만족시키면 문제의 조건과 stack의 조건을 만족시키지 못한다</p>
-<p>그리고, 바구니에 들어져 있는 값이 현재 뽑은 인형과의 값을 비교하여 바구니의 값을 빼주면서 answer의 값을 +2 를 해준다. 그 이유는 바구니에 들어가 있는 값(+1)과 크레인이 뽑은 값(+1)이 동일한 인형이기 때문에 이 경우 answer에다가 값을 +2를 해주었다. 결국 바구니의 값과 크레인의 값이 같으니 2개의 인형이 remove되었다고 생각하면 된다.</p>
+<p>0세대: 0</p>
+<p>1세대: 0 1</p>
+<p>2세대: 0 1 2 1</p>
+<p>3세대 0 1 2 1 2 3 2 1</p>
+<p>세대의 규칙을 찾으셨나요? <code>세대의 규칙을 찾은 방법</code>에 대해 말씀드리겠습니다. 말그대로 시작점으로 부터 시작방향을 따라서 어떤 방향으로 이동하는지만 알면 됩니다.</p>
+<p>0세대 같은 경우는 <code>자기 자신(시작점)</code>을 뜻합니다.</p>
+<p>1세대 시작점에서 부터 <code>오른쪽방향</code>으로 움직입니다. 즉, <code>1(오른쪽)방향</code>입니다.</p>
+<p>2세대 <code>0세대, 1세대를 거쳐서</code> <code>왼쪽(2)→위(1)</code>로 올라갑니다.</p>
+<p>3세대 <code>0세대, 1세대, 2세대를 거쳐서</code> <code>왼쪽(2)→아래(3)→왼쪽(2)→위(1)</code>의 방향으로 움직이게 됩니다.</p>
 <blockquote>
-<p>인형을 뽑고나면 값을 0으로 초기화 시켜준다.</p>
+<p>이제 규칙을 발견하셨나요?</p>
 </blockquote>
-<p>그리고 해당 로직이 다 실행되고 나면 크레인이 뽑은 인형의 값을 '0’으로 초기화 시켜준다. 그 이유는 '0’으로 초기화 시켜주지 않으면 다음로직시에도 해당 인형을 또 뽑을 수 있기 때문이다. 그리고 이때 해당 로직을 진행후 break;문을 사용하여 해당 로직을 빠져나온다. break를 해주지 않으면 다음 로직시에 뽑으려고 하지 않았던 인형과의 충돌이 생길 수 있다.</p>
-<p>예) 1번 인형을 뽑고 3번을 뽑고 다시 1번으로 오는 경우</p>
-<p>Input으로 들어오는 값들의 Init 값이 1부터시작하기 때문에 moves[i]-1;을 해주면서 0(Index)의 값으로 진행시키기 위함이다.</p>
+<p><code>1세대→ 2세대</code>가 움직이는 방향을 살펴보게 되면 <code>01(1세대), 21(2세대)</code>입니다. 자세히 살펴보면 <code>01의 값을 역순</code>을 해주면 <code>10</code>의 값이 됩니다. 여기에서 각각 <code>+1씩 증가</code>하면 <code>21</code>의 값이 되겠지요?</p>
+<p>다음 차례인, <code>2세대 → 3세대</code>의 값을 살펴보겠습니다. <code>2세대는 0121 방향</code>으로 움직이게 됩니다. 이 값들을 역순을 하게되면 <code>1210의 값</code>이 되게 됩니다. 여기에서 <code>값을 +1</code> 시켜준다면 <code>2321 의 방향</code>으로 움직이는 규칙을 찾을 수 있습니다.</p>
+<p>즉, <code>이전 세대 = (현재 세대의 역순의 방향을 모두 + 1)</code>의 규칙을 찾을 수 있습니다.</p>
+<blockquote>
+<p>세대별 방향 처리</p>
+</blockquote>
+<p>dx, dy를 선언하여 아래와 같은 방향을 처리해주었습니다.</p>
+<ul>
+<li>0: x좌표가 증가하는 방향 (→)</li>
+<li>1: y좌표가 감소하는 방향 (↑)</li>
+<li>2: x좌표가 감소하는 방향 (←)</li>
+<li>3: y좌표가 증가하는 방향 (↓)</li>
+</ul>
+<blockquote>
+<p>0~N세대의 방향을 저장시켜야 합니다.</p>
+</blockquote>
+<p>이렇게 <code>0세대부터 N세대</code>까지로 이동하게 될때 세대의 방향값들을 저장시킬 하나의 저장소가 필요합니다. 저 같은 경우에는 vector를 사용하여 진행하였습니다.</p>
+<blockquote>
+<p>격자위에 표시</p>
+</blockquote>
+<p>0세대와 1세대는 <code>첫 진입시 시작점</code>을 하나의 <code>격자위에 표시</code>해주었습니다.</p>
+<blockquote>
+<p>드래곤 커브 진행시 주의해야 할점</p>
+</blockquote>
+<p>상하좌우의 값들을 진행시키기 위해서 <code>0~3까지의 방향을 처리</code>해야합니다. 0~3까지의 방향을 <code>총 4개의 규칙적인 패턴</code>을 처리하기 위해서는 어떻게 해야할까요? 나머지의 원리를 이용하면 됩니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">i=<span class="number">0</span> </span><br><span class="line">i % <span class="number">4</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">i=<span class="number">1</span></span><br><span class="line">i % <span class="number">4</span> = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">i=<span class="number">2</span></span><br><span class="line">i % <span class="number">4</span> = <span class="number">2</span></span><br><span class="line"></span><br><span class="line">i=<span class="number">3</span></span><br><span class="line">i % <span class="number">4</span> = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>의 패턴을 가지게 됩니다. 만약 i가 4일경우는 나머지가 0이 되겠지요? 이렇게 계속 <code>순서대로 패턴</code>을 처리하면서 진행할 수 있습니다.</p>
+<p>세대별로 처리하면서 방문한곳은 <code>격자에 표시</code>를 진행하면서 G번만큼의 드래곤 커브를 진행하게 됩니다.</p>
+<blockquote>
+<p>사각형의 개수 구하기</p>
+</blockquote>
+<p>G번만큼의 드래곤 커브를 진행하게 되면 격자위에 모든 세대들의 드래곤 커브가 완성되게 됩니다. 이제 모든 드래곤커브끼리 감싸고 있는 값들의 정사각형의 개수를 구하면 되겠지요?</p>
+<p>정사각형의 개수를 구할때는 현재점을 (x, y)라고 지정하겠습니다.</p>
+<p>정사각형이 되기위해서는 현재 자기자신<code>(x,y) → (x+1,y) → (x,y+1) → (x+1,y+1)</code>의 점들이 모두 격자에 표시되어야지 정사각형이 될 수 있습니다. 이렇게 표시된 점을 하나의 정사각형이라고 체킹을 할 수 있으며 이때 카운트변수를 하나 선언하여 return 해주게 된다면 최종적인 결과값을 구할 수 있게됩니다.</p>
+<p>직접 그려보시면 평면좌표위에 어떻게 표시되는지 알 수 있을것입니다.</p>
+<blockquote>
+<p>결론</p>
+</blockquote>
+<p>좌표값으로 규칙을 찾으려고 하였는데 세대의 방향별 접근을 생각하지 못했습니다.</p>
+<hr>
 <h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; board, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; moves)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;moves.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> moves_size = moves[i]<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;board.size(); j++)&#123;</span><br><span class="line">            <span class="comment">// 인형이 있는 경우 </span></span><br><span class="line">            <span class="keyword">if</span>(board[j][moves_size] != <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!s.empty() &amp;&amp; s.top() == board[j][moves_size])&#123;</span><br><span class="line">                       s.pop();</span><br><span class="line">                       answer +=<span class="number">2</span>;   </span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    s.push(board[j][moves_size]); </span><br><span class="line">                &#125;</span><br><span class="line">                   board[j][moves_size] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  드래곤커브.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-ps</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 2020/09/16.</span></span><br><span class="line"><span class="comment">//  Copyright © 2020 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">101</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> x,y,d,g = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[MAX][MAX];</span><br><span class="line"><span class="keyword">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[<span class="number">4</span>] = &#123;<span class="number">0</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dir_info;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dragon_curve</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sqaure_find</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// g세대까지 드래곤커브를 진행합니다.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dragonCurve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> size = dir_info.size();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=size<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">int</span> nDir = (dir_info[i] + <span class="number">1</span>) % <span class="number">4</span>;</span><br><span class="line">        x = x + dx[nDir];</span><br><span class="line">        y = y + dy[nDir];</span><br><span class="line">        <span class="built_in">map</span>[x][y] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        dir_info.push_back(nDir);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqaureFind</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;MAX; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;MAX; j++)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>[i][j] == <span class="number">1</span> &amp;&amp; <span class="built_in">map</span>[i+<span class="number">1</span>][j] == <span class="number">1</span> &amp;&amp; <span class="built_in">map</span>[i+<span class="number">1</span>][j+<span class="number">1</span>] == <span class="number">1</span> &amp;&amp; <span class="built_in">map</span>[i][j+<span class="number">1</span>] == <span class="number">1</span>)&#123;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; d &gt;&gt; g;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 맨 처음 시작지점 체크</span></span><br><span class="line">        <span class="built_in">map</span>[x][y] = <span class="number">1</span>;</span><br><span class="line">        x = x + dx[d];</span><br><span class="line">        y = y + dy[d];</span><br><span class="line">        <span class="built_in">map</span>[x][y] = <span class="number">1</span>;</span><br><span class="line">        dir_info.clear();</span><br><span class="line">        <span class="comment">// 방향을 체크해서 저장시켜놔야지 나중에 역순+1을 시켜줄 수 있다.</span></span><br><span class="line">        dir_info.push_back(d);</span><br><span class="line">        <span class="comment">// 다음 세대의 추가되는 선분의 방향정보 = 이전 세대의 방향정보를 역순으로 탐색하면서 + 1 % 4 를 한 것이 된다.</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;g; j++)&#123;</span><br><span class="line">            <span class="comment">// function dragon curve</span></span><br><span class="line">            dragonCurve();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> answer = sqaureFind();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; answer &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -323,24 +358,25 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Ethan Kim"
         },
-        "headline": "프로그래머스 크레인 인형뽑기",
-        "image": "http://gwanhyeon.github.io",
-        "keywords": "프로그래머스 알고리즘 카카오",
-        "genre": "Programmers",
-        "datePublished": "2020-09-11",
-        "dateCreated": "2020-09-11",
-        "dateModified": "2020-09-11",
-        "url": "http://gwanhyeon.github.io/crane-claw-machine-game/",
+        "headline": "삼성 SW 역량테스트 백준 드래곤커브 15685",
+        "image": "http://gwanhyeon.github.iohttp://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/15685/1.png",
+        "keywords": "알고리즘 백준 브루트포스 삼성SW역량테스트 BOJ",
+        "genre": "SW역량테스트",
+        "datePublished": "2020-09-16",
+        "dateCreated": "2020-09-16",
+        "dateModified": "2020-09-16",
+        "url": "http://gwanhyeon.github.io/dragon-curve/",
         "description": "1.  문제 링크
-프로그래머스 크레인 인형뽑기 게임
+삼성 SW 역량테스트 기출 백준 드래곤커브 15685
 2.  문제 조건
+드래곤 커브는 다음과 같은 세 가지 속성으로 이루어져 있으며, 이차원 좌표 평면 위에서 정의된다. 좌표 평면의 x축은 → 방향, y축은 ↓ 방향이다.
 
+시작 점
+시작 방향
+세대
 
-게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다.
-
-
-만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형",
-        "wordCount": 766
+0세대 드래곤 커브는 아래 그림과 같은 길이가 1인 선분이다. 아래 그림은 (0, 0)에서",
+        "wordCount": 1485
     }
 </script>
 
@@ -383,20 +419,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/open-chat-room/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            프로그래머스 오픈채팅방
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/spring-mvc-environment/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/mock-test/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Spring MVC Gradle IntelliJ 환경설정</p>
+        <p class="article-nav-title">프로그래머스 모의고사</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -557,7 +583,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/crane-claw-machine-game/';
+    var disqus_url = 'http://gwanhyeon.github.io/dragon-curve/';
     
     (function() {
     var dsq = document.createElement('script');

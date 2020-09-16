@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/dragon-curve/</loc>
+        <lastmod>2020-09-16T08:03:53.876Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/k-number/</loc>
-        <lastmod>2020-09-16T03:57:25.163Z</lastmod>
+        <lastmod>2020-09-16T04:46:21.577Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
