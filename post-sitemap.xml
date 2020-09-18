@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/two-number-between-sum/</loc>
+        <lastmod>2020-09-18T12:42:16.722Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/divisor-number-array/</loc>
         <lastmod>2020-09-18T12:26:17.980Z</lastmod>
         <changefreq>weekly</changefreq>
