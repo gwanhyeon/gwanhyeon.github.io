@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>sort-you-want-in-string</title>
+    <url>/sort-you-want-in-string/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/12915?language=java" target="_blank" rel="noopener">프로그래머스 내마음대로 정렬하기</a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를 들어 strings가 [sun, bed, car]이고 n이 1이면 각 단어의 인덱스 1의 문자 u, e, a로 strings를 정렬합니다.</p>
+<p>제한 조건</p>
+<ul>
+<li>strings는 길이 1 이상, 50이하인 배열입니다.</li>
+<li>strings의 원소는 소문자 알파벳으로 이루어져 있습니다.</li>
+<li>strings의 원소는 길이 1 이상, 100이하인 문자열입니다.</li>
+<li>모든 strings의 원소의 길이는 n보다 큽니다.</li>
+<li>인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선 문자열이 앞쪽에 위치합니다.</li>
+</ul>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<ul>
+<li>문자열의 사전순대로 정렬을 해야합니다.<br>
+만약 배열을 사용할 경우  java.util.Arrays 유틸리티의 Arrays.sort()클래스를 사용하고 List와 같은 경우는 java.util.Collections클래스의 static 메소드인 sort()를 사용합니다.<br>
+즉, List형식으로 만들어서 Collections.sort()를 사용하거나 Array인 경우 Arrays.sort()를 사용합니다.</li>
+</ul>
+<p>Colletions.sort()를 사용하게 될 경우 n에 해당하는 값을 맨앞으로 추가시켜준다음에 그 값을 기준으로 오름 차순정렬을 시켜주게 됩니다. 그리고 나서 해당값을 다시 <code>substring(1, arr.get(i).length())</code>함수를 사용하여 값을 잘라주게 됩니다. 그러면 기존의 값으로 원상복귀 한다고 생각하시면 됩니다.</p>
+<blockquote>
+<p>Arrays.sort()</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>람다식으로 간단하게 변경도 가능합니다.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 오름차순 Arrays.sort(strings,(s1,s2) -&gt; s1.length() - s2.length());</span><br><span class="line">// 내림차순 Arrays.sort(strings,(s1,s2) -&gt; s2.length() - s1.length());</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Colletions.sort()</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Collections.sort(arr);</span><br></pre></td></tr></table></figure>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 문자열내마음대로정렬하기 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] strings = &#123;<span class="string">"sun"</span>, <span class="string">"bed"</span>, <span class="string">"car"</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        String[] answer;</span><br><span class="line">        Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 사전순으로 정렬하기</span></span><br><span class="line">                <span class="keyword">return</span> s1.charAt(n) - s2.charAt(n);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 사전순 역순으로 정렬하기</span></span><br><span class="line">                <span class="comment">//return s2.charAt(n) - s1.charAt(n);</span></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// lamda</span></span><br><span class="line">        <span class="comment">// Arrays.sort(strings,(s1,s2) -&gt; s1.charAt(n) - s2.charAt(n););</span></span><br><span class="line">        System.out.println(Arrays.toString(strings));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 문자열내마음대로정렬하기 </span>&#123;</span><br><span class="line">    <span class="comment">/* ArrayList를 사용한 풀이</span></span><br><span class="line"><span class="comment">    public static void main(String[] args) &#123;</span></span><br><span class="line"><span class="comment">        String[] strings = &#123;"sun", "bed", "car"&#125;;</span></span><br><span class="line"><span class="comment">        int n = 1;</span></span><br><span class="line"><span class="comment">        String[] answer;</span></span><br><span class="line"><span class="comment">        ArrayList&lt;String&gt; arr = new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        for (int i = 0; i &lt; strings.length; i++)&#123;</span></span><br><span class="line"><span class="comment">            arr.add(strings[i].charAt(n) + strings[i]);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        Collections.sort(arr);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        answer = new String[arr.size()];</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        for(int i=0; i&lt;arr.size(); i++)&#123;</span></span><br><span class="line"><span class="comment">            answer[i] = arr.get(i).substring(1,arr.get(i).length());</span></span><br><span class="line"><span class="comment">        &#125; System.out.println(Arrays.toString(strings));</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Programmers</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
+        <tag>정렬</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>프로그래머스 나누어 떨어지는 숫자 배열</title>
     <url>/divisor-number-array/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
@@ -21,8 +66,8 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -380,8 +425,8 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -423,8 +468,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>해시</tag>
       </tags>
   </entry>
@@ -508,8 +553,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -580,8 +625,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -755,8 +800,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>SPRING/SPRINGBOOT</category>
       </categories>
       <tags>
-        <tag>springMVC</tag>
         <tag>environment</tag>
+        <tag>springMVC</tag>
       </tags>
   </entry>
   <entry>
@@ -858,8 +903,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
         <tag>그리디</tag>
       </tags>
@@ -909,8 +954,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -952,8 +997,8 @@ O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays�
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
   </entry>
@@ -1145,8 +1190,8 @@ arr = [4, 4, 4, 3, 3] 이면 [4, 3] 을 return 합니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -1185,8 +1230,8 @@ sum값에는 a월까지의 더한 값이 있다.</li>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -1213,8 +1258,8 @@ a와 b의 대소관계는 정해져있지 않습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -2064,9 +2109,9 @@ a와 b의 대소관계는 정해져있지 않습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -2108,9 +2153,9 @@ a와 b의 대소관계는 정해져있지 않습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -2222,9 +2267,9 @@ a와 b의 대소관계는 정해져있지 않습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -2283,10 +2328,10 @@ a와 b의 대소관계는 정해져있지 않습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
-        <tag>위장</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
+        <tag>위장</tag>
         <tag>해시</tag>
       </tags>
   </entry>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2020-09-18T12:26:17.980Z</updated>
+  <updated>2020-09-18T13:44:12.283Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sort-you-want-in-string</title>
+    <link href="http://gwanhyeon.github.io/sort-you-want-in-string/"/>
+    <id>http://gwanhyeon.github.io/sort-you-want-in-string/</id>
+    <published>2020-09-18T13:35:38.000Z</published>
+    <updated>2020-09-18T13:44:12.283Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1><p><a href="https://programmers.co.kr/learn/courses/30/lessons/12915?language=java" target="_blank" rel="noopener">프로그래머스 내마음대로 정렬하기</a></p><h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1><p>문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를 들어 strings가 [sun, bed, car]이고 n이 1이면 각 단어의 인덱스 1의 문자 u, e, a로 strings를 정렬합니다.</p><p>제한 조건</p><ul><li>strings는 길이 1 이상, 50이하인 배열입니다.</li><li>strings의 원소는 소문자 알파벳으로 이루어져 있습니다.</li><li>strings의 원소는 길이 1 이상, 100이하인 문자열입니다.</li><li>모든 strings의 원소의 길이는 n보다 큽니다.</li><li>인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선 문자열이 앞쪽에 위치합니다.</li></ul><h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1><ul><li>문자열의 사전순대로 정렬을 해야합니다.<br>만약 배열을 사용할 경우  java.util.Arrays 유틸리티의 Arrays.sort()클래스를 사용하고 List와 같은 경우는 java.util.Collections클래스의 static 메소드인 sort()를 사용합니다.<br>즉, List형식으로 만들어서 Collections.sort()를 사용하거나 Array인 경우 Arrays.sort()를 사용합니다.</li></ul><p>Colletions.sort()를 사용하게 될 경우 n에 해당하는 값을 맨앞으로 추가시켜준다음에 그 값을 기준으로 오름 차순정렬을 시켜주게 됩니다. 그리고 나서 해당값을 다시 <code>substring(1, arr.get(i).length())</code>함수를 사용하여 값을 잘라주게 됩니다. 그러면 기존의 값으로 원상복귀 한다고 생각하시면 됩니다.</p><blockquote><p>Arrays.sort()</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure><p>람다식으로 간단하게 변경도 가능합니다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 오름차순 Arrays.sort(strings,(s1,s2) -&gt; s1.length() - s2.length());</span><br><span class="line">// 내림차순 Arrays.sort(strings,(s1,s2) -&gt; s2.length() - s1.length());</span><br></pre></td></tr></table></figure><blockquote><p>Colletions.sort()</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(arr);</span><br></pre></td></tr></table></figure><h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 문자열내마음대로정렬하기 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] strings = &#123;<span class="string">"sun"</span>, <span class="string">"bed"</span>, <span class="string">"car"</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        String[] answer;</span><br><span class="line">        Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 사전순으로 정렬하기</span></span><br><span class="line">                <span class="keyword">return</span> s1.charAt(n) - s2.charAt(n);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 사전순 역순으로 정렬하기</span></span><br><span class="line">                <span class="comment">//return s2.charAt(n) - s1.charAt(n);</span></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// lamda</span></span><br><span class="line">        <span class="comment">// Arrays.sort(strings,(s1,s2) -&gt; s1.charAt(n) - s2.charAt(n););</span></span><br><span class="line">        System.out.println(Arrays.toString(strings));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 문자열내마음대로정렬하기 </span>&#123;</span><br><span class="line">    <span class="comment">/* ArrayList를 사용한 풀이</span></span><br><span class="line"><span class="comment">    public static void main(String[] args) &#123;</span></span><br><span class="line"><span class="comment">        String[] strings = &#123;"sun", "bed", "car"&#125;;</span></span><br><span class="line"><span class="comment">        int n = 1;</span></span><br><span class="line"><span class="comment">        String[] answer;</span></span><br><span class="line"><span class="comment">        ArrayList&lt;String&gt; arr = new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        for (int i = 0; i &lt; strings.length; i++)&#123;</span></span><br><span class="line"><span class="comment">            arr.add(strings[i].charAt(n) + strings[i]);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        Collections.sort(arr);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        answer = new String[arr.size()];</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        for(int i=0; i&lt;arr.size(); i++)&#123;</span></span><br><span class="line"><span class="comment">            answer[i] = arr.get(i).substring(1,arr.get(i).length());</span></span><br><span class="line"><span class="comment">        &#125; System.out.println(Arrays.toString(strings));</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;munje-ringkeu&quot;&gt;&lt;a href=&quot;#munje-ringkeu&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#문제-링크&quot;&gt;&lt;/a&gt; 문제 링크&lt;/h1&gt;
+&lt;p&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
+    
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
+    
+  </entry>
   
   <entry>
     <title>프로그래머스 나누어 떨어지는 숫자 배열</title>
@@ -39,9 +70,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
@@ -189,9 +220,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -220,9 +251,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="해시" scheme="http://gwanhyeon.github.io/tags/%ED%95%B4%EC%8B%9C/"/>
     
@@ -251,9 +282,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -282,9 +313,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -312,9 +343,9 @@
       <category term="SPRING/SPRINGBOOT" scheme="http://gwanhyeon.github.io/categories/spring-springboot/"/>
     
     
-      <category term="springMVC" scheme="http://gwanhyeon.github.io/tags/springmvc/"/>
-    
       <category term="environment" scheme="http://gwanhyeon.github.io/tags/environment/"/>
+    
+      <category term="springMVC" scheme="http://gwanhyeon.github.io/tags/springmvc/"/>
     
   </entry>
   
@@ -374,9 +405,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -407,9 +438,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
@@ -436,9 +467,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
     
@@ -528,9 +559,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
@@ -557,9 +588,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
@@ -586,42 +617,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
-  </entry>
-  
-  <entry>
-    <title>백준 연산자끼워넣기2 15658</title>
-    <link href="http://gwanhyeon.github.io/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B02-15658/"/>
-    <id>http://gwanhyeon.github.io/%EB%B0%B1%EC%A4%80%EC%97%B0%EC%82%B0%EC%9E%90%EB%81%BC%EC%9B%8C%EB%84%A3%EA%B8%B02-15658/</id>
-    <published>2019-12-19T16:31:17.000Z</published>
-    <updated>2020-09-09T17:04:12.994Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.acmicpc.net/problem/15658" target="_blank" rel="noopener">연산자끼워넣기(2)15658</a></p><h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2><blockquote><p>DFS</p></blockquote><ul><li>재귀호출로 백트래킹으로 구해줍니다.</li><li>연산자끼워넣기 1번문제와 같은 원리입니다. 정답 또한 같습니다.</li></ul><h2 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2><blockquote><p>DFS 백트래킹</p></blockquote><ul><li>맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에 대한 의문을 갖고 계신분들이 있습니다. idx를 1로 시작한 이유는 곱하기나, 나눗셈의 경우에서 sum의 값이 0일 경우 올바르지 않은 값이 연산되게 됩니다. 따라서, v[0] (+, -, *, /) v[1] 의 형태로 연산이 되게 됩니다. 따라서 올바른 값을 구할 수 있습니다. 곰곰히 생각해보시면 어떤 말씀인지 알 것이라 생각합니다.</li><li>입력받은 plus,minus,multi,div의 개수를 0보다 클 경우에는 계속해서 재귀호출을 합니다.</li><li>시간복잡도 계산 총 연산자(+,-,*,/) 4개의 연산자이고, 총 N은 (2&lt;=N&lt;=11) 11까지 이므로 4^10 = 1048570의 복잡도를 가지게 됩니다.</li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(plus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum+v[idx],plus<span class="number">-1</span>, minus, multi, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(minus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum-v[idx], plus, minus<span class="number">-1</span>, multi, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(multi &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum*v[idx], plus, minus, multi<span class="number">-1</span>, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(div &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum/v[idx], plus, minus, multi, div<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>만약 v.size() == idx 모든 원소의 개수를 확인하였을 경우에 현재 sum값을 res 벡터에 값을 넣어줍니다. 그 후 <code>auto p = minmax_element(res.begin(), res.end());</code>를 사용하여 최댓값과 최솟값을 구해주게 됩니다. 이렇게 구하지 않고도 문제의 조건에서보면  <code>최댓값과 최솟값이 항상 -10억보다 크거나 같고, 10억보다 작거나 같은 결과가 나오는 입력만 주어진다</code> 라는 조건이 있습니다.<br>이러한 것들에 따라 값을 max함수와 min함수를 사용하면서 최댓값과 최솟값을 구해줍니다.<br>다른분들의 풀이를 보니 이런식으로 사용하시는것을 보고 배우게 되었습니다.</li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000000000</span> + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> maxResult = -MAX, minResult = MAX;</span><br><span class="line"> maxResult = <span class="built_in">max</span>(maxResult, sum);</span><br><span class="line"> minResult = <span class="built_in">min</span>(minResult, sum);</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; maxResult &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; minResult &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure><h3 id="dfs-baegteuraeking-puli"><a href="#dfs-baegteuraeking-puli" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#dfs-백트래킹-풀이"></a> DFS 백트래킹 풀이</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  12_백준_연산자끼워넣기2_15658.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 20/12/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v, <span class="keyword">int</span> sum, <span class="keyword">int</span> idx, <span class="keyword">int</span> plus, <span class="keyword">int</span> minus, <span class="keyword">int</span> multi, <span class="keyword">int</span> div)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(idx == v.<span class="built_in">size</span>())&#123;</span><br><span class="line">        res.push_back(sum);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(plus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,sum+v[idx],idx+<span class="number">1</span>, plus<span class="number">-1</span>,minus,multi,div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(minus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,sum-v[idx],idx+<span class="number">1</span>, plus,minus<span class="number">-1</span>,multi,div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(multi &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,sum*v[idx],idx+<span class="number">1</span>, plus,minus,multi<span class="number">-1</span>,div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(div &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,sum/v[idx],idx+<span class="number">1</span>, plus,minus,multi,div<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="keyword">int</span> plus=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> minus=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> multi=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> div=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> cal=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; cal;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">            plus = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">            minus = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">2</span>)&#123;</span><br><span class="line">            multi = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            div = cal;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    dfs(v, v[<span class="number">0</span>],<span class="number">1</span>,plus, minus, multi, div);</span><br><span class="line">    <span class="keyword">auto</span> p = minmax_element(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p.second &lt;&lt; <span class="string">" "</span> &lt;&lt;  *p.first;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/15658&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;연산자끼워넣기(2)15658&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;keompyuting-seukil&quot;&gt;&lt;a hre
-      
-    
-    </summary>
-    
-    
-      <category term="BOJ" scheme="http://gwanhyeon.github.io/categories/boj/"/>
-    
-    
-      <category term="백준" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%EC%A4%80/"/>
-    
-      <category term="브루트포스" scheme="http://gwanhyeon.github.io/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/"/>
-    
-      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
-    
-      <category term="백트래킹" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/"/>
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
