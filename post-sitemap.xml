@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/dont-like-same-number/</loc>
+        <lastmod>2020-09-18T12:08:33.160Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/leap-year/</loc>
         <lastmod>2020-09-17T07:10:30.569Z</lastmod>
         <changefreq>weekly</changefreq>
