@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2020-09-18T13:45:42.699Z</updated>
+  <updated>2020-09-18T15:07:00.412Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>02.Reactive Streams</title>
+    <link href="http://gwanhyeon.github.io/reactive-programming-section02/"/>
+    <id>http://gwanhyeon.github.io/reactive-programming-section02/</id>
+    <published>2020-09-18T15:00:31.000Z</published>
+    <updated>2020-09-18T15:07:00.412Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="reactive-streamsran"><a href="#reactive-streamsran" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#reactive-streams란"></a> Reactive Streams란</h1><p>Rxjava 버전이 1.x에서 2.x로 올라간 배경에는 Reactive Streams가 있습니다. Reactive Streams란 라이브러리나 프레임워크 상관없이 데이터 스트림을 비동기로 다룰수 잇는 공통 매커니즘으로, 이 매커니즘을 편리하게 사용할 수 있는 인터페이스를 제공합니다.</p><p><a href="http://www.reactive-streams.org" target="_blank" rel="noopener">Reactive Streams</a></p><p>즉, Reactive Streams는 인터페이스만 제공하고 구현은 각 라이브러리와 프레임워크에서 합니다.</p><p><a href="https://github.com/reactive-streams/reactive-streams-jvm" target="_blank" rel="noopener">Reactive Streams Specification for the JVM</a></p><h1 id="reactive-streamsyi-guseong"><a href="#reactive-streamsyi-guseong" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#reactive-streams의-구성"></a> Reactive Streams의 구성</h1><p>Reactive Streams는 데이터를 만들어 통지하는 <code>Publisher(생산자)</code>와 통지된 데이터를 받아 처리하는 <code>Subscriber(소비자)</code>로 구성됩니다.</p><p><code>Subscriber</code>가 <code>Publisher</code>를 <code>구독(subscribe)</code>하면 <code>Publisher</code>가 통지한 데이터를 <code>Subscriber</code>가 받을 수 있습니다.</p><ul><li>Publisher : 데이터를 통지하는 생산자</li><li>Subscriber: 데이터를 받아 처리하는 소비자</li></ul><blockquote><p>데이터 흐름</p></blockquote><ul><li><code>Publisher``는 통지 준비가 끝나면 이를</code>Subscriber<code>에</code>통지(onSubscribe)`합니다.</li><li>해당 통지를 받은 <code>Subscriber</code>는 받고자 하는 데이터 개수를 요청합니다.</li></ul><p>이때, <code>Subscriber</code>가 자신이 통지 받을 데이터 개수를 요청하지 않으면 <code>Publisher</code>는 통지해야 할 데이터 개수 요청을 기다리게 되므로 통지를 시작 할 수 없습니다.</p><ul><li>그 다음 <code>Publisber</code>는 데이터를 만들어서 <code>Subscriber</code>에 <code>통지(onNext)</code>합니다.</li><li>이 데이터를 받은 <code>Subscriber</code>는 데이터를 사용해 처리 작업을 수행합니다.</li><li><code>Publisher</code>는 요청받은 만큼의 데이터를 통지한 뒤 <code>Subscriber</code>로 부터 다음 요청이 올때까지 데이터 통지를 중답합니다.</li><li>이후 <code>Subscriber</code>가 처리 작업을 완료하면 다음에 받을 데이터 개수를 <code>Publisher</code>에게 요청합니다.</li></ul><p>이 요청을 보내지 않으면 <code>Publisher</code>는 요청 대기 상태가 돼 <code>Subscriber</code>에 데이터를 통지할 수 없습니다.</p><ul><li><code>Publisher</code>는 <code>Subscriber</code>에 모든 데이터를 통지하고 마지막으로 데이터 전송이 완료돼 정상 종료 됐다고 <code>통지(onComplete)</code>합니다.</li><li>완료 통지를 하고나면 <code>Publisher</code>는 이 구독건에 대해 어떤 통지도 하지 않습니다.</li></ul><p>또한, <code>Publisher</code>는 처리 도중에 에러가 발생하면 <code>Subscriber</code>에 발생한 에러 객체와 함께 에러를 <code>통지(onError)</code>합니다.</p><blockquote><p>데이터 흐름 설명</p></blockquote><p><code>Subscriber</code>가 <code>Publisher</code>에 통지 받을 데이터 개수를 요청하는 것은 <code>Publisher</code>가 통지하는 데이터 개수를 제어하기 위해서 입니다. 예를 들어, <code>Publisher</code>와 <code>Subscriber</code>의 처리가 각각 다른 스레드에서 진행되는데 <code>Publisher</code>의 통지 속도가 빠르면 <code>Subscriber</code>가 소화할 수 없을만큼 많은 처리 대기 데이터가 쌓입니다.</p><p>→ 이를 막기위해 <code>Publisher</code>가 통지할 데이터 개수를 <code>Subscriber</code>가 처리 할 수 있을 만큼으로 제어하는 수단이 필요합니다.</p><blockquote><p>Reactive Streams가 제공하는 프로토콜</p></blockquote><table><thead><tr><th>프로토콜</th><th>설명</th></tr></thead><tbody><tr><td>onSubscribe</td><td>데이터 통지가 준배됐음을 통지</td></tr><tr><td>onNext</td><td>데이터통지</td></tr><tr><td>onError</td><td>에러(이상 종료)통지</td></tr><tr><td>onComplete</td><td>완료(정상 종료)통지</td></tr></tbody></table><blockquote><p>Reactive Streams의 인터페이스</p></blockquote><table><thead><tr><th>인터페이스</th><th>설명</th></tr></thead><tbody><tr><td>Publisher</td><td>데이터를 생성하고 통지하는 인터페이스</td></tr><tr><td>Subscriber</td><td>통지된 데이터를 전달받아 처리하는 인터페이스</td></tr><tr><td>Subscription</td><td>데이터개수를 요청하고 구독해지 하는 인터페이스</td></tr><tr><td>Processor</td><td>Publisher와 Subscriber의 기능이 모두 있는 인터페이스</td></tr></tbody></table><blockquote><p>Publisher.java</p></blockquote><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//데이터를 통지하는 생산자</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Publisher</span>&lt;<span class="type">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// 데이터를 받는 Subscriber 등록</span></span><br><span class="line">    <span class="keyword">public</span> void subscribe(Subscriber&lt;? <span class="keyword">super</span> T&gt; subscriber);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>Subscriber.java</p></blockquote><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.reactivestreams.Subscription;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 데이터를 받아 처리 하는 소비자</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subscriber</span>&lt;<span class="type">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// 구독 시작시 처리</span></span><br><span class="line">    <span class="keyword">public</span> void onSubscribe(Subscription subscription);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 데이터 통지시 처리</span></span><br><span class="line">    <span class="keyword">public</span> void onNext(T item);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 에러 통지시 처리</span></span><br><span class="line">    <span class="keyword">public</span> void onError(Throwable error);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 완료 통지시 처리</span></span><br><span class="line">    <span class="keyword">public</span> void onComplete();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>Subscription.java</p></blockquote><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 생산자와 소비자를 연결하는 인터페이스</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subscription</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 통지 받을 데이터 개수 요청</span></span><br><span class="line">    <span class="keyword">public</span> void request(long num);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 구독 해지</span></span><br><span class="line">    <span class="keyword">public</span> void cancel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>Processor.java</p></blockquote><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Processor</span>&lt;<span class="type">T,R</span>&gt; <span class="title">extends</span> <span class="title">Subscriber</span>&lt;<span class="type">T</span>&gt;, <span class="type">Publisher</span>&lt;<span class="type">R</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure><blockquote><p>Subscription 보관</p></blockquote><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.reactivestreams.Subscription;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainClass</span> <span class="title">implements</span> <span class="title">Subscriber</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// subscriber내부에 subscription보관하기</span></span><br><span class="line">    <span class="keyword">private</span> Subscription subscription;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> void onSubscribe(Subscription subscription) &#123;</span><br><span class="line">        <span class="comment">// 받은 Subscription을 Subscriber 내부에 보관한다</span></span><br><span class="line">        <span class="keyword">this</span>.subscription = subscription;</span><br><span class="line">        <span class="keyword">this</span>.subscription.request(num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> void onNext(Object item) &#123;</span><br><span class="line">        <span class="comment">// 요청한 데이터를 처리하면 다음 데이터 개수를 요청한다.</span></span><br><span class="line">        subscription.request(num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> void onError(Throwable error) &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> void onComplete() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>→ <code>Subscription</code>처리가 <code>Subscriber</code> 외부에서는 호출되지 않는다는 것을 전제로 구현할 수 있습니다.</p><p>Rxjava처럼 외부에서 구독을 해지할 방법을 제공한다면 <code>Subscription</code>이 비동기로 호출돼도 문제가 없게 구현되어야 합니다.</p><p>→ 추가로 <code>Reactive Streams</code>에 <code>Processor</code>라는 <code>인터페이스가</code> 있습니다. 이 <code>Processor</code>는 <code>Publisher와 Subscriber</code> 모두 상속받아 데이터 통지와 수신이 가능합니다.</p><p>즉, <code>Processor</code>는 다른 <code>Publisher</code>를 <code>구독</code>하거나 다른 <code>Subscriber</code>가 자신을 <code>구독</code>하게 할 수 있습니다.</p><blockquote><p>인터페이스 기능 설명</p></blockquote><p><code>Publisher</code>가 <code>Subscriber</code>가 사용하는 <code>Subscription</code>은 통지받을 데이터 개수를 지정해 데이터 통지를 요청하거나 통지받지 않게 구독을 해지할 때 사용하는 인터페이스입니다. <code>Subscription</code>은 <code>Publisher</code>에서 인스턴스가 생성돼 통지 준비가 끝났을 때 호출하는 <code>onSubscribe</code> 메서드의 인자로 <code>Subscriber</code>에 전달됩니다. 이 <code>Subscription</code>을 받은 <code>Subscriber</code>는 <code>Subscription</code>의 메서드를 호출해 데이터 개수를 요청하거나 구독을 해지합니다.</p><p>또한, <code>onNext</code> 메서드에서 이 <code>Subscription</code>을 사용하려면 <code>onSubscribe</code> 메서드로 전달받은 <code>Subscription</code>이 <code>Subscriber내부</code>에 있어야합니다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;reactive-streamsran&quot;&gt;&lt;a href=&quot;#reactive-streamsran&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#reactive-stream
+      
+    
+    </summary>
+    
+    
+      <category term="RXJAVA" scheme="http://gwanhyeon.github.io/categories/rxjava/"/>
+    
+    
+      <category term="RxJava" scheme="http://gwanhyeon.github.io/tags/rxjava/"/>
+    
+      <category term="리액티브프로그래밍" scheme="http://gwanhyeon.github.io/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/"/>
+    
+  </entry>
+  
+  <entry>
     <title>프로그래머스 내마음대로 정렬하기</title>
     <link href="http://gwanhyeon.github.io/sort-you-want-in-string/"/>
     <id>http://gwanhyeon.github.io/sort-you-want-in-string/</id>
     <published>2020-09-18T13:35:38.000Z</published>
-    <updated>2020-09-18T13:45:42.699Z</updated>
+    <updated>2020-09-18T13:46:49.622Z</updated>
     
     <content type="html"><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1><p><a href="https://programmers.co.kr/learn/courses/30/lessons/12915?language=java" target="_blank" rel="noopener">프로그래머스 내마음대로 정렬하기</a></p><h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1><p>문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를 들어 strings가 [sun, bed, car]이고 n이 1이면 각 단어의 인덱스 1의 문자 u, e, a로 strings를 정렬합니다.</p><p>제한 조건</p><ul><li>strings는 길이 1 이상, 50이하인 배열입니다.</li><li>strings의 원소는 소문자 알파벳으로 이루어져 있습니다.</li><li>strings의 원소는 길이 1 이상, 100이하인 문자열입니다.</li><li>모든 strings의 원소의 길이는 n보다 큽니다.</li><li>인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선 문자열이 앞쪽에 위치합니다.</li></ul><h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1><ul><li>문자열의 사전순대로 정렬을 해야합니다.<br>만약 배열을 사용할 경우  java.util.Arrays 유틸리티의 Arrays.sort()클래스를 사용하고 List와 같은 경우는 java.util.Collections클래스의 static 메소드인 sort()를 사용합니다.<br>즉, List형식으로 만들어서 Collections.sort()를 사용하거나 Array인 경우 Arrays.sort()를 사용합니다.</li></ul><p>Colletions.sort()를 사용하게 될 경우 n에 해당하는 값을 맨앞으로 추가시켜준다음에 그 값을 기준으로 오름 차순정렬을 시켜주게 됩니다. 그리고 나서 해당값을 다시 <code>substring(1, arr.get(i).length())</code>함수를 사용하여 값을 잘라주게 됩니다. 그러면 기존의 값으로 원상복귀 한다고 생각하시면 됩니다.</p><blockquote><p>Arrays.sort()</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure><p>람다식으로 간단하게 변경도 가능합니다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 오름차순 Arrays.sort(strings,(s1,s2) -&gt; s1.length() - s2.length());</span><br><span class="line">// 내림차순 Arrays.sort(strings,(s1,s2) -&gt; s2.length() - s1.length());</span><br></pre></td></tr></table></figure><blockquote><p>Colletions.sort()</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(arr);</span><br></pre></td></tr></table></figure><h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 문자열내마음대로정렬하기 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] strings = &#123;<span class="string">"sun"</span>, <span class="string">"bed"</span>, <span class="string">"car"</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        String[] answer;</span><br><span class="line">        Arrays.sort(strings, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 사전순으로 정렬하기</span></span><br><span class="line">                <span class="keyword">return</span> s1.charAt(n) - s2.charAt(n);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 사전순 역순으로 정렬하기</span></span><br><span class="line">                <span class="comment">//return s2.charAt(n) - s1.charAt(n);</span></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// lamda</span></span><br><span class="line">        <span class="comment">// Arrays.sort(strings,(s1,s2) -&gt; s1.charAt(n) - s2.charAt(n););</span></span><br><span class="line">        System.out.println(Arrays.toString(strings));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 문자열내마음대로정렬하기 </span>&#123;</span><br><span class="line">    <span class="comment">/* ArrayList를 사용한 풀이</span></span><br><span class="line"><span class="comment">    public static void main(String[] args) &#123;</span></span><br><span class="line"><span class="comment">        String[] strings = &#123;"sun", "bed", "car"&#125;;</span></span><br><span class="line"><span class="comment">        int n = 1;</span></span><br><span class="line"><span class="comment">        String[] answer;</span></span><br><span class="line"><span class="comment">        ArrayList&lt;String&gt; arr = new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        for (int i = 0; i &lt; strings.length; i++)&#123;</span></span><br><span class="line"><span class="comment">            arr.add(strings[i].charAt(n) + strings[i]);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        Collections.sort(arr);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        answer = new String[arr.size()];</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        for(int i=0; i&lt;arr.size(); i++)&#123;</span></span><br><span class="line"><span class="comment">            answer[i] = arr.get(i).substring(1,arr.get(i).length());</span></span><br><span class="line"><span class="comment">        &#125; System.out.println(Arrays.toString(strings));</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
     
@@ -39,9 +67,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
     
@@ -72,9 +100,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
     
@@ -224,9 +252,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -255,9 +283,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="해시" scheme="http://gwanhyeon.github.io/tags/%ED%95%B4%EC%8B%9C/"/>
     
@@ -286,9 +314,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -317,9 +345,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -409,9 +437,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -442,9 +470,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
   </entry>
   
@@ -471,9 +499,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
     
@@ -563,9 +591,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
   </entry>
   
@@ -574,7 +602,7 @@
     <link href="http://gwanhyeon.github.io/leap-year/"/>
     <id>http://gwanhyeon.github.io/leap-year/</id>
     <published>2020-09-06T06:49:58.000Z</published>
-    <updated>2020-09-17T07:10:30.569Z</updated>
+    <updated>2020-09-18T13:45:00.694Z</updated>
     
     <content type="html"><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1><p><a href="https://programmers.co.kr/learn/courses/30/lessons/12901" target="_blank" rel="noopener">프로그래머스 2016</a></p><h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1><p>2016년 1월 1일은 금요일입니다. 2016년 a월 b일은 무슨 요일일까요? 두 수 a ,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수, solution을 완성하세요. 요일의 이름은 일요일부터 토요일까지 각각 SUN,MON,TUE,WED,THU,FRI,SAT</p><p>입니다. 예를 들어 a=5, b=24라면 5월 24일은 화요일이므로 문자열 TUE를 반환하세요.</p><p>제한 조건<br>2016년은 윤년입니다.<br>2016년 a월 b일은 실제로 있는 날입니다. (13월 26일이나 2월 45일같은 날짜는 주어지지 않습니다)</p><h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1><ul><li>1월 1일은 금요일이므로 금요일부터 값을 시작시킨다.</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"FRI"</span>, <span class="string">"SAT"</span>, <span class="string">"SUN"</span>, <span class="string">"MON"</span>, <span class="string">"TUE"</span>, <span class="string">"WED"</span>, <span class="string">"THU"</span></span><br></pre></td></tr></table></figure><ul><li>윤년은 1월부터 12월 까지 해당 값을 가진다.</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">31</span>, <span class="number">29</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span></span><br></pre></td></tr></table></figure><ul><li>해당 a월까지의 값을 sum에 더해주면서 진행한다.<br>sum값에는 a월까지의 더한 값이 있다.</li><li>모두 더해진 sum값에 1월 1일이 포함되어있는 값을 빼준다.<br>해당 b일도 sum값에 추가해준다.<br>위에 모든달에는 1월1일이 포함된 값이다 따라서 -1을 해주어야한다.</li><li>윤년은 모든일수에 % 7 을 나눈 나머지를 뜻한다.<br>몫이 아니라 나머지라는것에 주의한다.</li></ul><h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">solution</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        String answer = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> month[] = &#123; <span class="number">31</span>, <span class="number">29</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        String[] day = &#123;<span class="string">"FRI"</span>, <span class="string">"SAT"</span>, <span class="string">"SUN"</span>, <span class="string">"MON"</span>, <span class="string">"TUE"</span>, <span class="string">"WED"</span>, <span class="string">"THU"</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;a; i++)&#123;</span><br><span class="line">            sum += month[i-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 1월1일도 포함되어있으므로 -1</span></span><br><span class="line">        sum += (b-<span class="number">1</span>);</span><br><span class="line">        answer = day[sum % <span class="number">7</span>];</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -592,38 +620,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
-  </entry>
-  
-  <entry>
-    <title>프로그래머스 두 정수 사이의합</title>
-    <link href="http://gwanhyeon.github.io/two-number-between-sum/"/>
-    <id>http://gwanhyeon.github.io/two-number-between-sum/</id>
-    <published>2020-09-04T12:39:27.000Z</published>
-    <updated>2020-09-18T12:42:16.722Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1><p><a href="https://programmers.co.kr/learn/courses/30/lessons/12912?language=java" target="_blank" rel="noopener">프로그래머스 두 정수 사이의 합</a></p><h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1><p>두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을 리턴하는 함수, solution을 완성하세요.<br>예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를 리턴합니다.</p><p>제한 조건<br>a와 b가 같은 경우는 둘 중 아무 수나 리턴하세요.<br>a와 b는 -10,000,000 이상 10,000,000 이하인 정수입니다.<br>a와 b의 대소관계는 정해져있지 않습니다.</p><h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1><ul><li>a &gt; b 보다 크거나 같을 경우 for문의 범위를 b&lt;=a로 지정한다.</li><li>a &lt; b 보다 작거나 같을 경우 for문의 범위를 a&lt;=b로 지정한다.</li></ul><h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 두정수사이의합 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">long</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(a &gt;= b) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=b; i&lt;=a; i++)&#123;</span><br><span class="line">                answer += i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(a &lt;= b)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=a; i&lt;=b; i++)&#123;</span><br><span class="line">                answer += i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;munje-ringkeu&quot;&gt;&lt;a href=&quot;#munje-ringkeu&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#문제-링크&quot;&gt;&lt;/a&gt; 문제 링크&lt;/h1&gt;
-&lt;p&gt;&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
-    
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
