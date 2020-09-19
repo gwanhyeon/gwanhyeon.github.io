@@ -97,7 +97,7 @@ N = 20이하 이므로 O(N^4) = 약 16만</p>
 <p>데이터 흐름</p>
 </blockquote>
 <ul>
-<li><code>Publisher``는 통지 준비가 끝나면 이를</code>Subscriber<code>에</code>통지(onSubscribe)`합니다.</li>
+<li><code>Publisher</code>는 통지 준비가 끝나면 이를 <code>Subscriber</code>에 <code>통지(onSubscribe)</code>합니다.</li>
 <li>해당 통지를 받은 <code>Subscriber</code>는 받고자 하는 데이터 개수를 요청합니다.</li>
 </ul>
 <p>이때, <code>Subscriber</code>가 자신이 통지 받을 데이터 개수를 요청하지 않으면 <code>Publisher</code>는 통지해야 할 데이터 개수 요청을 기다리게 되므로 통지를 시작 할 수 없습니다.</p>
