@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  문제 링크 프로그래머스 소수 2.  문제 조건 1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요. 소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다. (1은 소수가 아닙니다.) 제한 조건 n은 2이상 1000000이하의 자연수입니다. 3.  컴퓨팅 사고  에라토스테네스의 체를 사용합니다. 일반">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-09-19T05:09:52.861Z">
+<meta property="og:updated_time" content="2020-09-19T05:11:26.524Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -173,7 +173,7 @@ ga('send', 'pageview');
     <div class="article-date">
       <i class="fa fa-calendar"></i>
       <a href="/prime-number/" class="article-date">
-         <time datetime="2020-09-19T04:52:40.000Z" itemprop="datePublished">2020-09-19</time>
+         <time datetime="2020-09-06T04:52:40.000Z" itemprop="datePublished">2020-09-06</time>
       </a>
     </div>
 
@@ -221,11 +221,11 @@ n은 2이상 1000000이하의 자연수입니다.</p>
 <blockquote>
 <p>효율성 실패</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 소수찾기 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span>[] check = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">1000001</span>];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> n =<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        check[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        check[<span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=i*i; j&lt;=n; j+=i)&#123;</span><br><span class="line">                    check[j] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(sum);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 소수찾기 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span>[] check = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">1000001</span>];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> n =<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        check[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        check[<span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=i*i; j&lt;=n; j+=i)&#123;</span><br><span class="line">                    check[j] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(sum);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>효율성 통과</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 소수찾기 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span>[] check = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">1000001</span>];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> n =<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        check[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        check[<span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i*i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=i+i; j&lt;=n;j+=i)&#123;</span><br><span class="line">                    check[j] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(sum);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 소수찾기 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span>[] check = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">1000001</span>];</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> n =<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        check[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        check[<span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i*i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=i+i; j&lt;=n;j+=i)&#123;</span><br><span class="line">                    check[j] = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                sum++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(sum);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -300,8 +300,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
         "image": "http://gwanhyeon.github.io",
         "keywords": "알고리즘 프로그래머스 소수",
         "genre": "Programmers",
-        "datePublished": "2020-09-19",
-        "dateCreated": "2020-09-19",
+        "datePublished": "2020-09-06",
+        "dateCreated": "2020-09-06",
         "dateModified": "2020-09-19",
         "url": "http://gwanhyeon.github.io/prime-number/",
         "description": "1.  문제 링크
@@ -316,7 +316,7 @@ n은 2이상 1000000이하의 자연수입니다.
 
 에라토스테네스의 체를 사용합니다.
 일반 ",
-        "wordCount": 806
+        "wordCount": 802
     }
 </script>
 
@@ -359,10 +359,20 @@ n은 2이상 1000000이하의 자연수입니다.
         
 <nav id="article-nav">
     
+        <a href="/leap-year/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            프로그래머스 윤년
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
     
-        <a href="/baby-shark/" id="article-nav-older" class="article-nav-link-wrap">
+    
+        <a href="/string-p-y-number/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">삼성 SW 역량테스트 백준 아기상어 16236</p>
+        <p class="article-nav-title">프로그래머스 문자열내 p와 y의 개수</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -380,15 +390,6 @@ n은 2이상 1000000이하의 자연수입니다.
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/programmers/">Programmers</a></p>
-                            <p class="item-title"><a href="/prime-number/" class="title">프로그래머스 소수</a></p>
-                            <p class="item-date"><time datetime="2020-09-19T04:52:40.000Z" itemprop="datePublished">2020-09-19</time></p>
-                        </div>
-                    </li>
                 
                     <li>
                         
@@ -423,6 +424,15 @@ n은 2이상 1000000이하의 자연수입니다.
                             <p class="item-category"><a class="article-category-link" href="/categories/programmers/">Programmers</a></p>
                             <p class="item-title"><a href="/divisor-number-array/" class="title">프로그래머스 나누어 떨어지는 숫자 배열</a></p>
                             <p class="item-date"><time datetime="2020-09-18T12:23:34.000Z" itemprop="datePublished">2020-09-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/kotlin/">Kotlin</a></p>
+                            <p class="item-title"><a href="/datatype-03/" class="title">03.Kotlin Data Types</a></p>
+                            <p class="item-date"><time datetime="2020-09-16T15:38:56.000Z" itemprop="datePublished">2020-09-17</time></p>
                         </div>
                     </li>
                 
