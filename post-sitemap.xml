@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/reactive-programming-section02/</loc>
+        <lastmod>2020-09-19T05:13:01.689Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/prime-number/</loc>
         <lastmod>2020-09-19T05:11:26.524Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -42,14 +50,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/baby-shark/</loc>
         <lastmod>2020-09-18T16:50:11.668Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/reactive-programming-section02/</loc>
-        <lastmod>2020-09-18T15:07:00.412Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

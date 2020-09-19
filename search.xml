@@ -92,7 +92,7 @@
 <tbody>
 <tr>
 <td>onSubscribe</td>
-<td>데이터 통지가 준배됐음을 통지</td>
+<td>데이터 통지가 준비됐음을 통지</td>
 </tr>
 <tr>
 <td>onNext</td>
