@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/sw%25EC%2597%25AD%25EB%259F%2589%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8/</loc>
+        <lastmod>2020-09-19T05:34:06.605Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/rxjava/</loc>
         <lastmod>2020-09-19T05:13:01.689Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,13 +24,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/programmers/</loc>
         <lastmod>2020-09-19T05:11:26.524Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/sw%25EC%2597%25AD%25EB%259F%2589%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8/</loc>
-        <lastmod>2020-09-18T16:50:11.668Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
