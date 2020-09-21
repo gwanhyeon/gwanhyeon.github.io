@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/chicken-delivery/</loc>
+        <lastmod>2020-09-21T10:42:08.502Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/caesar-password/</loc>
         <lastmod>2020-09-21T09:07:14.819Z</lastmod>
         <changefreq>weekly</changefreq>
