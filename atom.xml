@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2020-09-22T06:49:00.557Z</updated>
+  <updated>2020-09-22T12:38:25.490Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>프로그래머스 멀쩡한 사각형</title>
+    <link href="http://gwanhyeon.github.io/good-shape-sqaure/"/>
+    <id>http://gwanhyeon.github.io/good-shape-sqaure/</id>
+    <published>2020-09-22T12:30:28.000Z</published>
+    <updated>2020-09-22T12:38:25.490Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1><p><a href="https://programmers.co.kr/learn/courses/30/lessons/62048?language=java#" target="_blank" rel="noopener">프로그래머스 멀쩡한 사각형</a></p><h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1><p>가로 길이가 Wcm, 세로 길이가 Hcm인 직사각형 종이가 있습니다. 종이에는 가로, 세로 방향과 평행하게 격자 형태로 선이 그어져 있으며, 모든 격자칸은 1cm x 1cm 크기입니다. 이 종이를 격자 선을 따라 1cm × 1cm의 정사각형으로 잘라 사용할 예정이었는데, 누군가가 이 종이를 대각선 꼭지점 2개를 잇는 방향으로 잘라 놓았습니다. 그러므로 현재 직사각형 종이는 크기가 같은 직각삼각형 2개로 나누어진 상태입니다. 새로운 종이를 구할 수 없는 상태이기 때문에, 이 종이에서 원래 종이의 가로, 세로 방향과 평행하게 1cm × 1cm로 잘라 사용할 수 있는 만큼만 사용하기로 하였습니다.<br>가로의 길이 W와 세로의 길이 H가 주어질 때, 사용할 수 있는 정사각형의 개수를 구하는 solution 함수를 완성해 주세요.</p><h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1><ul><li>유클리드 알고리즘&quot; 원리. 임의의 두 자연수 a, b가 주어졌을때. 둘중 큰 값이 a라고 가정해보겠습니다. n이 0일때, b가 최대 공약수(GCD)입니다. 즉, 최대공약수(GCD)를 구하는 방식을 알고있어야합니다.<br>gcd(greatest common divisor)는 최대공약수의 약자인데요 최대 공약수는 어떻게 구할수 있을까요?</li></ul><blockquote><p>최대공약수 구하기<br>예를 들면 12,8 이라는 숫자가 있다고 가정하겠습니다. 이것의 숫자의 최대 공약수는 어떻게 될까요? 작은숫자이기 때문에 최대공약수는 4라고 하는것을 쉽게 알 수 있을것입니다.<br>하지만 값이 더 커질때는 암산으로 하기에는 힘든감이 있겠죠?<br>일단, 12와 8의 값의 최대 공약수를 구해보겠습니다. 12를 w, 8을 h라고 가정하겠습니다.<br>최대 공약수는 (h, w%h)의 값으로 구할 수 있습니다.</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">12</span>, <span class="number">8</span></span><br><span class="line"><span class="number">8</span>, <span class="number">4</span>(<span class="number">12</span>를 <span class="number">8</span>로 나눈 나머지)</span><br><span class="line"><span class="number">4</span>, <span class="number">0</span>(<span class="number">8</span>을 <span class="number">4</span>로 나눈나머지)</span><br></pre></td></tr></table></figure><blockquote><p>사각형의 넓이를 구하기<br>사각형의 넓이는 너비 * 높이로 구할 수 있습니다.</p></blockquote><blockquote><p>대각선방향으로 자르는 정사각형의 개수는 어떻게 구할 수 있나요?<br><code>전체 사각형 넓이 -(너비 + 높이) + 최대 공약수</code><br>의 값으로 정답을 노출해낼 수 있습니다.</p></blockquote><blockquote><p>W,H의 제한<br>W와 H의 제한은 1억이하의 자연수입니다. 따라서 long타입으로 조금 더 넓은 범위로 연산이 가능하게 하였습니다.</p></blockquote><h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> w,<span class="keyword">int</span> h)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(h == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> gcd(h, w % h);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span> w, <span class="keyword">int</span> h)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> gcd_num = gcd(w,h);</span><br><span class="line">        <span class="keyword">long</span> squreArea = (<span class="keyword">long</span>)w * (<span class="keyword">long</span>)h;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">long</span> answer = squreArea - ((<span class="keyword">long</span>)w + (<span class="keyword">long</span> )h) + gcd_num;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;munje-ringkeu&quot;&gt;&lt;a href=&quot;#munje-ringkeu&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#문제-링크&quot;&gt;&lt;/a&gt; 문제 링크&lt;/h1&gt;
+&lt;p&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
+    
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="수학" scheme="http://gwanhyeon.github.io/tags/%EC%88%98%ED%95%99/"/>
+    
+  </entry>
   
   <entry>
     <title>백준 숫자카드 10815</title>
@@ -107,9 +138,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="문자열" scheme="http://gwanhyeon.github.io/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/"/>
     
@@ -199,9 +230,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
     
@@ -232,9 +263,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
     
@@ -384,9 +415,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -415,9 +446,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="해시" scheme="http://gwanhyeon.github.io/tags/%ED%95%B4%EC%8B%9C/"/>
     
@@ -446,9 +477,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -477,9 +508,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
@@ -507,9 +538,9 @@
       <category term="SPRING/SPRINGBOOT" scheme="http://gwanhyeon.github.io/categories/spring-springboot/"/>
     
     
-      <category term="springMVC" scheme="http://gwanhyeon.github.io/tags/springmvc/"/>
-    
       <category term="environment" scheme="http://gwanhyeon.github.io/tags/environment/"/>
+    
+      <category term="springMVC" scheme="http://gwanhyeon.github.io/tags/springmvc/"/>
     
   </entry>
   
@@ -569,44 +600,13 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
       <category term="카카오" scheme="http://gwanhyeon.github.io/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/"/>
     
       <category term="그리디" scheme="http://gwanhyeon.github.io/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>프로그래머스 K번째수</title>
-    <link href="http://gwanhyeon.github.io/k-number/"/>
-    <id>http://gwanhyeon.github.io/k-number/</id>
-    <published>2020-09-10T03:33:33.000Z</published>
-    <updated>2020-09-16T04:46:21.577Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1><p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p><h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1><p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p><h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3><ul><li>array의 길이는 1 이상 100 이하입니다.</li><li>array의 각 원소는 1 이상 100 이하입니다.</li><li>commands의 길이는 1 이상 50 이하입니다.</li><li>commands의 각 원소는 길이가 3입니다.</li></ul><h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1><p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p><ul><li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li><li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li><li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li></ul><blockquote><p>K번째수 예시</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure><p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p><p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p><blockquote><p>시간복잡도<br>시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p></blockquote><h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;munje-ringkeu&quot;&gt;&lt;a href=&quot;#munje-ringkeu&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#문제-링크&quot;&gt;&lt;/a&gt; 문제 링크&lt;/h1&gt;
-&lt;p&gt;&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
-    
-    
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
-      <category term="정렬" scheme="http://gwanhyeon.github.io/tags/%EC%A0%95%EB%A0%AC/"/>
     
   </entry>
   
@@ -633,9 +633,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
     
   </entry>
   
