@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/country-number/</loc>
+        <lastmod>2020-09-23T12:34:18.425Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/stock-price/</loc>
         <lastmod>2020-09-23T11:01:31.676Z</lastmod>
         <changefreq>weekly</changefreq>
