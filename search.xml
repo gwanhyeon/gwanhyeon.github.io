@@ -1,50 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>프로그래머스 124나라의숫자</title>
-    <url>/country-number/</url>
-    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/12899" target="_blank" rel="noopener">프로그래머스 124 나라의 숫자 </a></p>
-<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
-<p>124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다.</p>
-<p>124 나라에는 자연수만 존재합니다.<br>
-124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다.<br>
-예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다.</p>
-<p>10진법    124 나라    10진법    124 나라<br>
-1    1    6    14<br>
-2    2    7    21<br>
-3    4    8    22<br>
-4    11    9    24<br>
-5    12    10    41<br>
-자연수 n이 매개변수로 주어질 때, n을 124 나라에서 사용하는 숫자로 바꾼 값을 return 하도록 solution 함수를 완성해 주세요.</p>
-<blockquote>
-<p>제한사항<br>
-n은 500,000,000이하의 자연수 입니다.</p>
-</blockquote>
-<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
-<p>10진법을 124나라의 진법 형식대로 변환하는 문제입니다.</p>
-<blockquote>
-<p>규칙</p>
-</blockquote>
-<ul>
-<li>규칙을 살펴보면 <code>n % 3 == 0</code>이 되는 시점에 값이 4가 되는것을 확인할 수 있습니다.</li>
-<li><code>n % 3</code>을 했을때의 나머지를 계속 앞의 값으로 넣어주면 해당되는 124나라의 숫자로 변경하는것을 확인할 수 있습니다.</li>
-<li>res값이 = 일경우 res값을 4로 갱신해주고, 종료조건을 만들어주기위해서 n을 3으로 나눈값에서 -1을 빼주게 됩니다.</li>
-<li><code>Stringbuilder를 사용한 이유</code>는  String은 새로운 값을 할당될때마다 생성되기 때문에 효율이 떨어지게 되므로, <code>Stringbuilder는 동일 객체내에서 문자열을 변경</code>하는것이 가능합니다.</li>
-<li>마지막에 reverse() 함수를 사용하여 값을 출력시킨 이유는 역순으로 값이 들어가있는 상태이기 때문입니다.</li>
-</ul>
-<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 나라의숫자124 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line">        StringBuilder answer = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> res = n % <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(res == <span class="number">0</span>)&#123;</span><br><span class="line">                res = <span class="number">4</span>;</span><br><span class="line">                n = (n/<span class="number">3</span>)-<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                n = (n/<span class="number">3</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            answer.append(Integer.toString(res));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer.reverse());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Programmers</category>
-      </categories>
-      <tags>
-        <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>프로그래머스 주식가격</title>
     <url>/stock-price/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
@@ -851,6 +807,50 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <tag>브루트포스</tag>
         <tag>삼성SW역량테스트</tag>
         <tag>BOJ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>프로그래머스 124나라의숫자</title>
+    <url>/country-number/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/12899" target="_blank" rel="noopener">프로그래머스 124 나라의 숫자 </a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다.</p>
+<p>124 나라에는 자연수만 존재합니다.<br>
+124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다.<br>
+예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다.</p>
+<p>10진법    124 나라    10진법    124 나라<br>
+1    1    6    14<br>
+2    2    7    21<br>
+3    4    8    22<br>
+4    11    9    24<br>
+5    12    10    41<br>
+자연수 n이 매개변수로 주어질 때, n을 124 나라에서 사용하는 숫자로 바꾼 값을 return 하도록 solution 함수를 완성해 주세요.</p>
+<blockquote>
+<p>제한사항<br>
+n은 500,000,000이하의 자연수 입니다.</p>
+</blockquote>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<p>10진법을 124나라의 진법 형식대로 변환하는 문제입니다.</p>
+<blockquote>
+<p>규칙</p>
+</blockquote>
+<ul>
+<li>규칙을 살펴보면 <code>n % 3 == 0</code>이 되는 시점에 값이 4가 되는것을 확인할 수 있습니다.</li>
+<li><code>n % 3</code>을 했을때의 나머지를 계속 앞의 값으로 넣어주면 해당되는 124나라의 숫자로 변경하는것을 확인할 수 있습니다.</li>
+<li>res값이 = 일경우 res값을 4로 갱신해주고, 종료조건을 만들어주기위해서 n을 3으로 나눈값에서 -1을 빼주게 됩니다.</li>
+<li><code>Stringbuilder를 사용한 이유</code>는  String은 새로운 값을 할당될때마다 생성되기 때문에 효율이 떨어지게 되므로, <code>Stringbuilder는 동일 객체내에서 문자열을 변경</code>하는것이 가능합니다.</li>
+<li>마지막에 reverse() 함수를 사용하여 값을 출력시킨 이유는 역순으로 값이 들어가있는 상태이기 때문입니다.</li>
+</ul>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 나라의숫자124 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line">        StringBuilder answer = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> res = n % <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(res == <span class="number">0</span>)&#123;</span><br><span class="line">                res = <span class="number">4</span>;</span><br><span class="line">                n = (n/<span class="number">3</span>)-<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                n = (n/<span class="number">3</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            answer.append(Integer.toString(res));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer.reverse());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Programmers</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
