@@ -10,15 +10,15 @@
     
     <meta name="keywords" content="알고리즘,프로그래머스,완전탐색" />
     
-    <meta name="description" content="1.  문제 링크 1.1.  프로그래머스 카펫 문제 2.  문제 조건 문제 설명 Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다. carpet.png Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기">
+    <meta name="description" content="1.  문제 링크 1.1.  프로그래머스 카펫 문제 2.  문제 조건 문제 설명 Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다. Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기억하지 못했습니다.">
 <meta name="keywords" content="알고리즘,프로그래머스,완전탐색">
 <meta property="og:type" content="article">
 <meta property="og:title" content="프로그래머스 카펫">
 <meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%B9%B4%ED%8E%AB&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="1.  문제 링크 1.1.  프로그래머스 카펫 문제 2.  문제 조건 문제 설명 Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다. carpet.png Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기">
+<meta property="og:description" content="1.  문제 링크 1.1.  프로그래머스 카펫 문제 2.  문제 조건 문제 설명 Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다. Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기억하지 못했습니다.">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-10-09T08:24:26.211Z">
+<meta property="og:updated_time" content="2020-10-09T08:28:19.645Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -199,7 +199,6 @@ ga('send', 'pageview');
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
 <p>문제 설명<br>
 Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다.</p>
-<p>carpet.png</p>
 <p>Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기억하지 못했습니다.</p>
 <p>Leo가 본 카펫에서 갈색 격자의 수 brown, 노란색 격자의 수 yellow가 매개변수로 주어질 때 카펫의 가로, 세로 크기를 순서대로 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
 <h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
@@ -231,7 +230,7 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
 </ul>
 <hr>
 <h2 id="puli"><a href="#puli" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs-puli"><a href="#dfs-puli" class="header-anchor">2.2.1. </a><a class="markdownIt-Anchor" href="#dfs-풀이"></a> DFS 풀이</h3>
+<h3 id="wanjeontamsaeg-puli"><a href="#wanjeontamsaeg-puli" class="header-anchor">2.2.1. </a><a class="markdownIt-Anchor" href="#완전탐색-풀이"></a> 완전탐색 풀이</h3>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 카펫 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] answer = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> brown = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">int</span> yellow = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=yellow; i &gt;= (yellow/i); i--)&#123;</span><br><span class="line">            <span class="comment">// 나눠지는값이 아니면분리 못</span></span><br><span class="line">            <span class="keyword">if</span>(yellow % i != <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 가로 2배, 세로2배 모서리 4개 추가</span></span><br><span class="line">            <span class="keyword">if</span>(((<span class="number">2</span>*i)+(<span class="number">2</span>*(yellow/i)) + <span class="number">4</span>) == brown)&#123;</span><br><span class="line">                answer[<span class="number">0</span>] = <span class="number">2</span>+i;        <span class="comment">// 가로 + 2 끝점</span></span><br><span class="line">                answer[<span class="number">1</span>] = (<span class="number">2</span>+(yellow/i)); <span class="comment">// 세로 +2 끝점</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer[<span class="number">0</span>] + <span class="string">""</span>+ answer[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -316,8 +315,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
 2.  문제 조건
 문제 설명
 Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다.
-carpet.png
-Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기",
+Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기억하지 못했습니다.
+",
         "wordCount": 664
     }
 </script>
