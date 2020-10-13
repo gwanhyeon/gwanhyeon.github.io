@@ -8,8 +8,8 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/bignumber/</loc>
-        <lastmod>2020-10-09T08:57:49.286Z</lastmod>
+        <loc>http://gwanhyeon.github.io/house-steal/</loc>
+        <lastmod>2020-10-13T13:31:32.748Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +17,15 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%B9%B4%ED%8E%AB/</loc>
-        <lastmod>2020-10-09T08:28:19.645Z</lastmod>
+        <lastmod>2020-10-09T08:57:53.411Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/bignumber/</loc>
+        <lastmod>2020-10-09T08:57:49.286Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
