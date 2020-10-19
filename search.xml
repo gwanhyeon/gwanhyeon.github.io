@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>백준 수 이어쓰기1 1748</title>
+    <url>/number-inheritance1/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<h2 id="baegjun-su-ieosseugi1-1748-munje"><a href="#baegjun-su-ieosseugi1-1748-munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#백준-수-이어쓰기1-1748-문제"></a> <a href="https://www.acmicpc.net/problem/1748" target="_blank" rel="noopener">백준 수 이어쓰기1 1748 문제</a></h2>
+<h3 id="munje"><a href="#munje" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
+<p>1부터 N까지의 수를 이어서 쓰면 다음과 같이 새로운 하나의 수를 얻을 수 있다.</p>
+<p>1234567891011121314151617181920212223…</p>
+<p>이렇게 만들어진 새로운 수는 몇 자리 수일까? 이 수의 자릿수를 구하는 프로그램을 작성하시오.</p>
+<h3 id="ibryeog"><a href="#ibryeog" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#입력"></a> 입력</h3>
+<p>첫째 줄에 N(1≤N≤100,000,000)이 주어진다.</p>
+<h3 id="culryeog"><a href="#culryeog" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#출력"></a> 출력</h3>
+<p>첫째 줄에 새로운 수의 자릿수를 출력한다.</p>
+<h3 id="yeje-ibryeog-1"><a href="#yeje-ibryeog-1" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#예제-입력-1"></a> 예제 입력 1</h3>
+<p>120</p>
+<h3 id="yeje-culryeog-1"><a href="#yeje-culryeog-1" class="header-anchor">1.1.5. </a><a class="markdownIt-Anchor" href="#예제-출력-1"></a> 예제 출력 1</h3>
+<h2 id="252"><a href="#252" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#252"></a> 252</h2>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>1~N까지의 값을 수를 이어서 쓰면 하나의 수를 얻을때 몇자리수인지를 구하는문제입니다.<br>
+알고리즘 사고를 말하기 앞서, String VS StringBuilder, StringBuffer의 차이를 확인하고 지나가겠습니다.</li>
+</ul>
+<blockquote>
+<p>String VS StringBuilder, StringBuffer<br>
+String 클래스 불변 객체이기 때문에 문자열 연산에서 객체를 계속 생성하므로 성능이 떨어지지만 조회와 멀티스레드 환경에서 큰 이점을 가지고 있습니다.</p>
+</blockquote>
+<p>이에 반해,StringBuffer 클래스와 StringBuilder 클래스는 문자열 연산이 자주 발생할 때 문자열이 변경가능한 객체이므로 이점을 가지고 있습니다.</p>
+<p>즉, StringBuffer와 StringBuilder 차이점은 동기화 지원 유무이고 동기화를 고려하지 않는 환경에서 StringBuilder가 성능이 더 좋고, 동기화 멀티스레드 환경에서는 StringBuffer을 사용하는것이 좋습니다.</p>
+<blockquote>
+<p>브루트 포스?<br>
+N의 범위를 살펴보면 <code>N(1≤N≤100,000,000)</code> 의 조건을 가지고 있습니다. 1초에 1억까지 연산이 가능하므로 1초안에 처리 될 수 있어야합니다.</p>
+</blockquote>
+<p>즉, 모든 경우의 수를 O(N)만큼 진행하면 브루트포스로 진행이 가능하지만, 문자열 연산에서 시간복잡도는 O(N) * 10까지 진행될 수 있습니다. 그 이유는 10은 수의 최대 자릿수를 의미하기 때문에 N의 시간복잡도를 넘어버리게 됩니다. 문자열 String은 새로운 객체를 계속해서 생성하기때문에 압도적으로 시간복잡도가 증가하는 경우가 될 수 있습니다.</p>
+<p>따라서, 일반적인 브루트포스방법으로는 모든  N까지를 진행하게 되면 시간초과가 나게 됩니다. 그렇기 때문에 다른 방법을 고안할 수 있어야합니다.</p>
+<blockquote>
+<p>다른 방법은 무엇일까?<br>
+수학적 연산의 방법을 살펴보면 수의 자리수별로 나누어서 문제를 해결 할 수 있습니다.<br>
+만약 N = 120이라고 생각하면</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>~<span class="number">9</span> 길이 <span class="number">1</span></span><br><span class="line">(<span class="number">9</span>-<span class="number">1</span>+<span class="number">1</span>) * <span class="number">1</span> </span><br><span class="line"><span class="number">10</span>~<span class="number">99</span> 길이 <span class="number">2</span></span><br><span class="line">(<span class="number">99</span>-<span class="number">10</span>+<span class="number">1</span>) * <span class="number">2</span></span><br><span class="line"><span class="number">100</span>~<span class="number">120</span> 길이 <span class="number">3</span></span><br><span class="line">(<span class="number">120</span>-<span class="number">100</span>+<span class="number">1</span>) * <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>의 규칙을 찾아낼 수 있습니다. 수의 각 자리별로 나누어서 자리수를 문제를 해결 할 수 있습니다.</p>
+<p><code>결과적으로, (N의자리 최대값 - N자리 최솟값 + 1) * 자리수(N자리수 길이)</code> 으로 자리수를 구할 수 있게됩니다.</p>
+<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">자리수 찾기문제</span></span><br><span class="line"><span class="comment">1234567891011 와같이 수를 이어붙이면 브루트포스로 처리하면 O(N) * 10(자리수)의 시간복잡도가 발생하므로 시간초과가 발생합니다.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 수이어쓰기1 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">int</span> n = Integer.parseInt(br.readLine());</span><br><span class="line">        <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i*=<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> j = i*<span class="number">10</span>-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(j &gt; n)&#123;</span><br><span class="line">                j = n;</span><br><span class="line">            &#125;</span><br><span class="line">            ans += (<span class="keyword">long</span>)(j - i + <span class="number">1</span>) * len;</span><br><span class="line">            len++;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(ans);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
+        <tag>연산</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 체스판 다시칠하기 1018</title>
     <url>/chess-repaint/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
@@ -229,8 +283,8 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>dp</tag>
         <tag>다이나믹프로그래밍</tag>
       </tags>
@@ -265,8 +319,8 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>DFS</tag>
         <tag>그리디</tag>
       </tags>
@@ -317,8 +371,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>완전탐색</tag>
       </tags>
   </entry>
@@ -355,8 +409,8 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -400,8 +454,8 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>수학</tag>
       </tags>
   </entry>
@@ -566,8 +620,8 @@ n은 1 이상, 25이하인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>문자열</tag>
       </tags>
   </entry>
@@ -825,8 +879,8 @@ N = 20이하 이므로 O(N^4) = 약 16만</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>정렬</tag>
         <tag>문자열</tag>
       </tags>
@@ -852,8 +906,8 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
   </entry>
@@ -1171,8 +1225,8 @@ n은 500,000,000이하의 자연수 입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -1256,8 +1310,8 @@ n은 500,000,000이하의 자연수 입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -1299,8 +1353,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>해시</tag>
       </tags>
   </entry>
@@ -1384,8 +1438,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -1456,8 +1510,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
       </tags>
   </entry>
@@ -1734,8 +1788,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>카카오</tag>
         <tag>그리디</tag>
       </tags>
@@ -1785,8 +1839,8 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -1828,8 +1882,8 @@ O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays�
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
   </entry>
@@ -2021,8 +2075,8 @@ arr = [4, 4, 4, 3, 3] 이면 [4, 3] 을 return 합니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -2061,8 +2115,8 @@ sum값에는 a월까지의 더한 값이 있다.</li>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -2105,8 +2159,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>소수</tag>
       </tags>
   </entry>
@@ -2130,8 +2184,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>문자열</tag>
       </tags>
   </entry>
@@ -2159,8 +2213,8 @@ a와 b의 대소관계는 정해져있지 않습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -2187,8 +2241,8 @@ Kim은 반드시 seoul 안에 포함되어 있습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>문자열</tag>
       </tags>
   </entry>
@@ -2212,8 +2266,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
         <tag>정렬</tag>
         <tag>문자열</tag>
       </tags>
@@ -3065,9 +3119,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -3109,9 +3163,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -3223,9 +3277,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -3284,10 +3338,10 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>알고리즘</tag>
-        <tag>위장</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
+        <tag>위장</tag>
         <tag>해시</tag>
       </tags>
   </entry>
