@@ -4,25 +4,25 @@
     
 
     
-    <title>프로그래머스 완주하지못한 선수 | Ethan Kim IT Blog</title>
+    <title>백준 부등호 2529 | Ethan Kim IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="알고리즘,프로그래머스,해시" />
+    <meta name="keywords" content="알고리즘,백준,브루트포스,위상정렬" />
     
-    <meta name="description" content="1.  문제 링크 프로그래머스 완주하지못한 선수 2.  문제 조건 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요. 제한사항 마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이">
-<meta name="keywords" content="알고리즘,프로그래머스,해시">
+    <meta name="description" content="1.  백준 부등호 2529 문제 1.1.  문제 두 종류의 부등호 기호 ‘&amp;lt;’와 ‘&amp;gt;’가 k개 나열된 순서열  A가 있다. 우리는 이 부등호 기호 앞뒤에 서로 다른 한 자릿수 숫자를 넣어서 모든 부등호 관계를 만족시키려고 한다. 예를 들어, 제시된 부등호 순서열 A가 다음과 같다고 하자. A =&amp;gt; &amp;lt; &amp;lt; &amp;lt; &amp;gt; &amp;lt">
+<meta name="keywords" content="알고리즘,백준,브루트포스,위상정렬">
 <meta property="og:type" content="article">
-<meta property="og:title" content="프로그래머스 완주하지못한 선수">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;uncompleted-player&#x2F;index.html">
+<meta property="og:title" content="백준 부등호 2529">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;inequality-sign&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="1.  문제 링크 프로그래머스 완주하지못한 선수 2.  문제 조건 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요. 제한사항 마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이">
+<meta property="og:description" content="1.  백준 부등호 2529 문제 1.1.  문제 두 종류의 부등호 기호 ‘&amp;lt;’와 ‘&amp;gt;’가 k개 나열된 순서열  A가 있다. 우리는 이 부등호 기호 앞뒤에 서로 다른 한 자릿수 숫자를 넣어서 모든 부등호 관계를 만족시키려고 한다. 예를 들어, 제시된 부등호 순서열 A가 다음과 같다고 하자. A =&amp;gt; &amp;lt; &amp;lt; &amp;lt; &amp;gt; &amp;lt">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-09-16T08:06:02.072Z">
+<meta property="og:updated_time" content="2020-10-20T09:52:09.442Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/uncompleted-player/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/inequality-sign/"/>
     
 
     
@@ -149,19 +149,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/programmers/">Programmers</a>
+    <a class="page-title-link" href="/categories/boj/">BOJ</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-uncompleted-player" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-inequality-sign" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        프로그래머스 완주하지못한 선수
+        백준 부등호 2529
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/uncompleted-player/" class="article-date">
-         <time datetime="2020-09-11T13:31:51.000Z" itemprop="datePublished">2020-09-11</time>
+      <a href="/inequality-sign/" class="article-date">
+         <time datetime="2020-10-20T09:38:18.000Z" itemprop="datePublished">2020-10-20</time>
       </a>
     </div>
 
@@ -183,7 +183,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>, <a class="tag-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a>, <a class="tag-link" href="/tags/%ED%95%B4%EC%8B%9C/" rel="tag">해시</a>
+        <a class="tag-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a>, <a class="tag-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a>, <a class="tag-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>, <a class="tag-link" href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" rel="tag">위상정렬</a>
     </div>
 
                 
@@ -194,36 +194,49 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42576?language=java" target="_blank" rel="noopener">프로그래머스 완주하지못한 선수</a></p>
-<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
-<p>마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.</p>
-<p>제한사항<br>
-마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.<br>
-completion의 길이는 participant의 길이보다 1 작습니다.<br>
-참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.<br>
-참가자 중에는 동명이인이 있을 수 있습니다.</p>
-<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
-<p>이 문제에 있어서 가장 중요했던 점은 hashmap을 사용할 수 있는지 여부를 확인하는 문제였습니다. 참가자와 완주자의 명단이 주어졌을때 완주자의 명단을 Key, 완주자의 등장횟수를 Value로 두면 쉽게 풀 수 있습니다.</p>
+            <h2 id="baegjun-budeungho-2529-munje"><a href="#baegjun-budeungho-2529-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-부등호-2529-문제"></a> <a href="https://www.acmicpc.net/problem/2529" target="_blank" rel="noopener">백준 부등호 2529 문제</a></h2>
+<h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
+<p>두 종류의 부등호 기호 ‘&lt;’와 ‘&gt;’가 k개 나열된 순서열  A가 있다. 우리는 이 부등호 기호 앞뒤에 서로 다른 한 자릿수 숫자를 넣어서 모든 부등호 관계를 만족시키려고 한다. 예를 들어, 제시된 부등호 순서열 A가 다음과 같다고 하자.</p>
+<p><code>A =&gt; &lt; &lt; &lt; &gt; &lt; &lt; &gt; &lt; &gt;</code></p>
+<p>부등호 기호 앞뒤에 넣을 수 있는 숫자는 0부터 9까지의 정수이며 선택된 숫자는 모두 달라야 한다. 아래는 부등호 순서열 A를 만족시키는 한 예이다.</p>
+<p><code>3 &lt; 4 &lt; 5 &lt; 6 &gt; 1 &lt; 2 &lt; 8 &gt; 7 &lt; 9 &gt; 0</code></p>
+<p>이 상황에서 부등호 기호를 제거한 뒤, 숫자를 모두 붙이면 하나의 수를 만들 수 있는데 이 수를 주어진 부등호 관계를 만족시키는 정수라고 한다. 그런데 주어진 부등호 관계를 만족하는 정수는 하나 이상 존재한다. 예를 들어 3456128790 뿐만 아니라 5689023174도 아래와 같이 부등호 관계 A를 만족시킨다.</p>
+<p><code>5 &lt; 6 &lt; 8 &lt; 9 &gt; 0 &lt; 2 &lt; 3 &gt; 1 &lt; 7 &gt; 4</code></p>
+<p>여러분은 제시된 k개의 부등호 순서를 만족하는 (k+1)자리의 정수 중에서 최댓값과 최솟값을 찾아야 한다. 앞서 설명한 대로 각 부등호의 앞뒤에 들어가는 숫자는 { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }중에서 선택해야 하며 선택된 숫자는 모두 달라야 한다.</p>
+<h3 id="ibryeog"><a href="#ibryeog" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#입력"></a> 입력</h3>
+<p>첫 줄에 부등호 문자의 개수를 나타내는 정수 k가 주어진다. 그 다음 줄에는 k개의 부등호 기호가 하나의 공백을 두고 한 줄에 모두 제시된다. k의 범위는 2 ≤ k ≤ 9 이다.</p>
+<h3 id="culryeog"><a href="#culryeog" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#출력"></a> 출력</h3>
+<p>여러분은 제시된 부등호 관계를 만족하는 k+1 자리의 최대, 최소 정수를 첫째 줄과 둘째 줄에 각각 출력해야 한다. 단 아래 예(1)과 같이 첫 자리가 0인 경우도 정수에 포함되어야 한다. 모든 입력에 답은 항상 존재하며 출력 정수는 하나의 문자열이 되도록 해야 한다.</p>
+<h3 id="yeje-ibryeog-1"><a href="#yeje-ibryeog-1" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#예제-입력-1"></a> 예제 입력 1</h3>
+<p>2<br>
+&lt; &gt;</p>
+<h3 id="yeje-culryeog-1"><a href="#yeje-culryeog-1" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#예제-출력-1"></a> 예제 출력 1</h3>
+<p>897<br>
+021</p>
+<hr>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>부등호의 개수가 주어지고 0~9까지의 값들을 가지고 해당 부등호 조건들이 만족하는 값들을 찾아 최댓값, 최솟값을 찾는 문제입니다.</li>
+<li>선택된 숫자는 <code>모두 달라야하기때문에</code> 값들을 <code>체킹하는 변수</code>가 필요해 보입니다. 그렇기 때문에 <code>순열</code>을 사용하면 되겠다 라는 생각을 하게 되었습니다.</li>
+<li>K개의 부등호의 개수는 0~9까지의 값중 K+1개를 선택할 수 있는것과 같은 의미입니다.</li>
+</ul>
+<p>입력으로 주어진 부등호 <code>&gt;, &lt;</code>에 따라 값 a,b가 만족하는지 찾는 함수가 필요합니다. 그리고 idx값이 0일때나 부등호가 성립하는경우에만 브루트포스를 사용하여 값을 순회합니다.<code>idx값이 0일때 브루트포스를 순회하는 이유</code>는 맨처음 문자열값이 <code>&quot;&quot;으로 호출을 진행하기 때문에 이것에 대한 예외처리</code>를 해준 것입니다.</p>
 <blockquote>
-<p>완주자의 명단을 HashMap에 저장하기<br>
-완주자의 명단을 HashMap에 저장합니다. 예를 들면, 참가자[leo, kiki, eden]  완주자  [eden, kiki]의 값이 주어졌다고 생각을 하겠습니다. 완주자 &lt;eden, 1&gt;, &lt;kiki,1&gt;의 값으로 저장시킵니다.</p>
+<p>문자열 완전탐색 문제는 어떻게 풀까?</p>
+</blockquote>
+<ul>
+<li>문제마다 다를 수 있겠지만 보통 <code>브루트포스 문자열관련 문제가 나오게 되면 DFS호출시 문자열을 더하고 빼주는 형식</code>으로 진행하는 것이 깔끔하고 구현이 더 쉽다고 생각합니다. 맨 처음에 문자열을 더하고 빼주는 형식으로 진행하지 않고 <code>Basement조건이 만족했을때(return 조건)</code> 처리를 하게 되면 복잡함을 느낄 수 있었습니다.</li>
+</ul>
+<blockquote>
+<p>Basement 만족시<br>
+K+1개를 선택하여 DFS를 통해 모든 조건을 구하였던 문자열 값을 answer에 모든 값을 담아주게 하였습니다.</p>
 </blockquote>
 <blockquote>
-<p>참가자의 명단에서 참가했지만 완주하지 못한 선수 찾아내기<br>
-완주한 명단 즉, 완주한 사람의 이름 Key값이 참가자의 명단에 없을 경우 그 사람은 참가는 했지만 완주하지 못한 경우가 됩니다.</p>
+<p>최댓값, 최솟값<br>
+문제에서 최댓값, 최솟값을 찾는 문제이므로 <code>Collections.sort()</code>함수를 사용하여 <code>맨 앞(index=0), 맨뒤(answer.size()-1)</code>의 값을 출력시켜주면 값을 도출해날 수 있습니다.</p>
 </blockquote>
-<blockquote>
-<p>동명이인 찾아내기<br>
-레오가 두명이 등장하는 참가자 [leo, leo, kiki, eden] 완주자[leo, eden, kiki] 라고 가정하겠습니다. 레오 같은 경우는 완주자의 명단에는 한명이 존재하고 참가자의 명단에는 두명이 존재하게됩니다. 즉, 완주자 1명, 참가자 2명이기때문에 레오의 동명이인이 참가자이지만 완주자의 명단에 오르지 못했다는것을 알 수 있습니다.</p>
-</blockquote>
-<blockquote>
-<p>이것을 소스코드로 어떻게 표현했을까요<br>
-? leo의 키값을 찾은 후에 leo의 등장하면 현재 Hashmap 즉, 완주자 명단에 있는 value의 값을 가져오게 됩니다. 그중에서 leo라는 값이 두번등장하게 되면 음수값이 되므로 결국 leo는 동명이인이며 2명중 1명만 참가하는것이 됩니다.</p>
-</blockquote>
-<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">solution</span><span class="params">(String[] participant, String[] completion)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Integer&gt; m = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        String answer = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;completion.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!m.containsKey(completion[i]))&#123;</span><br><span class="line">                m.put(completion[i],<span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> tmp = m.get(completion[i]);</span><br><span class="line">                m.put(completion[i], tmp+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;participant.length; i++)&#123;</span><br><span class="line">            <span class="comment">// 완주자와 참가명단에서 못찾았으면</span></span><br><span class="line">            <span class="keyword">if</span>(!m.containsKey(participant[i]))&#123;</span><br><span class="line">                answer = participant[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 동명이인일 경우 값을 하나씩 줄였을때 0보다 작으면 그 사람이 완주자, 동명이인 체크해주기</span></span><br><span class="line">                <span class="keyword">int</span> tmp = m.get(participant[i]);</span><br><span class="line">                m.put(participant[i],tmp-<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span>(m.get(participant[i])&lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    answer = participant[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">solution</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; participant, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; completion)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">string</span> answer = <span class="string">""</span>;</span><br><span class="line">     <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;completion.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="comment">// 완주자 없는 경우</span></span><br><span class="line">        <span class="keyword">if</span>(m.<span class="built_in">find</span>(completion[i]) == m.<span class="built_in">end</span>())&#123;</span><br><span class="line">            m.insert(make_pair(completion[i], <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 완주자 있는 경우</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 완주자 수 카운팅</span></span><br><span class="line">            m[completion[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;participant.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="comment">// 완주자와 참가자 명단에서 못찾았을 경우</span></span><br><span class="line">        <span class="keyword">if</span>(m.<span class="built_in">find</span>(participant[i]) == m.<span class="built_in">end</span>())&#123;</span><br><span class="line">            answer = participant[i];        <span class="comment">// 못찾은 사람이 정답</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 동명이인일 경우 값을 하나씩 줄였을때 0보다 작으면 그 사람이 완주자, 동명이인 체크해주기</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            m[participant[i]]--;</span><br><span class="line">            <span class="keyword">if</span>(m[participant[i]] &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                answer = participant[i];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;       </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> answer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 부등호문제 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span>[] check;</span><br><span class="line">    <span class="keyword">static</span> ArrayList&lt;String&gt; answer;</span><br><span class="line">    <span class="keyword">static</span> String inequality_sign = <span class="string">""</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">int</span> k = Integer.parseInt(br.readLine());</span><br><span class="line">        StringTokenizer st = <span class="keyword">new</span> StringTokenizer(br.readLine(),<span class="string">" "</span>);</span><br><span class="line">        check = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">10</span>];</span><br><span class="line">        answer = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;k; i++)&#123;</span><br><span class="line">            inequality_sign += st.nextToken();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        dfs(<span class="string">""</span>, <span class="number">0</span>, k);</span><br><span class="line">        Collections.sort(answer);</span><br><span class="line"></span><br><span class="line">        System.out.println(answer.get(answer.size()-<span class="number">1</span>) + <span class="string">"\n"</span> + answer.get(<span class="number">0</span>) + <span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(String s, <span class="keyword">int</span> idx, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// basement</span></span><br><span class="line">        <span class="keyword">if</span>(idx == k+<span class="number">1</span>)&#123;</span><br><span class="line">            answer.add(s);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(check[i])&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(idx == <span class="number">0</span> || inequality_check(s.charAt(idx-<span class="number">1</span>), (i+<span class="string">'0'</span>), inequality_sign.charAt(idx-<span class="number">1</span>)))&#123;</span><br><span class="line">                check[i] = <span class="keyword">true</span>;</span><br><span class="line">                dfs(s+String.valueOf(i), idx+<span class="number">1</span>, k);</span><br><span class="line">                check[i] = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 부등호 체크 함수</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">inequality_check</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b,<span class="keyword">char</span> cal)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cal == <span class="string">'&lt;'</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a &gt; b)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cal == <span class="string">'&gt;'</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a &lt; b)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -294,21 +307,19 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
             "@type": "Person",
             "name": "Ethan Kim"
         },
-        "headline": "프로그래머스 완주하지못한 선수",
+        "headline": "백준 부등호 2529",
         "image": "http://gwanhyeon.github.io",
-        "keywords": "알고리즘 프로그래머스 해시",
-        "genre": "Programmers",
-        "datePublished": "2020-09-11",
-        "dateCreated": "2020-09-11",
-        "dateModified": "2020-09-16",
-        "url": "http://gwanhyeon.github.io/uncompleted-player/",
-        "description": "1.  문제 링크
-프로그래머스 완주하지못한 선수
-2.  문제 조건
-마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
-제한사항
-마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이",
-        "wordCount": 1157
+        "keywords": "알고리즘 백준 브루트포스 위상정렬",
+        "genre": "BOJ",
+        "datePublished": "2020-10-20",
+        "dateCreated": "2020-10-20",
+        "dateModified": "2020-10-20",
+        "url": "http://gwanhyeon.github.io/inequality-sign/",
+        "description": "1.  백준 부등호 2529 문제
+1.1.  문제
+두 종류의 부등호 기호 ‘&lt;’와 ‘&gt;’가 k개 나열된 순서열  A가 있다. 우리는 이 부등호 기호 앞뒤에 서로 다른 한 자릿수 숫자를 넣어서 모든 부등호 관계를 만족시키려고 한다. 예를 들어, 제시된 부등호 순서열 A가 다음과 같다고 하자.
+A =&gt; &lt; &lt; &lt; &gt; &lt",
+        "wordCount": 1217
     }
 </script>
 
@@ -351,20 +362,10 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         
 <nav id="article-nav">
     
-        <a href="/failure-rate/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            프로그래머스 실패율
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/open-chat-room/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/number-inheritance1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">프로그래머스 오픈채팅방</p>
+        <p class="article-nav-title">백준 수 이어쓰기1 1748</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -525,7 +526,7 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/uncompleted-player/';
+    var disqus_url = 'http://gwanhyeon.github.io/inequality-sign/';
     
     (function() {
     var dsq = document.createElement('script');
