@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  그래프 그래프의 정의를 살펴보면 G=(V,E)가 성립하게 됩니다. G: 그래프, V: 정점, E: 간선을 의미합니다. 2.  경로 만약 A-&amp;gt;C, A-&amp;gt;B, C-&amp;gt;B, E-&amp;gt;B, C-&amp;gt;E, C-&amp;gt;D, D-&amp;gt;E의 정점과 간선으로 연결된 그래프가 있다고 생각하겠습니다. 이때 정점 A-&amp;gt;B로 가는 경로는 몇가지">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-10-21T13:29:41.534Z">
+<meta property="og:updated_time" content="2020-10-21T16:50:36.092Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -241,8 +241,7 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
 <p><code>시간복잡도의 차이점</code>으로는 인접 리스트로 표현된 <code>그래프: O(V+E), 인접 행렬로 표현된 그래프: O(V^2)</code>로 나타낼 수 있습니다.</p>
 <p>즉, 그래프 내에 적은 숫자의 간선만을 가지는 희소 그래프의 경우 <code>인접 행렬보다 인접 리스트</code>를 사용하는 것이 <code>시간복잡도면</code>에서 뛰어납니다.</p>
 <h1 id="gipi-useon-tamsaeg-dfs"><a href="#gipi-useon-tamsaeg-dfs" class="header-anchor">12. </a><a class="markdownIt-Anchor" href="#깊이-우선-탐색dfs"></a> 깊이 우선 탐색(DFS)</h1>
-<p>DFS는 말 그대로 깊이우선 계속해서 값이 있으면 최대깊이까지 들어가는것을 뜻합니다.<br>
-Stack이나 Recursive를 이용해서 갈 수 있는 만큼 최대 -&gt; 갈수 없으면 이전 정점으로 돌아감.</p>
+<p>DFS는 말 그대로 깊이를 우선탐색하는 기법입니다. 진행시 깊이우선 계속해서 값이 있으면 최대깊이까지 들어가는것을 뜻합니다. 구현은 <code>Stack이나 Recursive</code>를 이용해서 갈 수 있는 만큼 최대 -&gt; 갈수 없으면 이전 정점으로 돌아갑니다.</p>
 <h1 id="neolbi-useon-tamsaeg-bfs"><a href="#neolbi-useon-tamsaeg-bfs" class="header-anchor">13. </a><a class="markdownIt-Anchor" href="#넓이-우선-탐색bfs"></a> 넓이 우선 탐색(BFS)</h1>
 <p>BFS는 <code>하나의 정점에서 갈 수 있는 모든정점을 방문</code>하고 <code>다음 깊이</code>로 들어가게 됩니다.<br>
 큐를 이용하여 갈 수 있는 <code>정점 모두 Queue -&gt; insert</code>를 해준후  <code>먼저 넣고 -&gt; Queue pop()</code>  의 형식으로 이루어 집니다.</p>
@@ -336,13 +335,13 @@ Stack이나 Recursive를 이용해서 갈 수 있는 만큼 최대 -&gt; 갈수 
         "genre": "Algorithm",
         "datePublished": "2020-10-21",
         "dateCreated": "2020-10-21",
-        "dateModified": "2020-10-21",
+        "dateModified": "2020-10-22",
         "url": "http://gwanhyeon.github.io/graph-summary/",
         "description": "1.  그래프
 그래프의 정의를 살펴보면 G=(V,E)가 성립하게 됩니다. G: 그래프, V: 정점, E: 간선을 의미합니다.
 2.  경로
 만약 A-&gt;C, A-&gt;B, C-&gt;B, E-&gt;B, C-&gt;E, C-&gt;D, D-&gt;E의 정점과 간선으로 연결된 그래프가 있다고 생각하겠습니다. 이때 정점 A-&gt;B로 가는 경로는 몇가지 ",
-        "wordCount": 2188
+        "wordCount": 2194
     }
 </script>
 
