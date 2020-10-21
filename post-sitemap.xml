@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/graph-summary/</loc>
+        <lastmod>2020-10-21T13:29:41.534Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/connected-component/</loc>
+        <lastmod>2020-10-21T13:29:17.260Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/inequality-sign/</loc>
         <lastmod>2020-10-20T09:52:09.442Z</lastmod>
         <changefreq>weekly</changefreq>
