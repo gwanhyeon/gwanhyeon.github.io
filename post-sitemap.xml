@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/term-project/</loc>
+        <lastmod>2020-10-22T14:35:33.931Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/repeat-permutation/</loc>
         <lastmod>2020-10-22T11:04:08.374Z</lastmod>
         <changefreq>weekly</changefreq>
