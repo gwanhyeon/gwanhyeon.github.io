@@ -8,15 +8,22 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/categories/algorithm/</loc>
-        <lastmod>2020-10-21T16:51:02.392Z</lastmod>
+        <loc>http://gwanhyeon.github.io/categories/kotlin/</loc>
+        <lastmod>2020-10-22T05:50:44.907Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/categories/boj/</loc>
-        <lastmod>2020-10-21T13:35:21.745Z</lastmod>
+        <lastmod>2020-10-22T05:49:09.640Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/algorithm/</loc>
+        <lastmod>2020-10-21T16:51:02.392Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -38,13 +45,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/rxjava/</loc>
         <lastmod>2020-09-19T16:31:55.302Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/kotlin/</loc>
-        <lastmod>2020-09-16T16:11:06.332Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
