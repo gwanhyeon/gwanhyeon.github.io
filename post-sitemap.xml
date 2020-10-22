@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/permutation-cycle/</loc>
+        <lastmod>2020-10-22T05:59:37.609Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/connected-component/</loc>
+        <lastmod>2020-10-22T05:54:03.409Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/datatype-03/</loc>
         <lastmod>2020-10-22T05:50:44.907Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -16,24 +32,8 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/permutation-cycle/</loc>
-        <lastmod>2020-10-22T05:49:09.640Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/graph-summary/</loc>
         <lastmod>2020-10-21T16:51:02.392Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/connected-component/</loc>
-        <lastmod>2020-10-21T13:35:21.745Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
