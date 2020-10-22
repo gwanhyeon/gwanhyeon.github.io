@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  백준 반복 순열 2331 문제  1.1.  문제 다음과 같이 정의된 수열이 있다. D[1] = A D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합 예를 들어 A=57, P=2일 때, 수열 D는 {57, 74(=52+72=25+49), 65, 61, 37, 58, 89, 145, 42, 20, 4, 16, 37, …}이 된다. 그 뒤">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-10-22T11:03:11.229Z">
+<meta property="og:updated_time" content="2020-10-22T11:04:08.374Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -218,9 +218,9 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
 <li>생각한 결과로 단순히 <code>DFS</code>로 중복이 cnt값을 <code>1~1,000,000</code>까지 값을 진행하다가 <code>순열의 값을 인덱스로 한 값을 cnt값으로 변경</code>하면서 진행하였습니다.</li>
 </ul>
 <blockquote>
-<p>알고리즘 풀이<br>
-예를 들어, 수열 D는 {57, 74(=5<sup>2+7</sup>2=25+49), 65, 61, <code>37, 58, 89, 145, 42, 20, 4, 16</code>, <code>37, …</code>}식으로 진행됩니다. 이때 37부터 값이 반복되고 있는 상황을 알 수 있습니다. <code>check[37]은 이미 5라는 값을 가지고 있겠지요?</code></p>
+<p>알고리즘 풀이</p>
 </blockquote>
+<p>예를 들어, 수열 D는 {57, 74(=5<sup>2+7</sup>2=25+49), 65, 61, <code>37, 58, 89, 145, 42, 20, 4, 16</code>, <code>37, …</code>}식으로 진행됩니다. 이때 37부터 값이 반복되고 있는 상황을 알 수 있습니다. <code>check[37]은 이미 5라는 값을 가지고 있겠지요?</code></p>
 <p><code>check[57] = 1 check[74] = 2 check[65] = 3 check[61] = 4 check[37] = 5</code><br>
 의 형태로 저장되는 상황일 것입니다. 따라서 반복되는 <code>두번째시점의 37의 구간에서 37이 가지고 있는 값-1을 반환</code>하게 된다면 <code>중복이 나오기전의 시점의 개수</code>를 찾아낼 수 있습니다.</p>
 <blockquote>
