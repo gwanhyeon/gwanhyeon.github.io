@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/warehouse-polygon/</loc>
+        <lastmod>2020-10-26T11:54:47.539Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%EC%9C%84%EC%9E%A5/</loc>
         <lastmod>2020-10-23T11:13:47.424Z</lastmod>
         <changefreq>weekly</changefreq>
