@@ -13,7 +13,7 @@
 지붕의 가장자리는 땅에 닿아야 한다.<br>
 비가 올 때 물이 고이지 않도록 지붕의 어떤 부분도 오목하게 들어간 부분이 없어야 한다.<br>
 그림 1은 창고를 옆에서 본 모습을 그린 것이다. 이 그림에서 굵은 선으로 표시된 부분이 지붕에 해당되고, 지붕과 땅으로 둘러싸인 다각형이 창고를 옆에서 본 모습이다. 이 다각형을 창고 다각형이라고 하자.<br>
-<img src="/JudgeOnline/upload/201011/cd.png" alt="Image1"></p>
+<img src="https://www.acmicpc.net/JudgeOnline/upload/201011/cd.png" alt="그림1 . 기둥과 지붕(굵은 선)의 예"></p>
 <h3 id="geurim1-gidunggwa-jibung-gulgeun-seon-yi-ye"><a href="#geurim1-gidunggwa-jibung-gulgeun-seon-yi-ye" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#그림1-기둥과-지붕굵은-선의-예"></a> 그림1 . 기둥과 지붕(굵은 선)의 예</h3>
 <p>창고 주인은 창고 다각형의 면적이 가장 작은 창고를 만들기를 원한다. 그림 1에서 창고 다각형의 면적은 98 ㎡이고, 이 경우가 가장 작은 창고 다각형이다.</p>
 <p>기둥들의 위치와 높이가 주어질 때, 가장 작은 창고 다각형의 면적을 구하는 프로그램을 작성하시오.</p>
