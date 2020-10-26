@@ -42,17 +42,17 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">2</span> <span class="number">4</span></span><br><span class="line"><span class="number">11</span> <span class="number">4</span></span><br><span class="line"><span class="number">15</span> <span class="number">8</span></span><br><span class="line"><span class="number">4</span> <span class="number">6</span></span><br><span class="line"><span class="number">5</span> <span class="number">3</span></span><br><span class="line"><span class="number">8</span> <span class="number">10</span></span><br><span class="line"><span class="number">13</span> <span class="number">6</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <ol>
-<li>지붕의 최대 높이의 인덱스 구하기<br>
-지붕의 높이가 가장 높은 인덱스의 값을 구해주어야 합니다. 그 이유는 지붕의 높이가 가장 높은 인덱스의 값을 기준으로 지붕을 만들어야하기 때문입니다.</li>
+<li>지붕의 최대 높이의 인덱스 구하기</li>
 </ol>
 </blockquote>
+<p>지붕의 높이가 가장 높은 인덱스의 값을 구해주어야 합니다. 그 이유는 지붕의 높이가 가장 높은 인덱스의 값을 기준으로 지붕을 만들어야하기 때문입니다.</p>
 <p><code>높이가 10이 되기 때문에 지붕의 최대 높이의 인덱스는 8이 됩니다.</code></p>
 <blockquote>
 <ol start="2">
-<li>지붕의 높이가 있는 가장 작은 인덱스와 큰 인덱스 구하기<br>
-지붕의 높이가 있는 가장 작은 인덱스와 큰 인덱스를 구해주어야 하는이유는 <code>지붕의 최대 높이의 인덱스를 기준으로 좌측</code>, <code>우측의 최대로 가질 수 있는 지붕의 면적</code>을 구해야하기 때문입니다.</li>
+<li>지붕의 높이가 있는 가장 작은 인덱스와 큰 인덱스 구하기</li>
 </ol>
 </blockquote>
+<p>지붕의 높이가 있는 가장 작은 인덱스와 큰 인덱스를 구해주어야 하는이유는 <code>지붕의 최대 높이의 인덱스를 기준으로 좌측</code>, <code>우측의 최대로 가질 수 있는 지붕의 면적</code>을 구해야하기 때문입니다.</p>
 <p>지붕의 높이를 가진 <code>가장 작은 인덱스를 2와 높이 4</code>, <code>가장 큰 인덱스를 16과 8</code>를 가지게 됩니다.</p>
 <blockquote>
 <p>문제 풀이</p>
