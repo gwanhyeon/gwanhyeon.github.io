@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2020-10-26T12:18:52.538Z</updated>
+  <updated>2020-10-27T05:30:37.501Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>백준 색종이 2563</title>
+    <link href="http://gwanhyeon.github.io/colored-paper/"/>
+    <id>http://gwanhyeon.github.io/colored-paper/</id>
+    <published>2020-10-27T05:23:18.000Z</published>
+    <updated>2020-10-27T05:30:37.501Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="baegjun-saegjongi-2563-munje"><a href="#baegjun-saegjongi-2563-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-색종이-2563-문제"></a> <a href="https://www.acmicpc.net/problem/2563" target="_blank" rel="noopener">백준 색종이 2563 문제</a></h1><hr><h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3><p>가로, 세로의 크기가 각각 100인 정사각형 모양의 흰색 도화지가 있다. 이 도화지 위에 가로, 세로의 크기가 각각 10인 정사각형 모양의 검은색 색종이를 색종이의 변과 도화지의 변이 평행하도록 붙인다. 이러한 방식으로 색종이를 한 장 또는 여러 장 붙인 후 색종이가 붙은 검은 영역의 넓이를 구하는 프로그램을 작성하시오.<br><img src="https://www.acmicpc.net/upload/images/IcZB4bH8h7wwEY6z7qyoqNXkMsh.png" alt="그림 1"></p><p>예를 들어 흰색 도화지 위에 세 장의 검은색 색종이를 그림과 같은 모양으로 붙였다면 검은색 영역의 넓이는 260이 된다.</p><h3 id="ibryeog"><a href="#ibryeog" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#입력"></a> 입력</h3><p>첫째 줄에 색종이의 수가 주어진다. 이어 둘째 줄부터 한 줄에 하나씩 색종이를 붙인 위치가 주어진다. 색종이를 붙인 위치는 두 개의 자연수로 주어지는데 첫 번째 자연수는 색종이의 왼쪽 변과 도화지의 왼쪽 변 사이의 거리이고, 두 번째 자연수는 색종이의 아래쪽 변과 도화지의 아래쪽 변 사이의 거리이다. 색종이의 수는 100 이하이며, 색종이가 도화지 밖으로 나가는 경우는 없다</p><h3 id="culryeog"><a href="#culryeog" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#출력"></a> 출력</h3><p>첫째 줄에 색종이가 붙은 검은 영역의 넓이를 출력한다.</p><h3 id="yeje-ibryeog-1"><a href="#yeje-ibryeog-1" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#예제-입력-1"></a> 예제 입력 1</h3><p>3<br>3 7<br>15 7<br>5 2</p><h3 id="yeje-culryeog-1"><a href="#yeje-culryeog-1" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#예제-출력-1"></a> 예제 출력 1</h3><h2 id="260"><a href="#260" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#260"></a> 260</h2><h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2><ul><li>해당 가로,세로 크기가 각각 100인 정사각형의 모양의 흰색도화지 위에 가로,세로 크기가 10인 정사각형의 모양의 검은 색종이를 붙여 해당 검은색종이의 넓이를 구하는 문제입니다.</li></ul><blockquote><p>접근방법</p></blockquote><p>이 문제를 접근할때 검은색부분의 넓이를 모두 구해서 더해주는것으로 생각하고 진행하였습니다. 입력으로 총 N개의 검은색 정사각형의 왼쪽하단점이 주어지기 때문에 각 정사각형별로 가로 x, 세로 y라고 생각하였을때 x+10, y+10까지의 영역을 모두 더해주면 되겠다고 생각하였습니다.</p><p>그리고, 겹치는 부분에 있어서는 map라는 변수를 하나 선언하여 map의 값이 0이 일때만 넓이를 계산해주고 한번 넓이를 계산 해준곳은 1로 만들어주어서 체크해주었습니다. 즉, 겹치는 부분은 단 한번만 넓이를 더할 수 있게 처리하였습니다.</p><blockquote><p>정사각형의 넓이<br>정사각형의 넓이를 구할때 x ~ x+10, y ~ y+10까지 모두 값을 구해주게 되면 정사각형의 넓이를 구할 수 있습니다.</p></blockquote><h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 색종이2563 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] map;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">int</span> n = Integer.parseInt(br.readLine());</span><br><span class="line">        StringTokenizer st;</span><br><span class="line">        map = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;n; k++)&#123;</span><br><span class="line">            st = <span class="keyword">new</span> StringTokenizer(br.readLine(), <span class="string">" "</span>);</span><br><span class="line">            <span class="keyword">int</span> x = Integer.parseInt(st.nextToken());</span><br><span class="line">            <span class="keyword">int</span> y= Integer.parseInt(st.nextToken());</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=x; i&lt;x+<span class="number">10</span>; i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=y; j&lt;y+<span class="number">10</span>; j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(map[i][j] == <span class="number">0</span>)&#123;</span><br><span class="line">                        map[i][j] = <span class="number">1</span>;</span><br><span class="line">                        sum+=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;baegjun-saegjongi-2563-munje&quot;&gt;&lt;a href=&quot;#baegjun-saegjongi-2563-munje&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href
+      
+    
+    </summary>
+    
+    
+      <category term="BOJ" scheme="http://gwanhyeon.github.io/categories/boj/"/>
+    
+    
+      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="백준" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%EC%A4%80/"/>
+    
+      <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
+    
+      <category term="구현" scheme="http://gwanhyeon.github.io/tags/%EA%B5%AC%ED%98%84/"/>
+    
+  </entry>
   
   <entry>
     <title>백준 빗물 14719</title>
@@ -434,9 +466,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="dp" scheme="http://gwanhyeon.github.io/tags/dp/"/>
     
@@ -467,9 +499,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
     
@@ -500,9 +532,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
     
@@ -531,9 +563,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
@@ -560,9 +592,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="수학" scheme="http://gwanhyeon.github.io/tags/%EC%88%98%ED%95%99/"/>
     
@@ -633,37 +665,6 @@
       <category term="삼성SW역량테스트" scheme="http://gwanhyeon.github.io/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/"/>
     
       <category term="BOJ" scheme="http://gwanhyeon.github.io/tags/boj/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>프로그래머스 시저암호</title>
-    <link href="http://gwanhyeon.github.io/caesar-password/"/>
-    <id>http://gwanhyeon.github.io/caesar-password/</id>
-    <published>2020-09-21T08:57:24.000Z</published>
-    <updated>2020-09-21T09:07:14.819Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1><p><a href="https://programmers.co.kr/learn/courses/30/lessons/12926?language=java" target="_blank" rel="noopener">프로그래머스 시저암호</a></p><h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1><blockquote><p>문제 설명<br>어떤 문장의 각 알파벳을 일정한 거리만큼 밀어서 다른 알파벳으로 바꾸는 암호화 방식을 시저 암호라고 합니다. 예를 들어 AB는 1만큼 밀면 BC가 되고, 3만큼 밀면 DE가 됩니다. z는 1만큼 밀면 a가 됩니다. 문자열 s와 거리 n을 입력받아 s를 n만큼 민 암호문을 만드는 함수, solution을 완성해 보세요.</p></blockquote><blockquote><p>제한 조건<br>공백은 아무리 밀어도 공백입니다.<br>s는 알파벳 소문자, 대문자, 공백으로만 이루어져 있습니다.<br>s의 길이는 8000이하입니다.<br>n은 1 이상, 25이하인 자연수입니다.</p></blockquote><h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1><ul><li>알파벳은 총 52개 대문자 26개, 소문자 26개를 가지고 있습니다.</li><li>문자 값이 <code>' '</code> 공백일 경우 공백을 넣어주게 됩니다.</li><li>해당 문자가 소문자일 경우와 대문자 일 경우를 나누어서 생각을 해줍니다. 기존의 알파벳이 A이며 n=1이라고 가정하면 문자를 미는 거리 만큼 값을 도출하면 알파벳 B의 값을 도출하게 될것입니다.<br>여기서 주의해야 할점은 <code>z, Z</code>의 경우를 잘 생각해주어야합니다. 값을 밀면서 z와 Z의 범위를 벗어나게 되면 다시 값 a, A 값부터 진행되어야한다는점입니다. 즉 현재의 값을 +n값을 시켜주면서 -26을 빼주게 된다면 기존 a, A의 값에서 + N값이 된 값이 도출될 것입니다. 반드시 값을 -26해주고 캐릭터 형변 환 해주어야 본래의 값으로 돌아옵니다.<br>음수값 계산시에는 아스키코드 값 자체로 비교하여 연산을 진행하기 때문입니다.</li></ul><h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 시저암호 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s = <span class="string">"AB"</span>;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        StringBuilder answer = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">char</span> alpha = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span>(alpha == <span class="string">' '</span>)&#123;</span><br><span class="line">                answer.append(<span class="string">" "</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(Character.isLowerCase(alpha))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(alpha + n &gt; <span class="string">'z'</span>)&#123;</span><br><span class="line">                        answer.append((<span class="keyword">char</span>)(alpha+n-<span class="number">26</span>));</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        answer.append((<span class="keyword">char</span>)(alpha+n));</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(Character.isUpperCase(alpha))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(alpha + n &gt; <span class="string">'Z'</span>)&#123;</span><br><span class="line">                        answer.append((<span class="keyword">char</span>)(alpha+n-<span class="number">26</span>));</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        answer.append((<span class="keyword">char</span>)(alpha+n));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                if(s.charAt(i) &gt;='a' &amp;&amp; s.charAt(i) &lt;= 'Z')&#123;</span></span><br><span class="line"><span class="comment">                    answer.append((char) ((s.charAt(i)-26)+n));</span></span><br><span class="line"><span class="comment">                &#125;else if(s.charAt(i) &gt;= 'A' &amp;&amp; s.charAt(i) &lt;= 'Z')&#123;</span></span><br><span class="line"><span class="comment">                    answer.append((char) ((s.charAt(i)-26)+n));</span></span><br><span class="line"><span class="comment">                &#125;</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;munje-ringkeu&quot;&gt;&lt;a href=&quot;#munje-ringkeu&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#문제-링크&quot;&gt;&lt;/a&gt; 문제 링크&lt;/h1&gt;
-&lt;p&gt;&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
-    
-    
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
-      <category term="문자열" scheme="http://gwanhyeon.github.io/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/"/>
     
   </entry>
   
