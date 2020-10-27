@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/warehouse-polygon/</loc>
+        <lastmod>2020-10-27T06:04:31.958Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/continuous-sum/</loc>
+        <lastmod>2020-10-27T06:04:28.604Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/colored-paper/</loc>
         <lastmod>2020-10-27T05:30:37.501Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -18,14 +34,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/rain-water/</loc>
         <lastmod>2020-10-26T12:18:52.538Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/warehouse-polygon/</loc>
-        <lastmod>2020-10-26T12:02:07.984Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
