@@ -45,7 +45,7 @@
 <p>DP 조건</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(dp[i] + dp[i-<span class="number">1</span>] &gt; <span class="number">0</span> &amp;&amp; dp[i-<span class="number">1</span>] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dp[i] = dp[i-<span class="number">1</span>] + dp[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>DP의 조건을 살펴보면 두가지로 나눌 수 있습니다.</p>
+<p><code>DP의 조건을 살펴보면 두가지</code>로 나눌 수 있습니다.</p>
 <ol>
 <li>처음 이전의 합이 음수라면 선택하지 않고 현재부터 다시 선택합니다. 즉, 이전의 합이 양수일때만 진행한다는 뜻입니다.</li>
 <li>이전의 합과 현재의 수를 더한 값이 음수라면 선택하지 않습니다.</li>
