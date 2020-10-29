@@ -19,7 +19,7 @@
 <meta property="og:description" content="1.  소수(Prime Number) 1.1.  소수의 정의 소수란 약수가 1과 자기 자신밖에 없는수를 일컫는 말입니다. 1.2.  소수의 특징  N이 소수가 되려면 2&amp;lt;= N &amp;lt;= N-1 2보다 크거나 같고, N-1보다 작거나 같은 자연수로 나누어 떨어지면 안됩니다. 그 이유는 N의 약수중에서 가장 큰것은 N&#x2F;2보다 작거나 같기 때문입니다. N">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;b&#x2F;b9&#x2F;Sieve_of_Eratosthenes_animation.gif">
-<meta property="og:updated_time" content="2020-10-29T12:45:03.049Z">
+<meta property="og:updated_time" content="2020-10-29T12:47:25.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;upload.wikimedia.org&#x2F;wikipedia&#x2F;commons&#x2F;b&#x2F;b9&#x2F;Sieve_of_Eratosthenes_animation.gif">
     
@@ -242,24 +242,20 @@ ga('send', 'pageview');
 <p>에라토스테네스의 체 원리</p>
 </blockquote>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sieve_of_Eratosthenes_animation.gif" alt="에라토스테네스의 체 원리"></p>
-<ol>
-<li>2부터 N까지 모든 수를 써놓는다.</li>
-<li>아직 지워지지않은 수 중에서 가장 작은수를 찾는다.</li>
-<li>그 수는 소수이다.</li>
-<li>이제 그 수의 배수를 모두 지웁니다.</li>
-</ol>
+<p><strong>1. 2부터 N까지 모든 수를 써놓는다.</strong><br>
+<strong>2. 아직 지워지지않은 수 중에서 가장 작은수를 찾는다.</strong><br>
+<strong>3. 그 수는 소수이다.</strong><br>
+<strong>4. 이제 그 수의 배수를 모두 지웁니다.</strong></p>
 <blockquote>
 <p>과정</p>
 </blockquote>
-<ol>
-<li>지워지지 않은 수 중에서 가장 작은 수는 2이다.</li>
-<li>2는 소수이고 2의 배수를 모두 지웁니다.</li>
-<li>3의 배수를 지웁니다.</li>
-<li>5의 배수를 지웁니다.</li>
-<li>7의 배수를 지웁니다.</li>
-<li>11의 배수는 이미 지워져있습니다. 이미 2,3,5,7의 배수를 지우는 과정에서 지워졌기때문입니다.</li>
-<li>11*11은 특히 121로 100을 넘어가기 때문에 더이상 수행할 필요가 없게 됩니다. 따라서, 남아 있는 모든 수가 소수가 되게 됩니다.</li>
-</ol>
+<p><strong>1. 지워지지 않은 수 중에서 가장 작은 수는 2이다.</strong><br>
+<strong>2. 2는 소수이고 2의 배수를 모두 지웁니다.</strong><br>
+<strong>3. 3의 배수를 지웁니다.</strong><br>
+<strong>4. 5의 배수를 지웁니다.</strong><br>
+<strong>5. 7의 배수를 지웁니다.</strong><br>
+<strong>6. 11의 배수는 이미 지워져있습니다. 이미 2,3,5,7의 배수를 지우는 과정에서 지워졌기때문입니다.</strong><br>
+<strong>7. 11*11은 특히 121로 100을 넘어가기 때문에 더이상 수행할 필요가 없게 됩니다. 따라서, 남아 있는 모든 수가 소수가 되게 됩니다.</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*소수 저장*/</span></span><br><span class="line"><span class="keyword">int</span>[] prime = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">101</span>];</span><br><span class="line"><span class="comment">/*소수의 개수를 저장하기 위한 변수*/</span></span><br><span class="line"><span class="keyword">int</span> prime_num = <span class="number">0</span>;</span><br><span class="line"><span class="comment">/*소수가 지워졌으면 true*/</span></span><br><span class="line"><span class="keyword">boolean</span>[] check = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">101</span>];</span><br><span class="line"><span class="comment">/*100까지의 소수*/</span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(check[i] == <span class="keyword">true</span>)&#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    prime[prime_num++] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=i+i; j&lt;=n; j+=i)&#123;</span><br><span class="line">        check[j] = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>여기서 잘보면 i*i 대신 i+i 부터 시작하는것을 볼 수 있는데, 그 이유는 <code>i가 백만일 경우 i*i</code>를 하게되면 범위를 넘어서게 됩니다. 예를 들면 <code>백만 * 백만 일 경우 10^12</code>가 되기 때문에 <code>오버플로우</code>에 대해서 생각을 할 수 있어야합니다. <code>총 10^12</code>까지 진행되므로 <code>int형 자료형의 범위인 21억</code>까지 진행하기가 힘들 것으로 판단할 수 있어야합니다. 그리고, <code>long의 범위로 변경</code>하여 진행하여야합니다.</p>
 <p><code>int 자료형: 2,147,483,646</code><br>
@@ -384,7 +380,7 @@ ga('send', 'pageview');
 N이 소수가 되려면 2&lt;= N &lt;= N-1 2보다 크거나 같고, N-1보다 작거나 같은 자연수로 나누어 떨어지면 안됩니다.
 그 이유는 N의 약수중에서 가장 큰것은 N/2보다 작거나 같기 때문입니다.
 N",
-        "wordCount": 1642
+        "wordCount": 1653
     }
 </script>
 
