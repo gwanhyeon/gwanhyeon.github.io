@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/sieve-of-eratosthenes/</loc>
+        <lastmod>2020-10-29T12:42:50.529Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/string-desc-arrange/</loc>
         <lastmod>2020-10-28T08:14:44.908Z</lastmod>
         <changefreq>weekly</changefreq>
