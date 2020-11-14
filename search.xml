@@ -54,8 +54,9 @@ K는 음식 배달이 가능한 시간을 나타내며, 1 이상 500,000 이하�
 <blockquote>
 <p>시간복잡도</p>
 </blockquote>
-<p>V: 정점, E:간선<br>
-시간복잡도: 모든 정점을 방문 O(V), 우선순위큐 트리형식으로 값을 삽입/삭제 O(logE) 즉, O(V * log E)의 시간복잡도를 같습니다.</p>
+<p>조건: V: 정점, E:간선<br>
+시간복잡도: <code>모든 정점을 방문 O(V)</code>, 우선순위큐 트리형식으로 값을 삽입/삭제 <code>O(logE)</code><br>
+즉, <code>O(V * log E)의 시간복잡도</code>를 같습니다.</p>
 <blockquote>
 <p>인접리스트 VS 인접행렬</p>
 </blockquote>
