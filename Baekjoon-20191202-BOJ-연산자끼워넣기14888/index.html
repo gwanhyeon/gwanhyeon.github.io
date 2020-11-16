@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+    <title>백준 연산자끼워넣기 14888 | Ethan Kim IT Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="백준,브루트포스,DFS,백트래킹" />
+    
+    <meta name="description" content="1.  연산자끼워넣기14888 2.  컴퓨팅 스킬  next_permutation   값을 저장 시킬 vector v; 연산자의 개수를 1,2,3,4 의 값으로 넣을 vector cal; #include헤더에 minmax_element으로 최대값과 최소값 구해줍니다.    DFS   재귀호출로 백트래킹으로 구해줍니다.  3.  컴퓨팅 사고  next_per">
+<meta name="keywords" content="백준,브루트포스,DFS,백트래킹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="백준 연산자끼워넣기 14888">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Baekjoon-20191202-BOJ-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B514888&#x2F;index.html">
+<meta property="og:site_name" content="Ethan Kim IT Blog">
+<meta property="og:description" content="1.  연산자끼워넣기14888 2.  컴퓨팅 스킬  next_permutation   값을 저장 시킬 vector v; 연산자의 개수를 1,2,3,4 의 값으로 넣을 vector cal; #include헤더에 minmax_element으로 최대값과 최소값 구해줍니다.    DFS   재귀호출로 백트래킹으로 구해줍니다.  3.  컴퓨팅 사고  next_per">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2020-09-09T17:04:40.680Z">
+<meta name="twitter:card" content="summary">
+    
+    <!--SEO 검색엔진 적용하기 -->
+    <link rel="canonical" href="http://gwanhyeon.github.io/baekjoon-20191202-boj-연산자끼워넣기14888/"/>
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151448157-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="Ethan Kim IT Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Ethan Kim IT Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/boj/">BOJ</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/etc/">ETC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/os/">OS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programmers/">Programmers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/rxjava/">RXJAVA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/leetcode/">leetcode</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/boj/">BOJ</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Baekjoon-20191202-BOJ-연산자끼워넣기14888" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        백준 연산자끼워넣기 14888
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/Baekjoon-20191202-BOJ-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B514888/" class="article-date">
+         <time datetime="2019-12-02T09:57:01.000Z" itemprop="datePublished">2019-12-02</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/dfs/" rel="tag">DFS</a>, <a class="tag-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a>, <a class="tag-link" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" rel="tag">백트래킹</a>, <a class="tag-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="yeonsanjaggiweoneohgi14888"><a href="#yeonsanjaggiweoneohgi14888" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#연산자끼워넣기14888"></a> <a href="https://www.acmicpc.net/problem/14888" target="_blank" rel="noopener">연산자끼워넣기14888</a></h2>
+<h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
+<blockquote>
+<p>next_permutation</p>
+</blockquote>
+<ul>
+<li>값을 저장 시킬 vector<int> v;</int></li>
+<li>연산자의 개수를 1,2,3,4 의 값으로 넣을 vector<int> cal;</int></li>
+<li>#include<algorithm>헤더에 minmax_element으로 최대값과 최소값 구해줍니다.</algorithm></li>
+</ul>
+<hr>
+<blockquote>
+<p>DFS</p>
+</blockquote>
+<ul>
+<li>재귀호출로 백트래킹으로 구해줍니다.</li>
+</ul>
+<h2 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2>
+<blockquote>
+<p>next_permutation</p>
+</blockquote>
+<ul>
+<li>n을 입력받아 수를 v에 입력을 받아줍니다.</li>
+<li><code>+, -, *, /</code>의 개수를 확인해서 cal 변수에 1,2,3,4를 나누어서 넣어줍니다. 예를 들면, 2 0 1 0 일경우 +의 개수는 2개이므로 1을 두번넣어주고, *의 개수는 1개이므로 3을 한번넣어주고 해당 cal 벡터에는 [1, 1, 3]이 됩니다.</li>
+<li>cal에 담긴 벡터를 next_permutation을 돌려주면서 순열값 모든경우의 수를 구해줍니다.</li>
+<li>cal값이 1일 경우 + , 2일경우 -, 3일 경우 *, 4일 경우 / 의 연산대로 조건을 처리해줍니다.</li>
+<li>이때, sum = v[0]을 해준이유는 순차적으로 계산을 진행해야하므로 가장 맨처음에 존재하는 값을 sum에 담고 시작하였습니다. 연산자의 개수는 수의 N-1개이기때문에 미리 sum에 값을 넣어주었습니다. 예를 들면 10 + 20를 연산해야 한다고 할 경우 sum = 10을 두고 sum + 20으로 연산을 처리하기위해서 입니다.</li>
+<li>조건에 보면 <code>식의 계산은 연산자 우선 순위를 무시하고 앞에서부터 진행해야 합니다. 또, 나눗셈은 정수 나눗셈으로 몫만 취한다. 음수를 양수로 나눌 때는 C++14의 기준을 따른다. 즉, 양수로 바꾼 뒤 몫을 취하고, 그 몫을 음수로 바꾼 것과 같다.</code>을 해주어야하므로 sum의 값이 음수일 경우 sum = -sum 으로 양수 값을 변경하고, sum = (sum / v[i]) 을 계산해준 후 다시 음수값으로 변경하였습니다. sum이 양수일 경우 sum = (sum / v[i])로 로직대로 처리하였습니다.</li>
+<li>minmax_element를 사용하여 max, min값을 동시에 구하였습니다. <code>auto p = minmax_element(ans.begin(), ans.end());</code>의 형식으로 최대값과 최소값을 모두 구할 수 있습니다. *p.second는 최소값, *p.first는 최대값입니다.</li>
+</ul>
+<h2 id="haedang-yeonsanjae-gajungcireul-buyeohayeo-geu-gabse-ddara-sunyeoleul-tonghae-modeungyeonguyi-sureul-guhaneungeosi-ki-pointeuyeossseubnida"><a href="#haedang-yeonsanjae-gajungcireul-buyeohayeo-geu-gabse-ddara-sunyeoleul-tonghae-modeungyeonguyi-sureul-guhaneungeosi-ki-pointeuyeossseubnida" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#해당-연산자에-가중치를-부여하여-그-값에-따라-순열을-통해-모든경우의-수를-구하는것이-키-포인트였습니다"></a> 해당 +,-,*,/ 연산자에 가중치를 부여하여 그 값에 따라 순열을 통해 모든경우의 수를 구하는것이 키 포인트였습니다.</h2>
+<blockquote>
+<p>DFS 백트래킹</p>
+</blockquote>
+<ul>
+<li>맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에 대한 의문을 갖고 계신분들이 있습니다. idx를 1로 시작한 이유는 곱하기나, 나눗셈의 경우에서 sum의 값이 0일 경우 올바르지 않은 값이 연산되게 됩니다. 따라서, v[0] (+, -, *, /) v[1] 의 형태로 연산이 되게 됩니다. 따라서 올바른 값을 구할 수 있습니다. 곰곰히 생각해보시면 어떤 말씀인지 알 것이라 생각합니다.</li>
+<li>입력받은 plus,minus,multi,div의 개수를 0보다 클 경우에는 계속해서 재귀호출을 합니다.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(plus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum+v[idx],plus<span class="number">-1</span>, minus, multi, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(minus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum-v[idx], plus, minus<span class="number">-1</span>, multi, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(multi &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum*v[idx], plus, minus, multi<span class="number">-1</span>, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(div &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum/v[idx], plus, minus, multi, div<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>만약 v.size() == idx 모든 원소의 개수를 확인하였을 경우에 현재 sum값을 res 벡터에 값을 넣어줍니다. 그 후 <code>auto p = minmax_element(res.begin(), res.end());</code>를 사용하여 최댓값과 최솟값을 구해주게 됩니다. 이렇게 구하지 않고도 문제의 조건에서보면  <code>최댓값과 최솟값이 항상 -10억보다 크거나 같고, 10억보다 작거나 같은 결과가 나오는 입력만 주어진다</code> 라는 조건이 있습니다.<br>
+이러한 것들에 따라 값을 max함수와 min함수를 사용하면서 최댓값과 최솟값을 구해줍니다.<br>
+다른분들의 풀이를 보니 이런식으로 사용하시는것을 보고 배우게 되었습니다.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000000000</span> + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> maxResult = -MAX, minResult = MAX;</span><br><span class="line"> maxResult = <span class="built_in">max</span>(maxResult, sum);</span><br><span class="line"> minResult = <span class="built_in">min</span>(minResult, sum);</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; maxResult &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; minResult &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="dfs-baegteuraeking-puli"><a href="#dfs-baegteuraeking-puli" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs-백트래킹-풀이"></a> DFS 백트래킹 풀이</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorihtm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v, <span class="keyword">int</span> idx,<span class="keyword">int</span> sum, <span class="keyword">int</span> plus, <span class="keyword">int</span> minus, <span class="keyword">int</span> multi, <span class="keyword">int</span> div)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(idx == v.<span class="built_in">size</span>())&#123;</span><br><span class="line">        res.push_back(sum);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(plus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,idx+<span class="number">1</span>,sum+v[idx],plus<span class="number">-1</span>, minus, multi, div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(minus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,idx+<span class="number">1</span>,sum-v[idx], plus, minus<span class="number">-1</span>, multi, div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(multi &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,idx+<span class="number">1</span>,sum*v[idx], plus, minus, multi<span class="number">-1</span>, div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(div &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,idx+<span class="number">1</span>,sum/v[idx], plus, minus, multi, div<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> plus=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> minus=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> multi=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> div = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> input;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; input;</span><br><span class="line">        v.push_back(input);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> cal;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; cal;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">            plus = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">            minus = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">2</span>)&#123;</span><br><span class="line">            multi = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            div = cal;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    dfs(v,<span class="number">1</span>,v[<span class="number">0</span>],plus,minus,multi,div);</span><br><span class="line">    <span class="keyword">auto</span> p = minmax_element(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p.second &lt;&lt; <span class="string">' '</span> &lt;&lt;  *p.first;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="next-permutation-puli"><a href="#next-permutation-puli" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-풀이"></a> next_permutation 풀이</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  08_백준_연산자끼워넣기_14888.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 02/12/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cal;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;a; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">                cal.push_back(<span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">                cal.push_back(<span class="number">2</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">2</span>)&#123;</span><br><span class="line">                cal.push_back(<span class="number">3</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">3</span>)&#123;</span><br><span class="line">                cal.push_back(<span class="number">4</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = v[<span class="number">0</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cal[i<span class="number">-1</span>] == <span class="number">1</span>)&#123;</span><br><span class="line">                sum = sum + v[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cal[i<span class="number">-1</span>] == <span class="number">2</span>)&#123;</span><br><span class="line">                sum = sum - v[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cal[i<span class="number">-1</span>] == <span class="number">3</span>)&#123;</span><br><span class="line">                sum = sum * v[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(sum &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    sum = -sum;</span><br><span class="line">                    sum = (sum / v[i]);</span><br><span class="line">                    sum = -sum;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    sum = (sum / v[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans.push_back(sum);</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(cal.<span class="built_in">begin</span>(), cal.<span class="built_in">end</span>()));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">auto</span> p = minmax_element(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>());</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p.second &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p.first &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ethan Kim"
+        },
+        "headline": "백준 연산자끼워넣기 14888",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "백준 브루트포스 DFS 백트래킹",
+        "genre": "BOJ",
+        "datePublished": "2019-12-02",
+        "dateCreated": "2019-12-02",
+        "dateModified": "2020-09-10",
+        "url": "http://gwanhyeon.github.io/Baekjoon-20191202-BOJ-연산자끼워넣기14888/",
+        "description": "1.  연산자끼워넣기14888
+2.  컴퓨팅 스킬
+
+next_permutation
+
+
+값을 저장 시킬 vector v;
+연산자의 개수를 1,2,3,4 의 값으로 넣을 vector cal;
+#include헤더에 minmax_element으로 최대값과 최소값 구해줍니다.
+
+
+
+DFS
+
+
+재귀호출로 백트래킹으로 구해줍니다.
+
+3.  컴퓨팅 사고
+
+next_per",
+        "wordCount": 2039
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/gwanhyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/Baekjoon-20191203-BOJ-%E1%84%8B%E1%85%A1%E1%86%B7%E1%84%92%E1%85%A9%E1%84%86%E1%85%A1%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B51759/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            백준 암호만들기 1759
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/Baekjoon-20191202-BOJ-6603%E1%84%85%E1%85%A9%E1%84%84%E1%85%A9/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">백준 로또 6603</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/os/">OS</a></p>
+                            <p class="item-title"><a href="/OS-20201116-OS-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/" class="title">운영체제 프로세스 스레드 메모리 구조</a></p>
+                            <p class="item-date"><time datetime="2020-11-16T07:48:50.000Z" itemprop="datePublished">2020-11-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/Leetcode-20201115-leetcode-maximum-subarray/" class="title">leetcode maximum subarray</a></p>
+                            <p class="item-date"><time datetime="2020-11-15T12:42:42.000Z" itemprop="datePublished">2020-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programmers/">Programmers</a></p>
+                            <p class="item-title"><a href="/Programmers-20201115-Programmers-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%86%E1%85%AE%E1%86%AB%E1%84%80%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%B5/" class="title">프로그래머스 방문길이</a></p>
+                            <p class="item-date"><time datetime="2020-11-15T12:38:46.000Z" itemprop="datePublished">2020-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programmers/">Programmers</a></p>
+                            <p class="item-title"><a href="/Programmers-20201114-Programmers-%E1%84%87%E1%85%A2%E1%84%83%E1%85%A1%E1%86%AF/" class="title">프로그래머스 배달</a></p>
+                            <p class="item-date"><time datetime="2020-11-14T13:27:38.000Z" itemprop="datePublished">2020-11-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programmers/">Programmers</a></p>
+                            <p class="item-title"><a href="/Programmers-20201112-Programmers-%E1%84%87%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A3%E1%86%BC%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1/" class="title">프로그래머스 불량사용자</a></p>
+                            <p class="item-date"><time datetime="2020-11-12T07:27:34.000Z" itemprop="datePublished">2020-11-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/boj/">BOJ</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">ETC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kotlin/">Kotlin</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/os/">OS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programmers/">Programmers</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/rxjava/">RXJAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">Spring</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">11월 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">10월 2020</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">9월 2020</a><span class="archive-list-count">32</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">12월 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">11</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">BFS</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boj/" rel="tag">BOJ</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bst/" rel="tag">BST</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contextswitching/" rel="tag">ContextSwitching</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">DFS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">DP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h-index/" rel="tag">H-INDEX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pcb/" rel="tag">PCB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjava/" rel="tag">RxJava</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="tag">Set자료구조</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/" rel="tag">springMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B0%84%EC%84%A0/" rel="tag">간선</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">검색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B5%AC%ED%98%84/" rel="tag">구현</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" rel="tag">그래프</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" rel="tag">그리디</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">다이나믹프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" rel="tag">다익스트라</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" rel="tag">데이터타입</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A0%88%EB%B2%A82/" rel="tag">레벨2</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">리액티브프로그래밍</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" rel="tag">릿코드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">멀티스레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">멀티프로세스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" rel="tag">문자열</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a><span class="tag-list-count">31</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" rel="tag">백트래킹</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B3%80%EC%88%98/" rel="tag">변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" rel="tag">부분집합의 합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" rel="tag">삼성SW역량테스트</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%86%8C%EC%88%98/" rel="tag">소수</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" rel="tag">소인수분해</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%98%ED%95%99/" rel="tag">수학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%9C%EC%97%B4/" rel="tag">순열</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">스레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a><span class="tag-list-count">49</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" rel="tag">에라토스테네스의체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%97%B0%EC%82%B0/" rel="tag">연산</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" rel="tag">완전탐색</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" rel="tag">우선순위큐</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" rel="tag">위상정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%9E%A5/" rel="tag">위장</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" rel="tag">이분탐색</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">이진탐색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" rel="tag">인접리스트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" rel="tag">정규표현식</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EB%A0%AC/" rel="tag">정렬</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A1%B0%ED%95%A9/" rel="tag">조합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" rel="tag">카카오</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a><span class="tag-list-count">28</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">프로세스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%B4%EC%8B%9C/" rel="tag">해시</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" rel="tag">환경설정</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%9E%99/" rel="tag">힙</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/bfs/" style="font-size: 14px;">BFS</a> <a href="/tags/boj/" style="font-size: 15px;">BOJ</a> <a href="/tags/bst/" style="font-size: 10px;">BST</a> <a href="/tags/contextswitching/" style="font-size: 10px;">ContextSwitching</a> <a href="/tags/dfs/" style="font-size: 16px;">DFS</a> <a href="/tags/dp/" style="font-size: 11px;">DP</a> <a href="/tags/h-index/" style="font-size: 10px;">H-INDEX</a> <a href="/tags/kotlin/" style="font-size: 12px;">Kotlin</a> <a href="/tags/pcb/" style="font-size: 10px;">PCB</a> <a href="/tags/rxjava/" style="font-size: 11px;">RxJava</a> <a href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" style="font-size: 10px;">Set자료구조</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/springmvc/" style="font-size: 10px;">springMVC</a> <a href="/tags/%EA%B0%84%EC%84%A0/" style="font-size: 10px;">간선</a> <a href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">검색트리</a> <a href="/tags/%EA%B5%AC%ED%98%84/" style="font-size: 13px;">구현</a> <a href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" style="font-size: 15px;">그래프</a> <a href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" style="font-size: 11px;">그리디</a> <a href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10px;">다이나믹프로그래밍</a> <a href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" style="font-size: 10px;">다익스트라</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" style="font-size: 10px;">데이터타입</a> <a href="/tags/%EB%A0%88%EB%B2%A82/" style="font-size: 13px;">레벨2</a> <a href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 11px;">리액티브프로그래밍</a> <a href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" style="font-size: 10px;">릿코드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">멀티스레드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">멀티프로세스</a> <a href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" style="font-size: 15px;">문자열</a> <a href="/tags/%EB%B0%B1%EC%A4%80/" style="font-size: 19px;">백준</a> <a href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" style="font-size: 14px;">백트래킹</a> <a href="/tags/%EB%B3%80%EC%88%98/" style="font-size: 10px;">변수</a> <a href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" style="font-size: 10px;">부분집합의 합</a> <a href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" style="font-size: 17px;">브루트포스</a> <a href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" style="font-size: 14px;">삼성SW역량테스트</a> <a href="/tags/%EC%86%8C%EC%88%98/" style="font-size: 11px;">소수</a> <a href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" style="font-size: 10px;">소인수분해</a> <a href="/tags/%EC%88%98%ED%95%99/" style="font-size: 11px;">수학</a> <a href="/tags/%EC%88%9C%EC%97%B4/" style="font-size: 12px;">순열</a> <a href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">스레드</a> <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 20px;">알고리즘</a> <a href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" style="font-size: 10px;">에라토스테네스의체</a> <a href="/tags/%EC%97%B0%EC%82%B0/" style="font-size: 10px;">연산</a> <a href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" style="font-size: 14px;">완전탐색</a> <a href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" style="font-size: 11px;">우선순위큐</a> <a href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" style="font-size: 10px;">위상정렬</a> <a href="/tags/%EC%9C%84%EC%9E%A5/" style="font-size: 10px;">위장</a> <a href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이분탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">이진탐색트리</a> <a href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" style="font-size: 10px;">인접리스트</a> <a href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" style="font-size: 10px;">정규표현식</a> <a href="/tags/%EC%A0%95%EB%A0%AC/" style="font-size: 14px;">정렬</a> <a href="/tags/%EC%A1%B0%ED%95%A9/" style="font-size: 10px;">조합</a> <a href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" style="font-size: 13px;">카카오</a> <a href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" style="font-size: 18px;">프로그래머스</a> <a href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">프로세스</a> <a href="/tags/%ED%95%B4%EC%8B%9C/" style="font-size: 11px;">해시</a> <a href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" style="font-size: 10px;">환경설정</a> <a href="/tags/%ED%9E%99/" style="font-size: 10px;">힙</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>    
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 Ethan Kim</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kgh-1';
+    
+    
+    var disqus_url = 'http://gwanhyeon.github.io/Baekjoon-20191202-BOJ-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B514888/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
