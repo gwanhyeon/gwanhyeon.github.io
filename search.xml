@@ -515,7 +515,7 @@ frodoc</p>
   </entry>
   <entry>
     <title>백준 연속합 1912</title>
-    <url>/Baekjoon-20201027-BOJ-continuous-sum/</url>
+    <url>/BOJ-20201027-BOJ-continuous-sum/</url>
     <content><![CDATA[<h1 id="baegjun-yeonsoghab-1912-munje"><a href="#baegjun-yeonsoghab-1912-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-연속합-1912-문제"></a> <a href="https://www.acmicpc.net/problem/1912" target="_blank" rel="noopener">백준 연속합 1912 문제</a></h1>
 <hr>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
@@ -590,7 +590,7 @@ frodoc</p>
   </entry>
   <entry>
     <title>백준 색종이 2563</title>
-    <url>/Baekjoon-20201027-BOJ-colored-paper/</url>
+    <url>/BOJ-20201027-BOJ-colored-paper/</url>
     <content><![CDATA[<h1 id="baegjun-saegjongi-2563-munje"><a href="#baegjun-saegjongi-2563-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-색종이-2563-문제"></a> <a href="https://www.acmicpc.net/problem/2563" target="_blank" rel="noopener">백준 색종이 2563 문제</a></h1>
 <hr>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
@@ -636,7 +636,7 @@ frodoc</p>
   </entry>
   <entry>
     <title>백준 빗물 14719</title>
-    <url>/Baekjoon-20201026-BOJ-rain-water/</url>
+    <url>/BOJ-20201026-BOJ-rain-water/</url>
     <content><![CDATA[<h1 id="baegjun-bismul-14719-munje"><a href="#baegjun-bismul-14719-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-빗물-14719-문제"></a> <a href="https://www.acmicpc.net/problem/14719" target="_blank" rel="noopener">백준 빗물 14719 문제</a></h1>
 <hr>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
@@ -735,7 +735,7 @@ frodoc</p>
   </entry>
   <entry>
     <title>백준 창고 다각형 2304</title>
-    <url>/Baekjoon-20201026-BOJ-warehouse-polygon/</url>
+    <url>/BOJ-20201026-BOJ-warehouse-polygon/</url>
     <content><![CDATA[<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ul>
 <li>창고 다각형의 면적이 최소가 되는 값을 찾아내는 문제입니다.</li>
@@ -786,7 +786,7 @@ frodoc</p>
   </entry>
   <entry>
     <title>백준 텀 프로젝트 9466</title>
-    <url>/Baekjoon-20201022-BOJ-term-project/</url>
+    <url>/BOJ-20201022-BOJ-term-project/</url>
     <content><![CDATA[<h1 id="baegjun-teom-peurojegteu-9466-munje"><a href="#baegjun-teom-peurojegteu-9466-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-텀-프로젝트-9466-문제"></a> <a href="https://www.acmicpc.net/problem/9466" target="_blank" rel="noopener">백준 텀 프로젝트 9466 문제</a></h1>
 <hr>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
@@ -889,7 +889,7 @@ check[6] = 3, startVertex[6] = 4</p>
   </entry>
   <entry>
     <title>백준 반복 순열 2331</title>
-    <url>/Baekjoon-20201022-BOJ-repeat-permutation/</url>
+    <url>/BOJ-20201022-BOJ-repeat-permutation/</url>
     <content><![CDATA[<h1 id="baegjun-banbog-sunyeol-2331-munje"><a href="#baegjun-banbog-sunyeol-2331-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-반복-순열-2331-문제"></a> <a href="https://www.acmicpc.net/problem/2331" target="_blank" rel="noopener">백준 반복 순열 2331 문제</a></h1>
 <hr>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
@@ -944,7 +944,7 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
   </entry>
   <entry>
     <title>백준 순열 사이클 10451</title>
-    <url>/Baekjoon-20201022-BOJ-permutation-cycle/</url>
+    <url>/BOJ-20201022-BOJ-permutation-cycle/</url>
     <content><![CDATA[<h2 id="baegjun-sunyeol-saikeul-10451-munje"><a href="#baegjun-sunyeol-saikeul-10451-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-순열-사이클-10451-문제"></a> <a href="https://www.acmicpc.net/problem/10451" target="_blank" rel="noopener">백준 순열 사이클 10451 문제</a></h2>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
 <p>1부터 N까지 정수 N개로 이루어진 순열을 나타내는 방법은 여러 가지가 있다. 예를 들어, 8개의 수로 이루어진 순열 (3, 2, 7, 8, 1, 4, 5, 6)을 배열을 이용해 표현하면  와 같다. 또는, Figure 1과 같이 방향 그래프로 나타낼 수도 있다.</p>
@@ -1072,7 +1072,7 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
   </entry>
   <entry>
     <title>백준 연결요소의 개수 11724</title>
-    <url>/Baekjoon-20201021-BOJ-connected-component/</url>
+    <url>/BOJ-20201021-BOJ-connected-component/</url>
     <content><![CDATA[<h2 id="baegjun-yeongyeolyosoyi-gaesu-11724-munje"><a href="#baegjun-yeongyeolyosoyi-gaesu-11724-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-연결요소의-개수-11724-문제"></a> <a href="https://www.acmicpc.net/problem/11724" target="_blank" rel="noopener">백준 연결요소의 개수 11724 문제</a></h2>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
 <p>방향 없는 그래프가 주어졌을 때, 연결 요소 (Connected Component)의 개수를 구하는 프로그램을 작성하시오.</p>
@@ -1142,7 +1142,7 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
   </entry>
   <entry>
     <title>백준 부등호 2529</title>
-    <url>/Baekjoon-20201020-BOJ-inequality-sign/</url>
+    <url>/BOJ-20201020-BOJ-inequality-sign/</url>
     <content><![CDATA[<h2 id="baegjun-budeungho-2529-munje"><a href="#baegjun-budeungho-2529-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-부등호-2529-문제"></a> <a href="https://www.acmicpc.net/problem/2529" target="_blank" rel="noopener">백준 부등호 2529 문제</a></h2>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
 <p>두 종류의 부등호 기호 ‘&lt;’와 ‘&gt;’가 k개 나열된 순서열  A가 있다. 우리는 이 부등호 기호 앞뒤에 서로 다른 한 자릿수 숫자를 넣어서 모든 부등호 관계를 만족시키려고 한다. 예를 들어, 제시된 부등호 순서열 A가 다음과 같다고 하자.</p>
@@ -1199,7 +1199,7 @@ K+1개를 선택하여 DFS를 통해 모든 조건을 구하였던 문자열 값
   </entry>
   <entry>
     <title>백준 수 이어쓰기1 1748</title>
-    <url>/Baekjoon-20201020-BOJ-number-inheritance1/</url>
+    <url>/BOJ-20201020-BOJ-number-inheritance1/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <h2 id="baegjun-su-ieosseugi1-1748-munje"><a href="#baegjun-su-ieosseugi1-1748-munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#백준-수-이어쓰기1-1748-문제"></a> <a href="https://www.acmicpc.net/problem/1748" target="_blank" rel="noopener">백준 수 이어쓰기1 1748 문제</a></h2>
 <h3 id="munje"><a href="#munje" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3>
@@ -1254,7 +1254,7 @@ N의 범위를 살펴보면 <code>N(1≤N≤100,000,000)</code> 의 조건을 �
   </entry>
   <entry>
     <title>백준 체스판 다시칠하기 1018</title>
-    <url>/Baekjoon-20201019-BOJ-chess-repaint/</url>
+    <url>/BOJ-20201019-BOJ-chess-repaint/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <h2 id="baegjun-ceseupan-dasicilhagi-1018-munje"><a href="#baegjun-ceseupan-dasicilhagi-1018-munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#백준-체스판-다시칠하기-1018-문제"></a> <a href="https://www.acmicpc.net/problem/1018" target="_blank" rel="noopener">백준 체스판 다시칠하기 1018 문제</a></h2>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -1338,7 +1338,7 @@ WWWWWWWWWWBWB</p>
   </entry>
   <entry>
     <title>백준 덩치 7568</title>
-    <url>/Baekjoon-20201016-BOJ-big-body/</url>
+    <url>/BOJ-20201016-BOJ-big-body/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <h2 id="baegjun-deongci-munje"><a href="#baegjun-deongci-munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#백준-덩치-문제"></a> <a href="https://www.acmicpc.net/problem/7568" target="_blank" rel="noopener">백준 덩치 문제</a></h2>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -1396,7 +1396,7 @@ E    &lt;46, 155&gt;    5<br>
   </entry>
   <entry>
     <title>백준 분해합 2231</title>
-    <url>/Baekjoon-20201015-BOJ-decomposition-sum/</url>
+    <url>/BOJ-20201015-BOJ-decomposition-sum/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <h2 id="baegjun-bunhaehab-munje"><a href="#baegjun-bunhaehab-munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#백준-분해합-문제"></a> <a href="https://www.acmicpc.net/problem/2231" target="_blank" rel="noopener">백준 분해합 문제</a></h2>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -1659,7 +1659,7 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
   </entry>
   <entry>
     <title>백준 숫자카드 10815</title>
-    <url>/Baekjoon-20200922-BOJ-number-card/</url>
+    <url>/BOJ-20200922-BOJ-number-card/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/10815" target="_blank" rel="noopener">백준 숫자카드 10815</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -1739,7 +1739,7 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 치킨배달 15686</title>
-    <url>/Samsung-20200921-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-chicken-delivery/</url>
+    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200921-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-chicken-delivery/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/15686" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 치킨배달 15686</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -1825,7 +1825,7 @@ n은 1 이상, 25이하인 자연수입니다.</p>
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 아기상어 16236</title>
-    <url>/Samsung-20200919-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-baby-shark/</url>
+    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200919-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-baby-shark/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/16236" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 아기상어 16236</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -1903,7 +1903,7 @@ N = 20이하 이므로 O(N^4) = 약 16만</p>
   </entry>
   <entry>
     <title>02.Reactive Streams</title>
-    <url>/ReactiveProgramming-20200919-RXJAVA-reactive-programming-section02/</url>
+    <url>/RXJAVA-20200919-RXJAVA-reactive-programming-section02/</url>
     <content><![CDATA[<h1 id="reactive-streamsran"><a href="#reactive-streamsran" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#reactive-streams란"></a> Reactive Streams란</h1>
 <p>Rxjava 버전이 1.x에서 2.x로 올라간 배경에는 Reactive Streams가 있습니다. Reactive Streams란 라이브러리나 프레임워크 상관없이 데이터 스트림을 비동기로 다룰수 잇는 공통 매커니즘으로, 이 매커니즘을 편리하게 사용할 수 있는 인터페이스를 제공합니다.</p>
 <p><a href="http://www.reactive-streams.org" target="_blank" rel="noopener">Reactive Streams</a></p>
@@ -2278,7 +2278,7 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 드래곤커브 15685</title>
-    <url>/Samsung-20200916-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-dragon-curve/</url>
+    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200916-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-dragon-curve/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/15685" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 드래곤커브 15685</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -2889,7 +2889,7 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 로봇청소기 14503</title>
-    <url>/Samsung-20200911-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-robot-vacuum-cleaner/</url>
+    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200911-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-robot-vacuum-cleaner/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/14503" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 로봇청소기 14503</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -2993,50 +2993,6 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
       </tags>
   </entry>
   <entry>
-    <title>프로그래머스 K번째수</title>
-    <url>/Programmers-20200910-Programmers-k-number/</url>
-    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
-<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
-<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
-<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
-<ul>
-<li>array의 길이는 1 이상 100 이하입니다.</li>
-<li>array의 각 원소는 1 이상 100 이하입니다.</li>
-<li>commands의 길이는 1 이상 50 이하입니다.</li>
-<li>commands의 각 원소는 길이가 3입니다.</li>
-</ul>
-<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
-<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
-<ul>
-<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
-<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
-<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
-</ul>
-<blockquote>
-<p>K번째수 예시</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
-<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
-<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
-<blockquote>
-<p>시간복잡도<br>
-시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
-O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
-</blockquote>
-<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Programmers</category>
-      </categories>
-      <tags>
-        <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
-        <tag>정렬</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>프로그래머스 모의고사</title>
     <url>/Programmers-20200915-Programmers-mock-test/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
@@ -3086,8 +3042,52 @@ O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays�
       </tags>
   </entry>
   <entry>
+    <title>프로그래머스 K번째수</title>
+    <url>/Programmers-20200910-Programmers-k-number/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
+<ul>
+<li>array의 길이는 1 이상 100 이하입니다.</li>
+<li>array의 각 원소는 1 이상 100 이하입니다.</li>
+<li>commands의 길이는 1 이상 50 이하입니다.</li>
+<li>commands의 각 원소는 길이가 3입니다.</li>
+</ul>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
+<ul>
+<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
+<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
+<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
+</ul>
+<blockquote>
+<p>K번째수 예시</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
+<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
+<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
+<blockquote>
+<p>시간복잡도<br>
+시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
+O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
+</blockquote>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Programmers</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
+        <tag>정렬</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>01.Rxjava와 리액티브 프로그래밍</title>
-    <url>/ReactiveProgramming-20200909-RXJAVA-reactive-programming-section01/</url>
+    <url>/RXJAVA-20200909-RXJAVA-reactive-programming-section01/</url>
     <content><![CDATA[<h1 id="what-is-rxjava"><a href="#what-is-rxjava" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#what-is-rxjava"></a> What is RxJava?</h1>
 <p>자바(Java)에서 리액티브 프로그래밍(Reactive Programming)을 구현하는데 사용하는 <code>라이브러리</code>입니다.</p>
 <p>이벤트 처리와 같은 <code>비동기</code> 처리에 최적화됐으며, <code>2.0버전부터 Reactive Streams 사양을 구현</code>합니다. Reactive Streams 사양을 구현합니다. Reactive Streams는 어떤 라이브러리나 프레임워크라도 데이터 스트림을 비동기로 처리하는 공통 메커니즘을 인터페이스로 제공합니다.</p>
@@ -3199,7 +3199,7 @@ O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays�
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 연구소 14502</title>
-    <url>/Baekjoon-20200908-BOJ-beakjoon-laboratory-14502/</url>
+    <url>/BOJ-20200908-BOJ-beakjoon-laboratory-14502/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/14502" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 연구소 14502</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -3472,7 +3472,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 연산자끼워넣기2 15658</title>
-    <url>/Baekjoon-20191220-BOJ-%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B52-15658/</url>
+    <url>/BOJ-20191220-BOJ-%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B52-15658/</url>
     <content><![CDATA[<p><a href="https://www.acmicpc.net/problem/15658" target="_blank" rel="noopener">연산자끼워넣기(2)15658</a></p>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <blockquote>
@@ -3513,7 +3513,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 퇴사 14501</title>
-    <url>/Baekjoon-20191217-BOJ-%E1%84%90%E1%85%AC%E1%84%89%E1%85%A114501/</url>
+    <url>/BOJ-20191217-BOJ-%E1%84%90%E1%85%AC%E1%84%89%E1%85%A114501/</url>
     <content><![CDATA[<h2 id="baegjuntoesa14501"><a href="#baegjuntoesa14501" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준퇴사14501"></a> <a href="https://www.acmicpc.net/problem/14501" target="_blank" rel="noopener">백준퇴사14501</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3545,7 +3545,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 부분수열의합 1182</title>
-    <url>/Baekjoon-20191217-BOJ-%E1%84%87%E1%85%AE%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%AE%E1%84%8B%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%B4%E1%84%92%E1%85%A1%E1%86%B81182/</url>
+    <url>/BOJ-20191217-BOJ-%E1%84%87%E1%85%AE%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%AE%E1%84%8B%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%B4%E1%84%92%E1%85%A1%E1%86%B81182/</url>
     <content><![CDATA[<h2 id="baegjun-bubunsuyeolyihab-1182"><a href="#baegjun-bubunsuyeolyihab-1182" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-부분수열의합-1182"></a> <a href="https://www.acmicpc.net/problem/1182" target="_blank" rel="noopener">백준 부분수열의합 1182</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -3590,7 +3590,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 암호만들기 1759</title>
-    <url>/Baekjoon-20191203-BOJ-%E1%84%8B%E1%85%A1%E1%86%B7%E1%84%92%E1%85%A9%E1%84%86%E1%85%A1%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B51759/</url>
+    <url>/BOJ-20191203-BOJ-%E1%84%8B%E1%85%A1%E1%86%B7%E1%84%92%E1%85%A9%E1%84%86%E1%85%A1%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B51759/</url>
     <content><![CDATA[<h2 id="baegjunamhomandeulgi1759"><a href="#baegjunamhomandeulgi1759" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준암호만들기1759"></a> <a href="https://www.acmicpc.net/problem/1759" target="_blank" rel="noopener">백준암호만들기1759</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3657,7 +3657,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 연산자끼워넣기 14888</title>
-    <url>/Baekjoon-20191202-BOJ-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B514888/</url>
+    <url>/BOJ-20191202-BOJ-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B514888/</url>
     <content><![CDATA[<h2 id="yeonsanjaggiweoneohgi14888"><a href="#yeonsanjaggiweoneohgi14888" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#연산자끼워넣기14888"></a> <a href="https://www.acmicpc.net/problem/14888" target="_blank" rel="noopener">연산자끼워넣기14888</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <blockquote>
@@ -3720,7 +3720,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 로또 6603</title>
-    <url>/Baekjoon-20191202-BOJ-6603%E1%84%85%E1%85%A9%E1%84%84%E1%85%A9/</url>
+    <url>/BOJ-20191202-BOJ-6603%E1%84%85%E1%85%A9%E1%84%84%E1%85%A9/</url>
     <content><![CDATA[<h2 id="roddo6603"><a href="#roddo6603" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#로또6603"></a> <a href="https://www.acmicpc.net/problem/6603" target="_blank" rel="noopener">로또6603</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3754,7 +3754,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 외원판순회2 10971</title>
-    <url>/Baekjoon-20191202-BOJ-%E1%84%8B%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%91%E1%85%A1%E1%86%AB%E1%84%89%E1%85%AE%E1%86%AB%E1%84%92%E1%85%AC2-10971/</url>
+    <url>/BOJ-20191202-BOJ-%E1%84%8B%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%91%E1%85%A1%E1%86%AB%E1%84%89%E1%85%AE%E1%86%AB%E1%84%92%E1%85%AC2-10971/</url>
     <content><![CDATA[<h2 id="baegjunoeweonpansunhoe2-10971"><a href="#baegjunoeweonpansunhoe2-10971" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준외원판순회2-10971"></a> <a href="https://www.acmicpc.net/problem/10971" target="_blank" rel="noopener">백준외원판순회2 10971</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3786,8 +3786,40 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </tags>
   </entry>
   <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123%E1%84%83%E1%85%A5%E1%84%92%E1%85%A1%E1%84%80%E1%85%B59095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 차이를최대로 10819</title>
-    <url>/Baekjoon-20191130-BOJ-%E1%84%8E%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%85%E1%85%B3%E1%86%AF%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A2%E1%84%85%E1%85%A910819/</url>
+    <url>/BOJ-20191130-BOJ-%E1%84%8E%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%85%E1%85%B3%E1%86%AF%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A2%E1%84%85%E1%85%A910819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3819,70 +3851,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </tags>
   </entry>
   <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/Baekjoon-20191130-BOJ-123%E1%84%83%E1%85%A5%E1%84%92%E1%85%A1%E1%84%80%E1%85%B59095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 날짜계산 1476</title>
-    <url>/Baekjoon-20191129-BOJ-%E1%84%82%E1%85%A1%E1%86%AF%E1%84%8D%E1%85%A1%E1%84%80%E1%85%A8%E1%84%89%E1%85%A1%E1%86%AB1476/</url>
-    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
-<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
-<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
-<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
-<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
-<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>백준 일곱난쟁이 2309</title>
-    <url>/Baekjoon-20191128-BOJ-%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%80%E1%85%A9%E1%86%B8%E1%84%82%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A2%E1%86%BC%E1%84%8B%E1%85%B52309/</url>
+    <url>/BOJ-20191128-BOJ-%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%80%E1%85%A9%E1%86%B8%E1%84%82%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A2%E1%86%BC%E1%84%8B%E1%85%B52309/</url>
     <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -3904,6 +3874,36 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>백준 날짜계산 1476</title>
+    <url>/BOJ-20191129-BOJ-%E1%84%82%E1%85%A1%E1%86%AF%E1%84%8D%E1%85%A1%E1%84%80%E1%85%A8%E1%84%89%E1%85%A1%E1%86%AB1476/</url>
+    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
+<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
+<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
+<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
+<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
+<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
