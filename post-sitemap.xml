@@ -8,8 +8,16 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/OS-20201116-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%8A%A4%EB%A0%88%EB%93%9C/</loc>
-        <lastmod>2020-11-16T07:50:09.167Z</lastmod>
+        <loc>http://gwanhyeon.github.io/Spring-20200911-%E1%84%89%E1%85%B3%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%BC-spring-mvc-environment/</loc>
+        <lastmod>2020-11-16T08:14:41.113Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/</loc>
+        <lastmod>2020-11-16T08:12:51.477Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -402,14 +410,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Programmers-20200912-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-failure-rate/</loc>
         <lastmod>2020-09-12T04:33:43.903Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Spring-20200911-%E1%84%89%E1%85%B3%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%BC-spring-mvc-environment/</loc>
-        <lastmod>2020-09-12T04:08:06.605Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

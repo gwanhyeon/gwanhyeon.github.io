@@ -2,12 +2,13 @@
 <search>
   <entry>
     <title>운영체제 프로세스, 스레드</title>
-    <url>/OS-20201116-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%8A%A4%EB%A0%88%EB%93%9C/</url>
-    <content><![CDATA[<h1 id="munje"><a href="#munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제"></a> <a href="https://www.acmicpc.net/problem/" target="_blank" rel="noopener">문제</a></h1>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <url>/%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/</url>
+    <content><![CDATA[<h1 id="peuroseseu-process"><a href="#peuroseseu-process" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로세스process"></a> 프로세스(Process)</h1>
+<h1 id="seuredeu-thread"><a href="#seuredeu-thread" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#스레드thread"></a> 스레드(thread)</h1>
 ]]></content>
+      <categories>
+        <category>OS</category>
+      </categories>
   </entry>
   <entry>
     <title>leetcode maximum subarray</title>
@@ -2765,7 +2766,7 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
 <p><a href="https://stackoverflow.com/questions/3092049/intellij-says-cannot-run-program-path-to-tomcat-bin-catalina-sh-error-13-per" target="_blank" rel="noopener">https://stackoverflow.com/questions/3092049/intellij-says-cannot-run-program-path-to-tomcat-bin-catalina-sh-error-13-per</a></p>
 ]]></content>
       <categories>
-        <category>SPRING/SPRINGBOOT</category>
+        <category>Spring</category>
       </categories>
       <tags>
         <tag>environment</tag>

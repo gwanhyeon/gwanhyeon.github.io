@@ -8,6 +8,20 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/spring/</loc>
+        <lastmod>2020-11-16T08:14:41.113Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/os/</loc>
+        <lastmod>2020-11-16T08:12:51.477Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/programmers/</loc>
         <lastmod>2020-11-15T12:46:48.737Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -52,13 +66,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/rxjava/</loc>
         <lastmod>2020-09-19T16:31:55.302Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/spring-springboot/</loc>
-        <lastmod>2020-09-12T04:08:06.605Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

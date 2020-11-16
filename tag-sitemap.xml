@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/springmvc/</loc>
+        <lastmod>2020-11-16T08:14:41.113Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/environment/</loc>
+        <lastmod>2020-11-16T08:14:41.113Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/%25EA%25B0%2584%25EC%2584%25A0/</loc>
         <lastmod>2020-11-15T12:46:48.737Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -306,20 +320,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EC%25B9%25B4%25EC%25B9%25B4%25EC%2598%25A4/</loc>
         <lastmod>2020-09-16T08:06:13.022Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/springmvc/</loc>
-        <lastmod>2020-09-12T04:08:06.605Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/environment/</loc>
-        <lastmod>2020-09-12T04:08:06.605Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

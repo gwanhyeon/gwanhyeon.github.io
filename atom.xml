@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2020-11-16T07:50:09.167Z</updated>
+  <updated>2020-11-16T08:12:51.477Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -18,22 +18,24 @@
   
   <entry>
     <title>운영체제 프로세스, 스레드</title>
-    <link href="http://gwanhyeon.github.io/OS-20201116-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%8A%A4%EB%A0%88%EB%93%9C/"/>
-    <id>http://gwanhyeon.github.io/OS-20201116-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%8A%A4%EB%A0%88%EB%93%9C/</id>
+    <link href="http://gwanhyeon.github.io/%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/"/>
+    <id>http://gwanhyeon.github.io/%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/</id>
     <published>2020-11-16T07:48:50.000Z</published>
-    <updated>2020-11-16T07:50:09.167Z</updated>
+    <updated>2020-11-16T08:12:51.477Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="munje"><a href="#munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제"></a> <a href="https://www.acmicpc.net/problem/" target="_blank" rel="noopener">문제</a></h1><h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2><h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="peuroseseu-process"><a href="#peuroseseu-process" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로세스process"></a> 프로세스(Process)</h1><h1 id="seuredeu-thread"><a href="#seuredeu-thread" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#스레드thread"></a> 스레드(thread)</h1>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;munje&quot;&gt;&lt;a href=&quot;#munje&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#문제&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://www.acmicpc.net/p
+        &lt;h1 id=&quot;peuroseseu-process&quot;&gt;&lt;a href=&quot;#peuroseseu-process&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#프로세스process&quot;&gt;&lt;/a&gt;
       
     
     </summary>
     
+    
+      <category term="OS" scheme="http://gwanhyeon.github.io/categories/os/"/>
     
     
   </entry>
