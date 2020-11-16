@@ -91,6 +91,7 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
 <blockquote>
 <p>PCB에서 제공하는 정보</p>
 </blockquote>
+<p><img src="https://i.ytimg.com/vi/Ea63gRbEgkw/maxresdefault.jpg" alt="Process Control Block"></p>
 <ul>
 <li>1) 프로세스 식별자(Process ID)</li>
 <li>2) 프로세스 상태(Process State) : 생성(create), 준비(ready), 실행 (running), 대기(waiting), 완료(terminated) 상태가 있습니다.</li>
