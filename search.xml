@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>운영체제 프로세스 스레드 메모리 구조</title>
-    <url>/%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/</url>
+    <url>/OS-20201116-%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/</url>
     <content><![CDATA[<h1 id="peurogeuraem-program"><a href="#peurogeuraem-program" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그램program"></a> 프로그램(Program)</h1>
 <p>어떤 작업을 위해 실행할 수 있는 파일로 정의할 수 있습니다.</p>
 <h1 id="peuroseseu-process"><a href="#peuroseseu-process" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#프로세스process"></a> 프로세스(Process)</h1>
