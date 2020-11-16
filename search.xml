@@ -220,8 +220,8 @@ O(dirs.length() + Hashset add()1) 즉, 상수를 무시하므로 O(N)</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>프로그래머스</tag>
         <tag>그래프</tag>
+        <tag>프로그래머스</tag>
         <tag>Set자료구조</tag>
         <tag>간선</tag>
       </tags>
@@ -582,8 +582,8 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
         <tag>구현</tag>
         <tag>DP</tag>
       </tags>
@@ -628,8 +628,8 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
@@ -727,8 +727,8 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
@@ -778,8 +778,8 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
@@ -879,9 +879,9 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
@@ -934,9 +934,9 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
@@ -983,9 +983,9 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
@@ -1064,8 +1064,8 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>DFS</tag>
+        <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
       </tags>
@@ -1133,9 +1133,9 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
       </tags>
@@ -1191,9 +1191,9 @@ K+1개를 선택하여 DFS를 통해 모든 조건을 구하였던 문자열 값
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
         <tag>위상정렬</tag>
       </tags>
   </entry>
@@ -1247,8 +1247,8 @@ N의 범위를 살펴보면 <code>N(1≤N≤100,000,000)</code> 의 조건을 �
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
         <tag>연산</tag>
       </tags>
   </entry>
@@ -1331,9 +1331,9 @@ WWWWWWWWWWBWB</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1389,9 +1389,9 @@ E    &lt;46, 155&gt;    5<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1431,9 +1431,9 @@ N이 216일 경우 (216+2+1+6) =&gt; 198이 됩니다.<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1517,9 +1517,9 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
-        <tag>DFS</tag>
         <tag>그리디</tag>
       </tags>
   </entry>
@@ -1570,8 +1570,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>완전탐색</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -1731,10 +1731,10 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>BOJ</tag>
+        <tag>알고리즘</tag>
         <tag>이분탐색</tag>
+        <tag>BOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -1779,11 +1779,11 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>삼성SW역량테스트</tag>
+        <tag>알고리즘</tag>
         <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -1895,10 +1895,10 @@ N = 20이하 이므로 O(N^4) = 약 16만</p>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>삼성SW역량테스트</tag>
+        <tag>알고리즘</tag>
         <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -2376,11 +2376,11 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>삼성SW역량테스트</tag>
+        <tag>알고리즘</tag>
         <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -2953,10 +2953,10 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>삼성SW역량테스트</tag>
+        <tag>알고리즘</tag>
         <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -3241,10 +3241,10 @@ O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays�
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>삼성SW역량테스트</tag>
+        <tag>알고리즘</tag>
         <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -3581,10 +3581,10 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
         <tag>백트래킹</tag>
+        <tag>알고리즘</tag>
         <tag>조합</tag>
       </tags>
   </entry>
@@ -4318,8 +4318,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
+        <tag>레벨2</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -4362,8 +4362,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
+        <tag>레벨2</tag>
       </tags>
   </entry>
   <entry>
@@ -4476,8 +4476,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
+        <tag>레벨2</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -4541,9 +4541,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
         <tag>위장</tag>
+        <tag>레벨2</tag>
         <tag>해시</tag>
       </tags>
   </entry>
