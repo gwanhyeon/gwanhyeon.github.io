@@ -18,8 +18,8 @@
   
   <entry>
     <title>운영체제 프로세스 스레드 메모리 구조</title>
-    <link href="http://gwanhyeon.github.io/OS-20201116-OS-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/"/>
-    <id>http://gwanhyeon.github.io/OS-20201116-OS-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/</id>
+    <link href="http://gwanhyeon.github.io/OS-20201116-OS-Process-Thread/"/>
+    <id>http://gwanhyeon.github.io/OS-20201116-OS-Process-Thread/</id>
     <published>2020-11-16T07:48:50.000Z</published>
     <updated>2020-11-16T09:22:21.536Z</updated>
     
@@ -86,8 +86,8 @@
   
   <entry>
     <title>프로그래머스 방문길이</title>
-    <link href="http://gwanhyeon.github.io/Programmers-20201115-Programmers-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%86%E1%85%AE%E1%86%AB%E1%84%80%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%B5/"/>
-    <id>http://gwanhyeon.github.io/Programmers-20201115-Programmers-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%86%E1%85%AE%E1%86%AB%E1%84%80%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%B5/</id>
+    <link href="http://gwanhyeon.github.io/Programmers-20201115-Programmers-length-of-visit/"/>
+    <id>http://gwanhyeon.github.io/Programmers-20201115-Programmers-length-of-visit/</id>
     <published>2020-11-15T12:38:46.000Z</published>
     <updated>2020-11-15T12:46:48.737Z</updated>
     
@@ -118,8 +118,8 @@
   
   <entry>
     <title>프로그래머스 배달</title>
-    <link href="http://gwanhyeon.github.io/Programmers-20201114-Programmers-%E1%84%87%E1%85%A2%E1%84%83%E1%85%A1%E1%86%AF/"/>
-    <id>http://gwanhyeon.github.io/Programmers-20201114-Programmers-%E1%84%87%E1%85%A2%E1%84%83%E1%85%A1%E1%86%AF/</id>
+    <link href="http://gwanhyeon.github.io/Programmers-20201114-Programmers-delivery/"/>
+    <id>http://gwanhyeon.github.io/Programmers-20201114-Programmers-delivery/</id>
     <published>2020-11-14T13:27:38.000Z</published>
     <updated>2020-11-14T13:39:34.595Z</updated>
     
@@ -150,8 +150,8 @@
   
   <entry>
     <title>프로그래머스 불량사용자</title>
-    <link href="http://gwanhyeon.github.io/Programmers-20201112-Programmers-%E1%84%87%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A3%E1%86%BC%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1/"/>
-    <id>http://gwanhyeon.github.io/Programmers-20201112-Programmers-%E1%84%87%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A3%E1%86%BC%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1/</id>
+    <link href="http://gwanhyeon.github.io/Programmers-20201112-Programmers-bad-user/"/>
+    <id>http://gwanhyeon.github.io/Programmers-20201112-Programmers-bad-user/</id>
     <published>2020-11-12T07:27:34.000Z</published>
     <updated>2020-11-12T07:42:58.224Z</updated>
     
@@ -180,8 +180,8 @@
   
   <entry>
     <title>알고리즘 에라토스테네스의 체, 소수, 소인수분해</title>
-    <link href="http://gwanhyeon.github.io/Algorithm-20201029-Algorithm-%E1%84%8B%E1%85%A6%E1%84%85%E1%85%A1%E1%84%90%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A6%E1%84%82%E1%85%A6%E1%84%89%E1%85%B3%E1%84%8B%E1%85%B4%E1%84%8E%E1%85%A6/"/>
-    <id>http://gwanhyeon.github.io/Algorithm-20201029-Algorithm-%E1%84%8B%E1%85%A6%E1%84%85%E1%85%A1%E1%84%90%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A6%E1%84%82%E1%85%A6%E1%84%89%E1%85%B3%E1%84%8B%E1%85%B4%E1%84%8E%E1%85%A6/</id>
+    <link href="http://gwanhyeon.github.io/Algorithm-20201029-Algorithm-Eratosthenes/"/>
+    <id>http://gwanhyeon.github.io/Algorithm-20201029-Algorithm-Eratosthenes/</id>
     <published>2020-10-29T11:43:23.000Z</published>
     <updated>2020-10-29T12:48:38.326Z</updated>
     

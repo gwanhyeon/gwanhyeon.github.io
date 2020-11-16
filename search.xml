@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>운영체제 프로세스 스레드 메모리 구조</title>
-    <url>/OS-20201116-OS-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A6%E1%84%89%E1%85%B3-%E1%84%89%E1%85%B3%E1%84%85%E1%85%A6%E1%84%83%E1%85%B3/</url>
+    <url>/OS-20201116-OS-Process-Thread/</url>
     <content><![CDATA[<h1 id="peurogeuraem-program"><a href="#peurogeuraem-program" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그램program"></a> 프로그램(Program)</h1>
 <p>어떤 작업을 위해 실행할 수 있는 파일로 정의할 수 있습니다.</p>
 <h1 id="peuroseseu-process"><a href="#peuroseseu-process" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#프로세스process"></a> 프로세스(Process)</h1>
@@ -181,7 +181,7 @@ Output: -2147483647</p>
   </entry>
   <entry>
     <title>프로그래머스 방문길이</title>
-    <url>/Programmers-20201115-Programmers-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%86%E1%85%AE%E1%86%AB%E1%84%80%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%B5/</url>
+    <url>/Programmers-20201115-Programmers-length-of-visit/</url>
     <content><![CDATA[<h1 id="peurogeuraemeoseu-bangmungili"><a href="#peurogeuraemeoseu-bangmungili" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-방문길이"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/49994" target="_blank" rel="noopener">프로그래머스 방문길이</a></h1>
 <h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <blockquote>
@@ -228,7 +228,7 @@ O(dirs.length() + Hashset add()1) 즉, 상수를 무시하므로 O(N)</p>
   </entry>
   <entry>
     <title>프로그래머스 배달</title>
-    <url>/Programmers-20201114-Programmers-%E1%84%87%E1%85%A2%E1%84%83%E1%85%A1%E1%86%AF/</url>
+    <url>/Programmers-20201114-Programmers-delivery/</url>
     <content><![CDATA[<h1 id="peurogeuraemeoseu-baedal"><a href="#peurogeuraemeoseu-baedal" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-배달"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/12978" target="_blank" rel="noopener">프로그래머스 배달</a></h1>
 <h3 id="munje-seolmyeong"><a href="#munje-seolmyeong" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제-설명"></a> 문제 설명</h3>
 <p>N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을에는 1부터 N까지의 번호가 각각 하나씩 부여되어 있습니다. 각 마을은 양방향으로 통행할 수 있는 도로로 연결되어 있는데, 서로 다른 마을 간에 이동할 때는 이 도로를 지나야 합니다. 도로를 지날 때 걸리는 시간은 도로별로 다릅니다. 현재 1번 마을에 있는 음식점에서 각 마을로 음식 배달을 하려고 합니다. 각 마을로부터 음식 주문을 받으려고 하는데, N개의 마을 중에서 K 시간 이하로 배달이 가능한 마을에서만 주문을 받으려고 합니다. 다음은 N = 5, K = 3인 경우의 예시입니다.</p>
@@ -306,7 +306,7 @@ K는 음식 배달이 가능한 시간을 나타내며, 1 이상 500,000 이하�
   </entry>
   <entry>
     <title>프로그래머스 불량사용자</title>
-    <url>/Programmers-20201112-Programmers-%E1%84%87%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A3%E1%86%BC%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1/</url>
+    <url>/Programmers-20201112-Programmers-bad-user/</url>
     <content><![CDATA[<h1 id="peurogeuraemeoseu-kakao-bulryangsayongja"><a href="#peurogeuraemeoseu-kakao-bulryangsayongja" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-카카오-불량사용자"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/64064" target="_blank" rel="noopener">프로그래머스 카카오 불량사용자</a></h1>
 <h2 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h2>
 <h3 id="munje-seolmyeong"><a href="#munje-seolmyeong" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#문제-설명"></a> 문제 설명</h3>
@@ -402,7 +402,7 @@ frodoc</p>
   </entry>
   <entry>
     <title>알고리즘 에라토스테네스의 체, 소수, 소인수분해</title>
-    <url>/Algorithm-20201029-Algorithm-%E1%84%8B%E1%85%A6%E1%84%85%E1%85%A1%E1%84%90%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A6%E1%84%82%E1%85%A6%E1%84%89%E1%85%B3%E1%84%8B%E1%85%B4%E1%84%8E%E1%85%A6/</url>
+    <url>/Algorithm-20201029-Algorithm-Eratosthenes/</url>
     <content><![CDATA[<h1 id="sosu-prime-number"><a href="#sosu-prime-number" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#소수prime-number"></a> 소수(Prime Number)</h1>
 <h2 id="sosuyi-jeongyi"><a href="#sosuyi-jeongyi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#소수의-정의"></a> 소수의 정의</h2>
 <p><code>소수란</code> 약수가 1과 자기 자신밖에 없는수를 일컫는 말입니다.</p>
@@ -1525,7 +1525,7 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
   </entry>
   <entry>
     <title>프로그래머스 카펫</title>
-    <url>/Programmers-20201009-Programmers-%E1%84%8F%E1%85%A1%E1%84%91%E1%85%A6%E1%86%BA/</url>
+    <url>/Programmers-20201009-Programmers-carpet/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <h2 id="peurogeuraemeoseu-kapes-munje"><a href="#peurogeuraemeoseu-kapes-munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#프로그래머스-카펫-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42842?language=java" target="_blank" rel="noopener">프로그래머스 카펫 문제</a></h2>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -1739,7 +1739,7 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 치킨배달 15686</title>
-    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200921-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-chicken-delivery/</url>
+    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200921-chicken-delivery/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/15686" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 치킨배달 15686</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -1825,7 +1825,7 @@ n은 1 이상, 25이하인 자연수입니다.</p>
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 아기상어 16236</title>
-    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200919-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-baby-shark/</url>
+    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200919-baby-shark/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/16236" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 아기상어 16236</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -2278,7 +2278,7 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 드래곤커브 15685</title>
-    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200916-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-dragon-curve/</url>
+    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200916-dragon-curve/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/15685" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 드래곤커브 15685</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -2889,7 +2889,7 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
   </entry>
   <entry>
     <title>삼성 SW 역량테스트 백준 로봇청소기 14503</title>
-    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200911-SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-robot-vacuum-cleaner/</url>
+    <url>/SW%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%85%E1%85%A3%E1%86%BC%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3-20200911-robot-vacuum-cleaner/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
 <p><a href="https://www.acmicpc.net/problem/14503" target="_blank" rel="noopener">삼성 SW 역량테스트 기출 백준 로봇청소기 14503</a></p>
 <h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
@@ -2993,6 +2993,50 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
       </tags>
   </entry>
   <entry>
+    <title>프로그래머스 K번째수</title>
+    <url>/Programmers-20200910-Programmers-k-number/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
+<ul>
+<li>array의 길이는 1 이상 100 이하입니다.</li>
+<li>array의 각 원소는 1 이상 100 이하입니다.</li>
+<li>commands의 길이는 1 이상 50 이하입니다.</li>
+<li>commands의 각 원소는 길이가 3입니다.</li>
+</ul>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
+<ul>
+<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
+<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
+<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
+</ul>
+<blockquote>
+<p>K번째수 예시</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
+<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
+<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
+<blockquote>
+<p>시간복잡도<br>
+시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
+O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
+</blockquote>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Programmers</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
+        <tag>정렬</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>프로그래머스 모의고사</title>
     <url>/Programmers-20200915-Programmers-mock-test/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
@@ -3039,50 +3083,6 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
       <tags>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>프로그래머스 K번째수</title>
-    <url>/Programmers-20200910-Programmers-k-number/</url>
-    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
-<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
-<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
-<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
-<ul>
-<li>array의 길이는 1 이상 100 이하입니다.</li>
-<li>array의 각 원소는 1 이상 100 이하입니다.</li>
-<li>commands의 길이는 1 이상 50 이하입니다.</li>
-<li>commands의 각 원소는 길이가 3입니다.</li>
-</ul>
-<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
-<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
-<ul>
-<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
-<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
-<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
-</ul>
-<blockquote>
-<p>K번째수 예시</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
-<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
-<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
-<blockquote>
-<p>시간복잡도<br>
-시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
-O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
-</blockquote>
-<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Programmers</category>
-      </categories>
-      <tags>
-        <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
-        <tag>정렬</tag>
       </tags>
   </entry>
   <entry>
@@ -3472,7 +3472,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 연산자끼워넣기2 15658</title>
-    <url>/BOJ-20191220-BOJ-%E1%84%87%E1%85%A2%E1%86%A8%E1%84%8C%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B52-15658/</url>
+    <url>/BOJ-20191220-BOJ-interpolating-operator2-15658/</url>
     <content><![CDATA[<p><a href="https://www.acmicpc.net/problem/15658" target="_blank" rel="noopener">연산자끼워넣기(2)15658</a></p>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <blockquote>
@@ -3513,7 +3513,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 퇴사 14501</title>
-    <url>/BOJ-20191217-BOJ-%E1%84%90%E1%85%AC%E1%84%89%E1%85%A114501/</url>
+    <url>/BOJ-20191217-BOJ-resignation-from-the-company-14501/</url>
     <content><![CDATA[<h2 id="baegjuntoesa14501"><a href="#baegjuntoesa14501" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준퇴사14501"></a> <a href="https://www.acmicpc.net/problem/14501" target="_blank" rel="noopener">백준퇴사14501</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3545,7 +3545,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 부분수열의합 1182</title>
-    <url>/BOJ-20191217-BOJ-%E1%84%87%E1%85%AE%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%AE%E1%84%8B%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%B4%E1%84%92%E1%85%A1%E1%86%B81182/</url>
+    <url>/BOJ-20191217-BOJ-sum-of-partial-sequence-1182/</url>
     <content><![CDATA[<h2 id="baegjun-bubunsuyeolyihab-1182"><a href="#baegjun-bubunsuyeolyihab-1182" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-부분수열의합-1182"></a> <a href="https://www.acmicpc.net/problem/1182" target="_blank" rel="noopener">백준 부분수열의합 1182</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -3590,7 +3590,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 암호만들기 1759</title>
-    <url>/BOJ-20191203-BOJ-%E1%84%8B%E1%85%A1%E1%86%B7%E1%84%92%E1%85%A9%E1%84%86%E1%85%A1%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B51759/</url>
+    <url>/BOJ-20191203-BOJ-Create-a-password-1759/</url>
     <content><![CDATA[<h2 id="baegjunamhomandeulgi1759"><a href="#baegjunamhomandeulgi1759" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준암호만들기1759"></a> <a href="https://www.acmicpc.net/problem/1759" target="_blank" rel="noopener">백준암호만들기1759</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3657,7 +3657,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 연산자끼워넣기 14888</title>
-    <url>/BOJ-20191202-BOJ-%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%81%E1%85%B5%E1%84%8B%E1%85%AF%E1%84%82%E1%85%A5%E1%87%82%E1%84%80%E1%85%B514888/</url>
+    <url>/BOJ-20191202-BOJ-interpolating-operator14888/</url>
     <content><![CDATA[<h2 id="yeonsanjaggiweoneohgi14888"><a href="#yeonsanjaggiweoneohgi14888" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#연산자끼워넣기14888"></a> <a href="https://www.acmicpc.net/problem/14888" target="_blank" rel="noopener">연산자끼워넣기14888</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <blockquote>
@@ -3720,7 +3720,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 로또 6603</title>
-    <url>/BOJ-20191202-BOJ-6603%E1%84%85%E1%85%A9%E1%84%84%E1%85%A9/</url>
+    <url>/BOJ-20191202-BOJ-lotto-6603/</url>
     <content><![CDATA[<h2 id="roddo6603"><a href="#roddo6603" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#로또6603"></a> <a href="https://www.acmicpc.net/problem/6603" target="_blank" rel="noopener">로또6603</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3754,7 +3754,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 외원판순회2 10971</title>
-    <url>/BOJ-20191202-BOJ-%E1%84%8B%E1%85%AC%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%91%E1%85%A1%E1%86%AB%E1%84%89%E1%85%AE%E1%86%AB%E1%84%92%E1%85%AC2-10971/</url>
+    <url>/BOJ-20191202-BOJ-Foreign-edition-tour2-10971/</url>
     <content><![CDATA[<h2 id="baegjunoeweonpansunhoe2-10971"><a href="#baegjunoeweonpansunhoe2-10971" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준외원판순회2-10971"></a> <a href="https://www.acmicpc.net/problem/10971" target="_blank" rel="noopener">백준외원판순회2 10971</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3787,7 +3787,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123%E1%84%83%E1%85%A5%E1%84%92%E1%85%A1%E1%84%80%E1%85%B59095/</url>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
     <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -3819,7 +3819,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 차이를최대로 10819</title>
-    <url>/BOJ-20191130-BOJ-%E1%84%8E%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%85%E1%85%B3%E1%86%AF%E1%84%8E%E1%85%AC%E1%84%83%E1%85%A2%E1%84%85%E1%85%A910819/</url>
+    <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
 <h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
 <ul>
@@ -3852,7 +3852,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 일곱난쟁이 2309</title>
-    <url>/BOJ-20191128-BOJ-%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%80%E1%85%A9%E1%86%B8%E1%84%82%E1%85%A1%E1%86%AB%E1%84%8C%E1%85%A2%E1%86%BC%E1%84%8B%E1%85%B52309/</url>
+    <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
     <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -3885,7 +3885,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>백준 날짜계산 1476</title>
-    <url>/BOJ-20191129-BOJ-%E1%84%82%E1%85%A1%E1%86%AF%E1%84%8D%E1%85%A1%E1%84%80%E1%85%A8%E1%84%89%E1%85%A1%E1%86%AB1476/</url>
+    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
     <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -4284,7 +4284,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>프로그래머스 더 맵게</title>
-    <url>/Programmers-20191120-Programmers-%E1%84%83%E1%85%A5%E1%84%86%E1%85%A2%E1%86%B8%E1%84%80%E1%85%A6/</url>
+    <url>/Programmers-20191120-Programmers-more-spicy/</url>
     <content><![CDATA[<h2 id="peurogeuraemeoseu-deo-maebge-munje"><a href="#peurogeuraemeoseu-deo-maebge-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-더-맵게-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42626" target="_blank" rel="noopener">프로그래머스 더 맵게 문제</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -4325,7 +4325,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>프로그래머스 가장 큰 수</title>
-    <url>/Programmers-20191116-Programmers-%E1%84%8F%E1%85%B3%E1%86%AB%E1%84%89%E1%85%AE/</url>
+    <url>/Programmers-20191116-Programmers-big-number/</url>
     <content><![CDATA[<h2 id="peurogeuraemeoseu-gajang-keun-su-munje"><a href="#peurogeuraemeoseu-gajang-keun-su-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-가장-큰-수-문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42746" target="_blank" rel="noopener">프로그래머스 가장 큰 수 문제</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
@@ -4484,7 +4484,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
   </entry>
   <entry>
     <title>프로그래머스 위장</title>
-    <url>/Programmers-20191115-Programmers-%E1%84%8B%E1%85%B1%E1%84%8C%E1%85%A1%E1%86%BC/</url>
+    <url>/Programmers-20191115-Programmers-Camouflage/</url>
     <content><![CDATA[<h1 id="peurogeuraemeoseu-wijangmunje"><a href="#peurogeuraemeoseu-wijangmunje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-위장문제"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42578" target="_blank" rel="noopener">프로그래머스 위장문제</a></h1>
 <hr>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
