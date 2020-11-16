@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Leetcode-20201115-leetcode-maximum-subarray/</loc>
+        <lastmod>2020-11-16T13:37:31.670Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/OS-20201116-OS-Process-Thread/</loc>
         <lastmod>2020-11-16T10:26:37.457Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -26,14 +34,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Programmers-20201115-Programmers-length-of-visit/</loc>
         <lastmod>2020-11-15T12:46:48.737Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Leetcode-20201115-leetcode-maximum-subarray/</loc>
-        <lastmod>2020-11-15T12:46:41.111Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

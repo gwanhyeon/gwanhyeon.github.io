@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/leetcode/</loc>
+        <lastmod>2020-11-16T13:37:31.670Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/os/</loc>
         <lastmod>2020-11-16T10:26:37.457Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,13 +31,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/programmers/</loc>
         <lastmod>2020-11-15T12:46:48.737Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/leetcode/</loc>
-        <lastmod>2020-11-15T12:46:41.111Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
