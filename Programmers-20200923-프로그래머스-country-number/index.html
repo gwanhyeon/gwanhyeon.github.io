@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+    <title>프로그래머스 124나라의숫자 | Ethan Kim IT Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="알고리즘,프로그래머스" />
+    
+    <meta name="description" content="1.  문제 링크 프로그래머스 124 나라의 숫자  2.  문제 조건 124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다. 124 나라에는 자연수만 존재합니다. 124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다. 예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다. 10진">
+<meta name="keywords" content="알고리즘,프로그래머스">
+<meta property="og:type" content="article">
+<meta property="og:title" content="프로그래머스 124나라의숫자">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Programmers-20200923-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-country-number&#x2F;index.html">
+<meta property="og:site_name" content="Ethan Kim IT Blog">
+<meta property="og:description" content="1.  문제 링크 프로그래머스 124 나라의 숫자  2.  문제 조건 124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다. 124 나라에는 자연수만 존재합니다. 124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다. 예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다. 10진">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2020-10-05T10:56:53.401Z">
+<meta name="twitter:card" content="summary">
+    
+    <!--SEO 검색엔진 적용하기 -->
+    <link rel="canonical" href="http://gwanhyeon.github.io/programmers-20200923-프로그래머스-country-number/"/>
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151448157-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="Ethan Kim IT Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Ethan Kim IT Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/boj/">BOJ</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/etc/">ETC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programmers/">Programmers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/rxjava/">RXJAVA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/spring-springboot/">SPRING/SPRINGBOOT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/leetcode/">leetcode</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/programmers/">Programmers</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Programmers-20200923-프로그래머스-country-number" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        프로그래머스 124나라의숫자
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/Programmers-20200923-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-country-number/" class="article-date">
+         <time datetime="2020-09-12T12:19:05.000Z" itemprop="datePublished">2020-09-12</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>, <a class="tag-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/12899" target="_blank" rel="noopener">프로그래머스 124 나라의 숫자 </a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다.</p>
+<p>124 나라에는 자연수만 존재합니다.<br>
+124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다.<br>
+예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다.</p>
+<p>10진법    124 나라    10진법    124 나라<br>
+1    1    6    14<br>
+2    2    7    21<br>
+3    4    8    22<br>
+4    11    9    24<br>
+5    12    10    41<br>
+자연수 n이 매개변수로 주어질 때, n을 124 나라에서 사용하는 숫자로 바꾼 값을 return 하도록 solution 함수를 완성해 주세요.</p>
+<blockquote>
+<p>제한사항<br>
+n은 500,000,000이하의 자연수 입니다.</p>
+</blockquote>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<p>10진법을 124나라의 진법 형식대로 변환하는 문제입니다.</p>
+<blockquote>
+<p>규칙</p>
+</blockquote>
+<ul>
+<li>규칙을 살펴보면 <code>n % 3 == 0</code>이 되는 시점에 값이 4가 되는것을 확인할 수 있습니다.</li>
+<li><code>n % 3</code>을 했을때의 나머지를 계속 앞의 값으로 넣어주면 해당되는 124나라의 숫자로 변경하는것을 확인할 수 있습니다.</li>
+<li>res값이 = 일경우 res값을 4로 갱신해주고, 종료조건을 만들어주기위해서 n을 3으로 나눈값에서 -1을 빼주게 됩니다.</li>
+<li><code>Stringbuilder를 사용한 이유</code>는  String은 새로운 값을 할당될때마다 생성되기 때문에 효율이 떨어지게 되므로, <code>Stringbuilder는 동일 객체내에서 문자열을 변경</code>하는것이 가능합니다.</li>
+<li>마지막에 reverse() 함수를 사용하여 값을 출력시킨 이유는 역순으로 값이 들어가있는 상태이기 때문입니다.</li>
+</ul>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 나라의숫자124 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line">        StringBuilder answer = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> res = n % <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(res == <span class="number">0</span>)&#123;</span><br><span class="line">                res = <span class="number">4</span>;</span><br><span class="line">                n = (n/<span class="number">3</span>)-<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                n = (n/<span class="number">3</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            answer.append(Integer.toString(res));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer.reverse());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ethan Kim"
+        },
+        "headline": "프로그래머스 124나라의숫자",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "알고리즘 프로그래머스",
+        "genre": "Programmers",
+        "datePublished": "2020-09-12",
+        "dateCreated": "2020-09-12",
+        "dateModified": "2020-10-05",
+        "url": "http://gwanhyeon.github.io/Programmers-20200923-프로그래머스-country-number/",
+        "description": "1.  문제 링크
+프로그래머스 124 나라의 숫자 
+2.  문제 조건
+124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다.
+124 나라에는 자연수만 존재합니다.
+124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다.
+예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다.
+10진",
+        "wordCount": 496
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/gwanhyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/Samsung-20200916-%E1%84%89%E1%85%A1%E1%86%B7%E1%84%89%E1%85%A5%E1%86%BC-dragon-curve/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            삼성 SW 역량테스트 백준 드래곤커브 15685
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/Programmers-20200912-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-failure-rate/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">프로그래머스 실패율</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/OS-20201116-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EC%8A%A4%EB%A0%88%EB%93%9C/" class="title">운영체제 프로세스, 스레드</a></p>
+                            <p class="item-date"><time datetime="2020-11-16T07:48:50.000Z" itemprop="datePublished">2020-11-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/Leetcode-20201115-leetcode-maximum-subarray/" class="title">leetcode maximum subarray</a></p>
+                            <p class="item-date"><time datetime="2020-11-15T12:42:42.000Z" itemprop="datePublished">2020-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programmers/">Programmers</a></p>
+                            <p class="item-title"><a href="/Programmers-20201115-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%87%E1%85%A1%E1%86%BC%E1%84%86%E1%85%AE%E1%86%AB%E1%84%80%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%B5/" class="title">프로그래머스 방문길이</a></p>
+                            <p class="item-date"><time datetime="2020-11-15T12:38:46.000Z" itemprop="datePublished">2020-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programmers/">Programmers</a></p>
+                            <p class="item-title"><a href="/Programmers-20201114-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%B0%B0%EB%8B%AC/" class="title">프로그래머스 배달</a></p>
+                            <p class="item-date"><time datetime="2020-11-14T13:27:38.000Z" itemprop="datePublished">2020-11-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/programmers/">Programmers</a></p>
+                            <p class="item-title"><a href="/Programmers-20201112-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-%E1%84%87%E1%85%AE%E1%86%AF%E1%84%85%E1%85%A3%E1%86%BC%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%8C%E1%85%A1/" class="title">프로그래머스 불량사용자</a></p>
+                            <p class="item-date"><time datetime="2020-11-12T07:27:34.000Z" itemprop="datePublished">2020-11-12</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/boj/">BOJ</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">ETC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kotlin/">Kotlin</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programmers/">Programmers</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/rxjava/">RXJAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring-springboot/">SPRING/SPRINGBOOT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">11월 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">10월 2020</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">9월 2020</a><span class="archive-list-count">32</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">12월 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">11</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">BFS</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boj/" rel="tag">BOJ</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bst/" rel="tag">BST</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">DFS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">DP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h-index/" rel="tag">H-INDEX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjava/" rel="tag">RxJava</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="tag">Set자료구조</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/" rel="tag">springMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B0%84%EC%84%A0/" rel="tag">간선</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">검색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B5%AC%ED%98%84/" rel="tag">구현</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" rel="tag">그래프</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" rel="tag">그리디</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">다이나믹프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" rel="tag">다익스트라</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" rel="tag">데이터타입</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A0%88%EB%B2%A82/" rel="tag">레벨2</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">리액티브프로그래밍</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" rel="tag">릿코드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" rel="tag">문자열</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a><span class="tag-list-count">31</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" rel="tag">백트래킹</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B3%80%EC%88%98/" rel="tag">변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" rel="tag">부분집합의 합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" rel="tag">삼성SW역량테스트</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%86%8C%EC%88%98/" rel="tag">소수</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" rel="tag">소인수분해</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%98%ED%95%99/" rel="tag">수학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%9C%EC%97%B4/" rel="tag">순열</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a><span class="tag-list-count">49</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" rel="tag">에라토스테네스의체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%97%B0%EC%82%B0/" rel="tag">연산</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" rel="tag">완전탐색</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" rel="tag">우선순위큐</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" rel="tag">위상정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%9E%A5/" rel="tag">위장</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" rel="tag">이분탐색</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">이진탐색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" rel="tag">인접리스트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" rel="tag">정규표현식</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EB%A0%AC/" rel="tag">정렬</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A1%B0%ED%95%A9/" rel="tag">조합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" rel="tag">카카오</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a><span class="tag-list-count">28</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%B4%EC%8B%9C/" rel="tag">해시</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" rel="tag">환경설정</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%9E%99/" rel="tag">힙</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/bfs/" style="font-size: 14px;">BFS</a> <a href="/tags/boj/" style="font-size: 15px;">BOJ</a> <a href="/tags/bst/" style="font-size: 10px;">BST</a> <a href="/tags/dfs/" style="font-size: 16px;">DFS</a> <a href="/tags/dp/" style="font-size: 11px;">DP</a> <a href="/tags/h-index/" style="font-size: 10px;">H-INDEX</a> <a href="/tags/kotlin/" style="font-size: 12px;">Kotlin</a> <a href="/tags/rxjava/" style="font-size: 11px;">RxJava</a> <a href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" style="font-size: 10px;">Set자료구조</a> <a href="/tags/command/" style="font-size: 10px;">command</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/springmvc/" style="font-size: 10px;">springMVC</a> <a href="/tags/%EA%B0%84%EC%84%A0/" style="font-size: 10px;">간선</a> <a href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">검색트리</a> <a href="/tags/%EA%B5%AC%ED%98%84/" style="font-size: 13px;">구현</a> <a href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" style="font-size: 15px;">그래프</a> <a href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" style="font-size: 11px;">그리디</a> <a href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10px;">다이나믹프로그래밍</a> <a href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" style="font-size: 10px;">다익스트라</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" style="font-size: 10px;">데이터타입</a> <a href="/tags/%EB%A0%88%EB%B2%A82/" style="font-size: 13px;">레벨2</a> <a href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 11px;">리액티브프로그래밍</a> <a href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" style="font-size: 10px;">릿코드</a> <a href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" style="font-size: 15px;">문자열</a> <a href="/tags/%EB%B0%B1%EC%A4%80/" style="font-size: 19px;">백준</a> <a href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" style="font-size: 14px;">백트래킹</a> <a href="/tags/%EB%B3%80%EC%88%98/" style="font-size: 10px;">변수</a> <a href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" style="font-size: 10px;">부분집합의 합</a> <a href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" style="font-size: 17px;">브루트포스</a> <a href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" style="font-size: 14px;">삼성SW역량테스트</a> <a href="/tags/%EC%86%8C%EC%88%98/" style="font-size: 11px;">소수</a> <a href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" style="font-size: 10px;">소인수분해</a> <a href="/tags/%EC%88%98%ED%95%99/" style="font-size: 11px;">수학</a> <a href="/tags/%EC%88%9C%EC%97%B4/" style="font-size: 12px;">순열</a> <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 20px;">알고리즘</a> <a href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" style="font-size: 10px;">에라토스테네스의체</a> <a href="/tags/%EC%97%B0%EC%82%B0/" style="font-size: 10px;">연산</a> <a href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" style="font-size: 14px;">완전탐색</a> <a href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" style="font-size: 11px;">우선순위큐</a> <a href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" style="font-size: 10px;">위상정렬</a> <a href="/tags/%EC%9C%84%EC%9E%A5/" style="font-size: 10px;">위장</a> <a href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이분탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">이진탐색트리</a> <a href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" style="font-size: 10px;">인접리스트</a> <a href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" style="font-size: 10px;">정규표현식</a> <a href="/tags/%EC%A0%95%EB%A0%AC/" style="font-size: 14px;">정렬</a> <a href="/tags/%EC%A1%B0%ED%95%A9/" style="font-size: 10px;">조합</a> <a href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" style="font-size: 13px;">카카오</a> <a href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" style="font-size: 18px;">프로그래머스</a> <a href="/tags/%ED%95%B4%EC%8B%9C/" style="font-size: 11px;">해시</a> <a href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" style="font-size: 10px;">환경설정</a> <a href="/tags/%ED%9E%99/" style="font-size: 10px;">힙</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>    
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 Ethan Kim</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kgh-1';
+    
+    
+    var disqus_url = 'http://gwanhyeon.github.io/Programmers-20200923-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%80%E1%85%B3%E1%84%85%E1%85%A2%E1%84%86%E1%85%A5%E1%84%89%E1%85%B3-country-number/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
