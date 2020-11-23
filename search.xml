@@ -165,10 +165,10 @@ Output: -2147483647</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
-        <tag>DP</tag>
         <tag>릿코드</tag>
         <tag>부분집합의 합</tag>
+        <tag>DP</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -212,10 +212,10 @@ O(dirs.length() + Hashset add()1) 즉, 상수를 무시하므로 O(N)</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>그래프</tag>
         <tag>프로그래머스</tag>
         <tag>Set자료구조</tag>
         <tag>간선</tag>
+        <tag>그래프</tag>
       </tags>
   </entry>
   <entry>
@@ -387,8 +387,8 @@ frodoc</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>문자열</tag>
+        <tag>DFS</tag>
         <tag>정규표현식</tag>
       </tags>
   </entry>
@@ -574,10 +574,10 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>알고리즘</tag>
-        <tag>구현</tag>
         <tag>DP</tag>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
+        <tag>구현</tag>
       </tags>
   </entry>
   <entry>
@@ -620,9 +620,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -719,9 +719,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -770,9 +770,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -871,10 +871,10 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>DFS</tag>
         <tag>그래프</tag>
+        <tag>백준</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
       </tags>
@@ -926,10 +926,10 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>DFS</tag>
         <tag>그래프</tag>
+        <tag>백준</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
       </tags>
@@ -975,10 +975,10 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>DFS</tag>
         <tag>그래프</tag>
+        <tag>백준</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
       </tags>
@@ -1056,8 +1056,8 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>DFS</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
       </tags>
@@ -1125,10 +1125,10 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>DFS</tag>
         <tag>그래프</tag>
+        <tag>백준</tag>
         <tag>BFS</tag>
       </tags>
   </entry>
@@ -1183,9 +1183,9 @@ K+1개를 선택하여 DFS를 통해 모든 조건을 구하였던 문자열 값
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>알고리즘</tag>
         <tag>위상정렬</tag>
       </tags>
   </entry>
@@ -1239,8 +1239,8 @@ N의 범위를 살펴보면 <code>N(1≤N≤100,000,000)</code> 의 조건을 �
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>연산</tag>
       </tags>
   </entry>
@@ -1323,9 +1323,9 @@ WWWWWWWWWWBWB</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1381,9 +1381,9 @@ E    &lt;46, 155&gt;    5<br>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1423,9 +1423,9 @@ N이 216일 경우 (216+2+1+6) =&gt; 198이 됩니다.<br>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1509,10 +1509,10 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>그리디</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -1561,8 +1561,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -1723,10 +1723,10 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>이분탐색</tag>
+        <tag>백준</tag>
         <tag>BOJ</tag>
+        <tag>이분탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -1771,11 +1771,11 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -1887,10 +1887,10 @@ N = 20이하 이므로 O(N^4) = 약 16만</p>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -2368,11 +2368,11 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -2945,10 +2945,10 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -3233,10 +3233,10 @@ O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays�
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -3497,9 +3497,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -3573,10 +3573,10 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
         <tag>백트래킹</tag>
-        <tag>알고리즘</tag>
         <tag>조합</tag>
       </tags>
   </entry>
@@ -3704,9 +3704,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -3778,6 +3778,38 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </tags>
   </entry>
   <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -3801,38 +3833,6 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
 <h3 id="next-permutationeul-sayonghan-puli"><a href="#next-permutationeul-sayonghan-puli" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#next_permutation을-사용한-풀이"></a> next_permutation을 사용한 풀이</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  05_백준_차이를최대로_10819.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            sum += <span class="built_in">abs</span>(v[i] - v[i+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">max</span> &lt; sum)&#123;</span><br><span class="line">            <span class="built_in">max</span> = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()));</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">max</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -4269,8 +4269,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -4310,8 +4310,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -4354,8 +4354,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -4468,8 +4468,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -4533,9 +4533,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </categories>
       <tags>
         <tag>알고리즘</tag>
+        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
         <tag>위장</tag>
-        <tag>레벨2</tag>
         <tag>해시</tag>
       </tags>
   </entry>
