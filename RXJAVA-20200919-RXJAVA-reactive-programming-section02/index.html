@@ -18,8 +18,10 @@
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  Reactive Streams란 Rxjava 버전이 1.x에서 2.x로 올라간 배경에는 Reactive Streams가 있습니다. Reactive Streams란 라이브러리나 프레임워크 상관없이 데이터 스트림을 비동기로 다룰수 잇는 공통 매커니즘으로, 이 매커니즘을 편리하게 사용할 수 있는 인터페이스를 제공합니다. Reactive Streams 즉,">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-09-19T16:31:55.302Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;tech.kakao.com&#x2F;2018&#x2F;05&#x2F;29&#x2F;reactor-programming&#x2F;">
+<meta property="og:updated_time" content="2020-11-23T17:24:27.492Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;tech.kakao.com&#x2F;2018&#x2F;05&#x2F;29&#x2F;reactor-programming&#x2F;">
     
     <!--SEO 검색엔진 적용하기 -->
     <link rel="canonical" href="http://gwanhyeon.github.io/rxjava-20200919-rxjava-reactive-programming-section02/"/>
@@ -318,6 +320,55 @@ ga('send', 'pageview');
 </blockquote>
 <p><code>Publisher</code>가 <code>Subscriber</code>가 사용하는 <code>Subscription</code>은 통지받을 데이터 개수를 지정해 데이터 통지를 요청하거나 통지받지 않게 구독을 해지할 때 사용하는 인터페이스입니다. <code>Subscription</code>은 <code>Publisher</code>에서 인스턴스가 생성돼 통지 준비가 끝났을 때 호출하는 <code>onSubscribe</code> 메서드의 인자로 <code>Subscriber</code>에 전달됩니다. 이 <code>Subscription</code>을 받은 <code>Subscriber</code>는 <code>Subscription</code>의 메서드를 호출해 데이터 개수를 요청하거나 구독을 해지합니다.</p>
 <p>또한, <code>onNext</code> 메서드에서 이 <code>Subscription</code>을 사용하려면 <code>onSubscribe</code> 메서드로 전달받은 <code>Subscription</code>이 <code>Subscriber내부</code>에 있어야합니다.</p>
+<h1 id="reactive-streamsyi-gyucig"><a href="#reactive-streamsyi-gyucig" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#reactive-streams의-규칙"></a> Reactive Streams의 규칙</h1>
+<p><code>Reactive Streams</code>는 <code>인터페이스로 데이터를 통지하는 구조를 제공</code>합니다. 해당 구조가 제대로 작동하기 위해서는 Reactive Streams의 규칙을 따라야합니다.</p>
+<h3 id="reactive-streamsyi-gibongyucig"><a href="#reactive-streamsyi-gibongyucig" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#reactive-streams의-기본규칙"></a> Reactive Streams의 기본규칙</h3>
+<blockquote>
+<ol>
+<li>구독 시작 통지(onSubscribe)는 해당 구독에서 한 번만 발생합니다.</li>
+</ol>
+</blockquote>
+<p>Reactive Streams에서 구독 시작 통지는 해당 구독에서 한 번만 수행됩니다. 따라서 Subscriber의 onSubscribe메서드는 구독을 시작해 통지준비가 끝났을때 한번만 실행됩니다.<br>
+<code>단, 다음 작업은 추천하지 않지만 처리가 종료된 이후에는 같은 Publisher와 Subscriber로 subscribe 메서드를 호출하면 다시 onSubscribe 메서드가 실행됩니다.</code><br>
+이는 처리가 끝난뒤에 subscribe 메서드를 호출하면 새로운 구독을 시작한다고 생각합니다. 그러나 같은 인스턴스를 다시 사용해 subscribe 메서드를 호출할 때 Publisher나 Subscriber 내부의 관리 상태를 초기화하지 않으면 의도하지 않은 결과가 발생할 수 있습니다.</p>
+<blockquote>
+<ol start="2">
+<li>통지는 순차적으로 이루어집니다.</li>
+</ol>
+</blockquote>
+<p>Reactive Streams에서는 데이터 통지가 순차적으로 이루어집니다. 즉, 여러 통지를 동시에 할 수 없으며 RxJava의 <code>Observable 규약</code> 이라는 규칙에 따른것으로, 데이터가 동시에 통지돼 불일치가 발생하는것을 막을 수 있습니다.</p>
+<blockquote>
+<ol start="3">
+<li>null을 통지하지 않습니다.<br>
+Reactive Streams에서는 null을 통지 할 수 없습니다. 만약 null을 통지하려면 Reactive Streams에서 NullPoiuntException을 발생시킵니다. 이는 데이터를 통지할 때 뿐만 아니라 에러를 통지할때도 마찬가지로 진행됩니다.<br>
+<code>null을 통지하지 않는다</code> 라는 사양은 RxJava 1.x, 2.x 간 다른 사양이므로 주의해야합니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>Publisher의 처리는 완료(onComplete) 또는 에러(onError)를 통지해 종료합니다.</li>
+</ol>
+</blockquote>
+<p>Reactive Streams에서는 완료나 에러를 통지하면 Publisher가 처리를 끝 마친것으로 판단합니다.이는 완료나 에러 통지를 마친 구독은 더 이상 통지하지 않는다는 의미입니다.<br>
+예를 들면, 완료를 통지한 뒤에 에러가 발생했다면 이 에러는 통지하지 않으므로 정상적으로 종료되었다고 생각 할 수 있습니다.</p>
+<h3 id="deiteo-gaesu-yoceongina-gudoghaejireul-suhaenghaneun-subscriptionyi-gyucig"><a href="#deiteo-gaesu-yoceongina-gudoghaejireul-suhaenghaneun-subscriptionyi-gyucig" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#데이터-개수-요청이나-구독해지를-수행하는-subscription의-규칙"></a> 데이터 개수 요청이나 구독해지를 수행하는 Subscription의 규칙</h3>
+<blockquote>
+<ol>
+<li>데이터 개수 요청에 Long.MAX_VALUE를 설정하면 데이터 개수에 의한 통지 제한은 없어집니다.<br>
+Reactive Streams에서 Long.MAX_VALUE를 데이터 개수 요청으로 지정하면 통지할 데이터 개수의 제한이 없어집니다. 그러므로, 이 요청을 전송한 후에는 데이터 개수 요청을 보내지 않아도 데이터 통지를 계속해서 받을 수 있습니다.<br>
+요청받은 데이터 개수가 남은 상태에서 추가로 데이터 개수를 요청받으면 새로 요청받은 데이터 개수가 기존 데이터 개수에 추가된다는 점을 주의해야합니다.<br>
+즉, 데이터 개수 요청을 받을때 마다 기존 개수에 더해져 통지 가능한 데이터 개수가 증가합니다. 이 결과가 Long.MAX_VALUE에 도달하면 통지 가능한 데이터 개수 제한이 사라집니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>Subscription의 메서드는 동기화된 상태로 호출해야 합니다.<br>
+Subscription 메서드는 동기화된 상태로 호출해야합니다. 즉, Subscription의 메서드를 동시에 호출해서는 안됩니다.</li>
+</ol>
+</blockquote>
+<p>RxJava를 사용할 때는 각 통지 메서드와 Subscription의 메서드를 호출할 때 동기화가 이뤄지므로 처리 자체가 스레드 안전(Thread safety)한지를 특히 신경 써야합니다. 잘못 될 경우 제대로 통지가 되지 않을 가능성이 있습니다.</p>
+<h1 id="reference"><a href="#reference" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#reference"></a> Reference</h1>
+<p><img src="https://tech.kakao.com/2018/05/29/reactor-programming/" alt="https://tech.kakao.com/2018/05/29/reactor-programming/"></p>
 
         </div>
         <footer class="article-footer">
@@ -389,18 +440,18 @@ ga('send', 'pageview');
             "name": "Ethan Kim"
         },
         "headline": "02.Reactive Streams",
-        "image": "http://gwanhyeon.github.io",
+        "image": "http://gwanhyeon.github.iohttps://tech.kakao.com/2018/05/29/reactor-programming/",
         "keywords": "RxJava 리액티브프로그래밍",
         "genre": "RXJAVA",
         "datePublished": "2020-09-19",
         "dateCreated": "2020-09-19",
-        "dateModified": "2020-09-20",
+        "dateModified": "2020-11-24",
         "url": "http://gwanhyeon.github.io/RXJAVA-20200919-RXJAVA-reactive-programming-section02/",
         "description": "1.  Reactive Streams란
 Rxjava 버전이 1.x에서 2.x로 올라간 배경에는 Reactive Streams가 있습니다. Reactive Streams란 라이브러리나 프레임워크 상관없이 데이터 스트림을 비동기로 다룰수 잇는 공통 매커니즘으로, 이 매커니즘을 편리하게 사용할 수 있는 인터페이스를 제공합니다.
 Reactive Streams
 즉,",
-        "wordCount": 871
+        "wordCount": 1229
     }
 </script>
 
