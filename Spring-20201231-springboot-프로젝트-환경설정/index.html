@@ -10,15 +10,15 @@
     
     <meta name="keywords" content="환경설정,Spring,IntelliJ" />
     
-    <meta name="description" content="1.  Springboot 프로젝트 환경설정하기 이번시간부터 스프링부트 프로젝트생성부터 스프링 개념에 대해서 정리를 진행하려고합니다. 프로젝트 생성을 위한 환경은 다음과 같습니다.  Intellj IDEA Springboot 2.4.1 버전 Gradle Java 11 다음 환경을 바탕으로 프로젝트 생성을 진행할 에정입니다.  스프링 프로젝트를 진행하기 위해">
+    <meta name="description" content="1.  Springboot 프로젝트 환경설정하기 이번시간부터 스프링부트 프로젝트생성부터 스프링 개념에 대해서 정리를 진행하려고합니다. 프로젝트 생성을 위한 환경은 다음과 같습니다.  Intellj IDEA Springboot 2.4.1 버전 Gradle Java 11  스프링 프로젝트를 진행하기 위해서는 https:&#x2F;&#x2F;start.spring.io 에서 생성">
 <meta name="keywords" content="환경설정,Spring,IntelliJ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Springboot 프로젝트 환경설정">
 <meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Spring-20201231-springboot-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="1.  Springboot 프로젝트 환경설정하기 이번시간부터 스프링부트 프로젝트생성부터 스프링 개념에 대해서 정리를 진행하려고합니다. 프로젝트 생성을 위한 환경은 다음과 같습니다.  Intellj IDEA Springboot 2.4.1 버전 Gradle Java 11 다음 환경을 바탕으로 프로젝트 생성을 진행할 에정입니다.  스프링 프로젝트를 진행하기 위해">
+<meta property="og:description" content="1.  Springboot 프로젝트 환경설정하기 이번시간부터 스프링부트 프로젝트생성부터 스프링 개념에 대해서 정리를 진행하려고합니다. 프로젝트 생성을 위한 환경은 다음과 같습니다.  Intellj IDEA Springboot 2.4.1 버전 Gradle Java 11  스프링 프로젝트를 진행하기 위해서는 https:&#x2F;&#x2F;start.spring.io 에서 생성">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-12-31T09:52:36.944Z">
+<meta property="og:updated_time" content="2020-12-31T09:55:47.941Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -201,13 +201,14 @@ ga('send', 'pageview');
 <li>Intellj IDEA</li>
 <li>Springboot 2.4.1 버전</li>
 <li>Gradle</li>
-<li>Java 11<br>
-다음 환경을 바탕으로 프로젝트 생성을 진행할 에정입니다.</li>
+<li>Java 11</li>
 </ul>
 <p>스프링 프로젝트를 진행하기 위해서는 <a href="https://start.spring.io" target="_blank" rel="noopener">https://start.spring.io</a> 에서 생성하는 방법과<br>
 인텔리제이 프로젝트 생성에서 만들 수 있는 방법이 있습니다.</p>
-<h1 id="build-gradleyi-jeonce-seoljeongeun-daeumgwa-gatseubnida"><a href="#build-gradleyi-jeonce-seoljeongeun-daeumgwa-gatseubnida" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#build-gradle의-전체-설정은-다음과-같습니다"></a> build Gradle의 전체 설정은 다음과 같습니다.</h1>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id 'org.springframework.boot' version '2.4.1'</span><br><span class="line">    id 'io.spring.dependency-management' version '1.0.10.RELEASE'</span><br><span class="line">    id 'java'</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group = 'com.kgh'</span><br><span class="line">version = '0.0.1-SNAPSHOT'</span><br><span class="line">sourceCompatibility = '11'</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-web'</span><br><span class="line">    runtimeOnly 'com.h2database:h2'            </span><br><span class="line">    testImplementation 'org.springframework.boot:spring-boot-starter-test'</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>build Gradle의 전체 설정</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id <span class="string">'org.springframework.boot'</span> version <span class="string">'2.4.1'</span></span><br><span class="line">    id <span class="string">'io.spring.dependency-management'</span> version <span class="string">'1.0.10.RELEASE'</span></span><br><span class="line">    id <span class="string">'java'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group = <span class="string">'com.kgh'</span></span><br><span class="line">version = <span class="string">'0.0.1-SNAPSHOT'</span></span><br><span class="line">sourceCompatibility = <span class="string">'11'</span></span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation <span class="string">'org.springframework.boot:spring-boot-starter-thymeleaf'</span></span><br><span class="line">    implementation <span class="string">'org.springframework.boot:spring-boot-starter-web'</span></span><br><span class="line">    runtimeOnly <span class="string">'com.h2database:h2'</span>            </span><br><span class="line">    testImplementation <span class="string">'org.springframework.boot:spring-boot-starter-test'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span> &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>springboot-starter-we, spring-boot-starter 에는 다음과 같은 의존성 라이브러리가 추가됩니다.</p>
 </blockquote>
@@ -313,10 +314,9 @@ Intellj IDEA
 Springboot 2.4.1 버전
 Gradle
 Java 11
-다음 환경을 바탕으로 프로젝트 생성을 진행할 에정입니다.
 
-스프링 프로젝트를 진행하기 위해",
-        "wordCount": 263
+스프링 프로젝트를 진행하기 위해서는 https://start.spring.io 에서 생성",
+        "wordCount": 261
     }
 </script>
 
