@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>SpringBoot Gradle 빠르게 설정하기</title>
-    <url>/springboot-gradle-%EB%B9%A0%EB%A5%B4%EA%B2%8C-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0/</url>
+    <url>/Spring-20201231-springboot-gradle-%EB%B9%A0%EB%A5%B4%EA%B2%8C-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0/</url>
     <content><![CDATA[<h1 id="seupeuringbuteueseo-gradle-bbareuge-seoljeonghagi"><a href="#seupeuringbuteueseo-gradle-bbareuge-seoljeonghagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#스프링부트에서-gradle-빠르게-설정하기"></a> 스프링부트에서 Gradle 빠르게 설정하기</h1>
 <p><code>IntellJ</code> 로 프로젝트를 생성하고나면 IntellJ에서 Gradle을 통해서 파일들을 컴파일하는것을 알 수 있습니다.<br>
 하지만, 이 방식은 실행속도에 있어서 많은 차이점을 가져다주게 됩니다.</p>
@@ -14,8 +14,8 @@
 <code>Preferences Build -&gt; Execution -&gt; Deployment Build Tools Gradle</code> 의 위치에서 다음과 같이 설정을 진행합니다.</p>
 <p>또 다른 방식으로는 Shift를 두번눌러서 전체 검색을 통해서 <code>Deployment Build Tools Gradle</code>을 입력하시면 해당 설정하는 곳으로 바로 이동하실 수 있습니다.</p>
 <ul>
-<li>Build and run using: Gradle -&gt; IntelliJ IDEA</li>
-<li>Run tests using: Gradle -&gt; IntelliJ IDEA</li>
+<li><code>Build and run using: Gradle -&gt; IntelliJ IDEA</code></li>
+<li><code>Run tests using: Gradle -&gt; IntelliJ IDEA</code></li>
 </ul>
 <p>모두 Gradle로 되어있는 것을 IntellJ IDEA로 변경을 진행하면 조금 더 빠른 환경에서 개발을 진행할 수 있습니다.</p>
 ]]></content>
@@ -34,10 +34,10 @@
 <p>이번시간부터 스프링부트 프로젝트생성부터 스프링 개념에 대해서 정리를 진행하려고합니다.</p>
 <p>프로젝트 생성을 위한 환경은 다음과 같습니다.</p>
 <ul>
-<li>Intellj IDEA</li>
-<li>Springboot 2.4.1 버전</li>
-<li>Gradle</li>
-<li>Java 11</li>
+<li><code>Intellj IDEA</code></li>
+<li><code>Springboot 2.4.1 버전</code></li>
+<li><code>Gradle</code></li>
+<li><code>Java 11</code></li>
 </ul>
 <p>스프링 프로젝트를 진행하기 위해서는 <a href="https://start.spring.io" target="_blank" rel="noopener">https://start.spring.io</a> 에서 생성하는 방법과<br>
 인텔리제이 프로젝트 생성에서 만들 수 있는 방법이 있습니다.</p>
@@ -58,12 +58,12 @@
 <blockquote>
 <p>테스트 라이브러리 의존성 라이브러리는 다음과 같습니다.</p>
 </blockquote>
-<p>junit: 테스트 프레임워크<br>
-mockito: Mock 라이브러리<br>
-assertj: 테스트코드를 손쉽게 작성할 수 있도록 도와줍니다.<br>
-spring-test: 스프링 통합 테스트 지원</p>
+<p><code>junit: 테스트 프레임워크</code><br>
+<code>mockito: Mock 라이브러리</code><br>
+<code>assertj: 테스트코드를 손쉽게 작성할 수 있도록 도와줍니다.</code><br>
+<code>spring-test: 스프링 통합 테스트 지원</code></p>
 <p>이러한 역할을 한다는것을 알고 계신후 위의 코드를 작성후 프로젝트를 생성한 뒤 Run을 통해서 <code>localhost:8080</code>에 접속하시면<br>
-에러가 발생하는 화면이 나오는것을 확인하실 수 있는데 그러면 정상적으로 서버가 가동된 것입니다.</p>
+에러가 발생하는 화면이 나오는것을 확인하실 수 있는데 그러면 <code>정상적으로 서버가 가동</code>된 것입니다.</p>
 ]]></content>
       <categories>
         <category>Spring</category>

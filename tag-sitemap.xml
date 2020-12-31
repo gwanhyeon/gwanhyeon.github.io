@@ -3,36 +3,36 @@
 
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/gradle/</loc>
-        <lastmod>2020-12-31T10:02:19.297Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/springboot/</loc>
-        <lastmod>2020-12-31T10:02:19.297Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/tags/intellij/</loc>
-        <lastmod>2020-12-31T09:55:47.941Z</lastmod>
+        <lastmod>2020-12-31T10:03:23.731Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/spring/</loc>
-        <lastmod>2020-12-31T09:55:47.941Z</lastmod>
+        <lastmod>2020-12-31T10:03:23.731Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25ED%2599%2598%25EA%25B2%25BD%25EC%2584%25A4%25EC%25A0%2595/</loc>
-        <lastmod>2020-12-31T09:55:47.941Z</lastmod>
+        <lastmod>2020-12-31T10:03:23.731Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/gradle/</loc>
+        <lastmod>2020-12-31T10:03:02.207Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/springboot/</loc>
+        <lastmod>2020-12-31T10:03:02.207Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
