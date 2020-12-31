@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Springboot 프로젝트 환경설정</title>
+    <url>/Spring-20201231-springboot-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/</url>
+    <content><![CDATA[<h1 id="springboot-peurojegteu-hwangyeongseoljeonghagi"><a href="#springboot-peurojegteu-hwangyeongseoljeonghagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#springboot-프로젝트-환경설정하기"></a> Springboot 프로젝트 환경설정하기</h1>
+<p>이번시간부터 스프링부트 프로젝트생성부터 스프링 개념에 대해서 정리를 진행하려고합니다.</p>
+<p>프로젝트 생성을 위한 환경은 다음과 같습니다.</p>
+<ul>
+<li>Intellj IDEA</li>
+<li>Springboot 2.4.1 버전</li>
+<li>Gradle</li>
+<li>Java 11<br>
+다음 환경을 바탕으로 프로젝트 생성을 진행할 에정입니다.</li>
+</ul>
+<p>스프링 프로젝트를 진행하기 위해서는 <a href="https://start.spring.io" target="_blank" rel="noopener">https://start.spring.io</a> 에서 생성하는 방법과<br>
+인텔리제이 프로젝트 생성에서 만들 수 있는 방법이 있습니다.</p>
+<h1 id="build-gradleyi-jeonce-seoljeongeun-daeumgwa-gatseubnida"><a href="#build-gradleyi-jeonce-seoljeongeun-daeumgwa-gatseubnida" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#build-gradle의-전체-설정은-다음과-같습니다"></a> build Gradle의 전체 설정은 다음과 같습니다.</h1>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id 'org.springframework.boot' version '2.4.1'</span><br><span class="line">    id 'io.spring.dependency-management' version '1.0.10.RELEASE'</span><br><span class="line">    id 'java'</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group = 'com.kgh'</span><br><span class="line">version = '0.0.1-SNAPSHOT'</span><br><span class="line">sourceCompatibility = '11'</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-web'</span><br><span class="line">    runtimeOnly 'com.h2database:h2'            </span><br><span class="line">    testImplementation 'org.springframework.boot:spring-boot-starter-test'</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>springboot-starter-we, spring-boot-starter 에는 다음과 같은 의존성 라이브러리가 추가됩니다.</p>
+</blockquote>
+<ul>
+<li>spring-boot-starter-tomcat 톰캣</li>
+<li>spring-webmvc 스프링 웹 MVC</li>
+<li>spring-boot -&gt; spring-core</li>
+<li>spring-boot-starter-logging -&gt; logback, slf4j</li>
+</ul>
+<p>springboot-starter-web은 다음과 같은 라이브러리를 포함하고 있기때문에 따로 톰캣설정과 MVC에 대한 설정을 따로 해줄 필요가 없습니다. 즉, 매우 편리하게 설정들을 진행해준다는 장점이 있습니다.</p>
+<blockquote>
+<p>테스트 라이브러리 의존성 라이브러리는 다음과 같습니다.</p>
+</blockquote>
+<p>junit: 테스트 프레임워크<br>
+mockito: Mock 라이브러리<br>
+assertj: 테스트코드를 손쉽게 작성할 수 있도록 도와줍니다.<br>
+spring-test: 스프링 통합 테스트 지원</p>
+<p>이러한 역할을 한다는것을 알고 계신후 위의 코드를 작성후 프로젝트를 생성한 뒤 Run을 통해서 <code>localhost:8080</code>에 접속하시면<br>
+에러가 발생하는 화면이 나오는것을 확인하실 수 있는데 그러면 정상적으로 서버가 가동된 것입니다.</p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>환경설정</tag>
+        <tag>Spring</tag>
+        <tag>IntelliJ</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IntellJ Error: java: invalid source release: 11</title>
     <url>/Spring-20201123-java-compile-error/</url>
     <content><![CDATA[<h1 id="munje"><a href="#munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h1>
@@ -241,10 +287,10 @@ Output: -2147483647</p>
         <category>leetcode</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
+        <tag>DP</tag>
         <tag>릿코드</tag>
         <tag>부분집합의 합</tag>
-        <tag>DP</tag>
-        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -288,10 +334,10 @@ O(dirs.length() + Hashset add()1) 즉, 상수를 무시하므로 O(N)</p>
         <category>Programmers</category>
       </categories>
       <tags>
+        <tag>그래프</tag>
         <tag>프로그래머스</tag>
         <tag>Set자료구조</tag>
         <tag>간선</tag>
-        <tag>그래프</tag>
       </tags>
   </entry>
   <entry>
@@ -463,8 +509,8 @@ frodoc</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>DFS</tag>
+        <tag>문자열</tag>
         <tag>정규표현식</tag>
       </tags>
   </entry>
@@ -650,10 +696,10 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DP</tag>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
         <tag>구현</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -696,9 +742,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -795,9 +841,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -846,9 +892,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -947,10 +993,10 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
-        <tag>DFS</tag>
-        <tag>그래프</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
+        <tag>알고리즘</tag>
+        <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
       </tags>
@@ -1002,10 +1048,10 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
-        <tag>DFS</tag>
-        <tag>그래프</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
+        <tag>알고리즘</tag>
+        <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
       </tags>
@@ -1051,10 +1097,10 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
-        <tag>DFS</tag>
-        <tag>그래프</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
+        <tag>알고리즘</tag>
+        <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
       </tags>
@@ -1132,8 +1178,8 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>DFS</tag>
+        <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
       </tags>
@@ -1201,10 +1247,10 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
-        <tag>DFS</tag>
-        <tag>그래프</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
+        <tag>알고리즘</tag>
+        <tag>그래프</tag>
         <tag>BFS</tag>
       </tags>
   </entry>
@@ -1259,9 +1305,9 @@ K+1개를 선택하여 DFS를 통해 모든 조건을 구하였던 문자열 값
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
         <tag>위상정렬</tag>
       </tags>
   </entry>
@@ -1315,8 +1361,8 @@ N의 범위를 살펴보면 <code>N(1≤N≤100,000,000)</code> 의 조건을 �
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
+        <tag>알고리즘</tag>
         <tag>연산</tag>
       </tags>
   </entry>
@@ -1399,9 +1445,9 @@ WWWWWWWWWWBWB</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1457,9 +1503,9 @@ E    &lt;46, 155&gt;    5<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1499,9 +1545,9 @@ N이 216일 경우 (216+2+1+6) =&gt; 198이 됩니다.<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -1585,10 +1631,10 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>그리디</tag>
-        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -1637,8 +1683,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -1799,10 +1845,10 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>BOJ</tag>
+        <tag>알고리즘</tag>
         <tag>이분탐색</tag>
+        <tag>BOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -1847,11 +1893,11 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>삼성SW역량테스트</tag>
-        <tag>BOJ</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
+        <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -1963,10 +2009,10 @@ N = 20이하 이므로 O(N^4) = 약 16만</p>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>삼성SW역량테스트</tag>
+        <tag>알고리즘</tag>
         <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -2493,11 +2539,11 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>삼성SW역량테스트</tag>
-        <tag>BOJ</tag>
         <tag>브루트포스</tag>
+        <tag>알고리즘</tag>
+        <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -3070,10 +3116,10 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>삼성SW역량테스트</tag>
+        <tag>알고리즘</tag>
         <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -3358,10 +3404,10 @@ O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays�
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
-        <tag>삼성SW역량테스트</tag>
+        <tag>알고리즘</tag>
         <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -3622,9 +3668,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -3698,10 +3744,10 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
         <tag>백트래킹</tag>
+        <tag>알고리즘</tag>
         <tag>조합</tag>
       </tags>
   </entry>
@@ -3829,9 +3875,9 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -4394,8 +4440,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
