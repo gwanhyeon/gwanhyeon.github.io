@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/%25EC%259D%25B8%25EC%25A0%2591%25EB%25A6%25AC%25EC%258A%25A4%25ED%258A%25B8/</loc>
+        <lastmod>2021-01-07T16:19:05.342Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/bfs/</loc>
+        <lastmod>2021-01-07T16:19:05.342Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/%25EB%25B0%25B1%25EC%25A4%2580/</loc>
+        <lastmod>2021-01-07T16:19:05.342Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/%25EC%259D%25B5%25EB%25AA%2585%25ED%2581%25B4%25EB%259E%2598%25EC%258A%25A4/</loc>
         <lastmod>2021-01-03T11:10:27.390Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -234,13 +255,6 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EC%259D%25B8%25EC%25A0%2591%25EB%25A6%25AC%25EC%258A%25A4%25ED%258A%25B8/</loc>
-        <lastmod>2020-11-14T13:39:34.595Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/tags/%25EB%258B%25A4%25EC%259D%25B5%25EC%258A%25A4%25ED%258A%25B8%25EB%259D%25BC/</loc>
         <lastmod>2020-11-14T13:39:34.595Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -325,13 +339,6 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EB%25B0%25B1%25EC%25A4%2580/</loc>
-        <lastmod>2020-10-27T06:59:36.200Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/tags/%25ED%2595%25B4%25EC%258B%259C/</loc>
         <lastmod>2020-10-23T11:13:47.424Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -354,13 +361,6 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EC%2588%259C%25EC%2597%25B4/</loc>
-        <lastmod>2020-10-23T07:46:17.200Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/bfs/</loc>
         <lastmod>2020-10-23T07:46:17.200Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
