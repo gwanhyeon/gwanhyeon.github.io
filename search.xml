@@ -3923,7 +3923,7 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </tags>
   </entry>
   <entry>
-    <title>릿코드 ValidParentheses</title>
+    <title>릿코드 Valid Parentheses</title>
     <url>/Leetcode-20210108-leetcode-validparentheses/</url>
     <content><![CDATA[<h1 id="riskodeu-leetcode-validparentheses"><a href="#riskodeu-leetcode-validparentheses" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#릿코드-leetcode-validparentheses"></a> <a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">릿코드 leetcode ValidParentheses</a></h1>
 <h1 id="munje"><a href="#munje" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h1>
