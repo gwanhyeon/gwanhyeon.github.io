@@ -248,15 +248,16 @@ String문자열을 toCharArray() 함수를
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/twosum/">릿코드 two-sum</a>
+        <a href="/Leetcode-20210108-leetcode-validparentheses/">릿코드 Valid Parentheses</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  릿코드 leetcode two-sum
+            1.  릿코드 leetcode ValidParentheses
 2.  문제
-Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-You may assume that each input would have exac
+Given a string s containing just the characters ‘(’, ‘)’, ‘{’, ‘}’, ‘[’ and ‘]’, determine if the input string is valid.
+2.1.  An input string is valid if:
+Ope
         </p>
     </div>
 </article>
@@ -273,21 +274,20 @@ You may assume that each input would have exac
             <div class="category">
             <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
             </div>
-            <div class="date"><time datetime="2020-01-08T03:42:42.000Z" itemprop="datePublished">2020-01-08</time></div>
+            <div class="date"><time datetime="2020-01-01T03:42:42.000Z" itemprop="datePublished">2020-01-01</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Leetcode-20210108-leetcode-validparentheses/">릿코드 Valid Parentheses</a>
+        <a href="/Leetcode-20210108-twosum/">릿코드 two-sum</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  릿코드 leetcode ValidParentheses
+            1.  릿코드 leetcode two-sum
 2.  문제
-Given a string s containing just the characters ‘(’, ‘)’, ‘{’, ‘}’, ‘[’ and ‘]’, determine if the input string is valid.
-2.1.  An input string is valid if:
-Ope
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exac
         </p>
     </div>
 </article>
@@ -592,16 +592,17 @@ N까지의 값을 vector에 넣어서 next_permutation을 수행합니다. next_
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20191130-BOJ-maximum-difference-10819/">백준 차이를최대로 10819</a>
+        <a href="/BOJ-20191130-BOJ-123-Plus-9095/">백준 123더하기 9095</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  백준 차이를최대로 10819
-2.  컴퓨팅 스킬
+            1.  백준 1,2,3더하기 9095
+2.  컴퓨팅적 스킬
 
-#include헤더에 있는 next_permutation()함수를 호출하여 순열과조합을 구현합니다.
-next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위에 해당하는 다음 순열을 구하고 true를 반환한다. 다음 순열이 없다면(다음에 나온 순열이 순서상 이전 순열보다 작다면) 
+DFS 재귀함수 이용
+vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.
+dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입
         </p>
     </div>
 </article>
@@ -627,17 +628,16 @@ next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20191130-BOJ-123-Plus-9095/">백준 123더하기 9095</a>
+        <a href="/BOJ-20191130-BOJ-maximum-difference-10819/">백준 차이를최대로 10819</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  백준 1,2,3더하기 9095
-2.  컴퓨팅적 스킬
+            1.  백준 차이를최대로 10819
+2.  컴퓨팅 스킬
 
-DFS 재귀함수 이용
-vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.
-dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입
+#include헤더에 있는 next_permutation()함수를 호출하여 순열과조합을 구현합니다.
+next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위에 해당하는 다음 순열을 구하고 true를 반환한다. 다음 순열이 없다면(다음에 나온 순열이 순서상 이전 순열보다 작다면) 
         </p>
     </div>
 </article>
@@ -943,7 +943,7 @@ sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 �
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/java/">Java</a></p>
-                            <p class="item-title"><a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/" class="title">Effective Java 3/E Item 43 람다보다는 메서드 참조를 사용하라</a></p>
+                            <p class="item-title"><a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/" class="title">Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라</a></p>
                             <p class="item-date"><time datetime="2021-01-03T09:32:06.000Z" itemprop="datePublished">2021-01-03</time></p>
                         </div>
                     </li>
@@ -952,7 +952,7 @@ sort는 기본적으로 오름차순 정렬로 되어있습니다. 별 다른 �
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/java/">Java</a></p>
-                            <p class="item-title"><a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/" class="title">Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라</a></p>
+                            <p class="item-title"><a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/" class="title">Effective Java 3/E Item 43 람다보다는 메서드 참조를 사용하라</a></p>
                             <p class="item-date"><time datetime="2021-01-03T09:32:06.000Z" itemprop="datePublished">2021-01-03</time></p>
                         </div>
                     </li>
