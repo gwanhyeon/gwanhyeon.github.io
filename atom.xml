@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2021-01-07T16:26:37.064Z</updated>
+  <updated>2021-01-08T07:34:00.124Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Network TCP와 UDP</title>
+    <link href="http://gwanhyeon.github.io/Network-20210108-network-02-tcp-udp/"/>
+    <id>http://gwanhyeon.github.io/Network-20210108-network-02-tcp-udp/</id>
+    <published>2021-01-08T05:58:26.000Z</published>
+    <updated>2021-01-08T07:34:00.124Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="inteones-peurotokolyi-4gyeceung"><a href="#inteones-peurotokolyi-4gyeceung" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#인터넷-프로토콜의-4계층"></a> 인터넷 프로토콜의 4계층</h1><p><code>인터넷 프로토콜의 4계층</code>에 대해서 살펴보겠습니다.</p><table><thead><tr><th>계층</th><th>프로토콜</th></tr></thead><tbody><tr><td>애플리케이션 계층</td><td>HTTP, FTP</td></tr><tr><td>전송 계층</td><td>TCP,UDP</td></tr><tr><td>인터넷 계층</td><td>IP</td></tr><tr><td>네트워크 인터페이스 계층</td><td>Empty</td></tr></tbody></table><p><code>인터넷 프로토콜은</code> 해당 <code>총 4개의 계층</code>으로 이루어져있고 <code>애플리케이션 계층, 전송계층, 인터넷계층, 네트워크 인터페이스 계층</code> 으로 구성되어있습니다.</p><h1 id="peurotokol-gyeceung"><a href="#peurotokol-gyeceung" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#프로토콜-계층"></a> 프로토콜 계층</h1><ul><li><p>애플리케이션<br><code>애플리케이션 계층</code>은 <code>웹 브라우저(크롬), 네트워크 , 게임, 채팅 프로그램</code>으로 구성되어있습니다. 그리고 <code>Socket 라이브러리</code>로 구성되어 있습니다.</p></li><li><p>OS(Operation System)<br>OS계층은 <code>TCP, UDP, IP(Internet Protocal)</code> 로 구성되어 있습니다.</p></li><li><p>네트워크 인터페이스<br>LAN 드라이버, LAN 장비, LAN카드</p></li></ul><p><code>네트워크 인터페이스</code>에서 <code>LAN카드</code>를 통해 <code>인터넷에 접근</code>하게 되고 <code>서버에 전송을 진행</code>하게 됩니다.</p><blockquote><p>전송 과정</p></blockquote><ol><li>애플리케이션 계층에서 클라이언트가 <code>&quot;Request Message&quot;</code> <code>메시지를 생성</code>시킵니다.</li><li>애플리케이션 계층에서 해당 메시지들을 <code>Socket라이브러</code>를 통해 전달이 됩니다.</li><li>OS계층에서 <code>TCP 정보를 생성</code>하여 <code>TCP세그먼트를 씌워 메시지 데이터를 포함</code>시킵니다.</li><li>OS계층에서 <code>IP 패킷이 생성되고 TCP데이터를 포함</code>시킵니다.</li><li>네트워크 인터페이스 계층에서 <code>패킷 단위</code>로 <code>LAN 카드 장비</code>를 통해 인터넷(물리적정보에) 접속하게 되어 해당 찾고자하는 <code>서버에 요청</code>을 보내게 됩니다.</li></ol><h1 id="ip-paekis-jeongbo"><a href="#ip-paekis-jeongbo" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#ip-패킷-정보"></a> IP 패킷 정보</h1><p><code>패킷정보는</code> <code>출발지 IP랑 목적지 IP, 기타</code> 등등의 값을 가지고 해당 <code>전송데이터를 패킷</code>으로 감싸주는 형태로 진행됩니다.</p><h1 id="tcp-ip-paekis-jeongbo"><a href="#tcp-ip-paekis-jeongbo" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#tcpip-패킷-정보"></a> TCP/IP 패킷 정보</h1><ul><li><code>IP 패킷: 출발지 IP, 목적지 IP, 기타 데이터</code></li><li><code>TCP 세그먼트: 출발지 PORT, 목적지 PORT, 전송제어, 순서, 검증 정보</code></li></ul><p>IP패킷안에 <code>TCP세그먼트를 감싸고</code> 그안에 <code>전송데이터</code>를 담아서 <code>네트워크상에 전송</code>되게 됩니다.<br>즉, <code>IP만으로는 해결할 수 없었던 출발지,목적지 PORT번호</code>가 있기때문에 <code>전송제어나 순서보장, 검증정보를 통해 문제점들을 해결</code> 할 수 있게 되었습니다.</p><h1 id="tcp-transmission-control-protocal"><a href="#tcp-transmission-control-protocal" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#tcptransmission-control-protocal"></a> TCP(Transmission Control Protocal)</h1><p><code>TCP(Transmission Control Protocal)</code>는 <code>전송 제어 프로토콜</code>이라고 불리어 오며 특징들에 대해서 살펴보도록 하겠습니다.</p><ol><li>연결지향 - <code>TCP 3 Way handshake(가상 연결)</code><br>개념적으로만 연결된 것을 의미합니다.</li><li>데이터 전달 보증<br><code>패킷 누락시 메시지를 못받는지를 알 수 있습니다.</code> 데이터가 전송되고 데이터가 잘 받았는지를 확인할 수 있습니다.</li><li>순서 보장<br><code>순서를 보장해줍니다.</code></li></ol><blockquote><p>예시</p></blockquote><p><code>패킷1,패킷2,패킷3을 순서대로 보낸다고 가정</code>하면 패킷을 보내다가 노드의 의 접근이 바뀌어 <code>순서가 정확하게 오지 않았을 경우</code> 서버에서 해당 순서를 확인하여 잘못되었음을 판단을 하게 됩니다. 이때, 순서가 잘못 들어온 <code>패킷이 3번</code>이라고 가정하면 해당되는 <code>패킷의 순서</code>부터 다시 <code>재전송을 요청</code>하게 됩니다. 즉, 최적화를 내부적으로 진행할 수 있습니다.</p><ol start="4"><li>신뢰할 수  있는 프로토콜<br>현재는 <code>TCP가 대부분의 전송</code>에 있어서 사용되고 있으며 <code>매우 중요한 개념</code>입니다.</li></ol><h1 id="tcp-3way-handshake"><a href="#tcp-3way-handshake" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#tcp-3way-handshake"></a> TCP 3way handshake</h1><ul><li><code>SYN:</code> 접속을 요청합니다.</li><li><code>ACK:</code> 요청을 수락합니다.</li></ul><ol><li>클라이언트가 서버에게 <code>SYN(Syncronized)의 connect 연결과정을 요청</code>합니다.</li><li>서버는 해당 클라이언트부터 SYN을 전송받고 클라이언트에게 <code>SYN+ACK(연결 상태)</code>를 함께 전송합니다.</li><li>클라이언트는 서버로 부터 해당 <code>SYN+ACK(연결상태)를 전송받고 다시 서버에게 잘 받았다는 의미로 ACK</code>을 전송시켜주게 됩니다.</li><li>해당 <code>ACK을 전송받은 서버</code>는 이때 잘 연결되었다는 의미로 알고 <code>데이터를 전송</code>시켜줍니다.</li></ol><p>이러한 <code>3way-handshake과정은</code> 클라이언트와 서버의 신뢰관계(연결 상태를 확인)하는 과정을 진행하는 것이라고 생각하시면 됩니다.</p><h1 id="udp-user-datagram-protocal"><a href="#udp-user-datagram-protocal" class="header-anchor">7. </a><a class="markdownIt-Anchor" href="#udpuser-datagram-protocal"></a> UDP(User Datagram Protocal)</h1><p><code>UDP(User Datagram Protocal)는</code> <code>사용자 데이터그램 프로토콜</code>이라고 불리어옵니다.</p><p>TCP와 매우 대조적인 특징을 가지고 있는데 살펴보겠습니다.</p><ol><li>연결지향 - TCP와는 다르게 TCP 3 way-handshake가 없습니다.</li><li>데이터 전달 보증이 되지 않습니다.</li><li>순서가 보장되지 않습니다.</li><li>데이터 전달 및 순서가 보장되지 않지만 매우 단순하고 빠른 특징을 가지고 있습니다.</li></ol><p>즉, IP와 유사하지만 <code>UDP에는</code> <code>PORT와 체크섬(Checksum)</code>이 존재하게 됩니다. <code>체크섬(Checksum)은</code> <code>메시지의 검증 데이터</code>를 일컫는 말입니다. 그리고 애플리케이션에서 추가작업이 필요로 될 수 있습니다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;inteones-peurotokolyi-4gyeceung&quot;&gt;&lt;a href=&quot;#inteones-peurotokolyi-4gyeceung&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor
+      
+    
+    </summary>
+    
+    
+      <category term="Network" scheme="http://gwanhyeon.github.io/categories/network/"/>
+    
+    
+      <category term="network" scheme="http://gwanhyeon.github.io/tags/network/"/>
+    
+      <category term="tcp" scheme="http://gwanhyeon.github.io/tags/tcp/"/>
+    
+      <category term="udp" scheme="http://gwanhyeon.github.io/tags/udp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Network 인터넷 IP(Internet Protocal) 및 패킷(Packet)</title>
+    <link href="http://gwanhyeon.github.io/Network-20210108-network-01-internet-communication/"/>
+    <id>http://gwanhyeon.github.io/Network-20210108-network-01-internet-communication/</id>
+    <published>2021-01-08T05:53:26.000Z</published>
+    <updated>2021-01-08T06:49:05.162Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="inteoneseseo-keompyuteo-duleun-eoddeohge-tongsineul-halggayo"><a href="#inteoneseseo-keompyuteo-duleun-eoddeohge-tongsineul-halggayo" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#인터넷에서-컴퓨터-둘은-어떻게-통신을-할까요"></a> 인터넷에서 컴퓨터 둘은 어떻게 통신을 할까요?</h1><p>단순히 생각해보면 <code>클라이언트에서 메시지</code>를 보내면 <code>서버에서 해당 메시지</code>를 받고 정상적으로 받았다면 응답메시지를 보내주게 됩니다.</p><h1 id="inteones"><a href="#inteones" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#인터넷"></a> 인터넷</h1><h3 id="tongsineul-halddae-gwayeon-eodireul-tonghaeseo-keulraieonteuwa-seobeoga-tongsini-ganeunghaejil-su-isseosseulggayo"><a href="#tongsineul-halddae-gwayeon-eodireul-tonghaeseo-keulraieonteuwa-seobeoga-tongsini-ganeunghaejil-su-isseosseulggayo" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#통신을-할때-과연-어디를-통해서-클라이언트와-서버가-통신이-가능해질-수-있었을까요"></a> 통신을 할때 과연 어디를 통해서 클라이언트와 서버가 통신이 가능해질 수 있었을까요?</h3><p>바로, <code>인터넷</code>이라는 <code>개념</code>때문인데 <code>인터넷은 상당히 복잡한 망</code>으로 구성되어 있습니다. 각각의 인터넷안에 연결된 노드들 끼리 수도없이 복잡하게 얽혀져 있습니다.</p><h1 id="ip-internet-protocal"><a href="#ip-internet-protocal" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#ipinternet-protocal"></a> IP(Internet Protocal)</h1><p>이렇게 인터넷을 통해서 데이터를 전송하는 경우에는 <code>IP라는 인터넷프로토콜 주소</code>를 붙여서 전송시키는 경우가 많습니다.</p><blockquote><p>데이터 전송 예시<br>만약에 클라이언트 <code>IP:127.0.0.1의 주소</code>에서 <code>IP:127.0.0.2의 주소</code>로 데이터를 <code>전송</code>한다고 가정해보겠습니다.<br>이때 <code>클라이언트</code>는 찾고자하는 <code>서버의 IP를 검색</code>을 진행하면 <code>127.0.0.1의 IP주소</code>를 가지고 인터넷의 노드를 탐색하면서 <code>IP:127.0.0.2의 주소</code>를 찾아서 서버는 해당 클라이언트의 요청을 받고 해당 <code>데이터</code>들을 넘겨주게 됩니다.</p></blockquote><h1 id="ip-internet-protocla-yi-yeoghal"><a href="#ip-internet-protocla-yi-yeoghal" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#ipinternet-protocla의-역할"></a> IP(Internet Protocla)의 역할</h1><p><code>인터넷 프로토콜의 역할은</code> <code>지정된 IP주소</code>를 해당 <code>IP 주소(Address)</code>에 데이터를 전달시킵니다. 이때, <code>패킷(Packet)</code>이라는 통신 단위로 데이터를 전달하게 됩니다.</p><h1 id="ip-paekis-packet"><a href="#ip-paekis-packet" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#ip-패킷packet"></a> IP 패킷(Packet)</h1><p><code>IP패킷은</code> <code>출발지 IP</code>와 <code>목적지IP</code>, <code>기타 데이터사항</code>들을 감싸서 데이터를 <code>전송</code>합니다.</p><blockquote><p>클라이언트의 패킷은 어떻게 전달될까요?</p></blockquote><p><code>출발지 IP, 목적지 IP, 데이터 등등의 값</code>을 가지고 해당 <code>클라이언트</code>는 <code>IP패킷</code>을 <code>인터넷상에 던져주게 됩니다.</code> 노드끼리 해당 <code>목적지 IP</code>를 <code>탐색</code>하면서 <code>서버 IP</code>를 찾아냅니다. 해당 <code>서버IP</code>를 찾게 되면 <code>해당 서버에게 데이터를 패킷의 형태로 전송</code>하게 됩니다.</p><blockquote><p>서버의 패킷은 어떻게 전달 될까요?</p></blockquote><p><code>서버 IP를 출발지 IP로 지정</code>하고, 전달하고자 하는 <code>클라이언트의 아이디 목적지 IP</code>에게 해당 요청에 대한 <code>성공,실패 유무를 반환</code>하여 <code>HTTP의 상태값과 함께 전송</code>시키게 됩니다. 클라이언트와 마찬가지로 인터넷상의 <code>노드들은 목적지 IP를 탐색</code>하여 클라이언트에게 <code>패킷형태</code>로 전송시켜주게 됩니다.</p><h1 id="ip-peurotokolyi-hangye"><a href="#ip-peurotokolyi-hangye" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#ip-프로토콜의-한계"></a> IP 프로토콜의 한계</h1><ul><li><p>비연결성<br>패킷을 받을 대상이 없거나 <code>서비스 불능</code> 상태여도 <code>패킷을 전송</code>하게 됩니다. 예를 들면, 해당 서버 <code>PC가 꺼져있는 경우</code> <code>불능상태</code>이기때문에 이때에도 <code>패킷을 전송</code>해버리는 불상사가 발생하게 됩니다.</p></li><li><p>비신뢰성<br><code>중간에 패킷이 사라지는경우</code>가 생길 수 있습니다. 클라이언트가 인터넷안에서 노드가 꺼진 노드일 경우 이 <code>패킷들은 손실되어 더이상 처리가 되지 않을 수 있습니다.</code></p></li></ul><p><code>패킷이 순서대로 처리</code>되지 않을 수 있습니다. 순서대로 처리되지 않을시 같은 <code>IP는 어떻게 구분할 수 있을지에 대한 문제</code>가 생길 수 있습니다.</p><blockquote><p>패킷 순서 오류 예시</p></blockquote><p>클라이언트에서 <code>[&quot;HTTP Message1&quot;], [&quot;HTTP Message2&quot;]</code>를 전송한다고 가정하였을때 패킷이 다른노드를 타고 들어갈 수 있는 경우가 발생합니다. 클라이언트에서는<br><code>[&quot;HTTP Message1&quot;] -&gt; [&quot;HTTP Message2&quot;]</code> 의 순서로 데이터를 전송하였지만 서버측에서는 <code>[&quot;HTTP Message2&quot;] -&gt; [&quot;HTTP Message1&quot;]</code>의 순서로 데이터를 받을 수 있는 경우가 발생합니다.</p><ul><li>프로그램 구분<br><code>같은 IP를 사용하는 서버에서 통신하는 애플리케이션이 둘 이상</code>이라면 <code>프로그램을 정확히 구분할 수가 없게</code>됩니다.</li></ul><blockquote><p>TCP/IP의 등장</p></blockquote><p>결론적으로 이러한 <code>문제들을 해결하기 위해</code> <code>TCP/IP</code>라는 개념이 등장하게 되었으며 다음 포스팅에서 <code>TCP/IP</code>에 대해 자세하게 살펴볼 예정입니다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;inteoneseseo-keompyuteo-duleun-eoddeohge-tongsineul-halggayo&quot;&gt;&lt;a href=&quot;#inteoneseseo-keompyuteo-duleun-eoddeohge-tongsineul-halggayo
+      
+    
+    </summary>
+    
+    
+      <category term="Network" scheme="http://gwanhyeon.github.io/categories/network/"/>
+    
+    
+      <category term="network" scheme="http://gwanhyeon.github.io/tags/network/"/>
+    
+      <category term="internet" scheme="http://gwanhyeon.github.io/tags/internet/"/>
+    
+      <category term="tcp" scheme="http://gwanhyeon.github.io/tags/tcp/"/>
+    
+      <category term="ip" scheme="http://gwanhyeon.github.io/tags/ip/"/>
+    
+  </entry>
   
   <entry>
     <title>백준 Mootube 15591</title>
@@ -68,11 +130,11 @@
       <category term="leetcode" scheme="http://gwanhyeon.github.io/categories/leetcode/"/>
     
     
-      <category term="릿코드" scheme="http://gwanhyeon.github.io/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/"/>
+      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
     
       <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
     
-      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
+      <category term="릿코드" scheme="http://gwanhyeon.github.io/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/"/>
     
   </entry>
   
@@ -98,9 +160,9 @@
       <category term="leetcode" scheme="http://gwanhyeon.github.io/categories/leetcode/"/>
     
     
-      <category term="릿코드" scheme="http://gwanhyeon.github.io/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/"/>
-    
       <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
+    
+      <category term="릿코드" scheme="http://gwanhyeon.github.io/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/"/>
     
   </entry>
   
@@ -275,11 +337,11 @@
       <category term="Spring" scheme="http://gwanhyeon.github.io/categories/spring/"/>
     
     
+      <category term="Spring" scheme="http://gwanhyeon.github.io/tags/spring/"/>
+    
       <category term="annotationProcessor" scheme="http://gwanhyeon.github.io/tags/annotationprocessor/"/>
     
       <category term="JDK" scheme="http://gwanhyeon.github.io/tags/jdk/"/>
-    
-      <category term="Spring" scheme="http://gwanhyeon.github.io/tags/spring/"/>
     
       <category term="IntellJ" scheme="http://gwanhyeon.github.io/tags/intellj/"/>
     
@@ -345,11 +407,11 @@
       <category term="leetcode" scheme="http://gwanhyeon.github.io/categories/leetcode/"/>
     
     
-      <category term="릿코드" scheme="http://gwanhyeon.github.io/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/"/>
-    
       <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
     
       <category term="DP" scheme="http://gwanhyeon.github.io/tags/dp/"/>
+    
+      <category term="릿코드" scheme="http://gwanhyeon.github.io/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/"/>
     
       <category term="부분집합의 합" scheme="http://gwanhyeon.github.io/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/"/>
     
@@ -537,11 +599,11 @@
       <category term="BOJ" scheme="http://gwanhyeon.github.io/categories/boj/"/>
     
     
-      <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
-    
       <category term="백준" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%EC%A4%80/"/>
     
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
+    
+      <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
     
       <category term="구현" scheme="http://gwanhyeon.github.io/tags/%EA%B5%AC%ED%98%84/"/>
     
@@ -569,81 +631,13 @@
       <category term="BOJ" scheme="http://gwanhyeon.github.io/categories/boj/"/>
     
     
-      <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
-    
       <category term="백준" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%EC%A4%80/"/>
     
       <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
-      <category term="구현" scheme="http://gwanhyeon.github.io/tags/%EA%B5%AC%ED%98%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>백준 창고 다각형 2304</title>
-    <link href="http://gwanhyeon.github.io/BOJ-20201026-BOJ-warehouse-polygon/"/>
-    <id>http://gwanhyeon.github.io/BOJ-20201026-BOJ-warehouse-polygon/</id>
-    <published>2020-10-26T11:22:40.000Z</published>
-    <updated>2020-10-27T06:51:45.974Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2><ul><li>창고 다각형의 면적이 최소가 되는 값을 찾아내는 문제입니다.</li></ul><p>이 문제에서 가장 중요한 점은 좌측과 우측으로 오면서 <code>순차적으로 진행되는 높이보다 값이 같거나 커야합니다.</code> 그래야지 지붕을 만들때 물이 고이지 않도록 만들 수 있게 됩니다.<br>문제의 조건을 살펴보면 <code>지붕의 수평 부분은 반드시 어떤 기둥의 윗면과 닿아야 한다. 지붕의 수직 부분은 반드시 어떤 기둥의 옆면과 닿아야 한다. 지붕의 가장자리는 땅에 닿아야 한다.</code> 라는 조건을 가지고 있고 지붕의 최대 높이의 인덱스 구하기 지붕의 높이가 가장 높은 인덱스의 값을 구해주어야 합니다.<br>그 이유는 지붕의 높이가 <code>가장 높은 인덱스의 값을 기준으로 지붕</code>을 만들어야하기 때문입니다. 높이가 10이 되기 때문에 지붕의 최대 높이의 인덱스는 8이 됩니다.</p><p>지붕의 높이가 있는 <code>가장 작은 인덱스와 큰 인덱스 구하기</code> 지붕의 높이가 있는 <code>가장 작은 인덱스와 큰 인덱스</code>를 구해주어야 하는이유는 지붕의 최대 높이의 인덱스를 기준으로 <code>좌측, 우측</code>의 최대로 가질 수 있는 <code>지붕의 면적</code>을 구해야하기 때문입니다. 지붕의 높이를 가진 <code>가장 작은 인덱스를 2와 높이 4, 가장 큰 인덱스를 16과 8</code>를 가지게 됩니다.</p><blockquote><p>문제 풀이</p></blockquote><p>map이라는 배열을 하나 선언합니다. <code>배열의 인덱스값</code>에는 <code>지붕의 인덱스값</code>이 들어가게 되고 <code>값에는 지붕의 높이</code>가 들어가게 됩니다.<br>예) map[2] = 4, map[16] = 8 값을 입력 받는것과 동시에 지붕의 높이를 가진 인덱스의 최댓값과 최솟값을 <code>Math.max(),Math.min()</code> 함수를 사용하여 구해주게 됩니다.<br>그리고, 지붕의 최댓값을 가지는 인덱스의값을 구해줍니다. 현재 입력받은 <code>인덱스의 값(지붕의 높이)</code>가 현재 지붕의 높이 보다 클<br>경우 해당 인덱스 값을 갱신시켜주게 됩니다.</p><p>좌측의 경우, 우측의 경우를 나누어서 지붕을 만드는 값을 더해주면서 진행해줍니다.</p><blockquote><p>좌측</p></blockquote><p>지붕의 높이를 가지는 인덱스의 <code>최솟값~지붕의 높이</code>가 <code>가장 큰 지붕의 인덱스값 까지 값</code>을 순회하면서 h의 값을 갱신하면서 순회하는 값의 높이가 더 클 경우에 sum의 값을 더해주게 됩니다.</p><p>예를 들면, 높이가 (2,1), (2,3)의 경우를 비교해보겠습니다. 높이가 <code>idx=0 h= 2, idx=1 h= 1일 경우</code> 현재 idx=0의 높이가 idx=1보다 더 크므로, <code>Math.max()</code> 함수를 사용하여 더 큰 h값으로 sum의 값을 더해주면서 진행합니다. 그 이유는 현재 h값이 더 작을 경우 값을 더하게 되면 어떤 기둥의 윗면과 닿거나 옆면에 닿아야한다 라는 조건에 위배되기 때문입니다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// left -&gt; max_hight_idx</span></span><br><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> h = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=min_idx; i&lt;max_hight_idx; i++)&#123;</span><br><span class="line">    h = Math.max(h, map[i]);</span><br><span class="line">    sum += h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>우측<br>우측 우측의 경우는 지붕의 높이를 가지는 <code>인덱스의 최댓값~지붕의 높이</code>가 <code>가장 큰 지붕의 인덱스값</code>까지 값을 순회하면서 h의 값 역시 최댓값으로 sum에 값을 더해줍니다. 그 이유는 위와 같습니다. <code>최종적으로 sum의 값에는 좌측에서의 최대로 가질 수 있는 높이값, 우측에서 최대로 가질 수 있는 높이값을 가지고 있습니다.</code><br>하지만, 아직 구해지지않은 값은 max_hight_idx의 값 즉, <code>가장 높은 지붕의 값을 더해지지않은 상태이기 때문에 map[max_hight_idx]의 값으로 최종 결과값을 출력시켜주게 됩니다.</code></p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">h = <span class="number">0</span>;</span><br><span class="line"><span class="comment">// right -&gt; max_hight_idx</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=max_idx; i&gt;max_hight_idx; i--)&#123;</span><br><span class="line">   h = Math.max(h, map[i]);</span><br><span class="line">   sum += h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>응용하는 경우</p></blockquote><p>만약에, 현재 문제를 다른경우로 생각해보면 <code>기존의 지붕의 높이에 기둥을 넣은 부분의 면적</code>을 구하려면 어떻게 구할 수 있을까요? 즉, 채워진 부분의 넓이를 구하는 문제를 구할수도 있습니다. <a href="https://www.acmicpc.net/problem/1912" target="_blank" rel="noopener">백준 빗물 14719 문제</a> 과 유사한 문제입니다.</p><p>네 맞습니다. 방금까지 우리구한 모든 영역의 넓이에서 - 각 영역의 기존의 값을 빼준다면 채워진 부분의 넓이를 구할 수 있습니다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> left_sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> right_sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;map.length; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; max_hight_idx)&#123;</span><br><span class="line">        left_sum += map[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=map.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">    <span class="keyword">if</span>(i &gt; max_hight_idx)&#123;</span><br><span class="line">        right_sum += map[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>이런형식으로 값을 구할 수 있겠습니다.</p><h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 창고다각형2304 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] map;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">int</span> n = Integer.parseInt(br.readLine());</span><br><span class="line">        StringTokenizer st;</span><br><span class="line">        map = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1001</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 인덱스 가장작은값, 큰값 구하고 기둥중에서 높이가 가장 큰 인덱스를 구한다.</span></span><br><span class="line">        <span class="keyword">int</span> max_idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> min_idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max_hight_idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++) &#123;</span><br><span class="line">            st = <span class="keyword">new</span> StringTokenizer(br.readLine(), <span class="string">" "</span>);</span><br><span class="line">            <span class="keyword">int</span> x = Integer.parseInt(st.nextToken());</span><br><span class="line">            <span class="keyword">int</span> y = Integer.parseInt(st.nextToken());</span><br><span class="line"></span><br><span class="line">            map[x] = y;</span><br><span class="line">            max_idx = Math.max(max_idx, x);</span><br><span class="line">            min_idx = Math.min(min_idx, x);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(map[x] &gt; map[max_hight_idx])&#123;</span><br><span class="line">                max_hight_idx = x;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// left -&gt; max_hight_idx</span></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=min_idx; i&lt;max_hight_idx; i++)&#123;</span><br><span class="line">            h = Math.max(h, map[i]);</span><br><span class="line">            sum += h;</span><br><span class="line">        &#125;</span><br><span class="line">        h = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// right -&gt; max_hight_idx</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=max_idx; i&gt;max_hight_idx; i--)&#123;</span><br><span class="line">            h = Math.max(h, map[i]);</span><br><span class="line">            sum += h;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> left_sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right_sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;map.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i &lt; max_hight_idx)&#123;</span><br><span class="line">                left_sum += map[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=map.length-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; max_hight_idx)&#123;</span><br><span class="line">                right_sum += map[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(map[max_hight_idx] + sum);</span><br><span class="line">        <span class="comment">//System.out.println("left painting: "+ left_sum + " right painting : " + right_sum + " max painting :" + map[max_hight_idx]);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;keompyutingjeog-sago&quot;&gt;&lt;a href=&quot;#keompyutingjeog-sago&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#컴퓨팅적-사고&quot;&gt;&lt;/a&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="BOJ" scheme="http://gwanhyeon.github.io/categories/boj/"/>
-    
     
       <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
     
-      <category term="백준" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%EC%A4%80/"/>
-    
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
       <category term="구현" scheme="http://gwanhyeon.github.io/tags/%EA%B5%AC%ED%98%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>백준 텀 프로젝트 9466</title>
-    <link href="http://gwanhyeon.github.io/BOJ-20201022-BOJ-term-project/"/>
-    <id>http://gwanhyeon.github.io/BOJ-20201022-BOJ-term-project/</id>
-    <published>2020-10-22T14:08:19.000Z</published>
-    <updated>2020-10-23T07:46:17.200Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="baegjun-teom-peurojegteu-9466-munje"><a href="#baegjun-teom-peurojegteu-9466-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-텀-프로젝트-9466-문제"></a> <a href="https://www.acmicpc.net/problem/9466" target="_blank" rel="noopener">백준 텀 프로젝트 9466 문제</a></h1><hr><h3 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h3><p>이번 가을학기에 ‘문제 해결’ 강의를 신청한 학생들은 텀 프로젝트를 수행해야 한다. 프로젝트 팀원 수에는 제한이 없다. 심지어 모든 학생들이 동일한 팀의 팀원인 경우와 같이 한 팀만 있을 수도 있다. 프로젝트 팀을 구성하기 위해, 모든 학생들은 프로젝트를 함께하고 싶은 학생을 선택해야 한다. (단, 단 한 명만 선택할 수 있다.) 혼자 하고 싶어하는 학생은 자기 자신을 선택하는 것도 가능하다.</p><p>학생들이(s1, s2, …, sr)이라 할 때, r=1이고 s1이 s1을 선택하는 경우나, s1이 s2를 선택하고, s2가 s3를 선택하고,…, sr-1이 sr을 선택하고, sr이 s1을 선택하는 경우에만 한 팀이 될 수 있다.</p><p>예를 들어, 한 반에 7명의 학생이 있다고 하자. 학생들을 1번부터 7번으로 표현할 때, 선택의 결과는 다음과 같다.</p><p>1    2    3    4    5    6    7<br>3    1    3    7    3    4    6<br>위의 결과를 통해 (3)과 (4, 7, 6)이 팀을 이룰 수 있다. 1, 2, 5는 어느 팀에도 속하지 않는다.</p><p>주어진 선택의 결과를 보고 어느 프로젝트 팀에도 속하지 않는 학생들의 수를 계산하는 프로그램을 작성하라.</p><h3 id="ibryeog"><a href="#ibryeog" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#입력"></a> 입력</h3><p>첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스의 첫 줄에는 학생의 수가 정수 n (2 ≤ n ≤ 100,000)으로 주어진다. 각 테스트 케이스의 둘째 줄에는 선택된 학생들의 번호가 주어진다. (모든 학생들은 1부터 n까지 번호가 부여된다.)</p><h3 id="culryeog"><a href="#culryeog" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#출력"></a> 출력</h3><p>각 테스트 케이스마다 한 줄에 출력하고, 각 줄에는 프로젝트 팀에 속하지 못한 학생들의 수를 나타내면 된다.</p><h3 id="yeje-ibryeog-1"><a href="#yeje-ibryeog-1" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#예제-입력-1"></a> 예제 입력 1</h3><p>2<br>7<br>3 1 3 7 3 4 6<br>8<br>1 2 3 4 5 6 7 8</p><h3 id="yeje-culryeog-1"><a href="#yeje-culryeog-1" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#예제-출력-1"></a> 예제 출력 1</h3><p>3<br>0</p><hr><h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2><blockquote><p>문제 해석</p></blockquote><p>텀 프로젝트 수행시 자기자신이 혼자 팀일 수도 있으며, 한 팀만 있을 수도 있을 때 텀 프로젝트를 구성하는 문제입니다.<br>이 문제에서 가장 중요한 점은 <code>학생들이(s1, s2, ..., sr)이라 할 때, r=1이고 s1이 s1을 선택하는 경우나, s1이 s2를 선택하고, s2가 s3를 선택하고,..., sr-1이 sr을 선택하고, sr이 s1을 선택하는 경우에만 한 팀이 될 수 있다.</code> 라는 조건입니다.</p><blockquote><p>그래프</p></blockquote><p>예시 문제에서 주어진 그래프는 다음과 같이 생성되어 있습니다.<br><code>1-2-3-5 3-3 4-6-7</code><br><code>총 2개의 연결요소에서 3-3 하나의 사이클, 4-6-7의 사이클이 존재</code>하는 것을 알 수 있습니다. <code>사이클이 존재</code>한다는 것은 즉, 팀을 구성한 것과 같습니다. <code>이 사이클이 존재하는 팀을 제외하고 나머지 인원의 개수</code>를 구하시면 됩니다.</p><blockquote><p>접근 방식</p></blockquote><p>맨 처음에 문제를 접근하였을때 인접리스트로 사이클을 구하는것처럼 처리해주고, 연결점이 같을때 <code>(3,3 x=y) cnt값을 처리해주면 되지 않을까</code> 라는 생각을 하게 되었습니다. 하지만 이렇게 하게되면 <code>시작점과 하나의 사이클이 연결되는 지점을 찾기가 어려웠습니다.</code></p><p>따라서, DFS를 사용한 재귀호출방식을 다시 고민해보기 시작하였습니다.</p><p>예시에서 주어진 <code>3 1 3 7 3 4 6의 예시를 이용하여 설명을 진행하겠습니다.</code></p><blockquote><p><code>3-&gt;3</code> 경우</p></blockquote><p>자기자신을 가리키기 하나의 팀으로 완성이 가능합니다.</p><blockquote><p><code>4-&gt;7-&gt;6-&gt;4</code>의 경우를 살펴보겠습니다.</p></blockquote><p>DFS구현시<br>DFS( 시작 변수 , 1-N 정점 cnt, 출발지점을 저장하기 위한 변수)로 재귀를 구현하였습니다.</p><p><code>check = 몇번째 노드를 방문했는지 개수 저장 startVertex = 해당 사이클에서 시작점 저장 cnt = 몇번쨰 노드 방문 개수 A = 1번부터 N까지의 노드가 가리키는 값 저장</code></p><blockquote><p>정점이 4인경우</p></blockquote><p>시작은 dfs(4,1,4)를 호출합니다.<br>check[4] = 1, startVertex[4] = 1</p><blockquote><p>정점이 7인 경우</p></blockquote><p>4가 7을 가리키기 때문에 <code>dfs(7, 2, 4)</code>를 호출합니다.<br>check[7] = 2, startVertex[7] = 4</p><blockquote><p>정점이 6인 경우</p></blockquote><p>7이 6을 가리키기 때문에 <code>dfs(6, 3, 4)</code>를 호출합니다.<br>check[6] = 3, startVertex[6] = 4</p><blockquote><p>정점이 4인 경우</p></blockquote><p>6은 4를 가리키기 때문에 <code>dfs(4, 4, 4)</code>를 호출합니다.</p><p>즉, 시작점과 끝점이 같아지는 경우입니다. 하나의 싸이클이 생성된것을 확인하실 수 있습니다.</p><p>이때, 체크해야할 부분은 세가지 입니다.</p><ol><li>방문하였던 정점인지 아닌지 확인</li></ol><ul><li><code>시작정점과 같지 않은지 확인</code>을 합니다. <code>시작정점과 같지 않으면 해당 재귀를 종료</code>합니다.</li><li>시작정점과 같으면 몇번째 지점에 방문한 점인지 리턴을 해주게 됩니다. 이때 <code>cnt-check[i]</code>의 값을 리턴해주게 되는데 이 값을 리턴해주게 되는 이유는 <code>처음시작점부터 노드를 지나 다시 처음시작점</code>으로 돌아왔을때 <code>총 4번의 과정</code>을 지나가게됩니다. 이때 현재 check[4]에 저장된 값은 1의 값을 나타냅니다. <code>노드를 들어온 순서</code>를 나타내는 값입니다. 즉, 4번의 과정은 3개의 노드들로 이루어진것이므로 <code>현재노드의 점을 빼주게 됩니다.</code> 즉, <code>cnt - check[4]=1</code> 으로 <code>총 3명</code>이 함께 <code>텀 프로젝트</code>를 진행하게 됩니다.</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> cnt, <span class="keyword">int</span> step)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(check[x] != <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="keyword">if</span>(step != startVertex[x])&#123;</span><br><span class="line">              <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          System.out.println(check[x]);</span><br><span class="line">          <span class="keyword">return</span> cnt-check[x];</span><br><span class="line">      &#125;</span><br><span class="line">      check[x] = cnt;</span><br><span class="line">      startVertex[x] = step;</span><br><span class="line">      <span class="keyword">return</span> dfs(A[x], cnt+<span class="number">1</span>, step);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><blockquote><p>결론</p></blockquote><p>최종적으로 모든 DFS를 호출하고나면 텀 프로젝트 인원 3명 + 개인이 진행 1명 = 총 4명이 되고 전체 학생들의 수는 n = 7이 되기때문에 7-4 = 3명이 되게 됩니다. 7명의 학생중에 3명을 제외한 나머지 학생들은 텀프로젝트를 진행할 수 있다는 뜻입니다.</p><h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TermProject9466</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> t;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] A;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] check;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] startVertex;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        StringTokenizer st;</span><br><span class="line">        t = Integer.parseInt(br.readLine());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(t-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> n = Integer.parseInt(br.readLine());</span><br><span class="line">            check = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100001</span>];</span><br><span class="line">            A = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100001</span>];</span><br><span class="line">            startVertex = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100001</span>];</span><br><span class="line"></span><br><span class="line">            st = <span class="keyword">new</span> StringTokenizer(br.readLine(), <span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">                <span class="keyword">int</span> x = i+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">int</span> y = Integer.parseInt(st.nextToken());</span><br><span class="line">                A[x] = y;</span><br><span class="line">                check[x] = <span class="number">0</span>;</span><br><span class="line">                startVertex[x] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check[i] == <span class="number">0</span>)&#123;</span><br><span class="line">                    ans += dfs(i,<span class="number">1</span>,i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(n-ans);</span><br><span class="line">            Arrays.fill(check,<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> cnt, <span class="keyword">int</span> step)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(check[x] != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(step != startVertex[x])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> cnt-check[x];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        check[x] = cnt;</span><br><span class="line">        startVertex[x] = step;</span><br><span class="line">        <span class="keyword">return</span> dfs(A[x], cnt+<span class="number">1</span>, step);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;baegjun-teom-peurojegteu-9466-munje&quot;&gt;&lt;a href=&quot;#baegjun-teom-peurojegteu-9466-munje&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownI
-      
-    
-    </summary>
-    
-    
-      <category term="BOJ" scheme="http://gwanhyeon.github.io/categories/boj/"/>
-    
-    
-      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
-    
-      <category term="백준" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%EC%A4%80/"/>
-    
-      <category term="알고리즘" scheme="http://gwanhyeon.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"/>
-    
-      <category term="그래프" scheme="http://gwanhyeon.github.io/tags/%EA%B7%B8%EB%9E%98%ED%94%84/"/>
-    
-      <category term="BFS" scheme="http://gwanhyeon.github.io/tags/bfs/"/>
-    
-      <category term="순열" scheme="http://gwanhyeon.github.io/tags/%EC%88%9C%EC%97%B4/"/>
     
   </entry>
   

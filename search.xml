@@ -1,6 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Network TCP와 UDP</title>
+    <url>/Network-20210108-network-02-tcp-udp/</url>
+    <content><![CDATA[<h1 id="inteones-peurotokolyi-4gyeceung"><a href="#inteones-peurotokolyi-4gyeceung" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#인터넷-프로토콜의-4계층"></a> 인터넷 프로토콜의 4계층</h1>
+<p><code>인터넷 프로토콜의 4계층</code>에 대해서 살펴보겠습니다.</p>
+<table>
+<thead>
+<tr>
+<th>계층</th>
+<th>프로토콜</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>애플리케이션 계층</td>
+<td>HTTP, FTP</td>
+</tr>
+<tr>
+<td>전송 계층</td>
+<td>TCP,UDP</td>
+</tr>
+<tr>
+<td>인터넷 계층</td>
+<td>IP</td>
+</tr>
+<tr>
+<td>네트워크 인터페이스 계층</td>
+<td>Empty</td>
+</tr>
+</tbody>
+</table>
+<p><code>인터넷 프로토콜은</code> 해당 <code>총 4개의 계층</code>으로 이루어져있고 <code>애플리케이션 계층, 전송계층, 인터넷계층, 네트워크 인터페이스 계층</code> 으로 구성되어있습니다.</p>
+<h1 id="peurotokol-gyeceung"><a href="#peurotokol-gyeceung" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#프로토콜-계층"></a> 프로토콜 계층</h1>
+<ul>
+<li>
+<p>애플리케이션<br>
+<code>애플리케이션 계층</code>은 <code>웹 브라우저(크롬), 네트워크 , 게임, 채팅 프로그램</code>으로 구성되어있습니다. 그리고 <code>Socket 라이브러리</code>로 구성되어 있습니다.</p>
+</li>
+<li>
+<p>OS(Operation System)<br>
+OS계층은 <code>TCP, UDP, IP(Internet Protocal)</code> 로 구성되어 있습니다.</p>
+</li>
+<li>
+<p>네트워크 인터페이스<br>
+LAN 드라이버, LAN 장비, LAN카드</p>
+</li>
+</ul>
+<p><code>네트워크 인터페이스</code>에서 <code>LAN카드</code>를 통해 <code>인터넷에 접근</code>하게 되고 <code>서버에 전송을 진행</code>하게 됩니다.</p>
+<blockquote>
+<p>전송 과정</p>
+</blockquote>
+<ol>
+<li>애플리케이션 계층에서 클라이언트가 <code>&quot;Request Message&quot;</code> <code>메시지를 생성</code>시킵니다.</li>
+<li>애플리케이션 계층에서 해당 메시지들을 <code>Socket라이브러</code>를 통해 전달이 됩니다.</li>
+<li>OS계층에서 <code>TCP 정보를 생성</code>하여 <code>TCP세그먼트를 씌워 메시지 데이터를 포함</code>시킵니다.</li>
+<li>OS계층에서 <code>IP 패킷이 생성되고 TCP데이터를 포함</code>시킵니다.</li>
+<li>네트워크 인터페이스 계층에서 <code>패킷 단위</code>로 <code>LAN 카드 장비</code>를 통해 인터넷(물리적정보에) 접속하게 되어 해당 찾고자하는 <code>서버에 요청</code>을 보내게 됩니다.</li>
+</ol>
+<h1 id="ip-paekis-jeongbo"><a href="#ip-paekis-jeongbo" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#ip-패킷-정보"></a> IP 패킷 정보</h1>
+<p><code>패킷정보는</code> <code>출발지 IP랑 목적지 IP, 기타</code> 등등의 값을 가지고 해당 <code>전송데이터를 패킷</code>으로 감싸주는 형태로 진행됩니다.</p>
+<h1 id="tcp-ip-paekis-jeongbo"><a href="#tcp-ip-paekis-jeongbo" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#tcpip-패킷-정보"></a> TCP/IP 패킷 정보</h1>
+<ul>
+<li><code>IP 패킷: 출발지 IP, 목적지 IP, 기타 데이터</code></li>
+<li><code>TCP 세그먼트: 출발지 PORT, 목적지 PORT, 전송제어, 순서, 검증 정보</code></li>
+</ul>
+<p>IP패킷안에 <code>TCP세그먼트를 감싸고</code> 그안에 <code>전송데이터</code>를 담아서 <code>네트워크상에 전송</code>되게 됩니다.<br>
+즉, <code>IP만으로는 해결할 수 없었던 출발지,목적지 PORT번호</code>가 있기때문에 <code>전송제어나 순서보장, 검증정보를 통해 문제점들을 해결</code> 할 수 있게 되었습니다.</p>
+<h1 id="tcp-transmission-control-protocal"><a href="#tcp-transmission-control-protocal" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#tcptransmission-control-protocal"></a> TCP(Transmission Control Protocal)</h1>
+<p><code>TCP(Transmission Control Protocal)</code>는 <code>전송 제어 프로토콜</code>이라고 불리어 오며 특징들에 대해서 살펴보도록 하겠습니다.</p>
+<ol>
+<li>연결지향 - <code>TCP 3 Way handshake(가상 연결)</code><br>
+개념적으로만 연결된 것을 의미합니다.</li>
+<li>데이터 전달 보증<br>
+<code>패킷 누락시 메시지를 못받는지를 알 수 있습니다.</code> 데이터가 전송되고 데이터가 잘 받았는지를 확인할 수 있습니다.</li>
+<li>순서 보장<br>
+<code>순서를 보장해줍니다.</code></li>
+</ol>
+<blockquote>
+<p>예시</p>
+</blockquote>
+<p><code>패킷1,패킷2,패킷3을 순서대로 보낸다고 가정</code>하면 패킷을 보내다가 노드의 의 접근이 바뀌어 <code>순서가 정확하게 오지 않았을 경우</code> 서버에서 해당 순서를 확인하여 잘못되었음을 판단을 하게 됩니다. 이때, 순서가 잘못 들어온 <code>패킷이 3번</code>이라고 가정하면 해당되는 <code>패킷의 순서</code>부터 다시 <code>재전송을 요청</code>하게 됩니다. 즉, 최적화를 내부적으로 진행할 수 있습니다.</p>
+<ol start="4">
+<li>신뢰할 수  있는 프로토콜<br>
+현재는 <code>TCP가 대부분의 전송</code>에 있어서 사용되고 있으며 <code>매우 중요한 개념</code>입니다.</li>
+</ol>
+<h1 id="tcp-3way-handshake"><a href="#tcp-3way-handshake" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#tcp-3way-handshake"></a> TCP 3way handshake</h1>
+<ul>
+<li><code>SYN:</code> 접속을 요청합니다.</li>
+<li><code>ACK:</code> 요청을 수락합니다.</li>
+</ul>
+<ol>
+<li>클라이언트가 서버에게 <code>SYN(Syncronized)의 connect 연결과정을 요청</code>합니다.</li>
+<li>서버는 해당 클라이언트부터 SYN을 전송받고 클라이언트에게 <code>SYN+ACK(연결 상태)</code>를 함께 전송합니다.</li>
+<li>클라이언트는 서버로 부터 해당 <code>SYN+ACK(연결상태)를 전송받고 다시 서버에게 잘 받았다는 의미로 ACK</code>을 전송시켜주게 됩니다.</li>
+<li>해당 <code>ACK을 전송받은 서버</code>는 이때 잘 연결되었다는 의미로 알고 <code>데이터를 전송</code>시켜줍니다.</li>
+</ol>
+<p>이러한 <code>3way-handshake과정은</code> 클라이언트와 서버의 신뢰관계(연결 상태를 확인)하는 과정을 진행하는 것이라고 생각하시면 됩니다.</p>
+<h1 id="udp-user-datagram-protocal"><a href="#udp-user-datagram-protocal" class="header-anchor">7. </a><a class="markdownIt-Anchor" href="#udpuser-datagram-protocal"></a> UDP(User Datagram Protocal)</h1>
+<p><code>UDP(User Datagram Protocal)는</code> <code>사용자 데이터그램 프로토콜</code>이라고 불리어옵니다.</p>
+<p>TCP와 매우 대조적인 특징을 가지고 있는데 살펴보겠습니다.</p>
+<ol>
+<li>연결지향 - TCP와는 다르게 TCP 3 way-handshake가 없습니다.</li>
+<li>데이터 전달 보증이 되지 않습니다.</li>
+<li>순서가 보장되지 않습니다.</li>
+<li>데이터 전달 및 순서가 보장되지 않지만 매우 단순하고 빠른 특징을 가지고 있습니다.</li>
+</ol>
+<p>즉, IP와 유사하지만 <code>UDP에는</code> <code>PORT와 체크섬(Checksum)</code>이 존재하게 됩니다. <code>체크섬(Checksum)은</code> <code>메시지의 검증 데이터</code>를 일컫는 말입니다. 그리고 애플리케이션에서 추가작업이 필요로 될 수 있습니다.</p>
+]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>network</tag>
+        <tag>tcp</tag>
+        <tag>udp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Network 인터넷 IP(Internet Protocal) 및 패킷(Packet)</title>
+    <url>/Network-20210108-network-01-internet-communication/</url>
+    <content><![CDATA[<h1 id="inteoneseseo-keompyuteo-duleun-eoddeohge-tongsineul-halggayo"><a href="#inteoneseseo-keompyuteo-duleun-eoddeohge-tongsineul-halggayo" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#인터넷에서-컴퓨터-둘은-어떻게-통신을-할까요"></a> 인터넷에서 컴퓨터 둘은 어떻게 통신을 할까요?</h1>
+<p>단순히 생각해보면 <code>클라이언트에서 메시지</code>를 보내면 <code>서버에서 해당 메시지</code>를 받고 정상적으로 받았다면 응답메시지를 보내주게 됩니다.</p>
+<h1 id="inteones"><a href="#inteones" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#인터넷"></a> 인터넷</h1>
+<h3 id="tongsineul-halddae-gwayeon-eodireul-tonghaeseo-keulraieonteuwa-seobeoga-tongsini-ganeunghaejil-su-isseosseulggayo"><a href="#tongsineul-halddae-gwayeon-eodireul-tonghaeseo-keulraieonteuwa-seobeoga-tongsini-ganeunghaejil-su-isseosseulggayo" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#통신을-할때-과연-어디를-통해서-클라이언트와-서버가-통신이-가능해질-수-있었을까요"></a> 통신을 할때 과연 어디를 통해서 클라이언트와 서버가 통신이 가능해질 수 있었을까요?</h3>
+<p>바로, <code>인터넷</code>이라는 <code>개념</code>때문인데 <code>인터넷은 상당히 복잡한 망</code>으로 구성되어 있습니다. 각각의 인터넷안에 연결된 노드들 끼리 수도없이 복잡하게 얽혀져 있습니다.</p>
+<h1 id="ip-internet-protocal"><a href="#ip-internet-protocal" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#ipinternet-protocal"></a> IP(Internet Protocal)</h1>
+<p>이렇게 인터넷을 통해서 데이터를 전송하는 경우에는 <code>IP라는 인터넷프로토콜 주소</code>를 붙여서 전송시키는 경우가 많습니다.</p>
+<blockquote>
+<p>데이터 전송 예시<br>
+만약에 클라이언트 <code>IP:127.0.0.1의 주소</code>에서 <code>IP:127.0.0.2의 주소</code>로 데이터를 <code>전송</code>한다고 가정해보겠습니다.<br>
+이때 <code>클라이언트</code>는 찾고자하는 <code>서버의 IP를 검색</code>을 진행하면 <code>127.0.0.1의 IP주소</code>를 가지고 인터넷의 노드를 탐색하면서 <code>IP:127.0.0.2의 주소</code>를 찾아서 서버는 해당 클라이언트의 요청을 받고 해당 <code>데이터</code>들을 넘겨주게 됩니다.</p>
+</blockquote>
+<h1 id="ip-internet-protocla-yi-yeoghal"><a href="#ip-internet-protocla-yi-yeoghal" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#ipinternet-protocla의-역할"></a> IP(Internet Protocla)의 역할</h1>
+<p><code>인터넷 프로토콜의 역할은</code> <code>지정된 IP주소</code>를 해당 <code>IP 주소(Address)</code>에 데이터를 전달시킵니다. 이때, <code>패킷(Packet)</code>이라는 통신 단위로 데이터를 전달하게 됩니다.</p>
+<h1 id="ip-paekis-packet"><a href="#ip-paekis-packet" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#ip-패킷packet"></a> IP 패킷(Packet)</h1>
+<p><code>IP패킷은</code> <code>출발지 IP</code>와 <code>목적지IP</code>, <code>기타 데이터사항</code>들을 감싸서 데이터를 <code>전송</code>합니다.</p>
+<blockquote>
+<p>클라이언트의 패킷은 어떻게 전달될까요?</p>
+</blockquote>
+<p><code>출발지 IP, 목적지 IP, 데이터 등등의 값</code>을 가지고 해당 <code>클라이언트</code>는 <code>IP패킷</code>을 <code>인터넷상에 던져주게 됩니다.</code> 노드끼리 해당 <code>목적지 IP</code>를 <code>탐색</code>하면서 <code>서버 IP</code>를 찾아냅니다. 해당 <code>서버IP</code>를 찾게 되면 <code>해당 서버에게 데이터를 패킷의 형태로 전송</code>하게 됩니다.</p>
+<blockquote>
+<p>서버의 패킷은 어떻게 전달 될까요?</p>
+</blockquote>
+<p><code>서버 IP를 출발지 IP로 지정</code>하고, 전달하고자 하는 <code>클라이언트의 아이디 목적지 IP</code>에게 해당 요청에 대한 <code>성공,실패 유무를 반환</code>하여 <code>HTTP의 상태값과 함께 전송</code>시키게 됩니다. 클라이언트와 마찬가지로 인터넷상의 <code>노드들은 목적지 IP를 탐색</code>하여 클라이언트에게 <code>패킷형태</code>로 전송시켜주게 됩니다.</p>
+<h1 id="ip-peurotokolyi-hangye"><a href="#ip-peurotokolyi-hangye" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#ip-프로토콜의-한계"></a> IP 프로토콜의 한계</h1>
+<ul>
+<li>
+<p>비연결성<br>
+패킷을 받을 대상이 없거나 <code>서비스 불능</code> 상태여도 <code>패킷을 전송</code>하게 됩니다. 예를 들면, 해당 서버 <code>PC가 꺼져있는 경우</code> <code>불능상태</code>이기때문에 이때에도 <code>패킷을 전송</code>해버리는 불상사가 발생하게 됩니다.</p>
+</li>
+<li>
+<p>비신뢰성<br>
+<code>중간에 패킷이 사라지는경우</code>가 생길 수 있습니다. 클라이언트가 인터넷안에서 노드가 꺼진 노드일 경우 이 <code>패킷들은 손실되어 더이상 처리가 되지 않을 수 있습니다.</code></p>
+</li>
+</ul>
+<p><code>패킷이 순서대로 처리</code>되지 않을 수 있습니다. 순서대로 처리되지 않을시 같은 <code>IP는 어떻게 구분할 수 있을지에 대한 문제</code>가 생길 수 있습니다.</p>
+<blockquote>
+<p>패킷 순서 오류 예시</p>
+</blockquote>
+<p>클라이언트에서 <code>[&quot;HTTP Message1&quot;], [&quot;HTTP Message2&quot;]</code>를 전송한다고 가정하였을때 패킷이 다른노드를 타고 들어갈 수 있는 경우가 발생합니다. 클라이언트에서는<br>
+<code>[&quot;HTTP Message1&quot;] -&gt; [&quot;HTTP Message2&quot;]</code> 의 순서로 데이터를 전송하였지만 서버측에서는 <code>[&quot;HTTP Message2&quot;] -&gt; [&quot;HTTP Message1&quot;]</code>의 순서로 데이터를 받을 수 있는 경우가 발생합니다.</p>
+<ul>
+<li>프로그램 구분<br>
+<code>같은 IP를 사용하는 서버에서 통신하는 애플리케이션이 둘 이상</code>이라면 <code>프로그램을 정확히 구분할 수가 없게</code>됩니다.</li>
+</ul>
+<blockquote>
+<p>TCP/IP의 등장</p>
+</blockquote>
+<p>결론적으로 이러한 <code>문제들을 해결하기 위해</code> <code>TCP/IP</code>라는 개념이 등장하게 되었으며 다음 포스팅에서 <code>TCP/IP</code>에 대해 자세하게 살펴볼 예정입니다.</p>
+]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>network</tag>
+        <tag>internet</tag>
+        <tag>tcp</tag>
+        <tag>ip</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 Mootube 15591</title>
     <url>/BOJ-20210108-boj-mootube/</url>
     <content><![CDATA[<h1 id="baegjun-mootube-15591-munje"><a href="#baegjun-mootube-15591-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-mootube-15591-문제"></a> <a href="https://www.acmicpc.net/problem/15591" target="_blank" rel="noopener">백준 MOOTUBE 15591 문제</a></h1>
@@ -90,9 +270,9 @@ DFS의 <em>Basement조건</em>은 digits 길이만큼 선택될 수 있기때문
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
-        <tag>완전탐색</tag>
         <tag>DFS</tag>
+        <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -132,8 +312,8 @@ Output: true</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -492,9 +672,9 @@ Output: true</p>
         <category>Spring</category>
       </categories>
       <tags>
+        <tag>Spring</tag>
         <tag>annotationProcessor</tag>
         <tag>JDK</tag>
-        <tag>Spring</tag>
         <tag>IntellJ</tag>
         <tag>Error</tag>
       </tags>
@@ -664,9 +844,9 @@ Output: -2147483647</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>완전탐색</tag>
         <tag>DP</tag>
+        <tag>릿코드</tag>
         <tag>부분집합의 합</tag>
       </tags>
   </entry>
@@ -1119,9 +1299,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -1218,9 +1398,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -1269,9 +1449,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -1370,8 +1550,8 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -1425,8 +1605,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -1474,8 +1654,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -1624,8 +1804,8 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -2060,8 +2240,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -3533,6 +3713,50 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
       </tags>
   </entry>
   <entry>
+    <title>프로그래머스 K번째수</title>
+    <url>/Programmers-20200910-Programmers-k-number/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
+<ul>
+<li>array의 길이는 1 이상 100 이하입니다.</li>
+<li>array의 각 원소는 1 이상 100 이하입니다.</li>
+<li>commands의 길이는 1 이상 50 이하입니다.</li>
+<li>commands의 각 원소는 길이가 3입니다.</li>
+</ul>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
+<ul>
+<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
+<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
+<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
+</ul>
+<blockquote>
+<p>K번째수 예시</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
+<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
+<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
+<blockquote>
+<p>시간복잡도<br>
+시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
+O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
+</blockquote>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Programmers</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
+        <tag>정렬</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>프로그래머스 모의고사</title>
     <url>/Programmers-20200915-Programmers-mock-test/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
@@ -3579,50 +3803,6 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
       <tags>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>프로그래머스 K번째수</title>
-    <url>/Programmers-20200910-Programmers-k-number/</url>
-    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
-<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
-<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
-<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
-<ul>
-<li>array의 길이는 1 이상 100 이하입니다.</li>
-<li>array의 각 원소는 1 이상 100 이하입니다.</li>
-<li>commands의 길이는 1 이상 50 이하입니다.</li>
-<li>commands의 각 원소는 길이가 3입니다.</li>
-</ul>
-<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
-<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
-<ul>
-<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
-<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
-<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
-</ul>
-<blockquote>
-<p>K번째수 예시</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
-<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
-<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
-<blockquote>
-<p>시간복잡도<br>
-시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
-O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
-</blockquote>
-<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Programmers</category>
-      </categories>
-      <tags>
-        <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
-        <tag>정렬</tag>
       </tags>
   </entry>
   <entry>
@@ -4048,8 +4228,8 @@ Only one valid answer exists.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -4087,9 +4267,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -4294,9 +4474,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -4368,38 +4548,6 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -4423,6 +4571,38 @@ Only one valid answer exists.</p>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
 <h3 id="next-permutationeul-sayonghan-puli"><a href="#next-permutationeul-sayonghan-puli" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#next_permutation을-사용한-풀이"></a> next_permutation을 사용한 풀이</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  05_백준_차이를최대로_10819.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            sum += <span class="built_in">abs</span>(v[i] - v[i+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">max</span> &lt; sum)&#123;</span><br><span class="line">            <span class="built_in">max</span> = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()));</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">max</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -4859,8 +5039,8 @@ Only one valid answer exists.</p>
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -4900,8 +5080,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -4944,8 +5124,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -5058,8 +5238,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -5123,10 +5303,10 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
-        <tag>위장</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>해시</tag>
+        <tag>위장</tag>
       </tags>
   </entry>
   <entry>
