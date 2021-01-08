@@ -112,9 +112,9 @@ LAN 드라이버, LAN 장비, LAN카드</p>
         <category>Network</category>
       </categories>
       <tags>
-        <tag>network</tag>
-        <tag>tcp</tag>
-        <tag>udp</tag>
+        <tag>NETWORK</tag>
+        <tag>TCP</tag>
+        <tag>UDP</tag>
       </tags>
   </entry>
   <entry>
@@ -174,10 +174,10 @@ LAN 드라이버, LAN 장비, LAN카드</p>
         <category>Network</category>
       </categories>
       <tags>
-        <tag>network</tag>
-        <tag>internet</tag>
-        <tag>tcp</tag>
-        <tag>ip</tag>
+        <tag>NETWORK</tag>
+        <tag>INTERNET</tag>
+        <tag>TCP</tag>
+        <tag>IP</tag>
       </tags>
   </entry>
   <entry>
