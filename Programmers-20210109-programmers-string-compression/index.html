@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  프로그래머스 문자열압축 카카오신입 공채2020 1.1.  문제 설명 데이터 처리 전문가가 되고 싶은 어피치는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. 최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, 문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-01-09T13:41:12.136Z">
+<meta property="og:updated_time" content="2021-01-09T13:46:13.570Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -233,14 +233,12 @@ s는 알파벳 소문자로만 이루어져 있습니다.</p>
 <li>(2) <code>단위만큼 값을 증가</code>시키면서 이전 <code>문자열과 비교</code>하기 위한 문자열을 저장시킵니다.</li>
 <li>(3) <code>저장된 문자열과 이전문자열이 같다면</code> 압축을 진행한것이므로 압축값을 증가시킵니다(+1)</li>
 <li>(4) <code>저장된 문자열과 이전문자열이 같지 않다면</code> 더이상 압축할것이 없으므로 압축값들을 문자열로 저장시킵니다. (단, 압축된 개수가 1보다 클 경우만 개수를 추가하고 그게 아니라면 해당 문자열 자체만을 저장시킵니다.)</li>
+<li>(5) 한번의 단위검색이 모두 끝났을 경우 현재 <code>compression에 담겨진 문자열의 길이와 answer(s의 길이와 비교)</code>를 통해 더 작은값으로 갱신을 진행합니다.</li>
 </ul>
 <blockquote>
 <p>압축 예시</p>
 </blockquote>
 <p>a != b 경우이므로 aabbaccc의 문자열에서 로직이 진행되었다고 할때 b에서 부터 다시 단위만큼 진행해야하므로 compressionCnt값을 1로 초기화시키고 현재 b의 값을 compresssionFirst값에 갱신시켜줍니다.</p>
-<ul>
-<li>(5) 한번의 단위검색이 모두 끝났을 경우 현재 <code>compression에 담겨진 문자열의 길이와 answer(s의 길이와 비교)</code>를 통해 더 작은값으로 갱신을 진행합니다.</li>
-</ul>
 <h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
 <blockquote>
 <p>문자열 압축 완전 탐색</p>
