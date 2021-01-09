@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Network PORT와 DNS(Domain Name System)</title>
+    <url>/network-03-port-dns/</url>
+    <content><![CDATA[<h1 id="port"><a href="#port" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#port"></a> PORT</h1>
+<p>네트워크 관련시간에 자주 들어보셨을 PORT에 대한 특징을 살펴보겠습니다.</p>
+<p><code>클라이언트가 서버에게</code> <code>게임 서버, 메인 서버, 동영상 서버</code>에 접근한다고 가정해보겠습니다.<br>
+`클라이언트는 고유의 <em>IP:127.0.0.1</em> 를 가지고 있을때 서버 <em>IP:127.0.0.2</em> 에 <em>게임 서버, 메인 서버, 동영상 서버</em>에 요청으로 동시에 데이터를 가지고 오고 싶을때가 있을 것 입니다.</p>
+<blockquote>
+<p>그렇다면 클라이언트의 IP와 서버 IP만으로 어떤 서버에 어떤요청을 가져오는지가 가능할까요?</p>
+</blockquote>
+<p>즉, 한번에 두개이상의 서버를 호출해야한다면 IP로만 해결하기에는 어디서 온지 확인하기가 어렵게 됩니다. 그러면 어떻게 이것들을 구별하여 전송할 수 있을지 살펴보겠습니다.</p>
+<h1 id="tcp-ip-paekis-jeongbo"><a href="#tcp-ip-paekis-jeongbo" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#tcpip-패킷-정보"></a> TCP/IP 패킷 정보</h1>
+<blockquote>
+<p>IP 패킷</p>
+</blockquote>
+<p><em>출발지 IP ,목적지 IP, 기타 정보</em></p>
+<blockquote>
+<p>TCP 세그먼트</p>
+</blockquote>
+<p><em>출발지 PORT, 목적지 PORT, 전송제어, 순서, 검증정보</em></p>
+<p><code>IP패킷에는 가지고 있지않는 TCP 세그먼트</code>를 이용하여 <code>출발지 PORT와 목적지 PORT</code>를 가지게 되면서 같은 <code>IP에 고유의 포트를 지정하면서 전송</code>을 보낼 수 있게됩니다.</p>
+<h1 id="paekis-jeongbo"><a href="#paekis-jeongbo" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#패킷-정보"></a> 패킷 정보</h1>
+<blockquote>
+<p>TCP/IP<br>
+이제 데이터 전송시에 <code>출발지 IP,목적지 IP(IP 프로토콜)</code>과 <code>출발지 PORT, 목적지 PORT(TCP 세그먼트)</code>를 함께 보내게 되면서 <code>같은 IP내에서 프로세스를 구분</code>할 수 있게되었습니다.</p>
+</blockquote>
+<blockquote>
+<p>TCP/IP 통신 예제</p>
+</blockquote>
+<ul>
+<li>출발지 IP 127.0.0.1 , 목적지 IP 127.0.0.2</li>
+<li><code>게임 서버 출발지 포트 9000 , 목적지 포트 12000</code></li>
+<li><code>메인 서버 출발지 포트 8080 , 목적지 포트 8090</code></li>
+<li><code>동영상 서버 출발지 포트 21000, 목적지 포트 22000</code></li>
+</ul>
+<p><code>게임서버</code>로 <code>127.0.0.1의 IP 출발지 포트 9000번</code>에서 <code>127.0.0.2 목적지 포트 12000번</code>으로 데이터 전송이 가능합니다.</p>
+<p><code>메인서버</code>는 <code>127.0.0.1 IP 출발지 포트 8080번</code>에서 <code>127.0.0.2 목적지 포트 8090</code>으로 통신을 주고받을 수 있게 됩니다.</p>
+<p><code>동영상 서버</code>의 경우 <code>127.0.0.1 21000번 포트</code>에서 목적지 포트 <code>127.0.0.2 22000번 포트</code>로 통신을 가능하게 할 수 있습니다.</p>
+<p>결론적으로, 포트를 사용하게되면 이렇게 다양한 같은 아이피와의 구별점이 생겨 통신하는데에 있어서 <code>프로세스를 구분</code>할 수 있게 됩니다. 쉽게 생각하면 IP는 하나의 아파트 동을 나타내고 PORT는 동호수를 나타낸다고 생각하면 매우 쉽습니다.</p>
+<h1 id="portyi-teugjing"><a href="#portyi-teugjing" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#port의-특징"></a> PORT의 특징</h1>
+<ul>
+<li><code>0~65535</code>: 포트 할당이 가능합니다.</li>
+<li><code>0~1023</code>: 잘 알려진 포트로 대부분 포트가 <code>사용중일 가능성</code>이 있기때문에 사용하지 않는것을 권장드립니다.</li>
+</ul>
+<blockquote>
+<p>대표적인 PORT 번호</p>
+</blockquote>
+<ul>
+<li>FTP 20,21</li>
+<li>TELNET 23</li>
+<li>HTTP 80</li>
+<li>HTTPS 443<br>
+대표적인 포트로는 위의 포트 번호처럼 이미 할당이 되어있습니다.</li>
+</ul>
+<h1 id="dns-domain-name-system"><a href="#dns-domain-name-system" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#dnsdomain-name-system"></a> DNS(Domain Name System)</h1>
+<p>자, 이제 여기까지 살펴보면 IP,PORT를 통해 데이터 통신의 프로세스를 구분할 수 있다는것을 알 수 있었습니다.</p>
+<blockquote>
+<p>하지만 매번 클라이언트와 서버쪽에서 IP를 기억하고 있다가 매번 전송을 해야할까요?</p>
+</blockquote>
+<p>기억하고 있기에는 매우많은 IP를 가지고 있습니다. 또한, 과거와 현재 쓰이는 IP는  쉽게 변경이 가능합니다. 이것의 문제점을 해결하기 위해 나온것이 바로 <code>DNS(Domain Name System) 도메인 네임시스템</code>이라고 이라고합니다. 즉 하나의 전화번호부처럼 사용할 수 있고, 도메인명을 IP 주소로 변환하여 사용이 가능합니다.</p>
+<h1 id="dns-domain-name-system-eun-eoddeohge-dongjaghage-doelggayo"><a href="#dns-domain-name-system-eun-eoddeohge-dongjaghage-doelggayo" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#dnsdomain-name-system은-어떻게-동작하게-될까요"></a> DNS(Domain Name System)은 어떻게 동작하게 될까요?</h1>
+<p>만약 저희가 <code>www.google.com</code>의 <code>도메인명</code>을 가지고 <code>서버에 요청</code>을 한다고 가정해보겠습니다.</p>
+<ol>
+<li><code>도메인명</code>을 바탕으로 <code>DNS서버에서 해당 도메인을 가지고 있는 IP를 전달</code>받습니다.</li>
+<li><code>클라이언트</code>는 <code>DNS서버로 부터 응답받은 목적지 IP를 바탕으로 해당 서버에 접속</code>하게 됩니다.</li>
+</ol>
+<h1 id="jeongri"><a href="#jeongri" class="header-anchor">7. </a><a class="markdownIt-Anchor" href="#정리"></a> 정리</h1>
+<p>지금까지 포스팅한 내용들을 살펴보면 <code>인터넷 통신이 어떻게 구조</code>를 이루고 있는지와 <code>IP(Internet protocal)이 어떻게 통신되고 장단점</code>이 무엇인지를 살펴보았습니다.<br>
+그리고 <code>IP의 문제점들을 해결</code>하기 위해 나온 <code>TCP/IP(TCP,UDP)의 동작원리</code>를 배울 수 있었습니다.마지막으로 이번장에 정리한 <code>PORT가 필요한 이유와 DNS 서버 동작</code>에 대해서 정리해보았습니다.</p>
+]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>NETWORK</tag>
+        <tag>PORT</tag>
+        <tag>DNS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Network TCP와 UDP</title>
     <url>/Network-20210108-network-02-tcp-udp/</url>
     <content><![CDATA[<h1 id="inteones-peurotokolyi-4gyeceung"><a href="#inteones-peurotokolyi-4gyeceung" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#인터넷-프로토콜의-4계층"></a> 인터넷 프로토콜의 4계층</h1>
@@ -4548,6 +4627,38 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -4571,38 +4682,6 @@ Only one valid answer exists.</p>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
 <h3 id="next-permutationeul-sayonghan-puli"><a href="#next-permutationeul-sayonghan-puli" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#next_permutation을-사용한-풀이"></a> next_permutation을 사용한 풀이</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  05_백준_차이를최대로_10819.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            sum += <span class="built_in">abs</span>(v[i] - v[i+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">max</span> &lt; sum)&#123;</span><br><span class="line">            <span class="built_in">max</span> = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()));</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">max</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -5305,8 +5384,8 @@ Only one valid answer exists.</p>
         <tag>알고리즘</tag>
         <tag>레벨2</tag>
         <tag>프로그래머스</tag>
-        <tag>해시</tag>
         <tag>위장</tag>
+        <tag>해시</tag>
       </tags>
   </entry>
 </search>
