@@ -4,21 +4,25 @@
     
 
     
-    <title>태그: 다익스트라 | Ethan Kim IT Blog</title>
+    <title>릿코드 Decode String | Ethan Kim IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ethan Kim IT Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;tags&#x2F;%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC&#x2F;index.html">
+    <meta name="keywords" content="DFS,릿코드,문자열" />
+    
+    <meta name="description" content="1.  릿코드 Decode String Given an encoded string, return its decoded string. The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times">
+<meta name="keywords" content="DFS,릿코드,문자열">
+<meta property="og:type" content="article">
+<meta property="og:title" content="릿코드 Decode String">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Leetcode-20210111-leetcode-decode-string&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
+<meta property="og:description" content="1.  릿코드 Decode String Given an encoded string, return its decoded string. The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-01-11T12:39:53.249Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/tags/다익스트라/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/leetcode-20210111-leetcode-decode-string/"/>
     
 
     
@@ -145,56 +149,185 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>태그: <em>다익스트라</em>
+    <a class="page-title-link" href="/categories/leetcode/">leetcode</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Leetcode-20210111-leetcode-decode-string" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-11-14T13:27:38.000Z" itemprop="datePublished">2020-11-14</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20201114-Programmers-delivery/">프로그래머스 배달</a>
+        릿코드 Decode String
         </h1>
     
 
-        <p class="article-excerpt">
-            1.  프로그래머스 배달
-1.1.  문제 설명
-N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을에는 1부터 N까지의 번호가 각각 하나씩 부여되어 있습니다. 각 마을은 양방향으로 통행할 수 있는 도로로 연결되어 있는데, 서로 다른 마을 간에 이동할 때는 이 도로를 지나야 합니다. 도로를 지날 때 걸리는 시간은 도로별로 다릅니다. 현재 1번 마을에 
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/Leetcode-20210111-leetcode-decode-string/" class="article-date">
+         <time datetime="2021-01-11T12:36:09.000Z" itemprop="datePublished">2021-01-11</time>
+      </a>
     </div>
-</article>
-    
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/dfs/" rel="tag">DFS</a>, <a class="tag-link" href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" rel="tag">릿코드</a>, <a class="tag-link" href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" rel="tag">문자열</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="riskodeu-decode-string"><a href="#riskodeu-decode-string" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#릿코드-decode-string"></a> <a href="https://leetcode.com/problems/decode-string/" target="_blank" rel="noopener">릿코드 Decode String</a></h1>
+<p>Given an encoded string, return its decoded string.</p>
+<p>The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.</p>
+<p>You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.</p>
+<p>Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there won’t be input like 3a or 2[4].</p>
+<h3 id="example-1"><a href="#example-1" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#example-1"></a> Example 1:</h3>
+<p>Input: s = “3[a]2[bc]”<br>
+Output: “aaabcbc”</p>
+<h3 id="example-2"><a href="#example-2" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#example-2"></a> Example 2:</h3>
+<p>Input: s = “3[a2[c]]”<br>
+Output: “accaccacc”</p>
+<h3 id="example-3"><a href="#example-3" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#example-3"></a> Example 3:</h3>
+<p>Input: s = “2[abc]3[cd]ef”<br>
+Output: “abcabccdcdcdef”</p>
+<h3 id="example-4"><a href="#example-4" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#example-4"></a> Example 4:</h3>
+<p>Input: s = “abc3[cd]xyz”<br>
+Output: “abccdcdcdxyz”</p>
+<h3 id="constraints"><a href="#constraints" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#constraints"></a> Constraints:</h3>
+<p>1 &lt;= s.length &lt;= 30<br>
+s consists of lowercase English letters, digits, and square brackets ‘[]’.<br>
+s is guaranteed to be a valid input.<br>
+All the integers in s are in the range [1, 300].</p>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>(1) 모든 디코드 문자열값을 s의 길이 범위에 만족할때 while문을 진행합니다.</li>
+<li>(2) 현재 문자가 숫자일 경우 value값을 업데이트 시켜줍니다. 단 자리수는 k가 양의 정수이기 때문에 2자리이상도 가능하나는 것입니다. 2자리이상의 값도 구해주기위해서 (value * 10 + c-‘0’)식을 통해 문자의 값들을 하나씩 정수로 구해주게 됩니다.</li>
+<li>(3) 문자가 '['일 경우</li>
+</ul>
+<ul>
+<li>재귀 함수를 호출하여 ']'를 만날때 까지 진행해줍니다. 즉, ‘[’    ‘]’ 의 값사이에 존재하는 값을 찾아서 반환시켜준다음 괄호앞에 존재하는 숫자의 개수 곱의수만큼을 추가하면서 진행을 합니다.</li>
+</ul>
+<blockquote>
+<p>테스트케이스 예시</p>
+</blockquote>
+<p>3[a]2[bc] -&gt; return ‘aaa’ -&gt; aaa2[bc] -&gt; ‘bcbc’ return -&gt; aaabcbc 의 형태로 값을 반환시킬 수 있게 됩니다.</p>
+<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">leetcode_DecodeString_kgh</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        decodeString(<span class="string">"3[a]2[bc]"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">decodeString</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> value = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (idx &lt; s.length()) &#123;</span><br><span class="line">            <span class="keyword">char</span> c= s.charAt(idx);</span><br><span class="line">            idx++;</span><br><span class="line">            <span class="keyword">if</span> (Character.isDigit(c)) &#123;</span><br><span class="line">                value = value * <span class="number">10</span> + c - <span class="string">'0'</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">'['</span>) &#123;</span><br><span class="line">                String subStr = decodeString(s);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; value; i++)&#123;</span><br><span class="line">                    sb.append(subStr);</span><br><span class="line">                &#125;</span><br><span class="line">                value = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">']'</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sb.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sb.toString());</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ethan Kim"
+        },
+        "headline": "릿코드 Decode String",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "DFS 릿코드 문자열",
+        "genre": "leetcode",
+        "datePublished": "2021-01-11",
+        "dateCreated": "2021-01-11",
+        "dateModified": "2021-01-11",
+        "url": "http://gwanhyeon.github.io/Leetcode-20210111-leetcode-decode-string/",
+        "description": "1.  릿코드 Decode String
+Given an encoded string, return its decoded string.
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times",
+        "wordCount": 745
+    }
+</script>
+
+</article>
+
+    <section id="comments">
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -218,6 +351,19 @@ N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을�
     </div>
     <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/Leetcode-20210111-leetcode-longest-common-prefix/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">릿코드 Longest Common Prefix</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -373,11 +519,13 @@ N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을�
     var disqus_shortname = 'kgh-1';
     
     
+    var disqus_url = 'http://gwanhyeon.github.io/Leetcode-20210111-leetcode-decode-string/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

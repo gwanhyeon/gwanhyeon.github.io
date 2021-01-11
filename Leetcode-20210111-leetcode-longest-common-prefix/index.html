@@ -4,21 +4,25 @@
     
 
     
-    <title>태그: 다익스트라 | Ethan Kim IT Blog</title>
+    <title>릿코드 Longest Common Prefix | Ethan Kim IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ethan Kim IT Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;tags&#x2F;%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC&#x2F;index.html">
+    <meta name="keywords" content="릿코드,문자열" />
+    
+    <meta name="description" content="1.  릿코드 leetcode  Longest Common Prefix 2.  문제 Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string “”. 2.1.  Exa">
+<meta name="keywords" content="릿코드,문자열">
+<meta property="og:type" content="article">
+<meta property="og:title" content="릿코드 Longest Common Prefix">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Leetcode-20210111-leetcode-longest-common-prefix&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
+<meta property="og:description" content="1.  릿코드 leetcode  Longest Common Prefix 2.  문제 Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string “”. 2.1.  Exa">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-01-11T12:35:17.670Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/tags/다익스트라/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/leetcode-20210111-leetcode-longest-common-prefix/"/>
     
 
     
@@ -145,56 +149,174 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>태그: <em>다익스트라</em>
+    <a class="page-title-link" href="/categories/leetcode/">leetcode</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Leetcode-20210111-leetcode-longest-common-prefix" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-11-14T13:27:38.000Z" itemprop="datePublished">2020-11-14</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20201114-Programmers-delivery/">프로그래머스 배달</a>
+        릿코드 Longest Common Prefix
         </h1>
     
 
-        <p class="article-excerpt">
-            1.  프로그래머스 배달
-1.1.  문제 설명
-N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을에는 1부터 N까지의 번호가 각각 하나씩 부여되어 있습니다. 각 마을은 양방향으로 통행할 수 있는 도로로 연결되어 있는데, 서로 다른 마을 간에 이동할 때는 이 도로를 지나야 합니다. 도로를 지날 때 걸리는 시간은 도로별로 다릅니다. 현재 1번 마을에 
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/Leetcode-20210111-leetcode-longest-common-prefix/" class="article-date">
+         <time datetime="2021-01-11T12:31:34.000Z" itemprop="datePublished">2021-01-11</time>
+      </a>
     </div>
-</article>
-    
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" rel="tag">릿코드</a>, <a class="tag-link" href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" rel="tag">문자열</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="riskodeu-leetcode-longest-common-prefix"><a href="#riskodeu-leetcode-longest-common-prefix" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#릿코드-leetcode-longest-common-prefix"></a> <a href="https://leetcode.com/problems/longest-common-prefix/" target="_blank" rel="noopener">릿코드 leetcode  Longest Common Prefix</a></h1>
+<h1 id="munje"><a href="#munje" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h1>
+<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>If there is no common prefix, return an empty string “”.</p>
+<h3 id="example-1"><a href="#example-1" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#example-1"></a> Example 1:</h3>
+<p>Input: strs = [“flower”,“flow”,“flight”]<br>
+Output: “fl”</p>
+<h3 id="example-2"><a href="#example-2" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#example-2"></a> Example 2:</h3>
+<p>Input: strs = [“dog”,“racecar”,“car”]<br>
+Output: “”<br>
+Explanation: There is no common prefix among the input strings.</p>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<ul>
+<li>(1)기준이 되는 문자열을 기준값으로 설정합니다. 예) str[0]</li>
+<li>(2)indexOf 함수를 사용하여 값이 일치하면 0, 그게 아니라면 -1을 반환합니다.</li>
+<li>(3)값이 일치할때까지 기준의 되는 문자열인 prefix을 뒤에서부터 하나씩 줄여나가면서 진행합니다.</li>
+</ul>
+<blockquote>
+<p>Horizontal scanning 방식</p>
+</blockquote>
+<p>flower flow 의 값이 있다고 가정하면 flower 가 prefix로 설정되며 flower -&gt; flowe -&gt; flow 로 문자열을 자르게 되면서 같아지는 경우일때 루프를 빠져나옵니다.</p>
+<p>이제 prefix값이 flow로 된 상태이므로 flow와 flight를 비교진행을 합니다. flow -&gt; flo -&gt; fl 로 진행하면서 flight의 [fl]과 값이 같으므로 해당 루프를 빠져나오면서 최종적으로 prefix 공통이 되는 문자열을 반환할 수 있습니다.</p>
+<h1 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">leetcode_Longest_Common_prefix</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        longestCommonPrefix(<span class="keyword">new</span> String[]&#123;<span class="string">"flower"</span>,<span class="string">"flow"</span>,<span class="string">"flight"</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (strs.length == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String prefix = strs[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; strs.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 기준이되는 prefix값과 일치할때까지 루프를 진행합니다.</span></span><br><span class="line">            <span class="keyword">while</span> (strs[i].indexOf(prefix) != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 값을 뒤에서부터 하나씩 자르면서 비교해나갑니다.</span></span><br><span class="line">                prefix = prefix.substring(<span class="number">0</span>, prefix.length()-<span class="number">1</span>);</span><br><span class="line">                <span class="comment">// 빈 상태에서 substring을 자르게되면 Error가 발생합니다.</span></span><br><span class="line">                <span class="keyword">if</span> (prefix.isEmpty()) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prefix;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ethan Kim"
+        },
+        "headline": "릿코드 Longest Common Prefix",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "릿코드 문자열",
+        "genre": "leetcode",
+        "datePublished": "2021-01-11",
+        "dateCreated": "2021-01-11",
+        "dateModified": "2021-01-11",
+        "url": "http://gwanhyeon.github.io/Leetcode-20210111-leetcode-longest-common-prefix/",
+        "description": "1.  릿코드 leetcode  Longest Common Prefix
+2.  문제
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string “”.
+2.1.  Exa",
+        "wordCount": 538
+    }
+</script>
+
+</article>
+
+    <section id="comments">
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -218,6 +340,29 @@ N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을�
     </div>
     <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/Leetcode-20210111-leetcode-decode-string/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            릿코드 Decode String
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/Programmers-20210109-programmers-string-compression/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">프로그래머스 문자열압축(카카오 2020 신입 공채)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -373,11 +518,13 @@ N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을�
     var disqus_shortname = 'kgh-1';
     
     
+    var disqus_url = 'http://gwanhyeon.github.io/Leetcode-20210111-leetcode-longest-common-prefix/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
