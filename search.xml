@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>릿코드 maximal square</title>
+    <url>/Leetcode-20210112-leetcode-maximal-square/</url>
+    <content><![CDATA[<h1 id="leetcode-maximal-square"><a href="#leetcode-maximal-square" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#leetcode-maximal-square"></a> <a href="https://leetcode.com/problems/maximal-square/" target="_blank" rel="noopener">leetcode maximal square</a></h1>
+<h2 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h2>
+<p>Given an m x n binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area.</p>
+<p><img src="https://assets.leetcode.com/uploads/2020/11/26/max1grid.jpg" alt="https://assets.leetcode.com/uploads/2020/11/26/max1grid.jpg"></p>
+<h3 id="example-1"><a href="#example-1" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#example-1"></a> Example 1:</h3>
+<p>Input: matrix = [[“1”,“0”,“1”,“0”,“0”],[“1”,“0”,“1”,“1”,“1”],[“1”,“1”,“1”,“1”,“1”],[“1”,“0”,“0”,“1”,“0”]]<br>
+Output: 4</p>
+<h3 id="example-2"><a href="#example-2" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#example-2"></a> Example 2:</h3>
+<p>Input: matrix = [[“0”,“1”],[“1”,“0”]]<br>
+Output: 1</p>
+<h3 id="example-3"><a href="#example-3" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#example-3"></a> Example 3:</h3>
+<p>Input: matrix = [[“0”]]<br>
+Output: 0</p>
+<h3 id="constraints"><a href="#constraints" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#constraints"></a> Constraints:</h3>
+<p>m == matrix.length<br>
+n == matrix[i].length<br>
+1 &lt;= m, n &lt;= 300<br>
+matrix[i][j] is ‘0’ or ‘1’.</p>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>(1) dynamic programming : bottom up 방식으로 왼쪽 상단 모서리 값을 기준으로 정사각형을 만들수있는 값을 체크해나가는 규칙을 찾아내면서 최대 사각형의 넓이를 구할 수 있습니다.</li>
+<li>(2) 왼쪽 상단 모서리의 값이 ‘1’ 즉, 포함가능한 값일 경우에 값을 캐시하여 구해줍니다.</li>
+<li>가장 먼저 Math.min()함수를 이용하여 왼쪽하단, 우측상단의 대각선을 비교하고 왼쪽 상단의 모서리의 값중 최솟값구해줍니다.</li>
+<li>그리고 최솟값+1을 해주는 이유는 최대 정사각형의 길이를 구해주기 위해서 입니다. 그리고 현재 값과 비교하여 길이의 최댓값을 갱신시켜줍니다.</li>
+</ul>
+<h3 id="dp-yesi"><a href="#dp-yesi" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#dp-예시"></a> DP 예시</h3>
+<blockquote>
+<p>Input value for matrix:</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<p>다음과 같은 입력값이 들어왔을때, 어디서부터 기준을 잡고 들어가야할지를 고민해야합니다.<br>
+정사각형이라는 조건을 만족하기위해서는 <code>1 x 1, 2 x 2, 3 x 3 .... n x n의 범위</code>의 만족해야합니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>(<span class="number">1</span>), <span class="number">0</span>(<span class="number">2</span>), <span class="number">1</span>(<span class="number">3</span>), <span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>(<span class="number">2</span>), <span class="number">1</span>(<span class="number">2</span>), <span class="number">0</span>(<span class="number">3</span>), <span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>(<span class="number">3</span>), <span class="number">1</span>(<span class="number">3</span>), <span class="number">1</span>(<span class="number">3</span>), <span class="number">1</span>]</span><br><span class="line">[<span class="number">1</span>, <span class="number">0</span>(<span class="number">1</span>), <span class="number">1</span>(<span class="number">2</span>), <span class="number">1</span>(<span class="number">3</span>)]</span><br><span class="line">[<span class="number">1</span>, <span class="number">1</span>(<span class="number">2</span>), <span class="number">0</span>(<span class="number">2</span>), <span class="number">1</span>(<span class="number">3</span>)]</span><br><span class="line">[<span class="number">1</span>, <span class="number">1</span>(<span class="number">3</span>), <span class="number">1</span>(<span class="number">3</span>), <span class="number">1</span>(<span class="number">3</span>)]</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 전체의 경우중에 예시로 두가지 경우를 생각해보면 왼쪽상단의 모서리값을 기준으로 정사각형이 형성되는 규칙을 발견하실 수 있습니다. <code>하지만, 0이 하나라도 포함되어있으면 정사각형을 형성할 수 없습니다.</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[ <span class="number">1</span> <span class="number">1</span> ]</span><br><span class="line">[ <span class="number">1</span> <span class="number">1</span> ]</span><br></pre></td></tr></table></figure>
+<p>의 경우를 살펴보면 해당 경우는 <code>최대 길이 2까지의 정사각형의 넓이 2*2</code>를 구할 수 있게됩니다. 이것의 규칙을 살펴보면 값의 최솟값 + 1의 값이 해당 정사각형의 길이를 나타내는 것을 알 수 있습니다.<br>
+<code>즉,왼쪽하단의 값, 우측상단의값의 최솟값을 구하여 왼쪽 상단모서리의 값중에서 가장 최소인값의 + 1을 해주게 되면 오른쪽상단 모서리에 해당 범위에서 구할 수 있는 정사각형의 길이를 저장해나가면 계속해서 왼쪽상단의 모서리를 기준으로 비교하는 규칙을 발견</code>할 수 있습니다.</p>
+<blockquote>
+<p>answer :</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol start="3">
+<li>시간복잡도</li>
+</ol>
+</blockquote>
+<p>O(N*M)</p>
+<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">leetcode_maximal_square_kgh</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        maximalSquare(<span class="keyword">new</span> <span class="keyword">char</span>[][]&#123;</span><br><span class="line">                &#123;<span class="string">'1'</span>,<span class="string">'0'</span>,<span class="string">'1'</span>,<span class="string">'1'</span>&#125;,</span><br><span class="line">                &#123;<span class="string">'1'</span>,<span class="string">'1'</span>,<span class="string">'0'</span>,<span class="string">'1'</span>&#125;,</span><br><span class="line">                &#123;<span class="string">'1'</span>,<span class="string">'1'</span>,<span class="string">'1'</span>,<span class="string">'1'</span>&#125;&#125;);</span><br><span class="line"></span><br><span class="line">        maximalSquare(<span class="keyword">new</span> <span class="keyword">char</span>[][]&#123;</span><br><span class="line">                &#123;<span class="string">'1'</span>,<span class="string">'0'</span>,<span class="string">'1'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>&#125;,</span><br><span class="line">                &#123;<span class="string">'1'</span>,<span class="string">'0'</span>,<span class="string">'1'</span>,<span class="string">'1'</span>,<span class="string">'1'</span>&#125;,</span><br><span class="line">                &#123;<span class="string">'1'</span>,<span class="string">'1'</span>,<span class="string">'1'</span>,<span class="string">'1'</span>,<span class="string">'1'</span>&#125;,</span><br><span class="line">                &#123;<span class="string">'1'</span>,<span class="string">'0'</span>,<span class="string">'0'</span>,<span class="string">'1'</span>,<span class="string">'0'</span>&#125;&#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maximalSquare</span><span class="params">(<span class="keyword">char</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = matrix.length;</span><br><span class="line">        <span class="keyword">int</span> m = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">                <span class="comment">//왼쪽 상단 모서리값을 기준으로 '1'을 포함하고 있을 경우</span></span><br><span class="line">                <span class="keyword">if</span>(matrix[i-<span class="number">1</span>][j-<span class="number">1</span>] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                    <span class="comment">// 왼쪽하단, 우측상단의 대각선을 비교하고 왼쪽 상단의 모서리의 값중 최솟값구해줍니다. +1을 해주는 이유는 최대 정사각형의 길이를 구해주기 위해서 입니다.</span></span><br><span class="line">                    dp[i][j] = Math.min(Math.min(dp[i][j-<span class="number">1</span>] , dp[i-<span class="number">1</span>][j-<span class="number">1</span>]), dp[i-<span class="number">1</span>][j]) + <span class="number">1</span>;</span><br><span class="line">                    answer = Math.max(dp[i][j], answer); <span class="comment">// update result</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer*answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>릿코드</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>릿코드 Single Number</title>
     <url>/Leetcode-20210112-leetcode-single-number/</url>
     <content><![CDATA[<h1 id="riskodeu-leetcode-single-number"><a href="#riskodeu-leetcode-single-number" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#릿코드-leetcode-single-number"></a> <a href="https://leetcode.com/problems/single-number/" target="_blank" rel="noopener">릿코드 leetcode  Single Number</a></h1>
@@ -79,8 +140,8 @@ All the integers in s are in the range [1, 300].</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>DFS</tag>
+        <tag>릿코드</tag>
         <tag>문자열</tag>
       </tags>
   </entry>
@@ -436,8 +497,8 @@ LAN 드라이버, LAN 장비, LAN카드</p>
       </categories>
       <tags>
         <tag>NETWORK</tag>
-        <tag>TCP</tag>
         <tag>INTERNET</tag>
+        <tag>TCP</tag>
         <tag>IP</tag>
       </tags>
   </entry>
@@ -531,9 +592,9 @@ DFS의 <em>Basement조건</em>은 digits 길이만큼 선택될 수 있기때문
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
-        <tag>완전탐색</tag>
         <tag>DFS</tag>
+        <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -573,8 +634,8 @@ Output: true</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -1105,10 +1166,10 @@ Output: -2147483647</p>
         <category>leetcode</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
+        <tag>DP</tag>
         <tag>릿코드</tag>
         <tag>부분집합의 합</tag>
-        <tag>DP</tag>
-        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -1514,10 +1575,10 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>구현</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -1560,9 +1621,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -1659,9 +1720,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -1710,9 +1771,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -1811,8 +1872,8 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -1866,8 +1927,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -1915,8 +1976,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -2065,8 +2126,8 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -2501,8 +2562,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -2750,8 +2811,8 @@ n은 1 이상, 25이하인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -3058,8 +3119,8 @@ Subscription 메서드는 동기화된 상태로 호출해야합니다. 즉, Sub
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -4363,8 +4424,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -4420,8 +4481,8 @@ Kim은 반드시 seoul 안에 포함되어 있습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -4445,8 +4506,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -4489,8 +4550,8 @@ Only one valid answer exists.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -4528,9 +4589,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -4735,9 +4796,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -4809,38 +4870,6 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -4864,6 +4893,38 @@ Only one valid answer exists.</p>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
 <h3 id="next-permutationeul-sayonghan-puli"><a href="#next-permutationeul-sayonghan-puli" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#next_permutation을-사용한-풀이"></a> next_permutation을 사용한 풀이</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  05_백준_차이를최대로_10819.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            sum += <span class="built_in">abs</span>(v[i] - v[i+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">max</span> &lt; sum)&#123;</span><br><span class="line">            <span class="built_in">max</span> = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()));</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">max</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -5300,8 +5361,8 @@ Only one valid answer exists.</p>
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>

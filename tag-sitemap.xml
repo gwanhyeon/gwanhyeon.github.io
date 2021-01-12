@@ -4,7 +4,14 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EB%25A6%25BF%25EC%25BD%2594%25EB%2593%259C/</loc>
-        <lastmod>2021-01-12T01:46:25.647Z</lastmod>
+        <lastmod>2021-01-12T06:47:28.567Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/dp/</loc>
+        <lastmod>2021-01-12T06:47:28.567Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -82,13 +89,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EC%2599%2584%25EC%25A0%2584%25ED%2583%2590%25EC%2583%2589/</loc>
         <lastmod>2021-01-08T05:21:48.543Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/dp/</loc>
-        <lastmod>2021-01-07T19:11:25.333Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
