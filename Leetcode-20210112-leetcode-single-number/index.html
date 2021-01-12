@@ -4,25 +4,25 @@
     
 
     
-    <title>Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라 | Ethan Kim IT Blog</title>
+    <title>leetcode-Single-Number | Ethan Kim IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="EffectiveJava3/E,람다,익명클래스" />
+    <meta name="keywords" content="릿코드" />
     
-    <meta name="description" content="1.  익명클래스 보다는 람다를 사용하라 자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다. 1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다. 문자열을">
-<meta name="keywords" content="EffectiveJava3&#x2F;E,람다,익명클래스">
+    <meta name="description" content="1.  릿코드 leetcode  Single Number 2.  문제 Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. Follow up: Could you implement a solution with a line">
+<meta name="keywords" content="릿코드">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Effective Java 3&#x2F;E Item 42 익명클래스 보다는 람다를 사용하라">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC&#x2F;index.html">
+<meta property="og:title" content="leetcode-Single-Number">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Leetcode-20210112-leetcode-single-number&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="1.  익명클래스 보다는 람다를 사용하라 자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다. 1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다. 문자열을">
+<meta property="og:description" content="1.  릿코드 leetcode  Single Number 2.  문제 Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. Follow up: Could you implement a solution with a line">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-01-03T11:10:27.390Z">
+<meta property="og:updated_time" content="2021-01-12T01:40:27.557Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/effectivejava-20210103-아이템42-익명클래스보다는-람다를-사용하라/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/leetcode-20210112-leetcode-single-number/"/>
     
 
     
@@ -149,19 +149,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/java/">Java</a>
+    <a class="page-title-link" href="/categories/leetcode/">leetcode</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-EffectiveJava-20210103-아이템42-익명클래스보다는-람다를-사용하라" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Leetcode-20210112-leetcode-single-number" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라
+        leetcode-Single-Number
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/" class="article-date">
-         <time datetime="2021-01-03T09:32:06.000Z" itemprop="datePublished">2021-01-03</time>
+      <a href="/Leetcode-20210112-leetcode-single-number/" class="article-date">
+         <time datetime="2021-01-12T01:35:16.000Z" itemprop="datePublished">2021-01-12</time>
       </a>
     </div>
 
@@ -183,7 +183,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/effectivejava3-e/" rel="tag">EffectiveJava3/E</a>, <a class="tag-link" href="/tags/%EB%9E%8C%EB%8B%A4/" rel="tag">람다</a>, <a class="tag-link" href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" rel="tag">익명클래스</a>
+        <a class="tag-link" href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" rel="tag">릿코드</a>
     </div>
 
                 
@@ -194,60 +194,29 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara"><a href="#igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#익명클래스-보다는-람다를-사용하라"></a> 익명클래스 보다는 람다를 사용하라</h1>
-<p>자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다.</p>
-<p>1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다.<br>
-<code>문자열을 길이순</code>으로 <code>정렬</code>하는데, 정렬을 위한 비교 함수로 <code>익명 클래스</code>로 사용하였습니다.(과거)</p>
-<blockquote>
-<p>익명 클래스의 인스턴스를 함수 객체로 사용합니다.(낡은 기법)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// comment 익명 클래스의 인스턴스를 함수 객체로 사용 - 낡은 기법!!!!</span></span><br><span class="line">Collections.sort(words, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(s1.length(), s2.length());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>전략 패턴처럼, 함수 객체를 사용하는 <code>과거 객체 지향 디자인 패턴</code>에는 <code>익명 클래스</code>면 충분하였습니다. 위의 코드는 <code>Comparator 인터페이스</code>가 <code>정렬</code>을 담당하는 <code>추상전략</code>을 뜻하며, 문자열을 정렬하는 구체적인 전략을 <code>익명 클래스로 구현</code>했습니다.</p>
-<p><code>하지만, 익명클래스 방식은 코드가 너무 길기 때문에 자바는 함수형 프로그래밍에 적합하지 않게 되었습니다.</code></p>
-<blockquote>
-<p>자바 8에서는 어떻게 변화되었을까요?</p>
-</blockquote>
-<p>추상 메서드 하나짜리 인터페이스는 특별한 의미를 인정받아 특별한 대우를 받게 되었습니다. 지금은 함수형 인터페이스라 부르는 이 인터페이스들의 인스턴스를 람다식(lambda expression, 람다)을 사용하여 만들수 있게 된 것입니다. 람다는 함수나 익명 클래스와 개념은 비슷하지만 코드는 훨씬 간결하게 처리할 수 있습니다.</p>
-<blockquote>
-<p>람다식을 함수 객체로 사용(익명 클래스 대체)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// comment 람다식을 함수 객체로 사용 - 익명 클래스 대체</span></span><br><span class="line"><span class="comment">// comment 타입을 명시해야 코드가 더 명확할때마 제외하고는 람다의 모든 매개변수 타입은 생략하자</span></span><br><span class="line">Collections.sort(words, (s1,s2) -&gt; Integer.compare(s1.length(), s2.length()));</span><br></pre></td></tr></table></figure>
-<p>여기서 람다, 매개변수(s1, s2) 반환값 타입은 각각 <code>Comparator&lt;String&gt;, String, int</code> 이지만 코드에서는 언급이 없습니다. 상황에 따라 컴파일러가 타입을 결정하지 못하는 경우가 있는데 그럴때는 프로그래머가 직접 명시를 해야합니다.</p>
-<p><strong>타입을 명시해야 코드가 더 명확할 때만 제외하고는, 람다의 모든 매개변수 타입은 생략하도록 합니다.</strong></p>
-<p>컴파일러가 타입을 추론하는데 필요한 정보는 대부분 제네릭에서 얻기 때문에 컴파일러는 람다의 타입을 추론할 수 없게 되어, 결국 우리가 일일이 명시해야합니다.</p>
-<blockquote>
-<p>비교자 생성 메서드를 사용하여 이 코드를 더 간결하게 만들어봅시다.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(words, comparingInt(String::length));</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>더 나아가 자바 8때 List 인터페이스에 추가된 sort 메서드를 이용하면 더욱더 짧아집니다.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">words.sort(comparingInt(String::length));</span><br></pre></td></tr></table></figure>
-<p>람다를 언어 차원에서 지원하면서 기존에는 적합하지 않았던 곳에서도 함수 객체를 실용적으로 사용할 수 있게 되었습니다.</p>
-<p>아이템 34의 Operation 열거타입을 예로 들어봅시다. apply 메서드의 동작이 상수마다 달라야해서 상수별 클래스 몸체를 사용해 각 상수에서 apply 메서드를 재정의합니다.</p>
-<blockquote>
-<p>상수별 클래스 몸체와 데이터를 사용한 열거 타입</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// comment 상수별 클래스 몸체와 데이터를 사용한 열거 타입</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation&#123;</span><br><span class="line"></span><br><span class="line">    PLUS(<span class="string">"+"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    MINUS(<span class="string">"-"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x - y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    TIMES(<span class="string">"*"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x * y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x / y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    Operation(String symbol)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>아이템 34</strong>에서는 상수별 클래스 몸체를 구현하는 방식보다는 <code>열거 타입에 인스턴스 필드를 두는 편이 낫습니다.</code> 람다를 이용하면 후자의 방식, 즉 열거타입의 인스턴스 필드를 이용하는 방식으로 상수별로 다르게 동작하는 코드를 쉽게 구현할 수 있습니다.</p>
-<p>단순히 각 열거 타입의 동작을 람다로 구현해 생성자에 넘기고, 생성자는 이 람다를 인스턴스 필드로 저장해둡니다. 그런 다음 <code>apply 메서드에서 필드에 저장된 람다를 호출하기만 하면 됩니다.</code></p>
-<blockquote>
-<p>함수객체(람다)를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation_lambda&#123;</span><br><span class="line">    PLUS(<span class="string">"+"</span>, (x,y) -&gt; x+y),</span><br><span class="line">    MINUS(<span class="string">"-"</span>, (x,y) -&gt; x-y),</span><br><span class="line">    TIMES(<span class="string">"*"</span>, (x,y) -&gt; x*y),</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>, (x,y) -&gt; x/y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DoubleBinaryOperator op;</span><br><span class="line"></span><br><span class="line">    Operation_lambda(String symbol, DoubleBinaryOperator op)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">        <span class="keyword">this</span>.op = op;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> op.applyAsDouble(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>함수 객체 람다를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입입니다. 열거 타입 상수의 동작을 표현한 람다를 <code>DoubleBinaryOperator 인터페이스</code>변수에 할당하였습니다. <code>java.util.function 패키지가 제공하는 다양한 함수</code> 인터페이스(아이템 44) 중 하나 인수를 받아서 결과를 반환시켜줍니다(double)</p>
-<blockquote>
-<p>핵심 정리</p>
-</blockquote>
-<p>람다 기반 Operation 열거 타입을 보면 상수별 클래스 몸체는 더 이상 사용할 이유가 없다고 느낄지 모르지만, 꼭 그렇지는 않습니다. 메서드나 클래스와 달리 <code>람다는 이름이 없고 문서화도 못한다. 따라서 코드 자체로 동작이 명확히 설명되지 않거나 코드 줄수가 많아지면 람다를 쓰지 말아야합니다</code></p>
-<p><code>람다는 한줄일 때 가장 좋고 길어야 세줄</code> 안에 끝내는게 좋습니다. 열거 타입 생성자 안의 람다는 타입의 인스턴스 멤버에 접근을 할 수 없습니다. 따라서, 상수별 동작을 단 몇줄로 구현하기 어렵거나, <code>인스턴스 필드나 메서드를 사용해야만 하는 상황</code>이라면 <code>상수별 클래스 몸체를 사용</code>해야합니다.</p>
-<p><code>추상클래스의 인스턴스를 만들 때 람다를 쑬 수 없으니, 익명 클래스</code>를 써야합니다. 비슷하게 추상 메서드가 여러 개인 인터페이스의 인스턴스를 만들 때도 익명 클래스를 쓸 수 있습니다.</p>
-<p>마지막으로 람다는 자신을 참조할 수 없습니다. 람다에서의 <code>this 키워드는 바깥 인스턴스</code>를 가리킵니다. 그래서 함수 객체가 자신을 참조해야 한다면 반드시 익명 클래스를 써야합니다. 따라서 람다를 직렬화하는 일은 극히 삼가해야합니다.</p>
-<blockquote>
-<p>요약</p>
-</blockquote>
-<p>자바가 8로 판올림 되면서 작은 함수 객체를 구현하는데 적합한 람다가 도입되었습니다. <code>익명 클래스는(함수형 인터페이스가 아닌) 타입의 인스턴스를 만들 때만 사용해야합니다.</code> 람다는 작은 함수 객체를 아주 쉽게 표현할 수 있어서 함수형 프로그래밍의 지평을 열게 되었습니다.</p>
-<p><a href="https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42" target="_blank" rel="noopener">https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42</a></p>
+            <h1 id="riskodeu-leetcode-single-number"><a href="#riskodeu-leetcode-single-number" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#릿코드-leetcode-single-number"></a> <a href="https://leetcode.com/problems/single-number/" target="_blank" rel="noopener">릿코드 leetcode  Single Number</a></h1>
+<h1 id="munje"><a href="#munje" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h1>
+<p>Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.</p>
+<p>Follow up: Could you implement a solution with a linear runtime complexity and without using extra memory?</p>
+<h3 id="example-1"><a href="#example-1" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#example-1"></a> Example 1:</h3>
+<p>Input: nums = [2,2,1]<br>
+Output: 1</p>
+<h3 id="example-2"><a href="#example-2" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#example-2"></a> Example 2:</h3>
+<p>Input: nums = [4,1,2,1,2]<br>
+Output: 4</p>
+<h3 id="example-3"><a href="#example-3" class="header-anchor">2.3. </a><a class="markdownIt-Anchor" href="#example-3"></a> Example 3:</h3>
+<p>Input: nums = [1]<br>
+Output: 1</p>
+<h3 id="constraints"><a href="#constraints" class="header-anchor">2.4. </a><a class="markdownIt-Anchor" href="#constraints"></a> Constraints:</h3>
+<p>1 &lt;= nums.length &lt;= 3 * 104<br>
+-3 * 104 &lt;= nums[i] &lt;= 3 * 104<br>
+Each element in the array appears twice except for one element which appears only once.</p>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<ul>
+<li>Map을 사용하여 개수를 체크한 후 value값이 1인 경우 return 결과값을 도출하면 되는 간단한 문제였습니다.</li>
+</ul>
+<h1 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h1>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">leetcode_single_number</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">          singleNumber(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>&#125;);</span><br><span class="line">        singleNumber(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">4</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; m = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.length; i++) &#123;</span><br><span class="line">            m.merge(nums[i], <span class="number">1</span>, Integer::sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(Integer key : m.keySet())&#123;</span><br><span class="line">            Integer value = m.get(key);</span><br><span class="line">            <span class="keyword">if</span>(value == <span class="number">1</span>)&#123;</span><br><span class="line">                answer = key;</span><br><span class="line">                System.out.println(key);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -318,19 +287,19 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "Ethan Kim"
         },
-        "headline": "Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라",
+        "headline": "leetcode-Single-Number",
         "image": "http://gwanhyeon.github.io",
-        "keywords": "EffectiveJava3/E 람다 익명클래스",
-        "genre": "Java",
-        "datePublished": "2021-01-03",
-        "dateCreated": "2021-01-03",
-        "dateModified": "2021-01-03",
-        "url": "http://gwanhyeon.github.io/EffectiveJava-20210103-아이템42-익명클래스보다는-람다를-사용하라/",
-        "description": "1.  익명클래스 보다는 람다를 사용하라
-자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다.
-1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다.
-문자열을 ",
-        "wordCount": 1207
+        "keywords": "릿코드",
+        "genre": "leetcode",
+        "datePublished": "2021-01-12",
+        "dateCreated": "2021-01-12",
+        "dateModified": "2021-01-12",
+        "url": "http://gwanhyeon.github.io/Leetcode-20210112-leetcode-single-number/",
+        "description": "1.  릿코드 leetcode  Single Number
+2.  문제
+Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+Follow up: Could you implement a solution with a line",
+        "wordCount": 475
     }
 </script>
 
@@ -373,20 +342,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/Leetcode-20210108-leetcode-validparentheses/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            릿코드 Valid Parentheses
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/Leetcode-20210111-leetcode-decode-string/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Effective Java 3/E Item 43 람다보다는 메서드 참조를 사용하라</p>
+        <p class="article-nav-title">릿코드 Decode String</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -547,7 +506,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/';
+    var disqus_url = 'http://gwanhyeon.github.io/Leetcode-20210112-leetcode-single-number/';
     
     (function() {
     var dsq = document.createElement('script');
