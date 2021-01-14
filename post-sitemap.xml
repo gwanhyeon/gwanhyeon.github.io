@@ -8,16 +8,24 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/Network-20210114-network-04-uri-web-browser-request-flow/</loc>
-        <lastmod>2021-01-14T09:10:00.329Z</lastmod>
+        <loc>http://gwanhyeon.github.io/Spring-20210114-spring-annotation/</loc>
+        <lastmod>2021-01-14T09:15:14.108Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/Spring-20210114-spring-annotation-%EC%A2%85%EB%A5%98/</loc>
-        <lastmod>2021-01-14T09:08:37.308Z</lastmod>
+        <loc>http://gwanhyeon.github.io/Spring-20210114-spring-lombok-annotation/</loc>
+        <lastmod>2021-01-14T09:15:13.251Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/Network-20210114-network-04-uri-web-browser-request-flow/</loc>
+        <lastmod>2021-01-14T09:10:00.329Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
