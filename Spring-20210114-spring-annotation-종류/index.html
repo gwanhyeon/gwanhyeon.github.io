@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+    <title>Spring @Annotation(어노테이션) - 완벽가이드 | Ethan Kim IT Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Spring,Annotation,Bean,DI" />
+    
+    <meta name="description" content="1.  Spring @Annotation 1.1.  @RestController @RestController 동작에 앞서, 먼저 알아보아야할것이 @Controller와의 차이점입니다.  @Controller 내부   1234567891011121314151617181920212223242526272829303132333435363738394041424344">
+<meta name="keywords" content="Spring,Annotation,Bean,DI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring @Annotation(어노테이션) - 완벽가이드">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Spring-20210114-spring-annotation-%EC%A2%85%EB%A5%98&#x2F;index.html">
+<meta property="og:site_name" content="Ethan Kim IT Blog">
+<meta property="og:description" content="1.  Spring @Annotation 1.1.  @RestController @RestController 동작에 앞서, 먼저 알아보아야할것이 @Controller와의 차이점입니다.  @Controller 내부   1234567891011121314151617181920212223242526272829303132333435363738394041424344">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-01-14T09:08:37.308Z">
+<meta name="twitter:card" content="summary">
+    
+    <!--SEO 검색엔진 적용하기 -->
+    <link rel="canonical" href="http://gwanhyeon.github.io/spring-20210114-spring-annotation-종류/"/>
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151448157-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="Ethan Kim IT Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Ethan Kim IT Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/boj/">BOJ</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/network/">Network</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/os/">OS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programmers/">Programmers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/rxjava/">RXJAVA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/leetcode/">leetcode</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/spring/">Spring</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Spring-20210114-spring-annotation-종류" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Spring @Annotation(어노테이션) - 완벽가이드
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/Spring-20210114-spring-annotation-%EC%A2%85%EB%A5%98/" class="article-date">
+         <time datetime="2021-01-14T07:22:00.000Z" itemprop="datePublished">2021-01-14</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/annotation/" rel="tag">Annotation</a>, <a class="tag-link" href="/tags/bean/" rel="tag">Bean</a>, <a class="tag-link" href="/tags/di/" rel="tag">DI</a>, <a class="tag-link" href="/tags/spring/" rel="tag">Spring</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="spring-annotation"><a href="#spring-annotation" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#spring-annotation"></a> Spring @Annotation</h1>
+<h2 id="restcontroller"><a href="#restcontroller" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#restcontroller"></a> @RestController</h2>
+<p>@RestController 동작에 앞서, 먼저 알아보아야할것이 @Controller와의 차이점입니다.</p>
+<blockquote>
+<p>@Controller 내부</p>
+</blockquote>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright 2002-2017 the original author or authors.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"> * you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> * You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      https://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> * See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> * limitations under the License.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.stereotype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Documented;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.core.annotation.AliasFor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates that an annotated class is a "Controller" (e.g. a web controller).</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;This annotation serves as a specialization of &#123;<span class="doctag">@link</span> Component <span class="doctag">@Component</span>&#125;,</span></span><br><span class="line"><span class="comment"> * allowing for implementation classes to be autodetected through classpath scanning.</span></span><br><span class="line"><span class="comment"> * It is typically used in combination with annotated handler methods based on the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> org.springframework.web.bind.annotation.RequestMapping&#125; annotation.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Arjen Poutsma</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Component</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.web.bind.annotation.RequestMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.context.annotation.ClassPathBeanDefinitionScanner</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Controller &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Controller Annotation의 내부를 살펴보면 다음과 같은 구조를 볼 수 있습니다. 자세히 살펴보시면 <code>@Component</code> 어노테이션을 살펴보실 수 있습니다. 과연 이것의 어노테이션의 역할은 무엇일까요?<br>
+즉, 기존의 Spring에서는 <code>@Bean</code>을 붙여 빈을 등록하던 것처럼 빈 클래스에 <code>@Component</code> 애노테이션을 붙여 빈을 등록할 수 있습니다. 따라서 <code>@Controller</code> 어노테이션 내부에는 해당 컨트롤러를 <code>@Bean</code> 으로 등록하는 역할도 하고 있다는 뜻입니다.<br>
+@Component를 붙여 빈을 등록하면 클래스 이름의 첫 문자를 소문자로 바꾼 것이 빈의 이름(id)이 됩니다. 그리고 빈 객체가 생성되는 시점은 ApplicationContext 객체가 생성되는 시점이며 기본적으로 singleton scope 입니다.</p>
+<p>해당 경로로 요청을 진행한다고 할때  <code>localhost:8080/mvc</code>의 요청경로에 맞는 컨트롤러를 @Bean 컴포넌트 스캔을 통하여 해당 경로를 가지고 있는 컨트롤러를 찾아주게 됩니다.  만약 <code>@ResponseBody</code> 가 붙여져 있지 않다면 해당 모델에 값을 넘겨줄 수도 있고, String을 반환하게 되면 데이터를 넘겨주는것이 아니라 해당 View의 Path값에 맞게  모델값과 함께 반환시켜주게 됩니다. 요약하면 API와 view를 동시에 사용하는 경우에 사용한다고 생각하시면 됩니다.</p>
+<p>이제 @Controller 다음으로 @RestController 의미에 대해 알아보겠습니다. 간단히 <code>@RestController는 @Controller가 포함되어있고 @ReponseBody형식을 함께 사용할때 사용합니다.</code></p>
+<blockquote>
+<p>@RestController 내부</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright 2002-2017 the original author or authors.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"> * you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> * You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      https://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> * See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> * limitations under the License.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.web.bind.annotation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Documented;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.core.annotation.AliasFor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A convenience annotation that is itself annotated with</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> Controller <span class="doctag">@Controller</span>&#125; and &#123;<span class="doctag">@link</span> ResponseBody <span class="doctag">@ResponseBody</span>&#125;.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * Types that carry this annotation are treated as controllers where</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> RequestMapping <span class="doctag">@RequestMapping</span>&#125; methods assume</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> ResponseBody <span class="doctag">@ResponseBody</span>&#125; semantics by default.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;&lt;b&gt;<span class="doctag">NOTE:</span>&lt;/b&gt; &#123;<span class="doctag">@code</span> <span class="doctag">@RestController</span>&#125; is processed if an appropriate</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> HandlerMapping&#125;-&#123;<span class="doctag">@code</span> HandlerAdapter&#125; pair is configured such as the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> RequestMappingHandlerMapping&#125;-&#123;<span class="doctag">@code</span> RequestMappingHandlerAdapter&#125;</span></span><br><span class="line"><span class="comment"> * pair which are the default in the MVC Java config and the MVC namespace.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Rossen Stoyanchev</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Sam Brannen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 4.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RestController &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span> 4.0.1</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Controller<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>내부 스펙을 확인해보면 @ResponseBody Annotation, @Controller Annotation이 함께 선언되어 있습니다.</p>
+<blockquote>
+<p>@ResponseBody를 붙여주면 무슨일이 발생할까요?</p>
+</blockquote>
+<p><code>@ResponseBody</code>의 역할은 <code>HTTP BODY</code>문자내용을 반환하는 <code>api</code>라고 할 수 있습니다. 즉, 기존에 <code>@ResponseBody</code>가 없는 경우에 <code>viewResolver</code> 대신에 <code>httpMessageConverter</code>가 동작하여 문자일 경우에는 <code>StringHttpMessageConverter</code> 객체일 경우에는 <code>MappingJackson2HttpMessageConverter</code>로 이루어져있습니다. 클라이언트의 HTTP Accept헤더와 서버 컨트롤러의 반환 타입 정보 둘을 조합해서 HttpMessageConverter가 동작되게 됩니다. 기본으로 동작되는 데이터반환형식은 Default JSON형식으로 동작되게 됩니다.</p>
+<h2 id="requestmapping"><a href="#requestmapping" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#requestmapping"></a> @RequestMapping</h2>
+<p>@RequestMapping Annotation은 Spring에서 제공하는 HandlerMapping Class가 가지고 있습니다.<br>
+두 가지의 경우로 나눌 수 있는데, 이것은 스프링 HTTP 내부 Note:를 참고하면 아래와 같은 사항을 확인할 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Annotation for mapping web requests onto methods in request-handling classes</span></span><br><span class="line"><span class="comment"> * with flexible method signatures.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;Both Spring MVC and Spring WebFlux support this annotation through a</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> RequestMappingHandlerMapping&#125; and &#123;<span class="doctag">@code</span> RequestMappingHandlerAdapter&#125;</span></span><br><span class="line"><span class="comment"> * in their respective modules and package structure. For the exact list of</span></span><br><span class="line"><span class="comment"> * supported handler method arguments and return types in each, please use the</span></span><br><span class="line"><span class="comment"> * reference documentation links below:</span></span><br><span class="line"><span class="comment"> * &lt;ul&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;Spring MVC</span></span><br><span class="line"><span class="comment"> * &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-arguments"&gt;Method Arguments&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * and</span></span><br><span class="line"><span class="comment"> * &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-return-types"&gt;Return Values&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;Spring WebFlux</span></span><br><span class="line"><span class="comment"> * &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-ann-arguments"&gt;Method Arguments&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * and</span></span><br><span class="line"><span class="comment"> * &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-ann-return-types"&gt;Return Values&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This annotation can be used both at the class and</span></span><br><span class="line"><span class="comment"> * at the method level. In most cases, at the method level applications will</span></span><br><span class="line"><span class="comment"> * prefer to use one of the HTTP method specific variants</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> GetMapping <span class="doctag">@GetMapping</span>&#125;, &#123;<span class="doctag">@link</span> PostMapping <span class="doctag">@PostMapping</span>&#125;,</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> PutMapping <span class="doctag">@PutMapping</span>&#125;, &#123;<span class="doctag">@link</span> DeleteMapping <span class="doctag">@DeleteMapping</span>&#125;, or</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> PatchMapping <span class="doctag">@PatchMapping</span>&#125;.&lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;&lt;b&gt;<span class="doctag">NOTE:</span>&lt;/b&gt; When using controller interfaces (e.g. for AOP proxying),</span></span><br><span class="line"><span class="comment"> * make sure to consistently put &lt;i&gt;all&lt;/i&gt; your mapping annotations - such as</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> <span class="doctag">@RequestMapping</span>&#125; and &#123;<span class="doctag">@code</span> <span class="doctag">@SessionAttributes</span>&#125; - on</span></span><br><span class="line"><span class="comment"> * the controller &lt;i&gt;interface&lt;/i&gt; rather than on the implementation class.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Arjen Poutsma</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Sam Brannen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> GetMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> PostMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> PutMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> DeleteMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> PatchMapping</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Mapping</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RequestMapping &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위의 내용을 요약 하면</p>
+<p><strong>@RequestMapping Annotation은 클래스 및 메서드 수준에서 모두 사용할 수 있습니다. 대부분의 경우 방법 수준에서 응용 프로그램은 HTTP 메서드별 변형된 @GetMapping, @PostMapping, @PutMapping, @DeleteMapping 또는 @PatchMapping 중 하나를 사용하는 것을 권장합니다.<br>
+참고: 컨트롤러 인터페이스(예: AOP 프록시)를 사용할 때 구현 클래스가 아닌 컨트롤러 인터페이스에 @RequestMapping 및 @SessionAttributes와 같은 모든 매핑 주석을 일관되게 배치해야 합니다.</strong></p>
+<p>즉, 클래스 및 메서드 수준을 모두 사용할 수 있으며, 최근에는 HTTP 메서드별 변형된 @GetMapping, @PostMapping, @PutMapping, @DeleteMapping 또는 @PatchMapping 중 하나를 사용하는 것을 권장한다고 합니다.</p>
+<ol>
+<li>Class Level Mapping<br>
+Class Level Mapping은 모든 메서드에 적용하는 경우 사용합니다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>HTTP Request 요청경로가 “/” 일 경우 해당 클래스에서 처리를 진행합니다.</p>
+<ol start="2">
+<li>Handler Level Mapping</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemB</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>, method = RequestMethod.DELETE)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemC</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>,method = RequestMethod.PATCH)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemD</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>, method = RequestMethod.PUT)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemE</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>요청 URL에 대하여 해당 메서드를 처리해야하는 경우 사용합니다. 특정 메서드에서 HTTP요청을 처리한다고 생각하면 됩니다.</p>
+<blockquote>
+<p>RequestMapping 옵션</p>
+</blockquote>
+<ul>
+<li>value는 해당 URL 경로를 지정합니다.</li>
+<li>HTTP Request Method를 지정하여 HTTP 형식에 맞추어 수행됩니다.</li>
+</ul>
+<h2 id="getmapping-postmapping-putmapping-deletemapping-patchmapping"><a href="#getmapping-postmapping-putmapping-deletemapping-patchmapping" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#getmapping-postmapping-putmapping-deletemapping-patchmapping"></a> @GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @PatchMapping</h2>
+<p>@RequestMapping에서 조금더 세분화된 Method path를 지정하여 명시적이고 효율적인 사용을 위하여 Annotation이 Spring 4.3.xx 버전 이후로 추가되었습니다.<br>
+현재 @RequestMapping보다는 4.3버전이후로 나온 Annotation을 권장하고 있습니다.</p>
+<blockquote>
+<p>종류<br>
+<code>@GetMapping, @PostMapping, DeleteMapping, @PutMapping, @PatchMapping</code></p>
+</blockquote>
+<blockquote>
+<p>Annotation 사용법</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user", method = RequestMethod.GET)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user", method = RequestMethod.POST)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user", method = RequestMethod.DELETE)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PatchMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user",method = RequestMethod.PATCH)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PutMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user", method = RequestMethod.PUT)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>기존에 RequestMapping을 통하여 가독성이 떨어지는 코드를 작성하였는데 스프링4.3버전이후로 부터 세부적인 HTTP Method를 지정할 수 있게 되어 명시적이고 효율성이 올라갔다고 생각합니다.</p>
+<h2 id="compoment"><a href="#compoment" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#compoment"></a> @Compoment</h2>
+<p>스프링빈을 등록하는 방법은 2가지가 존재합니다.</p>
+<ul>
+<li>컴포넌트 스캔과 자동의존관계 설정</li>
+<li>코드로 직접 스프링빈을 등록하는 방식</li>
+</ul>
+<p>따라서, 컴포넌트스캔원리를 이용 할때 @Component Annotation을 사용하게 됩니다. @Component의 의미는 해당 Annotation이 있으면 Spring bean으로 자동으로 등록이 됩니다.<br>
+즉, component-scan을 통하여 특정 패키지 안의 클래스들을 스캔하고 @Component Annotation이 있는 클래스에 대하여 bean인스턴스를 생성시킵니다. bean인스턴스로 생성되면 스프링 컨테이너에서 관리를 진행하게 되고 DI를 주입받을 수 있습니다.</p>
+<p><code>DI주입은 필드주입, setter주입, 생성자 주입 총 3가지 방법</code>이 있습니다. 의존관계가 실행중 동적으로 변하는 경우는 거의 없기때문에 생성자 주입을 통한 DI주입을 권장합니다.</p>
+<p><code>DI주입시 주의사항은</code> @Autowired를 통한 DI는 Controller, Service등과 같이 스프링이 관리하는 객체에서만 동작하게 됩니다. 스프링 빈으로 등록하지 않고 내가 직접 생성한 객체에서는 동작되지 않습니다. 생성자에 @Autowired를 사용하면 객체 생성 시점에 스프링 컨테이너에서 해당 스프링 빈을 찾아서 주입해줍니다. 생성자가 1개만 있으면 @Autowired는 생략이 가능합니다.</p>
+<h2 id="controller-service-repository"><a href="#controller-service-repository" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#controller-service-repository"></a> @Controller, @Service, @Repository</h2>
+<h3 id="controller"><a href="#controller" class="header-anchor">1.5.1. </a><a class="markdownIt-Anchor" href="#controller"></a> @Controller</h3>
+<p>@Controller가 스프링빈으로 자동등록되는 이유는 @Controller내부에 보면 @Component Annotation에 의해서 컴포넌트스캔이 진행되기 떄문입니다.</p>
+<blockquote>
+<p>@Controller 내부</p>
+</blockquote>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates that an annotated class is a "Controller" (e.g. a web controller).</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;This annotation serves as a specialization of &#123;<span class="doctag">@link</span> Component <span class="doctag">@Component</span>&#125;,</span></span><br><span class="line"><span class="comment"> * allowing for implementation classes to be autodetected through classpath scanning.</span></span><br><span class="line"><span class="comment"> * It is typically used in combination with annotated handler methods based on the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> org.springframework.web.bind.annotation.RequestMapping&#125; annotation.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Arjen Poutsma</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Component</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.web.bind.annotation.RequestMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.context.annotation.ClassPathBeanDefinitionScanner</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Controller &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="service"><a href="#service" class="header-anchor">1.5.2. </a><a class="markdownIt-Anchor" href="#service"></a> @Service</h3>
+<p>@Service Annotation또한 스프링빈으로 자동등록되는 이유는 @Service내부에 보면 @Component Annotation에 의해서 컴포넌트스캔이 진행되기 떄문입니다.<br>
+요약하면 @Component 어노테이션에 의해서 @Controller, @Service, @Repository와 같은 어노테이션을 구체화하여 스프링 컨테이너에 @Service bean으로 등록을 하게 됩니다.</p>
+<blockquote>
+<p>@Service 내부</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates that an annotated class is a "Service", originally defined by Domain-Driven</span></span><br><span class="line"><span class="comment"> * Design (Evans, 2003) as "an operation offered as an interface that stands alone in the</span></span><br><span class="line"><span class="comment"> * model, with no encapsulated state."</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;May also indicate that a class is a "Business Service Facade" (in the Core J2EE</span></span><br><span class="line"><span class="comment"> * patterns sense), or something similar. This annotation is a general-purpose stereotype</span></span><br><span class="line"><span class="comment"> * and individual teams may narrow their semantics and use as appropriate.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;This annotation serves as a specialization of &#123;<span class="doctag">@link</span> Component <span class="doctag">@Component</span>&#125;,</span></span><br><span class="line"><span class="comment"> * allowing for implementation classes to be autodetected through classpath scanning.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Component</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Repository</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Service &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="repository"><a href="#repository" class="header-anchor">1.5.3. </a><a class="markdownIt-Anchor" href="#repository"></a> @Repository</h3>
+<p>@Repository Annotation또한 스프링빈으로 자동등록되는 이유는 @Repository내부에 보면 @Component Annotation에 의해서 컴포넌트스캔이 진행되기 떄문입니다. 즉, @Component 어노테이션에 의해서 @Controller, @Service, @Repository와 같은 어노테이션을 구체화하여 스프링 컨테이너에 @Service bean으로 등록을 하게 됩니다.</p>
+<blockquote>
+<p>@Repository 내부</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates that an annotated class is a "Repository", originally defined by</span></span><br><span class="line"><span class="comment"> * Domain-Driven Design (Evans, 2003) as "a mechanism for encapsulating storage,</span></span><br><span class="line"><span class="comment"> * retrieval, and search behavior which emulates a collection of objects".</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;Teams implementing traditional Java EE patterns such as "Data Access Object"</span></span><br><span class="line"><span class="comment"> * may also apply this stereotype to DAO classes, though care should be taken to</span></span><br><span class="line"><span class="comment"> * understand the distinction between Data Access Object and DDD-style repositories</span></span><br><span class="line"><span class="comment"> * before doing so. This annotation is a general-purpose stereotype and individual teams</span></span><br><span class="line"><span class="comment"> * may narrow their semantics and use as appropriate.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;A class thus annotated is eligible for Spring</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> org.springframework.dao.DataAccessException DataAccessException&#125; translation</span></span><br><span class="line"><span class="comment"> * when used in conjunction with a &#123;<span class="doctag">@link</span></span></span><br><span class="line"><span class="comment"> * org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor</span></span><br><span class="line"><span class="comment"> * PersistenceExceptionTranslationPostProcessor&#125;. The annotated class is also clarified as</span></span><br><span class="line"><span class="comment"> * to its role in the overall application architecture for the purpose of tooling,</span></span><br><span class="line"><span class="comment"> * aspects, etc.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;As of Spring 2.5, this annotation also serves as a specialization of</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> Component <span class="doctag">@Component</span>&#125;, allowing for implementation classes to be autodetected</span></span><br><span class="line"><span class="comment"> * through classpath scanning.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Rod Johnson</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Component</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Service</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.dao.DataAccessException</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Repository &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="componentscan"><a href="#componentscan" class="header-anchor">1.6. </a><a class="markdownIt-Anchor" href="#componentscan"></a> @ComponentScan</h2>
+<p>@ComponentScan이란 컴포넌트 검색기능을 가진 어노테이션입니다.<br>
+스프링은 기본적으로 객체를 자동으로 생성하여 관리하기 때문에 @Component 어노테이션이 있는 클래스들을 스프링 컨테이너가 생성해줍니다.<br>
+따라서, @ComponentScan는 특별히 basePackage를 지정하지 않아도 main class가 위치한 패키지를 Root package로 하여 그 이하의 모든 컴포넌트 클래스들을 검색하여 빈으로 등록할 수 있습니다.</p>
+<h2 id="configuration"><a href="#configuration" class="header-anchor">1.7. </a><a class="markdownIt-Anchor" href="#configuration"></a> @Configuration</h2>
+<ul>
+<li>클래스에 이 어노테이션이 붙어 있으면 스프링은 해당 클래스를 Java config로 간주합니다.</li>
+<li>1개 이상의 @Bean을 제공하는 클래스의 경우 반드시 @Configuration을 명시해 주어야 합니다.</li>
+</ul>
+<h2 id="bean"><a href="#bean" class="header-anchor">1.8. </a><a class="markdownIt-Anchor" href="#bean"></a> @Bean</h2>
+<ul>
+<li>개발자가 직접 제어가 불가능한 외부 라이브러리 또는 설정을 위한 클래스를 Bean으로 등록할 때 @Bean 어노테이션을 활용합니다.</li>
+</ul>
+<h2 id="springbootapplication"><a href="#springbootapplication" class="header-anchor">1.9. </a><a class="markdownIt-Anchor" href="#springbootapplication"></a> @SpringBootApplication</h2>
+<p>@SpringBootApplication 어노테이션은 스프링 부트의 가장 기본적인 설정을 선언이 되어있습니다. 내부로직을 살펴보도록 하겠습니다.</p>
+<blockquote>
+<p>@SpringBootApplication</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates a &#123;<span class="doctag">@link</span> Configuration configuration&#125; class that declares one or more</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> Bean <span class="doctag">@Bean</span>&#125; methods and also triggers &#123;<span class="doctag">@link</span> EnableAutoConfiguration</span></span><br><span class="line"><span class="comment"> * auto-configuration&#125; and &#123;<span class="doctag">@link</span> ComponentScan component scanning&#125;. This is a convenience</span></span><br><span class="line"><span class="comment"> * annotation that is equivalent to declaring &#123;<span class="doctag">@code</span> <span class="doctag">@Configuration</span>&#125;,</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> <span class="doctag">@EnableAutoConfiguration</span>&#125; and &#123;<span class="doctag">@code</span> <span class="doctag">@ComponentScan</span>&#125;.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Phillip Webb</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Stephane Nicoll</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Andy Wilkinson</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 1.2.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters = &#123; <span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = TypeExcludeFilter<span class="class">.<span class="keyword">class</span>),</span></span><br><span class="line"><span class="class">        @<span class="title">Filter</span>(<span class="title">type</span> </span>= FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>) &#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = EnableAutoConfiguration<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    public Class&lt;?&gt;[] exclude() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = EnableAutoConfiguration<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    public String[] excludeName() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = ComponentScan<span class="class">.<span class="keyword">class</span>, <span class="title">attribute</span> </span>= <span class="string">"basePackages"</span>)</span><br><span class="line">    <span class="keyword">public</span> String[] scanBasePackages() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = ComponentScan<span class="class">.<span class="keyword">class</span>, <span class="title">attribute</span> </span>= <span class="string">"basePackageClasses"</span>)</span><br><span class="line">    <span class="keyword">public</span> Class&lt;?&gt;[] scanBasePackageClasses() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = ComponentScan<span class="class">.<span class="keyword">class</span>, <span class="title">attribute</span> </span>= <span class="string">"nameGenerator"</span>)</span><br><span class="line">    <span class="keyword">public</span> Class&lt;? extends BeanNameGenerator&gt; nameGenerator() <span class="keyword">default</span> BeanNameGenerator<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Configuration<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">boolean</span> <span class="title">proxyBeanMethods</span>() <span class="title">default</span> <span class="title">true</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>여기 스펙부분을 자세히보시면 중요하게 생각해야할 부분이 두가지 있습니다.</p>
+<ul>
+<li>@ComponentScan</li>
+<li>@EnableAutoConfiguration</li>
+</ul>
+<p>이 두가지가 왜 중요할까요?</p>
+<blockquote>
+<p>@ComponentScan</p>
+</blockquote>
+<p><code>@ComponentScan은</code> @component 어노테이션 및 @Service, @Repository, @Controller 등의 어노테이션을 스캔하여 Bean으로 등록해주는 어노테이션입니다.<br>
+<code>즉, 어플리케이션 실행시에 @Service, @Repository, @Repositroy, @Controller에 컴포넌트스캔을 통하여 스프링 컨테이너에 Bean으로 등록합니다.</code></p>
+<blockquote>
+<p>@EnableAutoConfiguration</p>
+</blockquote>
+<p><code>@EnableAutoConfiguration은</code> 사전에 정의한 라이브러리들을  Bean으로 등록해 주는 어노테이션입니다. 사전에 정의한 라이브러리들 모두가 등록되는 것은 아니고 특정조건이 만족될 경우에 Bean으로 등록됩니다.</p>
+<blockquote>
+<p>저장위치</p>
+</blockquote>
+<p>사전 정의 파일 위치: <code>Dependencies &gt; spring-boot-autoconfigure &gt; META-INF &gt; spring.factories</code></p>
+<h1 id="lombok-library-annotation"><a href="#lombok-library-annotation" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#lombok-library-annotation"></a> Lombok library @Annotation</h1>
+<h2 id="lombok"><a href="#lombok" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#lombok"></a> Lombok</h2>
+<p>Lombok(롬복)은 MIT 라이선스로 배포되는 오픈소스 라이브러리로서 annotation 주석으로 VO(Value Object), DTO(Data Transfort Object), Entity Class 등을 만들때 Getter/Setter 및 toString()을 자동화 시켜줍니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.</span><br><span class="line">Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more.</span><br></pre></td></tr></table></figure>
+<p><a href="https://projectlombok.org/" target="_blank" rel="noopener">Lombok 공식 사이트</a></p>
+<blockquote>
+<p>Lombok 사용방법</p>
+</blockquote>
+<p>Lombok을 사용하기 위해서는 해당 라이브러리를 다운을 받아야합니다. IntellJ같은 경우는 플러그인을 설치하여 Lombok을 다운받으면 되고 Gradle or Maven Dependency를 추가해주어야합니다.<br>
+모든 설치가 완료되면</p>
+<blockquote>
+<p>IntellJ Configuration</p>
+</blockquote>
+<p><code>IntelliJ의 File &gt; Settings &gt; Build, Execution, Deployment &gt; Compiler &gt; Annotation Processors를 선택 한 후 &quot;Enable annotation processing&quot;을 체크</code><br>
+해당 설정을 해주는 이유는 Lombok을 작업중에도 동작시키기 위해서는 해당과 같은 설정을 해주셔야 Lombok이 정상적으로 동작하게 됩니다.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># gradle</span><br><span class="line">configurations &#123;</span><br><span class="line">    compileOnly &#123;</span><br><span class="line">      extendsFrom annotationProcessor</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    compileOnly <span class="string">'org.projectlombok:lombok'</span></span><br><span class="line">    annotationProcessor <span class="string">'org.projectlombok:lombok'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># maven</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">   &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="getter-setter"><a href="#getter-setter" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#getter-setter"></a> @Getter, @Setter</h2>
+<p>Lombok에서 가장 많이 사용되는 어노테이션인 @Getter와 @Setter에 대해서 설명드리겠습니다.<br>
+기존에 스프링에서는 필드를 선언하면 명시적으로 선언을 매번해주어야하였지만, Lombok을 사용하면 필드를 선언하면 Getter(),Setter()  메소드를 자동으로 생성해줍니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> item;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> user;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Lombok 사용시 필요없는 코드</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItem</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setItem</span><span class="params">(<span class="keyword">int</span> item)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.item = item;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(<span class="keyword">int</span> user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.user = user;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>필드 레벨이 아닌 클래스 레벨에 @Getter 또는 @Setter를 선언해줄 경우, 모든 필드에 접근자와 설정자가 자동으로 생성됩니다.</p>
+<h2 id="noargsconstructor"><a href="#noargsconstructor" class="header-anchor">2.3. </a><a class="markdownIt-Anchor" href="#noargsconstructor"></a> NoArgsConstructor</h2>
+<p>@NoArgsConstructor 어노테이션은 파라미터가 없는 기본 생성자를 생성해줍니다.</p>
+<h2 id="allargsconstructor"><a href="#allargsconstructor" class="header-anchor">2.4. </a><a class="markdownIt-Anchor" href="#allargsconstructor"></a> @AllArgsConstructor</h2>
+<p>@AllArgsConstructor 어노테이션은 모든 필드 값을 파라미터로 받는 생성자를 만들어줍니다.</p>
+<h2 id="requiredargsconstructor"><a href="#requiredargsconstructor" class="header-anchor">2.5. </a><a class="markdownIt-Anchor" href="#requiredargsconstructor"></a> @RequiredArgsConstructor</h2>
+<p>@RequiredArgsConstructor 어노테이션은 final이나 @NonNull인 필드 값만 파라미터로 받는 생성자를 만들어줍니다.</p>
+<h2 id="data"><a href="#data" class="header-anchor">2.6. </a><a class="markdownIt-Anchor" href="#data"></a> @Data</h2>
+<p>Class Level에서 @Data 어노테이션을 붙여주면, 모든 필드를 대상으로 접근자와 설정자가 자동으로 생성됩니다. 그리고, final 또는 @NonNull 필드 값을 파라미터로 받는 생성자가 만들어지며, toStirng, equals, hashCode 메소드가 자동으로 생성되게 됩니다. 개인적으로는 @Data를 무분별하게 사용하면 나중에 유지보수측면에서 시간이 많이 소요되고 불필요한 소스양이 늘어날 것으로 생각하며 결론적으로 @Data는 지양하고 무분별한 Setter 남용을 하지 않도록 해야할 것입니다.</p>
+<h2 id="builder"><a href="#builder" class="header-anchor">2.7. </a><a class="markdownIt-Anchor" href="#builder"></a> @Builder</h2>
+<p>@Builder Annotation은 모델 객체를 생성할 때 Builder를 자동으로 추가해 주는 Annotation입니다. 해당 Annotation을 사용하면 Builder Pattern을 적용할 수 있습니다.</p>
+<blockquote>
+<p>Builder Annotation 미적용</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UserBuilder <span class="title">builder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> UserBuilder();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Builder Class</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserBuilder</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> User <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    user.setName(<span class="keyword">this</span>.name);</span><br><span class="line">    user.setAge(<span class="keyword">this</span>.age);</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserBuilder <span class="title">name</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserBuilder <span class="title">age</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Builder Annotation 적용</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Builder pattern 사용</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">builderTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User user = User.builder()</span><br><span class="line">                  .name(<span class="string">"KGH"</span>)</span><br><span class="line">                  .age(<span class="number">100</span>)</span><br><span class="line">                  .build();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>References</p>
+</blockquote>
+<p><a href="https://projectlombok.org/features/" target="_blank" rel="noopener">https://projectlombok.org/features/</a><br>
+<a href="https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/ch04s11.html" target="_blank" rel="noopener">https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/ch04s11.html</a><br>
+<a href="https://velog.io/@gillog/Spring-Annotation-%EC%A0%95%EB%A6%AC" target="_blank" rel="noopener">https://velog.io/@gillog/Spring-Annotation-정리</a><br>
+<a href="https://gmlwjd9405.github.io/2018/12/02/spring-annotation-types.html" target="_blank" rel="noopener">https://gmlwjd9405.github.io/2018/12/02/spring-annotation-types.html</a><br>
+<a href="https://bamdule.tistory.com/31" target="_blank" rel="noopener">https://bamdule.tistory.com/31</a><br>
+<a href="https://imucoding.tistory.com/217" target="_blank" rel="noopener">https://imucoding.tistory.com/217</a><br>
+<a href="https://toma0912.tistory.com/86" target="_blank" rel="noopener">https://toma0912.tistory.com/86</a><br>
+<a href="https://tomining.tistory.com/180" target="_blank" rel="noopener">https://tomining.tistory.com/180</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ethan Kim"
+        },
+        "headline": "Spring @Annotation(어노테이션) - 완벽가이드",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "Spring Annotation Bean DI",
+        "genre": "Spring",
+        "datePublished": "2021-01-14",
+        "dateCreated": "2021-01-14",
+        "dateModified": "2021-01-14",
+        "url": "http://gwanhyeon.github.io/Spring-20210114-spring-annotation-종류/",
+        "description": "1.  Spring @Annotation
+1.1.  @RestController
+@RestController 동작에 앞서, 먼저 알아보아야할것이 @Controller와의 차이점입니다.
+
+@Controller 내부
+
+ 1234567891011121314151617181920212223242526272829303132333435363738394041424344",
+        "wordCount": 4946
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/gwanhyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/Network-20210114-network-04-uri-web-browser-request-flow/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">Network URI(Uniform Resource Identifier) 정의 및 하위요소의 특징</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/spring/">Spring</a></p>
+                            <p class="item-title"><a href="/Spring-20210114-spring-annotation-%EC%A2%85%EB%A5%98/" class="title">Spring @Annotation(어노테이션) - 완벽가이드</a></p>
+                            <p class="item-date"><time datetime="2021-01-14T07:22:00.000Z" itemprop="datePublished">2021-01-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/network/">Network</a></p>
+                            <p class="item-title"><a href="/Network-20210114-network-04-uri-web-browser-request-flow/" class="title">Network URI(Uniform Resource Identifier) 정의 및 하위요소의 특징</a></p>
+                            <p class="item-date"><time datetime="2021-01-14T04:50:00.000Z" itemprop="datePublished">2021-01-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/Leetcode-20210112-leetcode-maximal-square/" class="title">릿코드 maximal square</a></p>
+                            <p class="item-date"><time datetime="2021-01-12T06:39:19.000Z" itemprop="datePublished">2021-01-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/Leetcode-20210112-leetcode-single-number/" class="title">릿코드 Single Number</a></p>
+                            <p class="item-date"><time datetime="2021-01-12T01:35:16.000Z" itemprop="datePublished">2021-01-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/leetcode/">leetcode</a></p>
+                            <p class="item-title"><a href="/Leetcode-20210111-leetcode-decode-string/" class="title">릿코드 Decode String</a></p>
+                            <p class="item-date"><time datetime="2021-01-11T12:36:09.000Z" itemprop="datePublished">2021-01-11</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/boj/">BOJ</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kotlin/">Kotlin</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">Network</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/os/">OS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programmers/">Programmers</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/rxjava/">RXJAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">Spring</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">8</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">1월 2021</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">12월 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">11월 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">10월 2020</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">9월 2020</a><span class="archive-list-count">32</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">1월 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">12월 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">10</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/" rel="tag">Annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">BFS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boj/" rel="tag">BOJ</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bst/" rel="tag">BST</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bean/" rel="tag">Bean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contextswitching/" rel="tag">ContextSwitching</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">DFS</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/di/" rel="tag">DI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns/" rel="tag">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">DP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/effectivejava3-e/" rel="tag">EffectiveJava3/E</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h-index/" rel="tag">H-INDEX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/" rel="tag">INTERNET</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ip/" rel="tag">IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intellj/" rel="tag">IntellJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intellij/" rel="tag">IntelliJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/" rel="tag">JDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">NETWORK</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pcb/" rel="tag">PCB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/port/" rel="tag">PORT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/responsebody/" rel="tag">ResponseBody</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjava/" rel="tag">RxJava</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="tag">Set자료구조</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">Spring</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/" rel="tag">TCP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/udp/" rel="tag">UDP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotationprocessor/" rel="tag">annotationProcessor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/" rel="tag">springMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uri/" rel="tag">uri</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/" rel="tag">url</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urn/" rel="tag">urn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B0%84%EC%84%A0/" rel="tag">간선</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">검색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B5%AC%ED%98%84/" rel="tag">구현</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" rel="tag">그래프</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" rel="tag">그리디</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">다이나믹프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" rel="tag">다익스트라</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" rel="tag">데이터타입</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%9E%8C%EB%8B%A4/" rel="tag">람다</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A0%88%EB%B2%A82/" rel="tag">레벨2</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">리액티브프로그래밍</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" rel="tag">릿코드</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">멀티스레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">멀티프로세스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A9%94%EC%84%9C%EB%93%9C%EC%B0%B8%EC%A1%B0/" rel="tag">메서드참조</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" rel="tag">문자열</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" rel="tag">백트래킹</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B3%80%EC%88%98/" rel="tag">변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" rel="tag">부분집합의 합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" rel="tag">삼성SW역량테스트</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%86%8C%EC%88%98/" rel="tag">소수</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" rel="tag">소인수분해</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%98%ED%95%99/" rel="tag">수학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%9C%EC%97%B4/" rel="tag">순열</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">스레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a><span class="tag-list-count">49</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" rel="tag">에라토스테네스의체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%97%B0%EC%82%B0/" rel="tag">연산</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" rel="tag">완전탐색</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" rel="tag">우선순위큐</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" rel="tag">위상정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%9E%A5/" rel="tag">위장</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" rel="tag">이분탐색</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">이진탐색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" rel="tag">익명클래스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" rel="tag">인접리스트</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" rel="tag">정규표현식</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EB%A0%AC/" rel="tag">정렬</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A1%B0%ED%95%A9/" rel="tag">조합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" rel="tag">카카오</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a><span class="tag-list-count">29</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">프로세스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%B4%EC%8B%9C/" rel="tag">해시</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" rel="tag">환경설정</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%9E%99/" rel="tag">힙</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/annotation/" style="font-size: 10px;">Annotation</a> <a href="/tags/bfs/" style="font-size: 14.17px;">BFS</a> <a href="/tags/boj/" style="font-size: 14.17px;">BOJ</a> <a href="/tags/bst/" style="font-size: 10px;">BST</a> <a href="/tags/bean/" style="font-size: 10px;">Bean</a> <a href="/tags/contextswitching/" style="font-size: 10px;">ContextSwitching</a> <a href="/tags/dfs/" style="font-size: 16.67px;">DFS</a> <a href="/tags/di/" style="font-size: 10px;">DI</a> <a href="/tags/dns/" style="font-size: 10px;">DNS</a> <a href="/tags/dp/" style="font-size: 11.67px;">DP</a> <a href="/tags/effectivejava3-e/" style="font-size: 10.83px;">EffectiveJava3/E</a> <a href="/tags/error/" style="font-size: 10px;">Error</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/h-index/" style="font-size: 10px;">H-INDEX</a> <a href="/tags/internet/" style="font-size: 10px;">INTERNET</a> <a href="/tags/ip/" style="font-size: 10px;">IP</a> <a href="/tags/intellj/" style="font-size: 10px;">IntellJ</a> <a href="/tags/intellij/" style="font-size: 10px;">IntelliJ</a> <a href="/tags/jdk/" style="font-size: 10px;">JDK</a> <a href="/tags/kotlin/" style="font-size: 11.67px;">Kotlin</a> <a href="/tags/network/" style="font-size: 11.67px;">NETWORK</a> <a href="/tags/pcb/" style="font-size: 10px;">PCB</a> <a href="/tags/port/" style="font-size: 10px;">PORT</a> <a href="/tags/responsebody/" style="font-size: 10px;">ResponseBody</a> <a href="/tags/rxjava/" style="font-size: 10.83px;">RxJava</a> <a href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" style="font-size: 10px;">Set자료구조</a> <a href="/tags/spring/" style="font-size: 12.5px;">Spring</a> <a href="/tags/springboot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/tcp/" style="font-size: 10.83px;">TCP</a> <a href="/tags/udp/" style="font-size: 10px;">UDP</a> <a href="/tags/annotationprocessor/" style="font-size: 10px;">annotationProcessor</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/network/" style="font-size: 10px;">network</a> <a href="/tags/springmvc/" style="font-size: 10px;">springMVC</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/urn/" style="font-size: 10px;">urn</a> <a href="/tags/%EA%B0%84%EC%84%A0/" style="font-size: 10px;">간선</a> <a href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">검색트리</a> <a href="/tags/%EA%B5%AC%ED%98%84/" style="font-size: 12.5px;">구현</a> <a href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" style="font-size: 14.17px;">그래프</a> <a href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" style="font-size: 10.83px;">그리디</a> <a href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10px;">다이나믹프로그래밍</a> <a href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" style="font-size: 10px;">다익스트라</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" style="font-size: 10px;">데이터타입</a> <a href="/tags/%EB%9E%8C%EB%8B%A4/" style="font-size: 10.83px;">람다</a> <a href="/tags/%EB%A0%88%EB%B2%A82/" style="font-size: 12.5px;">레벨2</a> <a href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10.83px;">리액티브프로그래밍</a> <a href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" style="font-size: 15px;">릿코드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">멀티스레드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">멀티프로세스</a> <a href="/tags/%EB%A9%94%EC%84%9C%EB%93%9C%EC%B0%B8%EC%A1%B0/" style="font-size: 10px;">메서드참조</a> <a href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" style="font-size: 15.83px;">문자열</a> <a href="/tags/%EB%B0%B1%EC%A4%80/" style="font-size: 19.17px;">백준</a> <a href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" style="font-size: 13.33px;">백트래킹</a> <a href="/tags/%EB%B3%80%EC%88%98/" style="font-size: 10px;">변수</a> <a href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" style="font-size: 10px;">부분집합의 합</a> <a href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" style="font-size: 17.5px;">브루트포스</a> <a href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" style="font-size: 13.33px;">삼성SW역량테스트</a> <a href="/tags/%EC%86%8C%EC%88%98/" style="font-size: 10.83px;">소수</a> <a href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" style="font-size: 10px;">소인수분해</a> <a href="/tags/%EC%88%98%ED%95%99/" style="font-size: 10.83px;">수학</a> <a href="/tags/%EC%88%9C%EC%97%B4/" style="font-size: 11.67px;">순열</a> <a href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">스레드</a> <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 20px;">알고리즘</a> <a href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" style="font-size: 10px;">에라토스테네스의체</a> <a href="/tags/%EC%97%B0%EC%82%B0/" style="font-size: 10px;">연산</a> <a href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" style="font-size: 15px;">완전탐색</a> <a href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" style="font-size: 10.83px;">우선순위큐</a> <a href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" style="font-size: 10px;">위상정렬</a> <a href="/tags/%EC%9C%84%EC%9E%A5/" style="font-size: 10px;">위장</a> <a href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이분탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">이진탐색트리</a> <a href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" style="font-size: 10.83px;">익명클래스</a> <a href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" style="font-size: 10.83px;">인접리스트</a> <a href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" style="font-size: 10px;">정규표현식</a> <a href="/tags/%EC%A0%95%EB%A0%AC/" style="font-size: 13.33px;">정렬</a> <a href="/tags/%EC%A1%B0%ED%95%A9/" style="font-size: 10px;">조합</a> <a href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" style="font-size: 12.5px;">카카오</a> <a href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" style="font-size: 18.33px;">프로그래머스</a> <a href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">프로세스</a> <a href="/tags/%ED%95%B4%EC%8B%9C/" style="font-size: 10.83px;">해시</a> <a href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" style="font-size: 10.83px;">환경설정</a> <a href="/tags/%ED%9E%99/" style="font-size: 10px;">힙</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>    
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Ethan Kim</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kgh-1';
+    
+    
+    var disqus_url = 'http://gwanhyeon.github.io/Spring-20210114-spring-annotation-%EC%A2%85%EB%A5%98/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

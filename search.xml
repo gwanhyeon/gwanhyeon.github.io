@@ -1,6 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Spring @Annotation(어노테이션) - 완벽가이드</title>
+    <url>/Spring-20210114-spring-annotation-%EC%A2%85%EB%A5%98/</url>
+    <content><![CDATA[<h1 id="spring-annotation"><a href="#spring-annotation" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#spring-annotation"></a> Spring @Annotation</h1>
+<h2 id="restcontroller"><a href="#restcontroller" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#restcontroller"></a> @RestController</h2>
+<p>@RestController 동작에 앞서, 먼저 알아보아야할것이 @Controller와의 차이점입니다.</p>
+<blockquote>
+<p>@Controller 내부</p>
+</blockquote>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright 2002-2017 the original author or authors.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"> * you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> * You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      https://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> * See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> * limitations under the License.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.stereotype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Documented;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.core.annotation.AliasFor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates that an annotated class is a "Controller" (e.g. a web controller).</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;This annotation serves as a specialization of &#123;<span class="doctag">@link</span> Component <span class="doctag">@Component</span>&#125;,</span></span><br><span class="line"><span class="comment"> * allowing for implementation classes to be autodetected through classpath scanning.</span></span><br><span class="line"><span class="comment"> * It is typically used in combination with annotated handler methods based on the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> org.springframework.web.bind.annotation.RequestMapping&#125; annotation.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Arjen Poutsma</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Component</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.web.bind.annotation.RequestMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.context.annotation.ClassPathBeanDefinitionScanner</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Controller &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Controller Annotation의 내부를 살펴보면 다음과 같은 구조를 볼 수 있습니다. 자세히 살펴보시면 <code>@Component</code> 어노테이션을 살펴보실 수 있습니다. 과연 이것의 어노테이션의 역할은 무엇일까요?<br>
+즉, 기존의 Spring에서는 <code>@Bean</code>을 붙여 빈을 등록하던 것처럼 빈 클래스에 <code>@Component</code> 애노테이션을 붙여 빈을 등록할 수 있습니다. 따라서 <code>@Controller</code> 어노테이션 내부에는 해당 컨트롤러를 <code>@Bean</code> 으로 등록하는 역할도 하고 있다는 뜻입니다.<br>
+@Component를 붙여 빈을 등록하면 클래스 이름의 첫 문자를 소문자로 바꾼 것이 빈의 이름(id)이 됩니다. 그리고 빈 객체가 생성되는 시점은 ApplicationContext 객체가 생성되는 시점이며 기본적으로 singleton scope 입니다.</p>
+<p>해당 경로로 요청을 진행한다고 할때  <code>localhost:8080/mvc</code>의 요청경로에 맞는 컨트롤러를 @Bean 컴포넌트 스캔을 통하여 해당 경로를 가지고 있는 컨트롤러를 찾아주게 됩니다.  만약 <code>@ResponseBody</code> 가 붙여져 있지 않다면 해당 모델에 값을 넘겨줄 수도 있고, String을 반환하게 되면 데이터를 넘겨주는것이 아니라 해당 View의 Path값에 맞게  모델값과 함께 반환시켜주게 됩니다. 요약하면 API와 view를 동시에 사용하는 경우에 사용한다고 생각하시면 됩니다.</p>
+<p>이제 @Controller 다음으로 @RestController 의미에 대해 알아보겠습니다. 간단히 <code>@RestController는 @Controller가 포함되어있고 @ReponseBody형식을 함께 사용할때 사용합니다.</code></p>
+<blockquote>
+<p>@RestController 내부</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright 2002-2017 the original author or authors.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"> * you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> * You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      https://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> * See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> * limitations under the License.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> org.springframework.web.bind.annotation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Documented;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.core.annotation.AliasFor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A convenience annotation that is itself annotated with</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> Controller <span class="doctag">@Controller</span>&#125; and &#123;<span class="doctag">@link</span> ResponseBody <span class="doctag">@ResponseBody</span>&#125;.</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * Types that carry this annotation are treated as controllers where</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> RequestMapping <span class="doctag">@RequestMapping</span>&#125; methods assume</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> ResponseBody <span class="doctag">@ResponseBody</span>&#125; semantics by default.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;&lt;b&gt;<span class="doctag">NOTE:</span>&lt;/b&gt; &#123;<span class="doctag">@code</span> <span class="doctag">@RestController</span>&#125; is processed if an appropriate</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> HandlerMapping&#125;-&#123;<span class="doctag">@code</span> HandlerAdapter&#125; pair is configured such as the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> RequestMappingHandlerMapping&#125;-&#123;<span class="doctag">@code</span> RequestMappingHandlerAdapter&#125;</span></span><br><span class="line"><span class="comment"> * pair which are the default in the MVC Java config and the MVC namespace.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Rossen Stoyanchev</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Sam Brannen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 4.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RestController &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span> 4.0.1</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Controller<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>내부 스펙을 확인해보면 @ResponseBody Annotation, @Controller Annotation이 함께 선언되어 있습니다.</p>
+<blockquote>
+<p>@ResponseBody를 붙여주면 무슨일이 발생할까요?</p>
+</blockquote>
+<p><code>@ResponseBody</code>의 역할은 <code>HTTP BODY</code>문자내용을 반환하는 <code>api</code>라고 할 수 있습니다. 즉, 기존에 <code>@ResponseBody</code>가 없는 경우에 <code>viewResolver</code> 대신에 <code>httpMessageConverter</code>가 동작하여 문자일 경우에는 <code>StringHttpMessageConverter</code> 객체일 경우에는 <code>MappingJackson2HttpMessageConverter</code>로 이루어져있습니다. 클라이언트의 HTTP Accept헤더와 서버 컨트롤러의 반환 타입 정보 둘을 조합해서 HttpMessageConverter가 동작되게 됩니다. 기본으로 동작되는 데이터반환형식은 Default JSON형식으로 동작되게 됩니다.</p>
+<h2 id="requestmapping"><a href="#requestmapping" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#requestmapping"></a> @RequestMapping</h2>
+<p>@RequestMapping Annotation은 Spring에서 제공하는 HandlerMapping Class가 가지고 있습니다.<br>
+두 가지의 경우로 나눌 수 있는데, 이것은 스프링 HTTP 내부 Note:를 참고하면 아래와 같은 사항을 확인할 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Annotation for mapping web requests onto methods in request-handling classes</span></span><br><span class="line"><span class="comment"> * with flexible method signatures.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;Both Spring MVC and Spring WebFlux support this annotation through a</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> RequestMappingHandlerMapping&#125; and &#123;<span class="doctag">@code</span> RequestMappingHandlerAdapter&#125;</span></span><br><span class="line"><span class="comment"> * in their respective modules and package structure. For the exact list of</span></span><br><span class="line"><span class="comment"> * supported handler method arguments and return types in each, please use the</span></span><br><span class="line"><span class="comment"> * reference documentation links below:</span></span><br><span class="line"><span class="comment"> * &lt;ul&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;Spring MVC</span></span><br><span class="line"><span class="comment"> * &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-arguments"&gt;Method Arguments&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * and</span></span><br><span class="line"><span class="comment"> * &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-return-types"&gt;Return Values&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;Spring WebFlux</span></span><br><span class="line"><span class="comment"> * &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-ann-arguments"&gt;Method Arguments&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * and</span></span><br><span class="line"><span class="comment"> * &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html#webflux-ann-return-types"&gt;Return Values&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This annotation can be used both at the class and</span></span><br><span class="line"><span class="comment"> * at the method level. In most cases, at the method level applications will</span></span><br><span class="line"><span class="comment"> * prefer to use one of the HTTP method specific variants</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> GetMapping <span class="doctag">@GetMapping</span>&#125;, &#123;<span class="doctag">@link</span> PostMapping <span class="doctag">@PostMapping</span>&#125;,</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> PutMapping <span class="doctag">@PutMapping</span>&#125;, &#123;<span class="doctag">@link</span> DeleteMapping <span class="doctag">@DeleteMapping</span>&#125;, or</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> PatchMapping <span class="doctag">@PatchMapping</span>&#125;.&lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;&lt;b&gt;<span class="doctag">NOTE:</span>&lt;/b&gt; When using controller interfaces (e.g. for AOP proxying),</span></span><br><span class="line"><span class="comment"> * make sure to consistently put &lt;i&gt;all&lt;/i&gt; your mapping annotations - such as</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> <span class="doctag">@RequestMapping</span>&#125; and &#123;<span class="doctag">@code</span> <span class="doctag">@SessionAttributes</span>&#125; - on</span></span><br><span class="line"><span class="comment"> * the controller &lt;i&gt;interface&lt;/i&gt; rather than on the implementation class.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Arjen Poutsma</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Sam Brannen</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> GetMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> PostMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> PutMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> DeleteMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> PatchMapping</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Mapping</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RequestMapping &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위의 내용을 요약 하면</p>
+<p><strong>@RequestMapping Annotation은 클래스 및 메서드 수준에서 모두 사용할 수 있습니다. 대부분의 경우 방법 수준에서 응용 프로그램은 HTTP 메서드별 변형된 @GetMapping, @PostMapping, @PutMapping, @DeleteMapping 또는 @PatchMapping 중 하나를 사용하는 것을 권장합니다.<br>
+참고: 컨트롤러 인터페이스(예: AOP 프록시)를 사용할 때 구현 클래스가 아닌 컨트롤러 인터페이스에 @RequestMapping 및 @SessionAttributes와 같은 모든 매핑 주석을 일관되게 배치해야 합니다.</strong></p>
+<p>즉, 클래스 및 메서드 수준을 모두 사용할 수 있으며, 최근에는 HTTP 메서드별 변형된 @GetMapping, @PostMapping, @PutMapping, @DeleteMapping 또는 @PatchMapping 중 하나를 사용하는 것을 권장한다고 합니다.</p>
+<ol>
+<li>Class Level Mapping<br>
+Class Level Mapping은 모든 메서드에 적용하는 경우 사용합니다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>HTTP Request 요청경로가 “/” 일 경우 해당 클래스에서 처리를 진행합니다.</p>
+<ol start="2">
+<li>Handler Level Mapping</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>, method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemB</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>, method = RequestMethod.DELETE)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemC</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>,method = RequestMethod.PATCH)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemD</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/user"</span>, method = RequestMethod.PUT)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemE</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>요청 URL에 대하여 해당 메서드를 처리해야하는 경우 사용합니다. 특정 메서드에서 HTTP요청을 처리한다고 생각하면 됩니다.</p>
+<blockquote>
+<p>RequestMapping 옵션</p>
+</blockquote>
+<ul>
+<li>value는 해당 URL 경로를 지정합니다.</li>
+<li>HTTP Request Method를 지정하여 HTTP 형식에 맞추어 수행됩니다.</li>
+</ul>
+<h2 id="getmapping-postmapping-putmapping-deletemapping-patchmapping"><a href="#getmapping-postmapping-putmapping-deletemapping-patchmapping" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#getmapping-postmapping-putmapping-deletemapping-patchmapping"></a> @GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @PatchMapping</h2>
+<p>@RequestMapping에서 조금더 세분화된 Method path를 지정하여 명시적이고 효율적인 사용을 위하여 Annotation이 Spring 4.3.xx 버전 이후로 추가되었습니다.<br>
+현재 @RequestMapping보다는 4.3버전이후로 나온 Annotation을 권장하고 있습니다.</p>
+<blockquote>
+<p>종류<br>
+<code>@GetMapping, @PostMapping, DeleteMapping, @PutMapping, @PatchMapping</code></p>
+</blockquote>
+<blockquote>
+<p>Annotation 사용법</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.ui.Model;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user", method = RequestMethod.GET)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user", method = RequestMethod.POST)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@DeleteMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user", method = RequestMethod.DELETE)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PatchMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user",method = RequestMethod.PATCH)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PutMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="comment">//@RequestMapping(value = "/user", method = RequestMethod.PUT)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getItemA</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>기존에 RequestMapping을 통하여 가독성이 떨어지는 코드를 작성하였는데 스프링4.3버전이후로 부터 세부적인 HTTP Method를 지정할 수 있게 되어 명시적이고 효율성이 올라갔다고 생각합니다.</p>
+<h2 id="compoment"><a href="#compoment" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#compoment"></a> @Compoment</h2>
+<p>스프링빈을 등록하는 방법은 2가지가 존재합니다.</p>
+<ul>
+<li>컴포넌트 스캔과 자동의존관계 설정</li>
+<li>코드로 직접 스프링빈을 등록하는 방식</li>
+</ul>
+<p>따라서, 컴포넌트스캔원리를 이용 할때 @Component Annotation을 사용하게 됩니다. @Component의 의미는 해당 Annotation이 있으면 Spring bean으로 자동으로 등록이 됩니다.<br>
+즉, component-scan을 통하여 특정 패키지 안의 클래스들을 스캔하고 @Component Annotation이 있는 클래스에 대하여 bean인스턴스를 생성시킵니다. bean인스턴스로 생성되면 스프링 컨테이너에서 관리를 진행하게 되고 DI를 주입받을 수 있습니다.</p>
+<p><code>DI주입은 필드주입, setter주입, 생성자 주입 총 3가지 방법</code>이 있습니다. 의존관계가 실행중 동적으로 변하는 경우는 거의 없기때문에 생성자 주입을 통한 DI주입을 권장합니다.</p>
+<p><code>DI주입시 주의사항은</code> @Autowired를 통한 DI는 Controller, Service등과 같이 스프링이 관리하는 객체에서만 동작하게 됩니다. 스프링 빈으로 등록하지 않고 내가 직접 생성한 객체에서는 동작되지 않습니다. 생성자에 @Autowired를 사용하면 객체 생성 시점에 스프링 컨테이너에서 해당 스프링 빈을 찾아서 주입해줍니다. 생성자가 1개만 있으면 @Autowired는 생략이 가능합니다.</p>
+<h2 id="controller-service-repository"><a href="#controller-service-repository" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#controller-service-repository"></a> @Controller, @Service, @Repository</h2>
+<h3 id="controller"><a href="#controller" class="header-anchor">1.5.1. </a><a class="markdownIt-Anchor" href="#controller"></a> @Controller</h3>
+<p>@Controller가 스프링빈으로 자동등록되는 이유는 @Controller내부에 보면 @Component Annotation에 의해서 컴포넌트스캔이 진행되기 떄문입니다.</p>
+<blockquote>
+<p>@Controller 내부</p>
+</blockquote>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates that an annotated class is a "Controller" (e.g. a web controller).</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;This annotation serves as a specialization of &#123;<span class="doctag">@link</span> Component <span class="doctag">@Component</span>&#125;,</span></span><br><span class="line"><span class="comment"> * allowing for implementation classes to be autodetected through classpath scanning.</span></span><br><span class="line"><span class="comment"> * It is typically used in combination with annotated handler methods based on the</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> org.springframework.web.bind.annotation.RequestMapping&#125; annotation.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Arjen Poutsma</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Component</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.web.bind.annotation.RequestMapping</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.context.annotation.ClassPathBeanDefinitionScanner</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Controller &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="service"><a href="#service" class="header-anchor">1.5.2. </a><a class="markdownIt-Anchor" href="#service"></a> @Service</h3>
+<p>@Service Annotation또한 스프링빈으로 자동등록되는 이유는 @Service내부에 보면 @Component Annotation에 의해서 컴포넌트스캔이 진행되기 떄문입니다.<br>
+요약하면 @Component 어노테이션에 의해서 @Controller, @Service, @Repository와 같은 어노테이션을 구체화하여 스프링 컨테이너에 @Service bean으로 등록을 하게 됩니다.</p>
+<blockquote>
+<p>@Service 내부</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates that an annotated class is a "Service", originally defined by Domain-Driven</span></span><br><span class="line"><span class="comment"> * Design (Evans, 2003) as "an operation offered as an interface that stands alone in the</span></span><br><span class="line"><span class="comment"> * model, with no encapsulated state."</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;May also indicate that a class is a "Business Service Facade" (in the Core J2EE</span></span><br><span class="line"><span class="comment"> * patterns sense), or something similar. This annotation is a general-purpose stereotype</span></span><br><span class="line"><span class="comment"> * and individual teams may narrow their semantics and use as appropriate.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;This annotation serves as a specialization of &#123;<span class="doctag">@link</span> Component <span class="doctag">@Component</span>&#125;,</span></span><br><span class="line"><span class="comment"> * allowing for implementation classes to be autodetected through classpath scanning.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Component</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Repository</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Service &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="repository"><a href="#repository" class="header-anchor">1.5.3. </a><a class="markdownIt-Anchor" href="#repository"></a> @Repository</h3>
+<p>@Repository Annotation또한 스프링빈으로 자동등록되는 이유는 @Repository내부에 보면 @Component Annotation에 의해서 컴포넌트스캔이 진행되기 떄문입니다. 즉, @Component 어노테이션에 의해서 @Controller, @Service, @Repository와 같은 어노테이션을 구체화하여 스프링 컨테이너에 @Service bean으로 등록을 하게 됩니다.</p>
+<blockquote>
+<p>@Repository 내부</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates that an annotated class is a "Repository", originally defined by</span></span><br><span class="line"><span class="comment"> * Domain-Driven Design (Evans, 2003) as "a mechanism for encapsulating storage,</span></span><br><span class="line"><span class="comment"> * retrieval, and search behavior which emulates a collection of objects".</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;Teams implementing traditional Java EE patterns such as "Data Access Object"</span></span><br><span class="line"><span class="comment"> * may also apply this stereotype to DAO classes, though care should be taken to</span></span><br><span class="line"><span class="comment"> * understand the distinction between Data Access Object and DDD-style repositories</span></span><br><span class="line"><span class="comment"> * before doing so. This annotation is a general-purpose stereotype and individual teams</span></span><br><span class="line"><span class="comment"> * may narrow their semantics and use as appropriate.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;A class thus annotated is eligible for Spring</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> org.springframework.dao.DataAccessException DataAccessException&#125; translation</span></span><br><span class="line"><span class="comment"> * when used in conjunction with a &#123;<span class="doctag">@link</span></span></span><br><span class="line"><span class="comment"> * org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor</span></span><br><span class="line"><span class="comment"> * PersistenceExceptionTranslationPostProcessor&#125;. The annotated class is also clarified as</span></span><br><span class="line"><span class="comment"> * to its role in the overall application architecture for the purpose of tooling,</span></span><br><span class="line"><span class="comment"> * aspects, etc.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;As of Spring 2.5, this annotation also serves as a specialization of</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> Component <span class="doctag">@Component</span>&#125;, allowing for implementation classes to be autodetected</span></span><br><span class="line"><span class="comment"> * through classpath scanning.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Rod Johnson</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Juergen Hoeller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Component</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Service</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.dao.DataAccessException</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Repository &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The value may indicate a suggestion for a logical component name,</span></span><br><span class="line"><span class="comment">     * to be turned into a Spring bean in case of an autodetected component.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the suggested component name, if any (or empty String otherwise)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Component<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    String value() default "";</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="componentscan"><a href="#componentscan" class="header-anchor">1.6. </a><a class="markdownIt-Anchor" href="#componentscan"></a> @ComponentScan</h2>
+<p>@ComponentScan이란 컴포넌트 검색기능을 가진 어노테이션입니다.<br>
+스프링은 기본적으로 객체를 자동으로 생성하여 관리하기 때문에 @Component 어노테이션이 있는 클래스들을 스프링 컨테이너가 생성해줍니다.<br>
+따라서, @ComponentScan는 특별히 basePackage를 지정하지 않아도 main class가 위치한 패키지를 Root package로 하여 그 이하의 모든 컴포넌트 클래스들을 검색하여 빈으로 등록할 수 있습니다.</p>
+<h2 id="configuration"><a href="#configuration" class="header-anchor">1.7. </a><a class="markdownIt-Anchor" href="#configuration"></a> @Configuration</h2>
+<ul>
+<li>클래스에 이 어노테이션이 붙어 있으면 스프링은 해당 클래스를 Java config로 간주합니다.</li>
+<li>1개 이상의 @Bean을 제공하는 클래스의 경우 반드시 @Configuration을 명시해 주어야 합니다.</li>
+</ul>
+<h2 id="bean"><a href="#bean" class="header-anchor">1.8. </a><a class="markdownIt-Anchor" href="#bean"></a> @Bean</h2>
+<ul>
+<li>개발자가 직접 제어가 불가능한 외부 라이브러리 또는 설정을 위한 클래스를 Bean으로 등록할 때 @Bean 어노테이션을 활용합니다.</li>
+</ul>
+<h2 id="springbootapplication"><a href="#springbootapplication" class="header-anchor">1.9. </a><a class="markdownIt-Anchor" href="#springbootapplication"></a> @SpringBootApplication</h2>
+<p>@SpringBootApplication 어노테이션은 스프링 부트의 가장 기본적인 설정을 선언이 되어있습니다. 내부로직을 살펴보도록 하겠습니다.</p>
+<blockquote>
+<p>@SpringBootApplication</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Indicates a &#123;<span class="doctag">@link</span> Configuration configuration&#125; class that declares one or more</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> Bean <span class="doctag">@Bean</span>&#125; methods and also triggers &#123;<span class="doctag">@link</span> EnableAutoConfiguration</span></span><br><span class="line"><span class="comment"> * auto-configuration&#125; and &#123;<span class="doctag">@link</span> ComponentScan component scanning&#125;. This is a convenience</span></span><br><span class="line"><span class="comment"> * annotation that is equivalent to declaring &#123;<span class="doctag">@code</span> <span class="doctag">@Configuration</span>&#125;,</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> <span class="doctag">@EnableAutoConfiguration</span>&#125; and &#123;<span class="doctag">@code</span> <span class="doctag">@ComponentScan</span>&#125;.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Phillip Webb</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Stephane Nicoll</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Andy Wilkinson</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 1.2.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters = &#123; <span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = TypeExcludeFilter<span class="class">.<span class="keyword">class</span>),</span></span><br><span class="line"><span class="class">        @<span class="title">Filter</span>(<span class="title">type</span> </span>= FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>) &#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = EnableAutoConfiguration<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    public Class&lt;?&gt;[] exclude() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = EnableAutoConfiguration<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line">    public String[] excludeName() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = ComponentScan<span class="class">.<span class="keyword">class</span>, <span class="title">attribute</span> </span>= <span class="string">"basePackages"</span>)</span><br><span class="line">    <span class="keyword">public</span> String[] scanBasePackages() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = ComponentScan<span class="class">.<span class="keyword">class</span>, <span class="title">attribute</span> </span>= <span class="string">"basePackageClasses"</span>)</span><br><span class="line">    <span class="keyword">public</span> Class&lt;?&gt;[] scanBasePackageClasses() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = ComponentScan<span class="class">.<span class="keyword">class</span>, <span class="title">attribute</span> </span>= <span class="string">"nameGenerator"</span>)</span><br><span class="line">    <span class="keyword">public</span> Class&lt;? extends BeanNameGenerator&gt; nameGenerator() <span class="keyword">default</span> BeanNameGenerator<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor</span>(annotation = Configuration<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">    <span class="title">public</span> <span class="title">boolean</span> <span class="title">proxyBeanMethods</span>() <span class="title">default</span> <span class="title">true</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>여기 스펙부분을 자세히보시면 중요하게 생각해야할 부분이 두가지 있습니다.</p>
+<ul>
+<li>@ComponentScan</li>
+<li>@EnableAutoConfiguration</li>
+</ul>
+<p>이 두가지가 왜 중요할까요?</p>
+<blockquote>
+<p>@ComponentScan</p>
+</blockquote>
+<p><code>@ComponentScan은</code> @component 어노테이션 및 @Service, @Repository, @Controller 등의 어노테이션을 스캔하여 Bean으로 등록해주는 어노테이션입니다.<br>
+<code>즉, 어플리케이션 실행시에 @Service, @Repository, @Repositroy, @Controller에 컴포넌트스캔을 통하여 스프링 컨테이너에 Bean으로 등록합니다.</code></p>
+<blockquote>
+<p>@EnableAutoConfiguration</p>
+</blockquote>
+<p><code>@EnableAutoConfiguration은</code> 사전에 정의한 라이브러리들을  Bean으로 등록해 주는 어노테이션입니다. 사전에 정의한 라이브러리들 모두가 등록되는 것은 아니고 특정조건이 만족될 경우에 Bean으로 등록됩니다.</p>
+<blockquote>
+<p>저장위치</p>
+</blockquote>
+<p>사전 정의 파일 위치: <code>Dependencies &gt; spring-boot-autoconfigure &gt; META-INF &gt; spring.factories</code></p>
+<h1 id="lombok-library-annotation"><a href="#lombok-library-annotation" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#lombok-library-annotation"></a> Lombok library @Annotation</h1>
+<h2 id="lombok"><a href="#lombok" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#lombok"></a> Lombok</h2>
+<p>Lombok(롬복)은 MIT 라이선스로 배포되는 오픈소스 라이브러리로서 annotation 주석으로 VO(Value Object), DTO(Data Transfort Object), Entity Class 등을 만들때 Getter/Setter 및 toString()을 자동화 시켜줍니다.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.</span><br><span class="line">Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more.</span><br></pre></td></tr></table></figure>
+<p><a href="https://projectlombok.org/" target="_blank" rel="noopener">Lombok 공식 사이트</a></p>
+<blockquote>
+<p>Lombok 사용방법</p>
+</blockquote>
+<p>Lombok을 사용하기 위해서는 해당 라이브러리를 다운을 받아야합니다. IntellJ같은 경우는 플러그인을 설치하여 Lombok을 다운받으면 되고 Gradle or Maven Dependency를 추가해주어야합니다.<br>
+모든 설치가 완료되면</p>
+<blockquote>
+<p>IntellJ Configuration</p>
+</blockquote>
+<p><code>IntelliJ의 File &gt; Settings &gt; Build, Execution, Deployment &gt; Compiler &gt; Annotation Processors를 선택 한 후 &quot;Enable annotation processing&quot;을 체크</code><br>
+해당 설정을 해주는 이유는 Lombok을 작업중에도 동작시키기 위해서는 해당과 같은 설정을 해주셔야 Lombok이 정상적으로 동작하게 됩니다.</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"># gradle</span><br><span class="line">configurations &#123;</span><br><span class="line">    compileOnly &#123;</span><br><span class="line">      extendsFrom annotationProcessor</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    compileOnly <span class="string">'org.projectlombok:lombok'</span></span><br><span class="line">    annotationProcessor <span class="string">'org.projectlombok:lombok'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># maven</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">   &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">   &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="getter-setter"><a href="#getter-setter" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#getter-setter"></a> @Getter, @Setter</h2>
+<p>Lombok에서 가장 많이 사용되는 어노테이션인 @Getter와 @Setter에 대해서 설명드리겠습니다.<br>
+기존에 스프링에서는 필드를 선언하면 명시적으로 선언을 매번해주어야하였지만, Lombok을 사용하면 필드를 선언하면 Getter(),Setter()  메소드를 자동으로 생성해줍니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> item;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> user;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Lombok 사용시 필요없는 코드</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItem</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setItem</span><span class="params">(<span class="keyword">int</span> item)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.item = item;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(<span class="keyword">int</span> user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.user = user;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>필드 레벨이 아닌 클래스 레벨에 @Getter 또는 @Setter를 선언해줄 경우, 모든 필드에 접근자와 설정자가 자동으로 생성됩니다.</p>
+<h2 id="noargsconstructor"><a href="#noargsconstructor" class="header-anchor">2.3. </a><a class="markdownIt-Anchor" href="#noargsconstructor"></a> NoArgsConstructor</h2>
+<p>@NoArgsConstructor 어노테이션은 파라미터가 없는 기본 생성자를 생성해줍니다.</p>
+<h2 id="allargsconstructor"><a href="#allargsconstructor" class="header-anchor">2.4. </a><a class="markdownIt-Anchor" href="#allargsconstructor"></a> @AllArgsConstructor</h2>
+<p>@AllArgsConstructor 어노테이션은 모든 필드 값을 파라미터로 받는 생성자를 만들어줍니다.</p>
+<h2 id="requiredargsconstructor"><a href="#requiredargsconstructor" class="header-anchor">2.5. </a><a class="markdownIt-Anchor" href="#requiredargsconstructor"></a> @RequiredArgsConstructor</h2>
+<p>@RequiredArgsConstructor 어노테이션은 final이나 @NonNull인 필드 값만 파라미터로 받는 생성자를 만들어줍니다.</p>
+<h2 id="data"><a href="#data" class="header-anchor">2.6. </a><a class="markdownIt-Anchor" href="#data"></a> @Data</h2>
+<p>Class Level에서 @Data 어노테이션을 붙여주면, 모든 필드를 대상으로 접근자와 설정자가 자동으로 생성됩니다. 그리고, final 또는 @NonNull 필드 값을 파라미터로 받는 생성자가 만들어지며, toStirng, equals, hashCode 메소드가 자동으로 생성되게 됩니다. 개인적으로는 @Data를 무분별하게 사용하면 나중에 유지보수측면에서 시간이 많이 소요되고 불필요한 소스양이 늘어날 것으로 생각하며 결론적으로 @Data는 지양하고 무분별한 Setter 남용을 하지 않도록 해야할 것입니다.</p>
+<h2 id="builder"><a href="#builder" class="header-anchor">2.7. </a><a class="markdownIt-Anchor" href="#builder"></a> @Builder</h2>
+<p>@Builder Annotation은 모델 객체를 생성할 때 Builder를 자동으로 추가해 주는 Annotation입니다. 해당 Annotation을 사용하면 Builder Pattern을 적용할 수 있습니다.</p>
+<blockquote>
+<p>Builder Annotation 미적용</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UserBuilder <span class="title">builder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> UserBuilder();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Builder Class</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserBuilder</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> User <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    user.setName(<span class="keyword">this</span>.name);</span><br><span class="line">    user.setAge(<span class="keyword">this</span>.age);</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserBuilder <span class="title">name</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> UserBuilder <span class="title">age</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Builder Annotation 적용</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Builder pattern 사용</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Test</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">builderTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User user = User.builder()</span><br><span class="line">                  .name(<span class="string">"KGH"</span>)</span><br><span class="line">                  .age(<span class="number">100</span>)</span><br><span class="line">                  .build();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>References</p>
+</blockquote>
+<p><a href="https://projectlombok.org/features/" target="_blank" rel="noopener">https://projectlombok.org/features/</a><br>
+<a href="https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/ch04s11.html" target="_blank" rel="noopener">https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/ch04s11.html</a><br>
+<a href="https://velog.io/@gillog/Spring-Annotation-%EC%A0%95%EB%A6%AC" target="_blank" rel="noopener">https://velog.io/@gillog/Spring-Annotation-정리</a><br>
+<a href="https://gmlwjd9405.github.io/2018/12/02/spring-annotation-types.html" target="_blank" rel="noopener">https://gmlwjd9405.github.io/2018/12/02/spring-annotation-types.html</a><br>
+<a href="https://bamdule.tistory.com/31" target="_blank" rel="noopener">https://bamdule.tistory.com/31</a><br>
+<a href="https://imucoding.tistory.com/217" target="_blank" rel="noopener">https://imucoding.tistory.com/217</a><br>
+<a href="https://toma0912.tistory.com/86" target="_blank" rel="noopener">https://toma0912.tistory.com/86</a><br>
+<a href="https://tomining.tistory.com/180" target="_blank" rel="noopener">https://tomining.tistory.com/180</a></p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+        <tag>Annotation</tag>
+        <tag>Bean</tag>
+        <tag>DI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Network URI(Uniform Resource Identifier) 정의 및 하위요소의 특징</title>
     <url>/Network-20210114-network-04-uri-web-browser-request-flow/</url>
     <content><![CDATA[<h1 id="uri-uniform-resource-identifier"><a href="#uri-uniform-resource-identifier" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#uriuniform-resource-identifier"></a> URI(Uniform Resource Identifier)</h1>
@@ -227,8 +422,8 @@ matrix[i][j] is ‘0’ or ‘1’.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>릿코드</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -310,8 +505,8 @@ All the integers in s are in the range [1, 300].</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>릿코드</tag>
+        <tag>DFS</tag>
         <tag>문자열</tag>
       </tags>
   </entry>
@@ -667,8 +862,8 @@ LAN 드라이버, LAN 장비, LAN카드</p>
       </categories>
       <tags>
         <tag>NETWORK</tag>
-        <tag>INTERNET</tag>
         <tag>TCP</tag>
+        <tag>INTERNET</tag>
         <tag>IP</tag>
       </tags>
   </entry>
@@ -762,9 +957,9 @@ DFS의 <em>Basement조건</em>은 digits 길이만큼 선택될 수 있기때문
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -804,8 +999,8 @@ Output: true</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -1010,7 +1205,7 @@ Output: true</p>
 <blockquote>
 <p>@ResponseBody를 붙여주면 무슨일이 발생할까요?</p>
 </blockquote>
-<p><code>@ResponseBody</code>의 역할은 <code>HTTP BODY</code>문자내용을 반환하는 <code>api</code>라고 할 수 있습니다. 즉, 기존에 <code>@ResponseBody</code>가 없는 경우에 <code>viewResolver</code> 대신에 <code>httpMessageConverter</code>가 동작하여 문자일 경우에는 <code>StringHttpMessageConverter</code> 객체일 경우에는 <code>MappingJackson2HttpMessageConverter</code>로 이루어져있습니다. 클라이언트의 HTTP Accept헤더와 서버 컨트롤러의 반환 타입 정보 둘을 조합해서 HttpMessageConverter가 동작되게 됩니다. 기본으로 동작되는 데이터반환형식은 Default는 JSON형식으로 동작되게 됩니다.</p>
+<p><code>@ResponseBody</code>의 역할은 <code>HTTP BODY</code>문자내용을 반환하는 <code>api</code>라고 할 수 있습니다. 즉, 기존에 <code>@ResponseBody</code>가 없는 경우에 <code>viewResolver</code> 대신에 <code>httpMessageConverter</code>가 동작하여 문자일 경우에는 <code>StringHttpMessageConverter</code> 객체일 경우에는 <code>MappingJackson2HttpMessageConverter</code>로 이루어져있습니다. 클라이언트의 HTTP Accept헤더와 서버 컨트롤러의 반환 타입 정보 둘을 조합해서 HttpMessageConverter가 동작되게 됩니다. 기본으로 동작되는 데이터반환형식은 Default JSON형식으로 동작되게 됩니다.</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/mvc"</span>)</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">helloString</span><span class="params">(@RequestParam(<span class="string">"name"</span>)</span> String name)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">"kgh"</span> + name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
@@ -1336,10 +1531,10 @@ Output: -2147483647</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
-        <tag>DP</tag>
         <tag>릿코드</tag>
         <tag>부분집합의 합</tag>
+        <tag>DP</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -1745,10 +1940,10 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DP</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>구현</tag>
-        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -1791,9 +1986,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -1890,9 +2085,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -1941,9 +2136,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -2042,8 +2237,8 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -2097,8 +2292,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -2146,8 +2341,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -2296,8 +2491,8 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -2732,8 +2927,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -2981,8 +3176,8 @@ n은 1 이상, 25이하인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -3289,8 +3484,8 @@ Subscription 메서드는 동기화된 상태로 호출해야합니다. 즉, Sub
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -4205,50 +4400,6 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
       </tags>
   </entry>
   <entry>
-    <title>프로그래머스 K번째수</title>
-    <url>/Programmers-20200910-Programmers-k-number/</url>
-    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
-<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
-<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
-<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
-<ul>
-<li>array의 길이는 1 이상 100 이하입니다.</li>
-<li>array의 각 원소는 1 이상 100 이하입니다.</li>
-<li>commands의 길이는 1 이상 50 이하입니다.</li>
-<li>commands의 각 원소는 길이가 3입니다.</li>
-</ul>
-<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
-<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
-<ul>
-<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
-<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
-<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
-</ul>
-<blockquote>
-<p>K번째수 예시</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
-<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
-<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
-<blockquote>
-<p>시간복잡도<br>
-시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
-O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
-</blockquote>
-<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Programmers</category>
-      </categories>
-      <tags>
-        <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
-        <tag>정렬</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>프로그래머스 모의고사</title>
     <url>/Programmers-20200915-Programmers-mock-test/</url>
     <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
@@ -4295,6 +4446,50 @@ O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays�
       <tags>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>프로그래머스 K번째수</title>
+    <url>/Programmers-20200910-Programmers-k-number/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
+<ul>
+<li>array의 길이는 1 이상 100 이하입니다.</li>
+<li>array의 각 원소는 1 이상 100 이하입니다.</li>
+<li>commands의 길이는 1 이상 50 이하입니다.</li>
+<li>commands의 각 원소는 길이가 3입니다.</li>
+</ul>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
+<ul>
+<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
+<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
+<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
+</ul>
+<blockquote>
+<p>K번째수 예시</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
+<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
+<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
+<blockquote>
+<p>시간복잡도<br>
+시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
+O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
+</blockquote>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Programmers</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
+        <tag>정렬</tag>
       </tags>
   </entry>
   <entry>
@@ -4594,8 +4789,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -4651,8 +4846,8 @@ Kim은 반드시 seoul 안에 포함되어 있습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -4676,8 +4871,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -4720,8 +4915,8 @@ Only one valid answer exists.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -4759,9 +4954,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -4966,9 +5161,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -5105,36 +5300,6 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 날짜계산 1476</title>
-    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
-    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
-<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
-<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
-<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
-<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
-<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>백준 일곱난쟁이 2309</title>
     <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
     <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
@@ -5158,6 +5323,36 @@ Only one valid answer exists.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>백준 날짜계산 1476</title>
+    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
+    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
+<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
+<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
+<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
+<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
+<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -5531,8 +5726,8 @@ Only one valid answer exists.</p>
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -5731,9 +5926,9 @@ Only one valid answer exists.</p>
       <tags>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
-        <tag>정렬</tag>
         <tag>레벨2</tag>
         <tag>H-INDEX</tag>
+        <tag>정렬</tag>
       </tags>
   </entry>
   <entry>
@@ -5797,8 +5992,8 @@ Only one valid answer exists.</p>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>레벨2</tag>
-        <tag>해시</tag>
         <tag>위장</tag>
+        <tag>해시</tag>
       </tags>
   </entry>
 </search>
