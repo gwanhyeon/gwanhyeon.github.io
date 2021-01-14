@@ -216,9 +216,9 @@ Class Level Mapping은 모든 메서드에 적용하는 경우 사용합니다.<
 <h1 id="uri-uniform-resource-identifier-yi-guseong"><a href="#uri-uniform-resource-identifier-yi-guseong" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#uriuniform-resource-identifier의-구성"></a> URI(Uniform Resource Identifier)의 구성</h1>
 <p>URI는 큰 상위 집합으로 내부에 URL(Resource Locator)와 URN(Resource Name)을 포함하고 있습니다.</p>
 <blockquote>
-<p>URL(Resource Locator)<br>
-<code>kgh://google.com:8080/member?userName=kgh#hello</code> 라는 URL이 있다고 가정하겠습니다.</p>
+<p>URL(Resource Locator)</p>
 </blockquote>
+<p><code>kgh://google.com:8080/member?userName=kgh#hello</code> 라는 URL이 있다고 가정하겠습니다.</p>
 <table>
 <thead>
 <tr>
