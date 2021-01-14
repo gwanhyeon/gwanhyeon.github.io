@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Network URI(Uniform Resource Identifier), URL(Uniform Resource Locator), URN(Uniform Resource Name) 정의 및 특징</title>
+    <title>Network URI(Uniform Resource Identifier) 정의 및 하위요소의 특징</title>
     <url>/Network-20210114-network-04-uri-web-browser-request-flow/</url>
     <content><![CDATA[<h1 id="uri-uniform-resource-identifier"><a href="#uri-uniform-resource-identifier" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#uriuniform-resource-identifier"></a> URI(Uniform Resource Identifier)</h1>
 <p>URI에 대한 개념을 살펴보기에 앞서서 국제 인터넷 표준화 기구(IETF)에 표준스펙으로 기재되어있는 URI,URL,URN의 개념에 대해서 알아보겠습니다.</p>
