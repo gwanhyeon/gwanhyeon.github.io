@@ -111,8 +111,7 @@
 <li>쿼리 파라미터(newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5)</li>
 </ul>
 <h3 id="url-scheme"><a href="#url-scheme" class="header-anchor">5.2. </a><a class="markdownIt-Anchor" href="#url-scheme"></a> URL Scheme</h3>
-<p><code>scheme:</code>//[userinfo@]host[:port][/path][?query][#fragment]<br>
-<a href="https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5" target="_blank" rel="noopener">https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5</a></p>
+<p><code>scheme:</code>//[userinfo@]host[:port][/path][?query][#fragment]</p>
 <blockquote>
 <p>URL scheme</p>
 </blockquote>
@@ -123,33 +122,28 @@
 <li>https의 정의는 HTTPS(HyperText Transfer Protocol over Secure Socket Layer, HTTP over TLS, HTTP over SSL, HTTP Secure)는 월드 와이드 웹 통신 프로토콜인 HTTP의 보안이 강화된 버전으로 규정되어있습니다.</li>
 </ul>
 <h3 id="url-userinfo"><a href="#url-userinfo" class="header-anchor">5.3. </a><a class="markdownIt-Anchor" href="#url-userinfo"></a> URL userinfo</h3>
-<p>scheme://<code>[userinfo@]</code>host[:port][/path][?query][#fragment]<br>
-<a href="https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5" target="_blank" rel="noopener">https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5</a></p>
+<p>scheme://<code>[userinfo@]</code>host[:port][/path][?query][#fragment]</p>
 <ul>
 <li>URL에 보통 사용자 정보를 포함해서 인증을 진행합니다. 하지만, 거의 잘 사용하지 않는것으로 알려져있습니다.</li>
 </ul>
 <h3 id="url-host"><a href="#url-host" class="header-anchor">5.4. </a><a class="markdownIt-Anchor" href="#url-host"></a> URL host</h3>
-<p>scheme://[userinfo@]<code>host</code>[:port][/path][?query][#fragment]<br>
-<a href="https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5" target="_blank" rel="noopener">https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5</a></p>
+<p>scheme://[userinfo@]<code>host</code>[:port][/path][?query][#fragment]</p>
 <ul>
 <li>URL호스트는 호스트명을 의미하며 도메인명이나 IP주소를 직접 핸들링을 할 수 있습니다.</li>
 </ul>
 <h3 id="url-port"><a href="#url-port" class="header-anchor">5.5. </a><a class="markdownIt-Anchor" href="#url-port"></a> URL port</h3>
-<p>scheme://[userinfo@]host<code>[:port]</code>[/path][?query][#fragment]<br>
-<a href="https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5" target="_blank" rel="noopener">https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5</a></p>
+<p>scheme://[userinfo@]host<code>[:port]</code>[/path][?query][#fragment]</p>
 <ul>
 <li>포트번호를 담고있으며 특히 웹브라우저 상에서 접속시 포트정보를 담고있습니다. 일반적으로 URL에는 생략이 되어있으므로 대표적인 포트로는 http:80, https는 443포트를 가지고 있습니다.</li>
 </ul>
 <h3 id="url-path"><a href="#url-path" class="header-anchor">5.6. </a><a class="markdownIt-Anchor" href="#url-path"></a> URL path</h3>
-<p>scheme://[userinfo@]host[:port]<code>[/path]</code>[?query][#fragment]<br>
-<a href="https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5" target="_blank" rel="noopener">https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5</a></p>
+<p>scheme://[userinfo@]host[:port]<code>[/path]</code>[?query][#fragment]</p>
 <ul>
 <li>리소스 경로(path)와 계층적인 구조를 가지고 있습니다.<br>
 하나의 예를 들어보면 <code>/user/image.jpg, /users, /user/1, user/item/12</code> 와 같은 경로를 가지는것을 확인할 수 있습니다.</li>
 </ul>
 <h3 id="url-query"><a href="#url-query" class="header-anchor">5.7. </a><a class="markdownIt-Anchor" href="#url-query"></a> URL query</h3>
-<p>scheme://[userinfo@]host[:port][/path]<code>[?query]</code>[#fragment]<br>
-<a href="https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5" target="_blank" rel="noopener">https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5</a></p>
+<p>scheme://[userinfo@]host[:port][/path]<code>[?query]</code>[#fragment]</p>
 <ul>
 <li>
 <p>URL query의 구조는 Map형식의 &lt;Key, Value&gt;로 구성되어있으며 ?로 시작되고 &amp;로 추가가 가능합니다.<br>
@@ -161,8 +155,7 @@ name과 id는 Key가 되고 나머지 kgh와 1은 Value로 나타낼 수 있습�
 </li>
 </ul>
 <h3 id="url-fragment"><a href="#url-fragment" class="header-anchor">5.8. </a><a class="markdownIt-Anchor" href="#url-fragment"></a> URL fragment</h3>
-<p>scheme://[userinfo@]host[:port][/path][?query]<code>[#fragment]</code><br>
-<a href="https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5" target="_blank" rel="noopener">https://www.google.com:443/search?newwindow=1&amp;hl=ko&amp;sxsrf=ALeKk02qBVrTCmX_lr_o1zJg1bIToVFKAw%3A1610600469098&amp;source=hp&amp;ei=FdD_X7K7A4T6wAOW9aiYDA&amp;q=hello&amp;oq=hello&amp;gs_lcp=CgZwc3ktYWIQAzIECCMQJzIECCMQJzIICAAQsQMQgwEyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgQIABBDOgcIIxDqAhAnOgUIABCxAzoHCAAQsQMQQ1D49TNY-f0zYNj_M2gBcAB4AIABfIgB2QSSAQMwLjWYAQCgAQGqAQdnd3Mtd2l6sAEK&amp;sclient=psy-ab&amp;ved=0ahUKEwjymdWm0pruAhUEPXAKHZY6CsMQ4dUDCAc&amp;uact=5</a></p>
+<p>scheme://[userinfo@]host[:port][/path][?query]<code>[#fragment]</code></p>
 <ul>
 <li>fragment라고 불리어 오는 URL의 하위요소이며 html 내부 북마크 등에 사용됩니다. 하지만 이정보들은 서버에 전송되지는 않습니다.</li>
 </ul>
