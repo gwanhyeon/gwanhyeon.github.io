@@ -134,7 +134,7 @@ Class Level Mapping은 모든 메서드에 적용하는 경우 사용합니다.<
 <p><code>DI주입시 주의사항은</code> @Autowired를 통한 DI는 Controller, Service등과 같이 스프링이 관리하는 객체에서만 동작하게 됩니다. 스프링 빈으로 등록하지 않고 내가 직접 생성한 객체에서는 동작되지 않습니다. 생성자에 @Autowired를 사용하면 객체 생성 시점에 스프링 컨테이너에서 해당 스프링 빈을 찾아서 주입해줍니다. 생성자가 1개만 있으면 @Autowired는 생략이 가능합니다.</p>
 <h2 id="controller-service-repository"><a href="#controller-service-repository" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#controller-service-repository"></a> @Controller, @Service, @Repository</h2>
 <h3 id="controller"><a href="#controller" class="header-anchor">1.5.1. </a><a class="markdownIt-Anchor" href="#controller"></a> @Controller</h3>
-<p>@Controller가 스프링빈으로 자동등록되는 이유는 @Controller내부에 보면 @Component Annotation에 의해서 컴포넌트스캔이 진행되기 떄문입니다.</p>
+<p>@Controller가 스프링빈으로 자동등록되는 이유는 @Controller내부에 보면 @Component Annotation에 의해서 컴포넌트스캔이 진행되기 때문입니다.</p>
 <blockquote>
 <p>@Controller 내부</p>
 </blockquote>
