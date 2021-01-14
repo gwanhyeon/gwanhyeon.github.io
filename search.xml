@@ -1426,8 +1426,8 @@ Output: true</p>
         <tag>annotationProcessor</tag>
         <tag>JDK</tag>
         <tag>Spring</tag>
-        <tag>IntellJ</tag>
         <tag>Error</tag>
+        <tag>IntelliJ</tag>
       </tags>
   </entry>
   <entry>
