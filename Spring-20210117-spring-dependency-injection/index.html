@@ -14,15 +14,15 @@
 <meta name="keywords" content="Spring,IoC,DI,컴포넌트 스캔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring 빈(Bean)과 의존관계, DI(Dependency Injection)">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;spring-dependency-injection&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Spring-20210117-spring-dependency-injection&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  스프링 컨테이너, IoC(제어 반전 Inversion of control) 컨테이너 스프링 Bean과 DI(Dependency Injection)의 개념에 대해서 살펴보기전에 스프링 컨테이너(IoC)의 특징을 살펴보겠습니다.   스프링 애플리케이션에서는 오브젝트의 생성과 관계설정, 사용, 제거 등의 작업을 애플리케이션 코드 대신 독립된 컨테이너가 담">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-01-17T04:20:50.719Z">
+<meta property="og:updated_time" content="2021-01-17T04:27:53.240Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/spring-dependency-injection/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/spring-20210117-spring-dependency-injection/"/>
     
 
     
@@ -154,7 +154,7 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-spring-dependency-injection" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Spring-20210117-spring-dependency-injection" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -172,7 +172,7 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/spring-dependency-injection/" class="article-date">
+      <a href="/Spring-20210117-spring-dependency-injection/" class="article-date">
          <time datetime="2021-01-17T04:08:13.000Z" itemprop="datePublished">2021-01-17</time>
       </a>
     </div>
@@ -198,14 +198,14 @@ ga('send', 'pageview');
 <p><code>스프링 Bean과 DI(Dependency Injection)의 개념</code>에 대해서 살펴보기전에 <code>스프링 컨테이너(IoC)의 특징</code>을 살펴보겠습니다.</p>
 <ul>
 <li>
-<p>스프링 애플리케이션에서는 오브젝트의 생성과 관계설정, 사용, 제거 등의 작업을 애플리케이션 코드 대신 독립된 컨테이너가 담당하게 됩니다. 컨테이너가 코드 대신 오브젝트에 대한 제어권 을 갖기때문에 IoC라고 부릅니다. 즉, 스프링컨테이너라는 것은 IoC컨테이너와 같은 말로 쓰여집니다.</p>
+<p>스프링 애플리케이션에서는 오브젝트의 생성과 관계설정, 사용, 제거 등의 작업을 애플리케이션 코드 대신 독립된 컨테이너가 담당하게 됩니다. 컨테이너가 코드 대신 오브젝트에 대한 제어권 을 갖기때문에 IoC라고 부릅니다. <code>즉, 스프링컨테이너라는 것은 IoC컨테이너와 같은 말로 쓰여집니다.</code></p>
 </li>
 <li>
-<p>스프링 컨테이너는 DI(Dependency Injection)보다 많은 일들을 담당하게 됩니다. 예를 들면,<br>
+<p><code>스프링 컨테이너는 DI(Dependency Injection)보다 많은 일들을 담당</code>하게 됩니다. 예를 들면,<br>
 DI를 위한 빈 팩토리에 엔터프라이즈 애플리케이션을 개발하는 데 필요한 여러 가지 컨테이너 기능을 추가한 것을 애플리케이션 컨텍스트를 관리하게 됩니다.</p>
 </li>
 <li>
-<p>스프링의 빈 팩토리와 애플리케이션 컨텍스트는 각각 기능을 대표하는 BeanFactory와 ApplicationContext라는 두 개의 인터페이스로 정의 되어있습니다.</p>
+<p>스프링의 빈 팩토리와 애플리케이션 컨텍스트는 각각 기능을 <code>대표하는 BeanFactory와 ApplicationContext라는 두 개의 인터페이스</code>로 정의 되어있습니다.</p>
 </li>
 <li>
 <p>ApplicationContext 인터페이스는 BeanFactory 인터페이스를 상속한 서브 인터페이스 입니다.</p>
@@ -216,9 +216,9 @@ DI를 위한 빈 팩토리에 엔터프라이즈 애플리케이션을 개발하
 <h1 id="seupeuringbingwa-yijongwangye"><a href="#seupeuringbingwa-yijongwangye" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#스프링빈과-의존관계"></a> 스프링빈과 의존관계</h1>
 <p>컨트롤러와 서비스에 대한 레포지토리를 만들때 <code>@Autowired가 있으면 스프링이 연관된 객체를 스프링 컨테이너에서 찾아서 넣어줍니다.</code> 그렇게 객체 의존관계를 외부에서 넣어주는것을 <code>DI(Dependency Injetion)</code>이라 하며 이전 테스트 에서는 개발자가 직접 주입을 시켰지만 이제는 <code>@autowired에 의해 스프링이 주입</code>해줍니다.</p>
 <blockquote>
-<p>스프링 빈이 등록되어 있지 않다면?<br>
-만약 컨트롤러와 서비스간의 스프링 빈이 등록되어 있지 않다면 <code>@Controller가 스프링빈</code>으로 자동등록해주거나 직접 자바코드로 직접 스프링빈을 등록할 수 있습니다. 그 이유는 <code>@Controller에 포함되어있는 @Component 어노테이션이 빈으로 등록</code>을 해주기 때문입니다. 그 외는 <code>SpringConfig라는 설정파일을 만들어서 직접 자바코드로 스프링빈</code>을 등록하게 할 수 있다.</p>
+<p>스프링 빈이 등록되어 있지 않다면?</p>
 </blockquote>
+<p>만약 컨트롤러와 서비스간의 스프링 빈이 등록되어 있지 않다면 <code>@Controller가 스프링빈</code>으로 자동등록해주거나 직접 자바코드로 직접 스프링빈을 등록할 수 있습니다. 그 이유는 <code>@Controller에 포함되어있는 @Component 어노테이션이 빈으로 등록</code>을 해주기 때문입니다. 그 외는 <code>SpringConfig라는 설정파일을 만들어서 직접 자바코드로 스프링빈</code>을 등록하게 할 수 있다.</p>
 <h1 id="keomponeonteu-seukaenyi-weonri"><a href="#keomponeonteu-seukaenyi-weonri" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#컴포넌트-스캔의-원리"></a> 컴포넌트 스캔의 원리</h1>
 <blockquote>
 <p>컴포넌트 스캔은 어떤 원리를 가지고 있을까요?</p>
@@ -307,7 +307,7 @@ DI를 위한 빈 팩토리에 엔터프라이즈 애플리케이션을 개발하
         "datePublished": "2021-01-17",
         "dateCreated": "2021-01-17",
         "dateModified": "2021-01-17",
-        "url": "http://gwanhyeon.github.io/spring-dependency-injection/",
+        "url": "http://gwanhyeon.github.io/Spring-20210117-spring-dependency-injection/",
         "description": "1.  스프링 컨테이너, IoC(제어 반전 Inversion of control) 컨테이너
 스프링 Bean과 DI(Dependency Injection)의 개념에 대해서 살펴보기전에 스프링 컨테이너(IoC)의 특징을 살펴보겠습니다.
 
@@ -382,7 +382,7 @@ DI를 위한 빈 팩토리에 엔터프라이즈 애플리케이션을 개발하
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/spring/">Spring</a></p>
-                            <p class="item-title"><a href="/spring-dependency-injection/" class="title">Spring 빈(Bean)과 의존관계, DI(Dependency Injection)</a></p>
+                            <p class="item-title"><a href="/Spring-20210117-spring-dependency-injection/" class="title">Spring 빈(Bean)과 의존관계, DI(Dependency Injection)</a></p>
                             <p class="item-date"><time datetime="2021-01-17T04:08:13.000Z" itemprop="datePublished">2021-01-17</time></p>
                         </div>
                     </li>
@@ -520,7 +520,7 @@ DI를 위한 빈 팩토리에 엔터프라이즈 애플리케이션을 개발하
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/spring-dependency-injection/';
+    var disqus_url = 'http://gwanhyeon.github.io/Spring-20210117-spring-dependency-injection/';
     
     (function() {
     var dsq = document.createElement('script');
