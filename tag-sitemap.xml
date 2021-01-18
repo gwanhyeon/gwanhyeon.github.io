@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/%25EC%2599%2584%25EC%25A0%2584%25ED%2583%2590%25EC%2583%2589/</loc>
+        <lastmod>2021-01-18T04:04:11.123Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/%25EB%25A6%25BF%25EC%25BD%2594%25EB%2593%259C/</loc>
+        <lastmod>2021-01-18T04:04:11.123Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/%25EC%25BB%25B4%25ED%258F%25AC%25EB%2584%258C%25ED%258A%25B8-%25EC%258A%25A4%25EC%25BA%2594/</loc>
         <lastmod>2021-01-17T04:43:15.183Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -109,13 +123,6 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/binarysearch/</loc>
-        <lastmod>2021-01-14T11:12:57.425Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EB%25A6%25BF%25EC%25BD%2594%25EB%2593%259C/</loc>
         <lastmod>2021-01-14T11:12:57.425Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -229,13 +236,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/internet/</loc>
         <lastmod>2021-01-08T07:56:09.084Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EC%2599%2584%25EC%25A0%2584%25ED%2583%2590%25EC%2583%2589/</loc>
-        <lastmod>2021-01-08T05:21:48.543Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
