@@ -121,7 +121,7 @@ HTTP/3, HTTP/1.1을 주로사용하고 하고 점차적으로  HTTP/2, HTTP/3의
       </tags>
   </entry>
   <entry>
-    <title>릿코드 trapping rain water</title>
+    <title>릿코드 Trapping Rain Water</title>
     <url>/Leetcode-20210118-leetcode-trapping-rain-water/</url>
     <content><![CDATA[<h1 id="leetcode-trapping-rain-water"><a href="#leetcode-trapping-rain-water" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#leetcode-trapping-rain-water"></a> <a href="https://leetcode.com/problems/trapping-rain-water/" target="_blank" rel="noopener">leetcode Trapping Rain Water</a></h1>
 <h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
@@ -690,7 +690,7 @@ name과 id는 Key가 되고 나머지 kgh와 1은 Value로 나타낼 수 있습�
       </tags>
   </entry>
   <entry>
-    <title>릿코드 maximal square</title>
+    <title>릿코드 Maximal Square</title>
     <url>/Leetcode-20210112-leetcode-maximal-square/</url>
     <content><![CDATA[<h1 id="leetcode-maximal-square"><a href="#leetcode-maximal-square" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#leetcode-maximal-square"></a> <a href="https://leetcode.com/problems/maximal-square/" target="_blank" rel="noopener">leetcode maximal square</a></h1>
 <h2 id="munje"><a href="#munje" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문제"></a> 문제</h2>
