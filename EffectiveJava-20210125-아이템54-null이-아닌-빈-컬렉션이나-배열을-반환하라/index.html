@@ -14,15 +14,15 @@
 <meta name="keywords" content="EffectiveJava3&#x2F;E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Effective Java 3&#x2F;E Item 54 null이 아닌,빈 컬렉션이나 배열을 반환하라">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;EffectiveJava-20210125-%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  null이 아닌, 빈 컬렉션이나 배열을 반환하라 1.1.  컬렉션이 비었으면 null을 반환한다. - 따라하지말아야 하는 방법 123456789&#x2F;** * * @return 매장 안의 모든 치즈 목록을 반환한다. * 단, 재고가 하나도 없다면 null을 반환한다. *&#x2F;public List&amp;lt;Cheese&amp;gt; getCheess1()&amp;#123;">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-01-25T01:38:42.847Z">
+<meta property="og:updated_time" content="2021-01-25T01:42:07.171Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/effectivejava-20210125-아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라/"/>
     
 
     
@@ -154,7 +154,7 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-EffectiveJava-20210125-아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -172,7 +172,7 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC/" class="article-date">
+      <a href="/EffectiveJava-20210125-%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC/" class="article-date">
          <time datetime="2021-01-25T01:11:11.000Z" itemprop="datePublished">2021-01-25</time>
       </a>
     </div>
@@ -211,7 +211,7 @@ ga('send', 'pageview');
 <p>다음 코드에서 사용하는 Collections.emptyList 메서드나 집합이 필요한 경우 Collections.emptySet(), 맵이 필요하면 Collections.emptyMap()을 사용하면 됩니다. 이 역시 매우 최적화에 해당하니 되도록 꼭 필요할때만 사용하는것이 좋습니다. 반드시 성능 측정이 필요합니다.</p>
 <h2 id="coejeoghwa-bin-keolregsyeoneul-maebeon-saero-haldanghaji-anhdorog-haessda"><a href="#coejeoghwa-bin-keolregsyeoneul-maebeon-saero-haldanghaji-anhdorog-haessda" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#최적화-빈-컬렉션을-매번-새로-할당하지-않도록-했다"></a> 최적화 - 빈 컬렉션을 매번 새로 할당하지 않도록 했다.</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 최적화 - 빈 컬렉션을 매번 새로 할당하지 않도록 하였다.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Cheese&gt; <span class="title">getCheess3</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> cheesesInStock.isEmpty() ? Collections.emptyList() : <span class="keyword">new</span> ArrayList&lt;&gt;(cheesesInStock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>배열을 쓸 때도 마찬가지인데, 절대로 null을 반환하지 말고 기이가 0인 배열을 반환합니다. 보통은 단순히 정확한 길이의 배열을 반환하기만 하면 됩니다.</p>
+<p>배열을 쓸 때도 마찬가지인데, 절대로 null을 반환하지 말고 길이가 0인 배열을 반환합니다. 보통은 단순히 정확한 길이의 배열을 반환하기만 하면 됩니다.</p>
 <p>그 길이가 0일수도 있을뿐이고 다음코드에서 toArray메서드에 건넨 길이 0짜리 배열을 우리가 원하는 반환 타입(Cheese[])을 알려주는 역할을 합니다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 길이가 0일수도 있는 배열을 반환하는 올바른 방법</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> Cheese[] getCheess4()&#123;</span><br><span class="line">   <span class="keyword">return</span> cheesesInStock.toArray(<span class="keyword">new</span> Cheese[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>해당방식이 성능을 떨어뜨릴 것 같다면 0짜리 배열을 미리 선언해두고 매번 그 배열을 반환하면 됩니다. 길이가 0인 배열은 모두 불변하기 때문입니다.</p>
@@ -304,7 +304,7 @@ ga('send', 'pageview');
         "datePublished": "2021-01-25",
         "dateCreated": "2021-01-25",
         "dateModified": "2021-01-25",
-        "url": "http://gwanhyeon.github.io/아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라/",
+        "url": "http://gwanhyeon.github.io/EffectiveJava-20210125-아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라/",
         "description": "1.  null이 아닌, 빈 컬렉션이나 배열을 반환하라
 1.1.  컬렉션이 비었으면 null을 반환한다. - 따라하지말아야 하는 방법
 123456789/** * * @return 매장 안의 모든 치즈 목록을 반환한다. * 단, 재고가 하나도 없다면 null을 반환한다. */public List&lt;Cheese&gt; getCheess1()&#123;   ",
@@ -377,7 +377,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/java/">Java</a></p>
-                            <p class="item-title"><a href="/%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC/" class="title">Effective Java 3/E Item 54 null이 아닌,빈 컬렉션이나 배열을 반환하라</a></p>
+                            <p class="item-title"><a href="/EffectiveJava-20210125-%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC/" class="title">Effective Java 3/E Item 54 null이 아닌,빈 컬렉션이나 배열을 반환하라</a></p>
                             <p class="item-date"><time datetime="2021-01-25T01:11:11.000Z" itemprop="datePublished">2021-01-25</time></p>
                         </div>
                     </li>
@@ -515,7 +515,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC/';
+    var disqus_url = 'http://gwanhyeon.github.io/EffectiveJava-20210125-%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC/';
     
     (function() {
     var dsq = document.createElement('script');
