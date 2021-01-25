@@ -4,21 +4,25 @@
     
 
     
-    <title>태그: 컴포넌트 스캔 | Ethan Kim IT Blog</title>
+    <title>Effective Java 3/E Item 54 null이 아닌,빈 컬렉션이나 배열을 반환하라 | Ethan Kim IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ethan Kim IT Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;tags&#x2F;%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94&#x2F;index.html">
+    <meta name="keywords" content="EffectiveJava3/E" />
+    
+    <meta name="description" content="1.  null이 아닌, 빈 컬렉션이나 배열을 반환하라 1.1.  컬렉션이 비었으면 null을 반환한다. - 따라하지말아야 하는 방법 123456789&#x2F;** * * @return 매장 안의 모든 치즈 목록을 반환한다. * 단, 재고가 하나도 없다면 null을 반환한다. *&#x2F;public List&amp;lt;Cheese&amp;gt; getCheess1()&amp;#123;">
+<meta name="keywords" content="EffectiveJava3&#x2F;E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java 3&#x2F;E Item 54 null이 아닌,빈 컬렉션이나 배열을 반환하라">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC&#x2F;index.html">
 <meta property="og:site_name" content="Ethan Kim IT Blog">
-<meta property="og:description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
+<meta property="og:description" content="1.  null이 아닌, 빈 컬렉션이나 배열을 반환하라 1.1.  컬렉션이 비었으면 null을 반환한다. - 따라하지말아야 하는 방법 123456789&#x2F;** * * @return 매장 안의 모든 치즈 목록을 반환한다. * 단, 재고가 하나도 없다면 null을 반환한다. *&#x2F;public List&amp;lt;Cheese&amp;gt; getCheess1()&amp;#123;">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-01-25T01:38:42.847Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/tags/컴포넌트-스캔/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라/"/>
     
 
     
@@ -145,58 +149,181 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>태그: <em>컴포넌트 스캔</em>
+    <a class="page-title-link" href="/categories/java/">Java</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2021" class="archive-year"><i class="icon fa fa-calendar-o"></i>2021</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/spring/">Spring</a>
-            </div>
-            <div class="date"><time datetime="2021-01-17T04:08:13.000Z" itemprop="datePublished">2021-01-17</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Spring-20210117-spring-dependency-injection/">Spring 빈(Bean)과 의존관계, DI(Dependency Injection)</a>
+        Effective Java 3/E Item 54 null이 아닌,빈 컬렉션이나 배열을 반환하라
         </h1>
     
 
-        <p class="article-excerpt">
-            1.  스프링 컨테이너, IoC(제어 반전 Inversion of control) 컨테이너
-스프링 Bean과 DI(Dependency Injection)의 개념에 대해서 살펴보기전에 스프링 컨테이너(IoC)의 특징을 살펴보겠습니다.
-
-
-스프링 애플리케이션에서는 오브젝트의 생성과 관계설정, 사용, 제거 등의 작업을 애플리케이션 코드 대신 독립된 컨테이너가 담
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC/" class="article-date">
+         <time datetime="2021-01-25T01:11:11.000Z" itemprop="datePublished">2021-01-25</time>
+      </a>
     </div>
-</article>
-    
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/effectivejava3-e/" rel="tag">EffectiveJava3/E</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="nulli-anin-bin-keolregsyeonina-baeyeoleul-banhwanhara"><a href="#nulli-anin-bin-keolregsyeonina-baeyeoleul-banhwanhara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#null이-아닌-빈-컬렉션이나-배열을-반환하라"></a> null이 아닌, 빈 컬렉션이나 배열을 반환하라</h1>
+<h2 id="keolregsyeoni-bieosseumyeon-nulleul-banhwanhanda-ddarahajimalaya-haneun-bangbeob"><a href="#keolregsyeoni-bieosseumyeon-nulleul-banhwanhanda-ddarahajimalaya-haneun-bangbeob" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컬렉션이-비었으면-null을-반환한다-따라하지말아야-하는-방법"></a> 컬렉션이 비었으면 null을 반환한다. - 따라하지말아야 하는 방법</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 매장 안의 모든 치즈 목록을 반환한다.</span></span><br><span class="line"><span class="comment"> * 단, 재고가 하나도 없다면 null을 반환한다.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Cheese&gt; <span class="title">getCheess1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 절대 이렇게 처리하지말것! 서버와 클라이언트에서 모두 방어코드를 작성해야하는 불편함이 있다.</span></span><br><span class="line">    <span class="keyword">return</span> cheesesInStock.isEmpty() ? <span class="keyword">null</span> : <span class="keyword">new</span> ArrayList&lt;&gt;(cheesesInStock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위와 같이 코드를 작성하면 클라이언트는 이 null 상황을 처리하는 코드를 추가로 작성해야합니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Cheese shop = <span class="keyword">new</span> Cheese();</span><br><span class="line">List&lt;Cheese&gt; cheeses = shop.getCheess1();</span><br><span class="line"><span class="keyword">if</span>(cheeses != <span class="keyword">null</span> &amp;&amp; cheeses.contains(Cheese.STILTON));&#123;</span><br><span class="line">    System.out.println(<span class="string">"hello guys~"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>컬렉션이나 배열 같은 컨테이너(container)가 비었을 때 null을 반환하는 메서드를 사용할 때면 항시 이와 같은 방어코드를 작성해야합니다. 클라이언트에서 방어 코드를 빼먹으면 오류가 발생할 수 있다. 실제로 객체가 0개일 가능성이 거의 없는 상황에서는 수년 뒤에야 오류가 발생하기도 한다. 한편, null을 반환하려면 반환하는 쪽에서도 이 상황을 특별히 취급해줘야 해서 코드가 더 복잡해진다.</p>
+<p>때로는 빈 컨테이너를 할당하는 데도 비용이 드니 null을 반환하는 쪽이 낫다는 주장이 있지만. 하지만 이는 두 가지면에서 틀린 주장이다.</p>
+<ol>
+<li>이 할당이 성능 저하의 주범이라고 확인되지 않는 한 , 이정도의 성능 차이는 신경 쓸 수준이 못 된다.</li>
+<li>두 번째, 빈 컬렉션과 배열은 굳이 새로 할당하지 않고도 반환할 수 있다.</li>
+</ol>
+<h2 id="bin-keolregsyeoneul-banhwanhaneun-olbareun-ye"><a href="#bin-keolregsyeoneul-banhwanhaneun-olbareun-ye" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#빈-컬렉션을-반환하는-올바른-예"></a> 빈 컬렉션을 반환하는 올바른 예</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 빈 컬렉션을 반환하는 올바른 예</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Cheese&gt; <span class="title">getCheess2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(cheesesInStock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>가능성은 작지만, 사용 패턴에 따라서 빈 컬렉션 할당이 성능을 눈에 띄게 떨어뜨릴 수도 있지만, 이것에 대한 해결 방법은 매번 똑같은 빈 불변 컬렉션을 반환하면 됩니다. 불변 객체는 자유롭게 공유해도 안전합니다.</p>
+<p>다음 코드에서 사용하는 Collections.emptyList 메서드나 집합이 필요한 경우 Collections.emptySet(), 맵이 필요하면 Collections.emptyMap()을 사용하면 됩니다. 이 역시 매우 최적화에 해당하니 되도록 꼭 필요할때만 사용하는것이 좋습니다. 반드시 성능 측정이 필요합니다.</p>
+<h2 id="coejeoghwa-bin-keolregsyeoneul-maebeon-saero-haldanghaji-anhdorog-haessda"><a href="#coejeoghwa-bin-keolregsyeoneul-maebeon-saero-haldanghaji-anhdorog-haessda" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#최적화-빈-컬렉션을-매번-새로-할당하지-않도록-했다"></a> 최적화 - 빈 컬렉션을 매번 새로 할당하지 않도록 했다.</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 최적화 - 빈 컬렉션을 매번 새로 할당하지 않도록 하였다.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Cheese&gt; <span class="title">getCheess3</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> cheesesInStock.isEmpty() ? Collections.emptyList() : <span class="keyword">new</span> ArrayList&lt;&gt;(cheesesInStock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>배열을 쓸 때도 마찬가지인데, 절대로 null을 반환하지 말고 기이가 0인 배열을 반환합니다. 보통은 단순히 정확한 길이의 배열을 반환하기만 하면 됩니다.</p>
+<p>그 길이가 0일수도 있을뿐이고 다음코드에서 toArray메서드에 건넨 길이 0짜리 배열을 우리가 원하는 반환 타입(Cheese[])을 알려주는 역할을 합니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 길이가 0일수도 있는 배열을 반환하는 올바른 방법</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> Cheese[] getCheess4()&#123;</span><br><span class="line">   <span class="keyword">return</span> cheesesInStock.toArray(<span class="keyword">new</span> Cheese[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>해당방식이 성능을 떨어뜨릴 것 같다면 0짜리 배열을 미리 선언해두고 매번 그 배열을 반환하면 됩니다. 길이가 0인 배열은 모두 불변하기 때문입니다.</p>
+<h2 id="coejeoghwa-bin-baeyeoleul-maebeon-saero-haldanghaji-anhdoroghayeossseubnida"><a href="#coejeoghwa-bin-baeyeoleul-maebeon-saero-haldanghaji-anhdoroghayeossseubnida" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#최적화-빈-배열을-매번-새로-할당하지-않도록하였습니다"></a> 최적화 - 빈 배열을 매번 새로 할당하지 않도록하였습니다.</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 최적화 - 빈배열을 매번 새로 할당하지 않도록 처리</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Cheese[] EMPTY_CHEESE_ARRAY = <span class="keyword">new</span> Cheese[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">public</span> Cheese[] getCheess5()&#123;</span><br><span class="line">   <span class="keyword">return</span> cheesesInStock.toArray(EMPTY_CHEESE_ARRAY);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이 최적화 버전의 getCheeses는 항상 EMPTY_CHEESE_ARRAY를 인수로 넘겨 toArray를 호출하게 됩니다. 따라서 cheesesInStock이 비었을 때면 언제나 EMPTY_CHEESE_ARRAY를 반환하게 됩니다.</p>
+<p>단순히 성능을 개선할 목적이라면 toArray에 넘기는 배열을 미리 할당하는 건 추천하지 않습니다. 오히려 성능을 떨어진다는 연구 결과가 있습니다.</p>
+<h2 id="nabbeun-ye-baeyeoleul-miri-haldanghamyeon-seongneungi-nabbajinda"><a href="#nabbeun-ye-baeyeoleul-miri-haldanghamyeon-seongneungi-nabbajinda" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#나쁜-예-배열을-미리-할당하면-성능이-나빠진다"></a> 나쁜 예 - 배열을 미리 할당하면 성능이 나빠진다</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 나쁜예- 배열을 미리 할당하면 성능이 나빠진다.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> Cheese[] getCheess6()&#123;</span><br><span class="line">    <span class="keyword">return</span> cheesesInStock.toArray(<span class="keyword">new</span> Cheese[cheesesInStock.size()]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="jeonce-kodeu"><a href="#jeonce-kodeu" class="header-anchor">1.6. </a><a class="markdownIt-Anchor" href="#전체-코드"></a> 전체 코드</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Item54;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Item54_null</span>이아닌빈컬렉션이나배열을반환하라 </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Cheese shop = <span class="keyword">new</span> Cheese();</span><br><span class="line">        List&lt;Cheese&gt; cheeses = shop.getCheess1();</span><br><span class="line">        <span class="keyword">if</span>(cheeses != <span class="keyword">null</span> &amp;&amp; cheeses.contains(Cheese.STILTON));&#123;</span><br><span class="line">            System.out.println(<span class="string">"hello guys~"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Cheese</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STILTON = <span class="string">"STILTON"</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> List&lt;Cheese&gt; cheesesInStock = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span> 매장 안의 모든 치즈 목록을 반환한다.</span></span><br><span class="line"><span class="comment">         * 단, 재고가 하나도 없다면 null을 반환한다.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Cheese&gt; <span class="title">getCheess1</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="comment">// 절대 이렇게 처리하지말것! 서버와 클라이언트에서 모두 방어코드를 작성해야하는 불편함이 있다.</span></span><br><span class="line">            <span class="keyword">return</span> cheesesInStock.isEmpty() ? <span class="keyword">null</span> : <span class="keyword">new</span> ArrayList&lt;&gt;(cheesesInStock);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 빈 컬렉션을 반환하는 올바른 예</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Cheese&gt; <span class="title">getCheess2</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(cheesesInStock);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 최적화 - 빈 컬렉션을 매번 새로 할당하지 않도록 하였다.</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> List&lt;Cheese&gt; <span class="title">getCheess3</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> cheesesInStock.isEmpty() ? Collections.emptyList() : <span class="keyword">new</span> ArrayList&lt;&gt;(cheesesInStock);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 길이가 0일수도 있는 배열을 반환하는 올바른 방법</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">public</span> Cheese[] getCheess4()&#123;</span><br><span class="line">            <span class="keyword">return</span> cheesesInStock.toArray(<span class="keyword">new</span> Cheese[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 최적화 - 빈배열을 매번 새로 할당하지 않도록 처리</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Cheese[] EMPTY_CHEESE_ARRAY = <span class="keyword">new</span> Cheese[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">public</span> Cheese[] getCheess5()&#123;</span><br><span class="line">            <span class="keyword">return</span> cheesesInStock.toArray(EMPTY_CHEESE_ARRAY);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 나쁜예- 배열을 미리 할당하면 성능이 나빠진다.</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">public</span> Cheese[] getCheess6()&#123;</span><br><span class="line">            <span class="keyword">return</span> cheesesInStock.toArray(<span class="keyword">new</span> Cheese[cheesesInStock.size()]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>핵심 정리</p>
+</blockquote>
+<p>null이 아닌, 빈 배열이나 컬렉션을 반환하라. null을 반환하는 API는 사용하기 어렵고 오류 처리 코드도 늘어난다. 그렇다고 성능이 좋은것도 아니다.</p>
+
         </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Ethan Kim"
+        },
+        "headline": "Effective Java 3/E Item 54 null이 아닌,빈 컬렉션이나 배열을 반환하라",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "EffectiveJava3/E",
+        "genre": "Java",
+        "datePublished": "2021-01-25",
+        "dateCreated": "2021-01-25",
+        "dateModified": "2021-01-25",
+        "url": "http://gwanhyeon.github.io/아이템54-null이-아닌-빈-컬렉션이나-배열을-반환하라/",
+        "description": "1.  null이 아닌, 빈 컬렉션이나 배열을 반환하라
+1.1.  컬렉션이 비었으면 null을 반환한다. - 따라하지말아야 하는 방법
+123456789/** * * @return 매장 안의 모든 치즈 목록을 반환한다. * 단, 재고가 하나도 없다면 null을 반환한다. */public List&lt;Cheese&gt; getCheess1()&#123;   ",
+        "wordCount": 1575
+    }
+</script>
+
+</article>
+
+    <section id="comments">
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -220,6 +347,19 @@ ga('send', 'pageview');
     </div>
     <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/Network-20210121-network-06-http/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">Network HTTP(HyperText Transfer Protocal)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -375,11 +515,13 @@ ga('send', 'pageview');
     var disqus_shortname = 'kgh-1';
     
     
+    var disqus_url = 'http://gwanhyeon.github.io/%EC%95%84%EC%9D%B4%ED%85%9C54-null%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B9%88-%EC%BB%AC%EB%A0%89%EC%85%98%EC%9D%B4%EB%82%98-%EB%B0%B0%EC%97%B4%EC%9D%84-%EB%B0%98%ED%99%98%ED%95%98%EB%9D%BC/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

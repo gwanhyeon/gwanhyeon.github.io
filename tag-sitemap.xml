@@ -3,14 +3,21 @@
 
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EB%25A6%25BF%25EC%25BD%2594%25EB%2593%259C/</loc>
-        <lastmod>2021-01-21T09:24:45.721Z</lastmod>
+        <loc>http://gwanhyeon.github.io/tags/effectivejava3-e/</loc>
+        <lastmod>2021-01-25T01:38:42.847Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/dp/</loc>
+        <lastmod>2021-01-21T09:24:45.721Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/%25EB%25A6%25BF%25EC%25BD%2594%25EB%2593%259C/</loc>
         <lastmod>2021-01-21T09:24:45.721Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -284,13 +291,6 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EB%259E%258C%25EB%258B%25A4/</loc>
-        <lastmod>2021-01-03T11:10:27.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/effectivejava3-e/</loc>
         <lastmod>2021-01-03T11:10:27.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
