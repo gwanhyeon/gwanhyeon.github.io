@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Network HTTP(Hypertext Text Transfer Protocal) API 설계</title>
+    <title>Network HTTP(HyperTextTransferProtocal) API 설계</title>
     <url>/Network-20210126-network-07-http-api/</url>
     <content><![CDATA[<h1 id="api-uri-uniform-resource-identifier-seolgye"><a href="#api-uri-uniform-resource-identifier-seolgye" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#api-uriuniform-resource-identifier-설계"></a> API URI(Uniform Resource Identifier) 설계</h1>
 <h2 id="resource-risoseu-ran"><a href="#resource-risoseu-ran" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#resource리소스란"></a> Resource(리소스)란?</h2>
