@@ -45,7 +45,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Network HTTP(HyperText Transfer Protocal)</title>
+    <title>Network HTTP(HyperText Transfer Protocal) 구조 및 HTTP 메시지 구조</title>
     <url>/Network-20210121-network-06-http/</url>
     <content><![CDATA[<p>웹에서 가장 중요한 요소라고 할 수 있는 HTTP(Hyper Text Transfer Protocal)에 대해서 살펴보도록 하겠습니다.<br>
 들어가기 앞서 HTTP가 왜 중요할까요?</p>
@@ -155,6 +155,29 @@ HTTP/3, HTTP/1.1을 주로사용하고 하고 점차적으로  HTTP/2, HTTP/3의
 </blockquote>
 <p>Stateless같은 경우는 동시간에 진행되는 실시간 대용량 트래픽에 매우 용이 합니다.<br>
 예를 들면, 수만명의 트래픽이 들어왔다고 가정하면 Stateles 환경에 서버 요청이 많아집니다. 이에 따른 대응방식으로 정적페이지나 HTML을 먼저 렌더링 시켜준후 해당 본 요청 이벤트를 처리하는 로직으로 진행합니다.</p>
+<h1 id="http-mesijigujo"><a href="#http-mesijigujo" class="header-anchor">10. </a><a class="markdownIt-Anchor" href="#http-메시지구조"></a> HTTP 메시지구조</h1>
+<h2 id="http-yoceongmesiji-gujo"><a href="#http-yoceongmesiji-gujo" class="header-anchor">10.1. </a><a class="markdownIt-Anchor" href="#http-요청메시지-구조"></a> HTTP 요청메시지 구조</h2>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">1. start-line 시작라인(HTTP메서드, 요청대상, HTTP Version)</span><br><span class="line">2. header 헤더(표준헤더 많음, 헤더추가도 가능함)</span><br><span class="line">3. empty line 공백라인(CRLF) - RFC7230 표준</span><br><span class="line">4. message body</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>HTTP 요청메시지 예시</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">1. GET /search?q=hello&amp;hl=ko HTTP/1.1 (start-line)</span><br><span class="line">2. Host: www.google.com (header)</span><br><span class="line">3. (empty line)</span><br></pre></td></tr></table></figure>
+<p>요청메시지도 body본문을 가질수 있습니다.</p>
+<h2 id="http-eungdab-mesiji-gujo"><a href="#http-eungdab-mesiji-gujo" class="header-anchor">10.2. </a><a class="markdownIt-Anchor" href="#http-응답-메시지-구조"></a> HTTP 응답 메시지 구조</h2>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">1. start-line 시작라인(HTTP버전, HTTP상태코드, 요청 및 성공)</span><br><span class="line">2. header 헤더(표준헤더 많음, 헤더추가도 가능함)</span><br><span class="line">3. empty line 공백라인(CRLF) - RFC7230 표준</span><br><span class="line">4. message body(실제 전송데이터 HTML,이미지,영상,JSON, XML 등 byte표현가능한 모든 데이터)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>HTTP 응답메시지 예시</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">1. HTTP/1.1 200 OK (start-line)</span><br><span class="line">2. Content-Type:text/html;charset=UTF-8    (header)</span><br><span class="line">3. Content-Length: 3423    (empty line)</span><br><span class="line"></span><br><span class="line">4.(message body)</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>                  </span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span>..<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>정리</p>
+</blockquote>
+<ul>
+<li>HTTP1.1 기준</li>
+<li>클라이언트,서버 구조</li>
+<li>무상태 프로토콜(Stateless)</li>
+<li>HTTP 메시지 구조</li>
+</ul>
 ]]></content>
       <categories>
         <category>Network</category>
