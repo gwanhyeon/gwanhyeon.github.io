@@ -1,196 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JPA 영속성 컨텍스트(Persistence Context)</title>
-    <url>/JPA-20210127-jpa-02-%EC%98%81%EC%86%8D%EC%84%B1%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/</url>
-    <content><![CDATA[<h1 id="yeongsogseong-keontegseuteu-persistence-context"><a href="#yeongsogseong-keontegseuteu-persistence-context" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#영속성-컨텍스트persistence-context"></a> 영속성 컨텍스트(Persistence Context)</h1>
-<p>영속성 컨텍스트란 논리적인 개념(무형성)으로 엔티티를 영구 저장하는 환경이라고 할 수 있습니다. 특히, JPA를 이해하는데 가장 중요한 용어입니다. 그리고 EntityManager를 통하여 영속성 컨텍스트에 접근할 수 있습니다.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">EntityManager.persist(entity);</span><br></pre></td></tr></table></figure>
-<p>다음과 같이 EntityManagerFactory가 생성시킨 EntityManager를 사용하여 Connection pool에 접근하여 Database에 접근할 수 있습니다.</p>
-<h1 id="j2se-standard-edition-vs-j2ee-enterprise-edition"><a href="#j2se-standard-edition-vs-j2ee-enterprise-edition" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#j2se-standard-edition-vs-j2ee-enterprise-edition"></a> J2SE (Standard Edition) VS J2EE ( Enterprise Edition)</h1>
-<blockquote>
-<p>J2SE</p>
-</blockquote>
-<p>일반 자바 프로그램 개발을 위한 용도로 이용되는 개발도구이며 각종 자료구조, 기본 유틸리티, 스윙이나 AWT와 같은 GUI도구등의 기본기능을 포함하고 있다.</p>
-<blockquote>
-<p>J2EE</p>
-</blockquote>
-<p>엔터프라이즈 환경을 위한 도구로 EJB, JSP, Servlet, JNDI같은 기능을 지원하며 웹 애플리케이션 서버를 이용하는 프로그램 개발시 많이 사용한다.</p>
-<p>두 가지 환경에서는 어떠한 차이가 있을까요?</p>
-<p>J2SE는 엔티티매니저와 영속성컨텍스트가 1:1로 관계를 가지고 있으며 J2EE 스프링 프레임워크 같은 컨테이너 환경은 엔티티 매니저와 영속성 컨텍스트가 N:1의 관계를 가지고 있습니다.</p>
-<h1 id="entity-saengmyeongjugi"><a href="#entity-saengmyeongjugi" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#entity-생명주기"></a> Entity 생명주기</h1>
-<blockquote>
-<p>생명주기</p>
-</blockquote>
-<p><img src="https://www.objectdb.com/files/images/manual/jpa-states.png" alt="엔티티 생명주기"></p>
-<h2 id="biyeongsog-new-transient"><a href="#biyeongsog-new-transient" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#비영속newtransient"></a> 비영속(new/transient)</h2>
-<p>영속성 컨텍스트와 전혀관계가 없는 새로운 상태</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 객체 생성 (비영속)</span></span><br><span class="line">Member member = <span class="keyword">new</span> Member();</span><br><span class="line">member.setId(<span class="string">"memberId1"</span>);</span><br><span class="line">member.setUsername(<span class="string">"gwanhyeonkim"</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="yeongsog-managed"><a href="#yeongsog-managed" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#영속managed"></a> 영속(managed)</h2>
-<p>영속성 컨텍스트에 관리되는 상태</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 객체 생성(비영속)</span></span><br><span class="line">Member member = <span class="keyword">new</span> Member();</span><br><span class="line">member.setId(<span class="string">"memberId1"</span>);</span><br><span class="line">member.setUsername(<span class="string">"gwanhyeonkim"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 엔티티 매니저 팩토리로 엔티티 매니저를 생성합니다.</span></span><br><span class="line">EntityManager em = emf.createEntityManager();</span><br><span class="line"><span class="comment">// 트랙잭션위에서 동작합니다.</span></span><br><span class="line">em.getTransaction().begin();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 객체를 저장한 상태(영속) - 영속상태가 되는것 DB에 저장되는 상태가 아니며 트랜잭션 커밋시점에 해당 DB에 들어가게 됩니다.</span></span><br><span class="line"><span class="comment">// 만약 1차캐시가 있다면 1차캐시를 사용합니다.</span></span><br><span class="line">em.persist(member);</span><br></pre></td></tr></table></figure>
-<h2 id="junyeongsog-detached"><a href="#junyeongsog-detached" class="header-anchor">3.3. </a><a class="markdownIt-Anchor" href="#준영속detached"></a> 준영속(detached)</h2>
-<p>영속성 컨텍스트에 저장되었다가 분리된 상태</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 엔티티를 영속성 컨텍스트에서 분리시키고 준영속상태로 만듭니다.</span></span><br><span class="line">em.detach(member);</span><br></pre></td></tr></table></figure>
-<h2 id="sagje-removed"><a href="#sagje-removed" class="header-anchor">3.4. </a><a class="markdownIt-Anchor" href="#삭제removed"></a> 삭제(removed)</h2>
-<p>삭제된 상태</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 객체를 삭제한 상태</span></span><br><span class="line">em.remove(member);</span><br></pre></td></tr></table></figure>
-<h1 id="yeongsogseong-keontegseuteu-teugjing"><a href="#yeongsogseong-keontegseuteu-teugjing" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#영속성-컨텍스트-특징"></a> 영속성 컨텍스트 특징</h1>
-<ol>
-<li>1차캐시를 활용합니다.</li>
-<li>동일성(Identity)를 보장합니다.</li>
-<li>트랜잭션을 지원하는 쓰기 지연을 일으킵니다(Transcational write-behind)</li>
-<li>변경 감지(Dirty Checking)이 가능합니다.</li>
-<li>지연 로딩(Lazy Loading)을 지원합니다</li>
-</ol>
-<p>즉, 영속성 컨텍스트는 버퍼링과 캐싱의 기능을 가질 수 있습니다.</p>
-<h1 id="entiti-johoe-mic-1ca-kaesi"><a href="#entiti-johoe-mic-1ca-kaesi" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#엔티티-조회-및-1차-캐시"></a> 엔티티 조회 및 1차 캐시</h1>
-<p>1차 캐시는 Map형태로 구성되어있습니다. 예를 들면 key-@Id : value-@Entity &lt;Key,Value&gt;형식으로 구성되어있습니다.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//엔티티를 생성한 상태 비영속상태입니다.</span></span><br><span class="line">Member member = <span class="keyword">new</span> Member();</span><br><span class="line">member.setId(<span class="string">"memberId1"</span>);</span><br><span class="line">member.setUsername(<span class="string">"gwanhyeonkim"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//엔티티를 영속하는 단계</span></span><br><span class="line">em.persist(member);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>이제 이것들은 1차캐시에서 어떻게 사용될까요?</p>
-</blockquote>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//엔티티를 생성한 상태 비영속상태입니다.</span></span><br><span class="line">Member member = <span class="keyword">new</span> Member();</span><br><span class="line">member.setId(<span class="string">"memberId1"</span>);</span><br><span class="line">member.setUsername(<span class="string">"gwanhyeonkim"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1차 캐시에 저장</span></span><br><span class="line">em.persist(member);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1차 캐시에서 조회</span></span><br><span class="line">Member member1 = em.find(Member.class, "gwanhyeonkim");</span><br></pre></td></tr></table></figure>
-<p>em.persist(member)를 하게 되면 1차 캐시에 값이 저장되고 그 이후에 만약 값을 조회하는 경우 현재 1차캐시에 올라간 값으로 조회해옵니다.<br>
-즉, 영속성 컨텍스트에서 1차캐시를 확인하고 없으면 1차캐시에 저장을 하게됩니다. 그리고 값을 조회하면 1차캐시에 저장된 저장값들을 불러와서 조회가 가능하게 됩니다.</p>
-<blockquote>
-<p>데이터베이스 조회</p>
-</blockquote>
-<p>EntityManager은 트랜잭션단위로 처리를 진행합니다. 즉, 1차 캐시도 날아가며 1차캐시는 전체적인 확인을 통해 진행됩니다.</p>
-<ol>
-<li>find(“gwanhyeonkim”) 1차 캐시를 확인하여 없으면 DB를 조회합니다.</li>
-<li>DB조회후 1차캐시에 저장을 시키고 해당 member값을 반환시켜주게 됩니다.</li>
-</ol>
-<h1 id="yeongsogseong-entiti-dongilseong-identifier"><a href="#yeongsogseong-entiti-dongilseong-identifier" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#영속성-엔티티-동일성identifier"></a> 영속성 엔티티 동일성(Identifier)</h1>
-<p>만약에 똑같은 값을 조회한다고 가정하면 영속성 엔티티의 동일성을 보장시켜줍니다.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Member member1 = em.find(Member.class, "gwanhyeonkim");</span><br><span class="line">Member member2 = em.find(Member.class, "gwanhyeonkim");</span><br><span class="line"></span><br><span class="line">(a == b) <span class="comment">// 동일성이 같습니다. true</span></span><br></pre></td></tr></table></figure>
-<p>1차 캐시로 반복 가능한 읽기(REPEATABLE READ) 등급의 트랜잭션 격리 수준을 데이터베이스가 아닌 애플리케이션 차원에서 제공됩니다. 즉, 같은 트랜잭션내에 동일성이 보장되면 true를 리턴한다고 할 수 있습니다.</p>
-<blockquote>
-<p>데이터베이스에 언제 Insert를 진행할까요?</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">transaction.commit(); <span class="comment">// 해당 시점에 트랜잭션 커밋을 진행하면서 insert값들을 실제 SQL쿼리를 날리게 됩니다. 즉, 쓰기지연이 일어나는 시점이며 flush SQL이 같이 동작됩니다.</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>em.persist()</p>
-</blockquote>
-<p>persist가 동작하면 INSERT SQL과 1차캐시에 저장을 동시에 진행합니다. INSERT SQL생성시 쓰기 지연 SQL저장소에 저장시키고 1차 캐시에서 해당 캐시가 있는지 없는지를 확인하고 있으면 해당 값을 캐시에서 가져오고<br>
-그게 아니라면 영속성컨텍스트가 DB에 접근하여 SQL 쓰기지연저장소에 저장된 쿼리를 날리게 됩니다. transaction.commit()으로 쓰기지연이 동작하고 flush sql이 함께 동작됩니다. 이때 해당 실제 DB에 값을 넣게 됩니다.</p>
-<p>이것을 쓰는 이유는 무엇일까요? 버퍼링, 즉, 캐싱개념이 생기게 됩니다.</p>
-<h1 id="entiti-sujeong"><a href="#entiti-sujeong" class="header-anchor">7. </a><a class="markdownIt-Anchor" href="#엔티티-수정"></a> 엔티티 수정</h1>
-<p>영속성 엔티티를 조회후에 데이터를 수정한다면 어떻게 처리가 될까요?</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//영속 엔티티 조회</span></span><br><span class="line">Member member1 = em.find(Member.class, "gwanhyeonkim");</span><br><span class="line"></span><br><span class="line"><span class="comment">//영속 엔티티 데이터 수정</span></span><br><span class="line">member1.setUsername(<span class="string">"kgh"</span>);</span><br><span class="line">member1.setAge(<span class="string">"20"</span>);</span><br><span class="line"></span><br><span class="line">transcation.commit(); <span class="comment">// 트랜잭션을 커밋하는 시점입니다.</span></span><br></pre></td></tr></table></figure>
-<p>데이터수정시 em.persist를 넣을 필요는 없게 됩니다. 이미 영속성컨텍스트에 관리되어지고 있기 때문입니다.</p>
-<h1 id="byeongyeong-gamji-dirty-checking"><a href="#byeongyeong-gamji-dirty-checking" class="header-anchor">8. </a><a class="markdownIt-Anchor" href="#변경-감지dirty-checking"></a> 변경 감지(Dirty Checking)</h1>
-<p>변경 감지 순서에 대해서 알아보겠습니다.</p>
-<p>영속성 컨텍스트(entity manager)안에서 transcation.commit()이 작동되게 되면 어떻게 처리될까요?</p>
-<ol>
-<li>flush()함수가 동작됩니다.</li>
-<li>엔티티 스냅샷(최초 시점에만)과 비교되어 집니다.</li>
-<li>쓰기지연 저장소에 UPDATE SQL이 생성됩니다.</li>
-<li>다시 flush()를 수행하면서 SQL UPDATE구문이 DB에 날리게 되면서 이때, commit이 진행됩니다.</li>
-</ol>
-<h1 id="entiti-sagje"><a href="#entiti-sagje" class="header-anchor">9. </a><a class="markdownIt-Anchor" href="#엔티티-삭제"></a> 엔티티 삭제</h1>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Member member1 = em.find(Member.class, "gwanhyeonkim");</span><br><span class="line">em.remove(member1);</span><br></pre></td></tr></table></figure>
-<p>삭제 대상 엔티티를 조회하고 엔티티를 삭제하는 구문입니다.</p>
-<h1 id="peulreosi-flush"><a href="#peulreosi-flush" class="header-anchor">10. </a><a class="markdownIt-Anchor" href="#플러시flush"></a> 플러시(Flush)</h1>
-<p>영속성 컨텍스트의 변경 내용을 데이터베이스에 반영하는것을 뜻합니다. 즉, 지연 sql 스냅샷과 쓰기지연 SQL 저장소에 저장해놓은 쿼리를 데이터베이스에 반영하는 과정이라고 생각하시면 됩니다.</p>
-<ol>
-<li>변경 감지(dirty checking)를 진행합니다.</li>
-<li>수정된 엔티티 쓰기 지연 SQL 저장소에 등록됩니다.</li>
-<li>쓰기 지연 SQL 저장소의 쿼리를 데이터베이스에 전송합니다. (등록, 수정, 삭제)</li>
-</ol>
-<h1 id="yeongsogseong-keontegseuteureul-peulreosireul-eoddeohge-halggayo"><a href="#yeongsogseong-keontegseuteureul-peulreosireul-eoddeohge-halggayo" class="header-anchor">11. </a><a class="markdownIt-Anchor" href="#영속성-컨텍스트를-플러시를-어떻게-할까요"></a> 영속성 컨텍스트를 플러시를 어떻게 할까요?</h1>
-<ol>
-<li>em.flush()를 직접호출하여 진행합니다. 테스트를 진행할때 이러한 방식으로 새로가동하는것처럼 진행할 수 있습니다.</li>
-<li>트랜잭션 커밋을 진행합니다. 이때 플러시가 자동으로 같이 호출되게 됩니다.</li>
-<li>JPQL쿼리를 실행합니다. 이때 플러시가 자동으로 같이 호출되게 됩니다. JPQL쿼리실행시 1차 캐시가 사라지는것이 아니고 쓰기지연SQL, 변경감지 업데이트 쿼리들이 DB에 반영됩니다.</li>
-</ol>
-<h1 id="jpql-kweori-silhaengsi-peulreosiga-jadongeuro-hoculdoeneun-iyu"><a href="#jpql-kweori-silhaengsi-peulreosiga-jadongeuro-hoculdoeneun-iyu" class="header-anchor">12. </a><a class="markdownIt-Anchor" href="#jpql-쿼리-실행시-플러시가-자동으로-호출되는-이유"></a> JPQL 쿼리 실행시 플러시가 자동으로 호출되는 이유</h1>
-<p>em.persist에 persist를 실행한다고 하였을때 persist 자체만으로 DB에 접근은 하지 못합니다. 그 이유는 JPQL을 날리게 되면 자동으로 flush()를 호출하여 DB를 가져오기때문에 현재 값들을 select해올 값이 없게 됩니다.</p>
-<h1 id="peulreosi-modeu-obsyeon"><a href="#peulreosi-modeu-obsyeon" class="header-anchor">13. </a><a class="markdownIt-Anchor" href="#플러시-모드-옵션"></a> 플러시 모드 옵션</h1>
-<ol>
-<li>FlushModeType.AUTO - 커밋이나 쿼리를 실행할 때 Flush(Default)</li>
-<li>FlushModeType.COMMIT - 커밋할때만 Flush</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">em.setFlushMode(FlushModeType.COMMIT)</span><br></pre></td></tr></table></figure>
-<h1 id="peulreosi-teugjing"><a href="#peulreosi-teugjing" class="header-anchor">14. </a><a class="markdownIt-Anchor" href="#플러시-특징"></a> 플러시 특징</h1>
-<ol>
-<li>영속성 컨텍스트를 비우지 않습니다.</li>
-<li>영속성 컨텍스트의 변경내용을 데이터베이스에 동기화합니다.</li>
-<li>트랜잭션이라는 작업단위가 중요하며 커밋직전에만 동기화를 진행하면 됩니다.</li>
-</ol>
-<h1 id="junyeongsog-sangtae"><a href="#junyeongsog-sangtae" class="header-anchor">15. </a><a class="markdownIt-Anchor" href="#준영속-상태"></a> 준영속 상태</h1>
-<ol>
-<li>영속상태(1차캐시에 저장된 상태)에서 준영속상태를 만드는 상태</li>
-<li>영속상태의 엔티티가 영속성 컨텍스트에서 분리합니다.(detached) - Dirty Checking을 사용하지 못합니다.</li>
-<li>영속성 컨텍스트가 제공하는 기능을 사용하지 못합니다.</li>
-</ol>
-<blockquote>
-<p>준영속 상태로 어떻게 만들 수 있을까?</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">em.detach(entity) 특정 엔티티만 준영속상태로 전환</span><br><span class="line">em.clear(entity) 영속성 컨텍스트를 완전히 초기화</span><br><span class="line">em.close() 영속성 컨텍스트를 종료</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>JPA</category>
-      </categories>
-      <tags>
-        <tag>JPA</tag>
-        <tag>Persistence</tag>
-        <tag>Entity</tag>
-        <tag>Flush</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JPA(Java Persistence API)란?</title>
-    <url>/JPA-20210127-jpa-01-jpa%EB%9E%80/</url>
-    <content><![CDATA[<h1 id="jpa-database-dialect"><a href="#jpa-database-dialect" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#jpa-database-dialect"></a> JPA Database Dialect</h1>
-<p>JPA는 특정 데이터베이스에 종속되지 않으며 각각 데이터베이스가 제공하는 SQL 문법과 함수는 차이가 있습니다.</p>
-<p>가변문자에서 Mysql은 VARCHAR으로 선언되고 Oracle은 VARCHAR2 으로 사용되면서 문법적 차이가 존재합니다. 그리고 문자열을 자르는 함수같은 경우는 SQL 표준은 SUBSTRING(), Oracle은 SUBSTR()로 사용됩니다. 페이징 처리 같은 경우는 MySQL LIMIT을 사용하고 Oracle은 ROWNUM을 사용합니다.<br>
-JPA Database Dialect는 SQL 표준을 지키지 않는 특정 데이터베이스만의 고유한 기능이라고 할 수 있습니다.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">H2: org.hibernate.dialect.H2Dialect</span><br><span class="line">Oracle <span class="number">10</span>g: org.hibernate.dialect.Oracle10gDialect</span><br><span class="line">MySQL: org.hibernate.dialect.MySQL5InnoDBDialect</span><br></pre></td></tr></table></figure>
-<p>다음과 같이 hibernate.dialect속성을 지정하여 사용할 수 있습니다. Hibernate는 약 40개 이상의 Dialect를 지원합니다.</p>
-<h1 id="jpa-gudongbangsig"><a href="#jpa-gudongbangsig" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#jpa-구동방식"></a> JPA 구동방식</h1>
-<p>Persistance(영속성)가 Maven(META-INF/persistance.xml), Gradle(application.properties,application.yml) 설정 정보를 조회한후 해당 설정정보로 EntityManagerFactory를 생성하여 EntityManagerFactory가 EntityManager를 생성하게 됩니다.</p>
-<blockquote>
-<p>주의 사항</p>
-</blockquote>
-<ol>
-<li>
-<p>EntitiyManagerFactory:<br>
-하나만 생성하여 어플리케이션 전체에 공유되는 방식을 사용합니다.</p>
-</li>
-<li>
-<p>EntityManager:<br>
-쓰레드간에 공유를 하지 못합니다. 따라서, EntitiyManager를 선언하고 추후에 따로 해지시켜주는 방식으로 구동되어야합니다.</p>
-</li>
-<li>
-<p>JPA는 모든 데이터 변경은 트랜잭션안에서 실행됩니다. 따라서, 모든 데이터변경시에  트랜잭션이 실행되어 commit과 rollback과정을 처리합니다.</p>
-</li>
-</ol>
-<h1 id="entity-id"><a href="#entity-id" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#entity-id"></a> @Entity, @Id</h1>
-<p>@Entity: Entity어노테이션은 JPA가 관리하는 객체로 선언해줍니다.<br>
-@Id: Id어노테이션은 데이터베이스 PK와 매핑됩니다.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String memberName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="jpql-java-persistence-query-language"><a href="#jpql-java-persistence-query-language" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#jpqljava-persistence-query-language"></a> JPQL(Java Persistence Query Language)</h1>
-<p>JPA를 사용하면 엔티티 객체를 중심으로 개발이 진행되고 만약에 검색쿼리를 진행한다고 할대, 테이블이 아닌 엔티티객체를 대상으로 검색을 진행하게 됩니다. 하지만, 모든DB데이터를 객체로 변환해서 검색하는것은 불가능합니다. 따라서, 필요한 데이터만 가져오기위해 검색조건이 포함된 SQL이 필요로 되어지는데 이때 JPQL을 사용하게 됩니다.</p>
-<p>JPQL은 SQL을 추상화하여 JPQL이라는 객체지향 쿼리언어를 제공하는것을 말합니다. SQL문법과도 매우 유사하며 SELECT,FROM,WHERE,GROUP BY, HAVING, JOIN과 같은 문법도 지원을 해줍니다.</p>
-<blockquote>
-<p>SQL VS JPQL</p>
-</blockquote>
-<p>JPQL은 엔티티 객체를 대상으로 쿼리문을 날리고, SQL은 데이터베이스 테이블 대상으로 쿼리를 날립니다.</p>
-<blockquote>
-<p>정리</p>
-</blockquote>
-<p>테이블이 아닌 객체를 대상으로 검색하는 객체지향쿼리를 일컫는말이고 SQL을 추상화하였기때문에 특정 SQL에 의존하지 않는다는 장점을 가지고 있습니다. JPQL은 객체지향 SQL이라고 말할 수 있습니다.</p>
-]]></content>
-      <categories>
-        <category>JPA</category>
-      </categories>
-      <tags>
-        <tag>JPA</tag>
-        <tag>JPQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Effective Java 3/E Item 55 옵셔널반환은 신중히 하라</title>
     <url>/EffectiveJava-20210126-%EC%95%84%EC%9D%B4%ED%85%9C55-%EC%98%B5%EC%85%94%EB%84%90%EB%B0%98%ED%99%98%EC%9D%80-%EC%8B%A0%EC%A4%91%ED%9E%88%ED%95%98%EB%9D%BC/</url>
     <content><![CDATA[<h1 id="obsyeoneolbanhwaneun-sinjunghi-hara"><a href="#obsyeoneolbanhwaneun-sinjunghi-hara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#옵셔널반환은-신중히-하라"></a> 옵셔널반환은 신중히 하라</h1>
@@ -632,6 +442,196 @@ PUT기반 등록되며 클라이언트가 리소스 URI를 결정합니다.</p>
         <tag>network</tag>
         <tag>http</tag>
         <tag>api</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JPA 영속성 컨텍스트(Persistence Context)</title>
+    <url>/JPA-20210127-jpa-02-%EC%98%81%EC%86%8D%EC%84%B1%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/</url>
+    <content><![CDATA[<h1 id="yeongsogseong-keontegseuteu-persistence-context"><a href="#yeongsogseong-keontegseuteu-persistence-context" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#영속성-컨텍스트persistence-context"></a> 영속성 컨텍스트(Persistence Context)</h1>
+<p>영속성 컨텍스트란 논리적인 개념(무형성)으로 엔티티를 영구 저장하는 환경이라고 할 수 있습니다. 특히, JPA를 이해하는데 가장 중요한 용어입니다. 그리고 EntityManager를 통하여 영속성 컨텍스트에 접근할 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">EntityManager.persist(entity);</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 EntityManagerFactory가 생성시킨 EntityManager를 사용하여 Connection pool에 접근하여 Database에 접근할 수 있습니다.</p>
+<h1 id="j2se-standard-edition-vs-j2ee-enterprise-edition"><a href="#j2se-standard-edition-vs-j2ee-enterprise-edition" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#j2se-standard-edition-vs-j2ee-enterprise-edition"></a> J2SE (Standard Edition) VS J2EE ( Enterprise Edition)</h1>
+<blockquote>
+<p>J2SE</p>
+</blockquote>
+<p>일반 자바 프로그램 개발을 위한 용도로 이용되는 개발도구이며 각종 자료구조, 기본 유틸리티, 스윙이나 AWT와 같은 GUI도구등의 기본기능을 포함하고 있다.</p>
+<blockquote>
+<p>J2EE</p>
+</blockquote>
+<p>엔터프라이즈 환경을 위한 도구로 EJB, JSP, Servlet, JNDI같은 기능을 지원하며 웹 애플리케이션 서버를 이용하는 프로그램 개발시 많이 사용한다.</p>
+<p>두 가지 환경에서는 어떠한 차이가 있을까요?</p>
+<p>J2SE는 엔티티매니저와 영속성컨텍스트가 1:1로 관계를 가지고 있으며 J2EE 스프링 프레임워크 같은 컨테이너 환경은 엔티티 매니저와 영속성 컨텍스트가 N:1의 관계를 가지고 있습니다.</p>
+<h1 id="entity-saengmyeongjugi"><a href="#entity-saengmyeongjugi" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#entity-생명주기"></a> Entity 생명주기</h1>
+<blockquote>
+<p>생명주기</p>
+</blockquote>
+<p><img src="https://www.objectdb.com/files/images/manual/jpa-states.png" alt="엔티티 생명주기"></p>
+<h2 id="biyeongsog-new-transient"><a href="#biyeongsog-new-transient" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#비영속newtransient"></a> 비영속(new/transient)</h2>
+<p>영속성 컨텍스트와 전혀관계가 없는 새로운 상태</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 객체 생성 (비영속)</span></span><br><span class="line">Member member = <span class="keyword">new</span> Member();</span><br><span class="line">member.setId(<span class="string">"memberId1"</span>);</span><br><span class="line">member.setUsername(<span class="string">"gwanhyeonkim"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="yeongsog-managed"><a href="#yeongsog-managed" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#영속managed"></a> 영속(managed)</h2>
+<p>영속성 컨텍스트에 관리되는 상태</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 객체 생성(비영속)</span></span><br><span class="line">Member member = <span class="keyword">new</span> Member();</span><br><span class="line">member.setId(<span class="string">"memberId1"</span>);</span><br><span class="line">member.setUsername(<span class="string">"gwanhyeonkim"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 엔티티 매니저 팩토리로 엔티티 매니저를 생성합니다.</span></span><br><span class="line">EntityManager em = emf.createEntityManager();</span><br><span class="line"><span class="comment">// 트랙잭션위에서 동작합니다.</span></span><br><span class="line">em.getTransaction().begin();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 객체를 저장한 상태(영속) - 영속상태가 되는것 DB에 저장되는 상태가 아니며 트랜잭션 커밋시점에 해당 DB에 들어가게 됩니다.</span></span><br><span class="line"><span class="comment">// 만약 1차캐시가 있다면 1차캐시를 사용합니다.</span></span><br><span class="line">em.persist(member);</span><br></pre></td></tr></table></figure>
+<h2 id="junyeongsog-detached"><a href="#junyeongsog-detached" class="header-anchor">3.3. </a><a class="markdownIt-Anchor" href="#준영속detached"></a> 준영속(detached)</h2>
+<p>영속성 컨텍스트에 저장되었다가 분리된 상태</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 엔티티를 영속성 컨텍스트에서 분리시키고 준영속상태로 만듭니다.</span></span><br><span class="line">em.detach(member);</span><br></pre></td></tr></table></figure>
+<h2 id="sagje-removed"><a href="#sagje-removed" class="header-anchor">3.4. </a><a class="markdownIt-Anchor" href="#삭제removed"></a> 삭제(removed)</h2>
+<p>삭제된 상태</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 객체를 삭제한 상태</span></span><br><span class="line">em.remove(member);</span><br></pre></td></tr></table></figure>
+<h1 id="yeongsogseong-keontegseuteu-teugjing"><a href="#yeongsogseong-keontegseuteu-teugjing" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#영속성-컨텍스트-특징"></a> 영속성 컨텍스트 특징</h1>
+<ol>
+<li>1차캐시를 활용합니다.</li>
+<li>동일성(Identity)를 보장합니다.</li>
+<li>트랜잭션을 지원하는 쓰기 지연을 일으킵니다(Transcational write-behind)</li>
+<li>변경 감지(Dirty Checking)이 가능합니다.</li>
+<li>지연 로딩(Lazy Loading)을 지원합니다</li>
+</ol>
+<p>즉, 영속성 컨텍스트는 버퍼링과 캐싱의 기능을 가질 수 있습니다.</p>
+<h1 id="entiti-johoe-mic-1ca-kaesi"><a href="#entiti-johoe-mic-1ca-kaesi" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#엔티티-조회-및-1차-캐시"></a> 엔티티 조회 및 1차 캐시</h1>
+<p>1차 캐시는 Map형태로 구성되어있습니다. 예를 들면 key-@Id : value-@Entity &lt;Key,Value&gt;형식으로 구성되어있습니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//엔티티를 생성한 상태 비영속상태입니다.</span></span><br><span class="line">Member member = <span class="keyword">new</span> Member();</span><br><span class="line">member.setId(<span class="string">"memberId1"</span>);</span><br><span class="line">member.setUsername(<span class="string">"gwanhyeonkim"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//엔티티를 영속하는 단계</span></span><br><span class="line">em.persist(member);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>이제 이것들은 1차캐시에서 어떻게 사용될까요?</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//엔티티를 생성한 상태 비영속상태입니다.</span></span><br><span class="line">Member member = <span class="keyword">new</span> Member();</span><br><span class="line">member.setId(<span class="string">"memberId1"</span>);</span><br><span class="line">member.setUsername(<span class="string">"gwanhyeonkim"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1차 캐시에 저장</span></span><br><span class="line">em.persist(member);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1차 캐시에서 조회</span></span><br><span class="line">Member member1 = em.find(Member.class, "gwanhyeonkim");</span><br></pre></td></tr></table></figure>
+<p>em.persist(member)를 하게 되면 1차 캐시에 값이 저장되고 그 이후에 만약 값을 조회하는 경우 현재 1차캐시에 올라간 값으로 조회해옵니다.<br>
+즉, 영속성 컨텍스트에서 1차캐시를 확인하고 없으면 1차캐시에 저장을 하게됩니다. 그리고 값을 조회하면 1차캐시에 저장된 저장값들을 불러와서 조회가 가능하게 됩니다.</p>
+<blockquote>
+<p>데이터베이스 조회</p>
+</blockquote>
+<p>EntityManager은 트랜잭션단위로 처리를 진행합니다. 즉, 1차 캐시도 날아가며 1차캐시는 전체적인 확인을 통해 진행됩니다.</p>
+<ol>
+<li>find(“gwanhyeonkim”) 1차 캐시를 확인하여 없으면 DB를 조회합니다.</li>
+<li>DB조회후 1차캐시에 저장을 시키고 해당 member값을 반환시켜주게 됩니다.</li>
+</ol>
+<h1 id="yeongsogseong-entiti-dongilseong-identifier"><a href="#yeongsogseong-entiti-dongilseong-identifier" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#영속성-엔티티-동일성identifier"></a> 영속성 엔티티 동일성(Identifier)</h1>
+<p>만약에 똑같은 값을 조회한다고 가정하면 영속성 엔티티의 동일성을 보장시켜줍니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Member member1 = em.find(Member.class, "gwanhyeonkim");</span><br><span class="line">Member member2 = em.find(Member.class, "gwanhyeonkim");</span><br><span class="line"></span><br><span class="line">(a == b) <span class="comment">// 동일성이 같습니다. true</span></span><br></pre></td></tr></table></figure>
+<p>1차 캐시로 반복 가능한 읽기(REPEATABLE READ) 등급의 트랜잭션 격리 수준을 데이터베이스가 아닌 애플리케이션 차원에서 제공됩니다. 즉, 같은 트랜잭션내에 동일성이 보장되면 true를 리턴한다고 할 수 있습니다.</p>
+<blockquote>
+<p>데이터베이스에 언제 Insert를 진행할까요?</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">transaction.commit(); <span class="comment">// 해당 시점에 트랜잭션 커밋을 진행하면서 insert값들을 실제 SQL쿼리를 날리게 됩니다. 즉, 쓰기지연이 일어나는 시점이며 flush SQL이 같이 동작됩니다.</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>em.persist()</p>
+</blockquote>
+<p>persist가 동작하면 INSERT SQL과 1차캐시에 저장을 동시에 진행합니다. INSERT SQL생성시 쓰기 지연 SQL저장소에 저장시키고 1차 캐시에서 해당 캐시가 있는지 없는지를 확인하고 있으면 해당 값을 캐시에서 가져오고<br>
+그게 아니라면 영속성컨텍스트가 DB에 접근하여 SQL 쓰기지연저장소에 저장된 쿼리를 날리게 됩니다. transaction.commit()으로 쓰기지연이 동작하고 flush sql이 함께 동작됩니다. 이때 해당 실제 DB에 값을 넣게 됩니다.</p>
+<p>이것을 쓰는 이유는 무엇일까요? 버퍼링, 즉, 캐싱개념이 생기게 됩니다.</p>
+<h1 id="entiti-sujeong"><a href="#entiti-sujeong" class="header-anchor">7. </a><a class="markdownIt-Anchor" href="#엔티티-수정"></a> 엔티티 수정</h1>
+<p>영속성 엔티티를 조회후에 데이터를 수정한다면 어떻게 처리가 될까요?</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//영속 엔티티 조회</span></span><br><span class="line">Member member1 = em.find(Member.class, "gwanhyeonkim");</span><br><span class="line"></span><br><span class="line"><span class="comment">//영속 엔티티 데이터 수정</span></span><br><span class="line">member1.setUsername(<span class="string">"kgh"</span>);</span><br><span class="line">member1.setAge(<span class="string">"20"</span>);</span><br><span class="line"></span><br><span class="line">transcation.commit(); <span class="comment">// 트랜잭션을 커밋하는 시점입니다.</span></span><br></pre></td></tr></table></figure>
+<p>데이터수정시 em.persist를 넣을 필요는 없게 됩니다. 이미 영속성컨텍스트에 관리되어지고 있기 때문입니다.</p>
+<h1 id="byeongyeong-gamji-dirty-checking"><a href="#byeongyeong-gamji-dirty-checking" class="header-anchor">8. </a><a class="markdownIt-Anchor" href="#변경-감지dirty-checking"></a> 변경 감지(Dirty Checking)</h1>
+<p>변경 감지 순서에 대해서 알아보겠습니다.</p>
+<p>영속성 컨텍스트(entity manager)안에서 transcation.commit()이 작동되게 되면 어떻게 처리될까요?</p>
+<ol>
+<li>flush()함수가 동작됩니다.</li>
+<li>엔티티 스냅샷(최초 시점에만)과 비교되어 집니다.</li>
+<li>쓰기지연 저장소에 UPDATE SQL이 생성됩니다.</li>
+<li>다시 flush()를 수행하면서 SQL UPDATE구문이 DB에 날리게 되면서 이때, commit이 진행됩니다.</li>
+</ol>
+<h1 id="entiti-sagje"><a href="#entiti-sagje" class="header-anchor">9. </a><a class="markdownIt-Anchor" href="#엔티티-삭제"></a> 엔티티 삭제</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Member member1 = em.find(Member.class, "gwanhyeonkim");</span><br><span class="line">em.remove(member1);</span><br></pre></td></tr></table></figure>
+<p>삭제 대상 엔티티를 조회하고 엔티티를 삭제하는 구문입니다.</p>
+<h1 id="peulreosi-flush"><a href="#peulreosi-flush" class="header-anchor">10. </a><a class="markdownIt-Anchor" href="#플러시flush"></a> 플러시(Flush)</h1>
+<p>영속성 컨텍스트의 변경 내용을 데이터베이스에 반영하는것을 뜻합니다. 즉, 지연 sql 스냅샷과 쓰기지연 SQL 저장소에 저장해놓은 쿼리를 데이터베이스에 반영하는 과정이라고 생각하시면 됩니다.</p>
+<ol>
+<li>변경 감지(dirty checking)를 진행합니다.</li>
+<li>수정된 엔티티 쓰기 지연 SQL 저장소에 등록됩니다.</li>
+<li>쓰기 지연 SQL 저장소의 쿼리를 데이터베이스에 전송합니다. (등록, 수정, 삭제)</li>
+</ol>
+<h1 id="yeongsogseong-keontegseuteureul-peulreosireul-eoddeohge-halggayo"><a href="#yeongsogseong-keontegseuteureul-peulreosireul-eoddeohge-halggayo" class="header-anchor">11. </a><a class="markdownIt-Anchor" href="#영속성-컨텍스트를-플러시를-어떻게-할까요"></a> 영속성 컨텍스트를 플러시를 어떻게 할까요?</h1>
+<ol>
+<li>em.flush()를 직접호출하여 진행합니다. 테스트를 진행할때 이러한 방식으로 새로가동하는것처럼 진행할 수 있습니다.</li>
+<li>트랜잭션 커밋을 진행합니다. 이때 플러시가 자동으로 같이 호출되게 됩니다.</li>
+<li>JPQL쿼리를 실행합니다. 이때 플러시가 자동으로 같이 호출되게 됩니다. JPQL쿼리실행시 1차 캐시가 사라지는것이 아니고 쓰기지연SQL, 변경감지 업데이트 쿼리들이 DB에 반영됩니다.</li>
+</ol>
+<h1 id="jpql-kweori-silhaengsi-peulreosiga-jadongeuro-hoculdoeneun-iyu"><a href="#jpql-kweori-silhaengsi-peulreosiga-jadongeuro-hoculdoeneun-iyu" class="header-anchor">12. </a><a class="markdownIt-Anchor" href="#jpql-쿼리-실행시-플러시가-자동으로-호출되는-이유"></a> JPQL 쿼리 실행시 플러시가 자동으로 호출되는 이유</h1>
+<p>em.persist에 persist를 실행한다고 하였을때 persist 자체만으로 DB에 접근은 하지 못합니다. 그 이유는 JPQL을 날리게 되면 자동으로 flush()를 호출하여 DB를 가져오기때문에 현재 값들을 select해올 값이 없게 됩니다.</p>
+<h1 id="peulreosi-modeu-obsyeon"><a href="#peulreosi-modeu-obsyeon" class="header-anchor">13. </a><a class="markdownIt-Anchor" href="#플러시-모드-옵션"></a> 플러시 모드 옵션</h1>
+<ol>
+<li>FlushModeType.AUTO - 커밋이나 쿼리를 실행할 때 Flush(Default)</li>
+<li>FlushModeType.COMMIT - 커밋할때만 Flush</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">em.setFlushMode(FlushModeType.COMMIT)</span><br></pre></td></tr></table></figure>
+<h1 id="peulreosi-teugjing"><a href="#peulreosi-teugjing" class="header-anchor">14. </a><a class="markdownIt-Anchor" href="#플러시-특징"></a> 플러시 특징</h1>
+<ol>
+<li>영속성 컨텍스트를 비우지 않습니다.</li>
+<li>영속성 컨텍스트의 변경내용을 데이터베이스에 동기화합니다.</li>
+<li>트랜잭션이라는 작업단위가 중요하며 커밋직전에만 동기화를 진행하면 됩니다.</li>
+</ol>
+<h1 id="junyeongsog-sangtae"><a href="#junyeongsog-sangtae" class="header-anchor">15. </a><a class="markdownIt-Anchor" href="#준영속-상태"></a> 준영속 상태</h1>
+<ol>
+<li>영속상태(1차캐시에 저장된 상태)에서 준영속상태를 만드는 상태</li>
+<li>영속상태의 엔티티가 영속성 컨텍스트에서 분리합니다.(detached) - Dirty Checking을 사용하지 못합니다.</li>
+<li>영속성 컨텍스트가 제공하는 기능을 사용하지 못합니다.</li>
+</ol>
+<blockquote>
+<p>준영속 상태로 어떻게 만들 수 있을까?</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">em.detach(entity) 특정 엔티티만 준영속상태로 전환</span><br><span class="line">em.clear(entity) 영속성 컨텍스트를 완전히 초기화</span><br><span class="line">em.close() 영속성 컨텍스트를 종료</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>JPA</category>
+      </categories>
+      <tags>
+        <tag>JPA</tag>
+        <tag>Persistence</tag>
+        <tag>Entity</tag>
+        <tag>Flush</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JPA(Java Persistence API)란?</title>
+    <url>/JPA-20210127-jpa-01-jpa%EB%9E%80/</url>
+    <content><![CDATA[<h1 id="jpa-database-dialect"><a href="#jpa-database-dialect" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#jpa-database-dialect"></a> JPA Database Dialect</h1>
+<p>JPA는 특정 데이터베이스에 종속되지 않으며 각각 데이터베이스가 제공하는 SQL 문법과 함수는 차이가 있습니다.</p>
+<p>가변문자에서 Mysql은 VARCHAR으로 선언되고 Oracle은 VARCHAR2 으로 사용되면서 문법적 차이가 존재합니다. 그리고 문자열을 자르는 함수같은 경우는 SQL 표준은 SUBSTRING(), Oracle은 SUBSTR()로 사용됩니다. 페이징 처리 같은 경우는 MySQL LIMIT을 사용하고 Oracle은 ROWNUM을 사용합니다.<br>
+JPA Database Dialect는 SQL 표준을 지키지 않는 특정 데이터베이스만의 고유한 기능이라고 할 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">H2: org.hibernate.dialect.H2Dialect</span><br><span class="line">Oracle <span class="number">10</span>g: org.hibernate.dialect.Oracle10gDialect</span><br><span class="line">MySQL: org.hibernate.dialect.MySQL5InnoDBDialect</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 hibernate.dialect속성을 지정하여 사용할 수 있습니다. Hibernate는 약 40개 이상의 Dialect를 지원합니다.</p>
+<h1 id="jpa-gudongbangsig"><a href="#jpa-gudongbangsig" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#jpa-구동방식"></a> JPA 구동방식</h1>
+<p>Persistance(영속성)가 Maven(META-INF/persistance.xml), Gradle(application.properties,application.yml) 설정 정보를 조회한후 해당 설정정보로 EntityManagerFactory를 생성하여 EntityManagerFactory가 EntityManager를 생성하게 됩니다.</p>
+<blockquote>
+<p>주의 사항</p>
+</blockquote>
+<ol>
+<li>
+<p>EntitiyManagerFactory:<br>
+하나만 생성하여 어플리케이션 전체에 공유되는 방식을 사용합니다.</p>
+</li>
+<li>
+<p>EntityManager:<br>
+쓰레드간에 공유를 하지 못합니다. 따라서, EntitiyManager를 선언하고 추후에 따로 해지시켜주는 방식으로 구동되어야합니다.</p>
+</li>
+<li>
+<p>JPA는 모든 데이터 변경은 트랜잭션안에서 실행됩니다. 따라서, 모든 데이터변경시에  트랜잭션이 실행되어 commit과 rollback과정을 처리합니다.</p>
+</li>
+</ol>
+<h1 id="entity-id"><a href="#entity-id" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#entity-id"></a> @Entity, @Id</h1>
+<p>@Entity: Entity어노테이션은 JPA가 관리하는 객체로 선언해줍니다.<br>
+@Id: Id어노테이션은 데이터베이스 PK와 매핑됩니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String memberName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="jpql-java-persistence-query-language"><a href="#jpql-java-persistence-query-language" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#jpqljava-persistence-query-language"></a> JPQL(Java Persistence Query Language)</h1>
+<p>JPA를 사용하면 엔티티 객체를 중심으로 개발이 진행되고 만약에 검색쿼리를 진행한다고 할대, 테이블이 아닌 엔티티객체를 대상으로 검색을 진행하게 됩니다. 하지만, 모든DB데이터를 객체로 변환해서 검색하는것은 불가능합니다. 따라서, 필요한 데이터만 가져오기위해 검색조건이 포함된 SQL이 필요로 되어지는데 이때 JPQL을 사용하게 됩니다.</p>
+<p>JPQL은 SQL을 추상화하여 JPQL이라는 객체지향 쿼리언어를 제공하는것을 말합니다. SQL문법과도 매우 유사하며 SELECT,FROM,WHERE,GROUP BY, HAVING, JOIN과 같은 문법도 지원을 해줍니다.</p>
+<blockquote>
+<p>SQL VS JPQL</p>
+</blockquote>
+<p>JPQL은 엔티티 객체를 대상으로 쿼리문을 날리고, SQL은 데이터베이스 테이블 대상으로 쿼리를 날립니다.</p>
+<blockquote>
+<p>정리</p>
+</blockquote>
+<p>테이블이 아닌 객체를 대상으로 검색하는 객체지향쿼리를 일컫는말이고 SQL을 추상화하였기때문에 특정 SQL에 의존하지 않는다는 장점을 가지고 있습니다. JPQL은 객체지향 SQL이라고 말할 수 있습니다.</p>
+]]></content>
+      <categories>
+        <category>JPA</category>
+      </categories>
+      <tags>
+        <tag>JPA</tag>
+        <tag>JPQL</tag>
       </tags>
   </entry>
   <entry>
