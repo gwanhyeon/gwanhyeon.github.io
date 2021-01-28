@@ -1,6 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Netwrok 웹 API 디자인 REST(Representational State Transfer) API</title>
+    <url>/Network-20210128-network-08-rest-api/</url>
+    <content><![CDATA[<h1 id="web-api-dijain"><a href="#web-api-dijain" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#웹-api-디자인"></a> 웹 API 디자인</h1>
+<p>대부분 최신 웹 어플리케이션은 클라이언트가 애플래케이션과 상호작용하는 데 사용할 수 있는 API를 표시합니다.</p>
+<blockquote>
+<p>웹 API의 특성 2가지</p>
+</blockquote>
+<ol>
+<li>
+<p>플랫폼 독립성<br>
+모든 클라이언트는 내부에서 API구현하는 방법에 관계없이 API를 호출할 수 있어야합니다. 그러기위해서는 표준 프로토콜을 사용해야하고,클라이언트가 및 웹서비스가 교환할 데이터 형식에 동의할 수 있는 매커니즘을 가지고 있어야합니다.</p>
+</li>
+<li>
+<p>서비스진화<br>
+Web API는 클라이언트 애플리케이션과 독립적으로 기능을 진화시키고 추가 할 수 있어야합니다. API가 진화해도 기존클라이언트는 수정없이 작동되야하고 해당 기능을 완전히 이용할 수 있도록 검색 가능해야합니다.</p>
+</li>
+</ol>
+<h1 id="rest-sogae"><a href="#rest-sogae" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#rest-소개"></a> REST 소개</h1>
+<p>2000년에 Roy Fielding은 웹 서비스를 디자인하는 아키텍처 접근 방식으로 REST(Representational State Transfer)를 제안했습니다. REST는 하이퍼미디어 기반 분산 시스템을 구축하기 위한 아키텍처 스타일입니다. REST는 어떤 기본 프로토콜과도 독립적이며 HTTP에 연결될 필요가 없습니다. 그러나 대부분의 일반적인 REST 구현에서 애플리케이션 프로토콜로 HTTP를 사용하고, 이 지침에서는 HTTP를 위한 REST API 디자인에 중점을 둡니다.</p>
+<blockquote>
+<p>REST가 HTTP보다 우수한 장점</p>
+</blockquote>
+<ol>
+<li>개방형 표준<br>
+API또는 클라이언트 애플리케이션의 구현이 특정 구현에 바인딩되지 않습니다.</li>
+</ol>
+<blockquote>
+<p>Restful API 디자인 원칙</p>
+</blockquote>
+<ol>
+<li>
+<p>리소스를 중심으로 디자인되며 클라이언트에서 액세스 할 수 있는 모든 종류의 개체, 데이터 또는 서비스가 리소스에 포함됩니다.</p>
+</li>
+<li>
+<p>리소스마다 해당 리소스를 고유하게 식별하는 URI식별자 존재</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">고객 주문 URI</span><br><span class="line">https:<span class="comment">//adventure-works.com/orders/1</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>클라이언트가 리소스의 표현을 교환하여 서비스와 상호작용합니다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">"orderId"</span>:<span class="number">1</span>,<span class="string">"orderValue"</span>:<span class="number">99.90</span>,<span class="string">"productId"</span>:<span class="number">1</span>,<span class="string">"quantity"</span>:<span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>REST API는 균일한 인터페이스를 사용하므로 클라이언트와 서비스 구현을 분리하는데 도움이 됩니다.</li>
+</ol>
+<p>HTTP기반으로 하는 REST API경우 리소스에 표준 HTTP 동사 수행 작업을 사용하는것이 균일한 인터페이스에 포함.</p>
+<p>Ex) GET,POST,PUT,PATCH,DELETE</p>
+<ol start="5">
+<li>
+<p>REST API는 상태 비저장 요청 모델을 사용합니다.<br>
+독립적이며 임의순서로 발생할 수 있으므로 요청 사이에 일시적인 상태정보를 유지할 수 없습니다. 그리고 클라이언트 서버 사이에서 연결성을 유지할 필요가 없습니다. 즉, Connectionsless, Stateful, Stateless의 특성을 가지고 있습니다.</p>
+</li>
+<li>
+<p>REST API는 표현에 포함된 하이퍼미디어 링크에 따라 구동됩니다.</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"orderID"</span>:<span class="number">3</span>,</span><br><span class="line">    <span class="string">"productID"</span>:<span class="number">2</span>,</span><br><span class="line">    <span class="string">"quantity"</span>:<span class="number">4</span>,</span><br><span class="line">    <span class="string">"orderValue"</span>:<span class="number">16.60</span>,</span><br><span class="line">    <span class="string">"links"</span>: [</span><br><span class="line">        &#123;<span class="string">"rel"</span>:<span class="string">"product"</span>,<span class="string">"href"</span>:<span class="string">"https://adventure-works.com/customers/3"</span>, <span class="string">"action"</span>:<span class="string">"GET"</span> &#125;,</span><br><span class="line">        &#123;<span class="string">"rel"</span>:<span class="string">"product"</span>,<span class="string">"href"</span>:<span class="string">"https://adventure-works.com/customers/3"</span>, <span class="string">"action"</span>:<span class="string">"PUT"</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2008년에 Leonard Richardson은 Web API에 대한 다음과 같은 모델 제안</p>
+</blockquote>
+<ul>
+<li>수준 0: 한 URI를 정의하고 모든 작업은 이 URI에 대한 POST 요청을 통해 진행됩니다.</li>
+<li>수준 1: 개별 리소스에 대한 별도의 URI를 만듭니다.</li>
+<li>수준 2: HTTP 메서드를 사용하여 리소스에 대한 작업을 정의합니다.</li>
+<li>수준 3: 하이퍼미디어(HATEOAS) 를 사용합니다.</li>
+</ul>
+<h1 id="risoseureul-jungsimeuro-api-guseong"><a href="#risoseureul-jungsimeuro-api-guseong" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#리소스를-중심으로-api-구성"></a> 리소스를 중심으로 API 구성</h1>
+<p>웹 API가 표시하는 비즈니스 Entity 에 집중해야합니다.</p>
+<p>전자상거래 시스템에서는 기본 엔티티가 고객과 주문인데 주문 정보가 포함된 HTTP POST요청을 전송하여 주문만들기를 진행할 수 있습니다. 이때 가장 중요한점은 리소스 URI는 동사(리소스에 대한작업)이 아닌 명사(리소스)기반으로 설계되어야합니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">https:<span class="comment">//adventure-works.com/orders // Good</span></span><br><span class="line">https:<span class="comment">//adventure-works.com/create-order // Avoid</span></span><br></pre></td></tr></table></figure>
+<p>리소스는 단일 물리적 항목을 기반으로 구현할 필요가 없습니다. 내부적으로 관계형 DB로 구현할 수 있지만 클라이언트에 대해서는 단일 엔티티로 표시됩니다. 내부구조를 반영하는 API를 설계하면 안됩니다. 즉, 클라이언트 내부구현에 노출되면 안됩니다.</p>
+<p>엔티티는 종종 컬렉션(주문, 고객)으로 그룹화 되는데 컬렉션은 고유한 URI가 있어야합니다.</p>
+<blockquote>
+<p>주문 URI 주문 컬렉션</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">컬렉션 URI에 HTTP GET 요청을 보내면 컬렉션에 있는 항목 목록을 검색합니다.</span><br><span class="line">https:<span class="comment">//adventure-works.com/orders</span></span><br></pre></td></tr></table></figure>
+<p>URI에 일관적인 명명 규칙하는데 컬렉션을 참조하는 URI에 대해 복수 명사를 사용할 수 있습니다. 컬렉션 및 항목에 대한 URI를 계층 구조로 구성해야합니다.</p>
+<p>예를 들어 /customers는 고객 컬렉션의 경로이고, /customers/5는 ID가 5인 고객의 경로입니다. 이 접근 방식을 사용하면 웹 API를 직관적으로 유지할 수 있습니다. 또한 많은 Web API 프레임워크는 매개 변수가 있는 URI 경로를 기반으로 라우팅 경로 /customers/{id}에 대한 경로를 정의할 수 있습니다.</p>
+<p>서로 다른 리소스 형식과 이러한 연결을 표시하는 방법 사이의 관계도 고려해야 합니다.<br>
+예를 들어 /customers/5/orders는 고객 5에 대한 모든 주문을 나타낼 수 있습니다. 반대 방향으로 이동하여 /orders/99/customer 같은 URI를 사용하여 주문에서 고객으로의 연결을 표시할 수도 있습니다. 단, 모델을 광범위하게 확대시 구현이 어려울 수 있습니다.</p>
+<blockquote>
+<p>구현이 어려운 경우</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">/customers/<span class="number">1</span>/orders/<span class="number">99</span>/products</span><br></pre></td></tr></table></figure>
+<p>처럼 클라이언트가 여러 관계 수준을 탐색할 수 있는 URI를 제공하고 싶을 수 있습니다. 그러나 이 수준의 복잡성은 유지하기 어려울 수 있으며 나중에 리소스 사이의 관계가 변하면 유연성이 떨어집니다.<br>
+위와같이 설계시 모든 웹 요청이 웹 서버의 부하를 높인다는 점입니다. 요청이 많을수록 부하가 커집니다. 따라서 다수의 작은 리소스를 표시하는 복잡한 Web API를 피해야합니다.</p>
+<blockquote>
+<p>그러면 어떤식으로 설계해야할까요?</p>
+</blockquote>
+<p>이전 쿼리를 /customers/1/orders URI로 바꿔서 고객 1의 모든 주문을 찾은 후 /orders/99/products로 바꿔서 이 주문의 제품을 찾을 수 있습니다.</p>
+<p>그리고 Web API와 기본 데이터 원본 사이에 종속성이 발생하지 않도록 해야 합니다. 예를 들어 데이터가 관계형 데이터베이스에 저장되는 경우 Web API는 각 테이블을 리소스 컬렉션으로 표시할 필요가 없습니다.</p>
+<p>마지막으로, 웹 API에 의해 구현된 일부 작업을 특정 리소스에 매핑하지 못할 수 있습니다. HTTP GET 요청을 통해 기능을 호출하고 결과를 HTTP 응답 메시지로 반환하는 리소스가 아닐 수 있습니다.</p>
+<p>예를 들어 더하기 및 빼기 같은 단순한 계산기 작업을 구현하는 Web API 리소스로 표시하고 쿼리 문자열을 사용하여 필요한 매개 변수를 지정하는 URI설계 할 수 있습니다.<br>
+예를 들어, URI /add? operand1 = 99&amp;99&amp;operand2 = 1 에 대 한 GET 요청은 100 값을 포함 하는 본문이 포함 된 응답 메시지를 반환 합니다. 그러나 이러한 형식의 URI는 제한적으로만 사용해야 합니다.</p>
+<h1 id="http-meseodeureul-gijuneuro-jageob-jeongyi"><a href="#http-meseodeureul-gijuneuro-jageob-jeongyi" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#http-메서드를-기준으로-작업-정의"></a> HTTP 메서드를 기준으로 작업 정의</h1>
+<blockquote>
+<p>HTTP 메서드 정의</p>
+</blockquote>
+<ul>
+<li><code>GET</code> 은 지정된 URI에서 리소스의 표현을 검색합니다. 응답 메시지의 본문은 요청된 리소스의 세부 정보를 포함하고 있습니다.</li>
+<li><code>POST</code> 는 지정된 URI에 새 리소스를 만듭니다. 요청 메시지의 본문은 새 리소스의 세부 정보를 제공합니다. 참고로 POST를 사용하여 실제로 리소스를 만들지 않는 작업을 트리거할 수도 있습니다.</li>
+<li><code>PUT</code> 은 지정된 URI에 리소스를 만들거나 대체합니다. 요청 메시지의 본문은 만들 또는 업데이트할 리소스를 지정합니다.</li>
+<li><code>PATCH</code> 는 리소스의 부분 업데이트를 수행합니다. 요청 본문은 리소스에 적용할 변경 내용을 지정합니다.</li>
+<li><code>DELETE</code> 는 지정된 URI의 리소스를 제거합니다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>리소스</th>
+<th>POST</th>
+<th>GET</th>
+<th>PUT</th>
+<th>DELETE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/customers</td>
+<td>새 고객 만들기</td>
+<td>모든 고객 검색</td>
+<td>고객 대량 업데이트</td>
+<td>모든 고객 제거</td>
+</tr>
+<tr>
+<td>/customers/1</td>
+<td>오류</td>
+<td>고객 1에 대한 세부 정보 검색</td>
+<td>고객 1이 있는 경우</td>
+<td>고객 1의 세부 정보 업데이트</td>
+</tr>
+<tr>
+<td>/customers/1/orders</td>
+<td>고객 1에 대한 새 주문 만들기</td>
+<td>고객 1에 대한 모든 주문 검색</td>
+<td>고객 1의 주문 대량 업데이트</td>
+<td>고객 1의 모든 주문 제거</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>POST, PUT 및 PATCH 차이점</p>
+</blockquote>
+<ul>
+<li>
+<p>POST 요청은 리소스를 만듭니다. 서버는 새 리소스에 대한 URI를 할당하고 클라이언트에 해당 URI를 반환합니다. REST 모델에서는 컬렉션에 POST 요청을 자주 적용합니다. 즉, 프로세스 처리에 사용됩니다.</p>
+</li>
+<li>
+<p>PUT 요청은 리소스를 만들거나 또는 기존 리소스를 업데이트합니다. 클라이언트는 리소스의 URI를 지정합니다. 요청 본문에는 리소스의 완전한 표현이 포함됩니다. 이 URI를 사용하는 리소스가 이미 있으면 리소스가 대체됩니다. 아직 없고 서버에서 리소스 만들기를 지원하는 경우 새 리소스가 생성됩니다.</p>
+</li>
+</ul>
+<blockquote>
+<p>PUT사용시 주의할점: PUT 요청은 idempotent(멱등성)이여야 합니다. 클라이언트가 동일한 PUT 요청을 여러 번 제출하는 경우 그 결과가 항상 같아야 합니다(같은 값을 사용하여 같은 리소스가 수정)</p>
+</blockquote>
+<ul>
+<li>PATCH 요청은 기존 리소스에 부분 업데이트를 수행합니다. 클라이언트는 리소스의 URI를 지정합니다. 요청 본문은 리소스에 적용할 변경 내용을 지정합니다. 즉, 리소스 부분변경을 업데이트합니다.</li>
+</ul>
+<blockquote>
+<p>멱등성의 개념</p>
+</blockquote>
+<p>멱등(Idempotent Methods) 여러번 호출해도 결과는 같아야합니다. PUT을 호출하여 서버응답 호출을 통하여 재시도 할지 안할지를 확인할 수 있습니다. 즉, 자동 복구 매커니즘에서 많이 활용됩니다.</p>
+<h1 id="midieo-yuhyeong"><a href="#midieo-yuhyeong" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#미디어-유형"></a> 미디어 유형</h1>
+<p>HTTP 프로토콜에서 형식은 MIME 유형이라고도 하는 미디어 유형을 사용하여 지정됩니다. 보통 Web API는 JSON(미디어 유형 = 애플리케이션/json) 및 XML(미디어 유형 = 애플리케이션/xml)을 지원합니다. 그리고 요청과 응답의 경우 Content-Type 헤더는 표현 형식을 지정합니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">JSON 형식</span><br><span class="line"></span><br><span class="line">POST https:<span class="comment">//adventure-works.com/orders HTTP/1.1</span></span><br><span class="line">Content-Type: application/json; charset=utf-<span class="number">8</span></span><br><span class="line">Content-Length: <span class="number">57</span></span><br><span class="line">&#123;<span class="string">"Id"</span>:<span class="number">1</span>,<span class="string">"Name"</span>:<span class="string">"Gizmo"</span>,<span class="string">"Category"</span>:<span class="string">"Widgets"</span>,<span class="string">"Price"</span>:<span class="number">1.99</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>만약에, 서버에서 미디어 유형을 지원하지 않으면 HTTP 상태 코드 415(지원되지 않는 미디어 유형)를 반환해야 합니다.</p>
+<blockquote>
+<p>클라이언트 요청</p>
+</blockquote>
+<p>클라이언트 요청에는 클라이언트가 응답 메시지에서 서버로부터 받는 미디어 유형 목록을 포함하는 Accept 헤더가 포함될 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">GET https:<span class="comment">//adventure-works.com/orders/2 HTTP/1.1</span></span><br><span class="line">Accept: application/json</span><br></pre></td></tr></table></figure>
+<h1 id="get-meseodeu"><a href="#get-meseodeu" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#get-메서드"></a> GET 메서드</h1>
+<p>성공적인 GET 메서드는 일반적으로 HTTP 상태 코드 200(정상)를 반환합니다. 리소스를 찾을 수 없는 경우 404(Not Found)반환합니다.</p>
+<h1 id="post-meseodeu"><a href="#post-meseodeu" class="header-anchor">7. </a><a class="markdownIt-Anchor" href="#post-메서드"></a> POST 메서드</h1>
+<p>POST 메서드는 새 리소스를 만드는 경우 HTTP 상태 코드 201(만들어짐)을 반환합니다. 새 리소스의 URI는 응답의 Location 헤더에 포함됩니다. 응답 본문은 리소스의 표현을 포함합니다.</p>
+<p>만약에 새 리소스를 만들지 않는 경우 메서드는 HTTP 상태 코드 200을 반환하고 작업의 결과를 응답 본문에 포함할 수 있습니다. 또는 반환할 결과가 없으면 메서드가 응답 본문 없이 HTTP 상태 코드 204(컨텐츠 X) 를 반환할 수 있습니다.</p>
+<h1 id="putmeseodeu"><a href="#putmeseodeu" class="header-anchor">8. </a><a class="markdownIt-Anchor" href="#put메서드"></a> PUT메서드</h1>
+<p>PUT 메서드는 POST 메서드와 마찬가지로 새 리소스를 만드는 경우 HTTP 상태 코드 201(만들어짐)을 반환합니다. 이 메서드는 기존 리소스를 업데이트할 경우 200(정상) 또는 204(내용 없음)를 반환합니다. 상황에 따라 기존 리소스를 업데이트할 수 없는 경우도 있습니다.</p>
+<h1 id="patch-meseodeu"><a href="#patch-meseodeu" class="header-anchor">9. </a><a class="markdownIt-Anchor" href="#patch-메서드"></a> PATCH 메서드</h1>
+<p>클라이언트는 PATCH 요청을 사용하여 업데이트를 패치 문서 의 형태로 기존 리소스에 보냅니다. 서버는 패치 문서를 처리하여 업데이트를 수행합니다. 패치 문서는 리소스 전체가 아니라 적용할 변경 내용만 설명합니다.  즉, 부분변경만 진행합니다.</p>
+<blockquote>
+<p>두 가지 주요 JSON 기반 패치 형식으로 JSON 패치 및 JSON 병합 패치</p>
+</blockquote>
+<p>JSON 병합 패치는 비교적 간단합니다. 패치 문서는 원래 JSON 리소스와 동일한 구조를 갖지만 변경 또는 추가할 필드의 하위 집합만 포함하고 있습니다. 또한 패치 문서에서 필드 값에 대해 null을 지정하여 필드를 삭제할 수 있습니다.</p>
+<p><em>JSON 기반 패치</em></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"gizmo"</span>,</span><br><span class="line">    <span class="string">"category"</span>:<span class="string">"widgets"</span>,</span><br><span class="line">    <span class="string">"color"</span>:<span class="string">"blue"</span>,</span><br><span class="line">    <span class="string">"price"</span>:<span class="number">10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>JSON 병합패치</em></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;price&quot;:12,</span><br><span class="line">    &quot;color&quot;:null,</span><br><span class="line">    &quot;size&quot;:&quot;small&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>결론적으로 원래 리소스가 명시적 null 값을 포함할 수 있으면 패치 문서에서 null이 갖는 특별한 의미 때문에 병합 패치가 적합하지 않습니다. 또한 패치 문서는 서버에서 업데이트를 적용할 순서를 지정하지 않습니다. JSON 패치의 미디어 유형은 application/json-patch+json입니다.</p>
+<blockquote>
+<p>HTTP 상태 코드와 함께 PATCH 요청을 처리할 때 발생할 수 있는 몇 가지 일반적인 오류 조건</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>오류조건</th>
+<th>HTTP 상태 코드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>지원되지 않는 패치 문서 형식입니다.</td>
+<td>415(지원되지 않는 미디어 형식)</td>
+</tr>
+<tr>
+<td>패치 문서의 형식이 잘못되었습니다.</td>
+<td>400(잘못된 요청)</td>
+</tr>
+<tr>
+<td>패치 문서가 유효하지만 현재 상태에서는 변경 내용을 리소스에 적용할 수 없습니다.</td>
+<td>409(충돌)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="delete-meseodeu"><a href="#delete-meseodeu" class="header-anchor">10. </a><a class="markdownIt-Anchor" href="#delete-메서드"></a> DELETE 메서드</h1>
+<p>삭제 작업이 성공하면 웹 서버는 프로세스가 성공적으로 처리되었지만 응답 본문에 추가 정보가 포함되지 않았음을 나타내는 HTTP 204 상태 코드로 응답해야 합니다. 리소스가 없는 경우 웹 서버는 HTTP 404(찾을 수 없음)를 반환할 수 있습니다.</p>
+<h1 id="bidonggi-jageob"><a href="#bidonggi-jageob" class="header-anchor">11. </a><a class="markdownIt-Anchor" href="#비동기-작업"></a> 비동기 작업</h1>
+<p>경우에 따라 POST, PUT, PATCH 또는 DELETE 작업을 완료 하는 데 시간이 오래 걸리는 처리가 필요할 수 있습니다. 이 경우 요청 처리가 수락되었지만 아직 완료되지 않았음을 나타내는 HTTP 상태 코드 202(수락됨)를 반환합니다.</p>
+<p>즉 ,클라이언트가 상태 엔드포인트를 폴링하여 상태를 모니터링할 수 있도록 비동기 요청의 상태를 반환하는 엔드포인트를 표시해야합니다. 202 응답의 Location 헤더에 상태 엔드포인트의 URI를 포함합니다.</p>
+<blockquote>
+<p>엔드포인트 표시 예시</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">202</span> Accepted</span><br><span class="line">Location: /api/status/<span class="number">12345</span></span><br></pre></td></tr></table></figure>
+<p>클라이언트가 이 엔드포인트에 GET 요청을 보내는 경우 응답에 요청의 현재 상태가 포함되어야 합니다. 필요에 따라 예상 완료 시간 또는 작업 취소 링크를 포함하는 경우는 어떻게 표현할 수 있을까요?</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">Content-Type: application/json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"status"</span>:<span class="string">"In progress"</span>,</span><br><span class="line">    <span class="string">"link"</span>: &#123; <span class="string">"rel"</span>:<span class="string">"cancel"</span>, <span class="string">"method"</span>:<span class="string">"delete"</span>, <span class="string">"href"</span>:<span class="string">"/api/status/12345"</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>비동기 작업에서 새 리소스를 만드는 경우 작업 완료 후 상태 엔드포인트에서 상태 코드 303(다른 항목 보기)을 반환해야 합니다. 303 응답에 새 리소스의 URI를 제공하는 Location 헤더를 포함합니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">303</span> See Other</span><br><span class="line">Location: /api/orders/<span class="number">12345</span></span><br></pre></td></tr></table></figure>
+<h1 id="deiteo-pilteoring-mic-peijineisyeon"><a href="#deiteo-pilteoring-mic-peijineisyeon" class="header-anchor">12. </a><a class="markdownIt-Anchor" href="#데이터-필터링-및-페이지네이션"></a> 데이터 필터링 및 페이지네이션</h1>
+<p>클라이언트 애플리케이션에서 비용이 특정 값을 초과하는 모든 주문을 찾아야 한다고 가정해 봅시다.</p>
+<p>클라이언트 응용 프로그램은 /orders URI에서 모든 주문을 검색한 후 클라이언트 쪽에서 이러한 주문을 필터링할 것입니다. 이 프로세스는 매우 비효율적입니다. Web API를 호스팅하는 서버의 네트워크 대역폭 및 처리 성능이 낭비됩니다.</p>
+<blockquote>
+<p>동적 쿼리 및 페이지네이션</p>
+</blockquote>
+<p>이 방법 대신, /orders?minCost=n 처럼 API가 URI의 쿼리 문자열에서 필터 전달을 허용할 수 있습니다. 그러면 Web API가 쿼리 문자열의 minCost 매개 변수를 구문 분석 및 처리하고 서버 쪽에서 필터링된 결과를 반환합니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">/orders?limit=<span class="number">25</span>&amp;offset=<span class="number">50</span></span><br></pre></td></tr></table></figure>
+<p>다음과 같이 오프셋을 지정할 수 있습니다.</p>
+<blockquote>
+<p>서비스 거부 공격을 방지하기 위해 반환되는 항목 수를 제한하는 방안</p>
+</blockquote>
+<p>필드 이름을 /orders?sort=ProductID 같은 값으로 가져오는 정렬 매개 변수를 제공하여 데이터를 가져올 때 데이터를 정렬하는 비슷한 전략을 처리할 수 있습니다.</p>
+<p>But, 쿼리 문자열 매개 변수는 여러 캐시 구현에서 캐시된 데이터의 키로 사용되는 리소스 식별자의 일부를 구성하기 때문에 이 접근 방식은 캐싱에 나쁜 영향을 끼칩니다.</p>
+<h1 id="daeyongryang-ijin-risoseue-daehan-bubun-eungdab-jiweon"><a href="#daeyongryang-ijin-risoseue-daehan-bubun-eungdab-jiweon" class="header-anchor">13. </a><a class="markdownIt-Anchor" href="#대용량-이진-리소스에-대한-부분-응답-지원"></a> 대용량 이진 리소스에 대한 부분 응답 지원</h1>
+<p>응답 시간을 개선하려면 이러한 리소스를 청크로 검색할 수 있게 하는 방안을 고안해야합니다.</p>
+<blockquote>
+<p>예시</p>
+</blockquote>
+<p>Web API가 큰 리소스의 GET 요청에 대해 Accept-Ranges 헤더를 지원해야 합니다. 이 헤더는 GET 작업이 부분 요청을 지원한다는 것을 나타냅니다. 클라이언트 애플리케이션은 바이트 범위로 지정된 리소스 하위 집합을 반환하는 GET을 반환할 수 있습니다.</p>
+<blockquote>
+<p>HEAD</p>
+</blockquote>
+<p>HEAD 요청은 리소스에 대해 설명하는 HTTP 헤더만 반환하고 메시지 본문이 비어 있다는 점을 제외하면 GET 요청과 비슷합니다.</p>
+<ul>
+<li>요청 메시지</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HEAD https:<span class="comment">//adventure-works.com/products/10?fields=productImage HTTP/1.1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>응답메시지</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line"></span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Type: image/jpeg</span><br><span class="line">Content-Length: <span class="number">4580</span></span><br></pre></td></tr></table></figure>
+<p>Content-Length 헤더는 총 리소스 크기를 제공하고, Accept-Ranges 헤더는 해당 GET 작업이 일부 결과를 지원합니다. 첫 번째 요청은 범위 헤더를 사용하여 처음 2500 바이트를 가져옵니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">GET https:<span class="comment">//adventure-works.com/products/10?fields=productImage HTTP/1.1</span></span><br><span class="line">Range: bytes=<span class="number">0</span>-<span class="number">2499</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>일부범위만 Content-Range에 넣는방법</p>
+</blockquote>
+<p>메시지 본문에 반환된 실제 바이트 수(리소스의 크기가 아닌)를 지정하며, Content-Range 헤더는 해당 바이트가 리소스의 어느 부분인지(4580 바이트 중 바이트 0-2499)를 나타냅니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">206</span> Partial Content</span><br><span class="line"></span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Type: image/jpeg</span><br><span class="line">Content-Length: <span class="number">2500</span></span><br><span class="line">Content-Range: bytes <span class="number">0</span>-<span class="number">2499</span>/<span class="number">4580</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Reference</p>
+</blockquote>
+<p><a href="https://docs.microsoft.com/ko-kr/azure/architecture/best-practices/api-design" target="_blank" rel="noopener">https://docs.microsoft.com/ko-kr/azure/architecture/best-practices/api-design</a></p>
+]]></content>
+      <categories>
+        <category>Netwrok</category>
+      </categories>
+      <tags>
+        <tag>Network</tag>
+        <tag>REST</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Effective Java 3/E Item 55 옵셔널반환은 신중히 하라</title>
     <url>/EffectiveJava-20210126-%EC%95%84%EC%9D%B4%ED%85%9C55-%EC%98%B5%EC%85%94%EB%84%90%EB%B0%98%ED%99%98%EC%9D%80-%EC%8B%A0%EC%A4%91%ED%9E%88%ED%95%98%EB%9D%BC/</url>
     <content><![CDATA[<h1 id="obsyeoneolbanhwaneun-sinjunghi-hara"><a href="#obsyeoneolbanhwaneun-sinjunghi-hara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#옵셔널반환은-신중히-하라"></a> 옵셔널반환은 신중히 하라</h1>
@@ -840,8 +1118,8 @@ HTTP/3, HTTP/1.1을 주로사용하고 하고 점차적으로  HTTP/2, HTTP/3의
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -1215,8 +1493,8 @@ Class Level Mapping은 모든 메서드에 적용하는 경우 사용합니다.<
       </categories>
       <tags>
         <tag>Spring</tag>
-        <tag>DI</tag>
         <tag>Annotation</tag>
+        <tag>DI</tag>
         <tag>Bean</tag>
       </tags>
   </entry>
@@ -1447,8 +1725,8 @@ matrix[i][j] is ‘0’ or ‘1’.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>DP</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -1530,8 +1808,8 @@ All the integers in s are in the range [1, 300].</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>DFS</tag>
+        <tag>릿코드</tag>
         <tag>문자열</tag>
       </tags>
   </entry>
@@ -1982,9 +2260,9 @@ DFS의 <em>Basement조건</em>은 digits 길이만큼 선택될 수 있기때문
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
-        <tag>완전탐색</tag>
         <tag>DFS</tag>
+        <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -2024,8 +2302,8 @@ Output: true</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -2556,10 +2834,10 @@ Output: -2147483647</p>
         <category>leetcode</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
+        <tag>DP</tag>
         <tag>릿코드</tag>
         <tag>부분집합의 합</tag>
-        <tag>DP</tag>
-        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -2965,10 +3243,10 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>구현</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -3011,9 +3289,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -3110,9 +3388,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -3161,9 +3439,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -3262,8 +3540,8 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -3317,8 +3595,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -3366,8 +3644,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -3516,8 +3794,8 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -3952,8 +4230,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>알고리즘</tag>
+        <tag>완전탐색</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -4201,8 +4479,8 @@ n은 1 이상, 25이하인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -4509,8 +4787,8 @@ Subscription 메서드는 동기화된 상태로 호출해야합니다. 즉, Sub
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -5814,8 +6092,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -5871,8 +6149,8 @@ Kim은 반드시 seoul 안에 포함되어 있습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -5896,8 +6174,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>문자열</tag>
         <tag>알고리즘</tag>
+        <tag>문자열</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -5940,8 +6218,8 @@ Only one valid answer exists.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>릿코드</tag>
         <tag>완전탐색</tag>
+        <tag>릿코드</tag>
       </tags>
   </entry>
   <entry>
@@ -5979,9 +6257,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -6186,9 +6464,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -6325,6 +6603,36 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
+    <title>백준 날짜계산 1476</title>
+    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
+    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
+<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
+<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
+<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
+<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
+<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 일곱난쟁이 2309</title>
     <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
     <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
@@ -6348,36 +6656,6 @@ Only one valid answer exists.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 날짜계산 1476</title>
-    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
-    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
-<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
-<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
-<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
-<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
-<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -6751,8 +7029,8 @@ Only one valid answer exists.</p>
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>백준</tag>
+        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -7016,8 +7294,8 @@ Only one valid answer exists.</p>
       <tags>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
-        <tag>위장</tag>
         <tag>레벨2</tag>
+        <tag>위장</tag>
         <tag>해시</tag>
       </tags>
   </entry>
