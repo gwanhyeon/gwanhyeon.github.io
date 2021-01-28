@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Ethan Kim IT Blog">
 <meta property="og:description" content="1.  웹 API 디자인 대부분 최신 웹 어플리케이션은 클라이언트가 애플래케이션과 상호작용하는 데 사용할 수 있는 API를 표시합니다.  웹 API의 특성 2가지    플랫폼 독립성 모든 클라이언트는 내부에서 API구현하는 방법에 관계없이 API를 호출할 수 있어야합니다. 그러기위해서는 표준 프로토콜을 사용해야하고,클라이언트가 및 웹서비스가 교환할 데이터">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-01-28T15:33:34.247Z">
+<meta property="og:updated_time" content="2021-01-28T15:43:16.359Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -210,7 +210,7 @@ Web API는 클라이언트 애플리케이션과 독립적으로 기능을 진�
 </li>
 </ol>
 <h1 id="rest-sogae"><a href="#rest-sogae" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#rest-소개"></a> REST 소개</h1>
-<p>2000년에 Roy Fielding은 웹 서비스를 디자인하는 아키텍처 접근 방식으로 REST(Representational State Transfer)를 제안했습니다. REST는 하이퍼미디어 기반 분산 시스템을 구축하기 위한 아키텍처 스타일입니다. REST는 어떤 기본 프로토콜과도 독립적이며 HTTP에 연결될 필요가 없습니다. 그러나 대부분의 일반적인 REST 구현에서 애플리케이션 프로토콜로 HTTP를 사용하고, 이 지침에서는 HTTP를 위한 REST API 디자인에 중점을 둡니다.</p>
+<p>2000년에 Roy Fielding은 웹 서비스를 디자인하는 아키텍처 접근 방식으로 <code>REST(Representational State Transfer)</code>를 제안했습니다. REST는 하이퍼미디어 기반 분산 시스템을 구축하기 위한 아키텍처 스타일입니다. REST는 어떤 기본 프로토콜과도 독립적이며 HTTP에 연결될 필요가 없습니다. 그러나 대부분의 일반적인 REST 구현에서 애플리케이션 프로토콜로 HTTP를 사용하고, 이 지침에서는 HTTP를 위한 REST API 디자인에 중점을 둡니다.</p>
 <blockquote>
 <p>REST가 HTTP보다 우수한 장점</p>
 </blockquote>
@@ -237,16 +237,14 @@ API또는 클라이언트 애플리케이션의 구현이 특정 구현에 바�
 <ol start="4">
 <li>REST API는 균일한 인터페이스를 사용하므로 클라이언트와 서비스 구현을 분리하는데 도움이 됩니다.</li>
 </ol>
-<p>HTTP기반으로 하는 REST API경우 리소스에 표준 HTTP 동사 수행 작업을 사용하는것이 균일한 인터페이스에 포함.</p>
-<p>Ex) GET,POST,PUT,PATCH,DELETE</p>
+<p><code>HTTP기반으로 하는 REST API경우 리소스에 표준 HTTP 동사 수행 작업을 사용하는것이 균일한 인터페이스에 포함됩니다.</code><br>
+Ex) GET,POST,PUT,PATCH,DELETE</p>
 <ol start="5">
-<li>
-<p>REST API는 상태 비저장 요청 모델을 사용합니다.<br>
-독립적이며 임의순서로 발생할 수 있으므로 요청 사이에 일시적인 상태정보를 유지할 수 없습니다. 그리고 클라이언트 서버 사이에서 연결성을 유지할 필요가 없습니다. 즉, Connectionsless, Stateful, Stateless의 특성을 가지고 있습니다.</p>
-</li>
-<li>
-<p>REST API는 표현에 포함된 하이퍼미디어 링크에 따라 구동됩니다.</p>
-</li>
+<li>REST API는 상태 비저장 요청 모델을 사용합니다.</li>
+</ol>
+<p>독립적이며 임의순서로 발생할 수 있으므로 요청 사이에 일시적인 상태정보를 유지할 수 없습니다. 그리고 클라이언트 서버 사이에서 연결성을 유지할 필요가 없습니다. <code>즉, Connectionsless, Stateful, Stateless의 특성을 가지고 있습니다.</code></p>
+<ol start="6">
+<li>REST API는 표현에 포함된 하이퍼미디어 링크에 따라 구동됩니다.</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"orderID"</span>:<span class="number">3</span>,</span><br><span class="line">    <span class="string">"productID"</span>:<span class="number">2</span>,</span><br><span class="line">    <span class="string">"quantity"</span>:<span class="number">4</span>,</span><br><span class="line">    <span class="string">"orderValue"</span>:<span class="number">16.60</span>,</span><br><span class="line">    <span class="string">"links"</span>: [</span><br><span class="line">        &#123;<span class="string">"rel"</span>:<span class="string">"product"</span>,<span class="string">"href"</span>:<span class="string">"https://adventure-works.com/customers/3"</span>, <span class="string">"action"</span>:<span class="string">"GET"</span> &#125;,</span><br><span class="line">        &#123;<span class="string">"rel"</span>:<span class="string">"product"</span>,<span class="string">"href"</span>:<span class="string">"https://adventure-works.com/customers/3"</span>, <span class="string">"action"</span>:<span class="string">"PUT"</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -260,32 +258,41 @@ API또는 클라이언트 애플리케이션의 구현이 특정 구현에 바�
 </ul>
 <h1 id="risoseureul-jungsimeuro-api-guseong"><a href="#risoseureul-jungsimeuro-api-guseong" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#리소스를-중심으로-api-구성"></a> 리소스를 중심으로 API 구성</h1>
 <p>웹 API가 표시하는 비즈니스 Entity 에 집중해야합니다.</p>
-<p>전자상거래 시스템에서는 기본 엔티티가 고객과 주문인데 주문 정보가 포함된 HTTP POST요청을 전송하여 주문만들기를 진행할 수 있습니다. 이때 가장 중요한점은 리소스 URI는 동사(리소스에 대한작업)이 아닌 명사(리소스)기반으로 설계되어야합니다.</p>
+<p>전자상거래 시스템에서는 기본 엔티티가 고객과 주문인데 주문 정보가 포함된 HTTP POST요청을 전송하여 주문만들기를 진행할 수 있습니다. <code>이때 가장 중요한점은 리소스 URI는 동사(리소스에 대한작업)이 아닌 명사(리소스)기반으로 설계되어야합니다.</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//adventure-works.com/orders // Good</span></span><br><span class="line">https:<span class="comment">//adventure-works.com/create-order // Avoid</span></span><br></pre></td></tr></table></figure>
-<p>리소스는 단일 물리적 항목을 기반으로 구현할 필요가 없습니다. 내부적으로 관계형 DB로 구현할 수 있지만 클라이언트에 대해서는 단일 엔티티로 표시됩니다. 내부구조를 반영하는 API를 설계하면 안됩니다. 즉, 클라이언트 내부구현에 노출되면 안됩니다.</p>
-<p>엔티티는 종종 컬렉션(주문, 고객)으로 그룹화 되는데 컬렉션은 고유한 URI가 있어야합니다.</p>
+<p>리소스는 단일 물리적 항목을 기반으로 구현할 필요가 없습니다. 내부적으로 관계형 DB로 구현할 수 있지만 클라이언트에 대해서는 단일 엔티티로 표시됩니다. 내부구조를 반영하는 API를 설계하면 안됩니다. <code>즉, 클라이언트 내부구현에 노출되면 안됩니다.</code></p>
+<p>엔티티는 종종 컬렉션(주문, 고객)으로 그룹화 되는데 <code>컬렉션은 고유한 URI</code>가 있어야합니다.</p>
 <blockquote>
 <p>주문 URI 주문 컬렉션</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">컬렉션 URI에 HTTP GET 요청을 보내면 컬렉션에 있는 항목 목록을 검색합니다.</span><br><span class="line">https:<span class="comment">//adventure-works.com/orders</span></span><br></pre></td></tr></table></figure>
 <p>URI에 일관적인 명명 규칙하는데 컬렉션을 참조하는 URI에 대해 복수 명사를 사용할 수 있습니다. 컬렉션 및 항목에 대한 URI를 계층 구조로 구성해야합니다.</p>
-<p>예를 들어 /customers는 고객 컬렉션의 경로이고, /customers/5는 ID가 5인 고객의 경로입니다. 이 접근 방식을 사용하면 웹 API를 직관적으로 유지할 수 있습니다. 또한 많은 Web API 프레임워크는 매개 변수가 있는 URI 경로를 기반으로 라우팅 경로 /customers/{id}에 대한 경로를 정의할 수 있습니다.</p>
+<p>예를 들어 <code>/customers는 고객 컬렉션의 경로</code>이고, <code>/customers/5는 ID가 5인 고객의 경로</code>입니다.</p>
+<p>이 접근 방식을 사용하면 웹 API를 직관적으로 유지할 수 있습니다. 또한 많은 Web API 프레임워크는 매개 변수가 있는 URI 경로를 기반으로 라우팅 경로 /customers/{id}에 대한 경로를 정의할 수 있습니다.</p>
 <p>서로 다른 리소스 형식과 이러한 연결을 표시하는 방법 사이의 관계도 고려해야 합니다.<br>
-예를 들어 /customers/5/orders는 고객 5에 대한 모든 주문을 나타낼 수 있습니다. 반대 방향으로 이동하여 /orders/99/customer 같은 URI를 사용하여 주문에서 고객으로의 연결을 표시할 수도 있습니다. 단, 모델을 광범위하게 확대시 구현이 어려울 수 있습니다.</p>
+예를 들어 <code>/customers/5/orders는 고객 5에 대한 모든 주문</code>을 나타낼 수 있습니다. 반대 방향으로 이동하여 <code>/orders/99/customer 같은 URI를 사용하여 주문에서 고객으로의 연결을 표시</code>할 수도 있습니다.</p>
+<p>단, 모델을 광범위하게 확대시 구현이 어려울 수 있습니다.</p>
 <blockquote>
 <p>구현이 어려운 경우</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/customers/<span class="number">1</span>/orders/<span class="number">99</span>/products</span><br></pre></td></tr></table></figure>
-<p>처럼 클라이언트가 여러 관계 수준을 탐색할 수 있는 URI를 제공하고 싶을 수 있습니다. 그러나 이 수준의 복잡성은 유지하기 어려울 수 있으며 나중에 리소스 사이의 관계가 변하면 유연성이 떨어집니다.<br>
-위와같이 설계시 모든 웹 요청이 웹 서버의 부하를 높인다는 점입니다. 요청이 많을수록 부하가 커집니다. 따라서 다수의 작은 리소스를 표시하는 복잡한 Web API를 피해야합니다.</p>
+<p><code>클라이언트가 여러 관계 수준을 탐색할 수 있는 URI를 제공</code>하고 싶을 수 있습니다. 그러나 이 수준의 복잡성은 유지하기 어려울 수 있으며 나중에 리소스 사이의 관계가 변하면 유연성이 떨어집니다.<br>
+위와같이 설계시 <code>모든 웹 요청이 웹 서버의 부하를 높인다는 점</code>입니다. 요청이 많을수록 부하가 커집니다. 따라서 다수의 작은 리소스를 표시하는 <code>복잡한 Web API를 피해야합니다.</code></p>
 <blockquote>
 <p>그러면 어떤식으로 설계해야할까요?</p>
 </blockquote>
-<p>이전 쿼리를 /customers/1/orders URI로 바꿔서 고객 1의 모든 주문을 찾은 후 /orders/99/products로 바꿔서 이 주문의 제품을 찾을 수 있습니다.</p>
-<p>그리고 Web API와 기본 데이터 원본 사이에 종속성이 발생하지 않도록 해야 합니다. 예를 들어 데이터가 관계형 데이터베이스에 저장되는 경우 Web API는 각 테이블을 리소스 컬렉션으로 표시할 필요가 없습니다.</p>
-<p>마지막으로, 웹 API에 의해 구현된 일부 작업을 특정 리소스에 매핑하지 못할 수 있습니다. HTTP GET 요청을 통해 기능을 호출하고 결과를 HTTP 응답 메시지로 반환하는 리소스가 아닐 수 있습니다.</p>
-<p>예를 들어 더하기 및 빼기 같은 단순한 계산기 작업을 구현하는 Web API 리소스로 표시하고 쿼리 문자열을 사용하여 필요한 매개 변수를 지정하는 URI설계 할 수 있습니다.<br>
-예를 들어, URI /add? operand1 = 99&amp;99&amp;operand2 = 1 에 대 한 GET 요청은 100 값을 포함 하는 본문이 포함 된 응답 메시지를 반환 합니다. 그러나 이러한 형식의 URI는 제한적으로만 사용해야 합니다.</p>
+<p>이전 쿼리를 <code>/customers/1/orders</code> URI로 바꿔서 고객 1의 모든 주문을 찾은 후 <code>/orders/99/products</code>로 바꿔서 이 주문의 제품을 찾을 수 있습니다.</p>
+<p>그리고 <code>Web API와 기본 데이터 원본 사이에 종속성이 발생하지 않도록 해야 합니다.</code></p>
+<p>예를 들어 데이터가 관계형 데이터베이스에 저장되는 경우 Web API는 각 테이블을 리소스 컬렉션으로 표시할 필요가 없습니다.</p>
+<p>마지막으로, <code>웹 API에 의해 구현된 일부 작업을 특정 리소스에 매핑하지 못할 수 있습니다.</code> HTTP GET 요청을 통해 기능을 호출하고 결과를 HTTP 응답 메시지로 반환하는 리소스가 아닐 수 있습니다.</p>
+<blockquote>
+<p>예시1</p>
+</blockquote>
+<p>더하기 및 빼기 같은 단순한 계산기 작업을 구현하는 Web API 리소스로 표시하고 쿼리 문자열을 사용하여 필요한 매개 변수를 지정하는 URI설계 할 수 있습니다.</p>
+<blockquote>
+<p>예시2</p>
+</blockquote>
+<p>URI /add? operand1 = 99&amp;99&amp;operand2 = 1 에 대 한 GET 요청은 100 값을 포함 하는 본문이 포함 된 응답 메시지를 반환 합니다. 그러나 이러한 형식의 URI는 제한적으로만 사용해야 합니다.</p>
 <h1 id="http-meseodeureul-gijuneuro-jageob-jeongyi"><a href="#http-meseodeureul-gijuneuro-jageob-jeongyi" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#http-메서드를-기준으로-작업-정의"></a> HTTP 메서드를 기준으로 작업 정의</h1>
 <blockquote>
 <p>HTTP 메서드 정의</p>
@@ -336,49 +343,50 @@ API또는 클라이언트 애플리케이션의 구현이 특정 구현에 바�
 </blockquote>
 <ul>
 <li>
-<p>POST 요청은 리소스를 만듭니다. 서버는 새 리소스에 대한 URI를 할당하고 클라이언트에 해당 URI를 반환합니다. REST 모델에서는 컬렉션에 POST 요청을 자주 적용합니다. 즉, 프로세스 처리에 사용됩니다.</p>
+<p><code>POST 요청은 리소스를 만듭니다.</code> 서버는 새 리소스에 대한 URI를 할당하고 클라이언트에 해당 URI를 반환합니다. REST 모델에서는 컬렉션에 POST 요청을 자주 적용합니다. 즉, 프로세스 처리에 사용됩니다.</p>
 </li>
 <li>
-<p>PUT 요청은 리소스를 만들거나 또는 기존 리소스를 업데이트합니다. 클라이언트는 리소스의 URI를 지정합니다. 요청 본문에는 리소스의 완전한 표현이 포함됩니다. 이 URI를 사용하는 리소스가 이미 있으면 리소스가 대체됩니다. 아직 없고 서버에서 리소스 만들기를 지원하는 경우 새 리소스가 생성됩니다.</p>
+<p><code>PUT 요청은 리소스를 만들거나 또는 기존 리소스를 업데이트합니다.</code> 클라이언트는 리소스의 URI를 지정합니다. 요청 본문에는 리소스의 완전한 표현이 포함됩니다. 이 URI를 사용하는 리소스가 이미 있으면 리소스가 대체됩니다. 아직 없고 서버에서 리소스 만들기를 지원하는 경우 새 리소스가 생성됩니다.</p>
 </li>
 </ul>
 <blockquote>
-<p>PUT사용시 주의할점: PUT 요청은 idempotent(멱등성)이여야 합니다. 클라이언트가 동일한 PUT 요청을 여러 번 제출하는 경우 그 결과가 항상 같아야 합니다(같은 값을 사용하여 같은 리소스가 수정)</p>
+<p><code>PUT사용시 주의할점: PUT 요청은 idempotent(멱등성)이여야 합니다.</code></p>
 </blockquote>
+<p>클라이언트가 동일한 PUT 요청을 여러 번 제출하는 경우 그 결과가 항상 같아야 합니다(같은 값을 사용하여 같은 리소스가 수정)</p>
 <ul>
-<li>PATCH 요청은 기존 리소스에 부분 업데이트를 수행합니다. 클라이언트는 리소스의 URI를 지정합니다. 요청 본문은 리소스에 적용할 변경 내용을 지정합니다. 즉, 리소스 부분변경을 업데이트합니다.</li>
+<li><code>PATCH 요청은 기존 리소스에 부분 업데이트를 수행합니다.</code> 클라이언트는 리소스의 URI를 지정합니다. 요청 본문은 리소스에 적용할 변경 내용을 지정합니다. 즉, 리소스 부분변경을 업데이트합니다.</li>
 </ul>
 <blockquote>
 <p>멱등성의 개념</p>
 </blockquote>
-<p>멱등(Idempotent Methods) 여러번 호출해도 결과는 같아야합니다. PUT을 호출하여 서버응답 호출을 통하여 재시도 할지 안할지를 확인할 수 있습니다. 즉, 자동 복구 매커니즘에서 많이 활용됩니다.</p>
+<p><code>멱등(Idempotent Methods) 여러번 호출해도 결과는 같아야합니다.</code> PUT을 호출하여 서버응답 호출을 통하여 재시도 할지 안할지를 확인할 수 있습니다. 즉, <code>자동 복구 매커니즘</code>에서 많이 활용됩니다.</p>
 <h1 id="midieo-yuhyeong"><a href="#midieo-yuhyeong" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#미디어-유형"></a> 미디어 유형</h1>
-<p>HTTP 프로토콜에서 형식은 MIME 유형이라고도 하는 미디어 유형을 사용하여 지정됩니다. 보통 Web API는 JSON(미디어 유형 = 애플리케이션/json) 및 XML(미디어 유형 = 애플리케이션/xml)을 지원합니다. 그리고 요청과 응답의 경우 Content-Type 헤더는 표현 형식을 지정합니다.</p>
+<p><code>HTTP 프로토콜에서 형식은 MIME 유형이라고도 하는 미디어 유형을 사용하여 지정됩니다.</code> 보통 <code>Web API는 JSON(미디어 유형 = 애플리케이션/json) 및 XML(미디어 유형 = 애플리케이션/xml)을 지원</code>합니다. 그리고 요청과 응답의 경우 <code>Content-Type</code> 헤더는 표현 형식을 지정합니다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">JSON 형식</span><br><span class="line"></span><br><span class="line">POST https:<span class="comment">//adventure-works.com/orders HTTP/1.1</span></span><br><span class="line">Content-Type: application/json; charset=utf-<span class="number">8</span></span><br><span class="line">Content-Length: <span class="number">57</span></span><br><span class="line">&#123;<span class="string">"Id"</span>:<span class="number">1</span>,<span class="string">"Name"</span>:<span class="string">"Gizmo"</span>,<span class="string">"Category"</span>:<span class="string">"Widgets"</span>,<span class="string">"Price"</span>:<span class="number">1.99</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>만약에, 서버에서 미디어 유형을 지원하지 않으면 HTTP 상태 코드 415(지원되지 않는 미디어 유형)를 반환해야 합니다.</p>
+<p>만약에, <code>서버에서 미디어 유형을 지원하지 않으면 HTTP 상태 코드 415(지원되지 않는 미디어 유형)를 반환</code>해야 합니다.</p>
 <blockquote>
 <p>클라이언트 요청</p>
 </blockquote>
-<p>클라이언트 요청에는 클라이언트가 응답 메시지에서 서버로부터 받는 미디어 유형 목록을 포함하는 Accept 헤더가 포함될 수 있습니다.</p>
+<p>클라이언트 요청에는 클라이언트가 응답 메시지에서 서버로부터 받는 미디어 유형 목록을 포함하는 <code>Accept 헤더가 포함</code>될 수 있습니다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https:<span class="comment">//adventure-works.com/orders/2 HTTP/1.1</span></span><br><span class="line">Accept: application/json</span><br></pre></td></tr></table></figure>
 <h1 id="get-meseodeu"><a href="#get-meseodeu" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#get-메서드"></a> GET 메서드</h1>
-<p>성공적인 GET 메서드는 일반적으로 HTTP 상태 코드 200(정상)를 반환합니다. 리소스를 찾을 수 없는 경우 404(Not Found)반환합니다.</p>
+<p>성공적인 GET 메서드는 일반적으로 <code>HTTP 상태 코드 200(정상)를 반환</code>합니다. <code>리소스를 찾을 수 없는 경우 404(Not Found)반환</code>합니다.</p>
 <h1 id="post-meseodeu"><a href="#post-meseodeu" class="header-anchor">7. </a><a class="markdownIt-Anchor" href="#post-메서드"></a> POST 메서드</h1>
-<p>POST 메서드는 새 리소스를 만드는 경우 HTTP 상태 코드 201(만들어짐)을 반환합니다. 새 리소스의 URI는 응답의 Location 헤더에 포함됩니다. 응답 본문은 리소스의 표현을 포함합니다.</p>
-<p>만약에 새 리소스를 만들지 않는 경우 메서드는 HTTP 상태 코드 200을 반환하고 작업의 결과를 응답 본문에 포함할 수 있습니다. 또는 반환할 결과가 없으면 메서드가 응답 본문 없이 HTTP 상태 코드 204(컨텐츠 X) 를 반환할 수 있습니다.</p>
+<p><code>POST 메서드는 새 리소스를 만드는 경우 HTTP 상태 코드 201(만들어짐)을 반환합니다.</code> 새 리소스의 URI는 응답의 Location 헤더에 포함됩니다. 응답 본문은 리소스의 표현을 포함합니다.</p>
+<p>만약에 <code>새 리소스를 만들지 않는 경우 메서드는 HTTP 상태 코드 200을 반환</code>하고 작업의 결과를 응답 본문에 포함할 수 있습니다. 또는 <code>반환할 결과가 없으면 메서드가 응답 본문 없이 HTTP 상태 코드 204(컨텐츠 X) 를 반환</code>할 수 있습니다.</p>
 <h1 id="putmeseodeu"><a href="#putmeseodeu" class="header-anchor">8. </a><a class="markdownIt-Anchor" href="#put메서드"></a> PUT메서드</h1>
-<p>PUT 메서드는 POST 메서드와 마찬가지로 새 리소스를 만드는 경우 HTTP 상태 코드 201(만들어짐)을 반환합니다. 이 메서드는 기존 리소스를 업데이트할 경우 200(정상) 또는 204(내용 없음)를 반환합니다. 상황에 따라 기존 리소스를 업데이트할 수 없는 경우도 있습니다.</p>
+<p><code>PUT 메서드는 POST 메서드와 마찬가지로 새 리소스를 만드는 경우 HTTP 상태 코드 201(만들어짐)을 반환</code>합니다. 이 메서드는 기존 리소스를 업데이트할 경우 <code>200(정상) 또는 204(내용 없음)를 반환</code>합니다. 상황에 따라 기존 리소스를 업데이트할 수 없는 경우도 있습니다.</p>
 <h1 id="patch-meseodeu"><a href="#patch-meseodeu" class="header-anchor">9. </a><a class="markdownIt-Anchor" href="#patch-메서드"></a> PATCH 메서드</h1>
-<p>클라이언트는 PATCH 요청을 사용하여 업데이트를 패치 문서 의 형태로 기존 리소스에 보냅니다. 서버는 패치 문서를 처리하여 업데이트를 수행합니다. 패치 문서는 리소스 전체가 아니라 적용할 변경 내용만 설명합니다.  즉, 부분변경만 진행합니다.</p>
+<p>클라이언트는 <code>PATCH 요청을 사용하여 업데이트를 패치 문서 의 형태로 기존 리소스에 보냅니다.</code> 서버는 패치 문서를 처리하여 업데이트를 수행합니다. 패치 문서는 리소스 전체가 아니라 적용할 변경 내용만 설명합니다.  <code>즉, 부분변경만 진행합니다.</code></p>
 <blockquote>
 <p>두 가지 주요 JSON 기반 패치 형식으로 JSON 패치 및 JSON 병합 패치</p>
 </blockquote>
-<p>JSON 병합 패치는 비교적 간단합니다. 패치 문서는 원래 JSON 리소스와 동일한 구조를 갖지만 변경 또는 추가할 필드의 하위 집합만 포함하고 있습니다. 또한 패치 문서에서 필드 값에 대해 null을 지정하여 필드를 삭제할 수 있습니다.</p>
+<p><code>JSON 병합 패치는 비교적 간단합니다.</code> 패치 문서는 원래 JSON 리소스와 동일한 구조를 갖지만 변경 또는 추가할 필드의 하위 집합만 포함하고 있습니다. 또한 패치 문서에서 필드 값에 대해 null을 지정하여 필드를 삭제할 수 있습니다.</p>
 <p><em>JSON 기반 패치</em></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>:<span class="string">"gizmo"</span>,</span><br><span class="line">    <span class="string">"category"</span>:<span class="string">"widgets"</span>,</span><br><span class="line">    <span class="string">"color"</span>:<span class="string">"blue"</span>,</span><br><span class="line">    <span class="string">"price"</span>:<span class="number">10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><em>JSON 병합패치</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;price&quot;:12,</span><br><span class="line">    &quot;color&quot;:null,</span><br><span class="line">    &quot;size&quot;:&quot;small&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>결론적으로 원래 리소스가 명시적 null 값을 포함할 수 있으면 패치 문서에서 null이 갖는 특별한 의미 때문에 병합 패치가 적합하지 않습니다. 또한 패치 문서는 서버에서 업데이트를 적용할 순서를 지정하지 않습니다. JSON 패치의 미디어 유형은 application/json-patch+json입니다.</p>
+<p>결론적으로 <code>원래 리소스가 명시적 null 값을 포함할 수 있으면 패치 문서에서 null이 갖는 특별한 의미 때문에 병합 패치가 적합하지 않습니다.</code> 또한 패치 문서는 서버에서 업데이트를 적용할 순서를 지정하지 않습니다. <code>JSON 패치의 미디어 유형은 application/json-patch+json</code>입니다.</p>
 <blockquote>
 <p>HTTP 상태 코드와 함께 PATCH 요청을 처리할 때 발생할 수 있는 몇 가지 일반적인 오류 조건</p>
 </blockquote>
@@ -405,38 +413,38 @@ API또는 클라이언트 애플리케이션의 구현이 특정 구현에 바�
 </tbody>
 </table>
 <h1 id="delete-meseodeu"><a href="#delete-meseodeu" class="header-anchor">10. </a><a class="markdownIt-Anchor" href="#delete-메서드"></a> DELETE 메서드</h1>
-<p>삭제 작업이 성공하면 웹 서버는 프로세스가 성공적으로 처리되었지만 응답 본문에 추가 정보가 포함되지 않았음을 나타내는 HTTP 204 상태 코드로 응답해야 합니다. 리소스가 없는 경우 웹 서버는 HTTP 404(찾을 수 없음)를 반환할 수 있습니다.</p>
+<p>삭제 작업이 성공하면 웹 서버는 프로세스가 성공적으로 처리되었지만 응답 본문에 추가 정보가 포함되지 않았음을 나타내는 <code>HTTP 204 상태 코드로 응답</code>해야 합니다. 리소스가 없는 경우 웹 서버는 <code>HTTP 404(찾을 수 없음)를 반환</code>할 수 있습니다.</p>
 <h1 id="bidonggi-jageob"><a href="#bidonggi-jageob" class="header-anchor">11. </a><a class="markdownIt-Anchor" href="#비동기-작업"></a> 비동기 작업</h1>
-<p>경우에 따라 POST, PUT, PATCH 또는 DELETE 작업을 완료 하는 데 시간이 오래 걸리는 처리가 필요할 수 있습니다. 이 경우 요청 처리가 수락되었지만 아직 완료되지 않았음을 나타내는 HTTP 상태 코드 202(수락됨)를 반환합니다.</p>
-<p>즉 ,클라이언트가 상태 엔드포인트를 폴링하여 상태를 모니터링할 수 있도록 비동기 요청의 상태를 반환하는 엔드포인트를 표시해야합니다. 202 응답의 Location 헤더에 상태 엔드포인트의 URI를 포함합니다.</p>
+<p>경우에 따라 POST, PUT, PATCH 또는 DELETE 작업을 완료 하는 데 시간이 오래 걸리는 처리가 필요할 수 있습니다. 이 경우 요청 처리가 수락되었지만 아직 완료되지 않았음을 나타내는 <code>HTTP 상태 코드 202(수락됨)를 반환</code>합니다.</p>
+<p>즉, 클라이언트가 상태 엔드포인트를 폴링하여 상태를 모니터링할 수 있도록 비동기 요청의 상태를 반환하는 <code>엔드포인트를 표시</code>해야합니다. <code>202 응답의 Location 헤더에 상태 엔드포인트의 URI를 포함</code>합니다.</p>
 <blockquote>
 <p>엔드포인트 표시 예시</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">202</span> Accepted</span><br><span class="line">Location: /api/status/<span class="number">12345</span></span><br></pre></td></tr></table></figure>
-<p>클라이언트가 이 엔드포인트에 GET 요청을 보내는 경우 응답에 요청의 현재 상태가 포함되어야 합니다. 필요에 따라 예상 완료 시간 또는 작업 취소 링크를 포함하는 경우는 어떻게 표현할 수 있을까요?</p>
+<p>클라이언트가 이 엔드포인트에 GET 요청을 보내는 경우 응답에 요청의 현재 상태가 포함되어야 합니다. 필요에 따라 <code>예상 완료 시간 또는 작업 취소 링크를 포함하는 경우는 어떻게 표현</code>할 수 있을까요?</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line">Content-Type: application/json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"status"</span>:<span class="string">"In progress"</span>,</span><br><span class="line">    <span class="string">"link"</span>: &#123; <span class="string">"rel"</span>:<span class="string">"cancel"</span>, <span class="string">"method"</span>:<span class="string">"delete"</span>, <span class="string">"href"</span>:<span class="string">"/api/status/12345"</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>비동기 작업에서 새 리소스를 만드는 경우 작업 완료 후 상태 엔드포인트에서 상태 코드 303(다른 항목 보기)을 반환해야 합니다. 303 응답에 새 리소스의 URI를 제공하는 Location 헤더를 포함합니다.</p>
+<p>비동기 작업에서 새 리소스를 만드는 경우 작업 완료 후 상태 엔드포인트에서 상태 코드 <code>303(다른 항목 보기)을 반환</code>해야 합니다. <code>303 응답에 새 리소스의 URI를 제공하는 Location 헤더를 포함</code>합니다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">303</span> See Other</span><br><span class="line">Location: /api/orders/<span class="number">12345</span></span><br></pre></td></tr></table></figure>
 <h1 id="deiteo-pilteoring-mic-peijineisyeon"><a href="#deiteo-pilteoring-mic-peijineisyeon" class="header-anchor">12. </a><a class="markdownIt-Anchor" href="#데이터-필터링-및-페이지네이션"></a> 데이터 필터링 및 페이지네이션</h1>
 <p>클라이언트 애플리케이션에서 비용이 특정 값을 초과하는 모든 주문을 찾아야 한다고 가정해 봅시다.</p>
-<p>클라이언트 응용 프로그램은 /orders URI에서 모든 주문을 검색한 후 클라이언트 쪽에서 이러한 주문을 필터링할 것입니다. 이 프로세스는 매우 비효율적입니다. Web API를 호스팅하는 서버의 네트워크 대역폭 및 처리 성능이 낭비됩니다.</p>
+<p>클라이언트 응용 프로그램은 <code>/orders URI에서 모든 주문을 검색한 후 클라이언트 쪽에서 이러한 주문을 필터링</code>할 것입니다. 이 프로세스는 매우 <code>비효율적</code>입니다. Web API를 호스팅하는 <code>서버의 네트워크 대역폭 및 처리 성능이 낭비됩니다.</code></p>
 <blockquote>
 <p>동적 쿼리 및 페이지네이션</p>
 </blockquote>
-<p>이 방법 대신, /orders?minCost=n 처럼 API가 URI의 쿼리 문자열에서 필터 전달을 허용할 수 있습니다. 그러면 Web API가 쿼리 문자열의 minCost 매개 변수를 구문 분석 및 처리하고 서버 쪽에서 필터링된 결과를 반환합니다.</p>
+<p>이 방법 대신, <code>/orders?minCost=n</code> 처럼 API가 <code>URI의 쿼리 문자열에서 필터 전달을 허용</code>할 수 있습니다. 그러면 Web API가 쿼리 문자열의 minCost 매개 변수를 구문 분석 및 처리하고 <code>서버 쪽에서 필터링된 결과를 반환</code>합니다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/orders?limit=<span class="number">25</span>&amp;offset=<span class="number">50</span></span><br></pre></td></tr></table></figure>
 <p>다음과 같이 오프셋을 지정할 수 있습니다.</p>
 <blockquote>
 <p>서비스 거부 공격을 방지하기 위해 반환되는 항목 수를 제한하는 방안</p>
 </blockquote>
-<p>필드 이름을 /orders?sort=ProductID 같은 값으로 가져오는 정렬 매개 변수를 제공하여 데이터를 가져올 때 데이터를 정렬하는 비슷한 전략을 처리할 수 있습니다.</p>
-<p>But, 쿼리 문자열 매개 변수는 여러 캐시 구현에서 캐시된 데이터의 키로 사용되는 리소스 식별자의 일부를 구성하기 때문에 이 접근 방식은 캐싱에 나쁜 영향을 끼칩니다.</p>
+<p>필드 이름을 <code>/orders?sort=ProductID</code> 같은 값으로 가져오는 정렬 매개 변수를 제공하여 데이터를 가져올 때 데이터를 정렬하는 비슷한 전략을 처리할 수 있습니다.</p>
+<p>But, 쿼리 문자열 매개 변수는 여러 캐시 구현에서 캐시된 데이터의 키로 사용되는 리소스 식별자의 일부를 구성하기 때문에 <code>이 접근 방식은 캐싱에 나쁜 영향</code>을 끼칩니다.</p>
 <h1 id="daeyongryang-ijin-risoseue-daehan-bubun-eungdab-jiweon"><a href="#daeyongryang-ijin-risoseue-daehan-bubun-eungdab-jiweon" class="header-anchor">13. </a><a class="markdownIt-Anchor" href="#대용량-이진-리소스에-대한-부분-응답-지원"></a> 대용량 이진 리소스에 대한 부분 응답 지원</h1>
-<p>응답 시간을 개선하려면 이러한 리소스를 청크로 검색할 수 있게 하는 방안을 고안해야합니다.</p>
+<p>대용량 응답 시간을 개선하려면 이러한 <code>리소스를 청크로 검색할 수 있게 하는 방안을 고안</code>해야합니다.</p>
 <blockquote>
 <p>예시</p>
 </blockquote>
-<p>Web API가 큰 리소스의 GET 요청에 대해 Accept-Ranges 헤더를 지원해야 합니다. 이 헤더는 GET 작업이 부분 요청을 지원한다는 것을 나타냅니다. 클라이언트 애플리케이션은 바이트 범위로 지정된 리소스 하위 집합을 반환하는 GET을 반환할 수 있습니다.</p>
+<p>Web API가 큰 리소스의 GET 요청에 대해 <code>Accept-Ranges 헤더를 지원</code>해야 합니다. 이 헤더는 GET 작업이 부분 요청을 지원한다는 것을 나타냅니다. 클라이언트 애플리케이션은 바이트 범위로 지정된 리소스 하위 집합을 반환하는 GET을 반환할 수 있습니다.</p>
 <blockquote>
 <p>HEAD</p>
 </blockquote>
@@ -449,12 +457,12 @@ API또는 클라이언트 애플리케이션의 구현이 특정 구현에 바�
 <li>응답메시지</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line"></span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Type: image/jpeg</span><br><span class="line">Content-Length: <span class="number">4580</span></span><br></pre></td></tr></table></figure>
-<p>Content-Length 헤더는 총 리소스 크기를 제공하고, Accept-Ranges 헤더는 해당 GET 작업이 일부 결과를 지원합니다. 첫 번째 요청은 범위 헤더를 사용하여 처음 2500 바이트를 가져옵니다.</p>
+<p>Content-Length 헤더는 총 리소스 크기를 제공하고, <code>Accept-Ranges 헤더</code>는 해당 GET 작업이 <code>일부 결과를 지원</code>합니다. 첫 번째 요청은 범위 헤더를 사용하여 <code>처음 2500 바이트를 가져옵니다.</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https:<span class="comment">//adventure-works.com/products/10?fields=productImage HTTP/1.1</span></span><br><span class="line">Range: bytes=<span class="number">0</span>-<span class="number">2499</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>일부범위만 Content-Range에 넣는방법</p>
 </blockquote>
-<p>메시지 본문에 반환된 실제 바이트 수(리소스의 크기가 아닌)를 지정하며, Content-Range 헤더는 해당 바이트가 리소스의 어느 부분인지(4580 바이트 중 바이트 0-2499)를 나타냅니다.</p>
+<p>메시지 본문에 반환된 실제 바이트 수(리소스의 크기가 아닌)를 지정하며, <code>Content-Range 헤더는 해당 바이트가 리소스의 어느 부분인지(4580 바이트 중 바이트 0-2499)를 나타냅니다.</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">206</span> Partial Content</span><br><span class="line"></span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Content-Type: image/jpeg</span><br><span class="line">Content-Length: <span class="number">2500</span></span><br><span class="line">Content-Range: bytes <span class="number">0</span>-<span class="number">2499</span>/<span class="number">4580</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Reference</p>
@@ -547,7 +555,7 @@ API또는 클라이언트 애플리케이션의 구현이 특정 구현에 바�
 
 플랫폼 독립성
 모든 클라이언트는 내부에서 API구현하는 방법에 관계없이 API를 호출할 수 있어야합니다. 그러기위해서는 표준 프로토콜을 사용해야하고,클라이언트가 및 웹서비스가 교환할 데이터 ",
-        "wordCount": 2083
+        "wordCount": 2076
     }
 </script>
 
