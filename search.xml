@@ -879,7 +879,7 @@ Ex) GET,POST,PUT,PATCH,DELETE</p>
 <p><a href="https://docs.microsoft.com/ko-kr/azure/architecture/best-practices/api-design" target="_blank" rel="noopener">https://docs.microsoft.com/ko-kr/azure/architecture/best-practices/api-design</a></p>
 ]]></content>
       <categories>
-        <category>Netwrok</category>
+        <category>Network</category>
       </categories>
       <tags>
         <tag>Network</tag>
