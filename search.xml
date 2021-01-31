@@ -4,7 +4,9 @@
     <title>Redis 설치 및 명령어 정리</title>
     <url>/Database-20210131-redis-install-command/</url>
     <content><![CDATA[<h1 id="1-mac-os-redis"><a href="#1-mac-os-redis" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#1mac-os-redis"></a> 1.Mac OS Redis</h1>
-<p>Redis를 프로젝트에서 사용할일이 있어서 Redist를 설치하여보겠습니다.</p>
+<blockquote>
+<p>Redis 설치하기</p>
+</blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$brew</span> install redis</span><br><span class="line"></span><br><span class="line">Warning: Treating redis as a formula. For the cask, use homebrew/cask/redis</span><br><span class="line">==&gt; Downloading https://homebrew.bintray.com/bottles/redis-6.0.9.catalina.bottle.tar.gz</span><br><span class="line">==&gt; Downloading from https://d29vzk4ow07wi7.cloudfront.net/673b1485f012e3c9a509c913d175e18451ddab50eca0</span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">==&gt; Pouring redis-6.0.9.catalina.bottle.tar.gz</span><br><span class="line">==&gt; Caveats</span><br><span class="line">To have launchd start redis now and restart at login:</span><br><span class="line">  brew services start redis</span><br><span class="line">Or, <span class="keyword">if</span> you don<span class="string">'t want/need a background service you can just run:</span></span><br><span class="line"><span class="string">  redis-server /usr/local/etc/redis.conf</span></span><br><span class="line"><span class="string">==&gt; Summary</span></span><br><span class="line"><span class="string">🍺  /usr/local/Cellar/redis/6.0.9: 13 files, 3.9MB</span></span><br></pre></td></tr></table></figure>
 <p>다음과 같이 명령어를 진행하면 Redis설치가 진행됩니다. 아직 Homebrew가 없으신분들은 반드시 설치를 하셔야합니다.</p>
 <blockquote>
