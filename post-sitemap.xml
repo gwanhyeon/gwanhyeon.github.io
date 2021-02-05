@@ -8,7 +8,15 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/msa-01-%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%9D%98-%EC%9D%B4%ED%95%B4/</loc>
+        <loc>http://gwanhyeon.github.io/network-09-http-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/</loc>
+        <lastmod>2021-02-05T05:22:43.294Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/MSA-20210204-msa-01-%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%9D%98-%EC%9D%B4%ED%95%B4/</loc>
         <lastmod>2021-02-04T06:32:31.359Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
