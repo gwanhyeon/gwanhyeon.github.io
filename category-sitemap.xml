@@ -8,8 +8,15 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/programmers/</loc>
+        <lastmod>2021-02-08T11:21:51.889Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/jpa/</loc>
-        <lastmod>2021-02-05T08:53:44.208Z</lastmod>
+        <lastmod>2021-02-05T09:06:20.306Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -52,13 +59,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/spring/</loc>
         <lastmod>2021-01-17T04:43:15.183Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/programmers/</loc>
-        <lastmod>2021-01-09T13:46:13.570Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

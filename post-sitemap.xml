@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/programmers-%ED%95%A9%EC%8A%B9%ED%83%9D%EC%8B%9C%EC%9A%94%EA%B8%88/</loc>
+        <lastmod>2021-02-08T11:21:51.889Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/JPA-20210205-jpa-03-%EC%97%94%ED%8B%B0%ED%8B%B0/</loc>
-        <lastmod>2021-02-05T08:53:44.208Z</lastmod>
+        <lastmod>2021-02-05T09:06:20.306Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
