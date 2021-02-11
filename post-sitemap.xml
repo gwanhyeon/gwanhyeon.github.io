@@ -24,14 +24,6 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/MSA-20210211-msa-02-%E1%84%86%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3-%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5/</loc>
-        <lastmod>2021-02-11T15:43:19.529Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/programmers-%ED%95%A9%EC%8A%B9%ED%83%9D%EC%8B%9C%EC%9A%94%EA%B8%88/</loc>
         <lastmod>2021-02-08T11:21:51.889Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -50,14 +42,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Network-20210205-network-09-http-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/</loc>
         <lastmod>2021-02-05T05:22:43.294Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/MSA-20210204-msa-01-%E1%84%86%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3-%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5%E1%84%8B%E1%85%B4-%E1%84%8B%E1%85%B5%E1%84%92%E1%85%A2/</loc>
-        <lastmod>2021-02-04T06:32:31.359Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
