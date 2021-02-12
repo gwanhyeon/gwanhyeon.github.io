@@ -51,7 +51,7 @@
 <p>BASE(Basically Available Soft State Eventual Consistency)트랜잭션</p>
 </blockquote>
 <p>basically available의 대표적인 기술 메커니즘은 Optional Locking, Queue이고 soft state는 외부전달 데이터로 인해 상태가 갱신되는것 입니다.</p>
-<p>즉, 두 개의 노드가 있으면 한쪽에서 전달된 데이터로 인해 다른 한쪽 노드가 갱신된다는 사앙이며 eventual consistency는 두 노드의 데이터가 일시적으로 불일치한 시점이 있고, 일관성이 없는 상태이지만 결국에는 두 노드의 데이터가 같아진다는 개념dl ehlqslek.</p>
+<p>즉, 두 개의 노드가 있으면 한쪽에서 전달된 데이터로 인해 다른 한쪽 노드가 갱신된다는 사앙이며 eventual consistency는 두 노드의 데이터가 일시적으로 불일치한 시점이 있고, 일관성이 없는 상태이지만 결국에는 두 노드의 데이터가 같아진다는 개념이 됩니다.</p>
 <ol start="5">
 <li>서비스 관리</li>
 </ol>
