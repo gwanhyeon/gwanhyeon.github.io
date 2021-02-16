@@ -3,15 +3,22 @@
 
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/msa/</loc>
-        <lastmod>2021-02-12T15:32:39.018Z</lastmod>
+        <loc>http://gwanhyeon.github.io/tags/%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25A8%25B8%25EC%258A%25A4/</loc>
+        <lastmod>2021-02-16T09:19:27.654Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25A8%25B8%25EC%258A%25A4/</loc>
-        <lastmod>2021-02-08T11:21:51.889Z</lastmod>
+        <loc>http://gwanhyeon.github.io/tags/%25EC%2599%2584%25EC%25A0%2584%25ED%2583%2590%25EC%2583%2589/</loc>
+        <lastmod>2021-02-16T09:19:27.654Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/msa/</loc>
+        <lastmod>2021-02-12T15:32:39.018Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -145,13 +152,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/dp/</loc>
         <lastmod>2021-01-21T09:24:45.721Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EC%2599%2584%25EC%25A0%2584%25ED%2583%2590%25EC%2583%2589/</loc>
-        <lastmod>2021-01-21T09:24:35.840Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -528,14 +528,14 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EB%258B%25A4%25EC%259D%25B5%25EC%258A%25A4%25ED%258A%25B8%25EB%259D%25BC/</loc>
+        <loc>http://gwanhyeon.github.io/tags/%25EC%259A%25B0%25EC%2584%25A0%25EC%2588%259C%25EC%259C%2584%25ED%2581%2590/</loc>
         <lastmod>2020-11-14T13:39:34.595Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EC%259A%25B0%25EC%2584%25A0%25EC%2588%259C%25EC%259C%2584%25ED%2581%2590/</loc>
+        <loc>http://gwanhyeon.github.io/tags/%25EB%258B%25A4%25EC%259D%25B5%25EC%258A%25A4%25ED%258A%25B8%25EB%259D%25BC/</loc>
         <lastmod>2020-11-14T13:39:34.595Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
