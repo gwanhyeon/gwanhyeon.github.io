@@ -18,8 +18,8 @@
   
   <entry>
     <title>프로그래머스 경주로건설</title>
-    <link href="http://gwanhyeon.github.io/programmers-%EA%B2%BD%EC%A3%BC%EB%A1%9C%EA%B1%B4%EC%84%A4/"/>
-    <id>http://gwanhyeon.github.io/programmers-%EA%B2%BD%EC%A3%BC%EB%A1%9C%EA%B1%B4%EC%84%A4/</id>
+    <link href="http://gwanhyeon.github.io/Programmers-20210216-programmers-%EA%B2%BD%EC%A3%BC%EB%A1%9C%EA%B1%B4%EC%84%A4/"/>
+    <id>http://gwanhyeon.github.io/Programmers-20210216-programmers-%EA%B2%BD%EC%A3%BC%EB%A1%9C%EA%B1%B4%EC%84%A4/</id>
     <published>2021-02-16T09:21:05.000Z</published>
     <updated>2021-02-16T09:30:57.398Z</updated>
     
@@ -66,9 +66,9 @@
       <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/programmers/"/>
     
     
-      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
-    
       <category term="완전탐색" scheme="http://gwanhyeon.github.io/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/"/>
+    
+      <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
   </entry>
   
