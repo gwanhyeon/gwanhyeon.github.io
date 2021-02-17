@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JVM(Java Virtual Machine) & GC(Garbage Collection)</title>
+    <title>Java Collection</title>
+    <url>/Java-20210217-collection-java/</url>
+    <content><![CDATA[<h1 id="java-collection-keolregsyeon"><a href="#java-collection-keolregsyeon" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#java-collection컬렉션"></a> Java Collection(컬렉션)</h1>
+<p>Java Collection(컬렉션)은 크게  <code>List, Map, Set</code> 인터페이스를 기준으로 구현체가 존재하며 <code>Stack, Queue</code> 인터페이스도 존재하게 됩니다.</p>
+<h1 id="list-interface"><a href="#list-interface" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#list-interface"></a> List Interface</h1>
+<p>순서가 있는 데이터의 집합으로 데이터의 중복을 허용합니다</p>
+<p>List 인터페이스는 ArrayList의 구현체를 포함하며 직접 커스터마이징을 통하여 사용자가 정의하여 사용이 가능합니다. 그 외에는 LinkedList 구현체가 존재합니다.</p>
+<h1 id="map-interface"><a href="#map-interface" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#map-interface"></a> Map Interface</h1>
+<p>키(Key), 값(Value)의 쌍으로 이루어진 데이터의 집합으로,순서는 유지되지 않으며 키(Key)의 중복을 허용하지 않으나 값(Value)의 중복은 허용합니다.</p>
+<p>Map의 대표적인 구현체로는 HashMap이 존재하며 Map은 &lt;Key, Value&gt;의 구조로 이루어져있고 구체적인 내부 구현은 HashTable과 일치합니다.<br>
+Map같은 경우에는 Key에 중복값을 저장하지 않으며 순서를 보장하지 않지만, LinkedHashMap을 사용하면 Key의 순서를 보장시킬 수 있습니다.</p>
+<h1 id="set-interface"><a href="#set-interface" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#set-interface"></a> Set Interface</h1>
+<p>Set은 순서를 유지하지 않는 데이터의 집합으로 데이터의 중복을 허용하지 않는 인터페이스 입니다.<br>
+Set의 대표적인 구현체로는 HashSet이 존재하며 Value의 중복값을 저장하지 않습니다. 특히, 단일된 값의 중복값을 저장하지 않을때 많이 사용되며 순서를 보장하지 않습니다. 유사하게 TreeSet이라는 구현체는 이진탐색트리를 이용하여 구현되어있습니다.</p>
+<p>Map과 유사하게 LinkedHashSet을 사용하여 순서를 보장해줄 수 있습니다.</p>
+<h1 id="stack-amp-queue-interface"><a href="#stack-amp-queue-interface" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#stackqueue-interface"></a> Stack&amp;Queue Interface</h1>
+<p>Stack 객체는 직접 new 키워드로 사용할 수 있으며, Queue 인터페이스는 JDK 1.5 부터 LinkedList에 new 키워드를 적용하여 사용할 수 있습니다.</p>
+<blockquote>
+<p>Reference</p>
+</blockquote>
+<p><a href="https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/Java" target="_blank" rel="noopener">https://github.com/JaeYeopHan/Interview_Question_for_Beginner/tree/master/Java</a></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Collection</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java JVM(Java Virtual Machine) & GC(Garbage Collection)</title>
     <url>/Java-20210217-jvm-garbage-collection/</url>
     <content><![CDATA[<h1 id="jvm-java-virtual-machine"><a href="#jvm-java-virtual-machine" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#jvmjava-virtual-machine"></a> JVM(Java Virtual Machine)</h1>
 <p>JVM을 살펴보기전에 Java에서 사용되는 용어들을 정리하고 진행하겠습니다.</p>
@@ -2452,8 +2483,8 @@ Class Level Mapping은 모든 메서드에 적용하는 경우 사용합니다.<
       </categories>
       <tags>
         <tag>Spring</tag>
-        <tag>Annotation</tag>
         <tag>DI</tag>
+        <tag>Annotation</tag>
         <tag>Bean</tag>
       </tags>
   </entry>
@@ -3124,8 +3155,8 @@ LAN 드라이버, LAN 장비, LAN카드</p>
       </categories>
       <tags>
         <tag>NETWORK</tag>
-        <tag>INTERNET</tag>
         <tag>TCP</tag>
+        <tag>INTERNET</tag>
         <tag>IP</tag>
       </tags>
   </entry>
@@ -3547,9 +3578,9 @@ Output: true</p>
         <category>Spring</category>
       </categories>
       <tags>
+        <tag>환경설정</tag>
         <tag>Spring</tag>
         <tag>IntelliJ</tag>
-        <tag>환경설정</tag>
       </tags>
   </entry>
   <entry>
@@ -4127,8 +4158,8 @@ frodoc</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>수학</tag>
         <tag>소수</tag>
+        <tag>수학</tag>
         <tag>에라토스테네스의체</tag>
         <tag>소인수분해</tag>
       </tags>
