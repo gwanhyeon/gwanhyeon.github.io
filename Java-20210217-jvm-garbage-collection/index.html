@@ -18,10 +18,10 @@
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  JVM(Java Virtual Machine) JVM을 살펴보기전에 Java에서 사용되는 용어들을 정리하고 진행하겠습니다.   JDK: Java SE Development Kit 자바 개발 키트, JRE+컴파일러, 디버거 등의 개발도구   JRE: Java SE Runtime Environment 자바 구동 환경, JVM+시스템 라이브러리   JVM">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.google.com&#x2F;imgres?imgurl=https%3A%2F%2Fwww.guru99.com%2Fimages%2F1%2F2.png&amp;imgrefurl=https%3A%2F%2Fiann.tistory.com%2F17&amp;tbnid=EBBSqSzmIhtNRM&amp;vet=12ahUKEwjQgbrTxPDuAhUyIqYKHSlqAJkQMygBegUIARCeAQ..i&amp;docid=B2Df8hRQ-ec0JM&amp;w=913&amp;h=596&amp;q=java%20jvm&amp;ved=2ahUKEwjQgbrTxPDuAhUyIqYKHSlqAJkQMygBegUIARCeAQ">
-<meta property="og:updated_time" content="2021-02-17T08:49:51.495Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.guru99.com&#x2F;images&#x2F;1&#x2F;2.png">
+<meta property="og:updated_time" content="2021-02-17T08:59:49.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;www.google.com&#x2F;imgres?imgurl=https%3A%2F%2Fwww.guru99.com%2Fimages%2F1%2F2.png&amp;imgrefurl=https%3A%2F%2Fiann.tistory.com%2F17&amp;tbnid=EBBSqSzmIhtNRM&amp;vet=12ahUKEwjQgbrTxPDuAhUyIqYKHSlqAJkQMygBegUIARCeAQ..i&amp;docid=B2Df8hRQ-ec0JM&amp;w=913&amp;h=596&amp;q=java%20jvm&amp;ved=2ahUKEwjQgbrTxPDuAhUyIqYKHSlqAJkQMygBegUIARCeAQ">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.guru99.com&#x2F;images&#x2F;1&#x2F;2.png">
     
     <!--SEO 검색엔진 적용하기 -->
     <link rel="canonical" href="http://gwanhyeon.github.io/java-20210217-jvm-garbage-collection/"/>
@@ -227,7 +227,7 @@ JAVA에서 기본으로 제공하는 클래스들의 모음</p>
 <blockquote>
 <p>JVM 동작과정</p>
 </blockquote>
-<p><img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.guru99.com%2Fimages%2F1%2F2.png&amp;imgrefurl=https%3A%2F%2Fiann.tistory.com%2F17&amp;tbnid=EBBSqSzmIhtNRM&amp;vet=12ahUKEwjQgbrTxPDuAhUyIqYKHSlqAJkQMygBegUIARCeAQ..i&amp;docid=B2Df8hRQ-ec0JM&amp;w=913&amp;h=596&amp;q=java%20jvm&amp;ved=2ahUKEwjQgbrTxPDuAhUyIqYKHSlqAJkQMygBegUIARCeAQ" alt="JVM"></p>
+<p><img src="https://www.guru99.com/images/1/2.png" alt="JVM"></p>
 <p>JVM은 총 4가지로 구성되어지는데 Class Loader, Execution Engine, Garbage Collector, Runtime Data Area로 구성되어집니다.</p>
 <p>(1) Java에서 소스코드를 작성하면 <code>.java파일이 생성</code>되는데 이 자바파일을 Java Complier가 Compile을 진행하면 <code>.class 파일을 생성</code>시킵니다. 여기서 .class파일은 바이트 코드입니다.</p>
 <p>(2) 클래스 파일들을  바탕으로 <code>Class Loader</code>는 JVM이 운영체제로 부터 할당된 메모리영역인 <code>Runtime Data Area</code>로 적재하는 역할을 진행하게됩니다.</p>
@@ -263,7 +263,7 @@ JAVA에서 기본으로 제공하는 클래스들의 모음</p>
 </blockquote>
 <p><a href="https://gwanhyeon.github.io/OS-20201116-OS-Process-Thread/">Thread &amp; Process</a></p>
 <h1 id="gc-garbage-collector"><a href="#gc-garbage-collector" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#gcgarbage-collector"></a> GC(Garbage Collector)</h1>
-<p><img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fdexvis.files.wordpress.com%2F2012%2F05%2Fjvmlayout1.png&amp;imgrefurl=https%3A%2F%2Fdexvis.wordpress.com%2F2012%2F05%2F31%2Fbasic-garbage-collection-analysis-18%2F&amp;tbnid=wb0TPex-ksatOM&amp;vet=12ahUKEwirhNa8xPDuAhUOYJQKHcCFBEMQMyg9egQIARBE..i&amp;docid=sgtH4q4pIOJ6IM&amp;w=909&amp;h=606&amp;q=java%20garbage%20collector&amp;ved=2ahUKEwirhNa8xPDuAhUOYJQKHcCFBEMQMyg9egQIARBE" alt="GC"></p>
+<p><img src="https://dexvis.files.wordpress.com/2012/05/jvmlayout1.png" alt="GC"></p>
 <p>Heap Area는 GC의 주요 대상이며 힙 영역은 eden, survivor1, survivor2, old, permanent로 구성이 되어집니다. 이렇게 힙 영역이 나누어진 이유는 효율성 때문입니다.</p>
 <blockquote>
 <p>GC의 종류</p>
@@ -362,7 +362,7 @@ Major GC는 참조가 없는 객체들을 표시하고 그 해당 객체들을 �
             "name": "gwanhyeon Kim"
         },
         "headline": "JVM(Java Virtual Machine) &amp; GC(Garbage Collection)",
-        "image": "http://gwanhyeon.github.iohttps://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.guru99.com%2Fimages%2F1%2F2.png&amp;imgrefurl=https%3A%2F%2Fiann.tistory.com%2F17&amp;tbnid=EBBSqSzmIhtNRM&amp;vet=12ahUKEwjQgbrTxPDuAhUyIqYKHSlqAJkQMygBegUIARCeAQ..i&amp;docid=B2Df8hRQ-ec0JM&amp;w=913&amp;h=596&amp;q=java%20jvm&amp;ved=2ahUKEwjQgbrTxPDuAhUyIqYKHSlqAJkQMygBegUIARCeAQ",
+        "image": "http://gwanhyeon.github.iohttps://www.guru99.com/images/1/2.png",
         "keywords": "Java JVM GC",
         "genre": "Java",
         "datePublished": "2021-02-17",
