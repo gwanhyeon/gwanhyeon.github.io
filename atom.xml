@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2021-02-18T02:52:33.759Z</updated>
+  <updated>2021-02-18T03:36:08.986Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java Annotation(어노테이션)</title>
+    <link href="http://gwanhyeon.github.io/Java-20210218-annotation-java/"/>
+    <id>http://gwanhyeon.github.io/Java-20210218-annotation-java/</id>
+    <published>2021-02-18T03:03:47.000Z</published>
+    <updated>2021-02-18T03:36:08.986Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="java-annotation"><a href="#java-annotation" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#java-annotation"></a> Java Annotation</h1><p>Java 어노테이션은 JEE5부터 추가된 문법이며 기본적으로 인터페이스입니다. 사전적정의로는 주석이라는의미를 가지고 있고 특수한의미를 부여하거나 기능을 주입하면서 컴파일타임 시점이나 런타임시점에 해석됩니다. 기존의 xml의 불편함을 개선하기위해서 나오게된 <code>Annotation(어노테이션)</code> 이라고생각하면 됩니다.</p><h1 id="built-in-annotation"><a href="#built-in-annotation" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#built-in-annotation"></a> Built-in Annotation</h1><p>Java내에 내장되어 있는 어노테이션을 Built-in Annotation이라 불리어오며 주로  컴파일러에게 정보를 제공하게 됩니다.</p><blockquote><p>@Override</p></blockquote><p>메서드앞에 붙일수 있으며 현재 메서드가 슈퍼클래스의 메소드를 오버라이드한 메소드임을 명시합니다.</p><blockquote><p>@Deprecated</p></blockquote><p>annotation으로 타입, 필드, 메소드 등에 사용되며 @Deprecated 표시 되어 있는 메소드나 필드를 사용하면 빌드할 때 Warning 메시지를 보여주게됩니다. 즉, 컴파일러에게 이 메소드는 없어질 예정임을 명시합니다.</p><blockquote><p>@SupressWarning</p></blockquote><p>컴파일러에게 전달하여 경고를 제거합니다.</p><blockquote><p>FunctionalInterface</p></blockquote><p>컴파일러에게 다음의 인터페이스는 함수형 인터페이스라는것을 명시합니다.</p><h1 id="meta-annotation"><a href="#meta-annotation" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#meta-annotation"></a> Meta-Annotation</h1><p>어노테이션의 동작 대상을 결정하는 어노테이션이며 어노테이션을 정의할때 주로 사용합니다.</p><blockquote><p>@Target</p></blockquote><p>어노테이션이 적용가능한 대상을 지정하는데 사용되며 여러값을 {} 괄호로 사용할 수 있다.</p><blockquote><p>@Retention</p></blockquote><p>SOURCE::, CLASS::, RUNTIME:: 세가지 유지정책으로 사용할 수 있는데 어노테이션이 유지되는 기간을 지정하는데 사용합니다.</p><blockquote><p>@Documented</p></blockquote><p>vavadoc으로 작성한 문서에 포함되도록 할 때 사용하는 어노테이션입니다.</p><blockquote><p>@Inherited</p></blockquote><p>어노테이션이 자손 클래스에도 상속되도록 하는 어노테이션입니다</p><blockquote><p>@Native</p></blockquote><p>네이티브 메서드에 의해 참조되는 상수필드에 붙이는 어노테이션입니다.</p><blockquote><p>네이티브 메서드란?</p></blockquote><p>JVM이 설치된 OS의 메서드를 말한다. 네이티브 메서드는 보통 C언어로 작성되어 있고 자바에서는 메서드의 선언부만 정의하고 구현은 하지 않는다.</p><h1 id="custom-annotation"><a href="#custom-annotation" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#custom-annotation"></a> Custom Annotation</h1><blockquote><p>Maker Annotation</p></blockquote><p>요소가 한개도 없으며 단순히 표식으로 사용되는 어노테이션(의미전달)</p><blockquote><p>Single-value Annotation</p></blockquote><p>요소로 단일 변수만을 갖는 어노테이션입니다.</p><blockquote><p>Full Annotaion</p></blockquote><p>요소로 둘 이상의 변수를 갖는 어노테이션으로, 데이터를 배열 안에 key-value의 형태로 전달합니다.</p><h1 id="eonoteisyeon-gwanryeon-jeongri"><a href="#eonoteisyeon-gwanryeon-jeongri" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#어노테이션-관련-정리"></a> 어노테이션 관련 정리</h1><p><a href="https://gwanhyeon.github.io/Spring-20210114-spring-annotation/">Spring @Annotation(어노테이션)</a><br><a href="https://gwanhyeon.github.io/Spring-20210114-spring-lombok-annotation/">Spring Lombok @Annotation(어노테이션)</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;java-annotation&quot;&gt;&lt;a href=&quot;#java-annotation&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#java-annotation&quot;&gt;&lt;/a&gt; J
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://gwanhyeon.github.io/categories/java/"/>
+    
+    
+      <category term="어노테이션" scheme="http://gwanhyeon.github.io/tags/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Java Collection(컬렉션)</title>
@@ -186,8 +212,8 @@
   
   <entry>
     <title>JPA 엔티티(Entity)</title>
-    <link href="http://gwanhyeon.github.io/JPA-20210205-jpa-03-%EC%97%94%ED%8B%B0%ED%8B%B0/"/>
-    <id>http://gwanhyeon.github.io/JPA-20210205-jpa-03-%EC%97%94%ED%8B%B0%ED%8B%B0/</id>
+    <link href="http://gwanhyeon.github.io/JPA-20210205-jpa-03-%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B5%E1%84%90%E1%85%B5/"/>
+    <id>http://gwanhyeon.github.io/JPA-20210205-jpa-03-%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B5%E1%84%90%E1%85%B5/</id>
     <published>2021-02-05T06:15:32.000Z</published>
     <updated>2021-02-05T09:06:20.306Z</updated>
     
@@ -408,9 +434,9 @@
     
       <category term="JPA" scheme="http://gwanhyeon.github.io/tags/jpa/"/>
     
-      <category term="Persistence" scheme="http://gwanhyeon.github.io/tags/persistence/"/>
-    
       <category term="Entity" scheme="http://gwanhyeon.github.io/tags/entity/"/>
+    
+      <category term="Persistence" scheme="http://gwanhyeon.github.io/tags/persistence/"/>
     
       <category term="Flush" scheme="http://gwanhyeon.github.io/tags/flush/"/>
     
@@ -533,7 +559,7 @@
     <link href="http://gwanhyeon.github.io/Spring-20210117-spring-dependency-injection/"/>
     <id>http://gwanhyeon.github.io/Spring-20210117-spring-dependency-injection/</id>
     <published>2021-01-17T04:08:13.000Z</published>
-    <updated>2021-01-17T04:43:15.183Z</updated>
+    <updated>2021-02-18T02:59:17.569Z</updated>
     
     <content type="html"><![CDATA[<h1 id="seupeuring-keonteineo-ioc-jeeo-banjeon-inversion-of-control-keonteineo"><a href="#seupeuring-keonteineo-ioc-jeeo-banjeon-inversion-of-control-keonteineo" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#스프링-컨테이너-ioc제어-반전-inversion-of-control-컨테이너"></a> 스프링 컨테이너, IoC(제어 반전 Inversion of control) 컨테이너</h1><p><code>스프링 Bean과 DI(Dependency Injection)의 개념</code>에 대해서 살펴보기전에 <code>스프링 컨테이너(IoC)의 특징</code>을 살펴보겠습니다.</p><ul><li><p>스프링 애플리케이션에서는 오브젝트의 생성과 관계설정, 사용, 제거 등의 작업을 애플리케이션 코드 대신 독립된 컨테이너가 담당하게 됩니다. 컨테이너가 코드 대신 오브젝트에 대한 제어권 을 갖기때문에 IoC라고 부릅니다. <code>즉, 스프링컨테이너라는 것은 IoC컨테이너와 같은 말로 쓰여집니다.</code></p></li><li><p><code>스프링 컨테이너는 DI(Dependency Injection)보다 많은 일들을 담당</code>하게 됩니다. 예를 들면,<br>DI를 위한 빈 팩토리에 엔터프라이즈 애플리케이션을 개발하는 데 필요한 여러 가지 컨테이너 기능을 추가한 것을 애플리케이션 컨텍스트를 관리하게 됩니다.</p></li><li><p>스프링의 빈 팩토리와 애플리케이션 컨텍스트는 각각 기능을 <code>대표하는 BeanFactory와 ApplicationContext라는 두 개의 인터페이스</code>로 정의 되어있습니다.</p></li><li><p>ApplicationContext 인터페이스는 BeanFactory 인터페이스를 상속한 서브 인터페이스 입니다.</p></li></ul><h1 id="di-dependency-injection"><a href="#di-dependency-injection" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#didependency-injection"></a> DI(Dependency Injection)</h1><p>스프링이 연관된 객체를 스프링 컨테이너에서 찾아서 객체 의존관계를 외부에서 넣어주는 것을 <code>DI (Dependency Injection), 의존성 주입</code>이라 합니다.</p><h1 id="seupeuringbingwa-yijongwangye"><a href="#seupeuringbingwa-yijongwangye" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#스프링빈과-의존관계"></a> 스프링빈과 의존관계</h1><p>컨트롤러와 서비스에 대한 레포지토리를 만들때 <code>@Autowired가 있으면 스프링이 연관된 객체를 스프링 컨테이너에서 찾아서 넣어줍니다.</code> 그렇게 객체 의존관계를 외부에서 넣어주는것을 <code>DI(Dependency Injetion)</code>이라 하며 이전 테스트 에서는 개발자가 직접 주입을 시켰지만 이제는 <code>@autowired에 의해 스프링이 주입</code>해줍니다.</p><blockquote><p>스프링 빈이 등록되어 있지 않다면?</p></blockquote><p>만약 컨트롤러와 서비스간의 스프링 빈이 등록되어 있지 않다면 <code>@Controller가 스프링빈</code>으로 자동등록해주거나 직접 자바코드로 직접 스프링빈을 등록할 수 있습니다. 그 이유는 <code>@Controller에 포함되어있는 @Component 어노테이션이 빈으로 등록</code>을 해주기 때문입니다. 그 외는 <code>SpringConfig라는 설정파일을 만들어서 직접 자바코드로 스프링빈</code>을 등록하게 할 수 있다.</p><h1 id="keomponeonteu-seukaenyi-weonri"><a href="#keomponeonteu-seukaenyi-weonri" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#컴포넌트-스캔의-원리"></a> 컴포넌트 스캔의 원리</h1><blockquote><p>컴포넌트 스캔은 어떤 원리를 가지고 있을까요?</p></blockquote><p>@Component 애노테이션이 있으면 스프링빈으로 자동등록 됩니다.바로 @Controller가 스프링빈으로 등록된 이유도 컴포넌트 스캔때문이라고 할 수 있습니다.</p><p>@Component을 포함하는 애노테이션은 다음과 같습니다. <code>@Controller, @Service @Repository가 있습니다.</code> 즉, <code>스프링 빈으로 자동등록</code>된다는 말입니다.</p><p>결론, 생성자에 @Autowired를 사용하면 객체 생성 시점에 스프링 컨테이너에서 해당 스프링 빈을 찾아서 주입해줍니다. 생성자가 1개만 있으면 @Autowired는 생략이 가능합니다.</p><p>스프링은 스프링 컨테이너에서 스프링 빈을 등록할 때, 기본적으로 <code>싱글톤으로 등록합니다(유일하게 하나만 등록해서 공유하고) 같은 스프링 빈이면 모두 같은 인스턴스</code>이다. 싱글톤이 아니게 설정할 수 있지만, 특별한 경우 제외하면 대부분 싱글톤을 사용합니다.</p><h1 id="di-dependency-injection-juib"><a href="#di-dependency-injection-juib" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#didependency-injection-주입"></a> DI(Dependency Injection) 주입</h1><p><code>DI주입</code>은 <code>필드주입, setter주입, 생성자 주입 총 3가지 방법</code>이 있습니다.</p><p>의존관계가 실행중 동적으로 변하는 경우는 거의 없기때문에 생성자 주입을 통한 DI주입을 권장합니다. DI주입시 주의사항은 @Autowired를 통한 DI는 Controller, Service등과 같이 스프링이 관리하는 객체에서만 동작하게 됩니다. <code>스프링 빈으로 등록하지 않고 내가 직접 생성한 객체에서는 동작되지 않습니다.</code></p>]]></content>
     
@@ -557,38 +583,6 @@
       <category term="DI" scheme="http://gwanhyeon.github.io/tags/di/"/>
     
       <category term="컴포넌트 스캔" scheme="http://gwanhyeon.github.io/tags/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Network 웹 브라우저의 요청 흐름</title>
-    <link href="http://gwanhyeon.github.io/Network-20210115-network-05-web-browser-request-flow/"/>
-    <id>http://gwanhyeon.github.io/Network-20210115-network-05-web-browser-request-flow/</id>
-    <published>2021-01-15T13:25:39.000Z</published>
-    <updated>2021-01-15T14:00:35.329Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="web-beuraujeo-yoceong-heureum"><a href="#web-beuraujeo-yoceong-heureum" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#웹-브라우저-요청-흐름"></a> 웹 브라우저 요청 흐름</h1><p>웹 브라우저에 대한 요청흐름에 대해서 살펴보겠습니다. 예시로 된 IP이기때문에 실제와 같지 않습니다.<br>웹브라우저: 127.0.0.1<br>구글서버: 127.0.0.2<br>요청 URL: <code>https://www.google.com:443/search?q=google&amp;oq=google</code></p><blockquote><p>다음과 같이 웹브라우저와 구글서버 IP, 요청 URL이 주어졌다고 가정하면 어떤일이 발생하게 될까요?</p></blockquote><ol><li>웹브라우저가 요청 URL에 접근을 요청합니다.</li><li>DNS(Domain Name System)에서 해당되는 DNS의 IP를 조회해옵니다.</li><li>조회해 온 127.0.0.2 IP를 바탕으로 HTTP 요청 메시지를 생성합니다.</li></ol><ul><li>HTTP 요청 메시지</li></ul><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /search?q=google&amp;oq=google HTTP/1.1</span><br><span class="line">Host:www.google.com</span><br></pre></td></tr></table></figure><ol start="4"><li>HTTP 요청 메시지를 바탕으로 HTTP 메시지를 웹 브라우저상에 전송합니다.</li></ol><h1 id="http-mesiji-jeonsonggwajeong"><a href="#http-mesiji-jeonsonggwajeong" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#http-메시지-전송과정"></a> HTTP 메시지 전송과정</h1><ol><li>웹 브라우저가 HTTP 메시지를 생성합니다.</li><li>SOCKET 라이브러리를 통해 해당 HTTP 메시지를 전달합니다.<br>TCP/IP를 연결(IP,PORT)에 대해서 데이터 전달을 진행합니다.</li><li>TCP/IP 패킷을 생성하여, HTTP 메시지를 포함시킵니다.</li><li>네트워크인터페이스인 LAN 장비를 통하여 인터넷으로 해당 메시지와 데이터를 전송합니다.</li><li>최종적으로 <a href="http://google.com" target="_blank" rel="noopener">google.com</a>(127.0.0.2) 서버에 도달하게 됩니다.</li></ol><h1 id="paekis-saengseong"><a href="#paekis-saengseong" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#패킷-생성"></a> 패킷 생성</h1><blockquote><p>TCP/IP패킷은 어떤 구조로 구성되어있을까요?</p></blockquote><p>출발지 IP, 출발지 PORT, 목적지 IP, 목적지 PORT, 전송 데이터, 그 외 기타의 설정들이 담겨져 있습니다.<br>즉, 출발지 IP, 출발지 PORT, 목적지 IP, 목적지 PORT는 TCP/IP 패킷으로 구성되어 있으며 HTTP메시지는 TCP/IP 패킷안에 HTTP 메시지가 포함되어 있는 형태로 볼 수 있습니다.</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># TCP/IP 패킷(상위 개념)</span><br><span class="line">----------------------------</span><br><span class="line">출발지 IP,PORT</span><br><span class="line">목적지 IP,PORT</span><br><span class="line">----------------------------</span><br><span class="line"># HTTP 메시지(하위 개념)</span><br><span class="line">GET /search?q=google&amp;oq=google HTTP/1.1</span><br><span class="line">Host:www.google.com</span><br><span class="line">----------------------------</span><br></pre></td></tr></table></figure><h1 id="http-eungdab-mesiji"><a href="#http-eungdab-mesiji" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#http-응답-메시지"></a> HTTP 응답 메시지</h1><blockquote><p>이제 이렇게 웹 브라우저에 요청에 대한 서버는 응답값은 어떤 형식으로 오게 될까요?</p></blockquote><p>정상적으로 요청에 대한 값을 받고 응답에 대한 패킷을 전달할때 응답패킷 형태로(TCP/IP, HTTP 메시지)를 함께 전송하게 됩니다.</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: text/html;charset=UTF-8</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span> ~ <span class="tag">&lt;/<span class="name">body</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><h1 id="web-beuraujeo-rendeoring"><a href="#web-beuraujeo-rendeoring" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#웹-브라우저-렌더링"></a> 웹 브라우저 렌더링</h1><p>웹 브라우저의 요청을 통해서 서버에 대한 응답 요청 패킷을 전달받은 웹브라우저는 응답 패킷으로 넘어온 TCP/IP, HTTP 메시지에 포함된 데이터를 바탕으로 HTML 렌더링을 진행합니다.</p><h1 id="httpyi-teugjing"><a href="#httpyi-teugjing" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#http의-특징"></a> HTTP의 특징</h1><ul><li>The World Wide Web (WWW)은 모든것이 대부분 HTTP형태로 통신</li><li>Client-Server 구조</li><li>Stateful : server side에 client와 server의 동작, 상태정보를 저장하는 형태, 세션 상태에 기반하여 server의 응답이 달라짐</li><li>Stateless : server side에 client와 server의 동작, 상태정보를 저장하지 않는 형태, server의 응답이 client와의 세션 상태와 독립적</li><li>비 연결성(Connetionless)</li><li>HTTP 메시지</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;web-beuraujeo-yoceong-heureum&quot;&gt;&lt;a href=&quot;#web-beuraujeo-yoceong-heureum&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; hr
-      
-    
-    </summary>
-    
-    
-      <category term="Network" scheme="http://gwanhyeon.github.io/categories/network/"/>
-    
-    
-      <category term="network" scheme="http://gwanhyeon.github.io/tags/network/"/>
-    
-      <category term="웹브라우저" scheme="http://gwanhyeon.github.io/tags/%EC%9B%B9%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80/"/>
-    
-      <category term="TCP/IP" scheme="http://gwanhyeon.github.io/tags/tcp-ip/"/>
-    
-      <category term="HTTP" scheme="http://gwanhyeon.github.io/tags/http/"/>
     
   </entry>
   
