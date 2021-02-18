@@ -4,7 +4,7 @@
     
 
     
-    <title>오버로딩(overloading)과 오버라이딩(overriding) | GWAN IT Blog</title>
+    <title>오버로딩(overloading)과 오버라이딩(overriding), 접근제어자(Access Modifier) | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -13,12 +13,12 @@
     <meta name="description" content="1.  오버라이딩(Overriding) 자바의 경우는 오버라이딩 시 동적바인딩되며 상위 클래스 혹은 인터페이스에 존재하는 메소드를 하위 클래스에서 필요에 맞게 재정의하는 것을 말합니다. 2.  오버로딩(Overloading) 메소드의 이름과 return 타입은 동일하지만, 매개변수만 다른 메소드를 만드는 것을 말합니다. 오버로딩은 다른 시그니쳐를 만들며 정">
 <meta name="keywords" content="overloading,overriding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="오버로딩(overloading)과 오버라이딩(overriding)">
+<meta property="og:title" content="오버로딩(overloading)과 오버라이딩(overriding), 접근제어자(Access Modifier)">
 <meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Java-20210218-overloading-overriding-java&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  오버라이딩(Overriding) 자바의 경우는 오버라이딩 시 동적바인딩되며 상위 클래스 혹은 인터페이스에 존재하는 메소드를 하위 클래스에서 필요에 맞게 재정의하는 것을 말합니다. 2.  오버로딩(Overloading) 메소드의 이름과 return 타입은 동일하지만, 매개변수만 다른 메소드를 만드는 것을 말합니다. 오버로딩은 다른 시그니쳐를 만들며 정">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-02-18T05:09:10.623Z">
+<meta property="og:updated_time" content="2021-02-18T05:12:35.542Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -161,7 +161,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-        오버로딩(overloading)과 오버라이딩(overriding)
+        오버로딩(overloading)과 오버라이딩(overriding), 접근제어자(Access Modifier)
         </h1>
     
 
@@ -201,6 +201,23 @@ ga('send', 'pageview');
 <h1 id="obeoraiding-overriding-vs-obeoroding-overloading"><a href="#obeoraiding-overriding-vs-obeoroding-overloading" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#오버라이딩overriding-vs-오버로딩overloading"></a> 오버라이딩(Overriding) VS 오버로딩(Overloading)</h1>
 <p>오버라이딩과 오버로딩을 하나의 코드로 표현하면 다음과 같이 처리할 수 있습니다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">overlodingoverriding</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Child c = <span class="keyword">new</span> Child();</span><br><span class="line">        System.out.println(c.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 오버 로딩 예제</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Parent</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.getValue();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 오버라이딩 예제</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">overriding_1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">overriding_1</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">overriding_1</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="jeobgeunjeeoja-access-modifier"><a href="#jeobgeunjeeoja-access-modifier" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#접근제어자access-modifier"></a> 접근제어자(Access Modifier)</h1>
+<blockquote>
+<p>public<br>
+어떤 클래스에서라도 접근이 가능합니다.</p>
+</blockquote>
+<blockquote>
+<p>protected<br>
+클래스가 정의되어 있는 해당 패키지 내 그리고 해당 클래스를 상속받은 외부 패키지의 클래스에서 접근이 가능합니다.</p>
+</blockquote>
+<blockquote>
+<p>(default)<br>
+클래스가 정의되어 있는 해당 패키지 내에서만 접근이 가능하도록 접근 범위를 제한합니다.</p>
+</blockquote>
+<blockquote>
+<p>private<br>
+정의된 해당 클래스에서만 접근이 가능하도록 접근 범위를 제한합니다.</p>
+</blockquote>
 
         </div>
         <footer class="article-footer">
@@ -271,7 +288,7 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "오버로딩(overloading)과 오버라이딩(overriding)",
+        "headline": "오버로딩(overloading)과 오버라이딩(overriding), 접근제어자(Access Modifier)",
         "image": "http://gwanhyeon.github.io",
         "keywords": "overloading overriding",
         "genre": "Java",
@@ -283,7 +300,7 @@ ga('send', 'pageview');
 자바의 경우는 오버라이딩 시 동적바인딩되며 상위 클래스 혹은 인터페이스에 존재하는 메소드를 하위 클래스에서 필요에 맞게 재정의하는 것을 말합니다.
 2.  오버로딩(Overloading)
 메소드의 이름과 return 타입은 동일하지만, 매개변수만 다른 메소드를 만드는 것을 말합니다. 오버로딩은 다른 시그니쳐를 만들며 정",
-        "wordCount": 429
+        "wordCount": 471
     }
 </script>
 
@@ -352,7 +369,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/java/">Java</a></p>
-                            <p class="item-title"><a href="/Java-20210218-overloading-overriding-java/" class="title">오버로딩(overloading)과 오버라이딩(overriding)</a></p>
+                            <p class="item-title"><a href="/Java-20210218-overloading-overriding-java/" class="title">오버로딩(overloading)과 오버라이딩(overriding), 접근제어자(Access Modifier)</a></p>
                             <p class="item-date"><time datetime="2021-02-18T04:58:35.000Z" itemprop="datePublished">2021-02-18</time></p>
                         </div>
                     </li>
