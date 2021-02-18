@@ -68,33 +68,33 @@ keyword 도 아니고 code block 도 아닌 메소드입니다. 해당 메소드
 <thead>
 <tr>
 <th>타입</th>
-<th>내용</th>
+<th style="text-align:center">내용</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><t></t></td>
-<td>Type</td>
+<td><code>&lt;T&gt;</code></td>
+<td style="text-align:center">Type</td>
 </tr>
 <tr>
-<td><e></e></td>
-<td>Element</td>
+<td><code>&lt;E&gt;</code></td>
+<td style="text-align:center">Element</td>
 </tr>
 <tr>
-<td><k></k></td>
-<td>Key</td>
+<td><code>&lt;K&gt;</code></td>
+<td style="text-align:center">Key</td>
 </tr>
 <tr>
-<td><n></n></td>
-<td>Number</td>
+<td><code>&lt;N&gt;</code></td>
+<td style="text-align:center">Number</td>
 </tr>
 <tr>
-<td><v></v></td>
-<td>Value</td>
+<td><code>&lt;V&gt;</code></td>
+<td style="text-align:center">Value</td>
 </tr>
 <tr>
-<td><r></r></td>
-<td>Result</td>
+<td><code>&lt;R&gt;</code></td>
+<td style="text-align:center">Result</td>
 </tr>
 </tbody>
 </table>
