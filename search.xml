@@ -136,6 +136,13 @@ try-catch or try-catch-resource 구문을 사용할 때, 마무리처리 작업 
 keyword 도 아니고 code block 도 아닌 메소드입니다. 해당 메소드는 GC에 의해 호출되는 함수로 절대 호출해서는 안되며 Object 클래스에 정의되어 있으며 GC 가 발생하는 시점이 불분명하기 때문에 해당 메소드가 실행된다는 보장이 없습니다. 한 finalize() 메소드가 오버라이딩 되어 있으면 GC 가 이루어질 때 바로 Garbage Collecting 되지 않기때문에 GC 가 지연되면서 OOME(Out of Memory Exception)이 발생할 수 있는 이슈가 존재합니다.</p>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>final</tag>
+        <tag>magicnumber</tag>
+      </tags>
   </entry>
   <entry>
     <title>프로그래머스 경주로건설</title>
