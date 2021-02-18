@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/JPA-20210219-jpa-03-%EC%97%94%ED%8B%B0%ED%8B%B0/</loc>
+        <lastmod>2021-02-18T16:34:19.678Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Java-20210218-magic-number-final-java/</loc>
         <lastmod>2021-02-18T11:57:03.340Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -146,14 +154,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Programmers-20210208-programmers-%ED%95%A9%EC%8A%B9%ED%83%9D%EC%8B%9C%EC%9A%94%EA%B8%88/</loc>
         <lastmod>2021-02-08T11:21:51.889Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/JPA-20210205-jpa-03-%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B5%E1%84%90%E1%85%B5/</loc>
-        <lastmod>2021-02-05T09:06:20.306Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -4,21 +4,25 @@
     
 
     
-    <title>태그: JPA | GWAN IT Blog</title>
+    <title>JPA 엔티티(Entity) | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GWAN IT Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;tags&#x2F;jpa&#x2F;index.html">
+    <meta name="keywords" content="JPA,Entity" />
+    
+    <meta name="description" content="1.  Entity 매핑 어노테이션   객체, 테이블 매핑 @Entity, @table   필드와 컬럼 매핑 @Column   기본 키 매핑 @Id   연관관계 매핑 @ManyToOne, @JoinColumn    Entity 의미  @Entity가 붙은 클래스는 JPA가 관리하고 하는 엔티티라고 하며 JPA에서 사용하는 테이블과 매핑할 클래스는 @Enti">
+<meta name="keywords" content="JPA,Entity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JPA 엔티티(Entity)">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;JPA-20210219-jpa-03-%EC%97%94%ED%8B%B0%ED%8B%B0&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
+<meta property="og:description" content="1.  Entity 매핑 어노테이션   객체, 테이블 매핑 @Entity, @table   필드와 컬럼 매핑 @Column   기본 키 매핑 @Id   연관관계 매핑 @ManyToOne, @JoinColumn    Entity 의미  @Entity가 붙은 클래스는 JPA가 관리하고 하는 엔티티라고 하며 JPA에서 사용하는 테이블과 매핑할 클래스는 @Enti">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-02-18T16:34:19.678Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/tags/jpa/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/jpa-20210219-jpa-03-엔티티/"/>
     
 
     
@@ -145,45 +149,298 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>태그: <em>JPA</em>
+    <a class="page-title-link" href="/categories/jpa/">JPA</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-JPA-20210219-jpa-03-엔티티" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2021" class="archive-year"><i class="icon fa fa-calendar-o"></i>2021</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/jpa/">JPA</a>
-            </div>
-            <div class="date"><time datetime="2021-02-05T06:15:32.000Z" itemprop="datePublished">2021-02-05</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/JPA-20210219-jpa-03-%EC%97%94%ED%8B%B0%ED%8B%B0/">JPA 엔티티(Entity)</a>
+        JPA 엔티티(Entity)
         </h1>
     
 
-        <p class="article-excerpt">
-            1.  Entity 매핑 어노테이션
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/JPA-20210219-jpa-03-%EC%97%94%ED%8B%B0%ED%8B%B0/" class="article-date">
+         <time datetime="2021-02-05T06:15:32.000Z" itemprop="datePublished">2021-02-05</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/entity/" rel="tag">Entity</a>, <a class="tag-link" href="/tags/jpa/" rel="tag">JPA</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="entity-maeping-eonoteisyeon"><a href="#entity-maeping-eonoteisyeon" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#entity-매핑-어노테이션"></a> Entity 매핑 어노테이션</h1>
+<ul>
+<li>
+<p>객체, 테이블 매핑<br>
+@Entity, @table</p>
+</li>
+<li>
+<p>필드와 컬럼 매핑<br>
+@Column</p>
+</li>
+<li>
+<p>기본 키 매핑<br>
+@Id</p>
+</li>
+<li>
+<p>연관관계 매핑<br>
+@ManyToOne, @JoinColumn</p>
+</li>
+</ul>
+<blockquote>
+<p>Entity 의미</p>
+</blockquote>
+<p>@Entity가 붙은 클래스는 JPA가 관리하고 하는 엔티티라고 하며 JPA에서 사용하는 테이블과 매핑할 클래스는 @Entity는 필수로 사용되어지고 있습니다.<br>
+여기서 가장 중요한것은 기본 생성자는 필수로 있어야하며, final, enum, interface, inner 클래스는 사용할 수없습니다. 즉, 해당것들을 매핑이 불가능하게 됩니다. 그리고 저장할 필드에서는 final을 사용하면 안됩니다.</p>
+<blockquote>
+<p>Entity 속성</p>
+</blockquote>
+<p>name속성 같은경우는 사용할 엔티티 이름을 지정합니다. 기본값은 현재 클래스의 이름을 그대로 사용하고 같은 클래스 이름이 없으면 가급적으로 기본값을 사용하는것이 가장 좋습니다.</p>
+<h1 id="teibeul-maeping-eonoteisyeon"><a href="#teibeul-maeping-eonoteisyeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#테이블-매핑-어노테이션"></a> 테이블 매핑 어노테이션</h1>
+<p>@Table 어노테이션은 엔티티와 매핑할 테이블일 지정합니다. 테이블 매핑 어노테이션은 여러가지 속성들을 가지고 있는데 대표적인것들이 4가지로 나눌 수 있습니다.</p>
+<ol>
+<li>name: 매핑할 테이블 이름</li>
+<li>catalog: 데이터베이스 catalog 매핑</li>
+<li>schema: 데이터베이스 schema 매핑</li>
+<li>uniqueConstraints DDL 생성 시에 유니크 제약 조건 생성</li>
+</ol>
+<h1 id="deiteo-beiseu-ddl-seukima"><a href="#deiteo-beiseu-ddl-seukima" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#데이터-베이스-ddl-스키마"></a> 데이터 베이스 DDL 스키마</h1>
+<p>데이터베이스에서 스키마가 자동생성은 DDL을 애플리케이션 생성 시점에 자동 생성이 됩니다. 이것은 테이블 중심에서 객체중심으로 옮겨간 패러다임이라고 할 수 있으며 데이터베이스마다 방언(dialect) Mysql, Oracle 등 데이터베이스에 맞는 적절한 DDL을 생성시킬 수 있습니다. 이것은 데이터베이스에서 사용되는것이 아니라 현재 개발중인 DDL에서만 적용되게 됩니다.</p>
+<h2 id="deiteobeiseu-seukima-jadong-saengseong-sogseong"><a href="#deiteobeiseu-seukima-jadong-saengseong-sogseong" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#데이터베이스-스키마-자동-생성속성"></a> 데이터베이스 스키마 자동 생성(속성)</h2>
+<ol>
+<li>craete: 기존테이블 삭제 후 다시 생성합니다.(drop + create)</li>
+<li>create-drop: create와 같지만 종료시점에 테이블을 다시 drop시켜버립니다.</li>
+<li>update: 변경된 부분만 반영하고 운영쪽에서는 사용하면 위험합니다.</li>
+<li>validate: 엔티티와 테이블이 정상 매핑되었는지만 확인합니다.</li>
+<li>none: 사용하지 않는 속성</li>
+</ol>
+<h3 id="kodeu-yeje"><a href="#kodeu-yeje" class="header-anchor">3.1.1. </a><a class="markdownIt-Anchor" href="#코드-예제"></a> 코드 예제</h3>
+<p>DB Dialect 를 설정 할 수 있으며 javax로 시작하는것은 여러가지를 가지고 있는데 하이버네이트 라이브러리나 또 다른 구현체 라이브러리를 써도 사용할 수 있다. 즉, 하이버네이트 전용 옵션이라고 할 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;property name=<span class="string">"hibernate.dialect"</span> value=<span class="string">"org.hibernate.dialect.H2Dialect"</span>/&gt;</span><br><span class="line">&lt;property name=<span class="string">"hibernate.dialect"</span> value=<span class="string">"org.hibernate.dialect.MySQL5Dialect"</span>/&gt;</span><br><span class="line">&lt;property name=<span class="string">"hibernate.dialect"</span> value=<span class="string">"org.hibernate.dialect.Oracle10gDialect"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>차이점이라고 하면 예를 들어 오라클같은경우는 varchar2, Mysql은 varchar과 같은 예를 들 수 있습니다. 여기서 가장 중요한점은 운영하는 서버에서는 craete, create-drop, update를 사용하면 절대 안됩니다.</p>
+<p>개발 초기단계에는 create 또는 update를 사용하고 테스트 서버에서는 update 또는 validate를 처리할 수 있습니다. 스테이징과 운영서버는 validate 또는 none으로 처리하여 진행하면 됩니다.</p>
+<h2 id="ddl-saengseong-gineung"><a href="#ddl-saengseong-gineung" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#ddl-생성-기능"></a> DDL 생성 기능</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Column</span>(nullable == <span class="keyword">false</span>, length = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>다음과 같은 컬럼 어노테이션 속성이 있다고 가정하면 해당 컬럼은 null값이 올 수 없으며 10자를 초과할 수 없다라는 의미가 됩니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Table</span>(uniqueConstraints = &#123;UniqueConstraint(name = <span class="string">"NAME"</span>, columnNames=&#123;<span class="string">"NAME"</span>. <span class="string">"AGE"</span>&#125;)&#125;)</span><br></pre></td></tr></table></figure>
+<p>다음과 같은 유니크 테이블 제약조건을 처리할 수도 있습니다.</p>
+<p>즉, DDL 생성 기능은 DDL을 자동 생성할때만 사용되고 JPA실행 로직에는 영향을 주지 않는다는점을 알고 있어야합니다.</p>
+<h1 id="pildeu-mic-keolreom-maeping"><a href="#pildeu-mic-keolreom-maeping" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#필드-및-컬럼-매핑"></a> 필드 및 컬럼 매핑</h1>
+<blockquote>
+<p>매핑 어노테이션 hibernate.hbm2ddl.auto</p>
+</blockquote>
+<ul>
+<li>@Column: 컬럼 매핑</li>
+<li>@Temporal: 날짜 타입 매핑</li>
+<li>@Enumerated: enum 타입 매핑</li>
+<li>@Lob: BLOB, CLOB 매핑(varchar 범위 넘어설때)</li>
+<li>@Transient: 특정 필드를 매핑하지 않음.(무시)</li>
+</ul>
+<blockquote>
+<p>@Column 속성</p>
+</blockquote>
+<ul>
+<li>name: 필드와 매핑할 테이블의 칼럼 이름</li>
+<li>insertable, updatable: 등록,변경 가능여부</li>
+<li>nullable(DDL): null값의 허용 여부를 설정하고 false로 설정하면 DDL 생성시에 not null 제약조건을 붙입니다.</li>
+<li>unique(DDL): @Table의 uniqueConstraints와 같지만 한 컬럼에 간단히 유니크 제약조건을 걸때 사용됩니다.</li>
+<li>columnDefinition(DDL): 데이터베이스 컬럼 정보를 직접 줄 수 있습니다. (varchar(100) default ‘EMPTY’)</li>
+<li>length(DDL): 문자 길이 제약조건, String 타입에만 사용한다.</li>
+<li>precision, scale(DDL): BigDecimal 타입에서 사용하고 precision은 소수점을 포함한 전체 자릿수며 scale은 소수의 자릿수입니다. (double, float 타입에는 적용 X)</li>
+</ul>
+<blockquote>
+<p>@Enumerated</p>
+</blockquote>
+<p>Java Enum타입을 매핑할때 사용하며 ORDINAL 속성은 사용하지 않는게 좋다. 왜냐하면 DB에서 값이 변경되면 누락된 값이 들어갈 수 있기 때문이다.<br>
+즉, String을 사용하여야한다.</p>
+<ul>
+<li>value 속성: EnumType.ORDINAL enum순서를 DB 저장, EnumType.STRING enum 이름을 DB 저장 (기본값은 ORDINAL)</li>
+</ul>
+<blockquote>
+<p>@Temporal</p>
+</blockquote>
+<p>날짜 타입을 매핑할때 사용합니다. LocalDate, LocalDateTime을 사용할시에는 생략이 가능합니다.(java8문법)</p>
+<ul>
+<li>value 속성:</li>
+</ul>
+<ol>
+<li>TemporalType.DATE: 날짜 타입과 매핑 (2021-01-01 yyyy-mm-dd)</li>
+<li>TemporalType.TIME: 시간, 데이터베이스 time 타입과 매핑 (24:00:00 hh-mm-ss)</li>
+<li>TemporalType.TIMESTAMP: 날짜와 시간, timestamp와 매핑(2021-01-01 24:00:00 yyyy-mm-dd hh-mm-ss)</li>
+</ol>
+<blockquote>
+<p>@Lob</p>
+</blockquote>
+<p>데이터베이스 BLOB, CLOB 타입과 매핑</p>
+<ul>
+<li>@Lob에는 지정할 수 있는 속성이 없습니다.</li>
+<li>매핑하는 필드타입이 문자면 CLOB 매핑, 나머지는 BLOB 매핑</li>
+</ul>
+<p>CLOB: String, char[], java.sql.CLOB<br>
+BLOB: byte[], java.sql.BLOB</p>
+<blockquote>
+<p>@Transient</p>
+</blockquote>
+<ul>
+<li>필드 매핑을 하지 않습니다.</li>
+<li>데이터베이스에 저장 및 조회를 진행하지 않습니다.</li>
+<li>주로 메모리상에서만 임시로 어떤값을 보관하고 싶을때 사용합니다.</li>
+</ul>
+<h1 id="gibonki-maeping"><a href="#gibonki-maeping" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#기본키-매핑"></a> 기본키 매핑</h1>
+<h2 id="gibon-ki-maeping-eonoteisyeon"><a href="#gibon-ki-maeping-eonoteisyeon" class="header-anchor">5.1. </a><a class="markdownIt-Anchor" href="#기본-키-매핑-어노테이션"></a> 기본 키 매핑 어노테이션</h2>
+<p>@Id, @GeneratedValue의 두가지 어노테이션을 가지고 있습니다.</p>
+<blockquote>
+<p>기본키 매핑 방법</p>
+</blockquote>
+<p>직접 할당은 @Id를 사용하여 할당하고 자동생성을 진행하기 위해서는 @GeneratedValue을 사용합니다.</p>
+<ul>
+<li>IDENTITY: 데이터베이스에 위임, MYSQL</li>
+<li>SEQUENCE: 데이터베이스 시퀀스 오브젝트 사용 Oracle, @SequenceGenerator</li>
+<li>Table: 키 생성용 테이블 사용하고 모든 데이터베이스에서 사용될 수 있습니다. @TableGenerator</li>
+<li>AUTO: 방언에 따라 자동 지정하고 기본값으로 세팅됩니다.</li>
+</ul>
+<blockquote>
+<p>IDENTITY 전략</p>
+</blockquote>
+<p>기본키 생성을 데이터베이스에 위임하고 주로 Mysql, PostgreSQL, SQL Server, DB2에서 사용됩니다. (AUTO_INCREMENT)<br>
+그리고 JPA는 주로 트랜잭션 커밋 시점에 INSERT SQL을 실행합니다. AUTO_INCREMENT는 데이터베이스에 INSERT SQL을 실행한 이후에 ID값을 알 수 있고 IDENTITY 전략은 em.persist() 시점에 즉시 INSERT SQL을 실행하고 DB에서 식별자를 조회해옵니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>SEQUENCE 전략</p>
+</blockquote>
+<p>데이터 베이스 시퀀스는 유일한 값을 순서대로 생성하는 특별한 데이터베이스 오브젝트입니다. 예를 들면 오라클 시퀀스와 같습니다. 그리고 오라클, PostgreSQL, DB2, H2 데이터베이스에서 사용됩니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@SequenceGenerator</span>(</span><br><span class="line">    name = <span class="string">"MEMBER_SEQ_GENERATOR"</span>,</span><br><span class="line">    sequenceName = <span class="string">"MEMBER_SEQ"</span></span><br><span class="line">    initValue = <span class="number">1</span>, allocationSize = <span class="number">1</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.SEQUENCE,</span><br><span class="line">    generator = <span class="string">"MEMBER_SEQ_GENERATOR"</span>)</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>name: 식별자 이름</li>
+<li>sequenceName: 데이터베이스에 등록되어있는 시퀀스 이름</li>
+<li>initialValue: DDL 생성시에만 사용되고 시퀀스 DDL을 생성할때 처음 1 시작하는 수를 지정합니다.</li>
+<li>allocationSize: 시퀀스 한 번 호출에 증가하는 수이며 성능최적화에 주로 사용됩니다. 데이터베이스 시퀀스 값이 하나씩 증가하도록 설정되어 있으면 이 값을 반드시 1로 설정하여야합니다.</li>
+<li>catalog, schema: 데이터베이스 catalog, schema 이름</li>
+</ul>
+<h1 id="teibeul-jeonryag"><a href="#teibeul-jeonryag" class="header-anchor">6. </a><a class="markdownIt-Anchor" href="#테이블-전략"></a> 테이블 전략</h1>
+<p>키 생성 전용 테이블을 하나 만들어서 데이터베이스 시퀀스를 흉내내는 전략인데 모든 데이터베이스에 적용이 가능하지만 성능적으로 뛰어나지는 않다는 단점을 가지고 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TableGenerator</span>(</span><br><span class="line">    name = <span class="string">"MEMBER_SEQ_GENERATOR"</span>,</span><br><span class="line">    table = <span class="string">"MY_SEQUENCES"</span>,</span><br><span class="line">    pkColumnValue = <span class="string">"MEMBER_SEQ"</span>, allocationSize = <span class="number">1</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.TABLE,            <span class="comment">// 테이블 전략외</span></span><br><span class="line">    generator = <span class="string">"MEMBER_SEQ_GENERATOR"</span>)</span><br><span class="line">    <span class="keyword">private</span> Long id</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>@TableGenerator 속성</p>
+</blockquote>
+<ul>
+<li>name: 식별자 이름(필수값)</li>
+<li>table: 키생성 테이블명</li>
+<li>pcColumnName: 시퀀스 컬럼명</li>
+<li>valueColumnNa: 시퀀스 값 컬럼명</li>
+<li>pkColumnValue: 키로 사용할 이름</li>
+<li>initialValue: 초기 값, 마지막으로 생성된 값이 기준</li>
+<li>allocationSize: 시퀀스 한 번 호출에 증가하는 수이며 최적화에 사용된다.</li>
+<li>catalog, schema: 데이터베이스 catalog, schema 이름</li>
+<li>uniqueConstraint: 유니크 제약조건 지정</li>
+</ul>
+<h1 id="gweonjanghaneun-sigbyeolja-jeonryag"><a href="#gweonjanghaneun-sigbyeolja-jeonryag" class="header-anchor">7. </a><a class="markdownIt-Anchor" href="#권장하는-식별자-전략"></a> 권장하는 식별자 전략</h1>
+<p>기본 키 제약조건을 사용하고 null이 아니여야하고 변경성이 없어야합니다. 그리고 대체키를 활용하여 사용하도록 합니다. 즉, UUID와 같은 Long형+대체키+키생성전략을 사용하여 대체키를 생성할 수 있어야합니다. 예) 주민번호 PK</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "gwanhyeon Kim"
+        },
+        "headline": "JPA 엔티티(Entity)",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "JPA Entity",
+        "genre": "JPA",
+        "datePublished": "2021-02-05",
+        "dateCreated": "2021-02-05",
+        "dateModified": "2021-02-19",
+        "url": "http://gwanhyeon.github.io/JPA-20210219-jpa-03-엔티티/",
+        "description": "1.  Entity 매핑 어노테이션
 
 
 객체, 테이블 매핑
@@ -205,79 +462,23 @@ ga('send', 'pageview');
 
 Entity 의미
 
-@Entity가 붙은 클래스는 JPA가 관리하고 하는 엔티티라고 하며 JPA에서 사용하는 테이블과 매핑할 클래스는 @Enti
-        </p>
-    </div>
+@Entity가 붙은 클래스는 JPA가 관리하고 하는 엔티티라고 하며 JPA에서 사용하는 테이블과 매핑할 클래스는 @Enti",
+        "wordCount": 1056
+    }
+</script>
+
 </article>
-    
 
+    <section id="comments">
     
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/jpa/">JPA</a>
-            </div>
-            <div class="date"><time datetime="2021-01-25T06:05:04.000Z" itemprop="datePublished">2021-01-25</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/JPA-20210127-jpa-02-%EC%98%81%EC%86%8D%EC%84%B1%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8/">JPA 영속성 컨텍스트(Persistence Context)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  영속성 컨텍스트(Persistence Context)
-영속성 컨텍스트란 논리적인 개념(무형성)으로 엔티티를 영구 저장하는 환경이라고 할 수 있습니다. 특히, JPA를 이해하는데 가장 중요한 용어입니다. 그리고 EntityManager를 통하여 영속성 컨텍스트에 접근할 수 있습니다.
-1EntityManager.persist(entity);
-다음과 같이
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/jpa/">JPA</a>
-            </div>
-            <div class="date"><time datetime="2021-01-25T05:24:24.000Z" itemprop="datePublished">2021-01-25</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/JPA-20210127-jpa-01-jpa%EB%9E%80/">JPA(Java Persistence API)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  JPA Database Dialect
-JPA는 특정 데이터베이스에 종속되지 않으며 각각 데이터베이스가 제공하는 SQL 문법과 함수는 차이가 있습니다.
-가변문자에서 Mysql은 VARCHAR으로 선언되고 Oracle은 VARCHAR2 으로 사용되면서 문법적 차이가 존재합니다. 그리고 문자열을 자르는 함수같은 경우는 SQL 표준은 SUBSTRING(),
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -301,6 +502,29 @@ JPA는 특정 데이터베이스에 종속되지 않으며 각각 데이터베�
     </div>
     <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/Programmers-20210208-programmers-%ED%95%A9%EC%8A%B9%ED%83%9D%EC%8B%9C%EC%9A%94%EA%B8%88/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            프로그래머스 합승택시요금
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/Network-20210205-network-09-http-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">Network HTTP 상태코드</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -456,11 +680,13 @@ JPA는 특정 데이터베이스에 종속되지 않으며 각각 데이터베�
     var disqus_shortname = 'kgh-1';
     
     
+    var disqus_url = 'http://gwanhyeon.github.io/JPA-20210219-jpa-03-%EC%97%94%ED%8B%B0%ED%8B%B0/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
