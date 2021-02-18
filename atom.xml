@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2021-02-18T04:39:29.730Z</updated>
+  <updated>2021-02-18T07:15:26.433Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java Wrapper Class, Auto Boxing</title>
+    <link href="http://gwanhyeon.github.io/Java-20210218-wrapper-class-auto-boxing-java/"/>
+    <id>http://gwanhyeon.github.io/Java-20210218-wrapper-class-auto-boxing-java/</id>
+    <published>2021-02-18T06:57:33.000Z</published>
+    <updated>2021-02-18T07:15:26.433Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="wrapper-class"><a href="#wrapper-class" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#wrapper-class"></a> Wrapper Class</h1><p>Wrapper Class란?</p><p>자바의 자료형은 크게 <code>기본 타입(primitive type)과 참조 타입(reference type)</code>으로 나누어집니다.<br>대표적으로 기본 타입은 char, int, float, double, boolean 등이 있고 참조 타입은 class, interface 등이 있는데 프로그래밍을 하다 보면 기본 타입의 데이터를 객체로 표현해야 하는 경우가 종종 있습니다. 이럴 때에 기본 자료타입(primitive type)을 객체로 다루기 위해서 사용하는 클래스들을 래퍼 클래스(wrapper class)라고 합니다. Wrapper Class는 java.lang 패키지에 포함되어 있습니다.</p><p>컬렉션에서 제네릭을 사용하기 위해서는 Wrapper class를 사용해줘야하는데 null 값을 반환해야만 하는 경우에는 return type 을 Wrapper class 로 지정하여 null을 반환하도록 할 수 있습니다. 아니면 옵셔널을 붙여서 반환하는 방식도 있습니다.</p><p>Primitive data type 인 경우에는 “==” 비교가 가능하지만  Wrapper class 인 경우에는 .intValue() 메소드를 통해 해당 Wrapper class 의 값을 직접 가져와서 비교해야합니다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WrapperClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Integer phoneNumber = <span class="keyword">new</span> Integer(<span class="string">"123456789"</span>);</span><br><span class="line">        <span class="keyword">int</span> num = phoneNumber.intValue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>위와 같은 예제는 기본 타입의 값을 포장 객체로 만드는 과정을 <code>박싱</code>이라고 하고 반대로 포장객체에서 기본타입의 값을 얻어내는 과정을 <code>언박싱</code>이라고 합니다.</p><h1 id="autoboxing"><a href="#autoboxing" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#autoboxing"></a> AutoBoxing</h1><p>기본타입 값을 직접 박싱, 언박싱하지 않아도 자동적으로 박싱과 언박싱이 일어나는 경우가 있습니다. 자동 박싱의 포장 클래스 타입에 기본값이 대입될 경우에 발생합니다. AutoBoxing은 JDK 1.5 부터는 AutoBoxing과 AutoUnBoxing을 제공합니다. 이 기능은 각 Wrapper class 에 상응하는 Primitive data type 일 경우에만 가능합니다.</p><blockquote><p>예제 1</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WrapperClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 자동 박싱</span></span><br><span class="line">        Integer phoneNumber = <span class="number">123456789</span>;</span><br><span class="line">        <span class="comment">// 자동 언박싱</span></span><br><span class="line">        <span class="keyword">int</span> num = phoneNumber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>다음과 같이 Integer Wrapper Class에서 Primitive data type으로 AutoBoxing이 일어나게 됩니다.</p><blockquote><p>예제 2</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; arrList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">arrList.add(<span class="number">1</span>);</span><br></pre></td></tr></table></figure><p>다음과 같은 예제는 Integer라는 Wrapper class 로 설정한 collection 에 데이터를 add 할 때 Integer 객체로 감싸서 넣지 않습니다.<br>즉, 자바 내부에서 AutoBoxing 해주기 떄문입니다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;wrapper-class&quot;&gt;&lt;a href=&quot;#wrapper-class&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#wrapper-class&quot;&gt;&lt;/a&gt; Wrapper
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://gwanhyeon.github.io/categories/java/"/>
+    
+    
+      <category term="WrapperClass" scheme="http://gwanhyeon.github.io/tags/wrapperclass/"/>
+    
+      <category term="AutoBoxing" scheme="http://gwanhyeon.github.io/tags/autoboxing/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java 클린코드 매직넘버 이슈 및 final 키워드</title>
     <link href="http://gwanhyeon.github.io/Java-20210218-magic-number-final-java/"/>
     <id>http://gwanhyeon.github.io/Java-20210218-magic-number-final-java/</id>
     <published>2021-02-18T04:27:38.000Z</published>
-    <updated>2021-02-18T04:39:29.730Z</updated>
+    <updated>2021-02-18T05:15:09.438Z</updated>
     
     <content type="html"><![CDATA[<h1 id="maejigneombeoreul-jigjeob-jagseonghaneungeoseul-jiyanghara"><a href="#maejigneombeoreul-jigjeob-jagseonghaneungeoseul-jiyanghara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#매직넘버를-직접-작성하는것을-지양하라"></a> 매직넘버를 직접 작성하는것을 지양하라</h1><p>소스코드를 보다보면 특정한 숫자 매직넘버(Magic Number)를 직접 작성하는 나쁜 스타일의 코드를 볼 수 있습니다.</p><p>만약에 캐싱으로 캐싱값들을 강제로 업데이트하는 로직이 있다고 가정해보겠습니다. 여기에서 캐시에 대한 시간값을 지정했다고 가정하면 다음과 같이 코드를 작성하는것이 올바른 코드 일까요? 아닙니다. 저렇게 내부적으로 상수값들을 선언을 해주게 되면 유지보수측면이나 코드의 가독성측면에서 좋지 않은 결과를 가져다 줄 것입니다.</p><blockquote><p>매직넘버의 단점</p></blockquote><ul><li>매직넘버의 의미를 알기어렵고 0,1의 의미를 직접알기에 매우 쉽지않습니다.</li><li>매직넘버는 수정이 매우어렵고 유지보수를 힘들게합니다. 시간효율성측면에서 좋지않습니다.</li></ul><blockquote><p>캐싱 강제 업데이트(매직넘버 미적용)</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 캐시 강제 업데이트</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> query</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> Map&lt;String, Movie.MovieDto&gt; saveCacheByQuery(<span class="keyword">final</span> String query) &#123;</span><br><span class="line">    <span class="keyword">long</span> nowTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">if</span>(!CollectionUtils.isEmpty(movieMapCache) || nowTime - cacheLoadTime &lt; <span class="number">600</span> * <span class="number">1000L</span>;)&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (movieMapCache)&#123;</span><br><span class="line">            cacheInitialized();</span><br><span class="line">            ResponseEntity&lt;Movie.MovieDto&gt; exchange = getExchange(query);</span><br><span class="line">            List&lt;Movie.Item&gt; ResponseMovieList = Movie.Item.of(exchange);</span><br><span class="line">            MovieGroup items = <span class="keyword">new</span> MovieGroup(ResponseMovieList);</span><br><span class="line">            List&lt;Movie.Item&gt; listOrderRating = items.getListOrderRating();</span><br><span class="line">            Movie.MovieDto resultList = Movie.MovieDto.of(exchange, listOrderRating);</span><br><span class="line">            cacheLoadTime = nowTime;</span><br><span class="line">            movieMapCache.put(query, resultList);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> movieMapCache;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>캐싱 강제 업데이트(매직넘버 적용)</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 선언부 </span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> Long cacheLoadTime = <span class="number">0L</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> Long cacheTimeLimit = <span class="number">600</span> * <span class="number">1000L</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 캐시 강제 업데이트</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> query</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> Map&lt;String, Movie.MovieDto&gt; saveCacheByQuery(<span class="keyword">final</span> String query) &#123;</span><br><span class="line">    <span class="keyword">long</span> nowTime = System.currentTimeMillis();</span><br><span class="line">    <span class="keyword">if</span>(!CollectionUtils.isEmpty(movieMapCache) || nowTime - cacheLoadTime &lt; cacheTimeLimit)&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (movieMapCache)&#123;</span><br><span class="line">            cacheInitialized();</span><br><span class="line">            ResponseEntity&lt;Movie.MovieDto&gt; exchange = getExchange(query);</span><br><span class="line">            List&lt;Movie.Item&gt; ResponseMovieList = Movie.Item.of(exchange);</span><br><span class="line">            MovieGroup items = <span class="keyword">new</span> MovieGroup(ResponseMovieList);</span><br><span class="line">            List&lt;Movie.Item&gt; listOrderRating = items.getListOrderRating();</span><br><span class="line">            Movie.MovieDto resultList = Movie.MovieDto.of(exchange, listOrderRating);</span><br><span class="line">            cacheLoadTime = nowTime;</span><br><span class="line">            movieMapCache.put(query, resultList);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> movieMapCache;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>다음과 같이 매직넘버를 기호 상수로 선언하여 클린코드의 습관을 들여야합니다. 혹은 enum이나 public static final 클래스 필드를 사용하여 명확한 값들을 지정해주어야합니다. 실수를 줄일 수 있고, enum을 사용하여 상수값으로 매직넘버를 직접 사용해도 문제없이 컴파일시점에 처리가 가능합니다.</p><h1 id="final-keyword"><a href="#final-keyword" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#final-keyword"></a> final keyword</h1><blockquote><p>final class<br>다른 클래스에서 상속하지 못하게됩니다.</p></blockquote><blockquote><p>final method<br>다른 메소드에서 오버라이딩하지 못합니다.</p></blockquote><blockquote><p>final variable<br>변하지 않는 상수값이 되어 새로 할당할 수 없는 변수가 됩니다.</p></blockquote><blockquote><p>finally<br>try-catch or try-catch-resource 구문을 사용할 때, 마무리처리 작업 로직을 넣어야할때 사용합니다.</p></blockquote><blockquote><p>finalize()<br>keyword 도 아니고 code block 도 아닌 메소드입니다. 해당 메소드는 GC에 의해 호출되는 함수로 절대 호출해서는 안되며 Object 클래스에 정의되어 있으며 GC 가 발생하는 시점이 불분명하기 때문에 해당 메소드가 실행된다는 보장이 없습니다. 한 finalize() 메소드가 오버라이딩 되어 있으면 GC 가 이루어질 때 바로 Garbage Collecting 되지 않기때문에 GC 가 지연되면서 OOME(Out of Memory Exception)이 발생할 수 있는 이슈가 존재합니다.</p></blockquote>]]></content>
     
@@ -372,9 +400,9 @@
     
       <category term="JPA" scheme="http://gwanhyeon.github.io/tags/jpa/"/>
     
-      <category term="Entity" scheme="http://gwanhyeon.github.io/tags/entity/"/>
-    
       <category term="Persistence" scheme="http://gwanhyeon.github.io/tags/persistence/"/>
+    
+      <category term="Entity" scheme="http://gwanhyeon.github.io/tags/entity/"/>
     
       <category term="Flush" scheme="http://gwanhyeon.github.io/tags/flush/"/>
     
@@ -543,32 +571,6 @@
     
     
       <category term="제네릭" scheme="http://gwanhyeon.github.io/tags/%EC%A0%9C%EB%84%A4%EB%A6%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java Annotation(어노테이션)</title>
-    <link href="http://gwanhyeon.github.io/Java-20210218-annotation-java/"/>
-    <id>http://gwanhyeon.github.io/Java-20210218-annotation-java/</id>
-    <published>2021-01-18T03:03:47.000Z</published>
-    <updated>2021-02-18T05:15:20.105Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="java-annotation"><a href="#java-annotation" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#java-annotation"></a> Java Annotation</h1><p>Java 어노테이션은 JEE5부터 추가된 문법이며 기본적으로 인터페이스입니다. 사전적정의로는 주석이라는의미를 가지고 있고 특수한의미를 부여하거나 기능을 주입하면서 컴파일타임 시점이나 런타임시점에 해석됩니다. 기존의 xml의 불편함을 개선하기위해서 나오게된 <code>Annotation(어노테이션)</code> 이라고생각하면 됩니다.</p><h1 id="built-in-annotation"><a href="#built-in-annotation" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#built-in-annotation"></a> Built-in Annotation</h1><p>Java내에 내장되어 있는 어노테이션을 Built-in Annotation이라 불리어오며 주로  컴파일러에게 정보를 제공하게 됩니다.</p><blockquote><p>@Override</p></blockquote><p>메서드앞에 붙일수 있으며 현재 메서드가 슈퍼클래스의 메소드를 오버라이드한 메소드임을 명시합니다.</p><blockquote><p>@Deprecated</p></blockquote><p>annotation으로 타입, 필드, 메소드 등에 사용되며 @Deprecated 표시 되어 있는 메소드나 필드를 사용하면 빌드할 때 Warning 메시지를 보여주게됩니다. 즉, 컴파일러에게 이 메소드는 없어질 예정임을 명시합니다.</p><blockquote><p>@SupressWarning</p></blockquote><p>컴파일러에게 전달하여 경고를 제거합니다.</p><blockquote><p>FunctionalInterface</p></blockquote><p>컴파일러에게 다음의 인터페이스는 함수형 인터페이스라는것을 명시합니다.</p><h1 id="meta-annotation"><a href="#meta-annotation" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#meta-annotation"></a> Meta-Annotation</h1><p>어노테이션의 동작 대상을 결정하는 어노테이션이며 어노테이션을 정의할때 주로 사용합니다.</p><blockquote><p>@Target</p></blockquote><p>어노테이션이 적용가능한 대상을 지정하는데 사용되며 여러값을 {} 괄호로 사용할 수 있다.</p><blockquote><p>@Retention</p></blockquote><p>SOURCE::, CLASS::, RUNTIME:: 세가지 유지정책으로 사용할 수 있는데 어노테이션이 유지되는 기간을 지정하는데 사용합니다.</p><blockquote><p>@Documented</p></blockquote><p>vavadoc으로 작성한 문서에 포함되도록 할 때 사용하는 어노테이션입니다.</p><blockquote><p>@Inherited</p></blockquote><p>어노테이션이 자손 클래스에도 상속되도록 하는 어노테이션입니다</p><blockquote><p>@Native</p></blockquote><p>네이티브 메서드에 의해 참조되는 상수필드에 붙이는 어노테이션입니다.</p><blockquote><p>네이티브 메서드란?</p></blockquote><p>JVM이 설치된 OS의 메서드를 말한다. 네이티브 메서드는 보통 C언어로 작성되어 있고 자바에서는 메서드의 선언부만 정의하고 구현은 하지 않는다.</p><h1 id="custom-annotation"><a href="#custom-annotation" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#custom-annotation"></a> Custom Annotation</h1><blockquote><p>Maker Annotation</p></blockquote><p>요소가 한개도 없으며 단순히 표식으로 사용되는 어노테이션(의미전달)</p><blockquote><p>Single-value Annotation</p></blockquote><p>요소로 단일 변수만을 갖는 어노테이션입니다.</p><blockquote><p>Full Annotaion</p></blockquote><p>요소로 둘 이상의 변수를 갖는 어노테이션으로, 데이터를 배열 안에 key-value의 형태로 전달합니다.</p><h1 id="eonoteisyeon-gwanryeon-jeongri"><a href="#eonoteisyeon-gwanryeon-jeongri" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#어노테이션-관련-정리"></a> 어노테이션 관련 정리</h1><p><a href="https://gwanhyeon.github.io/Spring-20210114-spring-annotation/">Spring @Annotation(어노테이션)</a><br><a href="https://gwanhyeon.github.io/Spring-20210114-spring-lombok-annotation/">Spring Lombok @Annotation(어노테이션)</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;java-annotation&quot;&gt;&lt;a href=&quot;#java-annotation&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#java-annotation&quot;&gt;&lt;/a&gt; J
-      
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="http://gwanhyeon.github.io/categories/java/"/>
-    
-    
-      <category term="어노테이션" scheme="http://gwanhyeon.github.io/tags/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98/"/>
     
   </entry>
   

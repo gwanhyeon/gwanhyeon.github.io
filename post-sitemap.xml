@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Java-20210218-wrapper-class-auto-boxing-java/</loc>
+        <lastmod>2021-02-18T07:15:26.433Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Java-20210217-collection-java/</loc>
         <lastmod>2021-02-18T05:15:31.080Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -40,16 +48,16 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/Java-20210218-overloading-overriding-java/</loc>
-        <lastmod>2021-02-18T05:15:04.209Z</lastmod>
+        <loc>http://gwanhyeon.github.io/Java-20210218-magic-number-final-java/</loc>
+        <lastmod>2021-02-18T05:15:09.438Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/Java-20210218-magic-number-final-java/</loc>
-        <lastmod>2021-02-18T04:39:29.730Z</lastmod>
+        <loc>http://gwanhyeon.github.io/Java-20210218-overloading-overriding-java/</loc>
+        <lastmod>2021-02-18T05:15:04.209Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
