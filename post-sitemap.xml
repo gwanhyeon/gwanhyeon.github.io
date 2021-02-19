@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/ELK-20210219-elk-metric-aggregation/</loc>
+        <lastmod>2021-02-19T06:58:53.633Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/ELK-20210219-elk-search-function/</loc>
         <lastmod>2021-02-19T06:10:52.069Z</lastmod>
         <changefreq>weekly</changefreq>
