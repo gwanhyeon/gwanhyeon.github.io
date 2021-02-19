@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ELK 엘라스틱서치 SEARCH FUNCTION</title>
+    <url>/ELK-20210219-elk-search-function/</url>
+    <content><![CDATA[<h1 id="elk-elraseutig-seoci-searchfunction"><a href="#elk-elraseutig-seoci-searchfunction" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#elk-엘라스틱-서치-searchfunction"></a> ELK 엘라스틱 서치 SearchFunction</h1>
+<p>이번에 포스팅에서는 ELK의 SearchFunction에 대해서 살펴보겠습니다.</p>
+<blockquote>
+<p>Data</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST -H <span class="string">'Content-Type:application/json'</span> <span class="string">'localhost:9200/_bulk'</span> --dat</span><br><span class="line">a-binary @simple_basketball.json</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">"took"</span>:1391,<span class="string">"errors"</span>:<span class="literal">false</span>,<span class="string">"items"</span>:[&#123;<span class="string">"index"</span>:&#123;<span class="string">"_index"</span>:<span class="string">"basketball"</span>,<span class="string">"_type"</span>:<span class="string">"record"</span>,<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"_version"</span>:1,<span class="string">"result"</span>:<span class="string">"created"</span>,<span class="string">"_shards"</span>:&#123;<span class="string">"total"</span>:2,<span class="string">"successful"</span>:1,<span class="string">"failed"</span>:0&#125;,<span class="string">"_seq_no"</span>:0,<span class="string">"_primary_term"</span>:1,<span class="string">"status"</span>:201&#125;&#125;,&#123;<span class="string">"index"</span>:&#123;<span class="string">"_index"</span>:<span class="string">"basketball"</span>,<span class="string">"_type"</span>:<span class="string">"record"</span>,<span class="string">"_id"</span>:<span class="string">"2"</span>,<span class="string">"_version"</span>:1,<span class="string">"result"</span>:<span class="string">"created"</span>,<span class="string">"_shards"</span>:&#123;<span class="string">"total"</span>:2,<span class="string">"successful"</span>:1,<span class="string">"failed"</span>:0&#125;,<span class="string">"_seq_no"</span>:1,<span class="string">"_primary_term"</span>:1,<span class="string">"status"</span>:201&#125;&#125;]&#125;%</span><br></pre></td></tr></table></figure>
+<p>다음과 같은 데이터를 가지고 확인을 해보겠습니다. 그러면 두개의 Document가 삽입되게 됩니다.</p>
+<blockquote>
+<p>Search</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XGET localhost:9200/basketball/record/_search\?pretty</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"took"</span> : 80,</span><br><span class="line">  <span class="string">"timed_out"</span> : <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"_shards"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : 1,</span><br><span class="line">    <span class="string">"successful"</span> : 1,</span><br><span class="line">    <span class="string">"skipped"</span> : 0,</span><br><span class="line">    <span class="string">"failed"</span> : 0</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"hits"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : &#123;</span><br><span class="line">      <span class="string">"value"</span> : 2,</span><br><span class="line">      <span class="string">"relation"</span> : <span class="string">"eq"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"max_score"</span> : 1.0,</span><br><span class="line">    <span class="string">"hits"</span> : [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"_index"</span> : <span class="string">"basketball"</span>,</span><br><span class="line">        <span class="string">"_type"</span> : <span class="string">"record"</span>,</span><br><span class="line">        <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">        <span class="string">"_score"</span> : 1.0,</span><br><span class="line">        <span class="string">"_source"</span> : &#123;</span><br><span class="line">          <span class="string">"team"</span> : <span class="string">"Chicago Bulls"</span>,</span><br><span class="line">          <span class="string">"name"</span> : <span class="string">"Michael Jordan"</span>,</span><br><span class="line">          <span class="string">"points"</span> : 30,</span><br><span class="line">          <span class="string">"rebounds"</span> : 3,</span><br><span class="line">          <span class="string">"assists"</span> : 4,</span><br><span class="line">          <span class="string">"submit_date"</span> : <span class="string">"1996-10-11"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"_index"</span> : <span class="string">"basketball"</span>,</span><br><span class="line">        <span class="string">"_type"</span> : <span class="string">"record"</span>,</span><br><span class="line">        <span class="string">"_id"</span> : <span class="string">"2"</span>,</span><br><span class="line">        <span class="string">"_score"</span> : 1.0,</span><br><span class="line">        <span class="string">"_source"</span> : &#123;</span><br><span class="line">          <span class="string">"team"</span> : <span class="string">"Chicago Bulls"</span>,</span><br><span class="line">          <span class="string">"name"</span> : <span class="string">"Michael Jordan"</span>,</span><br><span class="line">          <span class="string">"points"</span> : 20,</span><br><span class="line">          <span class="string">"rebounds"</span> : 5,</span><br><span class="line">          <span class="string">"assists"</span> : 8,</span><br><span class="line">          <span class="string">"submit_date"</span> : <span class="string">"1996-10-11"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 데이터가 정상적으로 들어가고 Documents가 조회되는것들을 확인할 수 있습니다.</p>
+<blockquote>
+<p>SEARCH -URI</p>
+</blockquote>
+<p>-URI 옵션을 사용하여 제가 조회할 데이터들을 조회할 수 있습니다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XGET <span class="string">'localhost:9200/basketball/record/_search?q=points:30&amp;pretty'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"took"</span> : 18,</span><br><span class="line">  <span class="string">"timed_out"</span> : <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"_shards"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : 1,</span><br><span class="line">    <span class="string">"successful"</span> : 1,</span><br><span class="line">    <span class="string">"skipped"</span> : 0,</span><br><span class="line">    <span class="string">"failed"</span> : 0</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"hits"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : &#123;</span><br><span class="line">      <span class="string">"value"</span> : 1,</span><br><span class="line">      <span class="string">"relation"</span> : <span class="string">"eq"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"max_score"</span> : 1.0,</span><br><span class="line">    <span class="string">"hits"</span> : [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"_index"</span> : <span class="string">"basketball"</span>,</span><br><span class="line">        <span class="string">"_type"</span> : <span class="string">"record"</span>,</span><br><span class="line">        <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">        <span class="string">"_score"</span> : 1.0,</span><br><span class="line">        <span class="string">"_source"</span> : &#123;</span><br><span class="line">          <span class="string">"team"</span> : <span class="string">"Chicago Bulls"</span>,</span><br><span class="line">          <span class="string">"name"</span> : <span class="string">"Michael Jordan"</span>,</span><br><span class="line">          <span class="string">"points"</span> : 30,</span><br><span class="line">          <span class="string">"rebounds"</span> : 3,</span><br><span class="line">          <span class="string">"assists"</span> : 4,</span><br><span class="line">          <span class="string">"submit_date"</span> : <span class="string">"1996-10-11"</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>SEARCH - REQUEST BODY</p>
+</blockquote>
+<p>이번에 살펴볼 옵션은 -REQUEST BODY옵션입니다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XGET -H <span class="string">'Content-Type:application/json'</span> localhost:9200/basketball/record/_search -d <span class="string">'</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">"query" : &#123;</span></span><br><span class="line"><span class="string">"term" : &#123;"points" : 30&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#125;'</span></span><br><span class="line">&#123;<span class="string">"took"</span>:16,<span class="string">"timed_out"</span>:<span class="literal">false</span>,<span class="string">"_shards"</span>:&#123;<span class="string">"total"</span>:1,<span class="string">"successful"</span>:1,<span class="string">"skipped"</span>:0,<span class="string">"failed"</span>:0&#125;,<span class="string">"hits"</span>:&#123;<span class="string">"total"</span>:&#123;<span class="string">"value"</span>:1,<span class="string">"relation"</span>:<span class="string">"eq"</span>&#125;,<span class="string">"max_score"</span>:1.0,<span class="string">"hits"</span>:[&#123;<span class="string">"_index"</span>:<span class="string">"basketball"</span>,<span class="string">"_type"</span>:<span class="string">"record"</span>,<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"_score"</span>:1.0,<span class="string">"_source"</span>:&#123;<span class="string">"team"</span> : <span class="string">"Chicago Bulls"</span>,<span class="string">"name"</span> : <span class="string">"Michael Jordan"</span>, <span class="string">"points"</span> : 30,<span class="string">"rebounds"</span> : 3,<span class="string">"assists"</span> : 4, <span class="string">"submit_date"</span> : <span class="string">"1996-10-11"</span>&#125;&#125;]&#125;&#125;%</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 직접 REQUEST BODY를 사용하여 값을 조회해오는모습을 볼 수 있습니다.<br>
+-d는 Direct로 처리하기 위한 옵션입니다.</p>
+<blockquote>
+<p>참고사항</p>
+</blockquote>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.8/search-request-body.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/6.8/search-request-body.html</a></p>
+]]></content>
+      <categories>
+        <category>ELK</category>
+      </categories>
+      <tags>
+        <tag>ELK</tag>
+        <tag>SearchFunction</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ELK 엘라스틱 서치 Mapping</title>
     <url>/ELK-20210219-elk-mapping/</url>
     <content><![CDATA[<h1 id="elk-elraseutigseoci-mapping"><a href="#elk-elraseutigseoci-mapping" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#elk-엘라스틱서치-mapping"></a> ELK 엘라스틱서치 MAPPING</h1>
@@ -2451,8 +2491,8 @@ HTTP/3, HTTP/1.1을 주로사용하고 하고 점차적으로  HTTP/2, HTTP/3의
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -3374,8 +3414,8 @@ matrix[i][j] is ‘0’ or ‘1’.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>릿코드</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -3457,8 +3497,8 @@ All the integers in s are in the range [1, 300].</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>릿코드</tag>
+        <tag>DFS</tag>
         <tag>문자열</tag>
       </tags>
   </entry>
@@ -3909,9 +3949,9 @@ DFS의 <em>Basement조건</em>은 digits 길이만큼 선택될 수 있기때문
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -3951,8 +3991,8 @@ Output: true</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -4237,9 +4277,9 @@ Output: true</p>
         <category>Spring</category>
       </categories>
       <tags>
+        <tag>환경설정</tag>
         <tag>Spring</tag>
         <tag>IntelliJ</tag>
-        <tag>환경설정</tag>
       </tags>
   </entry>
   <entry>
@@ -4483,10 +4523,10 @@ Output: -2147483647</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
-        <tag>DP</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
         <tag>부분집합의 합</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -4817,9 +4857,9 @@ frodoc</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
+        <tag>소수</tag>
         <tag>수학</tag>
         <tag>에라토스테네스의체</tag>
-        <tag>소수</tag>
         <tag>소인수분해</tag>
       </tags>
   </entry>
@@ -4892,10 +4932,10 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DP</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>구현</tag>
-        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -4938,9 +4978,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -5037,9 +5077,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -5088,9 +5128,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>완전탐색</tag>
         <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>완전탐색</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -5189,8 +5229,8 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -5244,8 +5284,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -5293,8 +5333,8 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -5443,8 +5483,8 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>알고리즘</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
@@ -5879,8 +5919,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -5963,8 +6003,8 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>수학</tag>
         <tag>프로그래머스</tag>
+        <tag>수학</tag>
       </tags>
   </entry>
   <entry>
@@ -6128,8 +6168,8 @@ n은 1 이상, 25이하인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -6436,8 +6476,8 @@ Subscription 메서드는 동기화된 상태로 호출해야합니다. 즉, Sub
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -6631,8 +6671,8 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <category>Kotlin</category>
       </categories>
       <tags>
-        <tag>환경설정</tag>
         <tag>Kotlin</tag>
+        <tag>환경설정</tag>
       </tags>
   </entry>
   <entry>
@@ -7717,8 +7757,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>소수</tag>
         <tag>프로그래머스</tag>
+        <tag>소수</tag>
       </tags>
   </entry>
   <entry>
@@ -7741,8 +7781,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -7798,8 +7838,8 @@ Kim은 반드시 seoul 안에 포함되어 있습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -7823,8 +7863,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -7867,8 +7907,8 @@ Only one valid answer exists.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -7906,9 +7946,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -8113,9 +8153,9 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>DFS</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -8252,6 +8292,36 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
+    <title>백준 날짜계산 1476</title>
+    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
+    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
+<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
+<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
+<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
+<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
+<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 일곱난쟁이 2309</title>
     <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
     <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
@@ -8275,36 +8345,6 @@ Only one valid answer exists.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 날짜계산 1476</title>
-    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
-    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
-<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
-<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
-<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
-<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
-<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -8678,8 +8718,8 @@ Only one valid answer exists.</p>
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
+        <tag>백준</tag>
         <tag>백트래킹</tag>
       </tags>
   </entry>
@@ -8719,8 +8759,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
+        <tag>레벨2</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -8763,8 +8803,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
+        <tag>레벨2</tag>
       </tags>
   </entry>
   <entry>
@@ -8877,8 +8917,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
+        <tag>레벨2</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -8942,8 +8982,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
+        <tag>레벨2</tag>
         <tag>위장</tag>
         <tag>해시</tag>
       </tags>
