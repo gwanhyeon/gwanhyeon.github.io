@@ -156,7 +156,7 @@ _mapping: Mapping<br>
       </tags>
   </entry>
   <entry>
-    <title>ELK 엘라스틱서치 SEARCH FUNCTION</title>
+    <title>ELK 엘라스틱서치 Search Function</title>
     <url>/ELK-20210219-elk-search-function/</url>
     <content><![CDATA[<h1 id="elk-elraseutig-seoci-searchfunction"><a href="#elk-elraseutig-seoci-searchfunction" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#elk-엘라스틱-서치-searchfunction"></a> ELK 엘라스틱 서치 SearchFunction</h1>
 <p>이번에 포스팅에서는 ELK의 SearchFunction에 대해서 살펴보겠습니다.</p>
