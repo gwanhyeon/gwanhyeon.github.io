@@ -3,15 +3,29 @@
 
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/metricaggregation/</loc>
-        <lastmod>2021-02-19T06:58:53.633Z</lastmod>
+        <loc>http://gwanhyeon.github.io/tags/crud/</loc>
+        <lastmod>2021-02-19T08:13:15.888Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/elk/</loc>
-        <lastmod>2021-02-19T06:58:53.633Z</lastmod>
+        <lastmod>2021-02-19T08:13:15.888Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/aggregation/</loc>
+        <lastmod>2021-02-19T08:13:04.879Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/metricaggregation/</loc>
+        <lastmod>2021-02-19T07:11:37.435Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -33,13 +47,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/bulk/</loc>
         <lastmod>2021-02-19T05:08:19.227Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/crud/</loc>
-        <lastmod>2021-02-19T04:56:41.901Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -402,13 +409,6 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/intellij/</loc>
-        <lastmod>2021-01-14T15:27:29.025Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/tags/jdk/</loc>
         <lastmod>2021-01-14T15:27:29.025Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -417,6 +417,13 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/annotationprocessor/</loc>
+        <lastmod>2021-01-14T15:27:29.025Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/intellij/</loc>
         <lastmod>2021-01-14T15:27:29.025Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

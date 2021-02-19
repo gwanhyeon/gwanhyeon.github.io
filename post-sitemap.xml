@@ -8,8 +8,24 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/ELK-20210219-elk-crud/</loc>
+        <lastmod>2021-02-19T08:13:15.888Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/ELK-20210219-elk-bucket-aggregation/</loc>
+        <lastmod>2021-02-19T08:13:04.879Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/ELK-20210219-elk-metric-aggregation/</loc>
-        <lastmod>2021-02-19T06:58:53.633Z</lastmod>
+        <lastmod>2021-02-19T07:11:37.435Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -34,14 +50,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/ELK-20210219-elk-bulk/</loc>
         <lastmod>2021-02-19T05:08:19.227Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/ELK-20210219-elk-crud/</loc>
-        <lastmod>2021-02-19T04:56:41.901Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
