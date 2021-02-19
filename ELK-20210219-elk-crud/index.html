@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+    <title>ELK 엘라스틱서치 Data CRUD | GWAN IT Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="ELK,CRUD" />
+    
+    <meta name="description" content="1.  엘라스틱서치 데이터 입력 조회 삭제 (GET, POST, PUT, DELETE) 이번 시간에 살펴볼 내용은 엘라스틱서치에서 Data CRUD를 실습해보는 시간을 가져보겠습니다. 그전에 엘라스틱서피와 RDS와의 차이점을 살펴보겠습니다.  ELASTIC SEARCH VS RDS  | Elastic Search | RDS | |-------|:------">
+<meta name="keywords" content="ELK,CRUD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK 엘라스틱서치 Data CRUD">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;ELK-20210219-elk-crud&#x2F;index.html">
+<meta property="og:site_name" content="GWAN IT Blog">
+<meta property="og:description" content="1.  엘라스틱서치 데이터 입력 조회 삭제 (GET, POST, PUT, DELETE) 이번 시간에 살펴볼 내용은 엘라스틱서치에서 Data CRUD를 실습해보는 시간을 가져보겠습니다. 그전에 엘라스틱서피와 RDS와의 차이점을 살펴보겠습니다.  ELASTIC SEARCH VS RDS  | Elastic Search | RDS | |-------|:------">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-02-19T04:40:52.461Z">
+<meta name="twitter:card" content="summary">
+    
+    <!--SEO 검색엔진 적용하기 -->
+    <link rel="canonical" href="http://gwanhyeon.github.io/elk-20210219-elk-crud/"/>
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151448157-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">GWAN IT Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/boj/">BOJ</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/database/">Database</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/elk/">ELK</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/jpa/">JPA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/msa/">MSA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/network/">Network</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/os/">OS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/programmers/">Programmers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/rxjava/">RXJAVA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/leetcode/">leetcode</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/elk/">ELK</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-ELK-20210219-elk-crud" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        ELK 엘라스틱서치 Data CRUD
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/ELK-20210219-elk-crud/" class="article-date">
+         <time datetime="2021-02-19T04:18:53.000Z" itemprop="datePublished">2021-02-19</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/crud/" rel="tag">CRUD</a>, <a class="tag-link" href="/tags/elk/" rel="tag">ELK</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="elraseutigseoci-deiteo-ibryeog-johoe-sagje-get-post-put-delete"><a href="#elraseutigseoci-deiteo-ibryeog-johoe-sagje-get-post-put-delete" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#엘라스틱서치-데이터-입력-조회-삭제-get-post-put-delete"></a> 엘라스틱서치 데이터 입력 조회 삭제 (GET, POST, PUT, DELETE)</h1>
+<p>이번 시간에 살펴볼 내용은 엘라스틱서치에서 Data CRUD를 실습해보는 시간을 가져보겠습니다.</p>
+<p>그전에 엘라스틱서피와 RDS와의 차이점을 살펴보겠습니다.</p>
+<blockquote>
+<p>ELASTIC SEARCH VS RDS</p>
+</blockquote>
+<p>| Elastic Search | RDS |<br>
+|-------|:--------:||:-------😐<br>
+| <code>Index</code> | Database |<br>
+| <code>Type</code> | Table |<br>
+| <code>Document</code> | Row |<br>
+| <code>Field</code> | Column |<br>
+| <code>Mapping</code> | Schema |</p>
+<p>엘라스틱서치에서는 REST API를 사용합니다.</p>
+<p>| Elastic Search | RDS | CRUD |<br>
+|-------|:--------:||:-------😐<br>
+| <code>GET</code> | Select | Read |<br>
+| <code>PUT</code> | Update | Update |<br>
+| <code>POST</code> | Insert | Create |<br>
+| <code>DELETE</code> | Delete | Delete |</p>
+<p>다음과 같이 표를 보면 CRUD의 역할과 동일하게 처리한다라고 생각을 하면됩니다.</p>
+<blockquote>
+<p>GET 조회시</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET http://localhost:9200/classes</span><br><span class="line">&#123;<span class="string">"error"</span>:&#123;<span class="string">"root_cause"</span>:[&#123;<span class="string">"type"</span>:<span class="string">"index_not_found_exception"</span>,<span class="string">"reason"</span>:<span class="string">"no such index [classes]"</span>,<span class="string">"resource.type"</span>:<span class="string">"index_or_alias"</span>,<span class="string">"resource.id"</span>:<span class="string">"classes"</span>,<span class="string">"index_uuid"</span>:<span class="string">"_na_"</span>,<span class="string">"index"</span>:<span class="string">"classes"</span>&#125;],<span class="string">"type"</span>:<span class="string">"index_not_found_exception"</span>,<span class="string">"reason"</span>:<span class="string">"no such index [classes]"</span>,<span class="string">"resource.type"</span>:<span class="string">"index_or_alias"</span>,<span class="string">"resource.id"</span>:<span class="string">"classes"</span>,<span class="string">"index_uuid"</span>:<span class="string">"_na_"</span>,<span class="string">"index"</span>:<span class="string">"classes"</span>&#125;,<span class="string">"status"</span>:404&#125;%</span><br></pre></td></tr></table></figure>
+<p>curl의 -XGET 옵션을 통하여 엘라스틱서치의 9200번 포트로 접근해줍니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET http://localhost:9200/classes</span><br><span class="line"></span><br><span class="line">http://localhost:9200 - 엘라스틱서치 주소</span><br><span class="line">classes - Index</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>GET 조회시 깔끔하게 보고싶다면?</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET http://localhost:9200/classe\?pretty</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"error"</span> : &#123;</span><br><span class="line">    <span class="string">"root_cause"</span> : [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"type"</span> : <span class="string">"index_not_found_exception"</span>,</span><br><span class="line">        <span class="string">"reason"</span> : <span class="string">"no such index [classe]"</span>,</span><br><span class="line">        <span class="string">"resource.type"</span> : <span class="string">"index_or_alias"</span>,</span><br><span class="line">        <span class="string">"resource.id"</span> : <span class="string">"classe"</span>,</span><br><span class="line">        <span class="string">"index_uuid"</span> : <span class="string">"_na_"</span>,</span><br><span class="line">        <span class="string">"index"</span> : <span class="string">"classe"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"type"</span> : <span class="string">"index_not_found_exception"</span>,</span><br><span class="line">    <span class="string">"reason"</span> : <span class="string">"no such index [classe]"</span>,</span><br><span class="line">    <span class="string">"resource.type"</span> : <span class="string">"index_or_alias"</span>,</span><br><span class="line">    <span class="string">"resource.id"</span> : <span class="string">"classe"</span>,</span><br><span class="line">    <span class="string">"index_uuid"</span> : <span class="string">"_na_"</span>,</span><br><span class="line">    <span class="string">"index"</span> : <span class="string">"classe"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"status"</span> : 404</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 JSON 포멧으로 깔끔하게 결과값들을 확인할 수 있습니다.</p>
+<blockquote>
+<p>인덱스 생성 PUT</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$curl</span> -XPUT http://localhost:9200/classes</span><br><span class="line">&#123;<span class="string">"acknowledged"</span>:<span class="literal">true</span>,<span class="string">"shards_acknowledged"</span>:<span class="literal">true</span>,<span class="string">"index"</span>:<span class="string">"classes"</span>&#125;%</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 인덱스가 정상적으로 생성된것을 확인할 수 있습니다.</p>
+<blockquote>
+<p>인덱스 삭제 DELETE</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XDELETE http://localhost:9200/classes</span><br><span class="line">&#123;<span class="string">"acknowledged"</span>:<span class="literal">true</span>&#125;%</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 정상적으로 엘라스틱서치의 인덱스값이 삭제된것을 확인할 수 있습니다.</p>
+<blockquote>
+<p>Document 생성하기</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST -H <span class="string">'Content-Type: application/json'</span> http://localhost:9200/classes/class/1/ -d <span class="string">'&#123;"title" : "Algorithm", "professor" : "John"&#125;'</span></span><br><span class="line">&#123;<span class="string">"_index"</span>:<span class="string">"classes"</span>,<span class="string">"_type"</span>:<span class="string">"class"</span>,<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"_version"</span>:1,<span class="string">"result"</span>:<span class="string">"created"</span>,<span class="string">"_shards"</span>:&#123;<span class="string">"total"</span>:2,<span class="string">"successful"</span>:1,<span class="string">"failed"</span>:0&#125;,<span class="string">"_seq_no"</span>:0,<span class="string">"_primary_term"</span>:1&#125;%</span><br></pre></td></tr></table></figure>
+<p><strong>주의사항</strong><br>
+curl -XPOSt <a href="http://localhost:9200/classes/class/1/" target="_blank" rel="noopener">http://localhost:9200/classes/class/1/</a> -d ‘{“title” : “Algorithm”, “professor” : “John”}’ 입력 시 www-form-urlencoded is not supported status 406 에러가 발생합니다. 높은 버전에선 -H ‘Content-Type: application/json’ 를 사용해주어야합니다.</p>
+<blockquote>
+<p>참고링크<br>
+<a href="https://www.elastic.co/kr/blog/strict-content-type-checking-for-elasticsearch-rest-requests" target="_blank" rel="noopener">https://www.elastic.co/kr/blog/strict-content-type-checking-for-elasticsearch-rest-requests</a></p>
+</blockquote>
+<p><strong>Starting from Elasticsearch 6.0, all REST requests that include a body must also provide the correct content-type for that body.</strong></p>
+<blockquote>
+<p>Document 생성된것 확인하기</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$curl</span> -XGET http://localhost:9200/classes/class/1/\?pretty</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"_index"</span> : <span class="string">"classes"</span>,</span><br><span class="line">  <span class="string">"_type"</span> : <span class="string">"class"</span>,</span><br><span class="line">  <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">  <span class="string">"_version"</span> : 1,</span><br><span class="line">  <span class="string">"_seq_no"</span> : 0,</span><br><span class="line">  <span class="string">"_primary_term"</span> : 1,</span><br><span class="line">  <span class="string">"found"</span> : <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"_source"</span> : &#123;</span><br><span class="line">    <span class="string">"title"</span> : <span class="string">"Algorithm"</span>,</span><br><span class="line">    <span class="string">"professor"</span> : <span class="string">"John"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>파일을 사용하여 Document 생성하기</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST -H <span class="string">'Content-Type: application/json'</span> http://localhost:9200/classes/class/1/ -d @class.json</span><br><span class="line">&#123;<span class="string">"_index"</span>:<span class="string">"classes"</span>,<span class="string">"_type"</span>:<span class="string">"class"</span>,<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"_version"</span>:2,<span class="string">"result"</span>:<span class="string">"updated"</span>,<span class="string">"_shards"</span>:&#123;<span class="string">"total"</span>:2,<span class="string">"successful"</span>:1,<span class="string">"failed"</span>:0&#125;,<span class="string">"_seq_no"</span>:1,<span class="string">"_primary_term"</span>:1&#125;%</span><br></pre></td></tr></table></figure>
+<p>@기호를 사용하여 class.json 파일안에 있는 json 데이터를 통하여 Document를 생성하였습니다. JSON내용은 다음과같습니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"title"</span> : <span class="string">"Machine Learning"</span>,</span><br><span class="line">    <span class="string">"Professor"</span> : <span class="string">"Minsuk Heo"</span>,</span><br><span class="line">    <span class="string">"major"</span> : <span class="string">"Computer Science"</span>,</span><br><span class="line">    <span class="string">"semester"</span> : [<span class="string">"spring"</span>, <span class="string">"fall"</span>],</span><br><span class="line">    <span class="string">"student_count"</span> : 100,</span><br><span class="line">    <span class="string">"unit"</span> : 3,</span><br><span class="line">    <span class="string">"rating"</span> : 5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Document 조회해보기</p>
+</blockquote>
+<p>이제 정상적으로 파일에서 가져온 Document값을 조회해보도록 하겠습니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET http://localhost:9200/classes/class/1/\?pretty</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"_index"</span> : <span class="string">"classes"</span>,</span><br><span class="line">  <span class="string">"_type"</span> : <span class="string">"class"</span>,</span><br><span class="line">  <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">  <span class="string">"_version"</span> : 2,</span><br><span class="line">  <span class="string">"_seq_no"</span> : 1,</span><br><span class="line">  <span class="string">"_primary_term"</span> : 1,</span><br><span class="line">  <span class="string">"found"</span> : <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"_source"</span> : &#123;</span><br><span class="line">    <span class="string">"title"</span> : <span class="string">"Machine Learning"</span>,</span><br><span class="line">    <span class="string">"Professor"</span> : <span class="string">"Minsuk Heo"</span>,</span><br><span class="line">    <span class="string">"major"</span> : <span class="string">"Computer Science"</span>,</span><br><span class="line">    <span class="string">"semester"</span> : [</span><br><span class="line">      <span class="string">"spring"</span>,</span><br><span class="line">      <span class="string">"fall"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"student_count"</span> : 100,</span><br><span class="line">    <span class="string">"unit"</span> : 3,</span><br><span class="line">    <span class="string">"rating"</span> : 5</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이렇게 정상적으로 파일에 들어가있는 값들을 통하여 document로 정상적으로 구성되었습니다.</p>
+<blockquote>
+<p>Reference</p>
+</blockquote>
+<p><a href="https://github.com/minsuk-heo/BigData" target="_blank" rel="noopener">https://github.com/minsuk-heo/BigData</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "gwanhyeon Kim"
+        },
+        "headline": "ELK 엘라스틱서치 Data CRUD",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "ELK CRUD",
+        "genre": "ELK",
+        "datePublished": "2021-02-19",
+        "dateCreated": "2021-02-19",
+        "dateModified": "2021-02-19",
+        "url": "http://gwanhyeon.github.io/ELK-20210219-elk-crud/",
+        "description": "1.  엘라스틱서치 데이터 입력 조회 삭제 (GET, POST, PUT, DELETE)
+이번 시간에 살펴볼 내용은 엘라스틱서치에서 Data CRUD를 실습해보는 시간을 가져보겠습니다.
+그전에 엘라스틱서피와 RDS와의 차이점을 살펴보겠습니다.
+
+ELASTIC SEARCH VS RDS
+
+| Elastic Search | RDS |
+|-------|:------",
+        "wordCount": 940
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/gwanhyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/ELK-20210219-elk-install/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">ELK 엘라스틱서치 정의 및 설치하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/elk/">ELK</a></p>
+                            <p class="item-title"><a href="/ELK-20210219-elk-crud/" class="title">ELK 엘라스틱서치 Data CRUD</a></p>
+                            <p class="item-date"><time datetime="2021-02-19T04:18:53.000Z" itemprop="datePublished">2021-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/elk/">ELK</a></p>
+                            <p class="item-title"><a href="/ELK-20210219-elk-install/" class="title">ELK 엘라스틱서치 정의 및 설치하기</a></p>
+                            <p class="item-date"><time datetime="2021-02-19T02:43:32.000Z" itemprop="datePublished">2021-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/java/">Java</a></p>
+                            <p class="item-title"><a href="/Java-20210218-multi-thread-java/" class="title">Java MultiThread(멀티스레드) 고려사항</a></p>
+                            <p class="item-date"><time datetime="2021-02-18T07:22:53.000Z" itemprop="datePublished">2021-02-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/java/">Java</a></p>
+                            <p class="item-title"><a href="/Java-20210218-wrapper-class-auto-boxing-java/" class="title">Java Wrapper Class, Auto Boxing</a></p>
+                            <p class="item-date"><time datetime="2021-02-18T06:57:33.000Z" itemprop="datePublished">2021-02-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/java/">Java</a></p>
+                            <p class="item-title"><a href="/Java-20210218-magic-number-final-java/" class="title">Java 클린코드 매직넘버 이슈 및 final 키워드</a></p>
+                            <p class="item-date"><time datetime="2021-02-18T04:27:38.000Z" itemprop="datePublished">2021-02-18</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">Algorithm</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/boj/">BOJ</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">Database</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/elk/">ELK</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jpa/">JPA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">Java</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/kotlin/">Kotlin</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/msa/">MSA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">Network</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/os/">OS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/programmers/">Programmers</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/rxjava/">RXJAVA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">Spring</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">10</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">2월 2021</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">1월 2021</a><span class="archive-list-count">33</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">12월 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">11월 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">10월 2020</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">9월 2020</a><span class="archive-list-count">32</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">1월 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">12월 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">11월 2019</a><span class="archive-list-count">10</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/" rel="tag">Annotation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/autoboxing/" rel="tag">AutoBoxing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/" rel="tag">BFS</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/boj/" rel="tag">BOJ</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bst/" rel="tag">BST</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bean/" rel="tag">Bean</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crud/" rel="tag">CRUD</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/collection/" rel="tag">Collection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/" rel="tag">Command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/contextswitching/" rel="tag">ContextSwitching</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">DFS</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/di/" rel="tag">DI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dns/" rel="tag">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">DP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/" rel="tag">Database</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elk/" rel="tag">ELK</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/effectivejava3-e/" rel="tag">EffectiveJava3/E</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/entity/" rel="tag">Entity</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/error/" rel="tag">Error</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flush/" rel="tag">Flush</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gc/" rel="tag">GC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h-index/" rel="tag">H-INDEX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">HTTP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/internet/" rel="tag">INTERNET</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ip/" rel="tag">IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/intellij/" rel="tag">IntelliJ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioc/" rel="tag">IoC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/" rel="tag">JDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jpa/" rel="tag">JPA</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jpql/" rel="tag">JPQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kotlin/" rel="tag">Kotlin</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lombok/" rel="tag">Lombok</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/msa/" rel="tag">MSA</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">NETWORK</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">Network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optional/" rel="tag">Optional</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pcb/" rel="tag">PCB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/port/" rel="tag">PORT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/persistence/" rel="tag">Persistence</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rest/" rel="tag">REST</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/responsebody/" rel="tag">ResponseBody</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rxjava/" rel="tag">RxJava</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="tag">Set자료구조</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">Spring</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/" rel="tag">TCP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp-ip/" rel="tag">TCP/IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/udp/" rel="tag">UDP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapperclass/" rel="tag">WrapperClass</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotationprocessor/" rel="tag">annotationProcessor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/api/" rel="tag">api</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binarysearch/" rel="tag">binarysearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/final/" rel="tag">final</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/magicnumber/" rel="tag">magicnumber</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/overloading/" rel="tag">overloading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/overriding/" rel="tag">overriding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springmvc/" rel="tag">springMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/" rel="tag">thread</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uri/" rel="tag">uri</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/" rel="tag">url</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urn/" rel="tag">urn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B0%84%EC%84%A0/" rel="tag">간선</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">검색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B5%AC%ED%98%84/" rel="tag">구현</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" rel="tag">그래프</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" rel="tag">그리디</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">다이나믹프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" rel="tag">다익스트라</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" rel="tag">데이터타입</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%9E%8C%EB%8B%A4/" rel="tag">람다</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A0%88%EB%B2%A82/" rel="tag">레벨2</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">리액티브프로그래밍</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" rel="tag">릿코드</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">멀티스레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">멀티프로세스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%A9%94%EC%84%9C%EB%93%9C%EC%B0%B8%EC%A1%B0/" rel="tag">메서드참조</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" rel="tag">문자열</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" rel="tag">백트래킹</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B3%80%EC%88%98/" rel="tag">변수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" rel="tag">부분집합의 합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" rel="tag">삼성SW역량테스트</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/" rel="tag">상태코드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%86%8C%EC%88%98/" rel="tag">소수</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" rel="tag">소인수분해</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%98%ED%95%99/" rel="tag">수학</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%88%9C%EC%97%B4/" rel="tag">순열</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">스레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a><span class="tag-list-count">49</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98/" rel="tag">어노테이션</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" rel="tag">에라토스테네스의체</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%97%B0%EC%82%B0/" rel="tag">연산</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" rel="tag">완전탐색</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" rel="tag">우선순위큐</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9B%B9%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80/" rel="tag">웹브라우저</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" rel="tag">위상정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9C%84%EC%9E%A5/" rel="tag">위장</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" rel="tag">이분탐색</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89/" rel="tag">이진탐색</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" rel="tag">이진탐색트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" rel="tag">익명클래스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" rel="tag">인접리스트</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" rel="tag">정규표현식</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%95%EB%A0%AC/" rel="tag">정렬</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A0%9C%EB%84%A4%EB%A6%AD/" rel="tag">제네릭</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%A1%B0%ED%95%A9/" rel="tag">조합</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" rel="tag">카카오</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94/" rel="tag">컴포넌트 스캔</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">프로세스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%9B%8C%EC%85%9C%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">플로이드워셜알고리즘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%B4%EC%8B%9C/" rel="tag">해시</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" rel="tag">환경설정</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%9E%99/" rel="tag">힙</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/annotation/" style="font-size: 10.83px;">Annotation</a> <a href="/tags/autoboxing/" style="font-size: 10px;">AutoBoxing</a> <a href="/tags/bfs/" style="font-size: 15px;">BFS</a> <a href="/tags/boj/" style="font-size: 14.17px;">BOJ</a> <a href="/tags/bst/" style="font-size: 10px;">BST</a> <a href="/tags/bean/" style="font-size: 10px;">Bean</a> <a href="/tags/crud/" style="font-size: 10px;">CRUD</a> <a href="/tags/collection/" style="font-size: 10px;">Collection</a> <a href="/tags/command/" style="font-size: 10px;">Command</a> <a href="/tags/contextswitching/" style="font-size: 10px;">ContextSwitching</a> <a href="/tags/dfs/" style="font-size: 17.5px;">DFS</a> <a href="/tags/di/" style="font-size: 10.83px;">DI</a> <a href="/tags/dns/" style="font-size: 10px;">DNS</a> <a href="/tags/dp/" style="font-size: 11.67px;">DP</a> <a href="/tags/database/" style="font-size: 10px;">Database</a> <a href="/tags/elk/" style="font-size: 10.83px;">ELK</a> <a href="/tags/effectivejava3-e/" style="font-size: 12.5px;">EffectiveJava3/E</a> <a href="/tags/entity/" style="font-size: 10.83px;">Entity</a> <a href="/tags/error/" style="font-size: 10px;">Error</a> <a href="/tags/flush/" style="font-size: 10px;">Flush</a> <a href="/tags/gc/" style="font-size: 10px;">GC</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/h-index/" style="font-size: 10px;">H-INDEX</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/internet/" style="font-size: 10px;">INTERNET</a> <a href="/tags/ip/" style="font-size: 10px;">IP</a> <a href="/tags/intellij/" style="font-size: 10.83px;">IntelliJ</a> <a href="/tags/ioc/" style="font-size: 10px;">IoC</a> <a href="/tags/jdk/" style="font-size: 10px;">JDK</a> <a href="/tags/jpa/" style="font-size: 11.67px;">JPA</a> <a href="/tags/jpql/" style="font-size: 10px;">JPQL</a> <a href="/tags/jvm/" style="font-size: 10px;">JVM</a> <a href="/tags/java/" style="font-size: 11.67px;">Java</a> <a href="/tags/kotlin/" style="font-size: 11.67px;">Kotlin</a> <a href="/tags/lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/msa/" style="font-size: 10.83px;">MSA</a> <a href="/tags/network/" style="font-size: 11.67px;">NETWORK</a> <a href="/tags/network/" style="font-size: 10px;">Network</a> <a href="/tags/optional/" style="font-size: 10px;">Optional</a> <a href="/tags/pcb/" style="font-size: 10px;">PCB</a> <a href="/tags/port/" style="font-size: 10px;">PORT</a> <a href="/tags/persistence/" style="font-size: 10px;">Persistence</a> <a href="/tags/rest/" style="font-size: 10px;">REST</a> <a href="/tags/redis/" style="font-size: 10px;">Redis</a> <a href="/tags/responsebody/" style="font-size: 10px;">ResponseBody</a> <a href="/tags/rxjava/" style="font-size: 10.83px;">RxJava</a> <a href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" style="font-size: 10px;">Set자료구조</a> <a href="/tags/spring/" style="font-size: 14.17px;">Spring</a> <a href="/tags/springboot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/tcp/" style="font-size: 10.83px;">TCP</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/udp/" style="font-size: 10px;">UDP</a> <a href="/tags/wrapperclass/" style="font-size: 10px;">WrapperClass</a> <a href="/tags/annotationprocessor/" style="font-size: 10px;">annotationProcessor</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/binarysearch/" style="font-size: 10px;">binarysearch</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/final/" style="font-size: 10px;">final</a> <a href="/tags/http/" style="font-size: 11.67px;">http</a> <a href="/tags/magicnumber/" style="font-size: 10px;">magicnumber</a> <a href="/tags/network/" style="font-size: 13.33px;">network</a> <a href="/tags/overloading/" style="font-size: 10px;">overloading</a> <a href="/tags/overriding/" style="font-size: 10px;">overriding</a> <a href="/tags/springmvc/" style="font-size: 10px;">springMVC</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/urn/" style="font-size: 10px;">urn</a> <a href="/tags/%EA%B0%84%EC%84%A0/" style="font-size: 10px;">간선</a> <a href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">검색트리</a> <a href="/tags/%EA%B5%AC%ED%98%84/" style="font-size: 12.5px;">구현</a> <a href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" style="font-size: 14.17px;">그래프</a> <a href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" style="font-size: 10.83px;">그리디</a> <a href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10px;">다이나믹프로그래밍</a> <a href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" style="font-size: 10px;">다익스트라</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" style="font-size: 10px;">데이터타입</a> <a href="/tags/%EB%9E%8C%EB%8B%A4/" style="font-size: 10.83px;">람다</a> <a href="/tags/%EB%A0%88%EB%B2%A82/" style="font-size: 12.5px;">레벨2</a> <a href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10.83px;">리액티브프로그래밍</a> <a href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" style="font-size: 16.67px;">릿코드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">멀티스레드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">멀티프로세스</a> <a href="/tags/%EB%A9%94%EC%84%9C%EB%93%9C%EC%B0%B8%EC%A1%B0/" style="font-size: 10px;">메서드참조</a> <a href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" style="font-size: 15.83px;">문자열</a> <a href="/tags/%EB%B0%B1%EC%A4%80/" style="font-size: 19.17px;">백준</a> <a href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" style="font-size: 13.33px;">백트래킹</a> <a href="/tags/%EB%B3%80%EC%88%98/" style="font-size: 10px;">변수</a> <a href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" style="font-size: 10px;">부분집합의 합</a> <a href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" style="font-size: 18.33px;">브루트포스</a> <a href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" style="font-size: 13.33px;">삼성SW역량테스트</a> <a href="/tags/%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/" style="font-size: 10px;">상태코드</a> <a href="/tags/%EC%86%8C%EC%88%98/" style="font-size: 10.83px;">소수</a> <a href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" style="font-size: 10px;">소인수분해</a> <a href="/tags/%EC%88%98%ED%95%99/" style="font-size: 10.83px;">수학</a> <a href="/tags/%EC%88%9C%EC%97%B4/" style="font-size: 11.67px;">순열</a> <a href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">스레드</a> <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 20px;">알고리즘</a> <a href="/tags/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98/" style="font-size: 10px;">어노테이션</a> <a href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" style="font-size: 10px;">에라토스테네스의체</a> <a href="/tags/%EC%97%B0%EC%82%B0/" style="font-size: 10px;">연산</a> <a href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" style="font-size: 16.67px;">완전탐색</a> <a href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" style="font-size: 10.83px;">우선순위큐</a> <a href="/tags/%EC%9B%B9%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80/" style="font-size: 10px;">웹브라우저</a> <a href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" style="font-size: 10px;">위상정렬</a> <a href="/tags/%EC%9C%84%EC%9E%A5/" style="font-size: 10px;">위장</a> <a href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이분탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이진탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">이진탐색트리</a> <a href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" style="font-size: 10.83px;">익명클래스</a> <a href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" style="font-size: 10.83px;">인접리스트</a> <a href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" style="font-size: 10px;">정규표현식</a> <a href="/tags/%EC%A0%95%EB%A0%AC/" style="font-size: 13.33px;">정렬</a> <a href="/tags/%EC%A0%9C%EB%84%A4%EB%A6%AD/" style="font-size: 10px;">제네릭</a> <a href="/tags/%EC%A1%B0%ED%95%A9/" style="font-size: 10px;">조합</a> <a href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" style="font-size: 12.5px;">카카오</a> <a href="/tags/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94/" style="font-size: 10px;">컴포넌트 스캔</a> <a href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" style="font-size: 19.17px;">프로그래머스</a> <a href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">프로세스</a> <a href="/tags/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%9B%8C%EC%85%9C%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 10px;">플로이드워셜알고리즘</a> <a href="/tags/%ED%95%B4%EC%8B%9C/" style="font-size: 10.83px;">해시</a> <a href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" style="font-size: 10.83px;">환경설정</a> <a href="/tags/%ED%9E%99/" style="font-size: 10px;">힙</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>    
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 gwanhyeon Kim</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kgh-1';
+    
+    
+    var disqus_url = 'http://gwanhyeon.github.io/ELK-20210219-elk-crud/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

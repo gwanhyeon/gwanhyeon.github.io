@@ -3,8 +3,15 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/crud/</loc>
+        <lastmod>2021-02-19T04:40:52.461Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/elk/</loc>
-        <lastmod>2021-02-19T04:17:41.368Z</lastmod>
+        <lastmod>2021-02-19T04:40:52.461Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -724,14 +731,14 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EB%25A0%2588%25EB%25B2%25A82/</loc>
+        <loc>http://gwanhyeon.github.io/tags/%25EC%259C%2584%25EC%259E%25A5/</loc>
         <lastmod>2020-10-23T11:13:47.424Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EC%259C%2584%25EC%259E%25A5/</loc>
+        <loc>http://gwanhyeon.github.io/tags/%25EB%25A0%2588%25EB%25B2%25A82/</loc>
         <lastmod>2020-10-23T11:13:47.424Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

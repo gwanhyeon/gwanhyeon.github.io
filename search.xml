@@ -1,7 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ELK 정의 및 설치하기</title>
+    <title>ELK 엘라스틱서치 Data CRUD</title>
+    <url>/ELK-20210219-elk-crud/</url>
+    <content><![CDATA[<h1 id="elraseutigseoci-deiteo-ibryeog-johoe-sagje-get-post-put-delete"><a href="#elraseutigseoci-deiteo-ibryeog-johoe-sagje-get-post-put-delete" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#엘라스틱서치-데이터-입력-조회-삭제-get-post-put-delete"></a> 엘라스틱서치 데이터 입력 조회 삭제 (GET, POST, PUT, DELETE)</h1>
+<p>이번 시간에 살펴볼 내용은 엘라스틱서치에서 Data CRUD를 실습해보는 시간을 가져보겠습니다.</p>
+<p>그전에 엘라스틱서피와 RDS와의 차이점을 살펴보겠습니다.</p>
+<blockquote>
+<p>ELASTIC SEARCH VS RDS</p>
+</blockquote>
+<p>| Elastic Search | RDS |<br>
+|-------|:--------:||:-------😐<br>
+| <code>Index</code> | Database |<br>
+| <code>Type</code> | Table |<br>
+| <code>Document</code> | Row |<br>
+| <code>Field</code> | Column |<br>
+| <code>Mapping</code> | Schema |</p>
+<p>엘라스틱서치에서는 REST API를 사용합니다.</p>
+<p>| Elastic Search | RDS | CRUD |<br>
+|-------|:--------:||:-------😐<br>
+| <code>GET</code> | Select | Read |<br>
+| <code>PUT</code> | Update | Update |<br>
+| <code>POST</code> | Insert | Create |<br>
+| <code>DELETE</code> | Delete | Delete |</p>
+<p>다음과 같이 표를 보면 CRUD의 역할과 동일하게 처리한다라고 생각을 하면됩니다.</p>
+<blockquote>
+<p>GET 조회시</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XGET http://localhost:9200/classes</span><br><span class="line">&#123;<span class="string">"error"</span>:&#123;<span class="string">"root_cause"</span>:[&#123;<span class="string">"type"</span>:<span class="string">"index_not_found_exception"</span>,<span class="string">"reason"</span>:<span class="string">"no such index [classes]"</span>,<span class="string">"resource.type"</span>:<span class="string">"index_or_alias"</span>,<span class="string">"resource.id"</span>:<span class="string">"classes"</span>,<span class="string">"index_uuid"</span>:<span class="string">"_na_"</span>,<span class="string">"index"</span>:<span class="string">"classes"</span>&#125;],<span class="string">"type"</span>:<span class="string">"index_not_found_exception"</span>,<span class="string">"reason"</span>:<span class="string">"no such index [classes]"</span>,<span class="string">"resource.type"</span>:<span class="string">"index_or_alias"</span>,<span class="string">"resource.id"</span>:<span class="string">"classes"</span>,<span class="string">"index_uuid"</span>:<span class="string">"_na_"</span>,<span class="string">"index"</span>:<span class="string">"classes"</span>&#125;,<span class="string">"status"</span>:404&#125;%</span><br></pre></td></tr></table></figure>
+<p>curl의 -XGET 옵션을 통하여 엘라스틱서치의 9200번 포트로 접근해줍니다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XGET http://localhost:9200/classes</span><br><span class="line"></span><br><span class="line">http://localhost:9200 - 엘라스틱서치 주소</span><br><span class="line">classes - Index</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>GET 조회시 깔끔하게 보고싶다면?</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XGET http://localhost:9200/classe\?pretty</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"error"</span> : &#123;</span><br><span class="line">    <span class="string">"root_cause"</span> : [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"type"</span> : <span class="string">"index_not_found_exception"</span>,</span><br><span class="line">        <span class="string">"reason"</span> : <span class="string">"no such index [classe]"</span>,</span><br><span class="line">        <span class="string">"resource.type"</span> : <span class="string">"index_or_alias"</span>,</span><br><span class="line">        <span class="string">"resource.id"</span> : <span class="string">"classe"</span>,</span><br><span class="line">        <span class="string">"index_uuid"</span> : <span class="string">"_na_"</span>,</span><br><span class="line">        <span class="string">"index"</span> : <span class="string">"classe"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"type"</span> : <span class="string">"index_not_found_exception"</span>,</span><br><span class="line">    <span class="string">"reason"</span> : <span class="string">"no such index [classe]"</span>,</span><br><span class="line">    <span class="string">"resource.type"</span> : <span class="string">"index_or_alias"</span>,</span><br><span class="line">    <span class="string">"resource.id"</span> : <span class="string">"classe"</span>,</span><br><span class="line">    <span class="string">"index_uuid"</span> : <span class="string">"_na_"</span>,</span><br><span class="line">    <span class="string">"index"</span> : <span class="string">"classe"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"status"</span> : 404</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 JSON 포멧으로 깔끔하게 결과값들을 확인할 수 있습니다.</p>
+<blockquote>
+<p>인덱스 생성 PUT</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$curl</span> -XPUT http://localhost:9200/classes</span><br><span class="line">&#123;<span class="string">"acknowledged"</span>:<span class="literal">true</span>,<span class="string">"shards_acknowledged"</span>:<span class="literal">true</span>,<span class="string">"index"</span>:<span class="string">"classes"</span>&#125;%</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 인덱스가 정상적으로 생성된것을 확인할 수 있습니다.</p>
+<blockquote>
+<p>인덱스 삭제 DELETE</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XDELETE http://localhost:9200/classes</span><br><span class="line">&#123;<span class="string">"acknowledged"</span>:<span class="literal">true</span>&#125;%</span><br></pre></td></tr></table></figure>
+<p>다음과 같이 정상적으로 엘라스틱서치의 인덱스값이 삭제된것을 확인할 수 있습니다.</p>
+<blockquote>
+<p>Document 생성하기</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST -H <span class="string">'Content-Type: application/json'</span> http://localhost:9200/classes/class/1/ -d <span class="string">'&#123;"title" : "Algorithm", "professor" : "John"&#125;'</span></span><br><span class="line">&#123;<span class="string">"_index"</span>:<span class="string">"classes"</span>,<span class="string">"_type"</span>:<span class="string">"class"</span>,<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"_version"</span>:1,<span class="string">"result"</span>:<span class="string">"created"</span>,<span class="string">"_shards"</span>:&#123;<span class="string">"total"</span>:2,<span class="string">"successful"</span>:1,<span class="string">"failed"</span>:0&#125;,<span class="string">"_seq_no"</span>:0,<span class="string">"_primary_term"</span>:1&#125;%</span><br></pre></td></tr></table></figure>
+<p><strong>주의사항</strong><br>
+curl -XPOSt <a href="http://localhost:9200/classes/class/1/" target="_blank" rel="noopener">http://localhost:9200/classes/class/1/</a> -d ‘{“title” : “Algorithm”, “professor” : “John”}’ 입력 시 www-form-urlencoded is not supported status 406 에러가 발생합니다. 높은 버전에선 -H ‘Content-Type: application/json’ 를 사용해주어야합니다.</p>
+<blockquote>
+<p>참고링크<br>
+<a href="https://www.elastic.co/kr/blog/strict-content-type-checking-for-elasticsearch-rest-requests" target="_blank" rel="noopener">https://www.elastic.co/kr/blog/strict-content-type-checking-for-elasticsearch-rest-requests</a></p>
+</blockquote>
+<p><strong>Starting from Elasticsearch 6.0, all REST requests that include a body must also provide the correct content-type for that body.</strong></p>
+<blockquote>
+<p>Document 생성된것 확인하기</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$curl</span> -XGET http://localhost:9200/classes/class/1/\?pretty</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"_index"</span> : <span class="string">"classes"</span>,</span><br><span class="line">  <span class="string">"_type"</span> : <span class="string">"class"</span>,</span><br><span class="line">  <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">  <span class="string">"_version"</span> : 1,</span><br><span class="line">  <span class="string">"_seq_no"</span> : 0,</span><br><span class="line">  <span class="string">"_primary_term"</span> : 1,</span><br><span class="line">  <span class="string">"found"</span> : <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"_source"</span> : &#123;</span><br><span class="line">    <span class="string">"title"</span> : <span class="string">"Algorithm"</span>,</span><br><span class="line">    <span class="string">"professor"</span> : <span class="string">"John"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>파일을 사용하여 Document 생성하기</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XPOST -H <span class="string">'Content-Type: application/json'</span> http://localhost:9200/classes/class/1/ -d @class.json</span><br><span class="line">&#123;<span class="string">"_index"</span>:<span class="string">"classes"</span>,<span class="string">"_type"</span>:<span class="string">"class"</span>,<span class="string">"_id"</span>:<span class="string">"1"</span>,<span class="string">"_version"</span>:2,<span class="string">"result"</span>:<span class="string">"updated"</span>,<span class="string">"_shards"</span>:&#123;<span class="string">"total"</span>:2,<span class="string">"successful"</span>:1,<span class="string">"failed"</span>:0&#125;,<span class="string">"_seq_no"</span>:1,<span class="string">"_primary_term"</span>:1&#125;%</span><br></pre></td></tr></table></figure>
+<p>@기호를 사용하여 class.json 파일안에 있는 json 데이터를 통하여 Document를 생성하였습니다. JSON내용은 다음과같습니다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"title"</span> : <span class="string">"Machine Learning"</span>,</span><br><span class="line">    <span class="string">"Professor"</span> : <span class="string">"Minsuk Heo"</span>,</span><br><span class="line">    <span class="string">"major"</span> : <span class="string">"Computer Science"</span>,</span><br><span class="line">    <span class="string">"semester"</span> : [<span class="string">"spring"</span>, <span class="string">"fall"</span>],</span><br><span class="line">    <span class="string">"student_count"</span> : 100,</span><br><span class="line">    <span class="string">"unit"</span> : 3,</span><br><span class="line">    <span class="string">"rating"</span> : 5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Document 조회해보기</p>
+</blockquote>
+<p>이제 정상적으로 파일에서 가져온 Document값을 조회해보도록 하겠습니다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -XGET http://localhost:9200/classes/class/1/\?pretty</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"_index"</span> : <span class="string">"classes"</span>,</span><br><span class="line">  <span class="string">"_type"</span> : <span class="string">"class"</span>,</span><br><span class="line">  <span class="string">"_id"</span> : <span class="string">"1"</span>,</span><br><span class="line">  <span class="string">"_version"</span> : 2,</span><br><span class="line">  <span class="string">"_seq_no"</span> : 1,</span><br><span class="line">  <span class="string">"_primary_term"</span> : 1,</span><br><span class="line">  <span class="string">"found"</span> : <span class="literal">true</span>,</span><br><span class="line">  <span class="string">"_source"</span> : &#123;</span><br><span class="line">    <span class="string">"title"</span> : <span class="string">"Machine Learning"</span>,</span><br><span class="line">    <span class="string">"Professor"</span> : <span class="string">"Minsuk Heo"</span>,</span><br><span class="line">    <span class="string">"major"</span> : <span class="string">"Computer Science"</span>,</span><br><span class="line">    <span class="string">"semester"</span> : [</span><br><span class="line">      <span class="string">"spring"</span>,</span><br><span class="line">      <span class="string">"fall"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"student_count"</span> : 100,</span><br><span class="line">    <span class="string">"unit"</span> : 3,</span><br><span class="line">    <span class="string">"rating"</span> : 5</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이렇게 정상적으로 파일에 들어가있는 값들을 통하여 document로 정상적으로 구성되었습니다.</p>
+<blockquote>
+<p>Reference</p>
+</blockquote>
+<p><a href="https://github.com/minsuk-heo/BigData" target="_blank" rel="noopener">https://github.com/minsuk-heo/BigData</a></p>
+]]></content>
+      <categories>
+        <category>ELK</category>
+      </categories>
+      <tags>
+        <tag>ELK</tag>
+        <tag>CRUD</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ELK 엘라스틱서치 정의 및 설치하기</title>
     <url>/ELK-20210219-elk-install/</url>
     <content><![CDATA[<h1 id="homebrew"><a href="#homebrew" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#homebrew"></a> Homebrew</h1>
 <p>Homebrew는 자유-오픈 소스 소프트웨어 패키지 관리 시스템의 하나로서 애플의 macOS 운영 체제의 소프트웨어 설치를 단순하게 만들어준다. 원래 맥스 호웰(Max Howell)이 개발한 이 패키지 관리자는 루비 온 웨일즈 공동체에서 인기를 얻었으며 확장성으로 호평을 받았습니다.홈브루는 쉬운 사용성, 명령 줄로의 통합이 가능하므로 이용이 권장됩니다.</p>
@@ -7968,38 +8053,6 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -8023,6 +8076,38 @@ Only one valid answer exists.</p>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
 <h3 id="next-permutationeul-sayonghan-puli"><a href="#next-permutationeul-sayonghan-puli" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#next_permutation을-사용한-풀이"></a> next_permutation을 사용한 풀이</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  05_백준_차이를최대로_10819.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            sum += <span class="built_in">abs</span>(v[i] - v[i+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">max</span> &lt; sum)&#123;</span><br><span class="line">            <span class="built_in">max</span> = sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()));</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">max</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -8500,8 +8585,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>우선순위큐</tag>
       </tags>
   </entry>
@@ -8544,8 +8629,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -8658,8 +8743,8 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>레벨2</tag>
+        <tag>프로그래머스</tag>
         <tag>H-INDEX</tag>
         <tag>정렬</tag>
       </tags>
@@ -8723,9 +8808,9 @@ Only one valid answer exists.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
+        <tag>레벨2</tag>
         <tag>프로그래머스</tag>
         <tag>위장</tag>
-        <tag>레벨2</tag>
         <tag>해시</tag>
       </tags>
   </entry>

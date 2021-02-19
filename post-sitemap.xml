@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/ELK-20210219-elk-crud/</loc>
+        <lastmod>2021-02-19T04:40:52.461Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/ELK-20210219-elk-install/</loc>
-        <lastmod>2021-02-19T04:17:41.368Z</lastmod>
+        <lastmod>2021-02-19T04:19:12.133Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
