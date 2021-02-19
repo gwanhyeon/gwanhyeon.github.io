@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>ELK 정의 및 설치하기</title>
-    <url>/ELK-20210219-elk-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/</url>
+    <url>/ELK-20210219-elk-install/</url>
     <content><![CDATA[<h1 id="homebrew"><a href="#homebrew" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#homebrew"></a> Homebrew</h1>
 <p>Homebrew는 자유-오픈 소스 소프트웨어 패키지 관리 시스템의 하나로서 애플의 macOS 운영 체제의 소프트웨어 설치를 단순하게 만들어준다. 원래 맥스 호웰(Max Howell)이 개발한 이 패키지 관리자는 루비 온 웨일즈 공동체에서 인기를 얻었으며 확장성으로 호평을 받았습니다.홈브루는 쉬운 사용성, 명령 줄로의 통합이 가능하므로 이용이 권장됩니다.</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">$/bin/bash -c <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"</span></span><br></pre></td></tr></table></figure>
@@ -1934,8 +1934,8 @@ Ex) GET,POST,PUT,PATCH,DELETE</p>
       </categories>
       <tags>
         <tag>JPA</tag>
-        <tag>Entity</tag>
         <tag>Persistence</tag>
+        <tag>Entity</tag>
         <tag>Flush</tag>
       </tags>
   </entry>
@@ -3595,8 +3595,8 @@ LAN 드라이버, LAN 장비, LAN카드</p>
       </categories>
       <tags>
         <tag>NETWORK</tag>
-        <tag>INTERNET</tag>
         <tag>TCP</tag>
+        <tag>INTERNET</tag>
         <tag>IP</tag>
       </tags>
   </entry>
@@ -4092,9 +4092,9 @@ Output: true</p>
         <category>Spring</category>
       </categories>
       <tags>
+        <tag>Spring</tag>
         <tag>annotationProcessor</tag>
         <tag>JDK</tag>
-        <tag>Spring</tag>
         <tag>IntelliJ</tag>
         <tag>Error</tag>
       </tags>
