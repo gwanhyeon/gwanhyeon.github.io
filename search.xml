@@ -9,20 +9,68 @@
 <blockquote>
 <p>ELASTIC SEARCH VS RDS</p>
 </blockquote>
-<p>| Elastic Search | RDS |<br>
-|-------|:--------:||:-------😐<br>
-| <code>Index</code> | Database |<br>
-| <code>Type</code> | Table |<br>
-| <code>Document</code> | Row |<br>
-| <code>Field</code> | Column |<br>
-| <code>Mapping</code> | Schema |</p>
+<table>
+<thead>
+<tr>
+<th>Elastic Search</th>
+<th style="text-align:center">RDS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Index</code></td>
+<td style="text-align:center">Database</td>
+</tr>
+<tr>
+<td><code>Type</code></td>
+<td style="text-align:center">Table</td>
+</tr>
+<tr>
+<td><code>Document</code></td>
+<td style="text-align:center">Row</td>
+</tr>
+<tr>
+<td><code>Field</code></td>
+<td style="text-align:center">Column</td>
+</tr>
+<tr>
+<td><code>Mapping</code></td>
+<td style="text-align:center">Schema</td>
+</tr>
+</tbody>
+</table>
 <p>엘라스틱서치에서는 REST API를 사용합니다.</p>
-<p>| Elastic Search | RDS | CRUD |<br>
-|-------|:--------:||:-------😐<br>
-| <code>GET</code> | Select | Read |<br>
-| <code>PUT</code> | Update | Update |<br>
-| <code>POST</code> | Insert | Create |<br>
-| <code>DELETE</code> | Delete | Delete |</p>
+<table>
+<thead>
+<tr>
+<th>Elastic Search</th>
+<th style="text-align:center">RDS</th>
+<th style="text-align:center">CRUD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td style="text-align:center">Select</td>
+<td style="text-align:center">Read</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td style="text-align:center">Update</td>
+<td style="text-align:center">Update</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td style="text-align:center">Insert</td>
+<td style="text-align:center">Create</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td style="text-align:center">Delete</td>
+<td style="text-align:center">Delete</td>
+</tr>
+</tbody>
+</table>
 <p>다음과 같이 표를 보면 CRUD의 역할과 동일하게 처리한다라고 생각을 하면됩니다.</p>
 <blockquote>
 <p>GET 조회시</p>
