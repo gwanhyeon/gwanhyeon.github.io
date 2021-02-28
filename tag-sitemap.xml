@@ -3,36 +3,36 @@
 
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/timecomplexity/</loc>
-        <lastmod>2021-02-28T07:48:36.704Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/codility/</loc>
-        <lastmod>2021-02-28T07:48:36.704Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/tags/array/</loc>
-        <lastmod>2021-02-28T07:11:24.109Z</lastmod>
+        <lastmod>2021-02-28T08:01:03.156Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/linkedlist/</loc>
-        <lastmod>2021-02-28T07:09:04.538Z</lastmod>
+        <lastmod>2021-02-28T08:01:03.156Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/codility/</loc>
+        <lastmod>2021-02-28T08:01:03.156Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/binary/</loc>
-        <lastmod>2021-02-28T06:34:43.137Z</lastmod>
+        <lastmod>2021-02-28T08:00:51.694Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/timecomplexity/</loc>
+        <lastmod>2021-02-28T07:48:36.704Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
