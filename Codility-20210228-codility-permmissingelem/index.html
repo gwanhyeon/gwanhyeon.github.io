@@ -4,25 +4,25 @@
     
 
     
-    <title>백준 연산자끼워넣기 14888 | GWAN IT Blog</title>
+    <title>Codility PermMissingElem | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="백준,브루트포스,백트래킹,DFS" />
+    <meta name="keywords" content="Codility,TimeComplexity" />
     
-    <meta name="description" content="1.  연산자끼워넣기14888 2.  컴퓨팅 스킬  next_permutation   값을 저장 시킬 vector v; 연산자의 개수를 1,2,3,4 의 값으로 넣을 vector cal; #include헤더에 minmax_element으로 최대값과 최소값 구해줍니다.    DFS   재귀호출로 백트래킹으로 구해줍니다.  3.  컴퓨팅 사고  next_per">
-<meta name="keywords" content="백준,브루트포스,백트래킹,DFS">
+    <meta name="description" content="1.  codility PermMissingElem 1.1.  컴퓨팅적 사고  check변수를 선언하여 나온 elements를 모두 체크를 시켜줍니다. 값은 1부터 range까지 진행되므로 1부터 진행하여 check값까지 진행하면서 false인값일때 해당 엘리먼트의 값을 반환시켜줍니다.  1.2.  소스코드 123456789101112131415161718">
+<meta name="keywords" content="Codility,TimeComplexity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="백준 연산자끼워넣기 14888">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;BOJ-20191202-BOJ-interpolating-operator14888&#x2F;index.html">
+<meta property="og:title" content="Codility PermMissingElem">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Codility-20210228-codility-permmissingelem&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  연산자끼워넣기14888 2.  컴퓨팅 스킬  next_permutation   값을 저장 시킬 vector v; 연산자의 개수를 1,2,3,4 의 값으로 넣을 vector cal; #include헤더에 minmax_element으로 최대값과 최소값 구해줍니다.    DFS   재귀호출로 백트래킹으로 구해줍니다.  3.  컴퓨팅 사고  next_per">
+<meta property="og:description" content="1.  codility PermMissingElem 1.1.  컴퓨팅적 사고  check변수를 선언하여 나온 elements를 모두 체크를 시켜줍니다. 값은 1부터 range까지 진행되므로 1부터 진행하여 check값까지 진행하면서 false인값일때 해당 엘리먼트의 값을 반환시켜줍니다.  1.2.  소스코드 123456789101112131415161718">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2020-09-09T17:04:40.680Z">
+<meta property="og:updated_time" content="2021-02-28T10:58:35.541Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/boj-20191202-boj-interpolating-operator14888/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/codility-20210228-codility-permmissingelem/"/>
     
 
     
@@ -149,19 +149,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/boj/">BOJ</a>
+    <a class="page-title-link" href="/categories/codility/">Codility</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-BOJ-20191202-BOJ-interpolating-operator14888" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Codility-20210228-codility-permmissingelem" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        백준 연산자끼워넣기 14888
+        Codility PermMissingElem
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/BOJ-20191202-BOJ-interpolating-operator14888/" class="article-date">
-         <time datetime="2019-12-02T09:57:01.000Z" itemprop="datePublished">2019-12-02</time>
+      <a href="/Codility-20210228-codility-permmissingelem/" class="article-date">
+         <time datetime="2021-02-28T10:56:15.000Z" itemprop="datePublished">2021-02-28</time>
       </a>
     </div>
 
@@ -183,7 +183,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dfs/" rel="tag">DFS</a>, <a class="tag-link" href="/tags/%EB%B0%B1%EC%A4%80/" rel="tag">백준</a>, <a class="tag-link" href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" rel="tag">백트래킹</a>, <a class="tag-link" href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" rel="tag">브루트포스</a>
+        <a class="tag-link" href="/tags/codility/" rel="tag">Codility</a>, <a class="tag-link" href="/tags/timecomplexity/" rel="tag">TimeComplexity</a>
     </div>
 
                 
@@ -194,55 +194,14 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="yeonsanjaggiweoneohgi14888"><a href="#yeonsanjaggiweoneohgi14888" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#연산자끼워넣기14888"></a> <a href="https://www.acmicpc.net/problem/14888" target="_blank" rel="noopener">연산자끼워넣기14888</a></h2>
-<h2 id="keompyuting-seukil"><a href="#keompyuting-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅-스킬"></a> 컴퓨팅 스킬</h2>
-<blockquote>
-<p>next_permutation</p>
-</blockquote>
-<ul>
-<li>값을 저장 시킬 vector<int> v;</int></li>
-<li>연산자의 개수를 1,2,3,4 의 값으로 넣을 vector<int> cal;</int></li>
-<li>#include<algorithm>헤더에 minmax_element으로 최대값과 최소값 구해줍니다.</algorithm></li>
-</ul>
-<hr>
-<blockquote>
-<p>DFS</p>
-</blockquote>
-<ul>
-<li>재귀호출로 백트래킹으로 구해줍니다.</li>
-</ul>
-<h2 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h2>
-<blockquote>
-<p>next_permutation</p>
-</blockquote>
-<ul>
-<li>n을 입력받아 수를 v에 입력을 받아줍니다.</li>
-<li><code>+, -, *, /</code>의 개수를 확인해서 cal 변수에 1,2,3,4를 나누어서 넣어줍니다. 예를 들면, 2 0 1 0 일경우 +의 개수는 2개이므로 1을 두번넣어주고, *의 개수는 1개이므로 3을 한번넣어주고 해당 cal 벡터에는 [1, 1, 3]이 됩니다.</li>
-<li>cal에 담긴 벡터를 next_permutation을 돌려주면서 순열값 모든경우의 수를 구해줍니다.</li>
-<li>cal값이 1일 경우 + , 2일경우 -, 3일 경우 *, 4일 경우 / 의 연산대로 조건을 처리해줍니다.</li>
-<li>이때, sum = v[0]을 해준이유는 순차적으로 계산을 진행해야하므로 가장 맨처음에 존재하는 값을 sum에 담고 시작하였습니다. 연산자의 개수는 수의 N-1개이기때문에 미리 sum에 값을 넣어주었습니다. 예를 들면 10 + 20를 연산해야 한다고 할 경우 sum = 10을 두고 sum + 20으로 연산을 처리하기위해서 입니다.</li>
-<li>조건에 보면 <code>식의 계산은 연산자 우선 순위를 무시하고 앞에서부터 진행해야 합니다. 또, 나눗셈은 정수 나눗셈으로 몫만 취한다. 음수를 양수로 나눌 때는 C++14의 기준을 따른다. 즉, 양수로 바꾼 뒤 몫을 취하고, 그 몫을 음수로 바꾼 것과 같다.</code>을 해주어야하므로 sum의 값이 음수일 경우 sum = -sum 으로 양수 값을 변경하고, sum = (sum / v[i]) 을 계산해준 후 다시 음수값으로 변경하였습니다. sum이 양수일 경우 sum = (sum / v[i])로 로직대로 처리하였습니다.</li>
-<li>minmax_element를 사용하여 max, min값을 동시에 구하였습니다. <code>auto p = minmax_element(ans.begin(), ans.end());</code>의 형식으로 최대값과 최소값을 모두 구할 수 있습니다. *p.second는 최소값, *p.first는 최대값입니다.</li>
-</ul>
-<h2 id="haedang-yeonsanjae-gajungcireul-buyeohayeo-geu-gabse-ddara-sunyeoleul-tonghae-modeungyeonguyi-sureul-guhaneungeosi-ki-pointeuyeossseubnida"><a href="#haedang-yeonsanjae-gajungcireul-buyeohayeo-geu-gabse-ddara-sunyeoleul-tonghae-modeungyeonguyi-sureul-guhaneungeosi-ki-pointeuyeossseubnida" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#해당-연산자에-가중치를-부여하여-그-값에-따라-순열을-통해-모든경우의-수를-구하는것이-키-포인트였습니다"></a> 해당 +,-,*,/ 연산자에 가중치를 부여하여 그 값에 따라 순열을 통해 모든경우의 수를 구하는것이 키 포인트였습니다.</h2>
-<blockquote>
-<p>DFS 백트래킹</p>
-</blockquote>
-<ul>
-<li>맨처음 dfs(v,1,v[0],plus,minus,multi,div); 호출할 때 왜 idx = 1로 시작하고, sum의 값을 v[0]의 값을 넘겨주는가에 대한 의문을 갖고 계신분들이 있습니다. idx를 1로 시작한 이유는 곱하기나, 나눗셈의 경우에서 sum의 값이 0일 경우 올바르지 않은 값이 연산되게 됩니다. 따라서, v[0] (+, -, *, /) v[1] 의 형태로 연산이 되게 됩니다. 따라서 올바른 값을 구할 수 있습니다. 곰곰히 생각해보시면 어떤 말씀인지 알 것이라 생각합니다.</li>
-<li>입력받은 plus,minus,multi,div의 개수를 0보다 클 경우에는 계속해서 재귀호출을 합니다.</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(plus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum+v[idx],plus<span class="number">-1</span>, minus, multi, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(minus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum-v[idx], plus, minus<span class="number">-1</span>, multi, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(multi &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum*v[idx], plus, minus, multi<span class="number">-1</span>, div);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(div &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    dfs(v,idx+<span class="number">1</span>,sum/v[idx], plus, minus, multi, div<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>만약 v.size() == idx 모든 원소의 개수를 확인하였을 경우에 현재 sum값을 res 벡터에 값을 넣어줍니다. 그 후 <code>auto p = minmax_element(res.begin(), res.end());</code>를 사용하여 최댓값과 최솟값을 구해주게 됩니다. 이렇게 구하지 않고도 문제의 조건에서보면  <code>최댓값과 최솟값이 항상 -10억보다 크거나 같고, 10억보다 작거나 같은 결과가 나오는 입력만 주어진다</code> 라는 조건이 있습니다.<br>
-이러한 것들에 따라 값을 max함수와 min함수를 사용하면서 최댓값과 최솟값을 구해줍니다.<br>
-다른분들의 풀이를 보니 이런식으로 사용하시는것을 보고 배우게 되었습니다.</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX = <span class="number">1000000000</span> + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> maxResult = -MAX, minResult = MAX;</span><br><span class="line"> maxResult = <span class="built_in">max</span>(maxResult, sum);</span><br><span class="line"> minResult = <span class="built_in">min</span>(minResult, sum);</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; maxResult &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; minResult &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="dfs-baegteuraeking-puli"><a href="#dfs-baegteuraeking-puli" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs-백트래킹-풀이"></a> DFS 백트래킹 풀이</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorihtm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v, <span class="keyword">int</span> idx,<span class="keyword">int</span> sum, <span class="keyword">int</span> plus, <span class="keyword">int</span> minus, <span class="keyword">int</span> multi, <span class="keyword">int</span> div)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(idx == v.<span class="built_in">size</span>())&#123;</span><br><span class="line">        res.push_back(sum);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(plus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,idx+<span class="number">1</span>,sum+v[idx],plus<span class="number">-1</span>, minus, multi, div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(minus &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,idx+<span class="number">1</span>,sum-v[idx], plus, minus<span class="number">-1</span>, multi, div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(multi &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,idx+<span class="number">1</span>,sum*v[idx], plus, minus, multi<span class="number">-1</span>, div);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(div &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        dfs(v,idx+<span class="number">1</span>,sum/v[idx], plus, minus, multi, div<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> plus=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> minus=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> multi=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> div = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> input;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; input;</span><br><span class="line">        v.push_back(input);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> cal;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; cal;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">            plus = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">            minus = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">2</span>)&#123;</span><br><span class="line">            multi = cal;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            div = cal;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    dfs(v,<span class="number">1</span>,v[<span class="number">0</span>],plus,minus,multi,div);</span><br><span class="line">    <span class="keyword">auto</span> p = minmax_element(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p.second &lt;&lt; <span class="string">' '</span> &lt;&lt;  *p.first;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="next-permutation-puli"><a href="#next-permutation-puli" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-풀이"></a> next_permutation 풀이</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  08_백준_연산자끼워넣기_14888.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 02/12/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cal;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;a; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">                cal.push_back(<span class="number">1</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">                cal.push_back(<span class="number">2</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">2</span>)&#123;</span><br><span class="line">                cal.push_back(<span class="number">3</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">3</span>)&#123;</span><br><span class="line">                cal.push_back(<span class="number">4</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = v[<span class="number">0</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cal[i<span class="number">-1</span>] == <span class="number">1</span>)&#123;</span><br><span class="line">                sum = sum + v[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cal[i<span class="number">-1</span>] == <span class="number">2</span>)&#123;</span><br><span class="line">                sum = sum - v[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cal[i<span class="number">-1</span>] == <span class="number">3</span>)&#123;</span><br><span class="line">                sum = sum * v[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(sum &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    sum = -sum;</span><br><span class="line">                    sum = (sum / v[i]);</span><br><span class="line">                    sum = -sum;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    sum = (sum / v[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans.push_back(sum);</span><br><span class="line">    &#125;<span class="keyword">while</span>(next_permutation(cal.<span class="built_in">begin</span>(), cal.<span class="built_in">end</span>()));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">auto</span> p = minmax_element(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>());</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p.second &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *p.first &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="codility-permmissingelem"><a href="#codility-permmissingelem" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#codility-permmissingelem"></a> <a href="https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/" target="_blank" rel="noopener">codility PermMissingElem</a></h1>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ol>
+<li>check변수를 선언하여 나온 elements를 모두 체크를 시켜줍니다.</li>
+<li>값은 1부터 range까지 진행되므로 1부터 진행하여 check값까지 진행하면서 false인값일때 해당 엘리먼트의 값을 반환시켜줍니다.</li>
+</ol>
+<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PermMissingElem_lesson03</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        solution(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code in Java SE 8</span></span><br><span class="line">        Arrays.sort(A);</span><br><span class="line">        <span class="keyword">boolean</span>[] check = <span class="keyword">new</span> <span class="keyword">boolean</span>[A.length+<span class="number">2</span>];</span><br><span class="line">        <span class="comment">// 0, 1, 2, 3</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.length; i++)&#123;</span><br><span class="line">            check[A[i]] = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=check.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!check[i])&#123;</span><br><span class="line">                answer = i;</span><br><span class="line">                System.out.println(answer);</span><br><span class="line">                <span class="keyword">return</span> answer;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -313,35 +272,23 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "백준 연산자끼워넣기 14888",
+        "headline": "Codility PermMissingElem",
         "image": "http://gwanhyeon.github.io",
-        "keywords": "백준 브루트포스 백트래킹 DFS",
-        "genre": "BOJ",
-        "datePublished": "2019-12-02",
-        "dateCreated": "2019-12-02",
-        "dateModified": "2020-09-10",
-        "url": "http://gwanhyeon.github.io/BOJ-20191202-BOJ-interpolating-operator14888/",
-        "description": "1.  연산자끼워넣기14888
-2.  컴퓨팅 스킬
+        "keywords": "Codility TimeComplexity",
+        "genre": "Codility",
+        "datePublished": "2021-02-28",
+        "dateCreated": "2021-02-28",
+        "dateModified": "2021-02-28",
+        "url": "http://gwanhyeon.github.io/Codility-20210228-codility-permmissingelem/",
+        "description": "1.  codility PermMissingElem
+1.1.  컴퓨팅적 사고
 
-next_permutation
+check변수를 선언하여 나온 elements를 모두 체크를 시켜줍니다.
+값은 1부터 range까지 진행되므로 1부터 진행하여 check값까지 진행하면서 false인값일때 해당 엘리먼트의 값을 반환시켜줍니다.
 
-
-값을 저장 시킬 vector v;
-연산자의 개수를 1,2,3,4 의 값으로 넣을 vector cal;
-#include헤더에 minmax_element으로 최대값과 최소값 구해줍니다.
-
-
-
-DFS
-
-
-재귀호출로 백트래킹으로 구해줍니다.
-
-3.  컴퓨팅 사고
-
-next_per",
-        "wordCount": 2039
+1.2.  소스코드
+123456789101112131415161718",
+        "wordCount": 367
     }
 </script>
 
@@ -384,20 +331,10 @@ next_per",
         
 <nav id="article-nav">
     
-        <a href="/BOJ-20191203-BOJ-Create-a-password-1759/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            백준 암호만들기 1759
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/BOJ-20191202-BOJ-lotto-6603/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/Codility-20210228-codility-frog-jump/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">백준 로또 6603</p>
+        <p class="article-nav-title">Codility Frog Jump</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -548,7 +485,7 @@ next_per",
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/BOJ-20191202-BOJ-interpolating-operator14888/';
+    var disqus_url = 'http://gwanhyeon.github.io/Codility-20210228-codility-permmissingelem/';
     
     (function() {
     var dsq = document.createElement('script');
