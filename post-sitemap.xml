@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Programmers-20210305-programmers-%E1%84%8B%E1%85%A3%E1%84%80%E1%85%B3%E1%86%AB%E1%84%8C%E1%85%B5%E1%84%89%E1%85%AE/</loc>
+        <lastmod>2021-03-05T05:30:01.579Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/OS-20210303-os-transaction/</loc>
         <lastmod>2021-03-03T09:35:45.280Z</lastmod>
         <changefreq>weekly</changefreq>
