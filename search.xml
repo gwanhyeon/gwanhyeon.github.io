@@ -1445,7 +1445,7 @@ BLOB: byte[], java.sql.BLOB</p>
 </ul>
 <p>400은 500번과 다르게 복구가 불가능하고 500번은 같은 요청시 성공 가능성이 있습니다.</p>
 <ul>
-<li>401(Unauthorizaed)<br>
+<li>401(Unauthorized)<br>
 클라이언트가 해당 리소스에 대한 인증이 필요합니다.</li>
 </ul>
 <p>인증이 되지 않거나 401 오류 발생시 응답에 WWW-Authenticate헤더와 함께 인증 방법을 설명해야합니다.<br>

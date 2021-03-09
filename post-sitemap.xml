@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Network-20210205-network-09-http-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/</loc>
+        <lastmod>2021-03-09T08:34:19.445Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Programmers-20210309-programmers-%EC%99%B8%EB%B2%BD%EC%A0%90%EA%B2%80/</loc>
         <lastmod>2021-03-08T16:54:42.269Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -282,14 +290,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Programmers-20210208-programmers-%ED%95%A9%EC%8A%B9%ED%83%9D%EC%8B%9C%EC%9A%94%EA%B8%88/</loc>
         <lastmod>2021-02-08T11:21:51.889Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Network-20210205-network-09-http-%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/</loc>
-        <lastmod>2021-02-05T05:22:43.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
