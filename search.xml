@@ -191,7 +191,7 @@ header-field = field-name “:” OWS field-value OWS<br>
 <h2 id="hedeoyi-bunryu"><a href="#hedeoyi-bunryu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#헤더의-분류"></a> 헤더의 분류</h2>
 <ol>
 <li>General Header : 메시지 전체에 적용되는 정보를 담고 있으며 연결정보를 가지고 있습니다.</li>
-<li>Request Hader: 요청 정보-User-Agent와 같은 정보를 가지고 있습니다.</li>
+<li>Request Header: 요청 정보-User-Agent와 같은 정보를 가지고 있습니다.</li>
 <li>Response Header: 응답 정보, 아파치</li>
 <li>Entity Header: Entity Body 정보 Content-Type:text/html, Content-Length: 3423</li>
 </ol>
