@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/msa/</loc>
+        <lastmod>2021-03-10T04:33:36.042Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/network/</loc>
         <lastmod>2021-03-10T03:15:33.314Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -66,13 +73,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/sw%25EC%2597%25AD%25EB%259F%2589%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8/</loc>
         <lastmod>2021-02-16T14:07:38.217Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/msa/</loc>
-        <lastmod>2021-02-12T15:32:39.018Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
