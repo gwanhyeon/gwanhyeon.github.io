@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2021-03-15T14:07:21.122Z</updated>
+  <updated>2021-03-19T11:32:31.600Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CleanCode chapter01 깨끗한코드</title>
+    <link href="http://gwanhyeon.github.io/CleanCode-20210319-chapter01-%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/"/>
+    <id>http://gwanhyeon.github.io/CleanCode-20210319-chapter01-%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/</id>
+    <published>2021-03-19T11:21:25.000Z</published>
+    <updated>2021-03-19T11:32:31.600Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="kodeuga-jonjaeharira"><a href="#kodeuga-jonjaeharira" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#코드가-존재하리라"></a> 코드가 존재하리라</h1><p>코드는 요구사항을 표현하는 언어라는 사실을 알아야하고 요구사항에 더욱 가까운 언어를 만들수도 있고, 요구사항에서 정형 구조를 뽑아내는 도구를 만들 수도 있다. 하지만 어느순간에는 정밀한 표현이 필요하다.</p><h1 id="nabbeun-kodeu"><a href="#nabbeun-kodeu" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#나쁜-코드"></a> 나쁜 코드</h1><p>좋은 코드의 중요성은 오랫동안 나쁜 코드에 시달려왔다. 출시에 바빠 코드를 마구짜지 말아야 한다. <code>회사가 망하는 지름길은 나쁜코드이다.</code></p><p>여러가지 바쁘다는 핑계, 상사에 치여서 나쁜코드를 작성하는 경우가 많다. 나중에 돌아와 이것을 다시 손보겠다는 망상을 하는데 <code>나중은 결코 오지 않는다.</code></p><h1 id="nabbeun-kodeuga-cireuneun-daega"><a href="#nabbeun-kodeuga-cireuneun-daega" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#나쁜-코드가-치르는-대가"></a> 나쁜 코드가 치르는 대가</h1><p>나쁜코드는 개발 속도를 크게 떨어뜨린다. 나쁜 코드가 쌓일수록 팀 생산성을 떨어진다. 그러다가 마침내 0에 근접한다.</p><h2 id="weondaehan-jaeseolgyeyi-ggum"><a href="#weondaehan-jaeseolgyeyi-ggum" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#원대한-재설계의-꿈"></a> 원대한 재설계의 꿈</h2><p>팀이 반기를 들고 관리층에게 설계를 요구하는데 생산성이 바닥이라는 사실을 부인하지 않는다. 기존 시스템을 따라잡을 즈음이면 새로운 팀원들이 새 시스템을 설계하자고하며 현재 시스템을 다시 갈아엎기를 요구한다. <code>깨끗한 코드는 비용을 절감하는 것 뿐만 아니라 전문가로 살아남는 길이라는 사실을 인정하리라.</code></p><h2 id="taedo"><a href="#taedo" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#태도"></a> 태도</h2><p>코드가 정말 엉망이라 업무가 배로 들어날 수 있는 상황이 있다. 일정이 촉박해 제대로 할 시간이 없다면서 한탄을 시작하며 전문가 답지 못한 모습을 보일때가 있다.</p><p>일정이 촉박하다는것은 전문가 답지못한 행동이다. 프로젝트의 실패는 우리에게도 커다란 책임이 있고 특히 나쁜 코드가 초래하는 실패에는 더더욱 책임감이 크다.</p><p>나쁜 코드의 위험을 이해하지 못하는 관리자 말을 그대로 따르는 행동은 전문가 답지 못하다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;kodeuga-jonjaeharira&quot;&gt;&lt;a href=&quot;#kodeuga-jonjaeharira&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#코드가-존재하리라&quot;&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="CleanCode" scheme="http://gwanhyeon.github.io/categories/cleancode/"/>
+    
+    
+      <category term="cleancode" scheme="http://gwanhyeon.github.io/tags/cleancode/"/>
+    
+      <category term="깨끗한코드" scheme="http://gwanhyeon.github.io/tags/%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>릿코드 Partition Labels</title>
@@ -541,34 +569,6 @@
     
     
       <category term="ELK" scheme="http://gwanhyeon.github.io/tags/elk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java MultiThread(멀티스레드) 고려사항</title>
-    <link href="http://gwanhyeon.github.io/Java-20210218-multi-thread-java/"/>
-    <id>http://gwanhyeon.github.io/Java-20210218-multi-thread-java/</id>
-    <published>2021-02-18T07:22:53.000Z</published>
-    <updated>2021-02-18T07:40:04.743Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="multi-thread-goryeosahang"><a href="#multi-thread-goryeosahang" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#multi-thread-고려사항"></a> Multi Thread 고려사항</h1><p>MultiThread를 구현하는 대표적인방법은 두가지가 있습니다.</p><ul><li>java.lang.Thread 클래스를 상속받아서 구현하는 방법</li><li>java.lang.Runnable 인터페이스를 구현해서 개발하는 방법</li></ul><blockquote><p>Field Member</p></blockquote><p>필드의 의미는 클래스에 변수를 정의하는 공간을 의미합니다. 하지만, 객체가 여러 스레드가 접근하는 싱글톤 객체라면 filed 상태값을 갖고 있지않고, 모든 변수를 parameter -&gt; return 형식으로 구성해야합니다.</p><blockquote><p>Synchronized</p></blockquote><p>동기화 처리시에 synchronized 키워드를 사용하여 스레드 간섭을 피하고 이 키워드 기반으로 구현된 Collection도 존재합니다.<br>List 대신 Vector, Map 대신 HashTable을 사용할 수 있지만, API 및 성능상 문제를 가지고 있습니다.</p><p>성능문제를 어떻게 해결 할 수 있을까요?</p><p>Collections 라는 utll 클래스에서 제공되는 static 메소드를 통해 해결이 가능합니다.</p><p>다음과 같이 변경하여 해결이 가능합니다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collections.synchronizedList()</span><br><span class="line">Collections.synchronizedSet()</span><br><span class="line">Collections.synchronizedMap()</span><br></pre></td></tr></table></figure><p>더 나아가서, JDK 1.7부터는 ConcurrentHashMap 구현체를 제공하여 Collections utill을 사용하는것보다 보다 좋은 성능을 내는 자료구조를 제공합니다.</p><ul><li>ConcurrentHashMap 예시</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    private final ConcurrentHashMap&lt;String, Movie.MovieDto&gt; movieMapCache = new ConcurrentHashMap&lt;&gt;(16);</span></span><br><span class="line"><span class="comment">    private volatile Long cacheLoadTime = 0L;</span></span><br><span class="line"><span class="comment">    private volatile Long cacheTimeLimit = 600 * 1000L;</span></span><br><span class="line"><span class="comment">     * 영화 캐시 조회</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> query</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, Movie.MovieDto&gt; findCacheByQuery(<span class="keyword">final</span> String query) &#123;</span><br><span class="line">        <span class="keyword">long</span> nowTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">if</span>(CollectionUtils.isEmpty(movieMapCache) || nowTime - cacheLoadTime &gt; cacheTimeLimit)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (movieMapCache)&#123;</span><br><span class="line">                ResponseEntity&lt;Movie.MovieDto&gt; exchange = getExchange(query);</span><br><span class="line">                List&lt;Movie.Item&gt; ResponseMovieList = Movie.Item.of(exchange);</span><br><span class="line">                MovieGroup items = <span class="keyword">new</span> MovieGroup(ResponseMovieList);</span><br><span class="line">                List&lt;Movie.Item&gt; listOrderRating = items.getListOrderRating();</span><br><span class="line">                Movie.MovieDto resultList = Movie.MovieDto.of(exchange, listOrderRating);</span><br><span class="line">                cacheInitialized();</span><br><span class="line">                cacheLoadTime = nowTime;</span><br><span class="line">                movieMapCache.put(query, resultList);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> movieMapCache;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><blockquote><p>ThreadLocal</p></blockquote><p>일반 변수의 수명은 특정 코드 블록(예, 메서드 범위, for 블록 범위 등) 범위 내에서만 유효합니다. 하지만 <code>ThreadLocal</code>을 사용하면 반면에 ThreadLocal을 이용하면 쓰레드 영역에 변수를 설정할 수 있기 때문에, 특정 쓰레드가 실행하는 모든 코드에서 그 쓰레드에 설정된 변수 값을 사용할 수 있습니다. Thread사이에 간섭을 없애야하는 데이터에 사용이 되야하는데 멀티 스레드 환경에서는 클래스의필드에 멤버를 추가할 수 없고 매개변수로 넘겨받아야합니다. 결론적으로 스레드 내부의 싱글톤을 사용하기위해 사용합니다.</p><ul><li>ThreadLocal 주의 사항</li></ul><ol><li>ThreadLocal 객체를 생성한다.</li><li>ThreadLocal.set() 메서드를 이용해서 현재 쓰레드의 로컬 변수에 값을 저장한다.</li><li>ThreadLocal.get() 메서드를 이용해서 현재 쓰레드의 로컬 변수 값을 읽어온다.</li><li>ThreadLocal.remove() 메서드를 이용해서 현재 쓰레드의 로컬 변수 값을 삭제한다.</li></ol><p>쓰레드 풀 환경에서 ThreadLocal을 사용하는 경우 ThreadLocal 변수에 보관된 데이터의 사용이 끝나면 반드시 해당 데이터를 삭제해야하며 그렇지 않을 경우 재사용되는 쓰레드가 올바르지 않은 데이터를 참조할 수 있는 가능성이 있습니다.</p><ul><li>ThreadLocal 사용</li></ul><ol><li>사용자 인증정보 전파 - Spring Security에서는 ThreadLocal을 이용해서 사용자 인증 정보를 전달합니다.</li><li>트랜잭션 컨텍스트 - 트랜잭션 매니저는 트랜잭션 컨텍스트를 전파하는 데 ThreadLocal을 사용합니다.</li><li>세션 정보</li><li>Thread Safe한 데이터 저장</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;multi-thread-goryeosahang&quot;&gt;&lt;a href=&quot;#multi-thread-goryeosahang&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#mul
-      
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="http://gwanhyeon.github.io/categories/java/"/>
-    
-    
-      <category term="Java" scheme="http://gwanhyeon.github.io/tags/java/"/>
-    
-      <category term="thread" scheme="http://gwanhyeon.github.io/tags/thread/"/>
     
   </entry>
   

@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/%25EA%25B9%25A8%25EB%2581%2597%25ED%2595%259C%25EC%25BD%2594%25EB%2593%259C/</loc>
+        <lastmod>2021-03-19T11:32:31.600Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/cleancode/</loc>
+        <lastmod>2021-03-19T11:32:31.600Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/%25EA%25B7%25B8%25EB%25A6%25AC%25EB%2594%2594/</loc>
         <lastmod>2021-03-15T14:07:21.122Z</lastmod>
         <changefreq>weekly</changefreq>
