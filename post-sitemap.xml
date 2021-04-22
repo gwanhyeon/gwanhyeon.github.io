@@ -8,7 +8,15 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/Samsung-20210423-dice-tumble/</loc>
+        <loc>http://gwanhyeon.github.io/Samsung-20210420-watch/</loc>
+        <lastmod>2021-04-22T16:39:45.382Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/Samsung-20210423-dice-roll/</loc>
         <lastmod>2021-04-22T16:27:56.094Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -50,14 +58,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Samsung-20210421-start-and-link/</loc>
         <lastmod>2021-04-21T05:38:12.895Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Samsung-20210420-watch/</loc>
-        <lastmod>2021-04-21T05:36:05.134Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
