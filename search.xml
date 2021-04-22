@@ -1,8 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>삼성 SW 역량테스트 백준 주사위 굴리기 14499</title>
+    <url>/Samsung-20210423-dice-tumble/</url>
+    <content><![CDATA[<h1 id="samseong-sw-yeogryangteseuteu-baegjun-jusawi-gulrigi-14499munje"><a href="#samseong-sw-yeogryangteseuteu-baegjun-jusawi-gulrigi-14499munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#삼성-sw-역량테스트-백준-주사위-굴리기-14499문제"></a> <a href="https://www.acmicpc.net/problem/14499" target="_blank" rel="noopener">삼성 SW 역량테스트 백준 주사위 굴리기 14499문제</a></h1>
+<h2 id="aidieo"><a href="#aidieo" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#아이디어"></a> 아이디어</h2>
+<ol>
+<li>N*M의 상하좌우의 지도가 주어진다.</li>
+<li>주사위 전개도를 살펴보면 다음과 같다.<br>
+2(top)<br>
+4(left) 1(up) 3(right)<br>
+5(bottom)<br>
+6(down)</li>
+</ol>
+<p>해당 문제에서는 다음과 같은 변수명으로 주사위 문제를 풀어볼 예정이다.</p>
+<ol start="3">
+<li>주사위의 문제 조건을 살펴보면 다음과 같다.<br>
+(1) 가장 처음 주사위 모든면에 ‘0’의 값으로 초기화가 된 상태로 진행한다.<br>
+(2) 지도 각 칸에 N*M 가로, 세로 형태의 값을 입력받는다.<br>
+(3) 좌표는 X,Y값으로 구분한다.<br>
+(4) 지도가 ‘0’일 경우</li>
+</ol>
+<ul>
+<li>주사위 바닥을 지도칸에 복사시킨다.<br>
+(5) 지도가 ‘0’이 아닐 경우</li>
+<li>지도칸 숫자를 주사위바닥에 복사한다.</li>
+<li>지도칸에 쓰여진 수를 ‘0’으로 초기화 한다.<br>
+(6) 지도의 N*M범위를 벗어날 수 없다. 즉, 이동하면 안되고 명령을 무시해야한다.<br>
+(7) 명령은 동 1 서 2 북 3 남 4의 형태로 값의 입력이 주어진다.<br>
+(8) 입력은 세로N, 가로M, 주사위 놓은곳의 좌표 X Y 명령어의 개수 K가 주어진다.<br>
+(9) 명령어의 개수만큼 명령어들을 입력받는다.</li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ol>
+<li>가로n ,세로 m, 주사위 좌표 x/y, 명령어의 개수 k를 입력받는다.</li>
+<li>command로 주어진 1,2,3,4 방향에 대한 리스트를 담는 List를 선언하여 저장한다.</li>
+<li>현재 주사위의 상태를 가지고 있는 주사위 클래스 Dice클래스를 선언한다.</li>
+<li>현재 주사위의 상태를 가지고 있는 x,y 초기에 주어지는 주사위의 비용은 0이므로 모든값들을 생성자로 초기화를 진행한다.</li>
+<li>명령어의 순서대로 주사위를 굴린다.</li>
+</ol>
+<ul>
+<li>다음 이동 위치 = 현재 위치 + 명령어 이동 방향에 따른 값 X,Y</li>
+</ul>
+<ol start="6">
+<li>주사위의 상태를 복사하여 주사위를 굴릴때 값을 변경시킨다.</li>
+</ol>
+<ul>
+<li>값을 담고있는 하나의 변수를 선언하여 주사위에 쓰여진 비용값들을 담아 놓는다.</li>
+</ul>
+<ol start="7">
+<li>현재 이동된 값이 지도 범위에 만족하는지 확인한다.</li>
+</ol>
+<ul>
+<li>지도의 범위를 만족하면 False, 만족하지못하면 True를 리턴한다. True를 리턴할 경우 문제의 조건에 나와있듯이 값을 출력하지 않고 다음의 경우로 이동한다. 따라서 continue를 통해 해당 경우를 뛰어넘는다.</li>
+</ul>
+<ol start="8">
+<li>지도의 값이 ‘0’ 일 경우</li>
+</ol>
+<ul>
+<li>주사위바닥수가 칸에 복사된다.</li>
+</ul>
+<ol start="9">
+<li>지도의 값이 ‘0’이 아닐경우 칸에 쓰여진 수가 주사위 바닥면으로 복사한다. 그리고 칸에 쓰여진 수를 0으로 변경한다.</li>
+</ol>
+<blockquote>
+<p>주사위 회전의 경우</p>
+</blockquote>
+<p>사용할 변수</p>
+<p>지금 부터 말하는 값들의 기준은 내가 앞에서 바라봤을때의 기준으로 설명을 진행하겠다. top 기준 위 bottom 기준 아래 left 기준 왼쪽 right 기준 오른쪽 up 주사위 맨위  down 주사위 맨 바닥의 총 6가지의 주사위의 경우를 사용한다.</p>
+<p>CASE1) 오른쪽으로 주사위를 굴릴 경우</p>
+<ol>
+<li>UP -&gt; RIGHT</li>
+<li>RIGHT -&gt; DOWN</li>
+<li>DOWN -&gt; LEFT</li>
+<li>LEFT -&gt; UP</li>
+</ol>
+<p>CASE2) 왼쪽으로 주사위를 굴릴 경우</p>
+<ol>
+<li>UP -&gt; LEFT</li>
+<li>LEFT -&gt; DOWN</li>
+<li>DOWN -&gt; RIGHT</li>
+<li>RIGHT -&gt; UP</li>
+</ol>
+<p>CASE3) 위로 주사위를 굴릴 경우</p>
+<ol>
+<li>UP -&gt; TOP</li>
+<li>TOP -&gt; DOWN</li>
+<li>DOWN -&gt; BOTTOM</li>
+<li>BOTTOM -&gt; UP</li>
+</ol>
+<p>CASE4) 아래로 주사위를 굴릴 경우</p>
+<ol>
+<li>TOP -&gt; UP</li>
+<li>UP -&gt; BOTTOM</li>
+<li>BOTTOM -&gt; DOWN</li>
+<li>DOWN -&gt; TOP</li>
+</ol>
+<p>총 4가지의 오른쪽, 왼쪽, 위로, 아래로 주사위를 굴리는 경우를 처리할 수 있습니다. 해당 사항에서는 문제에서 주어진대로 동서북남의 경우로 처리를 진행합니다.<br>
+그리고, 해당 경우의 수를 모두 지나고나서 맨위의 주사위에 있는 비용값을 출력해주고, Dice의 객체의 currX, currY의 값을 현재 이동된 값으로 갱신하여 값을 출력시켜주면 해당 문제를 해결 할 수 있습니다. 약 40분정도 소요되었던 문제였고, 대표적인 시뮬레이션 문제라고 생각합니다.</p>
+<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> Samsung.done;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 주사위굴리기<span class="title">_14499</span>번 </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> n,m,x,y,k;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] map;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] dir = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">0</span>,-<span class="number">1</span>&#125;,&#123;-<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;&#125;;       <span class="comment">// 동서북</span></span><br><span class="line">    <span class="keyword">static</span> List&lt;Integer&gt; commandList;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> upCopy;      <span class="comment">// 1</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> topCopy;     <span class="comment">// 2</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> rightCopy;   <span class="comment">// 3</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> leftCopy;    <span class="comment">// 4</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> bottomCopy;  <span class="comment">// 5</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> downCopy;    <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        StringTokenizer st = <span class="keyword">new</span> StringTokenizer(br.readLine());</span><br><span class="line">        n = Integer.parseInt(st.nextToken());</span><br><span class="line">        m = Integer.parseInt(st.nextToken());</span><br><span class="line">        x = Integer.parseInt(st.nextToken());</span><br><span class="line">        y = Integer.parseInt(st.nextToken());</span><br><span class="line">        k = Integer.parseInt(st.nextToken());</span><br><span class="line">        map = <span class="keyword">new</span> <span class="keyword">int</span>[n][m];</span><br><span class="line">        commandList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            st = <span class="keyword">new</span> StringTokenizer(br.readLine());</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;m; j++)&#123;</span><br><span class="line">                map[i][j] = Integer.parseInt(st.nextToken());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        st = <span class="keyword">new</span> StringTokenizer(br.readLine());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;k; i++)&#123;</span><br><span class="line">            commandList.add(Integer.parseInt(st.nextToken()));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 현재 주사위 상태 객체</span></span><br><span class="line">        Dice dice = <span class="keyword">new</span> Dice(x,y,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 명령어 대로 주사위를 돌린다.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; commandList.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> dx = dice.currX;</span><br><span class="line">            <span class="keyword">int</span> dy = dice.currY;</span><br><span class="line">            <span class="comment">// 현재 주사위 방향</span></span><br><span class="line">            <span class="keyword">int</span> currDir = commandList.get(i)-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> mx = dx + dir[currDir][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> my = dy + dir[currDir][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 주사위 이동방향 체크하기</span></span><br><span class="line">            <span class="keyword">if</span>(isCheckRange(mx,my)) <span class="keyword">continue</span>;</span><br><span class="line">            diceStateSave(dice);</span><br><span class="line">            diceTumble(dice, currDir);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 지도가 0일 경우</span></span><br><span class="line">            <span class="keyword">if</span>(map[mx][my] == <span class="number">0</span>)&#123;</span><br><span class="line">                map[mx][my] = dice.down;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 지도가 0이 아닐 경우</span></span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                dice.down = map[mx][my];</span><br><span class="line">                map[mx][my] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(dice.up);</span><br><span class="line">            dice.currX = mx;</span><br><span class="line">            dice.currY = my;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">diceTumble</span><span class="params">(Dice dice, <span class="keyword">int</span> currDir)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(currDir == <span class="number">0</span>)&#123;</span><br><span class="line">            dice.right = upCopy;</span><br><span class="line">            dice.down = rightCopy;</span><br><span class="line">            dice.left = downCopy;</span><br><span class="line">            dice.up = leftCopy;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(currDir == <span class="number">1</span>)&#123;</span><br><span class="line">            dice.left = upCopy;</span><br><span class="line">            dice.down = leftCopy;</span><br><span class="line">            dice.right = downCopy;</span><br><span class="line">            dice.up = rightCopy;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(currDir == <span class="number">2</span>)&#123;</span><br><span class="line">            dice.top = upCopy;</span><br><span class="line">            dice.down = topCopy;</span><br><span class="line">            dice.bottom = downCopy;</span><br><span class="line">            dice.up = bottomCopy;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(currDir == <span class="number">3</span>)&#123;</span><br><span class="line">            dice.up = topCopy;</span><br><span class="line">            dice.bottom = upCopy;</span><br><span class="line">            dice.down = bottomCopy;</span><br><span class="line">            dice.top = downCopy;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">diceStateSave</span><span class="params">(Dice dice)</span> </span>&#123;</span><br><span class="line">        upCopy = dice.up;</span><br><span class="line">        topCopy = dice.top;</span><br><span class="line">        rightCopy = dice.right;</span><br><span class="line">        leftCopy = dice.left;</span><br><span class="line">        bottomCopy = dice.bottom;</span><br><span class="line">        downCopy = dice.down;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCheckRange</span><span class="params">(<span class="keyword">int</span> mx, <span class="keyword">int</span> my)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(mx &lt; <span class="number">0</span> || mx &gt;= n || my &lt; <span class="number">0</span> || my &gt;= m) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Dice</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> currX;</span><br><span class="line">        <span class="keyword">int</span> currY;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 윗면, 아랫면</span></span><br><span class="line">        <span class="keyword">int</span> up;      <span class="comment">// 1</span></span><br><span class="line">        <span class="keyword">int</span> top;     <span class="comment">// 2</span></span><br><span class="line">        <span class="keyword">int</span> right;   <span class="comment">// 3</span></span><br><span class="line">        <span class="keyword">int</span> left;    <span class="comment">// 4</span></span><br><span class="line">        <span class="keyword">int</span> bottom;  <span class="comment">// 5</span></span><br><span class="line">        <span class="keyword">int</span> down;    <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Dice</span><span class="params">(<span class="keyword">int</span> currX, <span class="keyword">int</span> currY, <span class="keyword">int</span> up, <span class="keyword">int</span> top, <span class="keyword">int</span> right, <span class="keyword">int</span> left, <span class="keyword">int</span> bottom, <span class="keyword">int</span> down)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.currX = currX;</span><br><span class="line">            <span class="keyword">this</span>.currY = currY;</span><br><span class="line">            <span class="keyword">this</span>.up = up;</span><br><span class="line">            <span class="keyword">this</span>.top = top;</span><br><span class="line">            <span class="keyword">this</span>.right = right;</span><br><span class="line">            <span class="keyword">this</span>.left = left;</span><br><span class="line">            <span class="keyword">this</span>.bottom = bottom;</span><br><span class="line">            <span class="keyword">this</span>.down = down;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>SW역량테스트</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+        <tag>DFS</tag>
+        <tag>알고리즘</tag>
+        <tag>BOJ</tag>
+        <tag>삼성SW역량테스트</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 숫자판별하기 22101</title>
-    <url>/number-board-valid/</url>
+    <url>/BOJ-20210422-number-board-valid/</url>
     <content><![CDATA[<h1 id="baegjun-susjapanbyeolhagi-22101beon"><a href="#baegjun-susjapanbyeolhagi-22101beon" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-숫자판별하기-22101번"></a> <a href="https://www.acmicpc.net/problem/2210" target="_blank" rel="noopener">백준 숫자판별하기 22101번</a></h1>
 <h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ol>
@@ -3828,8 +3941,8 @@ Ex) GET,POST,PUT,PATCH,DELETE</p>
       </categories>
       <tags>
         <tag>JPA</tag>
-        <tag>Persistence</tag>
         <tag>Entity</tag>
+        <tag>Persistence</tag>
         <tag>Flush</tag>
       </tags>
   </entry>
@@ -5489,8 +5602,8 @@ LAN 드라이버, LAN 장비, LAN카드</p>
       </categories>
       <tags>
         <tag>NETWORK</tag>
-        <tag>INTERNET</tag>
         <tag>TCP</tag>
+        <tag>INTERNET</tag>
         <tag>IP</tag>
       </tags>
   </entry>
@@ -9763,38 +9876,6 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -9828,26 +9909,28 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 날짜계산 1476</title>
-    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
-    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
-<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
-<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
 </ul>
 <h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ul>
-<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
-<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
-<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
-<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
-<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
 </ul>
 <hr>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -9881,6 +9964,36 @@ Only one valid answer exists.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>백준 날짜계산 1476</title>
+    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
+    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
+<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
+<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
+<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
+<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
+<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -10519,8 +10632,8 @@ Only one valid answer exists.</p>
       <tags>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
-        <tag>위장</tag>
         <tag>레벨2</tag>
+        <tag>위장</tag>
         <tag>해시</tag>
       </tags>
   </entry>

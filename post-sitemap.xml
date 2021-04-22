@@ -8,7 +8,15 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/number-board-valid/</loc>
+        <loc>http://gwanhyeon.github.io/Samsung-20210423-dice-tumble/</loc>
+        <lastmod>2021-04-22T16:27:56.094Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/BOJ-20210422-number-board-valid/</loc>
         <lastmod>2021-04-22T12:06:12.042Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
