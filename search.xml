@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CleanCode 04 주석</title>
+    <url>/CleanCode-20210502-chapter04-%EC%A3%BC%EC%84%9D/</url>
+    <content><![CDATA[<p>이번에 살펴볼 파트는 주석파트입니다. 처음에 살펴볼 내용중에서 첫장부터 제게 크게 다가온 명언중 하나는</p>
+<blockquote>
+<p>나쁜 코드에 주석을 달지 마라. 새로 짜라.</p>
+</blockquote>
+<ul>
+<li>브라이언 W. 커니핸,P.J 플라우거</li>
+</ul>
+<p>잘 달린 주석은 그 어떤 정보보다 유용하지만, 경솔하고 근거없는 주석은 코드를 이해하기 어렵게 만든다고 합니다. 우리는 코드로 의도를 표현하지 못해, 실패를 만회하기 위해 주석을 사용한다.</p>
+<p>주석을 무시하는 이유중 가장 무서운것은 <code>거짓말</code>을 한다는것이다. 오래되면 오래될 수록 그릇될 가능성이 있다.</p>
+<p><em>진실은 한곳에만 존재한다. 바로 코드이다</em> 우리는 주석을 가능한 줄이도록 해야한다.</p>
+<h1 id="juseogeun-nabbeun-kodeureul-bowanhaji-moshanda"><a href="#juseogeun-nabbeun-kodeureul-bowanhaji-moshanda" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#주석은-나쁜-코드를-보완하지-못한다"></a> 주석은 나쁜 코드를 보완하지 못한다.</h1>
+<p>코드에 주석을 추가하는 일반적인 이유는 코드 품질이 나쁘기 때문이다. 표현력이 풍부하고 깔끔하며 주석이 거의 없는 코드가, 복잡하고 어수선하며 주석이 많이 달린 코드보다 훨씬 좋다.</p>
+<h1 id="kodeuro-yidoreul-pyohyeonhara"><a href="#kodeuro-yidoreul-pyohyeonhara" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#코드로-의도를-표현하라"></a> 코드로 의도를 표현하라</h1>
+<p>확실히 코드만으로 의도를 설명하기가 어려운 경우가 있다. 몇초만 더 생각하면 더 좋은 코드를 짤 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 직원에게 복지 혜택을 받을 자격이 있는지 검사한다. </span></span><br><span class="line"><span class="keyword">if</span> ((emplotee.flags &amp; HOURLY_FLAG) &amp;&amp; (employee.age &gt; <span class="number">65</span>)</span><br></pre></td></tr></table></figure>
+<p>주석으로 의도를 표현하지 말고 코드로 표현하라.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (employee.isEligibleForFullBenefits())</span><br></pre></td></tr></table></figure>
+<h1 id="joheun-juseog"><a href="#joheun-juseog" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#좋은-주석"></a> 좋은 주석</h1>
+<p>정말로 좋은 주석은, 주석을 달지 않을 방법을 찾아낸 주석이라는 사실이다.</p>
+<h2 id="beobjeogin-juseog"><a href="#beobjeogin-juseog" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#법적인-주석"></a> 법적인 주석</h2>
+<p>회사가 정립한 구현 표준에 맞춰 법적인 이유로 특정 주식을 넣으라고 명시한다. 각 소스 파일 첫머리에 주석으로 들어가는 저작권 정보와 소유권 정보는 필요하고도 타당하다.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Copyright (C) 2003, 2004, 2005 by Object Montor, Inc. All right reserved.</span></span><br><span class="line"><span class="comment">// GNU General Public License</span></span><br></pre></td></tr></table></figure>
+<h2 id="jeongboreul-jegonghaneun-juseog"><a href="#jeongboreul-jegonghaneun-juseog" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#정보를-제공하는-주석"></a> 정보를 제공하는 주석</h2>
+<p>때로는 기본적인 정보를 주석으로 제공하면 편리하다. 예를 들면, 다음 주석은 추상 메서드가 반환할 값을 설명한다. 물론 이 또한 <code>responderBeingTested</code> 로 바꾸면 주석이 필요 없어진다. 이왕이면 시각과 날짜를 변환해주는 클래스를 만들어 코드를 옮겨주면 더 좋고 깔끔하겠다. 주석이 그러면 필요 없어진다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 테스트 중인 Responder 인스턴스를 반환</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> Responder <span class="title">responderInstance</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="yidoreul-seolmyeonghaneun-juseog"><a href="#yidoreul-seolmyeonghaneun-juseog" class="header-anchor">3.3. </a><a class="markdownIt-Anchor" href="#의도를-설명하는-주석"></a> 의도를 설명하는 주석</h2>
+<p>주석은 구현을 이해하게 도와주는 선을 넘어 결정에 깔린 의도까지 설명한다. 다음은 주석으로 흥미로운 결정을 기록한 예제이다. 두 객체를 비교할 때 저자는 다른 어떤 객체보다 자기 객체에 높은 순위를 주기로 결정했다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 스레드를 대량 생성하는 방법으로 어떻게든 경쟁 조건을 만들려 시도한다.  </span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &gt; <span class="number">2500</span>; i++) &#123;</span><br><span class="line">    WidgetBuilderThread widgetBuilderThread = </span><br><span class="line">        <span class="keyword">new</span> WidgetBuilderThread(widgetBuilder, text, parent, failFlag);</span><br><span class="line">    Thread thread = <span class="keyword">new</span> Thread(widgetBuilderThread);</span><br><span class="line">    thread.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="yimireul-myeongryohage-balghineun-juseog"><a href="#yimireul-myeongryohage-balghineun-juseog" class="header-anchor">3.4. </a><a class="markdownIt-Anchor" href="#의미를-명료하게-밝히는-주석"></a> 의미를 명료하게 밝히는 주석</h2>
+<p>떄때로 모호한 인수나 반환값은 그 의미를 읽기 좋게 표현하면 이해하기 쉬워진다. 일반적으로 인수나 반환값 자체를 명확하게 만들면 더 좋곗지만, 인수나 반환값이 표준 라이브러리나 변경하지 못하는 코드에 속한다면 의미는 명로하게 밝히는 주석이 용이하다</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">assertTru(a.compareTo(a) == <span class="number">0</span>); <span class="comment">// a == a</span></span><br><span class="line">assertTru(a.compareTo(b) == -<span class="number">1</span>); <span class="comment">// a &lt; a</span></span><br><span class="line">assertTru(a.compareTo(aa) == <span class="number">1</span>); <span class="comment">// a &gt; aa</span></span><br></pre></td></tr></table></figure>
+<h2 id="gyeolgwareul-gyeonggohaneun-juseog"><a href="#gyeolgwareul-gyeonggohaneun-juseog" class="header-anchor">3.5. </a><a class="markdownIt-Anchor" href="#결과를-경고하는-주석"></a> 결과를 경고하는 주석</h2>
+<p>때로 다른 프로그래머에게 결과를 경고할 목적으로 주석을 사용한다. 경고할 목적으로 주석을 사용한다. 예를 들어, 다음은 특정 테스트 케이스를 꺼야하는 이유를 설명하는 주석이다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 여유 시간이 충분하지 않다면 실행하지 마십시오.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">_testWithReallyBigFile</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> simpleDateFormat <span class="title">makeStandardHttpDateFormat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// SimpleDateFormat 은 스레드에 안전하지 못하다.</span></span><br><span class="line">  <span class="comment">// 그러므로 각 인스턴스를 독립적으로 생성해야 한다.</span></span><br><span class="line">  SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"EEE, dd MMM  yyyy HH:mm:ss z"</span>);</span><br><span class="line">  df.setTimeZone(TimeZone.getTimeZone(<span class="string">"GMT"</span>));</span><br><span class="line">  <span class="keyword">return</span> df;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="todo-juseog"><a href="#todo-juseog" class="header-anchor">3.6. </a><a class="markdownIt-Anchor" href="#todo-주석"></a> TODO 주석</h2>
+<p>앞으로 할 일은 <code>TODO</code> 로 남겨두면 편하다. 하지만, 너무 많아지면 좋지 않다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// TODO-MdM 현재 필요하지 않다.</span></span><br><span class="line"><span class="comment">// 체크아웃 모델을 도입하면 함수가 필요 없다.</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> VersionInfo <span class="title">makeVersion</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="jungyoseongeul-gangjohaneun-juseog"><a href="#jungyoseongeul-gangjohaneun-juseog" class="header-anchor">3.7. </a><a class="markdownIt-Anchor" href="#중요성을-강조하는-주석"></a> 중요성을 강조하는 주석</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String listItemContent = match.group(<span class="number">3</span>).trim();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 여기서 trim은 정말 중요하다. trim 함수는 문자열에서 시작 공백을 제거한다.</span></span><br><span class="line"><span class="comment">// 문자열에 시작 공백이 있으면 다른 문자열로 인식되기 때문이다. </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> ListItemWidget(<span class="keyword">this</span>, listItemContent, <span class="keyword">this</span>.level + <span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> buildList(text.substring(match.end()));</span><br></pre></td></tr></table></figure>
+<h2 id="gonggae-apieseo-javadocs"><a href="#gonggae-apieseo-javadocs" class="header-anchor">3.8. </a><a class="markdownIt-Anchor" href="#공개-api에서-javadocs"></a> 공개 API에서 Javadocs</h2>
+<p>공개 API를 구현하고 싶으면 반드시 훌륭한 Javadocs를 작성한다.</p>
+<h2 id="nabbeun-juseog"><a href="#nabbeun-juseog" class="header-anchor">3.9. </a><a class="markdownIt-Anchor" href="#나쁜-주석"></a> 나쁜 주석</h2>
+<p>대다수의 주석이 이 범주에 속한다. 엉성한 코드를 변명하거나 허술한 코드를 지탱하려 한다.</p>
+<h2 id="jujeolgeorineun-juseog"><a href="#jujeolgeorineun-juseog" class="header-anchor">3.10. </a><a class="markdownIt-Anchor" href="#주절거리는-주석"></a> 주절거리는 주석</h2>
+<p>주석을 달기로 결정했다면 충분한 시간을 들여 최고의 주석을 달도록 노력한다. 주석은 독자와 제대로 소통하지 못하는 주석이다. 주석은 바이트만낭비할뿐이다.<br>
+주석의 의미를 알아내려면 다른 코드를 봐야한다. 이해가 안되어 다른 모듈까지 뒤져야 하는 주석은 제대로 된 주석이 아니다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadProperties</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    String propertiesPath = propertiesLocation + <span class="string">"/"</span> + PROPERTIES_FILE;</span><br><span class="line">    FileInputStream propertiesStream = <span class="keyword">new</span> FileInputStream(propertiesPath);</span><br><span class="line">    loadedProperties.load(propertiesStream);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    <span class="comment">// 속성 파일이 없다면 기본값을 모두 메모리로 읽어 들였다는 의미다. </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="gateun-iyagireul-jungboghaneun-juseog"><a href="#gateun-iyagireul-jungboghaneun-juseog" class="header-anchor">3.11. </a><a class="markdownIt-Anchor" href="#같은-이야기를-중복하는-주석"></a> 같은 이야기를 중복하는 주석</h2>
+<p>주석이 같은 코드의 내용을 그대로 중복하면 코드보다 주석을 읽는 시간이 더 오래걸린다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// this.closed가 true일 때 반환되는 유틸리티 메서드다.</span></span><br><span class="line"><span class="comment">// 타임아웃에 도달하면 예외를 던진다. </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">waitForClose</span><span class="params">(<span class="keyword">final</span> <span class="keyword">long</span> timeoutMillis)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!closed) &#123;</span><br><span class="line">    wait(timeoutMillis);</span><br><span class="line">    <span class="keyword">if</span> (!closed) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"MockResponseSender could not be closed"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ohaehal-yeojiga-issneun-juseog"><a href="#ohaehal-yeojiga-issneun-juseog" class="header-anchor">3.12. </a><a class="markdownIt-Anchor" href="#오해할-여지가-있는-주석"></a> 오해할 여지가 있는 주석</h2>
+<p>의도는 좋았으나 프로그래머가 딱 맞을 정도로 엄밀하게는 주석을 달지 못하기도 한다. 예를 들면 위의 코드에서 <code>this.closed</code> 가 <code>true</code> 로 *변하는 순간에 반환하지 않는다.  <code>this.closed</code> 가 <code>true</code> 여야 메서드를 반환한다.<br>
+즉, wait 의 타임아웃을 무조건 기다렸다가 에러를 통해 확인하게 된다. 잘못된 정보로 인해 자기코드가 굼벵이 기어가듯 돌아가는 이유를 찾느라 골머리를 앓는다.</p>
+<h2 id="yimujeogeuro-daneun-juseog"><a href="#yimujeogeuro-daneun-juseog" class="header-anchor">3.13. </a><a class="markdownIt-Anchor" href="#의무적으로-다는-주석"></a> 의무적으로 다는 주석</h2>
+<p>모든 함수에 Javadocs를 달거나 모든 변수에 주석을 달아야한다는 규칙은 어리석기 그지없다. 이런주석은 코드를 복잡하게 맏늘며, 거짓말을 퍼뜨리고, 혼동과 무질서를 초래한다. 예를 들어, 코드만 헷갈리게 만들며 거짓말할 가능성을 높이며 잘못된 정보를 제공할 여지를 만든다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> title CD 제목</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> author CD 저자</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> tracks CD 트랙 숫자</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> durationInMinutes CD 길이(단위: 분)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCD</span><span class="params">(String title, String author, <span class="keyword">int</span> tracks, <span class="keyword">int</span> durationInMinutes)</span> </span>&#123;</span><br><span class="line">    CD cd = <span class="keyword">new</span> CD();</span><br><span class="line">    cd.title = title;</span><br><span class="line">    cd.author = author;</span><br><span class="line">    cd.tracks = tracks;</span><br><span class="line">    cd.duration = durationInMinutes;</span><br><span class="line">    cdList.add(cd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="iryeogeul-giroghaneun-juseog"><a href="#iryeogeul-giroghaneun-juseog" class="header-anchor">3.14. </a><a class="markdownIt-Anchor" href="#이력을-기록하는-주석"></a> 이력을 기록하는 주석</h2>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">* </span>변경 이력 (11-Oct-2001부터)</span><br><span class="line"><span class="bullet">* </span>------------------------------------------------</span><br><span class="line"><span class="bullet">* </span>11-Oct-2001 : 클래스를 다시 정리하고 새로운 패키징</span><br><span class="line"><span class="bullet">* </span>05-Nov-2001: getDescription() 메소드 추가</span><br><span class="line"><span class="bullet">* </span>... 등등</span><br></pre></td></tr></table></figure>
+<p>해당 정보들은 소스 코드 관리시스템(Git,SVN)과 같은 것들이 해준다.</p>
+<h2 id="isseuna-mana-han-juseog"><a href="#isseuna-mana-han-juseog" class="header-anchor">3.15. </a><a class="markdownIt-Anchor" href="#있으나-마나-한-주석"></a> 있으나 마나 한 주석</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 기본 생성자</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="title">AnnualDateRule</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>너무 당연한 사실은 주석으로 새로운 정보를 제공해주지 못한다. 지나친 주석을 무시하는 습관에 빠진다. 코드를 읽으며 자동으로 주석을 건너뛴다.</p>
+<h2 id="museoun-jabeum"><a href="#museoun-jabeum" class="header-anchor">3.16. </a><a class="markdownIt-Anchor" href="#무서운-잡음"></a> 무서운 잡음</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/** The licenceName. */</span></span><br><span class="line"><span class="keyword">private</span> String licenceName;</span><br></pre></td></tr></table></figure>
+<p>오타가 발생하면 애매한 코드가 되어버린다.</p>
+<h2 id="hamsuna-byeonsuro-pyohyeonhal-su-issdamyeon-juseogeul-dalji-mara"><a href="#hamsuna-byeonsuro-pyohyeonhal-su-issdamyeon-juseogeul-dalji-mara" class="header-anchor">3.17. </a><a class="markdownIt-Anchor" href="#함수나-변수로-표현할-수-있다면-주석을-달지-마라"></a> 함수나 변수로 표현할 수 있다면 주석을 달지 마라</h2>
+<p>​</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 전역 목록 &lt;smodule&gt;에 속하는 모듈이 우리가 속한 하위 시스템에 의존하는가?</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">module</span>.getDependSubsystems().contains(subSysMod.getSubSystem()))</span><br></pre></td></tr></table></figure>
+<p>주석을 없애고 다음과 같이 표현한다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ArrayList moduleDependencies = smodule.getDependSubSystems();</span><br><span class="line">String ourSubSystem = subSysMod.getSubSystem();</span><br><span class="line"><span class="keyword">if</span> (moduleDependees.contains(ourSubSystem))</span><br></pre></td></tr></table></figure>
+<h2 id="wicireul-pyosihaneun-juseog"><a href="#wicireul-pyosihaneun-juseog" class="header-anchor">3.18. </a><a class="markdownIt-Anchor" href="#위치를-표시하는-주석"></a> 위치를 표시하는 주석</h2>
+<p>/로 이어지는 잡음은 제거하는 편이 좋다.</p>
+<h2 id="dadneun-gwalhoe-daneun-juseog"><a href="#dadneun-gwalhoe-daneun-juseog" class="header-anchor">3.19. </a><a class="markdownIt-Anchor" href="#닫는-괄호에-다는-주석"></a> 닫는 괄호에 다는 주석</h2>
+<p>닫는 괄호에 특수한 주석을 달아놓지 말자. 중첩이 심하고 장황한 함수라면 의미가 있을지도 모르지만, 작고 캡슐화된 함수에는 잡음일 뿐이다.<br>
+그러므로 닫는 괄호에 주석을 달아야겠다는 생각이 든다면 대신에 함수를 줄이자.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span>(state) &#123;</span><br><span class="line">    <span class="keyword">while</span>(t) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="comment">//while</span></span><br><span class="line">  &#125; <span class="comment">// if</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="gongroreul-dolrigeona-jeojareul-pyosihaneun-juseog"><a href="#gongroreul-dolrigeona-jeojareul-pyosihaneun-juseog" class="header-anchor">3.20. </a><a class="markdownIt-Anchor" href="#공로를-돌리거나-저자를-표시하는-주석"></a> 공로를 돌리거나 저자를 표시하는 주석</h2>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* kgh가 추가함 */</span></span><br></pre></td></tr></table></figure>
+<p>소스 코드 관리시스템 Github는 모든것을 기억한다.</p>
+<h3 id="juseogeuro-ceorihan-kodeu"><a href="#juseogeuro-ceorihan-kodeu" class="header-anchor">3.20.1. </a><a class="markdownIt-Anchor" href="#주석으로-처리한-코드"></a> 주석으로 처리한 코드</h3>
+<p>주석으로 처리한 코드만큼 밉살스러운 관행도 드물다. 다음과 같은 코드는 작성하지 말라. 과감해지자</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.bytePos = writeBytes(pngIdBytes, <span class="number">0</span>);</span><br><span class="line"><span class="comment">//hdrPos = bytePos;</span></span><br><span class="line">writeHeader();</span><br><span class="line">writeResolution();</span><br><span class="line"><span class="comment">//dataPos = bytePos;</span></span><br><span class="line"><span class="keyword">if</span> (writeImageData()) &#123;</span><br><span class="line">    wirteEnd();</span><br><span class="line">    <span class="keyword">this</span>.pngBytes = resizeByteArray(<span class="keyword">this</span>.pngBytes, <span class="keyword">this</span>.maxPos);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.pngBytes = <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">this</span>.pngBytes;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## HTML 주석</span><br><span class="line"></span><br><span class="line">HTML 주석은 혐오 그 자체다. `Javadocs` 와 같은 도구로 주석을 뽑아 웹 페이지에 올려야 한다면 주석에 HTML 태그를 삽입하는 것은 도구가 해야한다.</span><br><span class="line"></span><br><span class="line">```html</span><br><span class="line">​&lt;p/&gt;</span><br><span class="line">​&lt;pre&gt;</span><br><span class="line">​용법:</span><br><span class="line">블라블라~</span><br></pre></td></tr></table></figure>
+<h2 id="jeonyeog-gyeongbo"><a href="#jeonyeog-gyeongbo" class="header-anchor">3.21. </a><a class="markdownIt-Anchor" href="#전역-경보"></a> 전역 경보</h2>
+<p>주석을 달아야 한다면 근처에 있는 코드만 기술하라. 시스템의 전반적인 형태, 정보를 담지 말아야 한다.</p>
+<h2 id="neomu-manheun-jeongbo"><a href="#neomu-manheun-jeongbo" class="header-anchor">3.22. </a><a class="markdownIt-Anchor" href="#너무-많은-정보"></a> 너무 많은 정보</h2>
+<p>관련 없는 정보를 장황하게 늘어놓지마라!</p>
+<h2 id="mohohan-gwangye"><a href="#mohohan-gwangye" class="header-anchor">3.23. </a><a class="markdownIt-Anchor" href="#모호한-관계"></a> 모호한 관계</h2>
+<p>주석과 주석이 설명하는 코드는 둘 사이 관계가 명백해야한다.</p>
+<h2 id="hamsu-hedeo"><a href="#hamsu-hedeo" class="header-anchor">3.24. </a><a class="markdownIt-Anchor" href="#함수-헤더"></a> 함수 헤더</h2>
+<p>짧은 함수는 긴 설명이 필요없다. 짧고 한가지만 수행하며 이름을 잘 붙인 함수가 주석으로 헤더를 추가한 함수보다 훨씬 좋다.</p>
+<h2 id="bigonggae-kodeueseo-javadocs"><a href="#bigonggae-kodeueseo-javadocs" class="header-anchor">3.25. </a><a class="markdownIt-Anchor" href="#비공개-코드에서-javadocs"></a> 비공개 코드에서 Javadocs</h2>
+<p>공개할 API 가 아니라면 쓸모가 없다. 코드만 보기싫고 산만해질 가능성이 높다.</p>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+        <tag>주석</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>삼성 SW 역량테스트 백준 주사위 굴리기 14499</title>
     <url>/Samsung-20210423-dice-roll/</url>
     <content><![CDATA[<h1 id="samseong-sw-yeogryangteseuteu-baegjun-jusawi-gulrigi-14499munje"><a href="#samseong-sw-yeogryangteseuteu-baegjun-jusawi-gulrigi-14499munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#삼성-sw-역량테스트-백준-주사위-굴리기-14499문제"></a> <a href="https://www.acmicpc.net/problem/14499" target="_blank" rel="noopener">삼성 SW 역량테스트 백준 주사위 굴리기 14499문제</a></h1>
@@ -3941,8 +4046,8 @@ Ex) GET,POST,PUT,PATCH,DELETE</p>
       </categories>
       <tags>
         <tag>JPA</tag>
-        <tag>Entity</tag>
         <tag>Persistence</tag>
+        <tag>Entity</tag>
         <tag>Flush</tag>
       </tags>
   </entry>
@@ -5602,8 +5707,8 @@ LAN 드라이버, LAN 장비, LAN카드</p>
       </categories>
       <tags>
         <tag>NETWORK</tag>
-        <tag>TCP</tag>
         <tag>INTERNET</tag>
+        <tag>TCP</tag>
         <tag>IP</tag>
       </tags>
   </entry>
@@ -6605,9 +6710,9 @@ frodoc</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>소수</tag>
         <tag>수학</tag>
         <tag>에라토스테네스의체</tag>
+        <tag>소수</tag>
         <tag>소인수분해</tag>
       </tags>
   </entry>
@@ -7751,8 +7856,8 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>수학</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -9406,8 +9511,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
       </categories>
       <tags>
         <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
         <tag>소수</tag>
+        <tag>프로그래머스</tag>
       </tags>
   </entry>
   <entry>
@@ -9876,6 +9981,38 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -9909,28 +10046,26 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+    <title>백준 날짜계산 1476</title>
+    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
+    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
+<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
 </ul>
 <h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
+<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
+<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
+<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
+<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
 </ul>
 <hr>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
@@ -9964,36 +10099,6 @@ Only one valid answer exists.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 날짜계산 1476</title>
-    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
-    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
-<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
-<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
-<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
-<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
-<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>BOJ</category>
