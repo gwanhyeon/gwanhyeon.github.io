@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  1강. 데이터베이스와 SQL 데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 데이터베이스라고 한다. 넓은 의미에서는 &amp;apos;컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다. 데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T07:24:01.488Z">
+<meta property="og:updated_time" content="2021-05-13T07:32:23.824Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -197,7 +197,7 @@ ga('send', 'pageview');
             <h1 id="1gang-deiteobeiseuwa-sql"><a href="#1gang-deiteobeiseuwa-sql" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#1강-데이터베이스와-sql"></a> 1강. 데이터베이스와 SQL</h1>
 <p>데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 <code>데이터베이스</code>라고 한다. 넓은 의미에서는 '컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다.</p>
 <p>데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든 데이터는 사라져 버린다. 이런 상태에서는 영구적이라 말할 수 없다.  따라서 데이터베이스의 데이터는 하드디스크나 플래시메모리(SSD) 등 비휘발성 저장장치에 저장한다.</p>
-<h2 id="1-dbwa-dbms"><a href="#1-dbwa-dbms" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-db와-dbms"></a> 1. DB와 DBMS</h2>
+<h2 id="dbwa-dbms"><a href="#dbwa-dbms" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#db와-dbms"></a> DB와 DBMS</h2>
 <p>데이터베이스는 <code>DB</code>라는 약자로 통용된다. 데이터베이스는 저장장치 내에 정리되어 저장된 데이터의 집합이고, 이를 효율적으로 관리하는 소프트웨어를 <code>데이터베이스 관리 시스템(Database Management System)</code><br>
 약자로 <em>DBMS</em>라 부른다. DBMS가 필요한 이유는 다음과 같다.</p>
 <h3 id="saengsanseong"><a href="#saengsanseong" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#생산성"></a> 생산성</h3>
@@ -210,9 +210,9 @@ ga('send', 'pageview');
 <p>대규모 데이터베이스는 많은 요청에 대응할 수 있도록 만들어져 있다. 이를위해 하드웨어를 여러 대로 구성하여 신뢰성을 높이는 동시에 성능 향상을 꾀하기도 한다. 실제로 일부 DBMS는 컴퓨터 여러 대를 두고, 소프트웨어를 통해 확장성(Scalability)과 부하 분산(load balancing)을 구현한다. 이를 보통 ‘클러스터 구성’ 또는 '스케일 아웃’이라 부른다.</p>
 <p>또한 많은 DBMS가 데이터베이스의 데이터를 다른 저장장치로 내보내거나(export), 반대로 데이터베이스 안에 데이터를 집어넣는 import 기능을 갖췄다. 이때 집어넣기 및 내보내기 기능을 통해 데이터베이스를<br>
 간단하게 백업할 수 있다.</p>
-<h2 id="3-deiteobeiseureul-jojaghaneun-eoneo-sql"><a href="#3-deiteobeiseureul-jojaghaneun-eoneo-sql" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#3-데이터베이스를-조작하는-언어-sql"></a> 3. 데이터베이스를 조작하는 언어 SQL</h2>
+<h2 id="deiteobeiseureul-jojaghaneun-eoneo-sql"><a href="#deiteobeiseureul-jojaghaneun-eoneo-sql" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#데이터베이스를-조작하는-언어-sql"></a> 데이터베이스를 조작하는 언어 SQL</h2>
 <p>DBMS를 이용하면 간접적으로 데이터베이스를 참조할 수 있고, 혹은 데이터를 추가하거나 삭제, 갱신할 수도 있다. SQL은 IBM이 개발한 SEQUEL이라는 관계형 데이터베이스 조작용 언어를 기반으로 만들어졌다. 현재 ISO등에 의해 표준화가 진행되어, C 언어나 자바와 마찬가지로 표준 언어이다.</p>
-<h3 id="sql-myeongryeongyi-jongryu"><a href="#sql-myeongryeongyi-jongryu" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#-sql-명령의-종류"></a> - SQL 명령의 종류</h3>
+<h3 id="sql-myeongryeongyi-jongryu"><a href="#sql-myeongryeongyi-jongryu" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#sql-명령의-종류"></a> SQL 명령의 종류</h3>
 <p>SQL 명령은 다음과 같이 3가지로 나뉠 수 있다.</p>
 <blockquote>
 <p>DML(Data Manipulation Language)</p>
@@ -323,7 +323,7 @@ ga('send', 'pageview');
         "description": "1.  1강. 데이터베이스와 SQL
 데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 데이터베이스라고 한다. 넓은 의미에서는 '컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다.
 데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든 ",
-        "wordCount": 427
+        "wordCount": 424
     }
 </script>
 

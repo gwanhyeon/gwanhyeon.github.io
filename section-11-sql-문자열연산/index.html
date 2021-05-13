@@ -10,15 +10,15 @@
     
     <meta name="keywords" content="SQL" />
     
-    <meta name="description" content="1.  11. 문자열 연산 1.1.  1. 문자열 결합  문자열 결합 사례  1&amp;apos;ABC&amp;apos; || &amp;apos;1234&amp;apos; -&amp;gt; &amp;apos;ABC1234&amp;apos;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCAT 문자열결합 Mysql     문자열 결합 예제">
+    <meta name="description" content="1.  11. 문자열 연산 1.1.  문자열 결합  문자열 결합 사례  1&amp;apos;ABC&amp;apos; || &amp;apos;1234&amp;apos; -&amp;gt; &amp;apos;ABC1234&amp;apos;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCAT 문자열결합 Mysql     문자열 결합 예제  1">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="11. SQL 문자열 연산">
 <meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  11. 문자열 연산 1.1.  1. 문자열 결합  문자열 결합 사례  1&amp;apos;ABC&amp;apos; || &amp;apos;1234&amp;apos; -&amp;gt; &amp;apos;ABC1234&amp;apos;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCAT 문자열결합 Mysql     문자열 결합 예제">
+<meta property="og:description" content="1.  11. 문자열 연산 1.1.  문자열 결합  문자열 결합 사례  1&amp;apos;ABC&amp;apos; || &amp;apos;1234&amp;apos; -&amp;gt; &amp;apos;ABC1234&amp;apos;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCAT 문자열결합 Mysql     문자열 결합 예제  1">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T07:25:08.544Z">
+<meta property="og:updated_time" content="2021-05-13T07:29:17.087Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -195,7 +195,7 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <h1 id="11-munjayeol-yeonsan"><a href="#11-munjayeol-yeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#11-문자열-연산"></a> 11. 문자열 연산</h1>
-<h2 id="1-munjayeol-gyeolhab"><a href="#1-munjayeol-gyeolhab" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-문자열-결합"></a> 1. 문자열 결합</h2>
+<h2 id="munjayeol-gyeolhab"><a href="#munjayeol-gyeolhab" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문자열-결합"></a> 문자열 결합</h2>
 <ul>
 <li>문자열 결합 사례</li>
 </ul>
@@ -237,7 +237,7 @@ ga('send', 'pageview');
 <li>unit열은 문자열형이고, quantity 열은 INTEGER행의 열입니다.</li>
 <li>문자열 결합시 <code>Mysql</code>에서는 <code>CONCAT</code>을 사용합니다. <code>Oracle은 문자열 결합 ||</code></li>
 </ul>
-<h2 id="2-substring-hamsu"><a href="#2-substring-hamsu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-substring-함수"></a> 2 SUBSTRING 함수</h2>
+<h2 id="substring-hamsu"><a href="#substring-hamsu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#substring-함수"></a> SUBSTRING 함수</h2>
 <ul>
 <li>정의</li>
 </ul>
@@ -248,7 +248,7 @@ ga('send', 'pageview');
 <p>블로그 시스템 업로드 특정 데이터 파싱<br>
 날짜 데이터 포맷 형식의 YYYYMMDD 문자열 데이터 파싱(YYYY, MM, DD)</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SUBSTRING('20140125001',1,4) -&gt; '2014'앞 4자리(년) 추출</span><br><span class="line"></span><br><span class="line">SUBSTRING('20140125001',5,2) -&gt; '01' 5째 자리부터 2자리(월) 추출</span><br></pre></td></tr></table></figure>
-<h2 id="3-trim-hamsu"><a href="#3-trim-hamsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-trim-함수"></a> 3 TRIM 함수</h2>
+<h2 id="trim-hamsu"><a href="#trim-hamsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#trim-함수"></a> TRIM 함수</h2>
 <ul>
 <li>정의</li>
 </ul>
@@ -259,7 +259,7 @@ ga('send', 'pageview');
 <li>TRIM 함수 예시</li>
 </ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRIM('ABC    ') -&gt; 'ABC'</span><br></pre></td></tr></table></figure>
-<h2 id="4-character-length-hamsu"><a href="#4-character-length-hamsu" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-character_length-함수"></a> 4 CHARACTER_LENGTH 함수</h2>
+<h2 id="character-length-hamsu"><a href="#character-length-hamsu" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#character_length-함수"></a> CHARACTER_LENGTH 함수</h2>
 <ul>
 <li>정의</li>
 </ul>
@@ -390,7 +390,7 @@ ga('send', 'pageview');
         "dateModified": "2021-05-13",
         "url": "http://gwanhyeon.github.io/section-11-sql-문자열연산/",
         "description": "1.  11. 문자열 연산
-1.1.  1. 문자열 결합
+1.1.  문자열 결합
 
 문자열 결합 사례
 
@@ -425,8 +425,10 @@ Mysql
 
 
 
-문자열 결합 예제",
-        "wordCount": 318
+문자열 결합 예제
+
+1",
+        "wordCount": 314
     }
 </script>
 
