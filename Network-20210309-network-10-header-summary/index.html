@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+    <title>Network Header 개요 및 쿠키 세션 | GWAN IT Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Network,Header" />
+    
+    <meta name="description" content="1.  HTTP 헤더 HTTP 헤더의 구성은 다음과 같이 구성됩니다. header-field = field-name “:” OWS field-value OWS 보통 fieldname은 대소문자 구분을 따로 하지않으며 OWS(optional whitespace)는 띄어쓰기를 허용시킵니다.  reference RFC7230  HTTP RFC7230   Requ">
+<meta name="keywords" content="Network,Header">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network Header 개요 및 쿠키 세션">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Network-20210309-network-10-header-summary&#x2F;index.html">
+<meta property="og:site_name" content="GWAN IT Blog">
+<meta property="og:description" content="1.  HTTP 헤더 HTTP 헤더의 구성은 다음과 같이 구성됩니다. header-field = field-name “:” OWS field-value OWS 보통 fieldname은 대소문자 구분을 따로 하지않으며 OWS(optional whitespace)는 띄어쓰기를 허용시킵니다.  reference RFC7230  HTTP RFC7230   Requ">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-03-10T04:45:54.855Z">
+<meta name="twitter:card" content="summary">
+    
+    <!--SEO 검색엔진 적용하기 -->
+    <link rel="canonical" href="http://gwanhyeon.github.io/network-20210309-network-10-header-summary/"/>
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151448157-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">GWAN IT Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/">Algorithm</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/boj/">BOJ</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/codility/">Codility</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/programmers/">Programmers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/leetcode/">leetcode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%A1%A0/">자료구조론</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cleancode/">CleanCode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/database/">Database</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/database/redis/">Redis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/database/sql/">SQL</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/elk/">ELK</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/">Language</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/rxjava/">RXJAVA</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/msa/">MSA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/network/">Network</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/os/">OS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/jpa/">JPA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/network/">Network</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Network-20210309-network-10-header-summary" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Network Header 개요 및 쿠키 세션
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/Network-20210309-network-10-header-summary/" class="article-date">
+         <time datetime="2021-03-09T08:44:05.000Z" itemprop="datePublished">2021-03-09</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/header/" rel="tag">Header</a>, <a class="tag-link" href="/tags/network/" rel="tag">Network</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="http-hedeo"><a href="#http-hedeo" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#http-헤더"></a> HTTP 헤더</h1>
+<p>HTTP 헤더의 구성은 다음과 같이 구성됩니다.<br>
+header-field = field-name “:” OWS field-value OWS<br>
+보통 fieldname은 대소문자 구분을 따로 하지않으며 OWS(optional whitespace)는 띄어쓰기를 허용시킵니다.</p>
+<blockquote>
+<p>reference RFC7230</p>
+</blockquote>
+<p><a href="http://www.bizcoder.com/everything-you-need-to-know-about-http-header-syntax-but-were-afraid-to-ask" target="_blank" rel="noopener">HTTP RFC7230 </a></p>
+<blockquote>
+<p>Request Header</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /search?q=hello&amp;hl=ko HTTP/1.1</span><br><span class="line">Host: www.google.com</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Response Header</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: text/html;charset=UTF-8</span><br><span class="line">Content-Length: 3423</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>...<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="http-hedeoneun-museun-yeoghaleul-haneungeosilggayo"><a href="#http-hedeoneun-museun-yeoghaleul-haneungeosilggayo" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#http-헤더는-무슨-역할을-하는것일까요"></a> HTTP 헤더는 무슨 역할을 하는것일까요?</h2>
+<p>HTTP 헤더는 HTTP전송에 필요한 모든 부가정보들을 담고있습니다. 예를 들면, 메시지 바디 크기, 압축, 인증, 요청 클라이언트, 서버 정보, 캐시 관리 정보등을 가지고 있습니다.(표준헤더의 수는 방대합니다.)<br>
+직접 사용자가 HTTP 헤더를 사용할 수 있기때문에 추가를 할 수 있습니다.</p>
+<h2 id="hedeoyi-bunryu"><a href="#hedeoyi-bunryu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#헤더의-분류"></a> 헤더의 분류</h2>
+<ol>
+<li>General Header : 메시지 전체에 적용되는 정보를 담고 있으며 연결정보를 가지고 있습니다.</li>
+<li>Request Header: 요청 정보-User-Agent와 같은 정보를 가지고 있습니다.</li>
+<li>Response Header: 응답 정보, 아파치</li>
+<li>Entity Header: Entity Body 정보 Content-Type:text/html, Content-Length: 3423</li>
+</ol>
+<h2 id="hedeoyi-yeogsa"><a href="#hedeoyi-yeogsa" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#헤더의-역사"></a> 헤더의 역사</h2>
+<p>1999년 RFC2616버전에서 2014년 RFC7230~7235가 등장하게 됩니다.<br>
+RFC7230 최신 버전으로 오게되면서 메시지 본문을 통해 표현 데이터들을 전달하게 됩니다.</p>
+<p>메시지본문을 payload라고 일컫는데, 표현은 요청이나 응답에서 전달할 실제 데이터입니다.<br>
+표현 헤더는 표현 데이터를 해석할 수 있는 정보를 제공합니다. (HTML,JSON,데이터정보)</p>
+<h1 id="hedeoyi-teugjing"><a href="#hedeoyi-teugjing" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#헤더의-특징"></a> 헤더의 특징</h1>
+<blockquote>
+<p>Representation Header</p>
+</blockquote>
+<p>HTTP/1.1 200OK<br>
+Content-Type:text/html;charset=UTF-8</p>
+<blockquote>
+<p>Representation Data</p>
+</blockquote>
+<html> <body> </body> </html>
+<blockquote>
+<p>Representation</p>
+</blockquote>
+<ol>
+<li>Content-Type: 표현 데이터형식<br>
+미디어 타입, 문자 인코딩 형식(text/html; charset=utf-8, application/json, image/png)</li>
+<li>Content-Encoding: 표현 데이터의 압축 방식<br>
+표현 데이터를 압축하기 위해 사용되며 인코딩 헤더의 정보로 압축을 해제합니다.<br>
+(gzip, deflate, identity)</li>
+<li>Content-Language: 표현 데이터의 자연언어<br>
+표현 데이터의 자연언어를 표현합니다.(ko,en,en-US)</li>
+<li>Content-Length: 표현 데이터의 길이<br>
+바이트 단위로 이루어져있으며 Transfer-Encoding 을 사용하면 Content-Length사용을 하면 안됩니다.<br>
+동일정보가 들어가있기때문입니다.</li>
+</ol>
+<p>표현헤더는 전송과 응답에 모두 사용됩니다.</p>
+<blockquote>
+<p>Content negotiation</p>
+</blockquote>
+<ol>
+<li>Accept: 클라이언트가 선호하는 미디어 타입 전달</li>
+<li>Accept-Charset: 클라이언트가 선호하는 문자 인코딩</li>
+<li>Accept-Encoding: 클라이언트가 선호하는 압축 인코딩</li>
+<li>Accept-Language: 클라이언트가 선호하는 자연 언어</li>
+</ol>
+<p>클라이언트가 요청을 하는것이다. 만약 해당되는 Accept가 없을 경우 우선순위를 부여합니다.<br>
+우선순위는 (0-1)까지 우선순위로 처리할 수 있습니다. 그리고, Quality Values를 사용하면 구체적인것들을 먼저 처리합니다.<br>
+(1.text/plain;format=flowed, 2.<em>/</em>) 우선순위가 더 높은것을 사용합니다.</p>
+<blockquote>
+<p>전송방식</p>
+</blockquote>
+<p>Transfer-Encoding, Range, Content-Range</p>
+<p>전송 방식 4가지</p>
+<ol>
+<li>단순전송<br>
+Content-Length를 전송합니다.</li>
+<li>압축전송<br>
+Content-Encoding을 전송합니다.</li>
+<li>분할전송<br>
+Transfer-Encoding을 전송합니다. (transfer-Encoding: chunked) 바이트를 쪼개서 전송</li>
+<li>범위전송<br>
+바이트 범위를 설정하여 전송합니다. (Range: bytes=500-1000) 해당 바이트만큼 쪼개서 전송받음.</li>
+</ol>
+<blockquote>
+<p>일반정보</p>
+</blockquote>
+<ol>
+<li>From: User Agent E-Mail<br>
+검색엔진, 요청</li>
+<li>Referer: 이전 웹 페이지 주소<br>
+이전 웹 페이지 주소 A-&gt; B요청시 Referer 선언후 A포함해서 요청(중요), 유입경로 분석</li>
+<li>User-Agent: 유저 에이전트 애플리케이션 정보<br>
+웹 브라우저 정보, 특정 브라우저 장애발생시 통계 정보 추출</li>
+<li>Server: 요청을 처리하는 오리진 서버의 소프트웨어 정보<br>
+요청을 처리하는 Origin 서버의 소프트웨어 정보(nginx)</li>
+<li>Date: 메시지가 생성된 날짜<br>
+메시지 발생 날짜 시간, 응답에 사용</li>
+<li>Host: 요청한 호스트 정보(도메인) - 요청 필수값</li>
+<li>Location: 페이지 리다이렉션<br>
+응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동(리다이렉트)</li>
+<li>Allow: 허용 가능한 HTTP 메서드<br>
+Allow값을 다음과 같이 설정하여 허용가능한 메소드를 설정합니다.(GET, HEAD, PUT)</li>
+<li>Retry-After: 유저 에이전트가 다음 요청을 하기까지 기다려야 하는 시간<br>
+서비스가 언제까지 불능인지 처리하기</li>
+</ol>
+<blockquote>
+<p>인증</p>
+</blockquote>
+<ol>
+<li>Authorization: 클라이언트 인증 정보를 서버에 전달합니다.</li>
+<li>WWW-Authenticate: 리소스 접근시 필요한 인증 방법 정의합니다.</li>
+<li>Set-Cookie: 서버에서 클라이언트로 쿠키 전달하고 응답을 처리합니다.</li>
+<li>Cookie: 클라이언트가 서버에서 받은 쿠키를 저장하고, HTTP 요청시 서버로 전달합니다.</li>
+</ol>
+<h1 id="kuki-cookies-vs-sesyeon-session"><a href="#kuki-cookies-vs-sesyeon-session" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#쿠키cookies-vs-세션session"></a> 쿠키(Cookies) VS 세션(Session)</h1>
+<p>이번에 살펴볼 내용은 &quot;세션&quot;과 &quot; 쿠키&quot;입니다.</p>
+<blockquote>
+<ol>
+<li>쿠키, 세션 이란?<br>
+인터넷을 사용하시다 보면 흔히 접했던 말입니다. 가끔 홈페이지 접속이 되지 않거나, 에러가 나는 경우</li>
+</ol>
+</blockquote>
+<p>&quot; 인터넷 옵션에 들어가서 쿠키를 삭제하고 다시 시도해보시길 바랍니다. &quot;</p>
+<p>혹은, 로그인을 하였는데 아이디와 비밀번호를 저장하시겠습니까? 라는 글을 보셨을 겁니다.</p>
+<blockquote>
+<p>쿠키 세션 왜 써요?</p>
+</blockquote>
+<p>서버와 클라이언트가 통신을 할 때 통신이 연속적으로 이어지지 않고 한 번 통신이 되면 끊어진다. 따라서 서버는 클라이언트가 누구인지 계속 인증을 해주어야 하는데, 여기서 쿠키와 세션을 이용하여 인증을 하게 된다.</p>
+<blockquote>
+<p>쿠키란?</p>
+</blockquote>
+<p>클라이언트 웹 브라우저에서 관리 되는 작은 기록의 텍스트 파일(정보 파일) 입니다. 특정 시간 동안에 유효한 시간을 설정하여, 브라우저를 다시 재부팅하여도 인증이 되는 경우 입니다.</p>
+<blockquote>
+<p>쿠키 동작 방식</p>
+</blockquote>
+<ol>
+<li>
+<p>클라이언트가 로그인을 하기 위해 웹 페이지를 요청합니다.</p>
+</li>
+<li>
+<p>쿠키는 HTTP 통신 헤더에서 전송 됩니다. 따라서, 통신 헤더에 쿠키값이 들어가게 되며, 응답 헤더에 쿠키 값을 웹 서버에 전송 시킵니다.</p>
+</li>
+<li>
+<p>이제, 웹 서버에서 쿠키를 생성 시킵니다.</p>
+</li>
+<li>
+<p>현재 HTTP 헤더에는 쿠키값을 가지고 있기 때문에, 나중에 로그인을 다시 요청하여도 그 값을 읽어 이전상태의 정보를 변경 시킵니다.</p>
+</li>
+<li>
+<p>쿠키 값을 새로 발급 받거나 변화가 있을 경우 새로운 쿠키 값을 HTTP 헤더에 포함시켜 응답하게 됩니다.</p>
+</li>
+</ol>
+<blockquote>
+<p>쿠키 사용 예제</p>
+</blockquote>
+<ol>
+<li>티스토리 블로그를 방문하였다고 가정 할때, 로그인을 하고 나면 아이디와 비밀번호르 저장하시겠습니까? 라는 문구를 확인 할 수 있습니다.</li>
+<li>E-commerce b2c 플랫폼인 쇼핑몰이나 전자상거래 사이트등에서 장바구나 같은것들을 예로 들 수 있겠습니다.</li>
+</ol>
+<p>쿠키는 모든 요청에 쿠키 정보를 자동으로 포함시킵니다.<br>
+예) Cookie: user=kgh</p>
+<p>쿠키는 생명 주기를 가지고 있습니다. expires를 지정하여 만료일이 되면 쿠키를 삭제할 수 있습니다. 아니면 max-age=3600초를 주어서 쿠키를 처리할 수 있습니다.</p>
+<p>쿠키 도메인은 보통 명시한 문서기준의 도메인과 서브도메인을 포함합니다.<br>
+domain = kgh.org를 지정하여 쿠키를 생성합니다.</p>
+<p>쿠키의 경로는 이당 경로를 포함한 하위 경로 페이지만 쿠키에 접근이 가능하고 보통 path를 root로 처리하는 경우가 많습니다.</p>
+<p>쿠키는 http, https를 구분하지 않고 전송하며 Secure시에만 https인 경우에만 전송하게 됩니다. http만 접근이 가능하게 하여 XSS공격을 방지할 수 있습니다. 그리고 요청된 도메인과 쿠키에 설정된 도메인이 같은 경우에만 쿠키를 전송하게 합니다.(XSRF 방지)</p>
+<blockquote>
+<p>세션이란?<br>
+세션이라고 하는것은, 쿠키 값을 이용하여 사용자 정보 파일을 서버측에서 관리 하게 됩니다.<br>
+쿠키와의 차이점은 쿠키는 클라이언트쪽에서 관리를 하였습니다. 쿠키 값을 이용한 세션 값들이 서버측에 저장되어 그 값을 이용하여 사용자 인증을 받는 구조입니다.</p>
+</blockquote>
+<blockquote>
+<p>세션 동작 방식</p>
+</blockquote>
+<ol>
+<li>클라이언트가 서버에 접속 시 세션 ID 값을 발급을 받게 됩니다.</li>
+<li>그 이후에 서버에서는 발급 받은 세션 ID값을 이용하여 쿠키를 사용해서 세션을 저장하게 됩니다.</li>
+<li>로그인을 진행한다면, 클라이언트쪽에서 요청 받은 경로에 대한 세션 ID 값을 다시 전달하여 인증하는 방식입니다.</li>
+</ol>
+<blockquote>
+<p>세션의 특징</p>
+</blockquote>
+<ol>
+<li>각 클라이언트에게 고유 ID를 부여 시킨다.</li>
+<li>보안면에서 쿠키보다 우수합니다(서버측면에서 관리하기 때문)</li>
+<li>세션 ID값으로 클라이언트를 구별 할 수 있습니다.</li>
+<li>쿠키와 다르게, 서버측에서 메모리를 관리하기 때문에 서버측에서 용량의 과부하가 생길 수 있습니다.</li>
+<li>이것을 해결하기 위해서 나온것이 JWT(JSON WEB TOKEN)방식 입니다. 추후에 따로 포스팅 할 계획이오니, 확인해주시면 되겠습니다.</li>
+</ol>
+<blockquote>
+<p>쿠키와 세션의 차이?<br>
+쿠키와 세션의 큰 차이점은</p>
+</blockquote>
+<ol>
+<li></li>
+</ol>
+<p>쿠키 = 클라이언트(웹 브라우저)<br>
+세션 = 서버(웹 서버)</p>
+<ol start="2">
+<li>
+<p>보안측면에 대해서는 쿠키 값 보다 세션이 조금 더 유리합니다. 이것에 대해서 추후에 자세히 설명 드리도록 하겠습니다.</p>
+</li>
+<li>
+<p>쿠키와 세션의 메모리 용량에 대한 차이점입니다. 세션은 쿠키에 비해 서버쪽에서 메모리를 차지하고 있기 때문에 문제가 과부하가 걸릴 가능성이 있습니다.</p>
+</li>
+</ol>
+<p>덧붙여 얘기하면, 쿠키는 사용자 로그인 세션을 관리하고 광고정보를 트래킹할 수 있습니다. 또한, 쿠키 정보는 항상 서버에 전송되기 때문에 네트워크 트래픽을 유발할 수 있으며 최소한의 정보를 사용해야합니다. 만약 서버에 저장하고 싶지 않다면, 웹 브라우저 내부에 웹 스토리지를 사용합니다(LocalStorage, sessionStorage)</p>
+<h1 id="mamuri"><a href="#mamuri" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#마무리"></a> 마무리</h1>
+<p>이렇게 쿠키와 세션에 대한 개념들을 알아보는 시간을 가졌고, 이러한 쿠키와 세션 방식을 대체하기 위한 방식들이 많이 나오고 있습니다.</p>
+<p>예를 들어, 위에서 말씀드린 JWT 토큰 인증 방식이라던지, OAuth2.0 방식(Facebook, Google, Slack) 등을 사용할 수 있습니다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "gwanhyeon Kim"
+        },
+        "headline": "Network Header 개요 및 쿠키 세션",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "Network Header",
+        "genre": "Network",
+        "datePublished": "2021-03-09",
+        "dateCreated": "2021-03-09",
+        "dateModified": "2021-03-10",
+        "url": "http://gwanhyeon.github.io/Network-20210309-network-10-header-summary/",
+        "description": "1.  HTTP 헤더
+HTTP 헤더의 구성은 다음과 같이 구성됩니다.
+header-field = field-name “:” OWS field-value OWS
+보통 fieldname은 대소문자 구분을 따로 하지않으며 OWS(optional whitespace)는 띄어쓰기를 허용시킵니다.
+
+reference RFC7230
+
+HTTP RFC7230 
+
+Requ",
+        "wordCount": 945
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/gwanhyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/MSA-20210310-03-cloud-native/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            03 클라우드네이티브의 이해(CI/CD, Docker, Container)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/Programmers-20210309-programmers-%EC%99%B8%EB%B2%BD%EC%A0%90%EA%B2%80/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">프로그래머스 외벽점검</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/cleancode/">CleanCode</a></p>
+                            <p class="item-title"><a href="/CleanCode-20210502-chapter04-%EC%A3%BC%EC%84%9D/" class="title">CleanCode 04 주석</a></p>
+                            <p class="item-date"><time datetime="2021-05-02T14:15:54.000Z" itemprop="datePublished">2021-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210423-dice-roll/" class="title">삼성 SW 역량테스트 백준 주사위 굴리기 14499</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T16:22:59.000Z" itemprop="datePublished">2021-04-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a></p>
+                            <p class="item-title"><a href="/BOJ-20210422-number-board-valid/" class="title">백준 숫자판별하기 22101</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T12:02:29.000Z" itemprop="datePublished">2021-04-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210422-ladder-fake/" class="title">삼성 SW 역량테스트 백준 사다리조작 15684</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T08:05:52.000Z" itemprop="datePublished">2021-04-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210216-chicken-delivery/" class="title">삼성 SW 역량테스트 백준 치킨배달 15686</a></p>
+                            <p class="item-date"><time datetime="2021-04-21T10:26:34.000Z" itemprop="datePublished">2021-04-21</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">Algorithm</a><span class="category-list-count">96</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/boj/">BOJ</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/codility/">Codility</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/programmers/">Programmers</a><span class="category-list-count">38</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/leetcode/">leetcode</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%A1%A0/">자료구조론</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/cleancode/">CleanCode</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">Database</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/database/redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/sql/">SQL</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/elk/">ELK</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/language/">Language</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/language/java/">Java</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/language/kotlin/">Kotlin</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/language/rxjava/">RXJAVA</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/msa/">MSA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/os/">OS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">Server</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/server/jpa/">JPA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/spring/">Spring</a><span class="category-list-count">8</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/aggregation/" style="font-size: 10px;">Aggregation</a> <a href="/tags/annotation/" style="font-size: 10.67px;">Annotation</a> <a href="/tags/array/" style="font-size: 10.67px;">Array</a> <a href="/tags/autoboxing/" style="font-size: 10px;">AutoBoxing</a> <a href="/tags/bfs/" style="font-size: 14px;">BFS</a> <a href="/tags/boj/" style="font-size: 16px;">BOJ</a> <a href="/tags/bst/" style="font-size: 10px;">BST</a> <a href="/tags/bulk/" style="font-size: 10px;">BULK</a> <a href="/tags/bean/" style="font-size: 10px;">Bean</a> <a href="/tags/crud/" style="font-size: 10px;">CRUD</a> <a href="/tags/cleancode/" style="font-size: 11.33px;">CleanCode</a> <a href="/tags/codility/" style="font-size: 13.33px;">Codility</a> <a href="/tags/collection/" style="font-size: 10px;">Collection</a> <a href="/tags/command/" style="font-size: 10px;">Command</a> <a href="/tags/contextswitching/" style="font-size: 10px;">ContextSwitching</a> <a href="/tags/dfs/" style="font-size: 17.33px;">DFS</a> <a href="/tags/di/" style="font-size: 10.67px;">DI</a> <a href="/tags/dns/" style="font-size: 10px;">DNS</a> <a href="/tags/dp/" style="font-size: 12px;">DP</a> <a href="/tags/database/" style="font-size: 10px;">Database</a> <a href="/tags/elk/" style="font-size: 14px;">ELK</a> <a href="/tags/effectivejava3-e/" style="font-size: 12px;">EffectiveJava3/E</a> <a href="/tags/entity/" style="font-size: 10.67px;">Entity</a> <a href="/tags/error/" style="font-size: 10px;">Error</a> <a href="/tags/flush/" style="font-size: 10px;">Flush</a> <a href="/tags/gc/" style="font-size: 10px;">GC</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/h-index/" style="font-size: 10px;">H-INDEX</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/header/" style="font-size: 10px;">Header</a> <a href="/tags/internet/" style="font-size: 10px;">INTERNET</a> <a href="/tags/ip/" style="font-size: 10px;">IP</a> <a href="/tags/intellij/" style="font-size: 10.67px;">IntelliJ</a> <a href="/tags/ioc/" style="font-size: 10px;">IoC</a> <a href="/tags/jdk/" style="font-size: 10px;">JDK</a> <a href="/tags/jpa/" style="font-size: 11.33px;">JPA</a> <a href="/tags/jpql/" style="font-size: 10px;">JPQL</a> <a href="/tags/jvm/" style="font-size: 10px;">JVM</a> <a href="/tags/java/" style="font-size: 11.33px;">Java</a> <a href="/tags/kotlin/" style="font-size: 11.33px;">Kotlin</a> <a href="/tags/leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/msa/" style="font-size: 11.33px;">MSA</a> <a href="/tags/mapping/" style="font-size: 10px;">Mapping</a> <a href="/tags/metricaggregation/" style="font-size: 10px;">MetricAggregation</a> <a href="/tags/network/" style="font-size: 11.33px;">NETWORK</a> <a href="/tags/network/" style="font-size: 10.67px;">Network</a> <a href="/tags/optional/" style="font-size: 10px;">Optional</a> <a href="/tags/pcb/" style="font-size: 10px;">PCB</a> <a href="/tags/port/" style="font-size: 10px;">PORT</a> <a href="/tags/persistence/" style="font-size: 10px;">Persistence</a> <a href="/tags/programmers/" style="font-size: 10px;">Programmers</a> <a href="/tags/rest/" style="font-size: 10px;">REST</a> <a href="/tags/redis/" style="font-size: 10px;">Redis</a> <a href="/tags/responsebody/" style="font-size: 10px;">ResponseBody</a> <a href="/tags/rxjava/" style="font-size: 10.67px;">RxJava</a> <a href="/tags/sql/" style="font-size: 16.67px;">SQL</a> <a href="/tags/searchfunction/" style="font-size: 10px;">SearchFunction</a> <a href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" style="font-size: 10px;">Set자료구조</a> <a href="/tags/spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/springboot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/tcp/" style="font-size: 10.67px;">TCP</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/timecomplexity/" style="font-size: 10.67px;">TimeComplexity</a> <a href="/tags/transaction/" style="font-size: 10px;">Transaction</a> <a href="/tags/udp/" style="font-size: 10px;">UDP</a> <a href="/tags/wrapperclass/" style="font-size: 10px;">WrapperClass</a> <a href="/tags/annotationprocessor/" style="font-size: 10px;">annotationProcessor</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/binary/" style="font-size: 10px;">binary</a> <a href="/tags/binarysearch/" style="font-size: 10px;">binarysearch</a> <a href="/tags/cleancode/" style="font-size: 10px;">cleancode</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/final/" style="font-size: 10px;">final</a> <a href="/tags/http/" style="font-size: 11.33px;">http</a> <a href="/tags/linkedlist/" style="font-size: 10px;">linkedlist</a> <a href="/tags/magicnumber/" style="font-size: 10px;">magicnumber</a> <a href="/tags/network/" style="font-size: 12.67px;">network</a> <a href="/tags/overloading/" style="font-size: 10px;">overloading</a> <a href="/tags/overriding/" style="font-size: 10px;">overriding</a> <a href="/tags/springmvc/" style="font-size: 10px;">springMVC</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/urn/" style="font-size: 10px;">urn</a> <a href="/tags/%EA%B0%84%EC%84%A0/" style="font-size: 10px;">간선</a> <a href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">검색트리</a> <a href="/tags/%EA%B5%AC%ED%98%84/" style="font-size: 12px;">구현</a> <a href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" style="font-size: 13.33px;">그래프</a> <a href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" style="font-size: 11.33px;">그리디</a> <a href="/tags/%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/" style="font-size: 10px;">깨끗한코드</a> <a href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10px;">다이나믹프로그래밍</a> <a href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" style="font-size: 10px;">다익스트라</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" style="font-size: 10px;">데이터타입</a> <a href="/tags/%EB%9E%8C%EB%8B%A4/" style="font-size: 10.67px;">람다</a> <a href="/tags/%EB%A0%88%EB%B2%A82/" style="font-size: 12px;">레벨2</a> <a href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10.67px;">리액티브프로그래밍</a> <a href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" style="font-size: 15.33px;">릿코드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">멀티스레드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">멀티프로세스</a> <a href="/tags/%EB%A9%94%EC%84%9C%EB%93%9C%EC%B0%B8%EC%A1%B0/" style="font-size: 10px;">메서드참조</a> <a href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" style="font-size: 14.67px;">문자열</a> <a href="/tags/%EB%B0%B1%EC%A4%80/" style="font-size: 19.33px;">백준</a> <a href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" style="font-size: 12.67px;">백트래킹</a> <a href="/tags/%EB%B3%80%EC%88%98/" style="font-size: 10px;">변수</a> <a href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" style="font-size: 10px;">부분집합의 합</a> <a href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" style="font-size: 18px;">브루트포스</a> <a href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" style="font-size: 15.33px;">삼성SW역량테스트</a> <a href="/tags/%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/" style="font-size: 10px;">상태코드</a> <a href="/tags/%EC%86%8C%EC%88%98/" style="font-size: 10.67px;">소수</a> <a href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" style="font-size: 10px;">소인수분해</a> <a href="/tags/%EC%88%98%ED%95%99/" style="font-size: 10.67px;">수학</a> <a href="/tags/%EC%88%9C%EC%97%B4/" style="font-size: 11.33px;">순열</a> <a href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">스레드</a> <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 20px;">알고리즘</a> <a href="/tags/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98/" style="font-size: 10px;">어노테이션</a> <a href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" style="font-size: 10px;">에라토스테네스의체</a> <a href="/tags/%EC%97%B0%EC%82%B0/" style="font-size: 10px;">연산</a> <a href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" style="font-size: 15.33px;">완전탐색</a> <a href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" style="font-size: 10.67px;">우선순위큐</a> <a href="/tags/%EC%9B%B9%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80/" style="font-size: 10px;">웹브라우저</a> <a href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" style="font-size: 10px;">위상정렬</a> <a href="/tags/%EC%9C%84%EC%9E%A5/" style="font-size: 10px;">위장</a> <a href="/tags/%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84/" style="font-size: 10px;">의미있는이름</a> <a href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이분탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이진탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">이진탐색트리</a> <a href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" style="font-size: 10.67px;">익명클래스</a> <a href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" style="font-size: 10.67px;">인접리스트</a> <a href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" style="font-size: 10px;">정규표현식</a> <a href="/tags/%EC%A0%95%EB%A0%AC/" style="font-size: 12.67px;">정렬</a> <a href="/tags/%EC%A0%9C%EB%84%A4%EB%A6%AD/" style="font-size: 10px;">제네릭</a> <a href="/tags/%EC%A1%B0%ED%95%A9/" style="font-size: 10px;">조합</a> <a href="/tags/%EC%A3%BC%EC%84%9D/" style="font-size: 10px;">주석</a> <a href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" style="font-size: 12px;">카카오</a> <a href="/tags/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94/" style="font-size: 10px;">컴포넌트 스캔</a> <a href="/tags/%EC%BF%BC%EB%93%9C%EC%95%95%EC%B6%95/" style="font-size: 10px;">쿼드압축</a> <a href="/tags/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/" style="font-size: 10px;">트랜잭션</a> <a href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" style="font-size: 18.67px;">프로그래머스</a> <a href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">프로세스</a> <a href="/tags/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%9B%8C%EC%85%9C%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 10px;">플로이드워셜알고리즘</a> <a href="/tags/%ED%95%A8%EC%88%98/" style="font-size: 10px;">함수</a> <a href="/tags/%ED%95%B4%EC%8B%9C/" style="font-size: 10.67px;">해시</a> <a href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" style="font-size: 10.67px;">환경설정</a> <a href="/tags/%ED%9E%99/" style="font-size: 10.67px;">힙</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">Sponsored</h3>
+    <div class="widget">
+        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>    
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 gwanhyeon Kim</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kgh-1';
+    
+    
+    var disqus_url = 'http://gwanhyeon.github.io/Network-20210309-network-10-header-summary/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
