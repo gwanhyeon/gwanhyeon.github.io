@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Algorithm-20191123-Algorithm-bst/</loc>
+        <lastmod>2021-05-13T04:38:50.626Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/Samsung-20210423-dice-roll/</loc>
+        <lastmod>2021-05-13T04:37:04.624Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Leetcode-20210315-leetcode-partitionlabels/</loc>
         <lastmod>2021-05-12T07:49:31.354Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -34,14 +50,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Samsung-20210420-watch/</loc>
         <lastmod>2021-04-22T16:39:45.382Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Samsung-20210423-dice-roll/</loc>
-        <lastmod>2021-04-22T16:27:56.094Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1202,14 +1210,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Algorithm-20191123-Algorithm-n-queen/</loc>
         <lastmod>2020-09-09T17:01:05.367Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Algorithm-20191123-Algorithm-bst/</loc>
-        <lastmod>2020-09-09T17:01:02.067Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

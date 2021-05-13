@@ -8,6 +8,27 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/algorithm/%25EC%259E%2590%25EB%25A3%258C%25EA%25B5%25AC%25EC%25A1%25B0%25EB%25A1%25A0/</loc>
+        <lastmod>2021-05-13T04:38:50.626Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/algorithm/</loc>
+        <lastmod>2021-05-13T04:38:50.626Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/algorithm/sw%25EC%2597%25AD%25EB%259F%2589%25ED%2585%258C%25EC%258A%25A4%25ED%258A%25B8/</loc>
+        <lastmod>2021-05-13T04:37:04.624Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/leetcode/</loc>
         <lastmod>2021-05-12T07:49:31.354Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -108,13 +129,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/rxjava/</loc>
         <lastmod>2020-11-23T17:32:16.448Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/algorithm/</loc>
-        <lastmod>2020-10-29T12:48:38.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
