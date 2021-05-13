@@ -8,6 +8,78 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/section-13-sql-case%EB%AC%B8/</loc>
+        <lastmod>2021-05-13T07:20:45.349Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/</loc>
+        <lastmod>2021-05-13T07:15:51.454Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/</loc>
+        <lastmod>2021-05-13T07:14:04.514Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/</loc>
+        <lastmod>2021-05-13T07:12:04.233Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/section-09-sql-%EA%B2%B0%EA%B3%BC%ED%96%89%EC%A0%9C%ED%95%9C%ED%95%98%EA%B8%B0/</loc>
+        <lastmod>2021-05-13T07:08:40.075Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/section-03-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B5%AC%EC%A1%B0%EC%B0%B8%EC%A1%B0%ED%95%98%EA%B8%B0/</loc>
+        <lastmod>2021-05-13T07:08:06.148Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/section-02-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EA%B8%B0%EC%B4%88/</loc>
+        <lastmod>2021-05-13T07:07:57.095Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/section-01-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%99%80sql/</loc>
+        <lastmod>2021-05-13T07:07:52.026Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/</loc>
+        <lastmod>2021-05-13T06:46:08.186Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Kotlin-20200917-Kotlin-datatype-03/</loc>
         <lastmod>2021-05-13T05:25:31.754Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1024,7 +1096,7 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/CleanCode-20210323-chapter02-%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84/</loc>
+        <loc>http://gwanhyeon.github.io/CleanCode-20210323-chapter02-%E1%84%8B%E1%85%B4%E1%84%86%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%BB%E1%84%82%E1%85%B3%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%85%E1%85%B3%E1%86%B7/</loc>
         <lastmod>2021-03-23T03:42:44.725Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
