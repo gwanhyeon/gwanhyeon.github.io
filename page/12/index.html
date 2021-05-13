@@ -171,24 +171,26 @@ ga('send', 'pageview');
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
             </div>
-            <div class="date"><time datetime="2020-10-19T05:20:34.000Z" itemprop="datePublished">2020-10-19</time></div>
+            <div class="date"><time datetime="2020-09-18T12:23:34.000Z" itemprop="datePublished">2020-09-18</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201019-BOJ-chess-repaint/">백준 체스판 다시칠하기 1018</a>
+        <a href="/Programmers-20200918-Programmers-divisor-number-array/">프로그래머스 나누어 떨어지는 숫자 배열</a>
         </h1>
     
 
         <p class="article-excerpt">
             1.  문제 링크
-1.1.  백준 체스판 다시칠하기 1018 문제
+프로그래머스 나누어 떨어지는 숫자
 2.  문제 조건
-2.1.  문제
-지민이는 자신의 저택에서 MN개의 단위 정사각형으로 나누어져 있는 MN 크기의 보드를 찾았다. 어떤 정사각형은 검은색으로 칠해져 있고, 나머지는 흰색으로 칠해져 있다. 지민이는 이 보드를 잘라서 88 크기의 체스판으로 만들려고 한다.
-체스판은 검은색과 흰색이
+array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순으로 정렬한 배열을 반환하는 함수, solution을 작성해주세요.
+divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을 담아 반환하세요.
+3.  컴퓨팅 사고
+
+배열에 담겨진 값을 div
         </p>
     </div>
 </article>
@@ -203,23 +205,30 @@ ga('send', 'pageview');
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            <a class="article-category-link" href="/categories/language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/language/kotlin/">Kotlin</a>
             </div>
-            <div class="date"><time datetime="2020-10-15T15:03:03.000Z" itemprop="datePublished">2020-10-16</time></div>
+            <div class="date"><time datetime="2020-09-16T15:38:56.000Z" itemprop="datePublished">2020-09-17</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201016-BOJ-big-body/">백준 덩치 7568</a>
+        <a href="/Kotlin-20200917-Kotlin-datatype-03/">03.Kotlin Data Types</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  문제 링크
-1.1.  백준 덩치 문제
-2.  문제 조건
-2.1.  문제
-우리는 사람의 덩치를 키와 몸무게, 이 두 개의 값으로 표현하여 그 등수를 매겨보려고 한다. 어떤 사람의 몸무게가 x kg이고 키가 y cm라면 이 사람의 덩치는 (x,y)로 표시된다. 두 사람 A 와 B의 덩치가 각각 (x,y), (p,q)라고 할 때 x&gt;p 그리고 y&g
+            1.  Data Types
+
+숫자 – Byte, Short, Int, Long, Float, Double
+Boolean – True, false
+문자
+배열
+문자열
+
+1.1.  Numbers
+Kotlin에서 숫자를 나타내는 여러 데이터 유형이 있습니다.
+1.2.  Byte
+Byte 데이터 유형의 범위는 -128 ~ 127입니다. 이는 더 작은 정수 값을 나타
         </p>
     </div>
 </article>
@@ -238,23 +247,90 @@ ga('send', 'pageview');
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            <a class="article-category-link" href="/categories/language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/language/kotlin/">Kotlin</a>
             </div>
-            <div class="date"><time datetime="2020-10-15T13:53:20.000Z" itemprop="datePublished">2020-10-15</time></div>
+            <div class="date"><time datetime="2020-09-16T15:35:40.000Z" itemprop="datePublished">2020-09-17</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201015-BOJ-decomposition-sum/">백준 분해합 2231</a>
+        <a href="/Kotlin-20200917-Kotlin-variable-02/">02.Kotlin Variables</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            변수에는 변경 가능(mutable)과 불변(immutable)의 두 가지 유형이 있습니다. 불변 변수(immutable)은 값을 변경할 수없는 변수로, 변경 불가능 또는 읽기 전용 변수라고도합니다. 반면에 가변 변수의 값은 변경 될 수 있습니다.
+1.  불변 변수 : val 키워드
+불변 변수는 valKotlin에서 키워드를 사용하여 선언됩니다 . 이 예에서
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/language/kotlin/">Kotlin</a>
+            </div>
+            <div class="date"><time datetime="2020-09-16T14:50:58.000Z" itemprop="datePublished">2020-09-16</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/Kotlin-20200916-Kotlin-envirenment-01/">01.What is Kotlin and Why use it?</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  Kotlin이란?
+JetBrains에서 개발 한 정적으로 형식화 된 프로그래밍 언어입니다. 자바에 대한 기본지식 있다면 Kotilin을 금방 배울 수 있습니다.
+Kotlin과 자바는 상호 운용이 가능하므로 프로젝트에서 함께 사용할 수 있으며 Kotlin에서 자바 코드를 효율적으로 다시 작성할 수 있습니다. Kotlin은 특히 Java보다 간결합니다.
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a>
+            </div>
+            <div class="date"><time datetime="2020-09-16T07:59:52.000Z" itemprop="datePublished">2020-09-16</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/Samsung-20210216-dragon-curve/">삼성 SW 역량테스트 백준 드래곤커브 15685</a>
         </h1>
     
 
         <p class="article-excerpt">
             1.  문제 링크
-1.1.  백준 분해합 문제
+삼성 SW 역량테스트 기출 백준 드래곤커브 15685
 2.  문제 조건
-2.1.  문제
-어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다. 예를 들어, 245의 분해합은 256(=245+2+4+5)이 된다. 따라서 245는 256의 생성자가 된다. 물
+드래곤 커브는 다음과 같은 세 가지 속성으로 이루어져 있으며, 이차원 좌표 평면 위에서 정의된다. 좌표 평면의 x축은 → 방향, y축은 ↓ 방향이다.
+
+시작 점
+시작 방향
+세대
+
+0세대 드래곤 커브는 아래 그림과 같은 길이가 1인 선분이다. 아래 그림은 (0, 0)에서
         </p>
     </div>
 </article>
@@ -271,23 +347,24 @@ ga('send', 'pageview');
             <div class="category">
             <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
             </div>
-            <div class="date"><time datetime="2020-10-13T13:19:00.000Z" itemprop="datePublished">2020-10-13</time></div>
+            <div class="date"><time datetime="2020-09-12T12:19:05.000Z" itemprop="datePublished">2020-09-12</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20201013-Programmers-house-steal/">프로그래머스 도둑질</a>
+        <a href="/Programmers-20200923-Programmers-country-number/">프로그래머스 124나라의숫자</a>
         </h1>
     
 
         <p class="article-excerpt">
             1.  문제 링크
-1.1.  프로그래머스 도둑질 문제
+프로그래머스 124 나라의 숫자 
 2.  문제 조건
-2.1.  문제 설명
-도둑이 어느 마을을 털 계획을 하고 있습니다. 이 마을의 모든 집들은 아래 그림과 같이 동그랗게 배치되어 있습니다.
-각 집들은 서로 인접한 집들과 방범장치가 연결되어 있기 때문에 인접한 두 집을 털면 경보가 울립니다.
-각 집에 있는 돈이 담긴 배열 money가 주어
+124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다.
+124 나라에는 자연수만 존재합니다.
+124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다.
+예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다.
+10진
         </p>
     </div>
 </article>
@@ -308,94 +385,35 @@ ga('send', 'pageview');
             <div class="category">
             <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
             </div>
-            <div class="date"><time datetime="2020-10-09T08:49:42.000Z" itemprop="datePublished">2020-10-09</time></div>
+            <div class="date"><time datetime="2020-09-11T15:46:26.000Z" itemprop="datePublished">2020-09-12</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20201009-Programmers-bignumber/">프로그래머스 큰 수 만들기</a>
+        <a href="/Programmers-20200912-Programmers-failure-rate/">프로그래머스 실패율</a>
         </h1>
     
 
         <p class="article-excerpt">
             1.  문제 링크
-1.1.  프로그래머스 큰수만들기
+프로그래머스 실패율
 2.  문제 조건
-2.1.  문제 설명
-어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.
-예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다.
-문자열 형식으로 숫자 n
-        </p>
-    </div>
-</article>
-    
+실패율은 다음과 같이 정의한다.
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-10-09T08:06:54.000Z" itemprop="datePublished">2020-10-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20201009-Programmers-carpet/">프로그래머스 카펫</a>
-        </h1>
-    
 
-        <p class="article-excerpt">
-            1.  문제 링크
-1.1.  프로그래머스 카펫 문제
-2.  문제 조건
-문제 설명
-Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다.
-Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기억하지 못했습니다.
+스테이지에 도달했으나 아직 클리어하지 못한 플레이어의 수 / 스테이지에 도달한 플레이어 수
 
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-09-23T10:54:24.000Z" itemprop="datePublished">2020-09-23</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200923-Programmers-stock-price/">프로그래머스 주식가격</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 주식가격
-2.  문제 조건
-초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요.
 
 제한사항
-prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.
-prices의 길이는 2 이상 100,000 이하
+
+
+스테이지의 개수 N은 1 이상 500 이하의 자연수이다.
+
+
+stages의 길이는 1 이상 200,000 이하이다.
+
+
+stages에는 1 이상 N + 1 이하
         </p>
     </div>
 </article>
@@ -412,20 +430,22 @@ prices의 길이는 2 이상 100,000 이하
             <div class="category">
             <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
             </div>
-            <div class="date"><time datetime="2020-09-22T12:30:28.000Z" itemprop="datePublished">2020-09-22</time></div>
+            <div class="date"><time datetime="2020-09-11T13:31:51.000Z" itemprop="datePublished">2020-09-11</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200922-Programmers-good-shape-sqaure/">프로그래머스 멀쩡한 사각형</a>
+        <a href="/Programmers-20200914-Programmers-uncompleted-player/">프로그래머스 완주하지못한 선수</a>
         </h1>
     
 
         <p class="article-excerpt">
             1.  문제 링크
-프로그래머스 멀쩡한 사각형
+프로그래머스 완주하지못한 선수
 2.  문제 조건
-가로 길이가 Wcm, 세로 길이가 Hcm인 직사각형 종이가 있습니다. 종이에는 가로, 세로 방향과 평행하게 격자 형태로 선이 그어져 있으며, 모든 격자칸은 1cm x 1cm 크기입니다. 이 종이를 격자 선을 따라 1cm × 1cm의 정사각형으로 잘라 사용할 예정이었는데, 누군가가 이 종이를 대각
+마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
+제한사항
+마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이
         </p>
     </div>
 </article>
@@ -444,28 +464,34 @@ prices의 길이는 2 이상 100,000 이하
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
             </div>
-            <div class="date"><time datetime="2020-09-22T06:25:26.000Z" itemprop="datePublished">2020-09-22</time></div>
+            <div class="date"><time datetime="2020-09-11T13:04:22.000Z" itemprop="datePublished">2020-09-11</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20200922-BOJ-number-card/">백준 숫자카드 10815</a>
+        <a href="/Programmers-20200911-Programmers-open-chat-room/">프로그래머스 오픈채팅방</a>
         </h1>
     
 
         <p class="article-excerpt">
             1.  문제 링크
-백준 숫자카드 10815
+프로그래머스 오픈 채팅방
 2.  문제 조건
 
-문제
-숫자 카드는 정수 하나가 적혀져 있는 카드이다. 상근이는 숫자 카드 N개를 가지고 있다. 정수 M개가 주어졌을 때, 이 수가 적혀있는 숫자 카드를 상근이가 가지고 있는지 아닌지를 구하는 프로그램을 작성하시오.
+
+record는 다음과 같은 문자열이 담긴 배열이며, 길이는 1 이상 100,000 이하이다.
 
 
-입력
-첫째 줄에 상근이가 가지고 있는 숫자 카드의 개수 N(1 ≤ N ≤ 50
+다음은 record에 담긴 문자열에 대한 설명이다.
+
+
+모든 유저는 [유저 아이디]로 구분한다.
+
+
+[유저 아이디] 사용자가 [닉네임]으로 채팅방에 입장 -  (ex. )
+Enter [유저 아이디]
         </p>
     </div>
 </article>
@@ -482,22 +508,25 @@ prices의 길이는 2 이상 100,000 이하
             <div class="category">
             <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
             </div>
-            <div class="date"><time datetime="2020-09-21T08:57:24.000Z" itemprop="datePublished">2020-09-21</time></div>
+            <div class="date"><time datetime="2020-09-11T11:13:36.000Z" itemprop="datePublished">2020-09-11</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200921-Programmers-caesar-password/">프로그래머스 시저암호</a>
+        <a href="/Programmers-20200911-Programmers-crane-claw-machine-game/">프로그래머스 크레인 인형뽑기</a>
         </h1>
     
 
         <p class="article-excerpt">
             1.  문제 링크
-프로그래머스 시저암호
+프로그래머스 크레인 인형뽑기 게임
 2.  문제 조건
 
-문제 설명
-어떤 문장의 각 알파벳을 일정한 거리만큼 밀어서 다른 알파벳으로 바꾸는 암호화 방식을 시저 암호라고 합니다. 예를 들어 AB는 1만큼 밀면 BC가 되고, 3만큼 밀면 DE가 됩니다. z는 1만큼 밀면 a가 됩니다. 문자열 s와 거리 n을 입력받아 s를 n만큼 민 암호문을 만드는 함수, s
+
+게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다.
+
+
+만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형
         </p>
     </div>
 </article>
@@ -551,45 +580,45 @@ prices의 길이는 2 이상 100,000 이하
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-13-sql-case%EB%AC%B8/" class="title">13. SQL CASE문과 NULL 처리</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:04:06.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/cleancode/">CleanCode</a></p>
+                            <p class="item-title"><a href="/CleanCode-20210502-chapter04-%EC%A3%BC%EC%84%9D/" class="title">CleanCode 04 주석</a></p>
+                            <p class="item-date"><time datetime="2021-05-02T14:15:54.000Z" itemprop="datePublished">2021-05-02</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/" class="title">12. SQL 날짜 연산</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:03:50.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210423-dice-roll/" class="title">삼성 SW 역량테스트 백준 주사위 굴리기 14499</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T16:22:59.000Z" itemprop="datePublished">2021-04-23</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/" class="title">11. SQL 문자열 연산</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:03:36.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a></p>
+                            <p class="item-title"><a href="/BOJ-20210422-number-board-valid/" class="title">백준 숫자판별하기 22101</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T12:02:29.000Z" itemprop="datePublished">2021-04-22</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/" class="title">10. SQL 사칙연산</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:03:24.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210422-ladder-fake/" class="title">삼성 SW 역량테스트 백준 사다리조작 15684</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T08:05:52.000Z" itemprop="datePublished">2021-04-22</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-09-sql-%EA%B2%B0%EA%B3%BC%ED%96%89%EC%A0%9C%ED%95%9C%ED%95%98%EA%B8%B0/" class="title">09. SQL 결과 행 제한하기 LIMIT구</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:03:15.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210216-chicken-delivery/" class="title">삼성 SW 역량테스트 백준 치킨배달 15686</a></p>
+                            <p class="item-date"><time datetime="2021-04-21T10:26:34.000Z" itemprop="datePublished">2021-04-21</time></p>
                         </div>
                     </li>
                 

@@ -171,23 +171,31 @@ ga('send', 'pageview');
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
+            <a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a>
             </div>
-            <div class="date"><time datetime="2020-09-06T06:49:58.000Z" itemprop="datePublished">2020-09-06</time></div>
+            <div class="date"><time datetime="2020-05-13T06:50:42.000Z" itemprop="datePublished">2020-05-13</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200917-Programmers-leap-year/">프로그래머스 윤년</a>
+        <a href="/section-06-%ED%8C%A8%ED%84%B4%EB%A7%A4%EC%B9%AD%EA%B2%80%EC%83%89/">06. SQL 패턴 매칭 검색</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 2016
-2.  문제 조건
-2016년 1월 1일은 금요일입니다. 2016년 a월 b일은 무슨 요일일까요? 두 수 a ,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수, solution을 완성하세요. 요일의 이름은 일요일부터 토요일까지 각각 SUN,MON,TUE,WED,THU,FRI,SAT
-입니다. 예를 들어 
+            1.  패턴 매칭에 의한 검색
+1.1.  - LIKE
+1.1.1.  LIKE 술어
+1컬럼명 LIKE 패턴
+
+패턴 매칭 / 부분 검색
+특정 문자나 문자열이 포함된 데이터를 검색하는 경우 사용
+
+1.1.2.  메타문자 (와일드카드)
+1컬럼명 LIKE &apos;%SQL_&apos;
+
+임의의 문자 또는 문자열을 의미
+% : 임의의 문자열 (빈 문자열에도 매치함)
         </p>
     </div>
 </article>
@@ -202,98 +210,31 @@ ga('send', 'pageview');
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
+            <a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a>
             </div>
-            <div class="date"><time datetime="2020-09-06T04:52:40.000Z" itemprop="datePublished">2020-09-06</time></div>
+            <div class="date"><time datetime="2020-05-13T06:46:46.000Z" itemprop="datePublished">2020-05-13</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200919-Programmers-prime-number/">프로그래머스 소수</a>
+        <a href="/section-05-%EC%A1%B0%EA%B1%B4%EC%A1%B0%ED%95%A9%ED%95%98%EA%B8%B0/">05. SQL 조건조합하기</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 소수
-2.  문제 조건
-1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요.
-소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다.
-(1은 소수가 아닙니다.)
-제한 조건
-n은 2이상 1000000이하의 자연수입니다.
-3.  컴퓨팅 사고
+            1.  05. SQL 조건 조합하기
+1.1.  AND 연산자, OR 연산자, NOT 연산자
+1.1.1.  AND 연산자
+1조건식1 AND 조건식2
 
-에라토스테네스의 체를 사용합니다.
-일반 
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
+이항 연산자
+AND로 조건식을 연결하면 모든 조건을 만족하는 행을 검색할 수 있음
 
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-09-05T04:07:57.000Z" itemprop="datePublished">2020-09-05</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200919-Programmers-string-p-y-number/">프로그래머스 문자열내 p와 y의 개수</a>
-        </h1>
-    
+1.1.2.  OR 연산자
+1조건식1 OR 조건식2
 
-        <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 문자열내 p와 y의 개수
-2.  문제 조건
-대문자와 소문자가 섞여있는 문자열 s가 주어집니다. s에 'p’의 개수와 'y’의 개수를 비교해 같으면 True, 다르면 False를 return 하는 solution를 완성하세요. ‘p’, ‘y’ 모두 하나도 없는 경우는 항상 True를 리턴합니다. 단, 개수를 비교할 때 대문자와 
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-09-04T12:39:27.000Z" itemprop="datePublished">2020-09-04</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200918-Programmers-two-number-between-sum/">프로그래머스 두 정수 사이의합</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 두 정수 사이의 합
-2.  문제 조건
-두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을 리턴하는 함수, solution을 완성하세요.
-예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를 리턴합니다.
-제한 조건
-a와 b가 같은 경우는 둘 중 아무 수나 리턴하세요.
-a와 b는 -
+이항 연산자
+OR로 조건식을 연결하면 어느 쪽이든 조건을 만족하는 행을 
         </p>
     </div>
 </article>
@@ -312,24 +253,22 @@ a와 b는 -
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
+            <a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a>
             </div>
-            <div class="date"><time datetime="2020-09-04T04:40:47.000Z" itemprop="datePublished">2020-09-04</time></div>
+            <div class="date"><time datetime="2020-05-13T06:42:01.000Z" itemprop="datePublished">2020-05-13</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200919-Programmers-mr-kim-search/">프로그래머스 서울에서 김서방 찾기</a>
+        <a href="/section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/">04. SQL 검색 조건 지정하기</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 서울에서 김서방 찾기
-2.  문제 조건
-String형 배열 seoul의 element중 Kim의 위치 x를 찾아, 김서방은 x에 있다는 String을 반환하는 함수, solution을 완성하세요. seoul에 Kim은 오직 한 번만 나타나며 잘못된 값이 입력되는 경우는 없습니다.
-제한 사항
-seoul은 길이 1 이상, 1000
+            1.  04강 검색 조건 지정하기
+1SELECT 열1, 열2 FROM 테이블명 WHERE 조건식
+통상적인 데이터베이스의 테이블에는 저장된 행이 많을 것이다. 화면에 표시하여 데이터를 확인할 수 있는데, 한번에 볼 수 있는 데이터양은 한정되어 있다. 화면에 표시할 때는 행이나
+열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 '검색’이 빈번하게 일
         </p>
     </div>
 </article>
@@ -344,26 +283,89 @@ seoul은 길이 1 이상, 1000
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
+            <a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a>
             </div>
-            <div class="date"><time datetime="2020-09-03T04:28:01.000Z" itemprop="datePublished">2020-09-03</time></div>
+            <div class="date"><time datetime="2020-05-13T06:36:25.000Z" itemprop="datePublished">2020-05-13</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200903-Programmers-string-desc-arrange/">프로그래머스 문자열 내림차순으로 배치하기</a>
+        <a href="/section-03-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B5%AC%EC%A1%B0%EC%B0%B8%EC%A1%B0%ED%95%98%EA%B8%B0/">03. SQL 테이블 구조 참조 및 자료형</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 문자열 내림차순으로 배치하기
-2.  문제 조건
-문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요.
-s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
-3.  컴퓨팅 사고
+            1.  03. 테이블 구조 참조 및 자료형
+1.1.  1.DESC 명령
+앞의 4강에서 SELECT 명령으로 테이블의 데이터를 읽어왔다. 테이블은 한 개 이상의 열로 구성되고, 열을 지정하여 조건을 붙이거나 특정 열의 값을 읽어올 수 있다. 테이블에 어떤 열이 있는지 참조할 수 있다면 SELECT 명령을 작성하기 쉬워진다. 여기에서는 DESC 명령으로 테이블
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
 
-String문자열을 toCharArray() 함수를 
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a>
+            </div>
+            <div class="date"><time datetime="2020-05-13T06:27:52.000Z" itemprop="datePublished">2020-05-13</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/section-02-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EA%B8%B0%EC%B4%88/">02. SQL 데이터베이스 기초 명령어</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  SELECT 명령
+1SELECT * FROM 테이블명
+2.  ‘SELECT * FROM 테이블명’ 실행
+FROM 사이에는 스페이스를 넣어 구분한다. 예를 들어 sample 테이블의 모든 데이터를 조회한다면 아래와 같이 SELECT 명령을 입력해야 한다.
+1SELECT * FROM sample;
+
+주의
+
+만약 SELECT*FROMsample;과 같이 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a>
+            </div>
+            <div class="date"><time datetime="2020-05-13T06:10:12.000Z" itemprop="datePublished">2020-05-13</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/section-01-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%99%80sql/">1. SQL 데이터베이스 개요</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  1강. 데이터베이스와 SQL
+데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 데이터베이스라고 한다. 넓은 의미에서는 '컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다.
+데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든 
         </p>
     </div>
 </article>
@@ -767,16 +769,21 @@ next_permutation : 현재 나와 있는 수열에서 인자로 넘어간 범위�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20191128-BOJ-Seven-Dwarfs-2309/">백준 일곱난쟁이 2309</a>
+        <a href="/BOJ-20191129-BOJ-Date-calculation-1476/">백준 날짜계산 1476</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  백준 일곱난쟁이 2309
+            1.  백준 날짜계산 1476
 2.  컴퓨팅적 스킬
 
-do while ~ (next_permutation)으로 계속해서 다음 조합의 경우의 수를 찾는다.
-vector v, check변수를 선언하여 permutation을 수행한다. 9명중 7명을 뽑아야하므로 7명만큼 check=true로 변경해서 수행한다. next_permutation을 수행하면서 값들이
+단순 반복문과 조건문을 이용한 사칙연산 문제
+while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;
+
+3.  컴퓨팅적 사고
+
+년도가 증가할때마다 E,S,M이 1씩 증가한다.
+지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19의 범위를 벗어나
         </p>
     </div>
 </article>
@@ -802,21 +809,16 @@ vector v, check변수를 선언하여 permutation을 수행한다. 9명중 7명�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20191129-BOJ-Date-calculation-1476/">백준 날짜계산 1476</a>
+        <a href="/BOJ-20191128-BOJ-Seven-Dwarfs-2309/">백준 일곱난쟁이 2309</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  백준 날짜계산 1476
+            1.  백준 일곱난쟁이 2309
 2.  컴퓨팅적 스킬
 
-단순 반복문과 조건문을 이용한 사칙연산 문제
-while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;
-
-3.  컴퓨팅적 사고
-
-년도가 증가할때마다 E,S,M이 1씩 증가한다.
-지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19의 범위를 벗어나
+do while ~ (next_permutation)으로 계속해서 다음 조합의 경우의 수를 찾는다.
+vector v, check변수를 선언하여 permutation을 수행한다. 9명중 7명을 뽑아야하므로 7명만큼 check=true로 변경해서 수행한다. next_permutation을 수행하면서 값들이
         </p>
     </div>
 </article>
@@ -942,45 +944,45 @@ Recursive()의 개념을 잡기에 좋은 문제는 백준 N과 M시리즈 입�
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-13-sql-case%EB%AC%B8/" class="title">13. SQL CASE문과 NULL 처리</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:04:06.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/cleancode/">CleanCode</a></p>
+                            <p class="item-title"><a href="/CleanCode-20210502-chapter04-%EC%A3%BC%EC%84%9D/" class="title">CleanCode 04 주석</a></p>
+                            <p class="item-date"><time datetime="2021-05-02T14:15:54.000Z" itemprop="datePublished">2021-05-02</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/" class="title">12. SQL 날짜 연산</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:03:50.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210423-dice-roll/" class="title">삼성 SW 역량테스트 백준 주사위 굴리기 14499</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T16:22:59.000Z" itemprop="datePublished">2021-04-23</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/" class="title">11. SQL 문자열 연산</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:03:36.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a></p>
+                            <p class="item-title"><a href="/BOJ-20210422-number-board-valid/" class="title">백준 숫자판별하기 22101</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T12:02:29.000Z" itemprop="datePublished">2021-04-22</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/" class="title">10. SQL 사칙연산</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:03:24.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210422-ladder-fake/" class="title">삼성 SW 역량테스트 백준 사다리조작 15684</a></p>
+                            <p class="item-date"><time datetime="2021-04-22T08:05:52.000Z" itemprop="datePublished">2021-04-22</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/database/">Database</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/database/sql/">SQL</a></p>
-                            <p class="item-title"><a href="/section-09-sql-%EA%B2%B0%EA%B3%BC%ED%96%89%EC%A0%9C%ED%95%9C%ED%95%98%EA%B8%B0/" class="title">09. SQL 결과 행 제한하기 LIMIT구</a></p>
-                            <p class="item-date"><time datetime="2021-05-13T07:03:15.000Z" itemprop="datePublished">2021-05-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></p>
+                            <p class="item-title"><a href="/Samsung-20210216-chicken-delivery/" class="title">삼성 SW 역량테스트 백준 치킨배달 15686</a></p>
+                            <p class="item-date"><time datetime="2021-04-21T10:26:34.000Z" itemprop="datePublished">2021-04-21</time></p>
                         </div>
                     </li>
                 

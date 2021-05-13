@@ -1,1471 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>13. SQL CASE문과 NULL 처리</title>
-    <url>/section-13-sql-case%EB%AC%B8/</url>
-    <content><![CDATA[<h1 id="13-sql-casemungwa-null-ceori"><a href="#13-sql-casemungwa-null-ceori" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#13-sql-case문과-null-처리"></a> 13. SQL CASE문과 NULL 처리</h1>
-<blockquote>
-<p>임의의 조건에 따라서 독자적으로 변환 처리를 지정해서 데이터를 변환하고 싶을 때 CASE문을 사용할 수 있다.</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE WHEN 조건식1 THEN 식1   </span><br><span class="line">  [WHEN 조건식2 THEN 식2...]   </span><br><span class="line">  [ELSE 식3]   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<p>예를 들어, <strong>NULL값을 0으로 간주해서 계산하고 싶을 때는 어떻게 해야 할까?</strong><br>
-NULL값으로 연산한 결과는 모두 NULL이 되는데?<br>
-이 경우에 <strong>CASE문</strong>을 이용해서 처리할 수 있다.</p>
-<p>RDBMS에서는 사용자가 함수를 작성할 수 있다.<br>
-간단한 처리의 경우에는 사용자 정의 함수를 작성하지 않고 CASE문으로 처리할 수 있다.</p>
-<p><code>WHEN절</code>: 참과 거짓을 반환하는 조건식을 적어준다.<br>
-해당 조건을 만족해서 참이 되는 경우, THEN절에 있는 식이 처리된다.<br>
-이때 WHEN과 THEN을 한데 조합해 지정할 수 있다.<br>
-WHEN절의 조건식을 차례로 평가해 나가게 되는데,<br>
-가장 먼저 조건을 만족한 WHEN절과 대응하는 THEN절 식의 결과를 CASE문의 결과값으로 반환한다.</p>
-<p>만약, 그 어떤 조건식도 만족하지 못할 경우에는 ELSE절의 식이 CASE문의 결과값으로 반환된다.<br>
-<code>ELSE절</code>은 생략 가능하고 생략했을 경우에는 기본값으로 <strong>ELSE NULL</strong>로 처리된다.</p>
-<h3 id="1-casemuneul-iyonghayeo-nullgabseul-0euro-byeonhwanhagi"><a href="#1-casemuneul-iyonghayeo-nullgabseul-0euro-byeonhwanhagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-case문을-이용하여-null값을-0으로-변환하기"></a> 1) CASE문을 이용하여 NULL값을 0으로 변환하기</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT column, CASE WHEN column IS NULL THEN 0 ELSE column END &quot;column(null=0)&quot; </span><br><span class="line">FROM table;</span><br></pre></td></tr></table></figure>
-<p>column값이 NULL일 때 WHEN column IS NULL은 참이 되므로<br>
-CASE문은 THEN절의 ‘0’을 반환한다.<br>
-NULL이 아닌 경우에는 ELSE절의 <code>column</code>, 즉 column의 값을 반환한다.</p>
-<h3 id="2-coalesce"><a href="#2-coalesce" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-coalesce"></a> 2) COALESCE</h3>
-<p><strong>NULL값을 변환하는 경우에는 COALESCE 함수를 사용하는 편이 더 쉬울 수 있다</strong>.<br>
-위의 CASE문을 이용해 NULL값을 0으로 변환하는 예제를 COALESCE 함수를 이용하면<br>
-아래와 같이 바꿀 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, <span class="keyword">COALESCE</span>(<span class="keyword">column</span>, <span class="number">0</span>) <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br></pre></td></tr></table></figure>
-<p>COALESCE 함수는 여러 개의 인수를 지정할 수 있다. 주어진 인수 가운데 NULL이 아닌 값에 대해서는 가장 먼저 지정된 인수의 값을 반환한다.<br>
-앞의 예문은 column이 NULL이 아니면 column값을 그대로 출력하고, 그렇지 않으면(column이 NULL이면) 0을 출력한다.</p>
-<h1 id="2-ddo-hanayi-casemun"><a href="#2-ddo-hanayi-casemun" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#2-또-하나의-case문"></a> 2. 또 하나의 CASE문</h1>
-<p>숫자로 이루어진 코드를 알아보기 더 쉽게 문자열로 변환하고 싶은 경우 CASE문을 많이 사용한다.<br>
-수치 데이터를 문자화하는 것을 <code>디코드</code>라고 부르고, 반대로 문자를 수치화하는 것을 <code>인코드</code>라고 부른다.</p>
-<h2 id="1-dansun-casero-seongbyeol-kodeureul-namja-yeojaro-byeonhwanhagi"><a href="#1-dansun-casero-seongbyeol-kodeureul-namja-yeojaro-byeonhwanhagi" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#1단순-case로-성별-코드를-남자-여자로-변환하기"></a> 1)단순 CASE로 성별 코드를 남자, 여자로 변환하기</h2>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">my sql&gt; SELECT column명 AS "코드",</span><br><span class="line">CASE column명   </span><br><span class="line">  WHEN 1 THEN '남자'   </span><br><span class="line">  WHEN 2 THEN '여자'   </span><br><span class="line">  ELSE '미지정'   </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"성별"</span> <span class="keyword">FROM</span> <span class="keyword">table</span>명;</span><br></pre></td></tr></table></figure>
-<p>단순 CASE문에서 CASE 뒤에는 대상을 적고 WHEN 뒤에는 값을 적는다.</p>
-<h1 id="3-casereul-sayonghal-gyeongu-juyisahang"><a href="#3-casereul-sayonghal-gyeongu-juyisahang" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#3-case를-사용할-경우-주의사항"></a> 3. CASE를 사용할 경우 주의사항</h1>
-<h2 id="1-else-saengryag"><a href="#1-else-saengryag" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#1-else-생략"></a> 1) ELSE 생략</h2>
-<p>CASE문에서 ELSE는 생략할 경우,<code>ELSE NULL</code>이 되는 것에 주의하자. 대응되는 WHEN이 하나도 없는 경우 ELSE절이 사용된다.<br>
-이때, ELSE를 생략한 경우 NULL이 반환되게 된다. <code>CASE문의 ELSE는 생략하지 않는 편이 낫다.</code></p>
-<h2 id="2-whene-null-jijeonghagi"><a href="#2-whene-null-jijeonghagi" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#2-when에-null-지정하기"></a> 2) WHEN에 NULL 지정하기</h2>
-<p>여기에서 데이터가 NULL인 경우를 고려해서 WHEN NULL THEN ‘데이터 없음’과 같이 지정해도 문법적으로는 문제가 없지만 정상적으로 처리되지 않는다.</p>
-<h3 id="dansun-casemuneseo-whenjeole-null-jijeonghagi"><a href="#dansun-casemuneseo-whenjeole-null-jijeonghagi" class="header-anchor">3.2.1. </a><a class="markdownIt-Anchor" href="#단순-case문에서-when절에-null-지정하기"></a> 단순 CASE문에서 WHEN절에 NULL 지정하기</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE a   </span><br><span class="line">  WHEN 1 THEN &apos;남자&apos;   </span><br><span class="line">  WHEN 2 THEN &apos;여자&apos;   </span><br><span class="line">  WHEN NULL THEN &apos;데이터 없음&apos;   </span><br><span class="line">  ELSE &apos;미지정&apos;   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<p>이 예제에서 조건식이 처리되는 순서는 아래와 같다.</p>
-<p>a = 1<br>
-a = 2<br>
-a = NULL</p>
-<p>그런데 문제는 비교 연산자 <code>=로는 NULL값과 같은지 아니지를 비교할 수 없다는 것</code>이다. 따라서 a열의 값이 NULL이라고 해도 a = NULL은 참이 되지 않는다.<br>
-즉, ‘데이터 없음’ 대신 ELSE절에 있는 ‘미지정’이라는 결과값이 나온다. 이때 NULL값인지 아닌지를 판정하기 위해서는 IS NULL을 사용한다.<br>
-다만, 단순 CASE문은 특성상 =연산자로 비교하는 만큼, NULL값인지를 판정하기 위해서는 검색 CASE문을 사용해야 한다.</p>
-<h3 id="geomsaeg-casemuneuro-null-jijeonghagi"><a href="#geomsaeg-casemuneuro-null-jijeonghagi" class="header-anchor">3.2.2. </a><a class="markdownIt-Anchor" href="#검색-case문으로-null-지정하기"></a> 검색 CASE문으로 NULL 지정하기</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE   </span><br><span class="line">  WHEN a = 1 THEN &apos;남자&apos;   </span><br><span class="line">  WHEN a = 2 THEN &apos;여자&apos;   </span><br><span class="line">  WHEN a IS NULL THEN &apos;데이터 없음&apos;   </span><br><span class="line">  ELSE &apos;미지정&apos;   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<p>단순 CASE문으로는 NULL값을 비교할 수 없다!</p>
-<ol start="3">
-<li>DECODE NVL</li>
-</ol>
-<p>Oracle에는 디코드를 수행하는 DECODE함수가 내장되어 있어서 CASE문과 같은 용도로 사용할 수 있다.<br>
-단, DECODE 함수는 Oracle에서만 지원하는 함수인 만큼 다른 데이터베이스 제품에서는 사용할 수 없다.</p>
-<p>NULL값을 변환하는 함수도 있는데, Oracle에서는 NVL 함수, SQL Server에서는 ISNULL 함수가 이에 해당한다.<br>
-다만, 이 함수들은 특정 데이터베이스에 국한된 함수이기 때문에 NULL값을 변환할 때는 표준 SQL로 지정되어 있는 <code>COALESCE</code>함수를 사용한다.</p>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>12. SQL 날짜 연산</title>
-    <url>/section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/</url>
-    <content><![CDATA[<h1 id="12-sql-naljja-yeonsan"><a href="#12-sql-naljja-yeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#12-sql-날짜-연산"></a> 12. SQL 날짜 연산</h1>
-<h2 id="1-siseutem-naljja-hwaginhagi"><a href="#1-siseutem-naljja-hwaginhagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-시스템-날짜-확인하기"></a> 1. 시스템 날짜 확인하기</h2>
-<p>CURRENT-TIMESTAMP로 시스템 날짜 확인</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CURRENT_TIMESTAMP</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="2-naljja-seosig"><a href="#2-naljja-seosig" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-날짜-서식"></a> 2. 날짜 서식</h2>
-<p>날짜 데이터를 데이터베이스에 저징할 경우 CURRENT TIMESTAMP를 사용해 시스템 상의 날짜를 저장할 수 있습니다.<br>
-다만 임의의 날짜를 저장하고 싶을 경우에는 직접 날짜 데이터를 지정해야 합니다</p>
-<p>oracle의 경우 TO_DATE 함수를 사용해 문자열 데이터를 날짜형 데이터로 변환할 수 있으며 서식 또한 별도로 지정할 수 있습니다.</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">TO_DATE ( '2014/01 /25 ' , 'YYYY/MM/DD')</span><br></pre></td></tr></table></figure>
-<p>반대로 날짜형 데이터를 서식에 맞춰 변환해 문자열 데이터로 출력하는 함수도 존재합니다. oracle의 경우 TO_CHAR 함수가 그에 해딩합니다</p>
-<h2 id="3-naljjayi-deossemgwa-bbaelsem"><a href="#3-naljjayi-deossemgwa-bbaelsem" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-날짜의-덧셈과-뺄셈"></a> 3. 날짜의 덧셈과 뺄셈</h2>
-<p>1일 후를 계산하고 싶다면 a +1 DAY 라는 식으로 계산할 수 있습니다. 1일 전이라면 a - 1 DAY로 하면 됩니다.</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CURRENIDATE + <span class="built_in">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>;</span><br></pre></td></tr></table></figure>
-<p>날짜형 간의 뺄셈<br>
-ex) 2014-02-28에서 2014-01-01을 뺄때</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">DATEDIFF('2014=<span class="comment">--02-28', '2014-01-01')</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>11. SQL 문자열 연산</title>
-    <url>/section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/</url>
-    <content><![CDATA[<h1 id="11-munjayeol-yeonsan"><a href="#11-munjayeol-yeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#11-문자열-연산"></a> 11. 문자열 연산</h1>
-<h2 id="1-munjayeol-gyeolhab"><a href="#1-munjayeol-gyeolhab" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-문자열-결합"></a> 1. 문자열 결합</h2>
-<ul>
-<li>문자열 결합 사례</li>
-</ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">'ABC' || '1234' -&gt; 'ABC1234'</span><br></pre></td></tr></table></figure>
-<ul>
-<li>데이터베이스별 문자열 결합의 차이</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>연산자/함수</th>
-<th>연산</th>
-<th>DB</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>+</td>
-<td>문자열결합</td>
-<td>SQL Server</td>
-</tr>
-<tr>
-<td>||</td>
-<td>문자열결합</td>
-<td>Oracle, PostgreSQL</td>
-</tr>
-<tr>
-<td>CONCAT</td>
-<td>문자열결합</td>
-<td>Mysql</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>문자열 결합 예제</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sample35;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(quantity, unit) <span class="keyword">from</span> sample35;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>unit열은 문자열형이고, quantity 열은 INTEGER행의 열입니다.</li>
-<li>문자열 결합시 <code>Mysql</code>에서는 <code>CONCAT</code>을 사용합니다. <code>Oracle은 문자열 결합 ||</code></li>
-</ul>
-<h2 id="2-substring-hamsu"><a href="#2-substring-hamsu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-substring-함수"></a> 2 SUBSTRING 함수</h2>
-<ul>
-<li>정의</li>
-</ul>
-<p>문자열의 일부분을 계산해서 반환해주는 함수</p>
-<ul>
-<li>SUBSTRING 함수 예시</li>
-</ul>
-<p>블로그 시스템 업로드 특정 데이터 파싱<br>
-날짜 데이터 포맷 형식의 YYYYMMDD 문자열 데이터 파싱(YYYY, MM, DD)</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">SUBSTRING('20140125001',1,4) -&gt; '2014'앞 4자리(년) 추출</span><br><span class="line"></span><br><span class="line">SUBSTRING('20140125001',5,2) -&gt; '01' 5째 자리부터 2자리(월) 추출</span><br></pre></td></tr></table></figure>
-<h2 id="3-trim-hamsu"><a href="#3-trim-hamsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-trim-함수"></a> 3 TRIM 함수</h2>
-<ul>
-<li>정의</li>
-</ul>
-<p>문자열의 앞뒤로 여분의 스페이스가 있을 경우 공백 제거 함수입니다. 그러나, 문자열 도중에 존재하는 스페이스는 제거되지 않습니다.<br>
-고정길이 문자열에 많이 사용하는 함수(CHAR 문자열형)<br>
-<code>12 45</code> 와 같은 경우를 예를 들 수 있습니다.</p>
-<ul>
-<li>TRIM 함수 예시</li>
-</ul>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">TRIM('ABC    ') -&gt; 'ABC'</span><br></pre></td></tr></table></figure>
-<h2 id="4-character-length-hamsu"><a href="#4-character-length-hamsu" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-character_length-함수"></a> 4 CHARACTER_LENGTH 함수</h2>
-<ul>
-<li>정의</li>
-</ul>
-<p>문자열의 길이를 계산해 돌려주는 함수입니다. VARCHAR형의 문자열은 가변 길이이므로 길이가 서로 다릅니다.<br>
-이에 따라 <code>CHARACTER_LENGTH</code> 함수를 사용하면 문자열의 길이를 계산할 수 있습니다.<br>
-<code>CHARACTER_LENGTH → CHAR_LENGTH</code>로 함수를 줄여서 사용도 가능합니다.</p>
-<ul>
-<li>OCTET_LENGTH 함수</li>
-</ul>
-<p>문자열의 길이를 바이트 단위로 계산해주는 함수</p>
-<ul>
-<li>문자열 데이터의 특징</li>
-<li>데이터단위는 <code>바이트</code> 단위이며 하나의 데이터가 몇 바이트의 저장공간을 필요로 하는지는 <code>인코드 방식</code> or <code>인코딩 방식</code> 에 따라 결정됩니다.</li>
-<li>즉, 문자를 수치화(인코딩) 하는 방식에 따라서 저장공간의 크기가 달라질 수 있습니다.</li>
-</ul>
-<p>예) 한글 2byte, 알파벳 1byte</p>
-<ul>
-<li>간혹 문자세트(Character set)에 따라 길이가 문자 수로 간주될 수도 있습니다.</li>
-<li>문자 세트(character set)</li>
-<li><code>알파벳 반각문자, 한글 전각문자</code></li>
-<li>반각문자는 전각문자 폭의 절반이며 저장용량 또한 전각문자쪽이 더 크다. 반각의 알파벳이나 숫자의 기호(ASCII 문자)라고 일컫음.</li>
-<li>한글은 <code>EUC-KR, UTF-8</code>등의 <code>인코딩 방식</code>을 사용한다.</li>
-<li>즉, RDBMS에서는 이러한 것들을 <code>문자세트</code>라고 부릅니다.</li>
-<li>CHAR_LENGTH() 함수는 ASCII 문자든 <code>문자 수</code>로 계산되기때문에 사용하는데 큰 지장이 없다. 하지만, OCTET_LENGTH() 함수의 경우 문자수가 아닌 <code>바이트 단위</code>로 길이를 <code>계산</code>하므로 주의가 필요합니다.</li>
-<li>문자세트에서 문자수와 바이트 수</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>문자세트</th>
-<th>문자수</th>
-<th>바이트 수</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>EUC-KR</td>
-<td>12</td>
-<td>19</td>
-</tr>
-<tr>
-<td>UTF-8</td>
-<td>12</td>
-<td>26</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>EUC-KR ASCII 문자는 1바이트 한글은 2바이트의 용량</li>
-<li>UTF-8에서는 ASCII 문자는 1바이트, 한글은 3바이트의 용량</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>10. SQL 사칙연산</title>
-    <url>/section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/</url>
-    <content><![CDATA[<h1 id="10-sacigyeonsan"><a href="#10-sacigyeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#10-사칙연산"></a> 10. 사칙연산</h1>
-<h2 id="1-sacigyeonsan"><a href="#1-sacigyeonsan" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1사칙연산"></a> 1.사칙연산</h2>
-<table>
-<thead>
-<tr>
-<th>연산자</th>
-<th>연산</th>
-<th>예</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>+</td>
-<td>덧셈(가산)</td>
-<td>1+2-&gt;3</td>
-</tr>
-<tr>
-<td>-</td>
-<td>뺄셈(감산)</td>
-<td>1-2-&gt;-1</td>
-</tr>
-<tr>
-<td>*</td>
-<td>곱셈(승산)</td>
-<td>1*2-&gt;2</td>
-</tr>
-<tr>
-<td>/</td>
-<td>나눗셈(제산)</td>
-<td>1/2-&gt;05</td>
-</tr>
-<tr>
-<td>%</td>
-<td>나머지</td>
-<td>1%2-&gt;1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>연산자 우선순위</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>우선순위</th>
-<th>연산자</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>*/%</td>
-</tr>
-<tr>
-<td>2</td>
-<td>±</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>
-<p>산술 연산자는 곱셈,나눗셈,나머지 그룹과 덧셈,뺄셈 그룹으로 나뉩니다.</p>
-</li>
-<li>
-<p>계산순서는 연산자에 따라 왼쪽에서 오른쪽으로 진행합니다. 우선순위가 같은 연산자들 끼리 연산하는 경우 문제가 되지 않지만 우선순위가 다른 연산자들이 섞여있는 경우는 <code>우선순위가 더 높은쪽</code>으로 계산합니다.</p>
-</li>
-<li>
-<p>우선순위가 같은 경우</p>
-</li>
-</ul>
-<pre class="highlight"><code class="sql">1-2+3=2 (우선순위가 같다면 왼쪽에서 오른쪽으로 계산합니다.)    
-</code></pre>
-<ul>
-<li>우선순위가 다른 경우</li>
-</ul>
-<pre class="highlight"><code class="sql">1+2*3=7 (+보다 *의 우선순위가 높습니다.)    
-</code></pre>
-<h2 id="2-selectguro-yeonsanhagi"><a href="#2-selectguro-yeonsanhagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2select구로-연산하기"></a> 2.select구로 연산하기</h2>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> 식<span class="number">1</span>, 식<span class="number">2</span> ... <span class="keyword">from</span> 테이블명    
-</code></pre>
-<ul>
-<li>이 식은 <code>열명, 연산자, 상수</code>로 구성</li>
-<li>가격과 수량으로 금액을 계산하는 경우<br>
-주문금액 = 단가 * 개수</li>
-</ul>
-<p>예) 100원 상품 10개 주문 상품금액 1000원</p>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">from</span> sample34    
-</code></pre>
-<h2 id="3-yeolyi-byeolmyeong"><a href="#3-yeolyi-byeolmyeong" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-열의-별명"></a> 3. 열의 별명</h2>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
-</code></pre>
-<ul>
-<li>열의 별명을 붙일때는 예약어 <code>AS</code> 를 사용한다. AS의 약어는 에일리어스(alias)입니다.</li>
-<li>별명은 중복이 되지 않도록 처리 한다.</li>
-<li>AS 예약어 별명은 <code>영어, 숫자, 한글</code> 등으로 지정 가능합니다.</li>
-<li>단, 한글로 지정하는경우 더블쿼트 <code>&quot;&quot;</code> 를 지정해서 사용합니다</li>
-<li>다음과 같이 쓸 수 있습니다.</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> price * quantity <span class="string">"금액"</span> <span class="keyword">from</span> sample34    
-</code></pre>
-<p>이 룰은 ASCII 문자 이외의 것을 포함할 경우 <code>더블쿼트</code>로 둘러싸서 지정합니다.</p>
-<ul>
-<li>문자열 상수는 <code>' '</code> 싱글쿼트로 감싸주고, 데이터베이스 객체명은 <code>&quot; &quot;</code> 더블쿼트로 감싸줍니다.</li>
-</ul>
-<pre class="highlight"><code class="sql">문자열 상수 'ABC', 'KGH' -&gt; 싱글 쿼트    
-데이터베이스 객체명 "sample21" "sample34" -&gt; 더블쿼트    
-</code></pre>
-<ul>
-<li>예약어 같은 경우는 별명을 지정해서 사용할 수 없는데, 그래도 사용해야한다면 <code>&quot; &quot;</code> 더블쿼트를 사용하면 가능합니다.</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> price * quantity <span class="keyword">AS</span> <span class="keyword">select</span> <span class="keyword">from</span> sample34; (예약어 지정 X)    
-<span class="keyword">select</span> price * quantity <span class="keyword">AS</span> <span class="string">"select"</span> <span class="keyword">from</span> sample34; (예약어 지정 O)    
-</code></pre>
-<ul>
-<li>숫자의 경우도 예약어와 겹칠때와 마찬가지로 <code>&quot; &quot;</code> 더블쿼트를 사용하면 피할 수 있습니다.</li>
-<li>오라클 기준으로 이름을 지정하는 할 수 없습니다. 이에 따라 <code>숫자로 객체명이 시작되지 않도록 합니다.</code>(단, mysql에서는 숫자로 시작하는 객체명이 허용됩니다.)</li>
-</ul>
-<h2 id="4-where-gueseo-yeonsanhagi"><a href="#4-where-gueseo-yeonsanhagi" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-where-구에서-연산하기"></a> 4. where 구에서 연산하기</h2>
-<ul>
-<li>where 구에서 <code>가격 * 수량</code> 금액을 계산하여 <code>2000원 이상</code>에 해당하는 행을 검색하는 쿼리</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34;    
-<span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
-<span class="keyword">where</span> price * quantity &gt;= <span class="number">2000</span>;    
-</code></pre>
-<ul>
-<li>price * quantity 대신에 amount를 사용하면 어떻게 될까요?</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
-<span class="keyword">where</span> amount &gt;= <span class="number">2000</span>;    
-</code></pre>
-<ul>
-<li>AS 를 써서 별명을 지어줬으니 에러가 발생하지 않을까? 라는 생각을 할 수도 있습니다. 하지만, amount가 존재하지 않는다라는 에러가 발생하게 됩니다.</li>
-<li>데이터베이스 처리순서는 <code>(where구 → select구)</code> 의 순서로 진행됩니다. 즉, where 구의 처리는 select구보다 선행되므로 where 구에서 사용한 별칭을 인식하지 못하게 됩니다.</li>
-<li>다시 말해, <code>where amount &gt;= 2000;</code> 를 실행하고 나서 <code>select *, price * quantity AS amount from sample34</code> 를 실행하기 때문에 amount를 인식하지 못하게 되는 상황이 발생하게 됩니다.</li>
-<li>표준 SQL에서는 내부처리 순서가 따로 정해져 있지 않습니다.</li>
-</ul>
-<h2 id="5-null-gabsyi-yeonsan"><a href="#5-null-gabsyi-yeonsan" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#5-null-값의-연산"></a> 5. NULL 값의 연산</h2>
-<ul>
-<li>
-<p>만약 <code>NULL값</code>을 이용해 <code>NULL+1</code> 과 같은 연산을 사용하면 결과는 어떻게 될까요?</p>
-</li>
-<li>
-<p>어느 정도 짐작을 하셨겠지만, SQL에서는 NULL값을 0으로 인식하지 않습니다. 잘못 생각한 경우라면 NULL값을 1로 생각하여 <code>1</code> 이라는 결과를 얻을 수 있다고 생각하셨을 수도 있습니다.</p>
-</li>
-<li>
-<p>결과적으로, <code>NULL+1</code> 은 1이 아닌 <code>NULL</code> 입니다.</p>
-</li>
-<li>
-<p>다음 연산결과도 같은 결과를 나타냅니다.</p>
-</li>
-</ul>
-<pre class="highlight"><code class="sql">NULL+1    
-1+NULL    
-1+2*NULL    
-1/NULL    
-</code></pre>
-<p>NULL은 0으로 처리 되지 않고, 0을 1로 나누면 <code>'division by zero'</code> 라는 에러를 나타내게 할 것입니다.</p>
-<p>하지만, 1/NULL의 경우는 NULL이 0으로 처리 되지 않아 에러가 발생하지 않고 <code>NULL</code> 의 값을 나타내게 될 것입니다.</p>
-<h2 id="6-order-bygueseo-yeonsanhagi"><a href="#6-order-bygueseo-yeonsanhagi" class="header-anchor">1.6. </a><a class="markdownIt-Anchor" href="#6-order-by구에서-연산하기"></a> 6. order by구에서 연산하기</h2>
-<ul>
-<li>금액을 오름차순, 내림차순을 구현하기 위해서는 어떠한  예약어를 사용하면 될까요?</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34;    
-<span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34 <span class="keyword">order</span> <span class="keyword">by</span> price * quantity <span class="keyword">DESC</span>;    
-</code></pre>
-<ul>
-<li>order by구를 사용하고 옵션으로 <code>DESC(descending)</code>키워드를 사용하면 <code>내림차순 정렬</code>이 되는것을 볼 수 있습니다. <code>오름차순(ascending)</code> 정렬은 예약어 <code>ASC</code>로 사용하면 됩니다.</li>
-<li>order by는 서버에서 내부적으로 가장 나중에 처리 됩니다.</li>
-</ul>
-<h2 id="7-hamsu"><a href="#7-hamsu" class="header-anchor">1.7. </a><a class="markdownIt-Anchor" href="#7-함수"></a> 7. 함수</h2>
-<ul>
-<li>MOD 함수</li>
-</ul>
-<pre class="highlight"><code class="sql">10 % 3 -&gt; 1    
-MOD(10,3) -&gt; 1    
-</code></pre>
-<ul>
-<li>MOD함수를 사용하면 나머지를 쉽게 구할 수 있습니다.</li>
-<li>MOD() 함수는 함수명이 <code>MOD</code>, 인수로 <code>(나누어질 수, 나눌 수)</code>의 형태를 띄게 됩니다.</li>
-</ul>
-<p>예) MOD(10,3)</p>
-<h2 id="8-round-hamsu"><a href="#8-round-hamsu" class="header-anchor">1.8. </a><a class="markdownIt-Anchor" href="#8-round-함수"></a> 8. ROUND 함수</h2>
-<ul>
-<li>부가세나 부가세포함된 금액을 계산할 때 어떤 함수를 사용하면 좋을까요?</li>
-<li>ROUND()함수를 사용하면 단위를 고려한 반올림 처리를 손쉽게 할 수 있습니다.</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> * <span class="keyword">from</span> sample341;    
-<span class="keyword">select</span> amount, <span class="keyword">ROUND</span>(amount) <span class="keyword">from</span> sample341;    
-</code></pre>
-<ul>
-<li>INTEGER형: 정수만 저장 가능 amount열은 DECIMAL형으로 정의되었습니다.</li>
-<li>DECIMAL형은 정수부와 소수부의 자릿수를 지정할 수 있는 자료형입니다. 즉, 소수점을 포함하는 수치를 저장하는 자료형이 됩니다.</li>
-<li>ROUND함수는 <code>소수점 첫째 자리 기준</code>으로 <code>반올림</code> 한 값을 반환합니다. 함수의 두번째 인수로 반올림할 <code>자릿수를 지정</code>할 수도 있습니다.</li>
-</ul>
-<p>단, 인수를 생략할 경우 0으로 간주되고 첫째 자리를 반올림합니다. 1을 지정하면 소수점 둘째 자리를 반올림합니다.</p>
-<ul>
-<li>음수의 경우는 어떻게 할 수 있을까요?</li>
-</ul>
-<p><code>-1 지정시 1단위</code> , <code>-2을 지정하면 10단위</code>를 <code>반올림</code>할 수 있습니다.</p>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> amount, <span class="keyword">ROUND</span>(amount,<span class="number">-2</span>) <span class="keyword">from</span> sample341;    
-</code></pre>
-<p>인수에 -2를 입력하였으니 10단위를 반올림합니다. 예) 5961.69 → 6000(10단위 반올림)</p>
-<ul>
-<li>버림 함수는 어떤것이 있을까요?</li>
-</ul>
-<p>반올림 이외에도 버림을 할 경우가 생길 수 있는데 TRUNCATE() 함수로 계산이 가능합니다.</p>
-<ul>
-<li>그 외 함수</li>
-<li>SIN, COS 삼각함수</li>
-<li>SQRT 루트를 계산하는 함수</li>
-<li>LOG 대수를 계산하는 함수</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>09. SQL 결과 행 제한하기 LIMIT구</title>
-    <url>/section-09-sql-%EA%B2%B0%EA%B3%BC%ED%96%89%EC%A0%9C%ED%95%9C%ED%95%98%EA%B8%B0/</url>
-    <content><![CDATA[<h1 id="09-gyeolgwa-haeng-jehanhagi-limit"><a href="#09-gyeolgwa-haeng-jehanhagi-limit" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#09-결과-행-제한하기-limit"></a> 09. 결과 행 제한하기 - LIMIT</h1>
-<blockquote>
-<p>SELECT 명령에서는 결과값으로 변환되는 행을 제한할 수 있습니다.</p>
-</blockquote>
-<pre class="highlight"><code class="sql"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">WHERE</span> 조건식 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명 <span class="keyword">LIMIT</span> 행수 [<span class="keyword">OFFSET</span> 시작행]    
-</code></pre>
-<h2 id="1-haengsu-jehan"><a href="#1-haengsu-jehan" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1행수-제한"></a> 1.행수 제한</h2>
-<ul>
-<li>
-<p>LIMIT 구는 표준 SQL이 아니다.</p>
-</li>
-<li>
-<p>MySQL, PostgreSQL등에서 사용되는 문법이다.</p>
-</li>
-</ul>
-<blockquote>
-<p>SELECT * FROM sample33;</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">no</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">1</td>
-</tr>
-<tr>
-<td style="text-align:right">2</td>
-</tr>
-<tr>
-<td style="text-align:right">3</td>
-</tr>
-<tr>
-<td style="text-align:right">4</td>
-</tr>
-<tr>
-<td style="text-align:right">5</td>
-</tr>
-<tr>
-<td style="text-align:right">6</td>
-</tr>
-<tr>
-<td style="text-align:right">7</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>SELECT * FROM sample33 LIMIT 3;</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">no</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">1</td>
-</tr>
-<tr>
-<td style="text-align:right">2</td>
-</tr>
-<tr>
-<td style="text-align:right">3</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>정렬한 후 제한하기<br>
-WHERE no &lt;= 3 vs LIMIT 3의 차이점은 LIMIT는 반환할 행수를 제한하는 기능으로, WHERE 구로 검색한 뒤,  ORDER BY로 정렬한 뒤 최종적으로 처리 된다.</li>
-</ul>
-<blockquote>
-<p>SELECT * FROM sample33 ORDER BY no DESC LIMIT 3;</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">no</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">7</td>
-</tr>
-<tr>
-<td style="text-align:right">6</td>
-</tr>
-<tr>
-<td style="text-align:right">5</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>다른 데이터베이스에서는 어떻게 사용할까?</li>
-</ul>
-<ol>
-<li>SQL Server : TOP사용</li>
-</ol>
-<ul>
-<li>LIMIT과 유사</li>
-</ul>
-<ol start="2">
-<li>ORACLE : ROWNUM 사용</li>
-</ol>
-<ul>
-<li>
-<p>SELECT * FROM sample33 WHERE ROWNUM &lt;= 3;</p>
-</li>
-<li>
-<p>ROWNUM은 클라이언트에게 결과가 반환될 때 각 행에 할당되는 행 번호</p>
-</li>
-<li>
-<p>ROWNUM으로 행을 제한할 경우</p>
-</li>
-<li>
-<p>WHERE 구로 지정하므로 정렬하기전에 처리된다.<br>
--&gt; LIMIT로 행을 제한한 경우와 결과값이 다르다.</p>
-</li>
-</ul>
-<h2 id="2-opeuses-jijeong"><a href="#2-opeuses-jijeong" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-오프셋-지정"></a> 2. 오프셋 지정</h2>
-<ul>
-<li>웹 시스템에서는 클라이언트의 브라우저를 통해 페이지 단위로 화면에 표시할 내용 처리.</li>
-<li>대량의 데이터를 하나의 페이지에 표시하는 것은 기능적으로도 속도 측면에서 효율적이지 못한다.</li>
-<li>일반적으로 페이지 나누기(pagination)기능을 사용한다.</li>
-</ul>
-<p>ex) 게시판 하단 부분</p>
-<ul>
-<li>위치 지정은 0부터 시작</li>
-<li><code>시작할 행 -1</code>로 기억</li>
-</ul>
-<blockquote>
-<p>SELECT * FROM sample33 LIMIT 3 OFFSET 3;</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">no</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">4</td>
-</tr>
-<tr>
-<td style="text-align:right">5</td>
-</tr>
-<tr>
-<td style="text-align:right">6</td>
-</tr>
-</tbody>
-</table>
-<p>4행 부터 3건의 데이터 표시!</p>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>08. SQL 다수의 열을 지정하여 정렬하기</title>
-    <url>/section-08-sql-%EB%B3%B5%EC%88%98%EC%97%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/</url>
-    <content><![CDATA[<h1 id="08-bogsuyi-yeoleul-jijeonghae-jeongryeolhagi"><a href="#08-bogsuyi-yeoleul-jijeonghae-jeongryeolhagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#08-복수의-열을-지정해-정렬하기"></a> 08. 복수의 열을 지정해 정렬하기</h1>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열명 FROM 테이블명 WHERE 조건식</span><br><span class="line">ORDER BY 열명1 [ASC|DESC], 열명2 [ASC|DESC] ...</span><br></pre></td></tr></table></figure>
-<h2 id="1-bogsuyi-yeolro-jeongryeol-jijeong"><a href="#1-bogsuyi-yeolro-jeongryeol-jijeong" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-복수의-열로-정렬-지정"></a> 1. 복수의 열로 정렬 지정</h2>
-<ul>
-<li>ORDER BY로 행을 정렬하는 경우 같은 행의 순서는 어떻게 정해질까?</li>
-<li>ORDER BY 구는 생략할 수 있는데 이때 순서는 어떻게 정해질까?</li>
-<li>-&gt; 순서는 일정하지 않다.</li>
-<li>데이터베이스 서버의 당시 상황에 따라 어떤 순서로 행을 반환할지 결정된다.</li>
-<li>따라서 같은 순서의 결과를 얻고 싶다면 반드시 ORDER BY구로 순서를 지정해야 한다.</li>
-<li>콤마(,)로 열명을 구분해 지정한다.</li>
-</ul>
-<h2 id="2-jeongryeolbangbeob-jijeonghagi"><a href="#2-jeongryeolbangbeob-jijeonghagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2정렬방법-지정하기"></a> 2.정렬방법 지정하기</h2>
-<ul>
-<li>구문 중에 [] 부분은 생략 가능</li>
-<li>| 둘중 하나라는 뜻</li>
-<li>…는 동일한 형태로 연속해서 지정할 수 있다.</li>
-</ul>
-<blockquote>
-<p>ORDER BY a DESC,b</p>
-</blockquote>
-<h2 id="3-null-gabsyi-jeongryeol-sunseo"><a href="#3-null-gabsyi-jeongryeol-sunseo" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3null-값의-정렬-순서"></a> 3.NULL 값의 정렬 순서**</h2>
-<ul>
-<li>NULL 값에대한 정렬방법은 표준 SQL에도 규정되어있지 않는다.</li>
-<li>데이터베이스 제품에 따라 기준이 다르다.</li>
-<li>Mysql의 경우 NULL값을 가장 작은 값으로 취급</li>
-<li>Oracle은 가장 큰 값으로 인식</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>07. SQL 오름차순, 내림차순 정렬하기 (DESC, ASC)</title>
-    <url>/section-07-sql-%EC%A0%95%EB%A0%AC/</url>
-    <content><![CDATA[<h1 id="7-sql-oreumcasun-naerimcasun-jeongryeolhagi-desc-asc"><a href="#7-sql-oreumcasun-naerimcasun-jeongryeolhagi-desc-asc" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#7-sql-오름차순-내림차순-정렬하기-desc-asc"></a> 7. SQL 오름차순, 내림차순 정렬하기 (DESC, ASC)</h1>
-<p>ORDER BY 구를 사용하여 검색결과의 행 순서를 바꿀 수 있다.</p>
-<h2 id="order-by-gu"><a href="#order-by-gu" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#order-by-구"></a> ORDER BY 구</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열명 FROM 테이블 명 WHERE 조건식 ORDER BY</span><br></pre></td></tr></table></figure>
-<h3 id="1-order-byro-geomsaeg-gyeolgwa-jeongryeolhagi"><a href="#1-order-byro-geomsaeg-gyeolgwa-jeongryeolhagi" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#1-order-by로-검색-결과-정렬하기"></a> 1. ORDER BY로 검색 결과 정렬하기</h3>
-<ul>
-<li>지정된 열의 값에 따라 행의 순서가 변경 됩니다.</li>
-</ul>
- <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">WHERE</span> 조건식 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">검색 조건이 필요 없는 경우에는 WHERE 구를 생략하는데 ORDER BY구는 FROM구의 뒤에 지정합니다.</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span><span class="keyword">sql</span></span><br><span class="line"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br></pre></td></tr></table></figure>
-<p><strong>age 열로 정렬하기</strong></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sample31;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>age</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A씨</td>
-<td>36</td>
-<td>대구광역시 중구</td>
-</tr>
-<tr>
-<td>B씨</td>
-<td>18</td>
-<td>부산광역시 연제구</td>
-</tr>
-<tr>
-<td>C씨</td>
-<td>25</td>
-<td>서울특별시</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span>  sample31 <span class="keyword">ORDER</span> <span class="keyword">BY</span> age;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>age</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>B씨</td>
-<td>18</td>
-<td>부산광역시 연제구</td>
-</tr>
-<tr>
-<td>C씨</td>
-<td>25</td>
-<td>서울특별시</td>
-</tr>
-<tr>
-<td>A씨</td>
-<td>36</td>
-<td>대구광역시 중구</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-order-by-descro-naerim-casun-jeongryeolhagi"><a href="#2-order-by-descro-naerim-casun-jeongryeolhagi" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#2-order-by-desc로-내림-차순-정렬하기"></a> 2. ORDER BY DESC로 내림 차순 정렬하기</h3>
- <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명 <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<p>오름차순은 내림차순과 달리 <strong>생략</strong>이 가능하며, <strong>ASC</strong>로도 지정할 수 있습니다. ASC가 기본형입니다.</p>
-<h3 id="3-daeso-gwangye"><a href="#3-daeso-gwangye" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#3-대소-관계"></a> 3. 대소 관계</h3>
-<ul>
-<li>수치형 테이터라면 대소관계는 숫자의 크기로 판별</li>
-<li>날짜시간형도 마찬가지</li>
-<li>문자열형은 사전식으로 정렬</li>
-</ul>
-<blockquote>
-<p>주의할 점</p>
-</blockquote>
-<pre class="highlight"><code class="sql"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sample311
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>b</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr>
-<td>10</td>
-<td>10</td>
-</tr>
-<tr>
-<td>11</td>
-<td>11</td>
-</tr>
-</tbody>
-</table>
-<p>a는 문자열형(VARCHAR) b열은 수치형(INTEGER)</p>
-<blockquote>
-<p>a열을 오름차순으로 정렬한다면?</p>
-</blockquote>
-<p><code>SELECT FROM sample311 ORDER BY a;</code></p>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>b</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>10</td>
-<td>10</td>
-</tr>
-<tr>
-<td>11</td>
-<td>11</td>
-</tr>
-<tr>
-<td>2</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>사전 순으로 비교했을때 발생하는 현상</li>
-<li>데이터를 넣는것은 아무런 문제가 되지 않는다.</li>
-<li>정렬이나 비교 연산을 할때는 이점에 주의 해야한다.</li>
-</ul>
-<h3 id="4-order-byneun-teibeule-yeonghyangeul-juji-anhneunda"><a href="#4-order-byneun-teibeule-yeonghyangeul-juji-anhneunda" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#4order-by는-테이블에-영향을-주지-않는다"></a> 4.ORDER BY는 테이블에 영향을 주지 않는다</h3>
-<ul>
-<li>어디까지나 서버에서 클라이언트로 행 순서를 바꾸어 변환것일뿐,</li>
-<li>저장장치에 저장된 데이터의 행 순서는 변경하지는 않는다.</li>
-</ul>
-<blockquote>
-<p>데이터를 참조만 할 뿐이며 변경은 하지 않는다.</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>06. SQL 패턴 매칭 검색</title>
-    <url>/section-06-%ED%8C%A8%ED%84%B4%EB%A7%A4%EC%B9%AD%EA%B2%80%EC%83%89/</url>
-    <content><![CDATA[<h1 id="paeteon-maecinge-yihan-geomsaeg"><a href="#paeteon-maecinge-yihan-geomsaeg" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#패턴-매칭에-의한-검색"></a> 패턴 매칭에 의한 검색</h1>
-<h2 id="like"><a href="#like" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#-like"></a> - LIKE</h2>
-<h3 id="like-suleo"><a href="#like-suleo" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#like-술어"></a> LIKE 술어</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 LIKE 패턴</span><br></pre></td></tr></table></figure>
-<ul>
-<li>패턴 매칭 / 부분 검색</li>
-<li>특정 문자나 문자열이 <strong>포함</strong>된 데이터를 검색하는 경우 사용</li>
-</ul>
-<h3 id="metamunja-waildeukadeu"><a href="#metamunja-waildeukadeu" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#메타문자-와일드카드"></a> 메타문자 (와일드카드)</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 LIKE &apos;%SQL_&apos;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><em>임의</em>의 문자 또는 문자열을 의미</li>
-<li>% : 임의의 문자열 (빈 문자열에도 매치함)</li>
-<li>_ : 임의의 문자 하나</li>
-<li>SELECT 문에서 많이 쓰이는 *는 LIKE에서 <strong>사용할 수 없음</strong></li>
-</ul>
-<h3 id="iseukeipeu"><a href="#iseukeipeu" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#이스케이프"></a> 이스케이프</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\% \_</span><br></pre></td></tr></table></figure>
-<ul>
-<li>와일드 카드 % _ 의 경우
-<ul>
-<li>앞에 \를 붙임 = 메타 문자가 아닌 일반 문자를 의미<br>
-<code>WHERE text LIKE '%\%%</code><br>
-<code>WHERE text LIKE '%\_%</code></li>
-</ul>
-</li>
-<li>문자열 상수 ’ 의 경우
-<ul>
-<li>앞에 '를 하나 더 붙임</li>
-<li>표준 SQL에서 ''를 2개 기술하는 것으로 이스케이프 처리 가능<br>
-<code>WHERE text LIKE '%''SQL''%</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="cuga-like-yeonsanjaneun-daesomunjareul-gubun-handa"><a href="#cuga-like-yeonsanjaneun-daesomunjareul-gubun-handa" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#추가-like-연산자는-대소문자를-구분-한다"></a> * 추가 - LIKE 연산자는 대소문자를 구분 한다.</h3>
-<ul>
-<li>UPPER() / LOWER()</li>
-<li>UPPER()나 LOWER() 함수를 이용해 대소문자 구분없이 검색, 출력 할 수 있다.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WHERE  UPPER(column) LIKE &apos;%sqL%&apos;</span><br><span class="line">WHERE  LOWER LOWER(column) LIKE &apos;%sqL%&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="cuga-yeoreo-jogeon-nayeol-si-seongneungeul-saenggaghaneun-sunseo"><a href="#cuga-yeoreo-jogeon-nayeol-si-seongneungeul-saenggaghaneun-sunseo" class="header-anchor">1.1.5. </a><a class="markdownIt-Anchor" href="#추가-여러-조건-나열-시-성능을-생각하는-순서"></a> * 추가 - 여러 조건 나열 시 성능을 생각하는 순서</h3>
-<ul>
-<li>점 조건 <strong>(IN, = 연산자)</strong> 먼저</li>
-<li>선분 조건 <strong>(&lt;, &gt;, LIKE, BETWEEN 연산자)</strong> 나중에</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>05. SQL 조건조합하기</title>
-    <url>/section-05-%EC%A1%B0%EA%B1%B4%EC%A1%B0%ED%95%A9%ED%95%98%EA%B8%B0/</url>
-    <content><![CDATA[<h1 id="05-sql-jogeon-johabhagi"><a href="#05-sql-jogeon-johabhagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#05-sql-조건-조합하기"></a> 05. SQL 조건 조합하기</h1>
-<h2 id="and-yeonsanja-or-yeonsanja-not-yeonsanja"><a href="#and-yeonsanja-or-yeonsanja-not-yeonsanja" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#and-연산자-or-연산자-not-연산자"></a> AND 연산자, OR 연산자, NOT 연산자</h2>
-<h3 id="and-yeonsanja"><a href="#and-yeonsanja" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#and-연산자"></a> AND 연산자</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">조건식1 AND 조건식2</span><br></pre></td></tr></table></figure>
-<ul>
-<li>이항 연산자</li>
-<li>AND로 조건식을 연결하면 <strong>모든 조건을 만족</strong>하는 행을 검색할 수 있음</li>
-</ul>
-<h3 id="or-yeonsanja"><a href="#or-yeonsanja" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#or-연산자"></a> OR 연산자</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">조건식1 OR 조건식2</span><br></pre></td></tr></table></figure>
-<ul>
-<li>이항 연산자</li>
-<li>OR로 조건식을 연결하면 <strong>어느 쪽이든 조건을 만족</strong>하는 행을 <strong>모두</strong> 검색할 수 있음</li>
-</ul>
-<h3 id="not-yeonsanja"><a href="#not-yeonsanja" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#not-연산자"></a> NOT 연산자</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">NOT 조건식</span><br></pre></td></tr></table></figure>
-<ul>
-<li>단항 연산자</li>
-<li>NOT을 사용하면 오른쪽에 지정한 조건식의 <strong>반대 값</strong>을 반환</li>
-<li>조건식에 <strong>부합하지 않는 나머지</strong> 조건을 지정할 경우 사용</li>
-</ul>
-<h4 id="yeonsanja-useon-sunwi"><a href="#yeonsanja-useon-sunwi" class="header-anchor">1.1.3.1. </a><a class="markdownIt-Anchor" href="#연산자-우선-순위"></a> 연산자 우선 순위</h4>
-<ol>
-<li><em>Arithmetic operators</em></li>
-<li><em>Concatenation operator</em></li>
-<li><em>Comparison conditions</em></li>
-<li><em>IS [NOT] NULL, LIKE, [NOT] IN</em></li>
-<li><em>[NOT] BETWEEN</em></li>
-<li><em>Not equal to</em></li>
-<li><em>NOT logical condition</em></li>
-<li><em>AND logical condition</em></li>
-<li><em>OR logical condition</em></li>
-</ol>
-<ul>
-<li>NOT &gt; AND &gt; OR</li>
-<li>AND는 OR에 비해 우선순위가 높음</li>
-</ul>
-<p><em>실제 코드</em></p>
- <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span> <span class="keyword">AND</span> b=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span></span><br></pre></td></tr></table></figure>
-<p><em>잘못된 예상</em></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> ((a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span>) <span class="keyword">AND</span> b=<span class="number">1</span>) <span class="keyword">OR</span> b=<span class="number">2</span></span><br><span class="line"><span class="keyword">OR</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> (a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span>) <span class="keyword">AND</span> (b=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p><em>실제 실행</em></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> (a=<span class="number">2</span> <span class="keyword">AND</span> b=<span class="number">1</span>) <span class="keyword">OR</span> b=<span class="number">2</span></span><br></pre></td></tr></table></figure>
-<h4 id="cuga-in-yeonsanja"><a href="#cuga-in-yeonsanja" class="header-anchor">1.1.3.2. </a><a class="markdownIt-Anchor" href="#추가-in-연산자"></a> * 추가 - IN 연산자</h4>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 IN (조건, 조건, 조건 ...)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p>OR와 비슷한 역할을 수행</p>
-</li>
-<li>
-<p>조건 목록의 값 중 어느 하나와 일치하는 데이터를 출력</p>
-</li>
-<li>
-<p>OR 보다는 IN 사용 권장</p>
-<ul>
-<li>IN은 서브쿼리를 사용하여 보다 유연한 확장 가능</li>
-<li>IN은 반드시 하나의 컬럼이 비교되어야 하므로 나중에 인덱스 구성에 대한 전략을 수립할 때 유리</li>
-<li>옵티마이저는 복잡한 OR에 매우 취약</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>04. SQL 검색 조건 지정하기</title>
-    <url>/section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/</url>
-    <content><![CDATA[<h1 id="04gang-geomsaeg-jogeon-jijeonghagi"><a href="#04gang-geomsaeg-jogeon-jijeonghagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#04강-검색-조건-지정하기"></a> 04강 검색 조건 지정하기</h1>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열1, 열2 FROM 테이블명 WHERE 조건식</span><br></pre></td></tr></table></figure>
-<p>통상적인 데이터베이스의 테이블에는 저장된 행이 많을 것이다. 화면에 표시하여 데이터를 확인할 수 있는데, 한번에 볼 수 있는 데이터양은 한정되어 있다. 화면에 표시할 때는 행이나<br>
-열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 '<strong>검색</strong>’이 빈번하게 일어난다. 행을 선택할 때는 <strong>WHERE</strong> 구를 사용하여, 열을 선택할 때는 <strong>SELECT</strong> 구를 사용한다.</p>
-<h2 id="1-select-gueseo-yeol-jijeonghagi"><a href="#1-select-gueseo-yeol-jijeonghagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-select-구에서-열-지정하기"></a> 1. SELECT 구에서 열 지정하기</h2>
-<p>데이터를 선택할 때는 열이나 행을 한정한다. SELECT 명령어 *를 사용해서 sample 테이블의 모든 열을 취득했다. 열을 한정하기 위해서는 * 부분에 열명을 지정한다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열1, 열2 FROM 테이블명</span><br></pre></td></tr></table></figure>
-<p>열을 위의 구문처럼 콤마(,)를 이용하여 구분 지으며 여러 개를 지정할 수 있다. 지정한 열만 결과값으로 표시된다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT FROM sample; // ERROR</span><br></pre></td></tr></table></figure>
-<p>위와 같이 열을 전혀 지정하지 않으면 구문 에러가 발생한다. 또한 테이블에 존재하지 않는 열을 지정해도 에러가 발생한다. 열 지정 순서는 임의로 정할 수 있다.<br>
-테이블에서 열이 정의된 순서와 동일한 순으로 지정할 필요는 없다. 결과는 지정한 열의 순서대로 표시된다. 동일한 열을 중복해서 지정해도 무관하다. <br></p>
-<h2 id="2-where-gueseo-haeng-jijeonghagi"><a href="#2-where-gueseo-haeng-jijeonghagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-where-구에서-행-지정하기"></a> 2. WHERE 구에서 행 지정하기</h2>
-<p>테이블의 열은 많아야 몇십 개 정도지만 행은 열에 비해 훨씬 많을 수 있다. 데이터베이스의 규모에 따라 다르지만 일반적으로 수백 건에서 대규모의 경우 수천만 건의 행에 달하는 경우도 있다.<br>
-이처럼 많은 행 속에서 필요한 데이터만 검색하기 위해서는 <strong>WHERE</strong> 구를 사용한다. <br><br>
-<strong>WHERE</strong> 구는 <strong>FROM</strong> 구의 뒤에 표기한다. 예약어 ‘WHERE’ 뒤에 검색 조건을 표기한다. 조건에 일치하는 행만 SELECT의 결과로 반환된다.</p>
-<h3 id="where-guro-haeng-cucul"><a href="#where-guro-haeng-cucul" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#where-구로-행-추출"></a> WHERE 구로 행 추출</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열 FROM 테이블명 WHERE 조건식</span><br></pre></td></tr></table></figure>
-<h3 id="guyi-sunseowa-saengryag"><a href="#guyi-sunseowa-saengryag" class="header-anchor">1.2.2. </a><a class="markdownIt-Anchor" href="#구의-순서와-생략"></a> 구의 순서와 생략</h3>
-<p>SQL에서는 구의 순서가 정해져 있어 바꿔서 적을 수 없다. FROM 구 뒤에 WHERE 구를 표기한다. 예를들어 'SELECT 구 -&gt; WHERE 구 -&gt; FROM 구’의 순으로 적으면 에러가 발생한다.<br>
-구에는 WHERE 구를 생략한 경우는 테이블 내의 모든 행이 검색 대상이 된다.</p>
-<h3 id="where-gu"><a href="#where-gu" class="header-anchor">1.2.3. </a><a class="markdownIt-Anchor" href="#where-구"></a> WHERE 구</h3>
-<p>조건식은 ‘열과 연산자, 상수로 구성되는 식’ 이다. WHERE 구로 행만 추출하지만 SELECT 구로 열 지정을 동시에 할 수도 있다. 구체적인 예는 아래와 같다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>박준용</td>
-<td>1976-10-18</td>
-<td>대구광역시 수성구</td>
-</tr>
-<tr>
-<td>2</td>
-<td>김재진</td>
-<td>NULL</td>
-<td>대구광역시 동구</td>
-</tr>
-<tr>
-<td>3</td>
-<td>홍길동</td>
-<td>NULL</td>
-<td>서울특별시 마포구</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE no = 2;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>김재진</td>
-<td>NULL</td>
-<td>대구광역시 동구</td>
-</tr>
-</tbody>
-</table>
-<h3 id="jogeonsig"><a href="#jogeonsig" class="header-anchor">1.2.4. </a><a class="markdownIt-Anchor" href="#조건식"></a> 조건식</h3>
-<p>'no = 2’은 ‘np’ ‘=’ '2’의 세 개 항목으로 나눌 수 있다. 첫 번째 항목인 'no’는 열 이름이다. 두 번째 항목 '='는 연산자이다. 연산자란 어떤 계산을 할지 지정하는 것으로 보통 기호로<br>
-표기한다. =의 경우, 좌우로 2개 항목이 필요한 '이항 연산자’에 해당하며 일반적으로 많이 쓰이는 기호이다. = 연산자를 기준으로 좌변과 우변의 항목을 비교하고, 서로 같은 값이면 참을,<br>
-다른 값이면 거짓을 반환한다. no = 2의 조건식에서 no 열 값이 2인 행은 참이되며 1이나 3인 행은 거짓이 된다. 조건식을 만족한 (참) 행만 결괏값으로 반환된다.<br>
-= 연산자는 비교한 결괏값이 참인지 거짓인지를 반환하므로 '비교 연산자’라 부른다.</p>
-<h3 id="gabsi-seoro-dareun-gyeongu-lt-gt"><a href="#gabsi-seoro-dareun-gyeongu-lt-gt" class="header-anchor">1.2.5. </a><a class="markdownIt-Anchor" href="#값이-서로-다른-경우"></a> 값이 서로 다른 경우 ‘&lt;&gt;’</h3>
-<p>비교 연산자는 = 외에도 존재한다. 조건식에서 사용하는 연산자를 바꾸거나 복수의 연산자를 조합하면 복잡한 조건식을 만들 수 있다. 검색 조건으로 &lt;&gt; 연산자를 사용하는 예를 살펴보자.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>박준용</td>
-<td>1976-10-18</td>
-<td>대구광역시 수성구</td>
-</tr>
-<tr>
-<td>2</td>
-<td>김재진</td>
-<td>NULL</td>
-<td>대구광역시 동구</td>
-</tr>
-<tr>
-<td>3</td>
-<td>홍길동</td>
-<td>NULL</td>
-<td>서울특별시 마포구</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE no &lt;&gt; 2; // WHERE 구로 no 열 값이 2가 아닌 행만 추출</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>박준용</td>
-<td>1976-10-18</td>
-<td>대구광역시 수성구</td>
-</tr>
-<tr>
-<td>3</td>
-<td>홍길동</td>
-<td>NULL</td>
-<td>서울특별시 마포구</td>
-</tr>
-</tbody>
-</table>
-<p>이전의 조건식에서 연산자를 = 에서 &lt;&gt;로 바꾸었다. = 연산자가 서로 같은 값인지를 비교하는 연산자인데 반해, &lt;&gt; 연산자는 서로 다른 값인지를 비교하는 연산자이다. 여기서는 no 열 값이 2가 아닐 경우<br>
-참이 되므로, 값이 1과 3인 행이 화면에 표시되었다. 이와 같이 WHERE 구에서 지정한 조건식에 따라 복수의 행이 반환되는 경우도 있다. 반드시 하나의 행만 반환되는 것은 아니다. 조건식에 일치하는 행이<br>
-전혀 없는 경우에는 아무것도 반환되지 않는다.</p>
-<h2 id="3-munjayeolhyeongyi-sangsu"><a href="#3-munjayeolhyeongyi-sangsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-문자열형의-상수"></a> 3. 문자열형의 상수</h2>
-<p>이번에는 name 열을 사용해 동일한 조건으로 검색해본다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>박준용</td>
-<td>1976-10-18</td>
-<td>대구광역시 수성구</td>
-</tr>
-<tr>
-<td>2</td>
-<td>김재진</td>
-<td>NULL</td>
-<td>대구광역시 동구</td>
-</tr>
-<tr>
-<td>3</td>
-<td>홍길동</td>
-<td>NULL</td>
-<td>서울특별시 마포구</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE name = &apos;박준용&apos;; // WHERE 구로 name 열 값이 &apos;박준용&apos;인 행만 검색</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>박준용</td>
-<td>1976-10-18</td>
-<td>대구광역시 수성구</td>
-</tr>
-</tbody>
-</table>
-<p>no 열이 수치형 열인 반면에, name 열은 문자열 형이다. 수치형 조건식의 경우 비교할 숫자를 그대로 조건식에 표기한다. 하지만 문자열형을 비교할 경우는 '박준용’처럼 <strong>싱글쿼트(’’)로 둘러싸 표기</strong>해야한다. 날짜시간형의 경우에도 싱글쿼트로 둘러싸 표기한다. 이때 연월일을 하이픈(-)으로 구분한다. 시간은 시분초를 콜론(:)으로 구분하여 표기한다. 문자열형의 열과 비교하기 위해서는 조건으로 지정할 값도 그 자료형에 맞춰 지정해야 한다. 한편 자료형에 맞게 표기한 상수값을 '리터럴(literal)'이라 부른다. 문자열 리터럴은 싱글쿼트로 둘러싸 표기한다.</p>
-<h2 id="4-nullgabs-geomsaeg"><a href="#4-nullgabs-geomsaeg" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-null값-검색"></a> 4. NULL값 검색</h2>
-<p>'검색’이라고는 해도 조건식을 표기하는 것뿐이므로 간단하다. 하지만 NULL 값을 검색할 경우에는 주의해야 한다. 앞에서 배운방식대로 NULL 조건을 추가하여 조회해보자.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>박준용</td>
-<td>1976-10-18</td>
-<td>대구광역시 수성구</td>
-</tr>
-<tr>
-<td>2</td>
-<td>김재진</td>
-<td>NULL</td>
-<td>대구광역시 동구</td>
-</tr>
-<tr>
-<td>3</td>
-<td>홍길동</td>
-<td>NULL</td>
-<td>서울특별시 마포구</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE birthday = NULL;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
-<p>birthday 열 값이 NULL인 행이 있지만 birthday = NULL과 같은 조건식으로는 검색할 수 없었다. 즉, = 연산자로 NULL을 검색할 수 없다!</p>
-<h3 id="is-null"><a href="#is-null" class="header-anchor">1.4.1. </a><a class="markdownIt-Anchor" href="#is-null"></a> IS NULL</h3>
-<p>NULL 값을 검색할 때는 = 연산자가 아닌 'IS NULL’을 사용해야 한다. IS NULL은 술어로 연산자의 한 종류로 생각하라. <br><br>
-<strong>birthday</strong> IS NULL 과 같이 사용하면 원하는 조회가 가능하다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE birthday **IS NULL**;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>no</th>
-<th>name</th>
-<th>birthday</th>
-<th>address</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>김재진</td>
-<td>NULL</td>
-<td>대구광역시 동구</td>
-</tr>
-<tr>
-<td>3</td>
-<td>홍길동</td>
-<td>NULL</td>
-<td>서울특별시 마포구</td>
-</tr>
-</tbody>
-</table>
-<p>이제 NULL 값에 해당하는 행이 표시되었다. 반대로 NULL 값이 아닌 행을 검색하고 싶다면 <em>IS NOT NULL</em>을 사용하면 된다.</p>
-<h2 id="5-bigyo-yeonsanja"><a href="#5-bigyo-yeonsanja" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#5비교-연산자"></a> 5.비교 연산자</h2>
-<p>= 연산자와 &lt;&gt; 연산자, IS NULL로 검색하는 방법에 관해 알아봤다. WHERE 구로 지정하는 조건식은 참고 거짓을 반환하는 비교 연산자나 술어를 사용해서 표기할 수 있다. SQL에서는 많은 연산자 술어를 사용할 수 있다. 여기에서는 대표적인 비교 연산자에 어떤 것이 있는지를 소개한다.</p>
-<hr>
-<ul>
-<li>=연산자<br>
-좌변과 우변의 값이 같을 경우 참이 된다.</li>
-<li>&lt;&gt; 연산자<br>
-좌변과 우변의 값이 같지 않을 경우 참이 된다.</li>
-<li>
-<blockquote>
-<p>연산자<br>
-좌변의 값이 우변의 값보다 클 경우 참이 된다. 같거나 작을 경우는 거짓이 된다.</p>
-</blockquote>
-</li>
-<li>
-<blockquote>
-<p>=연산자<br>
-좌변의 값이 우변의 값보다 크거나 같을 경우 참이 된다. 작을 경우는 거짓이 된다.</p>
-</blockquote>
-</li>
-<li>&lt;연산자<br>
-좌변의 값이 우변의 값보다 작을 경우 참이 된다. 같거나 클 경우는 거짓이 된다.</li>
-<li>&lt;=연산자<br>
-좌변의 값이 우변의 값보다 작거나 같은 경우 참이 된다. 클 경우는 거짓이 된다.</li>
-</ul>
-<hr>
-<p>&lt; 연산자와 &gt; 연산자는 대소관계를 비교하는 연산자이지만 =을 붙임으로써 서로 값이 같은 경우도 비교할 수 있다.  =은 &lt; 과 &gt;의 뒤에 붙인다. &lt;= 나 &gt;=와 같이 사용해야 한다. 또한 &lt;, &gt;와 = 사이에 스페이스를 넣으면 &lt;(또는 &gt;)와 = 로 연산자가 두 개라고 판단하여 에러가 난다.</p>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>03. SQL 테이블 구조 참조 및 자료형</title>
-    <url>/section-03-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B5%AC%EC%A1%B0%EC%B0%B8%EC%A1%B0%ED%95%98%EA%B8%B0/</url>
-    <content><![CDATA[<h1 id="03-teibeul-gujo-camjo-mic-jaryohyeong"><a href="#03-teibeul-gujo-camjo-mic-jaryohyeong" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#03-테이블-구조-참조-및-자료형"></a> 03. 테이블 구조 참조 및 자료형</h1>
-<h2 id="1-desc-myeongryeong"><a href="#1-desc-myeongryeong" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1desc-명령"></a> 1.DESC 명령</h2>
-<p>앞의 4강에서 <strong>SELECT</strong> 명령으로 테이블의 데이터를 읽어왔다. 테이블은 한 개 이상의 열로 구성되고, 열을 지정하여 조건을 붙이거나 특정 열의 값을 읽어올 수 있다. 테이블에 어떤 열이 있는지 참조할 수 있다면 SELECT 명령을 작성하기 쉬워진다. 여기에서는 <strong>DESC</strong> 명령으로 테이블 구조를 참조하는 방법을 알아본다.</p>
-<blockquote>
-<p>아래의 명령을 실행하면 다음과 같은 결과가 나타난다.</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DESC sample;</span><br></pre></td></tr></table></figure>
-<br>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Null</th>
-<th>Key</th>
-<th>Default</th>
-<th>Extra</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>no</td>
-<td>int(11)</td>
-<td>YES</td>
-<td></td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>name</td>
-<td>varchar(20)</td>
-<td>YES</td>
-<td></td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>birthday</td>
-<td>data</td>
-<td>YES</td>
-<td></td>
-<td>NULL</td>
-<td></td>
-</tr>
-<tr>
-<td>address</td>
-<td>varchar(40)</td>
-<td>YES</td>
-<td></td>
-<td>NULL</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>이와 같이 DESC 명령으로 테이블에 어떤 열이 정의되어 있는지 알 수 있다. (DESC는 SQL 명령이 아니다)<br>
-간단하게 표시된 내용에 대한 설명을 아래와 같이 요약하였다.</p>
-<blockquote>
-<p><strong>Filed</strong></p>
-</blockquote>
-<p>열 이름이 표시된다.</p>
-<blockquote>
-<p><strong>Type</strong></p>
-</blockquote>
-<p>해당 열의 '<strong>자료형</strong>’을 나타낸다. intsms Integer(정수)를 의미한다. 괄호 안의 숫자는 최대 길이를 나타내는데, 예를 들어 int(11)은 '11자리의 정수값을 저장할 수 있는 자료형’을 의미한다.</p>
-<blockquote>
-<p><strong>Null</strong></p>
-</blockquote>
-<p>NULL 값을 허용할 것인지 아닌지를 나타내는 <strong>제약사항</strong>으로 Yes로 지정하면 NULL 값을 허용하게 된다.</p>
-<blockquote>
-<p><strong>Key</strong></p>
-</blockquote>
-<p>해당 열이 '키’로 지정되어 있는지를 나타낸다.</p>
-<blockquote>
-<p><strong>Default</strong></p>
-</blockquote>
-<p>그 열에 주어진 ‘기본값’ 즉, 생략했을 경우 적용되는 값이다. 테이블에 행을 추가할 때 열의 데이터 값을 생략하면 이 기본값으로 채워진다.</p>
-<h2 id="2-jaryohyeong"><a href="#2-jaryohyeong" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2자료형"></a> 2.자료형</h2>
-<p>테이블은 하나 이상의 열로 구성되며 DESC 명령으로 그 구조를 참조할 수 있다. 열에는 몇 가지 속성을 지정할 수 있고, 그중 가장 중요한 속성은 <em>자료형</em>이다.</p>
-<h3 id="integer-hyeong"><a href="#integer-hyeong" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#integer-형"></a> INTEGER 형</h3>
-<p>INTEGER 형은 수치형의 하나로 정수값을 저장할 수 있는 자료형이다. 소수점은 포함할 수 없다.(오라클의 경우 NUMBER(P,S) S가 0인 경우와 같다고 볼 수 있다. P는 소숫점을 포함한 전체 자릿수, S는 소수점 자릿수 의미)</p>
-<h3 id="char-hyeong"><a href="#char-hyeong" class="header-anchor">1.2.2. </a><a class="markdownIt-Anchor" href="#char-형"></a> CHAR 형</h3>
-<p>CHAR 형은 문자열형의 하나로 문자열을 저장할 수 있는 자료형이다. 문자열형에서는 열의 최대 길이를 지정해야 한다. CHAR(10)으로 자료형을 지정했을 경우 최대 10문자로 된 문자열을 저장할 수 있으면 11문자로 된 문자열을 저장할 수 없다. 다음으로 설명할 VARCHAR 형은 저장할 문자열의 길이에 맞춰 저장공간을 가변적으로 사용하여 저장한다. 반면 CHAR 형은 언제나 고정된 길이로 데이터가 저장된다. <br><br>
-그에 따라 ‘고정 길이 문자열’ 자료형이라고 한다. CHAR 형에서는 길이가 고정되기 때문에 최대 길이보다 작은 문자열을 저장할 경우 <strong>공백문자</strong>로 나머지를 채운 후 저장한다. (오라클도 동일)</p>
-<h3 id="varchar-hyeong"><a href="#varchar-hyeong" class="header-anchor">1.2.3. </a><a class="markdownIt-Anchor" href="#varchar-형"></a> VARCHAR 형</h3>
-<p>VARCHAR 형 역시 문자열을 저장할 수 있는 자료형이다. 최대 길이를 지정하는 점은 CHAR 형과 같지만 앞서 말한 것 처럼 데이터 크기에 맞춰 저장공간의 크기도 변경된다.<br>
-그에 따라 ‘가변 길이 문자열’ 자료형이라고 한다. (오라클에서는 VARCHAR2(n) : 오라클에도 VARCHAR가 있지만 사용하지 않음)</p>
-<h3 id="date-hyeong"><a href="#date-hyeong" class="header-anchor">1.2.4. </a><a class="markdownIt-Anchor" href="#date-형"></a> DATE 형</h3>
-<p>DATE 형은 날짜값을 저장할 수 있는 자료형이다. 날짜값이란 '2013년3월23일’과 같이 연월일의 데이터를 저장할 수 있는 형이다. (오라클도 동일 오라클은 DATE에 시분초 까지 포함되어 있다)</p>
-<h3 id="time-hyeong"><a href="#time-hyeong" class="header-anchor">1.2.5. </a><a class="markdownIt-Anchor" href="#time-형"></a> TIME 형</h3>
-<p>TIME 형은 시간을 저장할 수 있는 자료형이다. ex) '12시 30분 20초’와 같이 시분초의 데이터를 저장할 수 있는 형이다. <em>문자열형에는 고정 길이와 가변 길이가 있다</em></p>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>02. SQL 데이터베이스 기초 명령어</title>
-    <url>/section-02-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EA%B8%B0%EC%B4%88/</url>
-    <content><![CDATA[<h1 id="select-myeongryeong"><a href="#select-myeongryeong" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#select-명령"></a> SELECT 명령</h1>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM 테이블명</span><br></pre></td></tr></table></figure>
-<h1 id="select-from-teibeulmyeong-silhaeng"><a href="#select-from-teibeulmyeong-silhaeng" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#select-from-테이블명-실행"></a> ‘SELECT * FROM 테이블명’ 실행</h1>
-<p>FROM 사이에는 <strong>스페이스</strong>를 넣어 구분한다. 예를 들어 sample 테이블의 모든 데이터를 조회한다면 아래와 같이 SELECT 명령을 입력해야 한다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>주의</p>
-</blockquote>
-<p>만약 SELECT*FROMsample;과 같이 붙여서 입력하면 에러가 발생한다.<br>
-입력이 끝나면 명령의 마지막을 나타내는 세미콜론(;)을 넣은 뒤 Enter키를 누른다. Enter 키를 누르면 입력한 SQL 명령이 서버에 전달되며 서버는 이를 실행한 후 결과를 반환한다.</p>
-<h1 id="select-myeongryeong-gumun"><a href="#select-myeongryeong-gumun" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#select-명령-구문"></a> SELECT 명령 구문</h1>
-<p>SELECT는 <strong>DML</strong>(Database Manipulation Language)에 속하는 명령으로 SQL에서 자주 사용된다.<br>
-SELECT 명령으로 데이터베이스의 데이터를 읽어올 수 있다. SELECT 명령은 <em>질의</em>나 <em>쿼리</em>라 불리기도 한다.</p>
-<p>지금까지 실행한 SQL 명령을 다시 한 번 살펴보자.</p>
-<p><em>SELECT</em> : 먼저 맨 앞의 SELECT는 SQL 명령의 한 종류로 ‘SELECT 명령을 실행하세요’ 라는 의미이다.<br>
-<em>\</em> : 애스터리스크(*)는 '모든 열(column)'을 의미하는 메타문자이다. (해당 테이블에 *라는 이름의 열이 존재하는 것이 아니다)</p>
-<p><em>FROM</em> : FROM은 처리 대상 테이블을 지정하는 키워드이다.</p>
-<p>SQL 명령은 키워드에 의해 <em>구</em>라는 단위로 나눌 수 있다. 위의 ‘SELECT * FROM sample’ 에서는 크게 SELECT 구와 FROM 구로 나눌 수 있다.</p>
-<h1 id="yeyageowa-deiteobeiseu-gaegcemyeong"><a href="#yeyageowa-deiteobeiseu-gaegcemyeong" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#예약어와-데이터베이스-객체명"></a> 예약어와 데이터베이스 객체명</h1>
-<p>앞의 SELECT 구문에서 sample 테이블의 내용을 확인했었다. 혹시라도 다른 테이블의 내용을 보고 싶은 경우에는 FROM 뒤의 테이블명을 재지정하면 된다.</p>
-<p><em>SELECT * FROM</em>: 예약어<br>
-<em>sample</em> : 테이블명</p>
-<p><em>SELECT</em>와 <em>FROM</em>이 구를 결정하는 키워드이자 <em>예약어</em>이다. sample은 테이블 이름으로, 예제 데이터베이스의 이름이다.<br>
-데이터베이스에는 테이블 외에 다양한 데이터를 저장하거나 관리하는 '어떤 것’을 만들 수 있다. 이것을 <em>데이터베이스 객체</em>라고 부르는데, 예를 들면 '뷰(view)'가 그에 해당한다.<br>
-데이터베이스 객체는 이름을 붙여 관리한다. 같은 이름으로 다른 데이터베이스 객체는 만들 수 없다. (이런 경우 ‘이미 테이블이 정의되어 있다’ 라는 에러가 발생한다)<br>
-통상적으로 데이터베이스 객체명에는 예약어와 동일한 이름을 사용할 수 없다. 가령 'SELECT’라는 이름의 테이블을 만들 수 없다. 이것이 예약어의 유래이다.</p>
-<h1 id="daesomunja-gubyeol"><a href="#daesomunja-gubyeol" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#대소문자-구별"></a> 대소문자 구별</h1>
-<blockquote>
-<p>예약어와 데이터베이스 객체명은 대소문자를 구별하지 않는다.</p>
-</blockquote>
-<p>SQL 명령과 달리 많은 데이터베이스 제품들은 데이터의 대소문자를 구별한다. 단, 설정에 따라 구별하지 않는 경우도 있다. 이 책에서는 알아보기 쉽도록 예약어는 대문자로, 데이터베이스 객체명은 소문자로 표기한다.</p>
-<h2 id="silhaenghan-gyeolgwa-teibeul"><a href="#silhaenghan-gyeolgwa-teibeul" class="header-anchor">5.1. </a><a class="markdownIt-Anchor" href="#실행한-결과-테이블"></a> 실행한 결과 = 테이블</h2>
-<p>SELECT 명령을 실행하면 표 형식의 데이터가 출력된다. 표 형식의 데이터는 <code>행(레코드)와 열(컬럼/필드)</code>로 구성된다. 행은 모두 동일한 형태로 되어 있으며 옆으로 '열(컬럼/필드)'이 나열되는데, 열마다 이름이 지정되어 있다. 각각의 행과 열이 만나는 부분을 '셀’이라고 부른다. 셀에는 하나의 데이터 값이 저장되어 있다.</p>
-<p>열은 하나의 자료형만 가질 수 있다. 그리고 수치형의 열에 문자형의 데이터를 저장할 수 없다. 데이터를 자료형으로 분류할 수 있다. 그리고 열은 하나의 자료형만 가질 수 있다.</p>
-<h2 id="gabsi-eobsneun-deiteo-null"><a href="#gabsi-eobsneun-deiteo-null" class="header-anchor">5.2. </a><a class="markdownIt-Anchor" href="#값이-없는-데이터-null"></a> 값이 없는 데이터 = NULL</h2>
-<p>SELECT의 결과를 잘 살펴보면 셀의 값이 <em>NULL</em>로 표시된 부분이 있다. NULL은 특별한 데이터 값으로 아무것도 저장되어 있지 않은 상태를 의미한다. 다시 말해, NULL이라는 데이터가 저장되어 있는 것이 아닌,<br>
-'아무 것도 저장되어 있지 않은 상태’라는 뜻이다. NULL은 SQL에서 <em>대단히 중요한 개념</em>으로, 자세한 것은 뒤에서 설명한다.  <code>NULL은 데이터가 들어있지 않은 것을 의미하는 특별한 값이다</code></p>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>1. SQL 데이터베이스 개요</title>
-    <url>/section-01-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%99%80sql/</url>
-    <content><![CDATA[<h1 id="1gang-deiteobeiseuwa-sql"><a href="#1gang-deiteobeiseuwa-sql" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#1강-데이터베이스와-sql"></a> 1강. 데이터베이스와 SQL</h1>
-<p>데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 <code>데이터베이스</code>라고 한다. 넓은 의미에서는 '컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다.</p>
-<p>데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든 데이터는 사라져 버린다. 이런 상태에서는 영구적이라 말할 수 없다.  따라서 데이터베이스의 데이터는 하드디스크나 플래시메모리(SSD) 등 비휘발성 저장장치에 저장한다.</p>
-<h2 id="1-dbwa-dbms"><a href="#1-dbwa-dbms" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-db와-dbms"></a> 1. DB와 DBMS</h2>
-<p>데이터베이스는 <code>DB</code>라는 약자로 통용된다. 데이터베이스는 저장장치 내에 정리되어 저장된 데이터의 집합이고, 이를 효율적으로 관리하는 소프트웨어를 <code>데이터베이스 관리 시스템(Database Management System)</code><br>
-약자로 <em>DBMS</em>라 부른다. DBMS가 필요한 이유는 다음과 같다.</p>
-<h3 id="saengsanseong"><a href="#saengsanseong" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#생산성"></a> 생산성</h3>
-<p>시스템 개발 과정에서의 생산성 향상을 도모할 수 있다. 어떤 시스템에서든지 데이터 검색, 추가, 삭제, 갱신과 같은 처리가 이루어지게 된다. 이와 같은 기본 기능을 DBMS가 제공한다. 시스템을 구축할 때<br>
-기본 기능부터 구현하는 것은 비용측면에서 효율적이지 않다.</p>
-<h3 id="gineungseong"><a href="#gineungseong" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#기능성"></a> 기능성</h3>
-<p>DBMS는 데이터베이스를 다루는 기능을 많이 제공한다. 복수 유저의 요청에 대응하거나, 대용량의 데이터를 저장하고 고속으로 검색하는 기능을 제공하기도 한다. 나아가 데이터베이스 관리 기능을 유저가<br>
-확장할 수도 있어 유연하게 시스템을 개발할 수 있다.</p>
-<h3 id="sinroeseong"><a href="#sinroeseong" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#신뢰성"></a> 신뢰성</h3>
-<p>대규모 데이터베이스는 많은 요청에 대응할 수 있도록 만들어져 있다. 이를위해 하드웨어를 여러 대로 구성하여 신뢰성을 높이는 동시에 성능 향상을 꾀하기도 한다. 실제로 일부 DBMS는 컴퓨터 여러 대를 두고, 소프트웨어를 통해 확장성(Scalability)과 부하 분산(load balancing)을 구현한다. 이를 보통 ‘클러스터 구성’ 또는 '스케일 아웃’이라 부른다.</p>
-<p>또한 많은 DBMS가 데이터베이스의 데이터를 다른 저장장치로 내보내거나(export), 반대로 데이터베이스 안에 데이터를 집어넣는 import 기능을 갖췄다. 이때 집어넣기 및 내보내기 기능을 통해 데이터베이스를<br>
-간단하게 백업할 수 있다.</p>
-<h2 id="3-deiteobeiseureul-jojaghaneun-eoneo-sql"><a href="#3-deiteobeiseureul-jojaghaneun-eoneo-sql" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#3-데이터베이스를-조작하는-언어-sql"></a> 3. 데이터베이스를 조작하는 언어 SQL</h2>
-<p>DBMS를 이용하면 간접적으로 데이터베이스를 참조할 수 있고, 혹은 데이터를 추가하거나 삭제, 갱신할 수도 있다. SQL은 IBM이 개발한 SEQUEL이라는 관계형 데이터베이스 조작용 언어를 기반으로 만들어졌다. 현재 ISO등에 의해 표준화가 진행되어, C 언어나 자바와 마찬가지로 표준 언어이다.</p>
-<h3 id="sql-myeongryeongyi-jongryu"><a href="#sql-myeongryeongyi-jongryu" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#-sql-명령의-종류"></a> - SQL 명령의 종류</h3>
-<p>SQL 명령은 다음과 같이 3가지로 나뉠 수 있다.</p>
-<blockquote>
-<p>DML(Data Manipulation Language)</p>
-</blockquote>
-<p><code>데이터베이스에 새롭게 데이터를 CRUD 할 때 사용한다</code>. SQL의 가장 기본이 되는 명령셋(set) 이다.</p>
-<p><em>SELECT</em><br>
-데이터베이스에 들어 있는 데이터를 조회하거나 검색하기 위한 명령어를 말하는 것으로 RETRIEVE 라고도 함</p>
-<p><em>INSERT, UPDATE, DELETE</em><br>
-데이터베이스의 테이블에 들어 있는 데이터에 변형을 가하는 종류(데이터 삽입, 수정, 삭제)의 명령어들을 말함.</p>
-<blockquote>
-<p>DDL(Data Definition Language)</p>
-</blockquote>
-<p><code>데이터를 정의하는 명령어</code>. 데이터베이스는 <code>데이터 베이스 객체(object)</code>라는 데이터 그릇을 이용하여 데이터를 관리하는데, 이 같은 객체를 만들거나 삭제하는 명령어이다.</p>
-<p><em>CREATE, ALTER,DROP,RENAME,TRUNCATE</em><br>
-테이블과 같은 데이터 구조를 정의하는데 사용되는 명령어들로 (생성, 변경, 삭제, 이름변경) 데이터 구조와 관련된 명령어들을 말함.</p>
-<blockquote>
-<p>DCL(Data Control Language)</p>
-</blockquote>
-<p><code>데이터를 제어하는 명령어</code>. DCL에는 트랜잭션을 제어하는 명령과 데이터 접근권한을 제어하는 명령이 포함되어 있다.</p>
-<p><em>GRANT,REVOKE</em><br>
-데이터베이스에 접근하고 객체들을 사용하도록 권한을 주고 회수하는 명령어들을 말함.</p>
-<blockquote>
-<p>TCL(Transaction Control Language)</p>
-</blockquote>
-<p>트랜잭션 제어어라 칭한다.</p>
-<ul>
-<li>COMMIT, ROLLBACK,SAVEPOINT*<br>
-논리적인 작업의 단위를 묶어서 DML에 의해 조작된 결과를 작업단위(트랜잭션) 별로 제어하는 명령어를 말함.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Database</category>
-        <category>SQL</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CleanCode 04 주석</title>
     <url>/CleanCode-20210502-chapter04-%EC%A3%BC%EC%84%9D/</url>
     <content><![CDATA[<p>이번에 살펴볼 파트는 주석파트입니다. 처음에 살펴볼 내용중에서 첫장부터 제게 크게 다가온 명언중 하나는</p>
@@ -7363,6 +5898,74 @@ Output: true</p>
       </tags>
   </entry>
   <entry>
+    <title>Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라</title>
+    <url>/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/</url>
+    <content><![CDATA[<h1 id="igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara"><a href="#igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#익명클래스-보다는-람다를-사용하라"></a> 익명클래스 보다는 람다를 사용하라</h1>
+<p>자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다.</p>
+<p>1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다.<br>
+<code>문자열을 길이순</code>으로 <code>정렬</code>하는데, 정렬을 위한 비교 함수로 <code>익명 클래스</code>로 사용하였습니다.(과거)</p>
+<blockquote>
+<p>익명 클래스의 인스턴스를 함수 객체로 사용합니다.(낡은 기법)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 익명 클래스의 인스턴스를 함수 객체로 사용 - 낡은 기법!!!!</span></span><br><span class="line">Collections.sort(words, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(s1.length(), s2.length());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>전략 패턴처럼, 함수 객체를 사용하는 <code>과거 객체 지향 디자인 패턴</code>에는 <code>익명 클래스</code>면 충분하였습니다. 위의 코드는 <code>Comparator 인터페이스</code>가 <code>정렬</code>을 담당하는 <code>추상전략</code>을 뜻하며, 문자열을 정렬하는 구체적인 전략을 <code>익명 클래스로 구현</code>했습니다.</p>
+<p><code>하지만, 익명클래스 방식은 코드가 너무 길기 때문에 자바는 함수형 프로그래밍에 적합하지 않게 되었습니다.</code></p>
+<blockquote>
+<p>자바 8에서는 어떻게 변화되었을까요?</p>
+</blockquote>
+<p>추상 메서드 하나짜리 인터페이스는 특별한 의미를 인정받아 특별한 대우를 받게 되었습니다. 지금은 함수형 인터페이스라 부르는 이 인터페이스들의 인스턴스를 람다식(lambda expression, 람다)을 사용하여 만들수 있게 된 것입니다. 람다는 함수나 익명 클래스와 개념은 비슷하지만 코드는 훨씬 간결하게 처리할 수 있습니다.</p>
+<blockquote>
+<p>람다식을 함수 객체로 사용(익명 클래스 대체)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 람다식을 함수 객체로 사용 - 익명 클래스 대체</span></span><br><span class="line"><span class="comment">// comment 타입을 명시해야 코드가 더 명확할때마 제외하고는 람다의 모든 매개변수 타입은 생략하자</span></span><br><span class="line">Collections.sort(words, (s1,s2) -&gt; Integer.compare(s1.length(), s2.length()));</span><br></pre></td></tr></table></figure>
+<p>여기서 람다, 매개변수(s1, s2) 반환값 타입은 각각 <code>Comparator&lt;String&gt;, String, int</code> 이지만 코드에서는 언급이 없습니다. 상황에 따라 컴파일러가 타입을 결정하지 못하는 경우가 있는데 그럴때는 프로그래머가 직접 명시를 해야합니다.</p>
+<p><strong>타입을 명시해야 코드가 더 명확할 때만 제외하고는, 람다의 모든 매개변수 타입은 생략하도록 합니다.</strong></p>
+<p>컴파일러가 타입을 추론하는데 필요한 정보는 대부분 제네릭에서 얻기 때문에 컴파일러는 람다의 타입을 추론할 수 없게 되어, 결국 우리가 일일이 명시해야합니다.</p>
+<blockquote>
+<p>비교자 생성 메서드를 사용하여 이 코드를 더 간결하게 만들어봅시다.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Collections.sort(words, comparingInt(String::length));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>더 나아가 자바 8때 List 인터페이스에 추가된 sort 메서드를 이용하면 더욱더 짧아집니다.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">words.sort(comparingInt(String::length));</span><br></pre></td></tr></table></figure>
+<p>람다를 언어 차원에서 지원하면서 기존에는 적합하지 않았던 곳에서도 함수 객체를 실용적으로 사용할 수 있게 되었습니다.</p>
+<p>아이템 34의 Operation 열거타입을 예로 들어봅시다. apply 메서드의 동작이 상수마다 달라야해서 상수별 클래스 몸체를 사용해 각 상수에서 apply 메서드를 재정의합니다.</p>
+<blockquote>
+<p>상수별 클래스 몸체와 데이터를 사용한 열거 타입</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 상수별 클래스 몸체와 데이터를 사용한 열거 타입</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation&#123;</span><br><span class="line"></span><br><span class="line">    PLUS(<span class="string">"+"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    MINUS(<span class="string">"-"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x - y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    TIMES(<span class="string">"*"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x * y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x / y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    Operation(String symbol)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>아이템 34</strong>에서는 상수별 클래스 몸체를 구현하는 방식보다는 <code>열거 타입에 인스턴스 필드를 두는 편이 낫습니다.</code> 람다를 이용하면 후자의 방식, 즉 열거타입의 인스턴스 필드를 이용하는 방식으로 상수별로 다르게 동작하는 코드를 쉽게 구현할 수 있습니다.</p>
+<p>단순히 각 열거 타입의 동작을 람다로 구현해 생성자에 넘기고, 생성자는 이 람다를 인스턴스 필드로 저장해둡니다. 그런 다음 <code>apply 메서드에서 필드에 저장된 람다를 호출하기만 하면 됩니다.</code></p>
+<blockquote>
+<p>함수객체(람다)를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation_lambda&#123;</span><br><span class="line">    PLUS(<span class="string">"+"</span>, (x,y) -&gt; x+y),</span><br><span class="line">    MINUS(<span class="string">"-"</span>, (x,y) -&gt; x-y),</span><br><span class="line">    TIMES(<span class="string">"*"</span>, (x,y) -&gt; x*y),</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>, (x,y) -&gt; x/y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DoubleBinaryOperator op;</span><br><span class="line"></span><br><span class="line">    Operation_lambda(String symbol, DoubleBinaryOperator op)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">        <span class="keyword">this</span>.op = op;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> op.applyAsDouble(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>함수 객체 람다를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입입니다. 열거 타입 상수의 동작을 표현한 람다를 <code>DoubleBinaryOperator 인터페이스</code>변수에 할당하였습니다. <code>java.util.function 패키지가 제공하는 다양한 함수</code> 인터페이스(아이템 44) 중 하나 인수를 받아서 결과를 반환시켜줍니다(double)</p>
+<blockquote>
+<p>핵심 정리</p>
+</blockquote>
+<p>람다 기반 Operation 열거 타입을 보면 상수별 클래스 몸체는 더 이상 사용할 이유가 없다고 느낄지 모르지만, 꼭 그렇지는 않습니다. 메서드나 클래스와 달리 <code>람다는 이름이 없고 문서화도 못한다. 따라서 코드 자체로 동작이 명확히 설명되지 않거나 코드 줄수가 많아지면 람다를 쓰지 말아야합니다</code></p>
+<p><code>람다는 한줄일 때 가장 좋고 길어야 세줄</code> 안에 끝내는게 좋습니다. 열거 타입 생성자 안의 람다는 타입의 인스턴스 멤버에 접근을 할 수 없습니다. 따라서, 상수별 동작을 단 몇줄로 구현하기 어렵거나, <code>인스턴스 필드나 메서드를 사용해야만 하는 상황</code>이라면 <code>상수별 클래스 몸체를 사용</code>해야합니다.</p>
+<p><code>추상클래스의 인스턴스를 만들 때 람다를 쑬 수 없으니, 익명 클래스</code>를 써야합니다. 비슷하게 추상 메서드가 여러 개인 인터페이스의 인스턴스를 만들 때도 익명 클래스를 쓸 수 있습니다.</p>
+<p>마지막으로 람다는 자신을 참조할 수 없습니다. 람다에서의 <code>this 키워드는 바깥 인스턴스</code>를 가리킵니다. 그래서 함수 객체가 자신을 참조해야 한다면 반드시 익명 클래스를 써야합니다. 따라서 람다를 직렬화하는 일은 극히 삼가해야합니다.</p>
+<blockquote>
+<p>요약</p>
+</blockquote>
+<p>자바가 8로 판올림 되면서 작은 함수 객체를 구현하는데 적합한 람다가 도입되었습니다. <code>익명 클래스는(함수형 인터페이스가 아닌) 타입의 인스턴스를 만들 때만 사용해야합니다.</code> 람다는 작은 함수 객체를 아주 쉽게 표현할 수 있어서 함수형 프로그래밍의 지평을 열게 되었습니다.</p>
+<p><a href="https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42" target="_blank" rel="noopener">https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42</a></p>
+]]></content>
+      <categories>
+        <category>Language</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>EffectiveJava3/E</tag>
+        <tag>람다</tag>
+        <tag>익명클래스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Effective Java 3/E Item 43 람다보다는 메서드 참조를 사용하라</title>
     <url>/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/</url>
     <content><![CDATA[<h1 id="ramdabodaneun-meseodeu-camjoreul-sayonghara"><a href="#ramdabodaneun-meseodeu-camjoreul-sayonghara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#람다보다는-메서드-참조를-사용하라"></a> 람다보다는 메서드 참조를 사용하라</h1>
@@ -7470,74 +6073,6 @@ Output: true</p>
         <tag>람다</tag>
         <tag>익명클래스</tag>
         <tag>메서드참조</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라</title>
-    <url>/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/</url>
-    <content><![CDATA[<h1 id="igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara"><a href="#igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#익명클래스-보다는-람다를-사용하라"></a> 익명클래스 보다는 람다를 사용하라</h1>
-<p>자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다.</p>
-<p>1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다.<br>
-<code>문자열을 길이순</code>으로 <code>정렬</code>하는데, 정렬을 위한 비교 함수로 <code>익명 클래스</code>로 사용하였습니다.(과거)</p>
-<blockquote>
-<p>익명 클래스의 인스턴스를 함수 객체로 사용합니다.(낡은 기법)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 익명 클래스의 인스턴스를 함수 객체로 사용 - 낡은 기법!!!!</span></span><br><span class="line">Collections.sort(words, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(s1.length(), s2.length());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>전략 패턴처럼, 함수 객체를 사용하는 <code>과거 객체 지향 디자인 패턴</code>에는 <code>익명 클래스</code>면 충분하였습니다. 위의 코드는 <code>Comparator 인터페이스</code>가 <code>정렬</code>을 담당하는 <code>추상전략</code>을 뜻하며, 문자열을 정렬하는 구체적인 전략을 <code>익명 클래스로 구현</code>했습니다.</p>
-<p><code>하지만, 익명클래스 방식은 코드가 너무 길기 때문에 자바는 함수형 프로그래밍에 적합하지 않게 되었습니다.</code></p>
-<blockquote>
-<p>자바 8에서는 어떻게 변화되었을까요?</p>
-</blockquote>
-<p>추상 메서드 하나짜리 인터페이스는 특별한 의미를 인정받아 특별한 대우를 받게 되었습니다. 지금은 함수형 인터페이스라 부르는 이 인터페이스들의 인스턴스를 람다식(lambda expression, 람다)을 사용하여 만들수 있게 된 것입니다. 람다는 함수나 익명 클래스와 개념은 비슷하지만 코드는 훨씬 간결하게 처리할 수 있습니다.</p>
-<blockquote>
-<p>람다식을 함수 객체로 사용(익명 클래스 대체)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 람다식을 함수 객체로 사용 - 익명 클래스 대체</span></span><br><span class="line"><span class="comment">// comment 타입을 명시해야 코드가 더 명확할때마 제외하고는 람다의 모든 매개변수 타입은 생략하자</span></span><br><span class="line">Collections.sort(words, (s1,s2) -&gt; Integer.compare(s1.length(), s2.length()));</span><br></pre></td></tr></table></figure>
-<p>여기서 람다, 매개변수(s1, s2) 반환값 타입은 각각 <code>Comparator&lt;String&gt;, String, int</code> 이지만 코드에서는 언급이 없습니다. 상황에 따라 컴파일러가 타입을 결정하지 못하는 경우가 있는데 그럴때는 프로그래머가 직접 명시를 해야합니다.</p>
-<p><strong>타입을 명시해야 코드가 더 명확할 때만 제외하고는, 람다의 모든 매개변수 타입은 생략하도록 합니다.</strong></p>
-<p>컴파일러가 타입을 추론하는데 필요한 정보는 대부분 제네릭에서 얻기 때문에 컴파일러는 람다의 타입을 추론할 수 없게 되어, 결국 우리가 일일이 명시해야합니다.</p>
-<blockquote>
-<p>비교자 생성 메서드를 사용하여 이 코드를 더 간결하게 만들어봅시다.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Collections.sort(words, comparingInt(String::length));</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>더 나아가 자바 8때 List 인터페이스에 추가된 sort 메서드를 이용하면 더욱더 짧아집니다.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">words.sort(comparingInt(String::length));</span><br></pre></td></tr></table></figure>
-<p>람다를 언어 차원에서 지원하면서 기존에는 적합하지 않았던 곳에서도 함수 객체를 실용적으로 사용할 수 있게 되었습니다.</p>
-<p>아이템 34의 Operation 열거타입을 예로 들어봅시다. apply 메서드의 동작이 상수마다 달라야해서 상수별 클래스 몸체를 사용해 각 상수에서 apply 메서드를 재정의합니다.</p>
-<blockquote>
-<p>상수별 클래스 몸체와 데이터를 사용한 열거 타입</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 상수별 클래스 몸체와 데이터를 사용한 열거 타입</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation&#123;</span><br><span class="line"></span><br><span class="line">    PLUS(<span class="string">"+"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    MINUS(<span class="string">"-"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x - y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    TIMES(<span class="string">"*"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x * y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x / y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    Operation(String symbol)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>아이템 34</strong>에서는 상수별 클래스 몸체를 구현하는 방식보다는 <code>열거 타입에 인스턴스 필드를 두는 편이 낫습니다.</code> 람다를 이용하면 후자의 방식, 즉 열거타입의 인스턴스 필드를 이용하는 방식으로 상수별로 다르게 동작하는 코드를 쉽게 구현할 수 있습니다.</p>
-<p>단순히 각 열거 타입의 동작을 람다로 구현해 생성자에 넘기고, 생성자는 이 람다를 인스턴스 필드로 저장해둡니다. 그런 다음 <code>apply 메서드에서 필드에 저장된 람다를 호출하기만 하면 됩니다.</code></p>
-<blockquote>
-<p>함수객체(람다)를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation_lambda&#123;</span><br><span class="line">    PLUS(<span class="string">"+"</span>, (x,y) -&gt; x+y),</span><br><span class="line">    MINUS(<span class="string">"-"</span>, (x,y) -&gt; x-y),</span><br><span class="line">    TIMES(<span class="string">"*"</span>, (x,y) -&gt; x*y),</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>, (x,y) -&gt; x/y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DoubleBinaryOperator op;</span><br><span class="line"></span><br><span class="line">    Operation_lambda(String symbol, DoubleBinaryOperator op)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">        <span class="keyword">this</span>.op = op;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> op.applyAsDouble(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>함수 객체 람다를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입입니다. 열거 타입 상수의 동작을 표현한 람다를 <code>DoubleBinaryOperator 인터페이스</code>변수에 할당하였습니다. <code>java.util.function 패키지가 제공하는 다양한 함수</code> 인터페이스(아이템 44) 중 하나 인수를 받아서 결과를 반환시켜줍니다(double)</p>
-<blockquote>
-<p>핵심 정리</p>
-</blockquote>
-<p>람다 기반 Operation 열거 타입을 보면 상수별 클래스 몸체는 더 이상 사용할 이유가 없다고 느낄지 모르지만, 꼭 그렇지는 않습니다. 메서드나 클래스와 달리 <code>람다는 이름이 없고 문서화도 못한다. 따라서 코드 자체로 동작이 명확히 설명되지 않거나 코드 줄수가 많아지면 람다를 쓰지 말아야합니다</code></p>
-<p><code>람다는 한줄일 때 가장 좋고 길어야 세줄</code> 안에 끝내는게 좋습니다. 열거 타입 생성자 안의 람다는 타입의 인스턴스 멤버에 접근을 할 수 없습니다. 따라서, 상수별 동작을 단 몇줄로 구현하기 어렵거나, <code>인스턴스 필드나 메서드를 사용해야만 하는 상황</code>이라면 <code>상수별 클래스 몸체를 사용</code>해야합니다.</p>
-<p><code>추상클래스의 인스턴스를 만들 때 람다를 쑬 수 없으니, 익명 클래스</code>를 써야합니다. 비슷하게 추상 메서드가 여러 개인 인터페이스의 인스턴스를 만들 때도 익명 클래스를 쓸 수 있습니다.</p>
-<p>마지막으로 람다는 자신을 참조할 수 없습니다. 람다에서의 <code>this 키워드는 바깥 인스턴스</code>를 가리킵니다. 그래서 함수 객체가 자신을 참조해야 한다면 반드시 익명 클래스를 써야합니다. 따라서 람다를 직렬화하는 일은 극히 삼가해야합니다.</p>
-<blockquote>
-<p>요약</p>
-</blockquote>
-<p>자바가 8로 판올림 되면서 작은 함수 객체를 구현하는데 적합한 람다가 도입되었습니다. <code>익명 클래스는(함수형 인터페이스가 아닌) 타입의 인스턴스를 만들 때만 사용해야합니다.</code> 람다는 작은 함수 객체를 아주 쉽게 표현할 수 있어서 함수형 프로그래밍의 지평을 열게 되었습니다.</p>
-<p><a href="https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42" target="_blank" rel="noopener">https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42</a></p>
-]]></content>
-      <categories>
-        <category>Language</category>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>EffectiveJava3/E</tag>
-        <tag>람다</tag>
-        <tag>익명클래스</tag>
       </tags>
   </entry>
   <entry>
@@ -11196,6 +9731,1471 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
       </tags>
   </entry>
   <entry>
+    <title>13. SQL CASE문과 NULL 처리</title>
+    <url>/section-13-sql-case%EB%AC%B8/</url>
+    <content><![CDATA[<h1 id="13-sql-casemungwa-null-ceori"><a href="#13-sql-casemungwa-null-ceori" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#13-sql-case문과-null-처리"></a> 13. SQL CASE문과 NULL 처리</h1>
+<blockquote>
+<p>임의의 조건에 따라서 독자적으로 변환 처리를 지정해서 데이터를 변환하고 싶을 때 CASE문을 사용할 수 있다.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE WHEN 조건식1 THEN 식1   </span><br><span class="line">  [WHEN 조건식2 THEN 식2...]   </span><br><span class="line">  [ELSE 식3]   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<p>예를 들어, <strong>NULL값을 0으로 간주해서 계산하고 싶을 때는 어떻게 해야 할까?</strong><br>
+NULL값으로 연산한 결과는 모두 NULL이 되는데?<br>
+이 경우에 <strong>CASE문</strong>을 이용해서 처리할 수 있다.</p>
+<p>RDBMS에서는 사용자가 함수를 작성할 수 있다.<br>
+간단한 처리의 경우에는 사용자 정의 함수를 작성하지 않고 CASE문으로 처리할 수 있다.</p>
+<p><code>WHEN절</code>: 참과 거짓을 반환하는 조건식을 적어준다.<br>
+해당 조건을 만족해서 참이 되는 경우, THEN절에 있는 식이 처리된다.<br>
+이때 WHEN과 THEN을 한데 조합해 지정할 수 있다.<br>
+WHEN절의 조건식을 차례로 평가해 나가게 되는데,<br>
+가장 먼저 조건을 만족한 WHEN절과 대응하는 THEN절 식의 결과를 CASE문의 결과값으로 반환한다.</p>
+<p>만약, 그 어떤 조건식도 만족하지 못할 경우에는 ELSE절의 식이 CASE문의 결과값으로 반환된다.<br>
+<code>ELSE절</code>은 생략 가능하고 생략했을 경우에는 기본값으로 <strong>ELSE NULL</strong>로 처리된다.</p>
+<h3 id="1-casemuneul-iyonghayeo-nullgabseul-0euro-byeonhwanhagi"><a href="#1-casemuneul-iyonghayeo-nullgabseul-0euro-byeonhwanhagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-case문을-이용하여-null값을-0으로-변환하기"></a> 1) CASE문을 이용하여 NULL값을 0으로 변환하기</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT column, CASE WHEN column IS NULL THEN 0 ELSE column END &quot;column(null=0)&quot; </span><br><span class="line">FROM table;</span><br></pre></td></tr></table></figure>
+<p>column값이 NULL일 때 WHEN column IS NULL은 참이 되므로<br>
+CASE문은 THEN절의 ‘0’을 반환한다.<br>
+NULL이 아닌 경우에는 ELSE절의 <code>column</code>, 즉 column의 값을 반환한다.</p>
+<h3 id="2-coalesce"><a href="#2-coalesce" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-coalesce"></a> 2) COALESCE</h3>
+<p><strong>NULL값을 변환하는 경우에는 COALESCE 함수를 사용하는 편이 더 쉬울 수 있다</strong>.<br>
+위의 CASE문을 이용해 NULL값을 0으로 변환하는 예제를 COALESCE 함수를 이용하면<br>
+아래와 같이 바꿀 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, <span class="keyword">COALESCE</span>(<span class="keyword">column</span>, <span class="number">0</span>) <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br></pre></td></tr></table></figure>
+<p>COALESCE 함수는 여러 개의 인수를 지정할 수 있다. 주어진 인수 가운데 NULL이 아닌 값에 대해서는 가장 먼저 지정된 인수의 값을 반환한다.<br>
+앞의 예문은 column이 NULL이 아니면 column값을 그대로 출력하고, 그렇지 않으면(column이 NULL이면) 0을 출력한다.</p>
+<h1 id="2-ddo-hanayi-casemun"><a href="#2-ddo-hanayi-casemun" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#2-또-하나의-case문"></a> 2. 또 하나의 CASE문</h1>
+<p>숫자로 이루어진 코드를 알아보기 더 쉽게 문자열로 변환하고 싶은 경우 CASE문을 많이 사용한다.<br>
+수치 데이터를 문자화하는 것을 <code>디코드</code>라고 부르고, 반대로 문자를 수치화하는 것을 <code>인코드</code>라고 부른다.</p>
+<h2 id="1-dansun-casero-seongbyeol-kodeureul-namja-yeojaro-byeonhwanhagi"><a href="#1-dansun-casero-seongbyeol-kodeureul-namja-yeojaro-byeonhwanhagi" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#1단순-case로-성별-코드를-남자-여자로-변환하기"></a> 1)단순 CASE로 성별 코드를 남자, 여자로 변환하기</h2>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">my sql&gt; SELECT column명 AS "코드",</span><br><span class="line">CASE column명   </span><br><span class="line">  WHEN 1 THEN '남자'   </span><br><span class="line">  WHEN 2 THEN '여자'   </span><br><span class="line">  ELSE '미지정'   </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"성별"</span> <span class="keyword">FROM</span> <span class="keyword">table</span>명;</span><br></pre></td></tr></table></figure>
+<p>단순 CASE문에서 CASE 뒤에는 대상을 적고 WHEN 뒤에는 값을 적는다.</p>
+<h1 id="3-casereul-sayonghal-gyeongu-juyisahang"><a href="#3-casereul-sayonghal-gyeongu-juyisahang" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#3-case를-사용할-경우-주의사항"></a> 3. CASE를 사용할 경우 주의사항</h1>
+<h2 id="1-else-saengryag"><a href="#1-else-saengryag" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#1-else-생략"></a> 1) ELSE 생략</h2>
+<p>CASE문에서 ELSE는 생략할 경우,<code>ELSE NULL</code>이 되는 것에 주의하자. 대응되는 WHEN이 하나도 없는 경우 ELSE절이 사용된다.<br>
+이때, ELSE를 생략한 경우 NULL이 반환되게 된다. <code>CASE문의 ELSE는 생략하지 않는 편이 낫다.</code></p>
+<h2 id="2-whene-null-jijeonghagi"><a href="#2-whene-null-jijeonghagi" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#2-when에-null-지정하기"></a> 2) WHEN에 NULL 지정하기</h2>
+<p>여기에서 데이터가 NULL인 경우를 고려해서 WHEN NULL THEN ‘데이터 없음’과 같이 지정해도 문법적으로는 문제가 없지만 정상적으로 처리되지 않는다.</p>
+<h3 id="dansun-casemuneseo-whenjeole-null-jijeonghagi"><a href="#dansun-casemuneseo-whenjeole-null-jijeonghagi" class="header-anchor">3.2.1. </a><a class="markdownIt-Anchor" href="#단순-case문에서-when절에-null-지정하기"></a> 단순 CASE문에서 WHEN절에 NULL 지정하기</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE a   </span><br><span class="line">  WHEN 1 THEN &apos;남자&apos;   </span><br><span class="line">  WHEN 2 THEN &apos;여자&apos;   </span><br><span class="line">  WHEN NULL THEN &apos;데이터 없음&apos;   </span><br><span class="line">  ELSE &apos;미지정&apos;   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<p>이 예제에서 조건식이 처리되는 순서는 아래와 같다.</p>
+<p>a = 1<br>
+a = 2<br>
+a = NULL</p>
+<p>그런데 문제는 비교 연산자 <code>=로는 NULL값과 같은지 아니지를 비교할 수 없다는 것</code>이다. 따라서 a열의 값이 NULL이라고 해도 a = NULL은 참이 되지 않는다.<br>
+즉, ‘데이터 없음’ 대신 ELSE절에 있는 ‘미지정’이라는 결과값이 나온다. 이때 NULL값인지 아닌지를 판정하기 위해서는 IS NULL을 사용한다.<br>
+다만, 단순 CASE문은 특성상 =연산자로 비교하는 만큼, NULL값인지를 판정하기 위해서는 검색 CASE문을 사용해야 한다.</p>
+<h3 id="geomsaeg-casemuneuro-null-jijeonghagi"><a href="#geomsaeg-casemuneuro-null-jijeonghagi" class="header-anchor">3.2.2. </a><a class="markdownIt-Anchor" href="#검색-case문으로-null-지정하기"></a> 검색 CASE문으로 NULL 지정하기</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CASE   </span><br><span class="line">  WHEN a = 1 THEN &apos;남자&apos;   </span><br><span class="line">  WHEN a = 2 THEN &apos;여자&apos;   </span><br><span class="line">  WHEN a IS NULL THEN &apos;데이터 없음&apos;   </span><br><span class="line">  ELSE &apos;미지정&apos;   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+<p>단순 CASE문으로는 NULL값을 비교할 수 없다!</p>
+<ol start="3">
+<li>DECODE NVL</li>
+</ol>
+<p>Oracle에는 디코드를 수행하는 DECODE함수가 내장되어 있어서 CASE문과 같은 용도로 사용할 수 있다.<br>
+단, DECODE 함수는 Oracle에서만 지원하는 함수인 만큼 다른 데이터베이스 제품에서는 사용할 수 없다.</p>
+<p>NULL값을 변환하는 함수도 있는데, Oracle에서는 NVL 함수, SQL Server에서는 ISNULL 함수가 이에 해당한다.<br>
+다만, 이 함수들은 특정 데이터베이스에 국한된 함수이기 때문에 NULL값을 변환할 때는 표준 SQL로 지정되어 있는 <code>COALESCE</code>함수를 사용한다.</p>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>12. SQL 날짜 연산</title>
+    <url>/section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/</url>
+    <content><![CDATA[<h1 id="12-sql-naljja-yeonsan"><a href="#12-sql-naljja-yeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#12-sql-날짜-연산"></a> 12. SQL 날짜 연산</h1>
+<h2 id="1-siseutem-naljja-hwaginhagi"><a href="#1-siseutem-naljja-hwaginhagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-시스템-날짜-확인하기"></a> 1. 시스템 날짜 확인하기</h2>
+<p>CURRENT-TIMESTAMP로 시스템 날짜 확인</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CURRENT_TIMESTAMP</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="2-naljja-seosig"><a href="#2-naljja-seosig" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-날짜-서식"></a> 2. 날짜 서식</h2>
+<p>날짜 데이터를 데이터베이스에 저징할 경우 CURRENT TIMESTAMP를 사용해 시스템 상의 날짜를 저장할 수 있습니다.<br>
+다만 임의의 날짜를 저장하고 싶을 경우에는 직접 날짜 데이터를 지정해야 합니다</p>
+<p>oracle의 경우 TO_DATE 함수를 사용해 문자열 데이터를 날짜형 데이터로 변환할 수 있으며 서식 또한 별도로 지정할 수 있습니다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">TO_DATE ( '2014/01 /25 ' , 'YYYY/MM/DD')</span><br></pre></td></tr></table></figure>
+<p>반대로 날짜형 데이터를 서식에 맞춰 변환해 문자열 데이터로 출력하는 함수도 존재합니다. oracle의 경우 TO_CHAR 함수가 그에 해딩합니다</p>
+<h2 id="3-naljjayi-deossemgwa-bbaelsem"><a href="#3-naljjayi-deossemgwa-bbaelsem" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-날짜의-덧셈과-뺄셈"></a> 3. 날짜의 덧셈과 뺄셈</h2>
+<p>1일 후를 계산하고 싶다면 a +1 DAY 라는 식으로 계산할 수 있습니다. 1일 전이라면 a - 1 DAY로 하면 됩니다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CURRENIDATE + <span class="built_in">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>;</span><br></pre></td></tr></table></figure>
+<p>날짜형 간의 뺄셈<br>
+ex) 2014-02-28에서 2014-01-01을 뺄때</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">DATEDIFF('2014=<span class="comment">--02-28', '2014-01-01')</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>11. SQL 문자열 연산</title>
+    <url>/section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/</url>
+    <content><![CDATA[<h1 id="11-munjayeol-yeonsan"><a href="#11-munjayeol-yeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#11-문자열-연산"></a> 11. 문자열 연산</h1>
+<h2 id="1-munjayeol-gyeolhab"><a href="#1-munjayeol-gyeolhab" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-문자열-결합"></a> 1. 문자열 결합</h2>
+<ul>
+<li>문자열 결합 사례</li>
+</ul>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">'ABC' || '1234' -&gt; 'ABC1234'</span><br></pre></td></tr></table></figure>
+<ul>
+<li>데이터베이스별 문자열 결합의 차이</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>연산자/함수</th>
+<th>연산</th>
+<th>DB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>문자열결합</td>
+<td>SQL Server</td>
+</tr>
+<tr>
+<td>||</td>
+<td>문자열결합</td>
+<td>Oracle, PostgreSQL</td>
+</tr>
+<tr>
+<td>CONCAT</td>
+<td>문자열결합</td>
+<td>Mysql</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>문자열 결합 예제</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sample35;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(quantity, unit) <span class="keyword">from</span> sample35;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>unit열은 문자열형이고, quantity 열은 INTEGER행의 열입니다.</li>
+<li>문자열 결합시 <code>Mysql</code>에서는 <code>CONCAT</code>을 사용합니다. <code>Oracle은 문자열 결합 ||</code></li>
+</ul>
+<h2 id="2-substring-hamsu"><a href="#2-substring-hamsu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-substring-함수"></a> 2 SUBSTRING 함수</h2>
+<ul>
+<li>정의</li>
+</ul>
+<p>문자열의 일부분을 계산해서 반환해주는 함수</p>
+<ul>
+<li>SUBSTRING 함수 예시</li>
+</ul>
+<p>블로그 시스템 업로드 특정 데이터 파싱<br>
+날짜 데이터 포맷 형식의 YYYYMMDD 문자열 데이터 파싱(YYYY, MM, DD)</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">SUBSTRING('20140125001',1,4) -&gt; '2014'앞 4자리(년) 추출</span><br><span class="line"></span><br><span class="line">SUBSTRING('20140125001',5,2) -&gt; '01' 5째 자리부터 2자리(월) 추출</span><br></pre></td></tr></table></figure>
+<h2 id="3-trim-hamsu"><a href="#3-trim-hamsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-trim-함수"></a> 3 TRIM 함수</h2>
+<ul>
+<li>정의</li>
+</ul>
+<p>문자열의 앞뒤로 여분의 스페이스가 있을 경우 공백 제거 함수입니다. 그러나, 문자열 도중에 존재하는 스페이스는 제거되지 않습니다.<br>
+고정길이 문자열에 많이 사용하는 함수(CHAR 문자열형)<br>
+<code>12 45</code> 와 같은 경우를 예를 들 수 있습니다.</p>
+<ul>
+<li>TRIM 함수 예시</li>
+</ul>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">TRIM('ABC    ') -&gt; 'ABC'</span><br></pre></td></tr></table></figure>
+<h2 id="4-character-length-hamsu"><a href="#4-character-length-hamsu" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-character_length-함수"></a> 4 CHARACTER_LENGTH 함수</h2>
+<ul>
+<li>정의</li>
+</ul>
+<p>문자열의 길이를 계산해 돌려주는 함수입니다. VARCHAR형의 문자열은 가변 길이이므로 길이가 서로 다릅니다.<br>
+이에 따라 <code>CHARACTER_LENGTH</code> 함수를 사용하면 문자열의 길이를 계산할 수 있습니다.<br>
+<code>CHARACTER_LENGTH → CHAR_LENGTH</code>로 함수를 줄여서 사용도 가능합니다.</p>
+<ul>
+<li>OCTET_LENGTH 함수</li>
+</ul>
+<p>문자열의 길이를 바이트 단위로 계산해주는 함수</p>
+<ul>
+<li>문자열 데이터의 특징</li>
+<li>데이터단위는 <code>바이트</code> 단위이며 하나의 데이터가 몇 바이트의 저장공간을 필요로 하는지는 <code>인코드 방식</code> or <code>인코딩 방식</code> 에 따라 결정됩니다.</li>
+<li>즉, 문자를 수치화(인코딩) 하는 방식에 따라서 저장공간의 크기가 달라질 수 있습니다.</li>
+</ul>
+<p>예) 한글 2byte, 알파벳 1byte</p>
+<ul>
+<li>간혹 문자세트(Character set)에 따라 길이가 문자 수로 간주될 수도 있습니다.</li>
+<li>문자 세트(character set)</li>
+<li><code>알파벳 반각문자, 한글 전각문자</code></li>
+<li>반각문자는 전각문자 폭의 절반이며 저장용량 또한 전각문자쪽이 더 크다. 반각의 알파벳이나 숫자의 기호(ASCII 문자)라고 일컫음.</li>
+<li>한글은 <code>EUC-KR, UTF-8</code>등의 <code>인코딩 방식</code>을 사용한다.</li>
+<li>즉, RDBMS에서는 이러한 것들을 <code>문자세트</code>라고 부릅니다.</li>
+<li>CHAR_LENGTH() 함수는 ASCII 문자든 <code>문자 수</code>로 계산되기때문에 사용하는데 큰 지장이 없다. 하지만, OCTET_LENGTH() 함수의 경우 문자수가 아닌 <code>바이트 단위</code>로 길이를 <code>계산</code>하므로 주의가 필요합니다.</li>
+<li>문자세트에서 문자수와 바이트 수</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>문자세트</th>
+<th>문자수</th>
+<th>바이트 수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EUC-KR</td>
+<td>12</td>
+<td>19</td>
+</tr>
+<tr>
+<td>UTF-8</td>
+<td>12</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>EUC-KR ASCII 문자는 1바이트 한글은 2바이트의 용량</li>
+<li>UTF-8에서는 ASCII 문자는 1바이트, 한글은 3바이트의 용량</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>10. SQL 사칙연산</title>
+    <url>/section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/</url>
+    <content><![CDATA[<h1 id="10-sacigyeonsan"><a href="#10-sacigyeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#10-사칙연산"></a> 10. 사칙연산</h1>
+<h2 id="1-sacigyeonsan"><a href="#1-sacigyeonsan" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1사칙연산"></a> 1.사칙연산</h2>
+<table>
+<thead>
+<tr>
+<th>연산자</th>
+<th>연산</th>
+<th>예</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>덧셈(가산)</td>
+<td>1+2-&gt;3</td>
+</tr>
+<tr>
+<td>-</td>
+<td>뺄셈(감산)</td>
+<td>1-2-&gt;-1</td>
+</tr>
+<tr>
+<td>*</td>
+<td>곱셈(승산)</td>
+<td>1*2-&gt;2</td>
+</tr>
+<tr>
+<td>/</td>
+<td>나눗셈(제산)</td>
+<td>1/2-&gt;05</td>
+</tr>
+<tr>
+<td>%</td>
+<td>나머지</td>
+<td>1%2-&gt;1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>연산자 우선순위</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>우선순위</th>
+<th>연산자</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>*/%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>±</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>산술 연산자는 곱셈,나눗셈,나머지 그룹과 덧셈,뺄셈 그룹으로 나뉩니다.</p>
+</li>
+<li>
+<p>계산순서는 연산자에 따라 왼쪽에서 오른쪽으로 진행합니다. 우선순위가 같은 연산자들 끼리 연산하는 경우 문제가 되지 않지만 우선순위가 다른 연산자들이 섞여있는 경우는 <code>우선순위가 더 높은쪽</code>으로 계산합니다.</p>
+</li>
+<li>
+<p>우선순위가 같은 경우</p>
+</li>
+</ul>
+<pre class="highlight"><code class="sql">1-2+3=2 (우선순위가 같다면 왼쪽에서 오른쪽으로 계산합니다.)    
+</code></pre>
+<ul>
+<li>우선순위가 다른 경우</li>
+</ul>
+<pre class="highlight"><code class="sql">1+2*3=7 (+보다 *의 우선순위가 높습니다.)    
+</code></pre>
+<h2 id="2-selectguro-yeonsanhagi"><a href="#2-selectguro-yeonsanhagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2select구로-연산하기"></a> 2.select구로 연산하기</h2>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> 식<span class="number">1</span>, 식<span class="number">2</span> ... <span class="keyword">from</span> 테이블명    
+</code></pre>
+<ul>
+<li>이 식은 <code>열명, 연산자, 상수</code>로 구성</li>
+<li>가격과 수량으로 금액을 계산하는 경우<br>
+주문금액 = 단가 * 개수</li>
+</ul>
+<p>예) 100원 상품 10개 주문 상품금액 1000원</p>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">from</span> sample34    
+</code></pre>
+<h2 id="3-yeolyi-byeolmyeong"><a href="#3-yeolyi-byeolmyeong" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-열의-별명"></a> 3. 열의 별명</h2>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
+</code></pre>
+<ul>
+<li>열의 별명을 붙일때는 예약어 <code>AS</code> 를 사용한다. AS의 약어는 에일리어스(alias)입니다.</li>
+<li>별명은 중복이 되지 않도록 처리 한다.</li>
+<li>AS 예약어 별명은 <code>영어, 숫자, 한글</code> 등으로 지정 가능합니다.</li>
+<li>단, 한글로 지정하는경우 더블쿼트 <code>&quot;&quot;</code> 를 지정해서 사용합니다</li>
+<li>다음과 같이 쓸 수 있습니다.</li>
+</ul>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> price * quantity <span class="string">"금액"</span> <span class="keyword">from</span> sample34    
+</code></pre>
+<p>이 룰은 ASCII 문자 이외의 것을 포함할 경우 <code>더블쿼트</code>로 둘러싸서 지정합니다.</p>
+<ul>
+<li>문자열 상수는 <code>' '</code> 싱글쿼트로 감싸주고, 데이터베이스 객체명은 <code>&quot; &quot;</code> 더블쿼트로 감싸줍니다.</li>
+</ul>
+<pre class="highlight"><code class="sql">문자열 상수 'ABC', 'KGH' -&gt; 싱글 쿼트    
+데이터베이스 객체명 "sample21" "sample34" -&gt; 더블쿼트    
+</code></pre>
+<ul>
+<li>예약어 같은 경우는 별명을 지정해서 사용할 수 없는데, 그래도 사용해야한다면 <code>&quot; &quot;</code> 더블쿼트를 사용하면 가능합니다.</li>
+</ul>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> price * quantity <span class="keyword">AS</span> <span class="keyword">select</span> <span class="keyword">from</span> sample34; (예약어 지정 X)    
+<span class="keyword">select</span> price * quantity <span class="keyword">AS</span> <span class="string">"select"</span> <span class="keyword">from</span> sample34; (예약어 지정 O)    
+</code></pre>
+<ul>
+<li>숫자의 경우도 예약어와 겹칠때와 마찬가지로 <code>&quot; &quot;</code> 더블쿼트를 사용하면 피할 수 있습니다.</li>
+<li>오라클 기준으로 이름을 지정하는 할 수 없습니다. 이에 따라 <code>숫자로 객체명이 시작되지 않도록 합니다.</code>(단, mysql에서는 숫자로 시작하는 객체명이 허용됩니다.)</li>
+</ul>
+<h2 id="4-where-gueseo-yeonsanhagi"><a href="#4-where-gueseo-yeonsanhagi" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-where-구에서-연산하기"></a> 4. where 구에서 연산하기</h2>
+<ul>
+<li>where 구에서 <code>가격 * 수량</code> 금액을 계산하여 <code>2000원 이상</code>에 해당하는 행을 검색하는 쿼리</li>
+</ul>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34;    
+<span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
+<span class="keyword">where</span> price * quantity &gt;= <span class="number">2000</span>;    
+</code></pre>
+<ul>
+<li>price * quantity 대신에 amount를 사용하면 어떻게 될까요?</li>
+</ul>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
+<span class="keyword">where</span> amount &gt;= <span class="number">2000</span>;    
+</code></pre>
+<ul>
+<li>AS 를 써서 별명을 지어줬으니 에러가 발생하지 않을까? 라는 생각을 할 수도 있습니다. 하지만, amount가 존재하지 않는다라는 에러가 발생하게 됩니다.</li>
+<li>데이터베이스 처리순서는 <code>(where구 → select구)</code> 의 순서로 진행됩니다. 즉, where 구의 처리는 select구보다 선행되므로 where 구에서 사용한 별칭을 인식하지 못하게 됩니다.</li>
+<li>다시 말해, <code>where amount &gt;= 2000;</code> 를 실행하고 나서 <code>select *, price * quantity AS amount from sample34</code> 를 실행하기 때문에 amount를 인식하지 못하게 되는 상황이 발생하게 됩니다.</li>
+<li>표준 SQL에서는 내부처리 순서가 따로 정해져 있지 않습니다.</li>
+</ul>
+<h2 id="5-null-gabsyi-yeonsan"><a href="#5-null-gabsyi-yeonsan" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#5-null-값의-연산"></a> 5. NULL 값의 연산</h2>
+<ul>
+<li>
+<p>만약 <code>NULL값</code>을 이용해 <code>NULL+1</code> 과 같은 연산을 사용하면 결과는 어떻게 될까요?</p>
+</li>
+<li>
+<p>어느 정도 짐작을 하셨겠지만, SQL에서는 NULL값을 0으로 인식하지 않습니다. 잘못 생각한 경우라면 NULL값을 1로 생각하여 <code>1</code> 이라는 결과를 얻을 수 있다고 생각하셨을 수도 있습니다.</p>
+</li>
+<li>
+<p>결과적으로, <code>NULL+1</code> 은 1이 아닌 <code>NULL</code> 입니다.</p>
+</li>
+<li>
+<p>다음 연산결과도 같은 결과를 나타냅니다.</p>
+</li>
+</ul>
+<pre class="highlight"><code class="sql">NULL+1    
+1+NULL    
+1+2*NULL    
+1/NULL    
+</code></pre>
+<p>NULL은 0으로 처리 되지 않고, 0을 1로 나누면 <code>'division by zero'</code> 라는 에러를 나타내게 할 것입니다.</p>
+<p>하지만, 1/NULL의 경우는 NULL이 0으로 처리 되지 않아 에러가 발생하지 않고 <code>NULL</code> 의 값을 나타내게 될 것입니다.</p>
+<h2 id="6-order-bygueseo-yeonsanhagi"><a href="#6-order-bygueseo-yeonsanhagi" class="header-anchor">1.6. </a><a class="markdownIt-Anchor" href="#6-order-by구에서-연산하기"></a> 6. order by구에서 연산하기</h2>
+<ul>
+<li>금액을 오름차순, 내림차순을 구현하기 위해서는 어떠한  예약어를 사용하면 될까요?</li>
+</ul>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34;    
+<span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34 <span class="keyword">order</span> <span class="keyword">by</span> price * quantity <span class="keyword">DESC</span>;    
+</code></pre>
+<ul>
+<li>order by구를 사용하고 옵션으로 <code>DESC(descending)</code>키워드를 사용하면 <code>내림차순 정렬</code>이 되는것을 볼 수 있습니다. <code>오름차순(ascending)</code> 정렬은 예약어 <code>ASC</code>로 사용하면 됩니다.</li>
+<li>order by는 서버에서 내부적으로 가장 나중에 처리 됩니다.</li>
+</ul>
+<h2 id="7-hamsu"><a href="#7-hamsu" class="header-anchor">1.7. </a><a class="markdownIt-Anchor" href="#7-함수"></a> 7. 함수</h2>
+<ul>
+<li>MOD 함수</li>
+</ul>
+<pre class="highlight"><code class="sql">10 % 3 -&gt; 1    
+MOD(10,3) -&gt; 1    
+</code></pre>
+<ul>
+<li>MOD함수를 사용하면 나머지를 쉽게 구할 수 있습니다.</li>
+<li>MOD() 함수는 함수명이 <code>MOD</code>, 인수로 <code>(나누어질 수, 나눌 수)</code>의 형태를 띄게 됩니다.</li>
+</ul>
+<p>예) MOD(10,3)</p>
+<h2 id="8-round-hamsu"><a href="#8-round-hamsu" class="header-anchor">1.8. </a><a class="markdownIt-Anchor" href="#8-round-함수"></a> 8. ROUND 함수</h2>
+<ul>
+<li>부가세나 부가세포함된 금액을 계산할 때 어떤 함수를 사용하면 좋을까요?</li>
+<li>ROUND()함수를 사용하면 단위를 고려한 반올림 처리를 손쉽게 할 수 있습니다.</li>
+</ul>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> * <span class="keyword">from</span> sample341;    
+<span class="keyword">select</span> amount, <span class="keyword">ROUND</span>(amount) <span class="keyword">from</span> sample341;    
+</code></pre>
+<ul>
+<li>INTEGER형: 정수만 저장 가능 amount열은 DECIMAL형으로 정의되었습니다.</li>
+<li>DECIMAL형은 정수부와 소수부의 자릿수를 지정할 수 있는 자료형입니다. 즉, 소수점을 포함하는 수치를 저장하는 자료형이 됩니다.</li>
+<li>ROUND함수는 <code>소수점 첫째 자리 기준</code>으로 <code>반올림</code> 한 값을 반환합니다. 함수의 두번째 인수로 반올림할 <code>자릿수를 지정</code>할 수도 있습니다.</li>
+</ul>
+<p>단, 인수를 생략할 경우 0으로 간주되고 첫째 자리를 반올림합니다. 1을 지정하면 소수점 둘째 자리를 반올림합니다.</p>
+<ul>
+<li>음수의 경우는 어떻게 할 수 있을까요?</li>
+</ul>
+<p><code>-1 지정시 1단위</code> , <code>-2을 지정하면 10단위</code>를 <code>반올림</code>할 수 있습니다.</p>
+<pre class="highlight"><code class="sql"><span class="keyword">select</span> amount, <span class="keyword">ROUND</span>(amount,<span class="number">-2</span>) <span class="keyword">from</span> sample341;    
+</code></pre>
+<p>인수에 -2를 입력하였으니 10단위를 반올림합니다. 예) 5961.69 → 6000(10단위 반올림)</p>
+<ul>
+<li>버림 함수는 어떤것이 있을까요?</li>
+</ul>
+<p>반올림 이외에도 버림을 할 경우가 생길 수 있는데 TRUNCATE() 함수로 계산이 가능합니다.</p>
+<ul>
+<li>그 외 함수</li>
+<li>SIN, COS 삼각함수</li>
+<li>SQRT 루트를 계산하는 함수</li>
+<li>LOG 대수를 계산하는 함수</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>09. SQL 결과 행 제한하기 LIMIT구</title>
+    <url>/section-09-sql-%EA%B2%B0%EA%B3%BC%ED%96%89%EC%A0%9C%ED%95%9C%ED%95%98%EA%B8%B0/</url>
+    <content><![CDATA[<h1 id="09-gyeolgwa-haeng-jehanhagi-limit"><a href="#09-gyeolgwa-haeng-jehanhagi-limit" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#09-결과-행-제한하기-limit"></a> 09. 결과 행 제한하기 - LIMIT</h1>
+<blockquote>
+<p>SELECT 명령에서는 결과값으로 변환되는 행을 제한할 수 있습니다.</p>
+</blockquote>
+<pre class="highlight"><code class="sql"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">WHERE</span> 조건식 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명 <span class="keyword">LIMIT</span> 행수 [<span class="keyword">OFFSET</span> 시작행]    
+</code></pre>
+<h2 id="1-haengsu-jehan"><a href="#1-haengsu-jehan" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1행수-제한"></a> 1.행수 제한</h2>
+<ul>
+<li>
+<p>LIMIT 구는 표준 SQL이 아니다.</p>
+</li>
+<li>
+<p>MySQL, PostgreSQL등에서 사용되는 문법이다.</p>
+</li>
+</ul>
+<blockquote>
+<p>SELECT * FROM sample33;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">no</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>SELECT * FROM sample33 LIMIT 3;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">no</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>정렬한 후 제한하기<br>
+WHERE no &lt;= 3 vs LIMIT 3의 차이점은 LIMIT는 반환할 행수를 제한하는 기능으로, WHERE 구로 검색한 뒤,  ORDER BY로 정렬한 뒤 최종적으로 처리 된다.</li>
+</ul>
+<blockquote>
+<p>SELECT * FROM sample33 ORDER BY no DESC LIMIT 3;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">no</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>다른 데이터베이스에서는 어떻게 사용할까?</li>
+</ul>
+<ol>
+<li>SQL Server : TOP사용</li>
+</ol>
+<ul>
+<li>LIMIT과 유사</li>
+</ul>
+<ol start="2">
+<li>ORACLE : ROWNUM 사용</li>
+</ol>
+<ul>
+<li>
+<p>SELECT * FROM sample33 WHERE ROWNUM &lt;= 3;</p>
+</li>
+<li>
+<p>ROWNUM은 클라이언트에게 결과가 반환될 때 각 행에 할당되는 행 번호</p>
+</li>
+<li>
+<p>ROWNUM으로 행을 제한할 경우</p>
+</li>
+<li>
+<p>WHERE 구로 지정하므로 정렬하기전에 처리된다.<br>
+-&gt; LIMIT로 행을 제한한 경우와 결과값이 다르다.</p>
+</li>
+</ul>
+<h2 id="2-opeuses-jijeong"><a href="#2-opeuses-jijeong" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-오프셋-지정"></a> 2. 오프셋 지정</h2>
+<ul>
+<li>웹 시스템에서는 클라이언트의 브라우저를 통해 페이지 단위로 화면에 표시할 내용 처리.</li>
+<li>대량의 데이터를 하나의 페이지에 표시하는 것은 기능적으로도 속도 측면에서 효율적이지 못한다.</li>
+<li>일반적으로 페이지 나누기(pagination)기능을 사용한다.</li>
+</ul>
+<p>ex) 게시판 하단 부분</p>
+<ul>
+<li>위치 지정은 0부터 시작</li>
+<li><code>시작할 행 -1</code>로 기억</li>
+</ul>
+<blockquote>
+<p>SELECT * FROM sample33 LIMIT 3 OFFSET 3;</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">no</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">4</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+</tr>
+</tbody>
+</table>
+<p>4행 부터 3건의 데이터 표시!</p>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>08. SQL 다수의 열을 지정하여 정렬하기</title>
+    <url>/section-08-sql-%EB%B3%B5%EC%88%98%EC%97%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/</url>
+    <content><![CDATA[<h1 id="08-bogsuyi-yeoleul-jijeonghae-jeongryeolhagi"><a href="#08-bogsuyi-yeoleul-jijeonghae-jeongryeolhagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#08-복수의-열을-지정해-정렬하기"></a> 08. 복수의 열을 지정해 정렬하기</h1>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열명 FROM 테이블명 WHERE 조건식</span><br><span class="line">ORDER BY 열명1 [ASC|DESC], 열명2 [ASC|DESC] ...</span><br></pre></td></tr></table></figure>
+<h2 id="1-bogsuyi-yeolro-jeongryeol-jijeong"><a href="#1-bogsuyi-yeolro-jeongryeol-jijeong" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-복수의-열로-정렬-지정"></a> 1. 복수의 열로 정렬 지정</h2>
+<ul>
+<li>ORDER BY로 행을 정렬하는 경우 같은 행의 순서는 어떻게 정해질까?</li>
+<li>ORDER BY 구는 생략할 수 있는데 이때 순서는 어떻게 정해질까?</li>
+<li>-&gt; 순서는 일정하지 않다.</li>
+<li>데이터베이스 서버의 당시 상황에 따라 어떤 순서로 행을 반환할지 결정된다.</li>
+<li>따라서 같은 순서의 결과를 얻고 싶다면 반드시 ORDER BY구로 순서를 지정해야 한다.</li>
+<li>콤마(,)로 열명을 구분해 지정한다.</li>
+</ul>
+<h2 id="2-jeongryeolbangbeob-jijeonghagi"><a href="#2-jeongryeolbangbeob-jijeonghagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2정렬방법-지정하기"></a> 2.정렬방법 지정하기</h2>
+<ul>
+<li>구문 중에 [] 부분은 생략 가능</li>
+<li>| 둘중 하나라는 뜻</li>
+<li>…는 동일한 형태로 연속해서 지정할 수 있다.</li>
+</ul>
+<blockquote>
+<p>ORDER BY a DESC,b</p>
+</blockquote>
+<h2 id="3-null-gabsyi-jeongryeol-sunseo"><a href="#3-null-gabsyi-jeongryeol-sunseo" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3null-값의-정렬-순서"></a> 3.NULL 값의 정렬 순서**</h2>
+<ul>
+<li>NULL 값에대한 정렬방법은 표준 SQL에도 규정되어있지 않는다.</li>
+<li>데이터베이스 제품에 따라 기준이 다르다.</li>
+<li>Mysql의 경우 NULL값을 가장 작은 값으로 취급</li>
+<li>Oracle은 가장 큰 값으로 인식</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>07. SQL 오름차순, 내림차순 정렬하기 (DESC, ASC)</title>
+    <url>/section-07-sql-%EC%A0%95%EB%A0%AC/</url>
+    <content><![CDATA[<h1 id="7-sql-oreumcasun-naerimcasun-jeongryeolhagi-desc-asc"><a href="#7-sql-oreumcasun-naerimcasun-jeongryeolhagi-desc-asc" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#7-sql-오름차순-내림차순-정렬하기-desc-asc"></a> 7. SQL 오름차순, 내림차순 정렬하기 (DESC, ASC)</h1>
+<p>ORDER BY 구를 사용하여 검색결과의 행 순서를 바꿀 수 있다.</p>
+<h2 id="order-by-gu"><a href="#order-by-gu" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#order-by-구"></a> ORDER BY 구</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열명 FROM 테이블 명 WHERE 조건식 ORDER BY</span><br></pre></td></tr></table></figure>
+<h3 id="1-order-byro-geomsaeg-gyeolgwa-jeongryeolhagi"><a href="#1-order-byro-geomsaeg-gyeolgwa-jeongryeolhagi" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#1-order-by로-검색-결과-정렬하기"></a> 1. ORDER BY로 검색 결과 정렬하기</h3>
+<ul>
+<li>지정된 열의 값에 따라 행의 순서가 변경 됩니다.</li>
+</ul>
+ <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">WHERE</span> 조건식 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">검색 조건이 필요 없는 경우에는 WHERE 구를 생략하는데 ORDER BY구는 FROM구의 뒤에 지정합니다.</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span><span class="keyword">sql</span></span><br><span class="line"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br></pre></td></tr></table></figure>
+<p><strong>age 열로 정렬하기</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sample31;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>age</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A씨</td>
+<td>36</td>
+<td>대구광역시 중구</td>
+</tr>
+<tr>
+<td>B씨</td>
+<td>18</td>
+<td>부산광역시 연제구</td>
+</tr>
+<tr>
+<td>C씨</td>
+<td>25</td>
+<td>서울특별시</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span>  sample31 <span class="keyword">ORDER</span> <span class="keyword">BY</span> age;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>age</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B씨</td>
+<td>18</td>
+<td>부산광역시 연제구</td>
+</tr>
+<tr>
+<td>C씨</td>
+<td>25</td>
+<td>서울특별시</td>
+</tr>
+<tr>
+<td>A씨</td>
+<td>36</td>
+<td>대구광역시 중구</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-order-by-descro-naerim-casun-jeongryeolhagi"><a href="#2-order-by-descro-naerim-casun-jeongryeolhagi" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#2-order-by-desc로-내림-차순-정렬하기"></a> 2. ORDER BY DESC로 내림 차순 정렬하기</h3>
+ <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명 <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<p>오름차순은 내림차순과 달리 <strong>생략</strong>이 가능하며, <strong>ASC</strong>로도 지정할 수 있습니다. ASC가 기본형입니다.</p>
+<h3 id="3-daeso-gwangye"><a href="#3-daeso-gwangye" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#3-대소-관계"></a> 3. 대소 관계</h3>
+<ul>
+<li>수치형 테이터라면 대소관계는 숫자의 크기로 판별</li>
+<li>날짜시간형도 마찬가지</li>
+<li>문자열형은 사전식으로 정렬</li>
+</ul>
+<blockquote>
+<p>주의할 점</p>
+</blockquote>
+<pre class="highlight"><code class="sql"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sample311
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>11</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>a는 문자열형(VARCHAR) b열은 수치형(INTEGER)</p>
+<blockquote>
+<p>a열을 오름차순으로 정렬한다면?</p>
+</blockquote>
+<p><code>SELECT FROM sample311 ORDER BY a;</code></p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>사전 순으로 비교했을때 발생하는 현상</li>
+<li>데이터를 넣는것은 아무런 문제가 되지 않는다.</li>
+<li>정렬이나 비교 연산을 할때는 이점에 주의 해야한다.</li>
+</ul>
+<h3 id="4-order-byneun-teibeule-yeonghyangeul-juji-anhneunda"><a href="#4-order-byneun-teibeule-yeonghyangeul-juji-anhneunda" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#4order-by는-테이블에-영향을-주지-않는다"></a> 4.ORDER BY는 테이블에 영향을 주지 않는다</h3>
+<ul>
+<li>어디까지나 서버에서 클라이언트로 행 순서를 바꾸어 변환것일뿐,</li>
+<li>저장장치에 저장된 데이터의 행 순서는 변경하지는 않는다.</li>
+</ul>
+<blockquote>
+<p>데이터를 참조만 할 뿐이며 변경은 하지 않는다.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>06. SQL 패턴 매칭 검색</title>
+    <url>/section-06-%ED%8C%A8%ED%84%B4%EB%A7%A4%EC%B9%AD%EA%B2%80%EC%83%89/</url>
+    <content><![CDATA[<h1 id="paeteon-maecinge-yihan-geomsaeg"><a href="#paeteon-maecinge-yihan-geomsaeg" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#패턴-매칭에-의한-검색"></a> 패턴 매칭에 의한 검색</h1>
+<h2 id="like"><a href="#like" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#-like"></a> - LIKE</h2>
+<h3 id="like-suleo"><a href="#like-suleo" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#like-술어"></a> LIKE 술어</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 LIKE 패턴</span><br></pre></td></tr></table></figure>
+<ul>
+<li>패턴 매칭 / 부분 검색</li>
+<li>특정 문자나 문자열이 <strong>포함</strong>된 데이터를 검색하는 경우 사용</li>
+</ul>
+<h3 id="metamunja-waildeukadeu"><a href="#metamunja-waildeukadeu" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#메타문자-와일드카드"></a> 메타문자 (와일드카드)</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 LIKE &apos;%SQL_&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em>임의</em>의 문자 또는 문자열을 의미</li>
+<li>% : 임의의 문자열 (빈 문자열에도 매치함)</li>
+<li>_ : 임의의 문자 하나</li>
+<li>SELECT 문에서 많이 쓰이는 *는 LIKE에서 <strong>사용할 수 없음</strong></li>
+</ul>
+<h3 id="iseukeipeu"><a href="#iseukeipeu" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#이스케이프"></a> 이스케이프</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\% \_</span><br></pre></td></tr></table></figure>
+<ul>
+<li>와일드 카드 % _ 의 경우
+<ul>
+<li>앞에 \를 붙임 = 메타 문자가 아닌 일반 문자를 의미<br>
+<code>WHERE text LIKE '%\%%</code><br>
+<code>WHERE text LIKE '%\_%</code></li>
+</ul>
+</li>
+<li>문자열 상수 ’ 의 경우
+<ul>
+<li>앞에 '를 하나 더 붙임</li>
+<li>표준 SQL에서 ''를 2개 기술하는 것으로 이스케이프 처리 가능<br>
+<code>WHERE text LIKE '%''SQL''%</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="cuga-like-yeonsanjaneun-daesomunjareul-gubun-handa"><a href="#cuga-like-yeonsanjaneun-daesomunjareul-gubun-handa" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#추가-like-연산자는-대소문자를-구분-한다"></a> * 추가 - LIKE 연산자는 대소문자를 구분 한다.</h3>
+<ul>
+<li>UPPER() / LOWER()</li>
+<li>UPPER()나 LOWER() 함수를 이용해 대소문자 구분없이 검색, 출력 할 수 있다.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WHERE  UPPER(column) LIKE &apos;%sqL%&apos;</span><br><span class="line">WHERE  LOWER LOWER(column) LIKE &apos;%sqL%&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="cuga-yeoreo-jogeon-nayeol-si-seongneungeul-saenggaghaneun-sunseo"><a href="#cuga-yeoreo-jogeon-nayeol-si-seongneungeul-saenggaghaneun-sunseo" class="header-anchor">1.1.5. </a><a class="markdownIt-Anchor" href="#추가-여러-조건-나열-시-성능을-생각하는-순서"></a> * 추가 - 여러 조건 나열 시 성능을 생각하는 순서</h3>
+<ul>
+<li>점 조건 <strong>(IN, = 연산자)</strong> 먼저</li>
+<li>선분 조건 <strong>(&lt;, &gt;, LIKE, BETWEEN 연산자)</strong> 나중에</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>05. SQL 조건조합하기</title>
+    <url>/section-05-%EC%A1%B0%EA%B1%B4%EC%A1%B0%ED%95%A9%ED%95%98%EA%B8%B0/</url>
+    <content><![CDATA[<h1 id="05-sql-jogeon-johabhagi"><a href="#05-sql-jogeon-johabhagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#05-sql-조건-조합하기"></a> 05. SQL 조건 조합하기</h1>
+<h2 id="and-yeonsanja-or-yeonsanja-not-yeonsanja"><a href="#and-yeonsanja-or-yeonsanja-not-yeonsanja" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#and-연산자-or-연산자-not-연산자"></a> AND 연산자, OR 연산자, NOT 연산자</h2>
+<h3 id="and-yeonsanja"><a href="#and-yeonsanja" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#and-연산자"></a> AND 연산자</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">조건식1 AND 조건식2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>이항 연산자</li>
+<li>AND로 조건식을 연결하면 <strong>모든 조건을 만족</strong>하는 행을 검색할 수 있음</li>
+</ul>
+<h3 id="or-yeonsanja"><a href="#or-yeonsanja" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#or-연산자"></a> OR 연산자</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">조건식1 OR 조건식2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>이항 연산자</li>
+<li>OR로 조건식을 연결하면 <strong>어느 쪽이든 조건을 만족</strong>하는 행을 <strong>모두</strong> 검색할 수 있음</li>
+</ul>
+<h3 id="not-yeonsanja"><a href="#not-yeonsanja" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#not-연산자"></a> NOT 연산자</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">NOT 조건식</span><br></pre></td></tr></table></figure>
+<ul>
+<li>단항 연산자</li>
+<li>NOT을 사용하면 오른쪽에 지정한 조건식의 <strong>반대 값</strong>을 반환</li>
+<li>조건식에 <strong>부합하지 않는 나머지</strong> 조건을 지정할 경우 사용</li>
+</ul>
+<h4 id="yeonsanja-useon-sunwi"><a href="#yeonsanja-useon-sunwi" class="header-anchor">1.1.3.1. </a><a class="markdownIt-Anchor" href="#연산자-우선-순위"></a> 연산자 우선 순위</h4>
+<ol>
+<li><em>Arithmetic operators</em></li>
+<li><em>Concatenation operator</em></li>
+<li><em>Comparison conditions</em></li>
+<li><em>IS [NOT] NULL, LIKE, [NOT] IN</em></li>
+<li><em>[NOT] BETWEEN</em></li>
+<li><em>Not equal to</em></li>
+<li><em>NOT logical condition</em></li>
+<li><em>AND logical condition</em></li>
+<li><em>OR logical condition</em></li>
+</ol>
+<ul>
+<li>NOT &gt; AND &gt; OR</li>
+<li>AND는 OR에 비해 우선순위가 높음</li>
+</ul>
+<p><em>실제 코드</em></p>
+ <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span> <span class="keyword">AND</span> b=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><em>잘못된 예상</em></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> ((a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span>) <span class="keyword">AND</span> b=<span class="number">1</span>) <span class="keyword">OR</span> b=<span class="number">2</span></span><br><span class="line"><span class="keyword">OR</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> (a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span>) <span class="keyword">AND</span> (b=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p><em>실제 실행</em></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> (a=<span class="number">2</span> <span class="keyword">AND</span> b=<span class="number">1</span>) <span class="keyword">OR</span> b=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h4 id="cuga-in-yeonsanja"><a href="#cuga-in-yeonsanja" class="header-anchor">1.1.3.2. </a><a class="markdownIt-Anchor" href="#추가-in-연산자"></a> * 추가 - IN 연산자</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 IN (조건, 조건, 조건 ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>OR와 비슷한 역할을 수행</p>
+</li>
+<li>
+<p>조건 목록의 값 중 어느 하나와 일치하는 데이터를 출력</p>
+</li>
+<li>
+<p>OR 보다는 IN 사용 권장</p>
+<ul>
+<li>IN은 서브쿼리를 사용하여 보다 유연한 확장 가능</li>
+<li>IN은 반드시 하나의 컬럼이 비교되어야 하므로 나중에 인덱스 구성에 대한 전략을 수립할 때 유리</li>
+<li>옵티마이저는 복잡한 OR에 매우 취약</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>04. SQL 검색 조건 지정하기</title>
+    <url>/section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/</url>
+    <content><![CDATA[<h1 id="04gang-geomsaeg-jogeon-jijeonghagi"><a href="#04gang-geomsaeg-jogeon-jijeonghagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#04강-검색-조건-지정하기"></a> 04강 검색 조건 지정하기</h1>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열1, 열2 FROM 테이블명 WHERE 조건식</span><br></pre></td></tr></table></figure>
+<p>통상적인 데이터베이스의 테이블에는 저장된 행이 많을 것이다. 화면에 표시하여 데이터를 확인할 수 있는데, 한번에 볼 수 있는 데이터양은 한정되어 있다. 화면에 표시할 때는 행이나<br>
+열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 '<strong>검색</strong>’이 빈번하게 일어난다. 행을 선택할 때는 <strong>WHERE</strong> 구를 사용하여, 열을 선택할 때는 <strong>SELECT</strong> 구를 사용한다.</p>
+<h2 id="1-select-gueseo-yeol-jijeonghagi"><a href="#1-select-gueseo-yeol-jijeonghagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-select-구에서-열-지정하기"></a> 1. SELECT 구에서 열 지정하기</h2>
+<p>데이터를 선택할 때는 열이나 행을 한정한다. SELECT 명령어 *를 사용해서 sample 테이블의 모든 열을 취득했다. 열을 한정하기 위해서는 * 부분에 열명을 지정한다.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열1, 열2 FROM 테이블명</span><br></pre></td></tr></table></figure>
+<p>열을 위의 구문처럼 콤마(,)를 이용하여 구분 지으며 여러 개를 지정할 수 있다. 지정한 열만 결과값으로 표시된다.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT FROM sample; // ERROR</span><br></pre></td></tr></table></figure>
+<p>위와 같이 열을 전혀 지정하지 않으면 구문 에러가 발생한다. 또한 테이블에 존재하지 않는 열을 지정해도 에러가 발생한다. 열 지정 순서는 임의로 정할 수 있다.<br>
+테이블에서 열이 정의된 순서와 동일한 순으로 지정할 필요는 없다. 결과는 지정한 열의 순서대로 표시된다. 동일한 열을 중복해서 지정해도 무관하다. <br></p>
+<h2 id="2-where-gueseo-haeng-jijeonghagi"><a href="#2-where-gueseo-haeng-jijeonghagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-where-구에서-행-지정하기"></a> 2. WHERE 구에서 행 지정하기</h2>
+<p>테이블의 열은 많아야 몇십 개 정도지만 행은 열에 비해 훨씬 많을 수 있다. 데이터베이스의 규모에 따라 다르지만 일반적으로 수백 건에서 대규모의 경우 수천만 건의 행에 달하는 경우도 있다.<br>
+이처럼 많은 행 속에서 필요한 데이터만 검색하기 위해서는 <strong>WHERE</strong> 구를 사용한다. <br><br>
+<strong>WHERE</strong> 구는 <strong>FROM</strong> 구의 뒤에 표기한다. 예약어 ‘WHERE’ 뒤에 검색 조건을 표기한다. 조건에 일치하는 행만 SELECT의 결과로 반환된다.</p>
+<h3 id="where-guro-haeng-cucul"><a href="#where-guro-haeng-cucul" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#where-구로-행-추출"></a> WHERE 구로 행 추출</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열 FROM 테이블명 WHERE 조건식</span><br></pre></td></tr></table></figure>
+<h3 id="guyi-sunseowa-saengryag"><a href="#guyi-sunseowa-saengryag" class="header-anchor">1.2.2. </a><a class="markdownIt-Anchor" href="#구의-순서와-생략"></a> 구의 순서와 생략</h3>
+<p>SQL에서는 구의 순서가 정해져 있어 바꿔서 적을 수 없다. FROM 구 뒤에 WHERE 구를 표기한다. 예를들어 'SELECT 구 -&gt; WHERE 구 -&gt; FROM 구’의 순으로 적으면 에러가 발생한다.<br>
+구에는 WHERE 구를 생략한 경우는 테이블 내의 모든 행이 검색 대상이 된다.</p>
+<h3 id="where-gu"><a href="#where-gu" class="header-anchor">1.2.3. </a><a class="markdownIt-Anchor" href="#where-구"></a> WHERE 구</h3>
+<p>조건식은 ‘열과 연산자, 상수로 구성되는 식’ 이다. WHERE 구로 행만 추출하지만 SELECT 구로 열 지정을 동시에 할 수도 있다. 구체적인 예는 아래와 같다.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE no = 2;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jogeonsig"><a href="#jogeonsig" class="header-anchor">1.2.4. </a><a class="markdownIt-Anchor" href="#조건식"></a> 조건식</h3>
+<p>'no = 2’은 ‘np’ ‘=’ '2’의 세 개 항목으로 나눌 수 있다. 첫 번째 항목인 'no’는 열 이름이다. 두 번째 항목 '='는 연산자이다. 연산자란 어떤 계산을 할지 지정하는 것으로 보통 기호로<br>
+표기한다. =의 경우, 좌우로 2개 항목이 필요한 '이항 연산자’에 해당하며 일반적으로 많이 쓰이는 기호이다. = 연산자를 기준으로 좌변과 우변의 항목을 비교하고, 서로 같은 값이면 참을,<br>
+다른 값이면 거짓을 반환한다. no = 2의 조건식에서 no 열 값이 2인 행은 참이되며 1이나 3인 행은 거짓이 된다. 조건식을 만족한 (참) 행만 결괏값으로 반환된다.<br>
+= 연산자는 비교한 결괏값이 참인지 거짓인지를 반환하므로 '비교 연산자’라 부른다.</p>
+<h3 id="gabsi-seoro-dareun-gyeongu-lt-gt"><a href="#gabsi-seoro-dareun-gyeongu-lt-gt" class="header-anchor">1.2.5. </a><a class="markdownIt-Anchor" href="#값이-서로-다른-경우"></a> 값이 서로 다른 경우 ‘&lt;&gt;’</h3>
+<p>비교 연산자는 = 외에도 존재한다. 조건식에서 사용하는 연산자를 바꾸거나 복수의 연산자를 조합하면 복잡한 조건식을 만들 수 있다. 검색 조건으로 &lt;&gt; 연산자를 사용하는 예를 살펴보자.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE no &lt;&gt; 2; // WHERE 구로 no 열 값이 2가 아닌 행만 추출</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<p>이전의 조건식에서 연산자를 = 에서 &lt;&gt;로 바꾸었다. = 연산자가 서로 같은 값인지를 비교하는 연산자인데 반해, &lt;&gt; 연산자는 서로 다른 값인지를 비교하는 연산자이다. 여기서는 no 열 값이 2가 아닐 경우<br>
+참이 되므로, 값이 1과 3인 행이 화면에 표시되었다. 이와 같이 WHERE 구에서 지정한 조건식에 따라 복수의 행이 반환되는 경우도 있다. 반드시 하나의 행만 반환되는 것은 아니다. 조건식에 일치하는 행이<br>
+전혀 없는 경우에는 아무것도 반환되지 않는다.</p>
+<h2 id="3-munjayeolhyeongyi-sangsu"><a href="#3-munjayeolhyeongyi-sangsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-문자열형의-상수"></a> 3. 문자열형의 상수</h2>
+<p>이번에는 name 열을 사용해 동일한 조건으로 검색해본다.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE name = &apos;박준용&apos;; // WHERE 구로 name 열 값이 &apos;박준용&apos;인 행만 검색</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+</tbody>
+</table>
+<p>no 열이 수치형 열인 반면에, name 열은 문자열 형이다. 수치형 조건식의 경우 비교할 숫자를 그대로 조건식에 표기한다. 하지만 문자열형을 비교할 경우는 '박준용’처럼 <strong>싱글쿼트(’’)로 둘러싸 표기</strong>해야한다. 날짜시간형의 경우에도 싱글쿼트로 둘러싸 표기한다. 이때 연월일을 하이픈(-)으로 구분한다. 시간은 시분초를 콜론(:)으로 구분하여 표기한다. 문자열형의 열과 비교하기 위해서는 조건으로 지정할 값도 그 자료형에 맞춰 지정해야 한다. 한편 자료형에 맞게 표기한 상수값을 '리터럴(literal)'이라 부른다. 문자열 리터럴은 싱글쿼트로 둘러싸 표기한다.</p>
+<h2 id="4-nullgabs-geomsaeg"><a href="#4-nullgabs-geomsaeg" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-null값-검색"></a> 4. NULL값 검색</h2>
+<p>'검색’이라고는 해도 조건식을 표기하는 것뿐이므로 간단하다. 하지만 NULL 값을 검색할 경우에는 주의해야 한다. 앞에서 배운방식대로 NULL 조건을 추가하여 조회해보자.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE birthday = NULL;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>birthday 열 값이 NULL인 행이 있지만 birthday = NULL과 같은 조건식으로는 검색할 수 없었다. 즉, = 연산자로 NULL을 검색할 수 없다!</p>
+<h3 id="is-null"><a href="#is-null" class="header-anchor">1.4.1. </a><a class="markdownIt-Anchor" href="#is-null"></a> IS NULL</h3>
+<p>NULL 값을 검색할 때는 = 연산자가 아닌 'IS NULL’을 사용해야 한다. IS NULL은 술어로 연산자의 한 종류로 생각하라. <br><br>
+<strong>birthday</strong> IS NULL 과 같이 사용하면 원하는 조회가 가능하다.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample WHERE birthday **IS NULL**;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<p>이제 NULL 값에 해당하는 행이 표시되었다. 반대로 NULL 값이 아닌 행을 검색하고 싶다면 <em>IS NOT NULL</em>을 사용하면 된다.</p>
+<h2 id="5-bigyo-yeonsanja"><a href="#5-bigyo-yeonsanja" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#5비교-연산자"></a> 5.비교 연산자</h2>
+<p>= 연산자와 &lt;&gt; 연산자, IS NULL로 검색하는 방법에 관해 알아봤다. WHERE 구로 지정하는 조건식은 참고 거짓을 반환하는 비교 연산자나 술어를 사용해서 표기할 수 있다. SQL에서는 많은 연산자 술어를 사용할 수 있다. 여기에서는 대표적인 비교 연산자에 어떤 것이 있는지를 소개한다.</p>
+<hr>
+<ul>
+<li>=연산자<br>
+좌변과 우변의 값이 같을 경우 참이 된다.</li>
+<li>&lt;&gt; 연산자<br>
+좌변과 우변의 값이 같지 않을 경우 참이 된다.</li>
+<li>
+<blockquote>
+<p>연산자<br>
+좌변의 값이 우변의 값보다 클 경우 참이 된다. 같거나 작을 경우는 거짓이 된다.</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>=연산자<br>
+좌변의 값이 우변의 값보다 크거나 같을 경우 참이 된다. 작을 경우는 거짓이 된다.</p>
+</blockquote>
+</li>
+<li>&lt;연산자<br>
+좌변의 값이 우변의 값보다 작을 경우 참이 된다. 같거나 클 경우는 거짓이 된다.</li>
+<li>&lt;=연산자<br>
+좌변의 값이 우변의 값보다 작거나 같은 경우 참이 된다. 클 경우는 거짓이 된다.</li>
+</ul>
+<hr>
+<p>&lt; 연산자와 &gt; 연산자는 대소관계를 비교하는 연산자이지만 =을 붙임으로써 서로 값이 같은 경우도 비교할 수 있다.  =은 &lt; 과 &gt;의 뒤에 붙인다. &lt;= 나 &gt;=와 같이 사용해야 한다. 또한 &lt;, &gt;와 = 사이에 스페이스를 넣으면 &lt;(또는 &gt;)와 = 로 연산자가 두 개라고 판단하여 에러가 난다.</p>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>03. SQL 테이블 구조 참조 및 자료형</title>
+    <url>/section-03-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B5%AC%EC%A1%B0%EC%B0%B8%EC%A1%B0%ED%95%98%EA%B8%B0/</url>
+    <content><![CDATA[<h1 id="03-teibeul-gujo-camjo-mic-jaryohyeong"><a href="#03-teibeul-gujo-camjo-mic-jaryohyeong" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#03-테이블-구조-참조-및-자료형"></a> 03. 테이블 구조 참조 및 자료형</h1>
+<h2 id="1-desc-myeongryeong"><a href="#1-desc-myeongryeong" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1desc-명령"></a> 1.DESC 명령</h2>
+<p>앞의 4강에서 <strong>SELECT</strong> 명령으로 테이블의 데이터를 읽어왔다. 테이블은 한 개 이상의 열로 구성되고, 열을 지정하여 조건을 붙이거나 특정 열의 값을 읽어올 수 있다. 테이블에 어떤 열이 있는지 참조할 수 있다면 SELECT 명령을 작성하기 쉬워진다. 여기에서는 <strong>DESC</strong> 명령으로 테이블 구조를 참조하는 방법을 알아본다.</p>
+<blockquote>
+<p>아래의 명령을 실행하면 다음과 같은 결과가 나타난다.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DESC sample;</span><br></pre></td></tr></table></figure>
+<br>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Null</th>
+<th>Key</th>
+<th>Default</th>
+<th>Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(20)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>data</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>varchar(40)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>이와 같이 DESC 명령으로 테이블에 어떤 열이 정의되어 있는지 알 수 있다. (DESC는 SQL 명령이 아니다)<br>
+간단하게 표시된 내용에 대한 설명을 아래와 같이 요약하였다.</p>
+<blockquote>
+<p><strong>Filed</strong></p>
+</blockquote>
+<p>열 이름이 표시된다.</p>
+<blockquote>
+<p><strong>Type</strong></p>
+</blockquote>
+<p>해당 열의 '<strong>자료형</strong>’을 나타낸다. intsms Integer(정수)를 의미한다. 괄호 안의 숫자는 최대 길이를 나타내는데, 예를 들어 int(11)은 '11자리의 정수값을 저장할 수 있는 자료형’을 의미한다.</p>
+<blockquote>
+<p><strong>Null</strong></p>
+</blockquote>
+<p>NULL 값을 허용할 것인지 아닌지를 나타내는 <strong>제약사항</strong>으로 Yes로 지정하면 NULL 값을 허용하게 된다.</p>
+<blockquote>
+<p><strong>Key</strong></p>
+</blockquote>
+<p>해당 열이 '키’로 지정되어 있는지를 나타낸다.</p>
+<blockquote>
+<p><strong>Default</strong></p>
+</blockquote>
+<p>그 열에 주어진 ‘기본값’ 즉, 생략했을 경우 적용되는 값이다. 테이블에 행을 추가할 때 열의 데이터 값을 생략하면 이 기본값으로 채워진다.</p>
+<h2 id="2-jaryohyeong"><a href="#2-jaryohyeong" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2자료형"></a> 2.자료형</h2>
+<p>테이블은 하나 이상의 열로 구성되며 DESC 명령으로 그 구조를 참조할 수 있다. 열에는 몇 가지 속성을 지정할 수 있고, 그중 가장 중요한 속성은 <em>자료형</em>이다.</p>
+<h3 id="integer-hyeong"><a href="#integer-hyeong" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#integer-형"></a> INTEGER 형</h3>
+<p>INTEGER 형은 수치형의 하나로 정수값을 저장할 수 있는 자료형이다. 소수점은 포함할 수 없다.(오라클의 경우 NUMBER(P,S) S가 0인 경우와 같다고 볼 수 있다. P는 소숫점을 포함한 전체 자릿수, S는 소수점 자릿수 의미)</p>
+<h3 id="char-hyeong"><a href="#char-hyeong" class="header-anchor">1.2.2. </a><a class="markdownIt-Anchor" href="#char-형"></a> CHAR 형</h3>
+<p>CHAR 형은 문자열형의 하나로 문자열을 저장할 수 있는 자료형이다. 문자열형에서는 열의 최대 길이를 지정해야 한다. CHAR(10)으로 자료형을 지정했을 경우 최대 10문자로 된 문자열을 저장할 수 있으면 11문자로 된 문자열을 저장할 수 없다. 다음으로 설명할 VARCHAR 형은 저장할 문자열의 길이에 맞춰 저장공간을 가변적으로 사용하여 저장한다. 반면 CHAR 형은 언제나 고정된 길이로 데이터가 저장된다. <br><br>
+그에 따라 ‘고정 길이 문자열’ 자료형이라고 한다. CHAR 형에서는 길이가 고정되기 때문에 최대 길이보다 작은 문자열을 저장할 경우 <strong>공백문자</strong>로 나머지를 채운 후 저장한다. (오라클도 동일)</p>
+<h3 id="varchar-hyeong"><a href="#varchar-hyeong" class="header-anchor">1.2.3. </a><a class="markdownIt-Anchor" href="#varchar-형"></a> VARCHAR 형</h3>
+<p>VARCHAR 형 역시 문자열을 저장할 수 있는 자료형이다. 최대 길이를 지정하는 점은 CHAR 형과 같지만 앞서 말한 것 처럼 데이터 크기에 맞춰 저장공간의 크기도 변경된다.<br>
+그에 따라 ‘가변 길이 문자열’ 자료형이라고 한다. (오라클에서는 VARCHAR2(n) : 오라클에도 VARCHAR가 있지만 사용하지 않음)</p>
+<h3 id="date-hyeong"><a href="#date-hyeong" class="header-anchor">1.2.4. </a><a class="markdownIt-Anchor" href="#date-형"></a> DATE 형</h3>
+<p>DATE 형은 날짜값을 저장할 수 있는 자료형이다. 날짜값이란 '2013년3월23일’과 같이 연월일의 데이터를 저장할 수 있는 형이다. (오라클도 동일 오라클은 DATE에 시분초 까지 포함되어 있다)</p>
+<h3 id="time-hyeong"><a href="#time-hyeong" class="header-anchor">1.2.5. </a><a class="markdownIt-Anchor" href="#time-형"></a> TIME 형</h3>
+<p>TIME 형은 시간을 저장할 수 있는 자료형이다. ex) '12시 30분 20초’와 같이 시분초의 데이터를 저장할 수 있는 형이다. <em>문자열형에는 고정 길이와 가변 길이가 있다</em></p>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>02. SQL 데이터베이스 기초 명령어</title>
+    <url>/section-02-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EA%B8%B0%EC%B4%88/</url>
+    <content><![CDATA[<h1 id="select-myeongryeong"><a href="#select-myeongryeong" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#select-명령"></a> SELECT 명령</h1>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM 테이블명</span><br></pre></td></tr></table></figure>
+<h1 id="select-from-teibeulmyeong-silhaeng"><a href="#select-from-teibeulmyeong-silhaeng" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#select-from-테이블명-실행"></a> ‘SELECT * FROM 테이블명’ 실행</h1>
+<p>FROM 사이에는 <strong>스페이스</strong>를 넣어 구분한다. 예를 들어 sample 테이블의 모든 데이터를 조회한다면 아래와 같이 SELECT 명령을 입력해야 한다.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>주의</p>
+</blockquote>
+<p>만약 SELECT*FROMsample;과 같이 붙여서 입력하면 에러가 발생한다.<br>
+입력이 끝나면 명령의 마지막을 나타내는 세미콜론(;)을 넣은 뒤 Enter키를 누른다. Enter 키를 누르면 입력한 SQL 명령이 서버에 전달되며 서버는 이를 실행한 후 결과를 반환한다.</p>
+<h1 id="select-myeongryeong-gumun"><a href="#select-myeongryeong-gumun" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#select-명령-구문"></a> SELECT 명령 구문</h1>
+<p>SELECT는 <strong>DML</strong>(Database Manipulation Language)에 속하는 명령으로 SQL에서 자주 사용된다.<br>
+SELECT 명령으로 데이터베이스의 데이터를 읽어올 수 있다. SELECT 명령은 <em>질의</em>나 <em>쿼리</em>라 불리기도 한다.</p>
+<p>지금까지 실행한 SQL 명령을 다시 한 번 살펴보자.</p>
+<p><em>SELECT</em> : 먼저 맨 앞의 SELECT는 SQL 명령의 한 종류로 ‘SELECT 명령을 실행하세요’ 라는 의미이다.<br>
+<em>\</em> : 애스터리스크(*)는 '모든 열(column)'을 의미하는 메타문자이다. (해당 테이블에 *라는 이름의 열이 존재하는 것이 아니다)</p>
+<p><em>FROM</em> : FROM은 처리 대상 테이블을 지정하는 키워드이다.</p>
+<p>SQL 명령은 키워드에 의해 <em>구</em>라는 단위로 나눌 수 있다. 위의 ‘SELECT * FROM sample’ 에서는 크게 SELECT 구와 FROM 구로 나눌 수 있다.</p>
+<h1 id="yeyageowa-deiteobeiseu-gaegcemyeong"><a href="#yeyageowa-deiteobeiseu-gaegcemyeong" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#예약어와-데이터베이스-객체명"></a> 예약어와 데이터베이스 객체명</h1>
+<p>앞의 SELECT 구문에서 sample 테이블의 내용을 확인했었다. 혹시라도 다른 테이블의 내용을 보고 싶은 경우에는 FROM 뒤의 테이블명을 재지정하면 된다.</p>
+<p><em>SELECT * FROM</em>: 예약어<br>
+<em>sample</em> : 테이블명</p>
+<p><em>SELECT</em>와 <em>FROM</em>이 구를 결정하는 키워드이자 <em>예약어</em>이다. sample은 테이블 이름으로, 예제 데이터베이스의 이름이다.<br>
+데이터베이스에는 테이블 외에 다양한 데이터를 저장하거나 관리하는 '어떤 것’을 만들 수 있다. 이것을 <em>데이터베이스 객체</em>라고 부르는데, 예를 들면 '뷰(view)'가 그에 해당한다.<br>
+데이터베이스 객체는 이름을 붙여 관리한다. 같은 이름으로 다른 데이터베이스 객체는 만들 수 없다. (이런 경우 ‘이미 테이블이 정의되어 있다’ 라는 에러가 발생한다)<br>
+통상적으로 데이터베이스 객체명에는 예약어와 동일한 이름을 사용할 수 없다. 가령 'SELECT’라는 이름의 테이블을 만들 수 없다. 이것이 예약어의 유래이다.</p>
+<h1 id="daesomunja-gubyeol"><a href="#daesomunja-gubyeol" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#대소문자-구별"></a> 대소문자 구별</h1>
+<blockquote>
+<p>예약어와 데이터베이스 객체명은 대소문자를 구별하지 않는다.</p>
+</blockquote>
+<p>SQL 명령과 달리 많은 데이터베이스 제품들은 데이터의 대소문자를 구별한다. 단, 설정에 따라 구별하지 않는 경우도 있다. 이 책에서는 알아보기 쉽도록 예약어는 대문자로, 데이터베이스 객체명은 소문자로 표기한다.</p>
+<h2 id="silhaenghan-gyeolgwa-teibeul"><a href="#silhaenghan-gyeolgwa-teibeul" class="header-anchor">5.1. </a><a class="markdownIt-Anchor" href="#실행한-결과-테이블"></a> 실행한 결과 = 테이블</h2>
+<p>SELECT 명령을 실행하면 표 형식의 데이터가 출력된다. 표 형식의 데이터는 <code>행(레코드)와 열(컬럼/필드)</code>로 구성된다. 행은 모두 동일한 형태로 되어 있으며 옆으로 '열(컬럼/필드)'이 나열되는데, 열마다 이름이 지정되어 있다. 각각의 행과 열이 만나는 부분을 '셀’이라고 부른다. 셀에는 하나의 데이터 값이 저장되어 있다.</p>
+<p>열은 하나의 자료형만 가질 수 있다. 그리고 수치형의 열에 문자형의 데이터를 저장할 수 없다. 데이터를 자료형으로 분류할 수 있다. 그리고 열은 하나의 자료형만 가질 수 있다.</p>
+<h2 id="gabsi-eobsneun-deiteo-null"><a href="#gabsi-eobsneun-deiteo-null" class="header-anchor">5.2. </a><a class="markdownIt-Anchor" href="#값이-없는-데이터-null"></a> 값이 없는 데이터 = NULL</h2>
+<p>SELECT의 결과를 잘 살펴보면 셀의 값이 <em>NULL</em>로 표시된 부분이 있다. NULL은 특별한 데이터 값으로 아무것도 저장되어 있지 않은 상태를 의미한다. 다시 말해, NULL이라는 데이터가 저장되어 있는 것이 아닌,<br>
+'아무 것도 저장되어 있지 않은 상태’라는 뜻이다. NULL은 SQL에서 <em>대단히 중요한 개념</em>으로, 자세한 것은 뒤에서 설명한다.  <code>NULL은 데이터가 들어있지 않은 것을 의미하는 특별한 값이다</code></p>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1. SQL 데이터베이스 개요</title>
+    <url>/section-01-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%99%80sql/</url>
+    <content><![CDATA[<h1 id="1gang-deiteobeiseuwa-sql"><a href="#1gang-deiteobeiseuwa-sql" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#1강-데이터베이스와-sql"></a> 1강. 데이터베이스와 SQL</h1>
+<p>데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 <code>데이터베이스</code>라고 한다. 넓은 의미에서는 '컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다.</p>
+<p>데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든 데이터는 사라져 버린다. 이런 상태에서는 영구적이라 말할 수 없다.  따라서 데이터베이스의 데이터는 하드디스크나 플래시메모리(SSD) 등 비휘발성 저장장치에 저장한다.</p>
+<h2 id="1-dbwa-dbms"><a href="#1-dbwa-dbms" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-db와-dbms"></a> 1. DB와 DBMS</h2>
+<p>데이터베이스는 <code>DB</code>라는 약자로 통용된다. 데이터베이스는 저장장치 내에 정리되어 저장된 데이터의 집합이고, 이를 효율적으로 관리하는 소프트웨어를 <code>데이터베이스 관리 시스템(Database Management System)</code><br>
+약자로 <em>DBMS</em>라 부른다. DBMS가 필요한 이유는 다음과 같다.</p>
+<h3 id="saengsanseong"><a href="#saengsanseong" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#생산성"></a> 생산성</h3>
+<p>시스템 개발 과정에서의 생산성 향상을 도모할 수 있다. 어떤 시스템에서든지 데이터 검색, 추가, 삭제, 갱신과 같은 처리가 이루어지게 된다. 이와 같은 기본 기능을 DBMS가 제공한다. 시스템을 구축할 때<br>
+기본 기능부터 구현하는 것은 비용측면에서 효율적이지 않다.</p>
+<h3 id="gineungseong"><a href="#gineungseong" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#기능성"></a> 기능성</h3>
+<p>DBMS는 데이터베이스를 다루는 기능을 많이 제공한다. 복수 유저의 요청에 대응하거나, 대용량의 데이터를 저장하고 고속으로 검색하는 기능을 제공하기도 한다. 나아가 데이터베이스 관리 기능을 유저가<br>
+확장할 수도 있어 유연하게 시스템을 개발할 수 있다.</p>
+<h3 id="sinroeseong"><a href="#sinroeseong" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#신뢰성"></a> 신뢰성</h3>
+<p>대규모 데이터베이스는 많은 요청에 대응할 수 있도록 만들어져 있다. 이를위해 하드웨어를 여러 대로 구성하여 신뢰성을 높이는 동시에 성능 향상을 꾀하기도 한다. 실제로 일부 DBMS는 컴퓨터 여러 대를 두고, 소프트웨어를 통해 확장성(Scalability)과 부하 분산(load balancing)을 구현한다. 이를 보통 ‘클러스터 구성’ 또는 '스케일 아웃’이라 부른다.</p>
+<p>또한 많은 DBMS가 데이터베이스의 데이터를 다른 저장장치로 내보내거나(export), 반대로 데이터베이스 안에 데이터를 집어넣는 import 기능을 갖췄다. 이때 집어넣기 및 내보내기 기능을 통해 데이터베이스를<br>
+간단하게 백업할 수 있다.</p>
+<h2 id="3-deiteobeiseureul-jojaghaneun-eoneo-sql"><a href="#3-deiteobeiseureul-jojaghaneun-eoneo-sql" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#3-데이터베이스를-조작하는-언어-sql"></a> 3. 데이터베이스를 조작하는 언어 SQL</h2>
+<p>DBMS를 이용하면 간접적으로 데이터베이스를 참조할 수 있고, 혹은 데이터를 추가하거나 삭제, 갱신할 수도 있다. SQL은 IBM이 개발한 SEQUEL이라는 관계형 데이터베이스 조작용 언어를 기반으로 만들어졌다. 현재 ISO등에 의해 표준화가 진행되어, C 언어나 자바와 마찬가지로 표준 언어이다.</p>
+<h3 id="sql-myeongryeongyi-jongryu"><a href="#sql-myeongryeongyi-jongryu" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#-sql-명령의-종류"></a> - SQL 명령의 종류</h3>
+<p>SQL 명령은 다음과 같이 3가지로 나뉠 수 있다.</p>
+<blockquote>
+<p>DML(Data Manipulation Language)</p>
+</blockquote>
+<p><code>데이터베이스에 새롭게 데이터를 CRUD 할 때 사용한다</code>. SQL의 가장 기본이 되는 명령셋(set) 이다.</p>
+<p><em>SELECT</em><br>
+데이터베이스에 들어 있는 데이터를 조회하거나 검색하기 위한 명령어를 말하는 것으로 RETRIEVE 라고도 함</p>
+<p><em>INSERT, UPDATE, DELETE</em><br>
+데이터베이스의 테이블에 들어 있는 데이터에 변형을 가하는 종류(데이터 삽입, 수정, 삭제)의 명령어들을 말함.</p>
+<blockquote>
+<p>DDL(Data Definition Language)</p>
+</blockquote>
+<p><code>데이터를 정의하는 명령어</code>. 데이터베이스는 <code>데이터 베이스 객체(object)</code>라는 데이터 그릇을 이용하여 데이터를 관리하는데, 이 같은 객체를 만들거나 삭제하는 명령어이다.</p>
+<p><em>CREATE, ALTER,DROP,RENAME,TRUNCATE</em><br>
+테이블과 같은 데이터 구조를 정의하는데 사용되는 명령어들로 (생성, 변경, 삭제, 이름변경) 데이터 구조와 관련된 명령어들을 말함.</p>
+<blockquote>
+<p>DCL(Data Control Language)</p>
+</blockquote>
+<p><code>데이터를 제어하는 명령어</code>. DCL에는 트랜잭션을 제어하는 명령과 데이터 접근권한을 제어하는 명령이 포함되어 있다.</p>
+<p><em>GRANT,REVOKE</em><br>
+데이터베이스에 접근하고 객체들을 사용하도록 권한을 주고 회수하는 명령어들을 말함.</p>
+<blockquote>
+<p>TCL(Transaction Control Language)</p>
+</blockquote>
+<p>트랜잭션 제어어라 칭한다.</p>
+<ul>
+<li>COMMIT, ROLLBACK,SAVEPOINT*<br>
+논리적인 작업의 단위를 묶어서 DML에 의해 조작된 결과를 작업단위(트랜잭션) 별로 제어하는 명령어를 말함.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>릿코드 two-sum</title>
     <url>/Leetcode-20210108-twosum/</url>
     <content><![CDATA[<h1 id="riskodeu-leetcode-two-sum"><a href="#riskodeu-leetcode-two-sum" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#릿코드-leetcode-two-sum"></a> <a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">릿코드 leetcode two-sum</a></h1>
@@ -11628,6 +11628,37 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
+    <title>백준 날짜계산 1476</title>
+    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
+    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
+<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
+<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
+<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
+<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
+<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 일곱난쟁이 2309</title>
     <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
     <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
@@ -11651,37 +11682,6 @@ Only one valid answer exists.</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 날짜계산 1476</title>
-    <url>/BOJ-20191129-BOJ-Date-calculation-1476/</url>
-    <content><![CDATA[<h2 id="baegjun-naljjagyesan-1476"><a href="#baegjun-naljjagyesan-1476" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-날짜계산-1476"></a> <a href="https://www.acmicpc.net/problem/1476" target="_blank" rel="noopener">백준 날짜계산 1476</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>단순 반복문과 조건문을 이용한 사칙연산 문제</li>
-<li>while문을 이용해 지구,태양,달이 해당 입력값과 맞을 경우 break;</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>년도가 증가할때마다 E,S,M이 1씩 증가한다.</li>
-<li><code>지구 1&lt;=E&lt;=15, 태양1&lt;=S&lt;=28, 달 1&lt;=m&lt;=19</code>의 범위를 벗어나게 된다면 해당 값을 1로 초기화 시켜야합니다.</li>
-<li>E == 16, S == 29, M == 19일때 1로 초기화</li>
-<li>입력 x,y,z 지구,태양,달을 입력 받았을때 x == E, y == S, z == M 지구,태양,달이 같은 연도를 찾은것이므로 종료시킵니다. 이때, sum은 몇년이 지났는지를 카운팅한 변수입니다. 따라서 sum을 출력시켜 정답을 도출시킵니다.<br>
-<code>계산 범위를 잘 생각해서 풀어야합니다.</code></li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Algorithm</category>
