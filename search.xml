@@ -621,6 +621,335 @@ WHERE no &lt;= 3 vs LIMIT 3의 차이점은 LIMIT는 반환할 행수를 제한�
       </tags>
   </entry>
   <entry>
+    <title>08. SQL 다수의 열을 지정하여 정렬하기</title>
+    <url>/section-08-sql-%EB%B3%B5%EC%88%98%EC%97%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/</url>
+    <content><![CDATA[<h1 id="08-bogsuyi-yeoleul-jijeonghae-jeongryeolhagi"><a href="#08-bogsuyi-yeoleul-jijeonghae-jeongryeolhagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#08-복수의-열을-지정해-정렬하기"></a> 08. 복수의 열을 지정해 정렬하기</h1>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열명 FROM 테이블명 WHERE 조건식</span><br><span class="line">ORDER BY 열명1 [ASC|DESC], 열명2 [ASC|DESC] ...</span><br></pre></td></tr></table></figure>
+<h2 id="1-bogsuyi-yeolro-jeongryeol-jijeong"><a href="#1-bogsuyi-yeolro-jeongryeol-jijeong" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-복수의-열로-정렬-지정"></a> 1. 복수의 열로 정렬 지정</h2>
+<ul>
+<li>ORDER BY로 행을 정렬하는 경우 같은 행의 순서는 어떻게 정해질까?</li>
+<li>ORDER BY 구는 생략할 수 있는데 이때 순서는 어떻게 정해질까?</li>
+<li>-&gt; 순서는 일정하지 않다.</li>
+<li>데이터베이스 서버의 당시 상황에 따라 어떤 순서로 행을 반환할지 결정된다.</li>
+<li>따라서 같은 순서의 결과를 얻고 싶다면 반드시 ORDER BY구로 순서를 지정해야 한다.</li>
+<li>콤마(,)로 열명을 구분해 지정한다.</li>
+</ul>
+<h2 id="2-jeongryeolbangbeob-jijeonghagi"><a href="#2-jeongryeolbangbeob-jijeonghagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2정렬방법-지정하기"></a> 2.정렬방법 지정하기</h2>
+<ul>
+<li>구문 중에 [] 부분은 생략 가능</li>
+<li>| 둘중 하나라는 뜻</li>
+<li>…는 동일한 형태로 연속해서 지정할 수 있다.</li>
+</ul>
+<blockquote>
+<p>ORDER BY a DESC,b</p>
+</blockquote>
+<h2 id="3-null-gabsyi-jeongryeol-sunseo"><a href="#3-null-gabsyi-jeongryeol-sunseo" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3null-값의-정렬-순서"></a> 3.NULL 값의 정렬 순서**</h2>
+<ul>
+<li>NULL 값에대한 정렬방법은 표준 SQL에도 규정되어있지 않는다.</li>
+<li>데이터베이스 제품에 따라 기준이 다르다.</li>
+<li>Mysql의 경우 NULL값을 가장 작은 값으로 취급</li>
+<li>Oracle은 가장 큰 값으로 인식</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>07. SQL 오름차순, 내림차순 정렬하기 (DESC, ASC)</title>
+    <url>/section-07-sql-%EC%A0%95%EB%A0%AC/</url>
+    <content><![CDATA[<h1 id="7-sql-oreumcasun-naerimcasun-jeongryeolhagi-desc-asc"><a href="#7-sql-oreumcasun-naerimcasun-jeongryeolhagi-desc-asc" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#7-sql-오름차순-내림차순-정렬하기-desc-asc"></a> 7. SQL 오름차순, 내림차순 정렬하기 (DESC, ASC)</h1>
+<p>ORDER BY 구를 사용하여 검색결과의 행 순서를 바꿀 수 있다.</p>
+<h2 id="order-by-gu"><a href="#order-by-gu" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#order-by-구"></a> ORDER BY 구</h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT 열명 FROM 테이블 명 WHERE 조건식 ORDER BY</span><br></pre></td></tr></table></figure>
+<h3 id="1-order-byro-geomsaeg-gyeolgwa-jeongryeolhagi"><a href="#1-order-byro-geomsaeg-gyeolgwa-jeongryeolhagi" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#1-order-by로-검색-결과-정렬하기"></a> 1. ORDER BY로 검색 결과 정렬하기</h3>
+<ul>
+<li>지정된 열의 값에 따라 행의 순서가 변경 됩니다.</li>
+</ul>
+ <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">WHERE</span> 조건식 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">검색 조건이 필요 없는 경우에는 WHERE 구를 생략하는데 ORDER BY구는 FROM구의 뒤에 지정합니다.</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span><span class="keyword">sql</span></span><br><span class="line"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br></pre></td></tr></table></figure>
+<p><strong>age 열로 정렬하기</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sample31;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>age</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A씨</td>
+<td>36</td>
+<td>대구광역시 중구</td>
+</tr>
+<tr>
+<td>B씨</td>
+<td>18</td>
+<td>부산광역시 연제구</td>
+</tr>
+<tr>
+<td>C씨</td>
+<td>25</td>
+<td>서울특별시</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span>  sample31 <span class="keyword">ORDER</span> <span class="keyword">BY</span> age;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>age</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B씨</td>
+<td>18</td>
+<td>부산광역시 연제구</td>
+</tr>
+<tr>
+<td>C씨</td>
+<td>25</td>
+<td>서울특별시</td>
+</tr>
+<tr>
+<td>A씨</td>
+<td>36</td>
+<td>대구광역시 중구</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-order-by-descro-naerim-casun-jeongryeolhagi"><a href="#2-order-by-descro-naerim-casun-jeongryeolhagi" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#2-order-by-desc로-내림-차순-정렬하기"></a> 2. ORDER BY DESC로 내림 차순 정렬하기</h3>
+ <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명 <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<p>오름차순은 내림차순과 달리 <strong>생략</strong>이 가능하며, <strong>ASC</strong>로도 지정할 수 있습니다. ASC가 기본형입니다.</p>
+<h3 id="3-daeso-gwangye"><a href="#3-daeso-gwangye" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#3-대소-관계"></a> 3. 대소 관계</h3>
+<ul>
+<li>수치형 테이터라면 대소관계는 숫자의 크기로 판별</li>
+<li>날짜시간형도 마찬가지</li>
+<li>문자열형은 사전식으로 정렬</li>
+</ul>
+<blockquote>
+<p>주의할 점</p>
+</blockquote>
+<pre class="highlight"><code class="sql"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sample311
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>11</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>a는 문자열형(VARCHAR) b열은 수치형(INTEGER)</p>
+<blockquote>
+<p>a열을 오름차순으로 정렬한다면?</p>
+</blockquote>
+<p><code>SELECT FROM sample311 ORDER BY a;</code></p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>11</td>
+<td>11</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>사전 순으로 비교했을때 발생하는 현상</li>
+<li>데이터를 넣는것은 아무런 문제가 되지 않는다.</li>
+<li>정렬이나 비교 연산을 할때는 이점에 주의 해야한다.</li>
+</ul>
+<h3 id="4-order-byneun-teibeule-yeonghyangeul-juji-anhneunda"><a href="#4-order-byneun-teibeule-yeonghyangeul-juji-anhneunda" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#4order-by는-테이블에-영향을-주지-않는다"></a> 4.ORDER BY는 테이블에 영향을 주지 않는다</h3>
+<ul>
+<li>어디까지나 서버에서 클라이언트로 행 순서를 바꾸어 변환것일뿐,</li>
+<li>저장장치에 저장된 데이터의 행 순서는 변경하지는 않는다.</li>
+</ul>
+<blockquote>
+<p>데이터를 참조만 할 뿐이며 변경은 하지 않는다.</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>06. SQL 패턴 매칭 검색</title>
+    <url>/section-06-%ED%8C%A8%ED%84%B4%EB%A7%A4%EC%B9%AD%EA%B2%80%EC%83%89/</url>
+    <content><![CDATA[<h1 id="paeteon-maecinge-yihan-geomsaeg"><a href="#paeteon-maecinge-yihan-geomsaeg" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#패턴-매칭에-의한-검색"></a> 패턴 매칭에 의한 검색</h1>
+<h2 id="like"><a href="#like" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#-like"></a> - LIKE</h2>
+<h3 id="like-suleo"><a href="#like-suleo" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#like-술어"></a> LIKE 술어</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 LIKE 패턴</span><br></pre></td></tr></table></figure>
+<ul>
+<li>패턴 매칭 / 부분 검색</li>
+<li>특정 문자나 문자열이 <strong>포함</strong>된 데이터를 검색하는 경우 사용</li>
+</ul>
+<h3 id="metamunja-waildeukadeu"><a href="#metamunja-waildeukadeu" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#메타문자-와일드카드"></a> 메타문자 (와일드카드)</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 LIKE &apos;%SQL_&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><em>임의</em>의 문자 또는 문자열을 의미</li>
+<li>% : 임의의 문자열 (빈 문자열에도 매치함)</li>
+<li>_ : 임의의 문자 하나</li>
+<li>SELECT 문에서 많이 쓰이는 *는 LIKE에서 <strong>사용할 수 없음</strong></li>
+</ul>
+<h3 id="iseukeipeu"><a href="#iseukeipeu" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#이스케이프"></a> 이스케이프</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">\% \_</span><br></pre></td></tr></table></figure>
+<ul>
+<li>와일드 카드 % _ 의 경우
+<ul>
+<li>앞에 \를 붙임 = 메타 문자가 아닌 일반 문자를 의미<br>
+<code>WHERE text LIKE '%\%%</code><br>
+<code>WHERE text LIKE '%\_%</code></li>
+</ul>
+</li>
+<li>문자열 상수 ’ 의 경우
+<ul>
+<li>앞에 '를 하나 더 붙임</li>
+<li>표준 SQL에서 ''를 2개 기술하는 것으로 이스케이프 처리 가능<br>
+<code>WHERE text LIKE '%''SQL''%</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="cuga-like-yeonsanjaneun-daesomunjareul-gubun-handa"><a href="#cuga-like-yeonsanjaneun-daesomunjareul-gubun-handa" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#추가-like-연산자는-대소문자를-구분-한다"></a> * 추가 - LIKE 연산자는 대소문자를 구분 한다.</h3>
+<ul>
+<li>UPPER() / LOWER()</li>
+<li>UPPER()나 LOWER() 함수를 이용해 대소문자 구분없이 검색, 출력 할 수 있다.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WHERE  UPPER(column) LIKE &apos;%sqL%&apos;</span><br><span class="line">WHERE  LOWER LOWER(column) LIKE &apos;%sqL%&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="cuga-yeoreo-jogeon-nayeol-si-seongneungeul-saenggaghaneun-sunseo"><a href="#cuga-yeoreo-jogeon-nayeol-si-seongneungeul-saenggaghaneun-sunseo" class="header-anchor">1.1.5. </a><a class="markdownIt-Anchor" href="#추가-여러-조건-나열-시-성능을-생각하는-순서"></a> * 추가 - 여러 조건 나열 시 성능을 생각하는 순서</h3>
+<ul>
+<li>점 조건 <strong>(IN, = 연산자)</strong> 먼저</li>
+<li>선분 조건 <strong>(&lt;, &gt;, LIKE, BETWEEN 연산자)</strong> 나중에</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>05. SQL 조건조합하기</title>
+    <url>/section-05-%EC%A1%B0%EA%B1%B4%EC%A1%B0%ED%95%A9%ED%95%98%EA%B8%B0/</url>
+    <content><![CDATA[<h1 id="05-sql-jogeon-johabhagi"><a href="#05-sql-jogeon-johabhagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#05-sql-조건-조합하기"></a> 05. SQL 조건 조합하기</h1>
+<h2 id="and-yeonsanja-or-yeonsanja-not-yeonsanja"><a href="#and-yeonsanja-or-yeonsanja-not-yeonsanja" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#and-연산자-or-연산자-not-연산자"></a> AND 연산자, OR 연산자, NOT 연산자</h2>
+<h3 id="and-yeonsanja"><a href="#and-yeonsanja" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#and-연산자"></a> AND 연산자</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">조건식1 AND 조건식2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>이항 연산자</li>
+<li>AND로 조건식을 연결하면 <strong>모든 조건을 만족</strong>하는 행을 검색할 수 있음</li>
+</ul>
+<h3 id="or-yeonsanja"><a href="#or-yeonsanja" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#or-연산자"></a> OR 연산자</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">조건식1 OR 조건식2</span><br></pre></td></tr></table></figure>
+<ul>
+<li>이항 연산자</li>
+<li>OR로 조건식을 연결하면 <strong>어느 쪽이든 조건을 만족</strong>하는 행을 <strong>모두</strong> 검색할 수 있음</li>
+</ul>
+<h3 id="not-yeonsanja"><a href="#not-yeonsanja" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#not-연산자"></a> NOT 연산자</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">NOT 조건식</span><br></pre></td></tr></table></figure>
+<ul>
+<li>단항 연산자</li>
+<li>NOT을 사용하면 오른쪽에 지정한 조건식의 <strong>반대 값</strong>을 반환</li>
+<li>조건식에 <strong>부합하지 않는 나머지</strong> 조건을 지정할 경우 사용</li>
+</ul>
+<h4 id="yeonsanja-useon-sunwi"><a href="#yeonsanja-useon-sunwi" class="header-anchor">1.1.3.1. </a><a class="markdownIt-Anchor" href="#연산자-우선-순위"></a> 연산자 우선 순위</h4>
+<ol>
+<li><em>Arithmetic operators</em></li>
+<li><em>Concatenation operator</em></li>
+<li><em>Comparison conditions</em></li>
+<li><em>IS [NOT] NULL, LIKE, [NOT] IN</em></li>
+<li><em>[NOT] BETWEEN</em></li>
+<li><em>Not equal to</em></li>
+<li><em>NOT logical condition</em></li>
+<li><em>AND logical condition</em></li>
+<li><em>OR logical condition</em></li>
+</ol>
+<ul>
+<li>NOT &gt; AND &gt; OR</li>
+<li>AND는 OR에 비해 우선순위가 높음</li>
+</ul>
+<p><em>실제 코드</em></p>
+ <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span> <span class="keyword">AND</span> b=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><em>잘못된 예상</em></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> ((a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span>) <span class="keyword">AND</span> b=<span class="number">1</span>) <span class="keyword">OR</span> b=<span class="number">2</span></span><br><span class="line"><span class="keyword">OR</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> (a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span>) <span class="keyword">AND</span> (b=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p><em>실제 실행</em></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> (a=<span class="number">2</span> <span class="keyword">AND</span> b=<span class="number">1</span>) <span class="keyword">OR</span> b=<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h4 id="cuga-in-yeonsanja"><a href="#cuga-in-yeonsanja" class="header-anchor">1.1.3.2. </a><a class="markdownIt-Anchor" href="#추가-in-연산자"></a> * 추가 - IN 연산자</h4>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">컬럼명 IN (조건, 조건, 조건 ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>OR와 비슷한 역할을 수행</p>
+</li>
+<li>
+<p>조건 목록의 값 중 어느 하나와 일치하는 데이터를 출력</p>
+</li>
+<li>
+<p>OR 보다는 IN 사용 권장</p>
+<ul>
+<li>IN은 서브쿼리를 사용하여 보다 유연한 확장 가능</li>
+<li>IN은 반드시 하나의 컬럼이 비교되어야 하므로 나중에 인덱스 구성에 대한 전략을 수립할 때 유리</li>
+<li>옵티마이저는 복잡한 OR에 매우 취약</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Database</category>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>04. SQL 검색 조건 지정하기</title>
     <url>/section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/</url>
     <content><![CDATA[<h1 id="04gang-geomsaeg-jogeon-jijeonghagi"><a href="#04gang-geomsaeg-jogeon-jijeonghagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#04강-검색-조건-지정하기"></a> 04강 검색 조건 지정하기</h1>
@@ -11232,6 +11561,39 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -11266,28 +11628,29 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+    <title>백준 일곱난쟁이 2309</title>
+    <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
+    <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+<li>do while ~ (next_permutation)으로 계속해서 다음 조합의 경우의 수를 찾는다.</li>
+<li>vector v, check변수를 선언하여 permutation을 수행한다. 9명중 7명을 뽑아야하므로 7명만큼 check=true로 변경해서 수행한다. next_permutation을 수행하면서 값들이 계속변경되기 때문에 값이 변경되면서 출력된다.</li>
 </ul>
 <h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+<li>백설공주를 도와 키를 확인하여 난쟁이를 찾자. 9명의 난쟁이 중에 7명의 난쟁이를 골라 키의 합이 100이 되는 경우를 찾아야한다.</li>
+<li>9명중에 7명을 고르는 것은 9C7 = 9C2와 같은 경우의 수이다.</li>
+<li>9명중 2명을 골랐을때 두명을 고르는 수는 O(N^2) * 난쟁이의 키의 합을 고르는 복잡도 O(N) = O(N^3)의 시간복잡도를 갖는다. N=9명이므로 9^3 = 729의 모든경우의 수에서 찾을 수 있다.</li>
+<li>경우 1)난쟁이가 아닌 9명중 2명을 뽑는 경우를 구해서 sum의 값에서 그 해당 값들을 뺐을때 합이 100인경우를 찾는다.</li>
+<li>경우 2)next_permutation을 돌려서 9명중 7명을 선택해서 그 값이 100일때 그 값들을 출력시켜준다. 이때 check변수를 선언하여 7명을 선택해야하는 경우를 true로 바꾸어주면서 수행한다.</li>
 </ul>
+<p><code>주의해야 할점: 정렬이 되어있는 상태여야 한다.</code></p>
 <hr>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ijung-pomun"><a href="#ijung-pomun" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#이중-포문"></a> 이중 포문</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Algorithm</category>
@@ -11319,40 +11682,6 @@ Only one valid answer exists.</p>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
 <h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 일곱난쟁이 2309</title>
-    <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
-    <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>do while ~ (next_permutation)으로 계속해서 다음 조합의 경우의 수를 찾는다.</li>
-<li>vector v, check변수를 선언하여 permutation을 수행한다. 9명중 7명을 뽑아야하므로 7명만큼 check=true로 변경해서 수행한다. next_permutation을 수행하면서 값들이 계속변경되기 때문에 값이 변경되면서 출력된다.</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>백설공주를 도와 키를 확인하여 난쟁이를 찾자. 9명의 난쟁이 중에 7명의 난쟁이를 골라 키의 합이 100이 되는 경우를 찾아야한다.</li>
-<li>9명중에 7명을 고르는 것은 9C7 = 9C2와 같은 경우의 수이다.</li>
-<li>9명중 2명을 골랐을때 두명을 고르는 수는 O(N^2) * 난쟁이의 키의 합을 고르는 복잡도 O(N) = O(N^3)의 시간복잡도를 갖는다. N=9명이므로 9^3 = 729의 모든경우의 수에서 찾을 수 있다.</li>
-<li>경우 1)난쟁이가 아닌 9명중 2명을 뽑는 경우를 구해서 sum의 값에서 그 해당 값들을 뺐을때 합이 100인경우를 찾는다.</li>
-<li>경우 2)next_permutation을 돌려서 9명중 7명을 선택해서 그 값이 100일때 그 값들을 출력시켜준다. 이때 check변수를 선언하여 7명을 선택해야하는 경우를 true로 바꾸어주면서 수행한다.</li>
-</ul>
-<p><code>주의해야 할점: 정렬이 되어있는 상태여야 한다.</code></p>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="ijung-pomun"><a href="#ijung-pomun" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#이중-포문"></a> 이중 포문</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Algorithm</category>
