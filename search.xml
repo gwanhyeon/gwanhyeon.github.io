@@ -8454,7 +8454,7 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span> <span class="params">(args : <span class="type">Array</span>)</span></span> &#123; </span><br><span class="line">    <span class="keyword">val</span> ch = <span class="string">'A'</span></span><br><span class="line">    println ( <span class="string">"<span class="variable">$ch</span>"</span> ) </span><br><span class="line">    <span class="keyword">val</span> ch2 : <span class="built_in">Char</span> </span><br><span class="line">    ch2 = <span class="string">'Z'</span></span><br><span class="line">    println (<span class="string">"<span class="variable">$ch2</span>"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Langauge</category>
+        <category>Language</category>
         <category>Kotlin</category>
       </categories>
       <tags>
@@ -8499,7 +8499,7 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
 <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">//이 경우 유형을 지정해야합니다 . var website : String </span></span><br><span class="line">book = <span class="string">"gwanhyeon kim"</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Langauge</category>
+        <category>Language</category>
         <category>Kotlin</category>
       </categories>
       <tags>
@@ -8559,7 +8559,7 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
 <p>올바르게 프로그램 출력이 되는지를 확인합니다.</p>
 ]]></content>
       <categories>
-        <category>Langauge</category>
+        <category>Language</category>
         <category>Kotlin</category>
       </categories>
       <tags>

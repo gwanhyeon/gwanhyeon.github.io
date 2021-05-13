@@ -8,6 +8,20 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/language/kotlin/</loc>
+        <lastmod>2021-05-13T05:25:31.754Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/language/</loc>
+        <lastmod>2021-05-13T05:25:31.754Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/server/spring/</loc>
         <lastmod>2021-05-13T05:12:35.624Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -36,20 +50,6 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/categories/langauge/kotlin/</loc>
-        <lastmod>2021-05-13T05:09:57.407Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/langauge/</loc>
-        <lastmod>2021-05-13T05:09:57.407Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/categories/server/jpa/</loc>
         <lastmod>2021-05-13T05:09:28.314Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -58,13 +58,6 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/categories/language/java/</loc>
-        <lastmod>2021-05-13T05:08:20.797Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/language/</loc>
         <lastmod>2021-05-13T05:08:20.797Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

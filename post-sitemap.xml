@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Kotlin-20200917-Kotlin-datatype-03/</loc>
+        <lastmod>2021-05-13T05:25:31.754Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/Kotlin-20200916-Kotlin-envirenment-01/</loc>
+        <lastmod>2021-05-13T05:25:26.146Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/Kotlin-20200917-Kotlin-variable-02/</loc>
+        <lastmod>2021-05-13T05:25:18.535Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Spring-20210513-spring-bean-di/</loc>
         <lastmod>2021-05-13T05:12:35.624Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -98,30 +122,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Leetcode-20201115-leetcode-maximum-subarray/</loc>
         <lastmod>2021-05-13T05:10:10.539Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Kotlin-20200917-Kotlin-variable-02/</loc>
-        <lastmod>2021-05-13T05:09:57.407Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Kotlin-20200917-Kotlin-datatype-03/</loc>
-        <lastmod>2021-05-13T05:09:53.024Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Kotlin-20200916-Kotlin-envirenment-01/</loc>
-        <lastmod>2021-05-13T05:09:43.120Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
