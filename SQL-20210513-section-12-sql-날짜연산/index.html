@@ -4,25 +4,25 @@
     
 
     
-    <title>13. SQL CASE문과 NULL 처리 | GWAN IT Blog</title>
+    <title>12. SQL 날짜 연산 | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="SQL" />
     
-    <meta name="description" content="1.  13. SQL CASE문과 NULL 처리  임의의 조건에 따라서 독자적으로 변환 처리를 지정해서 데이터를 변환하고 싶을 때 CASE문을 사용할 수 있다.  1234CASE WHEN 조건식1 THEN 식1     [WHEN 조건식2 THEN 식2...]     [ELSE 식3]   END 예를 들어, NULL값을 0으로 간주해서 계산하고 싶을 때는 어">
+    <meta name="description" content="1.  12. SQL 날짜 연산 1.1.  시스템 날짜 확인하기 CURRENT-TIMESTAMP로 시스템 날짜 확인 1SELECT CURRENT_TIMESTAMP; 1.2.  날짜 서식 날짜 데이터를 데이터베이스에 저징할 경우 CURRENT TIMESTAMP를 사용해 시스템 상의 날짜를 저장할 수 있습니다. 다만 임의의 날짜를 저장하고 싶을 경우에는 직접">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="13. SQL CASE문과 NULL 처리">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;section-13-sql-case%EB%AC%B8&#x2F;index.html">
+<meta property="og:title" content="12. SQL 날짜 연산">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;SQL-20210513-section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  13. SQL CASE문과 NULL 처리  임의의 조건에 따라서 독자적으로 변환 처리를 지정해서 데이터를 변환하고 싶을 때 CASE문을 사용할 수 있다.  1234CASE WHEN 조건식1 THEN 식1     [WHEN 조건식2 THEN 식2...]     [ELSE 식3]   END 예를 들어, NULL값을 0으로 간주해서 계산하고 싶을 때는 어">
+<meta property="og:description" content="1.  12. SQL 날짜 연산 1.1.  시스템 날짜 확인하기 CURRENT-TIMESTAMP로 시스템 날짜 확인 1SELECT CURRENT_TIMESTAMP; 1.2.  날짜 서식 날짜 데이터를 데이터베이스에 저징할 경우 CURRENT TIMESTAMP를 사용해 시스템 상의 날짜를 저장할 수 있습니다. 다만 임의의 날짜를 저장하고 싶을 경우에는 직접">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T07:28:36.465Z">
+<meta property="og:updated_time" content="2021-05-13T07:28:56.379Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/section-13-sql-case문/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/sql-20210513-section-12-sql-날짜연산/"/>
     
 
     
@@ -154,14 +154,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-section-13-sql-case문" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-SQL-20210513-section-12-sql-날짜연산" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        13. SQL CASE문과 NULL 처리
+        12. SQL 날짜 연산
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/section-13-sql-case%EB%AC%B8/" class="article-date">
-         <time datetime="2020-05-13T07:04:06.000Z" itemprop="datePublished">2020-05-13</time>
+      <a href="/SQL-20210513-section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/" class="article-date">
+         <time datetime="2020-05-13T07:03:50.000Z" itemprop="datePublished">2020-05-13</time>
       </a>
     </div>
 
@@ -194,64 +194,22 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="13-sql-casemungwa-null-ceori"><a href="#13-sql-casemungwa-null-ceori" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#13-sql-case문과-null-처리"></a> 13. SQL CASE문과 NULL 처리</h1>
-<blockquote>
-<p>임의의 조건에 따라서 독자적으로 변환 처리를 지정해서 데이터를 변환하고 싶을 때 CASE문을 사용할 수 있다.</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CASE WHEN 조건식1 THEN 식1   </span><br><span class="line">  [WHEN 조건식2 THEN 식2...]   </span><br><span class="line">  [ELSE 식3]   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<p>예를 들어, <strong>NULL값을 0으로 간주해서 계산하고 싶을 때는 어떻게 해야 할까?</strong><br>
-NULL값으로 연산한 결과는 모두 NULL이 되는데?<br>
-이 경우에 <strong>CASE문</strong>을 이용해서 처리할 수 있다.</p>
-<p>RDBMS에서는 사용자가 함수를 작성할 수 있다.<br>
-간단한 처리의 경우에는 사용자 정의 함수를 작성하지 않고 CASE문으로 처리할 수 있다.</p>
-<p><code>WHEN절</code>: 참과 거짓을 반환하는 조건식을 적어준다.<br>
-해당 조건을 만족해서 참이 되는 경우, THEN절에 있는 식이 처리된다.<br>
-이때 WHEN과 THEN을 한데 조합해 지정할 수 있다.<br>
-WHEN절의 조건식을 차례로 평가해 나가게 되는데,<br>
-가장 먼저 조건을 만족한 WHEN절과 대응하는 THEN절 식의 결과를 CASE문의 결과값으로 반환한다.</p>
-<p>만약, 그 어떤 조건식도 만족하지 못할 경우에는 ELSE절의 식이 CASE문의 결과값으로 반환된다.<br>
-<code>ELSE절</code>은 생략 가능하고 생략했을 경우에는 기본값으로 <strong>ELSE NULL</strong>로 처리된다.</p>
-<h3 id="casemuneul-iyonghayeo-nullgabseul-0euro-byeonhwanhagi"><a href="#casemuneul-iyonghayeo-nullgabseul-0euro-byeonhwanhagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#case문을-이용하여-null값을-0으로-변환하기"></a> CASE문을 이용하여 NULL값을 0으로 변환하기</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT column, CASE WHEN column IS NULL THEN 0 ELSE column END &quot;column(null=0)&quot; </span><br><span class="line">FROM table;</span><br></pre></td></tr></table></figure>
-<p>column값이 NULL일 때 WHEN column IS NULL은 참이 되므로<br>
-CASE문은 THEN절의 ‘0’을 반환한다.<br>
-NULL이 아닌 경우에는 ELSE절의 <code>column</code>, 즉 column의 값을 반환한다.</p>
-<h3 id="coalesce"><a href="#coalesce" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#coalesce"></a> COALESCE</h3>
-<p><strong>NULL값을 변환하는 경우에는 COALESCE 함수를 사용하는 편이 더 쉬울 수 있다</strong>.<br>
-위의 CASE문을 이용해 NULL값을 0으로 변환하는 예제를 COALESCE 함수를 이용하면<br>
-아래와 같이 바꿀 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">column</span>, <span class="keyword">COALESCE</span>(<span class="keyword">column</span>, <span class="number">0</span>) <span class="keyword">FROM</span> <span class="keyword">table</span>;</span><br></pre></td></tr></table></figure>
-<p>COALESCE 함수는 여러 개의 인수를 지정할 수 있다. 주어진 인수 가운데 NULL이 아닌 값에 대해서는 가장 먼저 지정된 인수의 값을 반환한다.<br>
-앞의 예문은 column이 NULL이 아니면 column값을 그대로 출력하고, 그렇지 않으면(column이 NULL이면) 0을 출력한다.</p>
-<h1 id="ddo-hanayi-casemun"><a href="#ddo-hanayi-casemun" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#또-하나의-case문"></a> 또 하나의 CASE문</h1>
-<p>숫자로 이루어진 코드를 알아보기 더 쉽게 문자열로 변환하고 싶은 경우 CASE문을 많이 사용한다.<br>
-수치 데이터를 문자화하는 것을 <code>디코드</code>라고 부르고, 반대로 문자를 수치화하는 것을 <code>인코드</code>라고 부른다.</p>
-<h2 id="dansun-casero-seongbyeol-kodeureul-namja-yeojaro-byeonhwanhagi"><a href="#dansun-casero-seongbyeol-kodeureul-namja-yeojaro-byeonhwanhagi" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#단순-case로-성별-코드를-남자-여자로-변환하기"></a> 단순 CASE로 성별 코드를 남자, 여자로 변환하기</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">my sql&gt; SELECT column명 AS "코드",</span><br><span class="line">CASE column명   </span><br><span class="line">  WHEN 1 THEN '남자'   </span><br><span class="line">  WHEN 2 THEN '여자'   </span><br><span class="line">  ELSE '미지정'   </span><br><span class="line"><span class="keyword">END</span> <span class="keyword">AS</span> <span class="string">"성별"</span> <span class="keyword">FROM</span> <span class="keyword">table</span>명;</span><br></pre></td></tr></table></figure>
-<p>단순 CASE문에서 CASE 뒤에는 대상을 적고 WHEN 뒤에는 값을 적는다.</p>
-<h1 id="casereul-sayonghal-gyeongu-juyisahang"><a href="#casereul-sayonghal-gyeongu-juyisahang" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#case를-사용할-경우-주의사항"></a> CASE를 사용할 경우 주의사항</h1>
-<h2 id="else-saengryag"><a href="#else-saengryag" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#else-생략"></a> ELSE 생략</h2>
-<p>CASE문에서 ELSE는 생략할 경우,<code>ELSE NULL</code>이 되는 것에 주의하자. 대응되는 WHEN이 하나도 없는 경우 ELSE절이 사용된다.<br>
-이때, ELSE를 생략한 경우 NULL이 반환되게 된다. <code>CASE문의 ELSE는 생략하지 않는 편이 낫다.</code></p>
-<h2 id="whene-null-jijeonghagi"><a href="#whene-null-jijeonghagi" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#when에-null-지정하기"></a> WHEN에 NULL 지정하기</h2>
-<p>여기에서 데이터가 NULL인 경우를 고려해서 WHEN NULL THEN ‘데이터 없음’과 같이 지정해도 문법적으로는 문제가 없지만 정상적으로 처리되지 않는다.</p>
-<h3 id="dansun-casemuneseo-whenjeole-null-jijeonghagi"><a href="#dansun-casemuneseo-whenjeole-null-jijeonghagi" class="header-anchor">3.2.1. </a><a class="markdownIt-Anchor" href="#단순-case문에서-when절에-null-지정하기"></a> 단순 CASE문에서 WHEN절에 NULL 지정하기</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CASE a   </span><br><span class="line">  WHEN 1 THEN &apos;남자&apos;   </span><br><span class="line">  WHEN 2 THEN &apos;여자&apos;   </span><br><span class="line">  WHEN NULL THEN &apos;데이터 없음&apos;   </span><br><span class="line">  ELSE &apos;미지정&apos;   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<p>이 예제에서 조건식이 처리되는 순서는 아래와 같다.</p>
-<p>a = 1<br>
-a = 2<br>
-a = NULL</p>
-<p>그런데 문제는 비교 연산자 <code>=로는 NULL값과 같은지 아니지를 비교할 수 없다는 것</code>이다. 따라서 a열의 값이 NULL이라고 해도 a = NULL은 참이 되지 않는다.<br>
-즉, ‘데이터 없음’ 대신 ELSE절에 있는 ‘미지정’이라는 결과값이 나온다. 이때 NULL값인지 아닌지를 판정하기 위해서는 IS NULL을 사용한다.<br>
-다만, 단순 CASE문은 특성상 =연산자로 비교하는 만큼, NULL값인지를 판정하기 위해서는 검색 CASE문을 사용해야 한다.</p>
-<h3 id="geomsaeg-casemuneuro-null-jijeonghagi"><a href="#geomsaeg-casemuneuro-null-jijeonghagi" class="header-anchor">3.2.2. </a><a class="markdownIt-Anchor" href="#검색-case문으로-null-지정하기"></a> 검색 CASE문으로 NULL 지정하기</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CASE   </span><br><span class="line">  WHEN a = 1 THEN &apos;남자&apos;   </span><br><span class="line">  WHEN a = 2 THEN &apos;여자&apos;   </span><br><span class="line">  WHEN a IS NULL THEN &apos;데이터 없음&apos;   </span><br><span class="line">  ELSE &apos;미지정&apos;   </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
-<p>단순 CASE문으로는 NULL값을 비교할 수 없다!</p>
-<h3 id="decode-nvl"><a href="#decode-nvl" class="header-anchor">3.2.3. </a><a class="markdownIt-Anchor" href="#decode-nvl"></a> DECODE NVL</h3>
-<p>Oracle에는 디코드를 수행하는 DECODE함수가 내장되어 있어서 CASE문과 같은 용도로 사용할 수 있다.<br>
-단, DECODE 함수는 Oracle에서만 지원하는 함수인 만큼 다른 데이터베이스 제품에서는 사용할 수 없다.</p>
-<p>NULL값을 변환하는 함수도 있는데, Oracle에서는 NVL 함수, SQL Server에서는 ISNULL 함수가 이에 해당한다.<br>
-다만, 이 함수들은 특정 데이터베이스에 국한된 함수이기 때문에 NULL값을 변환할 때는 표준 SQL로 지정되어 있는 <code>COALESCE</code>함수를 사용한다.</p>
+            <h1 id="12-sql-naljja-yeonsan"><a href="#12-sql-naljja-yeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#12-sql-날짜-연산"></a> 12. SQL 날짜 연산</h1>
+<h2 id="siseutem-naljja-hwaginhagi"><a href="#siseutem-naljja-hwaginhagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#시스템-날짜-확인하기"></a> 시스템 날짜 확인하기</h2>
+<p>CURRENT-TIMESTAMP로 시스템 날짜 확인</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CURRENT_TIMESTAMP</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="naljja-seosig"><a href="#naljja-seosig" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#날짜-서식"></a> 날짜 서식</h2>
+<p>날짜 데이터를 데이터베이스에 저징할 경우 CURRENT TIMESTAMP를 사용해 시스템 상의 날짜를 저장할 수 있습니다.<br>
+다만 임의의 날짜를 저장하고 싶을 경우에는 직접 날짜 데이터를 지정해야 합니다</p>
+<p>oracle의 경우 TO_DATE 함수를 사용해 문자열 데이터를 날짜형 데이터로 변환할 수 있으며 서식 또한 별도로 지정할 수 있습니다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TO_DATE ( '2014/01 /25 ' , 'YYYY/MM/DD')</span><br></pre></td></tr></table></figure>
+<p>반대로 날짜형 데이터를 서식에 맞춰 변환해 문자열 데이터로 출력하는 함수도 존재합니다. oracle의 경우 TO_CHAR 함수가 그에 해딩합니다</p>
+<h2 id="naljjayi-deossemgwa-bbaelsem"><a href="#naljjayi-deossemgwa-bbaelsem" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#날짜의-덧셈과-뺄셈"></a> 날짜의 덧셈과 뺄셈</h2>
+<p>1일 후를 계산하고 싶다면 a +1 DAY 라는 식으로 계산할 수 있습니다. 1일 전이라면 a - 1 DAY로 하면 됩니다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CURRENIDATE + <span class="built_in">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>;</span><br></pre></td></tr></table></figure>
+<p>날짜형 간의 뺄셈<br>
+ex) 2014-02-28에서 2014-01-01을 뺄때</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATEDIFF('2014=<span class="comment">--02-28', '2014-01-01')</span></span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -322,21 +280,22 @@ a = NULL</p>
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "13. SQL CASE문과 NULL 처리",
+        "headline": "12. SQL 날짜 연산",
         "image": "http://gwanhyeon.github.io",
         "keywords": "SQL",
         "genre": "Database SQL",
         "datePublished": "2020-05-13",
         "dateCreated": "2020-05-13",
         "dateModified": "2021-05-13",
-        "url": "http://gwanhyeon.github.io/section-13-sql-case문/",
-        "description": "1.  13. SQL CASE문과 NULL 처리
-
-임의의 조건에 따라서 독자적으로 변환 처리를 지정해서 데이터를 변환하고 싶을 때 CASE문을 사용할 수 있다.
-
-1234CASE WHEN 조건식1 THEN 식1     [WHEN 조건식2 THEN 식2...]     [ELSE 식3]   END
-예를 들어, NULL값을 0으로 간주해서 계산하고 싶을 때는 어",
-        "wordCount": 719
+        "url": "http://gwanhyeon.github.io/SQL-20210513-section-12-sql-날짜연산/",
+        "description": "1.  12. SQL 날짜 연산
+1.1.  시스템 날짜 확인하기
+CURRENT-TIMESTAMP로 시스템 날짜 확인
+1SELECT CURRENT_TIMESTAMP;
+1.2.  날짜 서식
+날짜 데이터를 데이터베이스에 저징할 경우 CURRENT TIMESTAMP를 사용해 시스템 상의 날짜를 저장할 수 있습니다.
+다만 임의의 날짜를 저장하고 싶을 경우에는 직접 ",
+        "wordCount": 164
     }
 </script>
 
@@ -379,20 +338,20 @@ a = NULL</p>
         
 <nav id="article-nav">
     
-        <a href="/Programmers-20200903-Programmers-string-desc-arrange/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-13-sql-case%EB%AC%B8/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            프로그래머스 문자열 내림차순으로 배치하기
+            13. SQL CASE문과 NULL 처리
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">12. SQL 날짜 연산</p>
+        <p class="article-nav-title">11. SQL 문자열 연산</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -543,7 +502,7 @@ a = NULL</p>
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/section-13-sql-case%EB%AC%B8/';
+    var disqus_url = 'http://gwanhyeon.github.io/SQL-20210513-section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/';
     
     (function() {
     var dsq = document.createElement('script');

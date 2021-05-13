@@ -4,25 +4,25 @@
     
 
     
-    <title>05. SQL 조건조합하기 | GWAN IT Blog</title>
+    <title>04. SQL 검색 조건 지정하기 | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="SQL" />
     
-    <meta name="description" content="1.  05. SQL 조건 조합하기 1.1.  AND 연산자, OR 연산자, NOT 연산자 1.1.1.  AND 연산자 1조건식1 AND 조건식2  이항 연산자 AND로 조건식을 연결하면 모든 조건을 만족하는 행을 검색할 수 있음  1.1.2.  OR 연산자 1조건식1 OR 조건식2  이항 연산자 OR로 조건식을 연결하면 어느 쪽이든 조건을 만족하는 행을">
+    <meta name="description" content="1.  04강 검색 조건 지정하기 1SELECT 열1, 열2 FROM 테이블명 WHERE 조건식 통상적인 데이터베이스의 테이블에는 저장된 행이 많을 것이다. 화면에 표시하여 데이터를 확인할 수 있는데, 한번에 볼 수 있는 데이터양은 한정되어 있다. 화면에 표시할 때는 행이나 열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 &amp;apos;검색’이 빈번하게 일">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="05. SQL 조건조합하기">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;section-05-%EC%A1%B0%EA%B1%B4%EC%A1%B0%ED%95%A9%ED%95%98%EA%B8%B0&#x2F;index.html">
+<meta property="og:title" content="04. SQL 검색 조건 지정하기">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;SQL-20210513-section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  05. SQL 조건 조합하기 1.1.  AND 연산자, OR 연산자, NOT 연산자 1.1.1.  AND 연산자 1조건식1 AND 조건식2  이항 연산자 AND로 조건식을 연결하면 모든 조건을 만족하는 행을 검색할 수 있음  1.1.2.  OR 연산자 1조건식1 OR 조건식2  이항 연산자 OR로 조건식을 연결하면 어느 쪽이든 조건을 만족하는 행을">
+<meta property="og:description" content="1.  04강 검색 조건 지정하기 1SELECT 열1, 열2 FROM 테이블명 WHERE 조건식 통상적인 데이터베이스의 테이블에는 저장된 행이 많을 것이다. 화면에 표시하여 데이터를 확인할 수 있는데, 한번에 볼 수 있는 데이터양은 한정되어 있다. 화면에 표시할 때는 행이나 열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 &amp;apos;검색’이 빈번하게 일">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T07:30:53.335Z">
+<meta property="og:updated_time" content="2021-05-13T07:31:14.302Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/section-05-조건조합하기/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/sql-20210513-section-04-검색조건지정하기/"/>
     
 
     
@@ -154,14 +154,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-section-05-조건조합하기" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-SQL-20210513-section-04-검색조건지정하기" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        05. SQL 조건조합하기
+        04. SQL 검색 조건 지정하기
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/section-05-%EC%A1%B0%EA%B1%B4%EC%A1%B0%ED%95%A9%ED%95%98%EA%B8%B0/" class="article-date">
-         <time datetime="2020-05-13T06:46:46.000Z" itemprop="datePublished">2020-05-13</time>
+      <a href="/SQL-20210513-section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/" class="article-date">
+         <time datetime="2020-05-13T06:42:01.000Z" itemprop="datePublished">2020-05-13</time>
       </a>
     </div>
 
@@ -194,67 +194,299 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="05-sql-jogeon-johabhagi"><a href="#05-sql-jogeon-johabhagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#05-sql-조건-조합하기"></a> 05. SQL 조건 조합하기</h1>
-<h2 id="and-yeonsanja-or-yeonsanja-not-yeonsanja"><a href="#and-yeonsanja-or-yeonsanja-not-yeonsanja" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#and-연산자-or-연산자-not-연산자"></a> AND 연산자, OR 연산자, NOT 연산자</h2>
-<h3 id="and-yeonsanja"><a href="#and-yeonsanja" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#and-연산자"></a> AND 연산자</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">조건식1 AND 조건식2</span><br></pre></td></tr></table></figure>
+            <h1 id="04gang-geomsaeg-jogeon-jijeonghagi"><a href="#04gang-geomsaeg-jogeon-jijeonghagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#04강-검색-조건-지정하기"></a> 04강 검색 조건 지정하기</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 열1, 열2 FROM 테이블명 WHERE 조건식</span><br></pre></td></tr></table></figure>
+<p>통상적인 데이터베이스의 테이블에는 저장된 행이 많을 것이다. 화면에 표시하여 데이터를 확인할 수 있는데, 한번에 볼 수 있는 데이터양은 한정되어 있다. 화면에 표시할 때는 행이나<br>
+열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 '<strong>검색</strong>’이 빈번하게 일어난다. 행을 선택할 때는 <strong>WHERE</strong> 구를 사용하여, 열을 선택할 때는 <strong>SELECT</strong> 구를 사용한다.</p>
+<h2 id="select-gueseo-yeol-jijeonghagi"><a href="#select-gueseo-yeol-jijeonghagi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#select-구에서-열-지정하기"></a> SELECT 구에서 열 지정하기</h2>
+<p>데이터를 선택할 때는 열이나 행을 한정한다. SELECT 명령어 *를 사용해서 sample 테이블의 모든 열을 취득했다. 열을 한정하기 위해서는 * 부분에 열명을 지정한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 열1, 열2 FROM 테이블명</span><br></pre></td></tr></table></figure>
+<p>열을 위의 구문처럼 콤마(,)를 이용하여 구분 지으며 여러 개를 지정할 수 있다. 지정한 열만 결과값으로 표시된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT FROM sample; // ERROR</span><br></pre></td></tr></table></figure>
+<p>위와 같이 열을 전혀 지정하지 않으면 구문 에러가 발생한다. 또한 테이블에 존재하지 않는 열을 지정해도 에러가 발생한다. 열 지정 순서는 임의로 정할 수 있다.<br>
+테이블에서 열이 정의된 순서와 동일한 순으로 지정할 필요는 없다. 결과는 지정한 열의 순서대로 표시된다. 동일한 열을 중복해서 지정해도 무관하다. <br></p>
+<h2 id="where-gueseo-haeng-jijeonghagi"><a href="#where-gueseo-haeng-jijeonghagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#where-구에서-행-지정하기"></a> WHERE 구에서 행 지정하기</h2>
+<p>테이블의 열은 많아야 몇십 개 정도지만 행은 열에 비해 훨씬 많을 수 있다. 데이터베이스의 규모에 따라 다르지만 일반적으로 수백 건에서 대규모의 경우 수천만 건의 행에 달하는 경우도 있다.<br>
+이처럼 많은 행 속에서 필요한 데이터만 검색하기 위해서는 <strong>WHERE</strong> 구를 사용한다. <br><br>
+<strong>WHERE</strong> 구는 <strong>FROM</strong> 구의 뒤에 표기한다. 예약어 ‘WHERE’ 뒤에 검색 조건을 표기한다. 조건에 일치하는 행만 SELECT의 결과로 반환된다.</p>
+<h3 id="where-guro-haeng-cucul"><a href="#where-guro-haeng-cucul" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#where-구로-행-추출"></a> WHERE 구로 행 추출</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 열 FROM 테이블명 WHERE 조건식</span><br></pre></td></tr></table></figure>
+<h3 id="guyi-sunseowa-saengryag"><a href="#guyi-sunseowa-saengryag" class="header-anchor">1.2.2. </a><a class="markdownIt-Anchor" href="#구의-순서와-생략"></a> 구의 순서와 생략</h3>
+<p>SQL에서는 구의 순서가 정해져 있어 바꿔서 적을 수 없다. FROM 구 뒤에 WHERE 구를 표기한다. 예를들어 'SELECT 구 -&gt; WHERE 구 -&gt; FROM 구’의 순으로 적으면 에러가 발생한다.<br>
+구에는 WHERE 구를 생략한 경우는 테이블 내의 모든 행이 검색 대상이 된다.</p>
+<h3 id="where-gu"><a href="#where-gu" class="header-anchor">1.2.3. </a><a class="markdownIt-Anchor" href="#where-구"></a> WHERE 구</h3>
+<p>조건식은 ‘열과 연산자, 상수로 구성되는 식’ 이다. WHERE 구로 행만 추출하지만 SELECT 구로 열 지정을 동시에 할 수도 있다. 구체적인 예는 아래와 같다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample WHERE no = 2;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jogeonsig"><a href="#jogeonsig" class="header-anchor">1.2.4. </a><a class="markdownIt-Anchor" href="#조건식"></a> 조건식</h3>
+<p>'no = 2’은 ‘np’ ‘=’ '2’의 세 개 항목으로 나눌 수 있다. 첫 번째 항목인 'no’는 열 이름이다. 두 번째 항목 '='는 연산자이다. 연산자란 어떤 계산을 할지 지정하는 것으로 보통 기호로<br>
+표기한다. =의 경우, 좌우로 2개 항목이 필요한 '이항 연산자’에 해당하며 일반적으로 많이 쓰이는 기호이다. = 연산자를 기준으로 좌변과 우변의 항목을 비교하고, 서로 같은 값이면 참을,<br>
+다른 값이면 거짓을 반환한다. no = 2의 조건식에서 no 열 값이 2인 행은 참이되며 1이나 3인 행은 거짓이 된다. 조건식을 만족한 (참) 행만 결괏값으로 반환된다.<br>
+= 연산자는 비교한 결괏값이 참인지 거짓인지를 반환하므로 '비교 연산자’라 부른다.</p>
+<h3 id="gabsi-seoro-dareun-gyeongu-lt-gt"><a href="#gabsi-seoro-dareun-gyeongu-lt-gt" class="header-anchor">1.2.5. </a><a class="markdownIt-Anchor" href="#값이-서로-다른-경우"></a> 값이 서로 다른 경우 ‘&lt;&gt;’</h3>
+<p>비교 연산자는 = 외에도 존재한다. 조건식에서 사용하는 연산자를 바꾸거나 복수의 연산자를 조합하면 복잡한 조건식을 만들 수 있다. 검색 조건으로 &lt;&gt; 연산자를 사용하는 예를 살펴보자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample WHERE no &lt;&gt; 2; // WHERE 구로 no 열 값이 2가 아닌 행만 추출</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<p>이전의 조건식에서 연산자를 = 에서 &lt;&gt;로 바꾸었다. = 연산자가 서로 같은 값인지를 비교하는 연산자인데 반해, &lt;&gt; 연산자는 서로 다른 값인지를 비교하는 연산자이다. 여기서는 no 열 값이 2가 아닐 경우<br>
+참이 되므로, 값이 1과 3인 행이 화면에 표시되었다. 이와 같이 WHERE 구에서 지정한 조건식에 따라 복수의 행이 반환되는 경우도 있다. 반드시 하나의 행만 반환되는 것은 아니다. 조건식에 일치하는 행이<br>
+전혀 없는 경우에는 아무것도 반환되지 않는다.</p>
+<h2 id="munjayeolhyeongyi-sangsu"><a href="#munjayeolhyeongyi-sangsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#문자열형의-상수"></a> 문자열형의 상수</h2>
+<p>이번에는 name 열을 사용해 동일한 조건으로 검색해본다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample WHERE name = &apos;박준용&apos;; // WHERE 구로 name 열 값이 &apos;박준용&apos;인 행만 검색</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+</tbody>
+</table>
+<p>no 열이 수치형 열인 반면에, name 열은 문자열 형이다. 수치형 조건식의 경우 비교할 숫자를 그대로 조건식에 표기한다. 하지만 문자열형을 비교할 경우는 '박준용’처럼 <strong>싱글쿼트(’’)로 둘러싸 표기</strong>해야한다. 날짜시간형의 경우에도 싱글쿼트로 둘러싸 표기한다. 이때 연월일을 하이픈(-)으로 구분한다. 시간은 시분초를 콜론(:)으로 구분하여 표기한다. 문자열형의 열과 비교하기 위해서는 조건으로 지정할 값도 그 자료형에 맞춰 지정해야 한다. 한편 자료형에 맞게 표기한 상수값을 '리터럴(literal)'이라 부른다. 문자열 리터럴은 싱글쿼트로 둘러싸 표기한다.</p>
+<h2 id="nullgabs-geomsaeg"><a href="#nullgabs-geomsaeg" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#null값-검색"></a> NULL값 검색</h2>
+<p>'검색’이라고는 해도 조건식을 표기하는 것뿐이므로 간단하다. 하지만 NULL 값을 검색할 경우에는 주의해야 한다. 앞에서 배운방식대로 NULL 조건을 추가하여 조회해보자.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>박준용</td>
+<td>1976-10-18</td>
+<td>대구광역시 수성구</td>
+</tr>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample WHERE birthday = NULL;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>birthday 열 값이 NULL인 행이 있지만 birthday = NULL과 같은 조건식으로는 검색할 수 없었다. 즉, = 연산자로 NULL을 검색할 수 없다!</p>
+<h3 id="is-null"><a href="#is-null" class="header-anchor">1.4.1. </a><a class="markdownIt-Anchor" href="#is-null"></a> IS NULL</h3>
+<p>NULL 값을 검색할 때는 = 연산자가 아닌 'IS NULL’을 사용해야 한다. IS NULL은 술어로 연산자의 한 종류로 생각하라. <br><br>
+<strong>birthday</strong> IS NULL 과 같이 사용하면 원하는 조회가 가능하다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM sample WHERE birthday **IS NULL**;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>no</th>
+<th>name</th>
+<th>birthday</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>김재진</td>
+<td>NULL</td>
+<td>대구광역시 동구</td>
+</tr>
+<tr>
+<td>3</td>
+<td>홍길동</td>
+<td>NULL</td>
+<td>서울특별시 마포구</td>
+</tr>
+</tbody>
+</table>
+<p>이제 NULL 값에 해당하는 행이 표시되었다. 반대로 NULL 값이 아닌 행을 검색하고 싶다면 <em>IS NOT NULL</em>을 사용하면 된다.</p>
+<h2 id="bigyo-yeonsanja"><a href="#bigyo-yeonsanja" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#비교-연산자"></a> 비교 연산자</h2>
+<p>= 연산자와 &lt;&gt; 연산자, IS NULL로 검색하는 방법에 관해 알아봤다. WHERE 구로 지정하는 조건식은 참고 거짓을 반환하는 비교 연산자나 술어를 사용해서 표기할 수 있다. SQL에서는 많은 연산자 술어를 사용할 수 있다. 여기에서는 대표적인 비교 연산자에 어떤 것이 있는지를 소개한다.</p>
+<hr>
 <ul>
-<li>이항 연산자</li>
-<li>AND로 조건식을 연결하면 <strong>모든 조건을 만족</strong>하는 행을 검색할 수 있음</li>
-</ul>
-<h3 id="or-yeonsanja"><a href="#or-yeonsanja" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#or-연산자"></a> OR 연산자</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">조건식1 OR 조건식2</span><br></pre></td></tr></table></figure>
-<ul>
-<li>이항 연산자</li>
-<li>OR로 조건식을 연결하면 <strong>어느 쪽이든 조건을 만족</strong>하는 행을 <strong>모두</strong> 검색할 수 있음</li>
-</ul>
-<h3 id="not-yeonsanja"><a href="#not-yeonsanja" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#not-연산자"></a> NOT 연산자</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NOT 조건식</span><br></pre></td></tr></table></figure>
-<ul>
-<li>단항 연산자</li>
-<li>NOT을 사용하면 오른쪽에 지정한 조건식의 <strong>반대 값</strong>을 반환</li>
-<li>조건식에 <strong>부합하지 않는 나머지</strong> 조건을 지정할 경우 사용</li>
-</ul>
-<h3 id="yeonsanja-useon-sunwi"><a href="#yeonsanja-useon-sunwi" class="header-anchor">1.1.4. </a><a class="markdownIt-Anchor" href="#연산자-우선-순위"></a> 연산자 우선 순위</h3>
-<ol>
-<li><em>Arithmetic operators</em></li>
-<li><em>Concatenation operator</em></li>
-<li><em>Comparison conditions</em></li>
-<li><em>IS [NOT] NULL, LIKE, [NOT] IN</em></li>
-<li><em>[NOT] BETWEEN</em></li>
-<li><em>Not equal to</em></li>
-<li><em>NOT logical condition</em></li>
-<li><em>AND logical condition</em></li>
-<li><em>OR logical condition</em></li>
-</ol>
-<ul>
-<li>NOT &gt; AND &gt; OR</li>
-<li>AND는 OR에 비해 우선순위가 높음</li>
-</ul>
-<p><em>실제 코드</em></p>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span> <span class="keyword">AND</span> b=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span></span><br></pre></td></tr></table></figure>
-<p><em>잘못된 예상</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> ((a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span>) <span class="keyword">AND</span> b=<span class="number">1</span>) <span class="keyword">OR</span> b=<span class="number">2</span></span><br><span class="line"><span class="keyword">OR</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> (a=<span class="number">1</span> <span class="keyword">OR</span> a=<span class="number">2</span>) <span class="keyword">AND</span> (b=<span class="number">1</span> <span class="keyword">OR</span> b=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p><em>실제 실행</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> a=<span class="number">1</span> <span class="keyword">OR</span> (a=<span class="number">2</span> <span class="keyword">AND</span> b=<span class="number">1</span>) <span class="keyword">OR</span> b=<span class="number">2</span></span><br></pre></td></tr></table></figure>
-<h4 id="cuga-in-yeonsanja"><a href="#cuga-in-yeonsanja" class="header-anchor">1.1.4.1. </a><a class="markdownIt-Anchor" href="#추가-in-연산자"></a> * 추가 - IN 연산자</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">컬럼명 IN (조건, 조건, 조건 ...)</span><br></pre></td></tr></table></figure>
-<ul>
+<li>=연산자<br>
+좌변과 우변의 값이 같을 경우 참이 된다.</li>
+<li>&lt;&gt; 연산자<br>
+좌변과 우변의 값이 같지 않을 경우 참이 된다.</li>
 <li>
-<p>OR와 비슷한 역할을 수행</p>
+<blockquote>
+<p>연산자<br>
+좌변의 값이 우변의 값보다 클 경우 참이 된다. 같거나 작을 경우는 거짓이 된다.</p>
+</blockquote>
 </li>
 <li>
-<p>조건 목록의 값 중 어느 하나와 일치하는 데이터를 출력</p>
+<blockquote>
+<p>=연산자<br>
+좌변의 값이 우변의 값보다 크거나 같을 경우 참이 된다. 작을 경우는 거짓이 된다.</p>
+</blockquote>
 </li>
-<li>
-<p>OR 보다는 IN 사용 권장</p>
-<ul>
-<li>IN은 서브쿼리를 사용하여 보다 유연한 확장 가능</li>
-<li>IN은 반드시 하나의 컬럼이 비교되어야 하므로 나중에 인덱스 구성에 대한 전략을 수립할 때 유리</li>
-<li>옵티마이저는 복잡한 OR에 매우 취약</li>
+<li>&lt;연산자<br>
+좌변의 값이 우변의 값보다 작을 경우 참이 된다. 같거나 클 경우는 거짓이 된다.</li>
+<li>&lt;=연산자<br>
+좌변의 값이 우변의 값보다 작거나 같은 경우 참이 된다. 클 경우는 거짓이 된다.</li>
 </ul>
-</li>
-</ul>
+<hr>
+<p>&lt; 연산자와 &gt; 연산자는 대소관계를 비교하는 연산자이지만 =을 붙임으로써 서로 값이 같은 경우도 비교할 수 있다.  =은 &lt; 과 &gt;의 뒤에 붙인다. &lt;= 나 &gt;=와 같이 사용해야 한다. 또한 &lt;, &gt;와 = 사이에 스페이스를 넣으면 &lt;(또는 &gt;)와 = 로 연산자가 두 개라고 판단하여 에러가 난다.</p>
 
         </div>
         <footer class="article-footer">
@@ -325,28 +557,19 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "05. SQL 조건조합하기",
+        "headline": "04. SQL 검색 조건 지정하기",
         "image": "http://gwanhyeon.github.io",
         "keywords": "SQL",
         "genre": "Database SQL",
         "datePublished": "2020-05-13",
         "dateCreated": "2020-05-13",
         "dateModified": "2021-05-13",
-        "url": "http://gwanhyeon.github.io/section-05-조건조합하기/",
-        "description": "1.  05. SQL 조건 조합하기
-1.1.  AND 연산자, OR 연산자, NOT 연산자
-1.1.1.  AND 연산자
-1조건식1 AND 조건식2
-
-이항 연산자
-AND로 조건식을 연결하면 모든 조건을 만족하는 행을 검색할 수 있음
-
-1.1.2.  OR 연산자
-1조건식1 OR 조건식2
-
-이항 연산자
-OR로 조건식을 연결하면 어느 쪽이든 조건을 만족하는 행을 ",
-        "wordCount": 316
+        "url": "http://gwanhyeon.github.io/SQL-20210513-section-04-검색조건지정하기/",
+        "description": "1.  04강 검색 조건 지정하기
+1SELECT 열1, 열2 FROM 테이블명 WHERE 조건식
+통상적인 데이터베이스의 테이블에는 저장된 행이 많을 것이다. 화면에 표시하여 데이터를 확인할 수 있는데, 한번에 볼 수 있는 데이터양은 한정되어 있다. 화면에 표시할 때는 행이나
+열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 '검색’이 빈번하게 일",
+        "wordCount": 991
     }
 </script>
 
@@ -389,20 +612,20 @@ OR로 조건식을 연결하면 어느 쪽이든 조건을 만족하는 행을 "
         
 <nav id="article-nav">
     
-        <a href="/section-06-%ED%8C%A8%ED%84%B4%EB%A7%A4%EC%B9%AD%EA%B2%80%EC%83%89/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-05-%EC%A1%B0%EA%B1%B4%EC%A1%B0%ED%95%A9%ED%95%98%EA%B8%B0/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            06. SQL 패턴 매칭 검색
+            05. SQL 조건조합하기
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-03-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B5%AC%EC%A1%B0%EC%B0%B8%EC%A1%B0%ED%95%98%EA%B8%B0/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">04. SQL 검색 조건 지정하기</p>
+        <p class="article-nav-title">03. SQL 테이블 구조 참조 및 자료형</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -553,7 +776,7 @@ OR로 조건식을 연결하면 어느 쪽이든 조건을 만족하는 행을 "
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/section-05-%EC%A1%B0%EA%B1%B4%EC%A1%B0%ED%95%A9%ED%95%98%EA%B8%B0/';
+    var disqus_url = 'http://gwanhyeon.github.io/SQL-20210513-section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/';
     
     (function() {
     var dsq = document.createElement('script');

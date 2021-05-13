@@ -4,25 +4,25 @@
     
 
     
-    <title>1. SQL 데이터베이스 개요 | GWAN IT Blog</title>
+    <title>11. SQL 문자열 연산 | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="SQL" />
     
-    <meta name="description" content="1.  1강. 데이터베이스와 SQL 데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 데이터베이스라고 한다. 넓은 의미에서는 &amp;apos;컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다. 데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든">
+    <meta name="description" content="1.  11. 문자열 연산 1.1.  문자열 결합  문자열 결합 사례  1&amp;apos;ABC&amp;apos; || &amp;apos;1234&amp;apos; -&amp;gt; &amp;apos;ABC1234&amp;apos;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCAT 문자열결합 Mysql     문자열 결합 예제  1">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1. SQL 데이터베이스 개요">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;section-01-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%99%80sql&#x2F;index.html">
+<meta property="og:title" content="11. SQL 문자열 연산">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;SQL-20210513-section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  1강. 데이터베이스와 SQL 데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 데이터베이스라고 한다. 넓은 의미에서는 &amp;apos;컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다. 데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든">
+<meta property="og:description" content="1.  11. 문자열 연산 1.1.  문자열 결합  문자열 결합 사례  1&amp;apos;ABC&amp;apos; || &amp;apos;1234&amp;apos; -&amp;gt; &amp;apos;ABC1234&amp;apos;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCAT 문자열결합 Mysql     문자열 결합 예제  1">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T07:32:23.824Z">
+<meta property="og:updated_time" content="2021-05-13T07:29:17.087Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/section-01-데이터베이스와sql/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/sql-20210513-section-11-sql-문자열연산/"/>
     
 
     
@@ -154,14 +154,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-section-01-데이터베이스와sql" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-SQL-20210513-section-11-sql-문자열연산" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        1. SQL 데이터베이스 개요
+        11. SQL 문자열 연산
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/section-01-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%99%80sql/" class="article-date">
-         <time datetime="2020-05-13T06:10:12.000Z" itemprop="datePublished">2020-05-13</time>
+      <a href="/SQL-20210513-section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/" class="article-date">
+         <time datetime="2020-05-13T07:03:36.000Z" itemprop="datePublished">2020-05-13</time>
       </a>
     </div>
 
@@ -194,53 +194,122 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="1gang-deiteobeiseuwa-sql"><a href="#1gang-deiteobeiseuwa-sql" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#1강-데이터베이스와-sql"></a> 1강. 데이터베이스와 SQL</h1>
-<p>데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 <code>데이터베이스</code>라고 한다. 넓은 의미에서는 '컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다.</p>
-<p>데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든 데이터는 사라져 버린다. 이런 상태에서는 영구적이라 말할 수 없다.  따라서 데이터베이스의 데이터는 하드디스크나 플래시메모리(SSD) 등 비휘발성 저장장치에 저장한다.</p>
-<h2 id="dbwa-dbms"><a href="#dbwa-dbms" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#db와-dbms"></a> DB와 DBMS</h2>
-<p>데이터베이스는 <code>DB</code>라는 약자로 통용된다. 데이터베이스는 저장장치 내에 정리되어 저장된 데이터의 집합이고, 이를 효율적으로 관리하는 소프트웨어를 <code>데이터베이스 관리 시스템(Database Management System)</code><br>
-약자로 <em>DBMS</em>라 부른다. DBMS가 필요한 이유는 다음과 같다.</p>
-<h3 id="saengsanseong"><a href="#saengsanseong" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#생산성"></a> 생산성</h3>
-<p>시스템 개발 과정에서의 생산성 향상을 도모할 수 있다. 어떤 시스템에서든지 데이터 검색, 추가, 삭제, 갱신과 같은 처리가 이루어지게 된다. 이와 같은 기본 기능을 DBMS가 제공한다. 시스템을 구축할 때<br>
-기본 기능부터 구현하는 것은 비용측면에서 효율적이지 않다.</p>
-<h3 id="gineungseong"><a href="#gineungseong" class="header-anchor">1.1.2. </a><a class="markdownIt-Anchor" href="#기능성"></a> 기능성</h3>
-<p>DBMS는 데이터베이스를 다루는 기능을 많이 제공한다. 복수 유저의 요청에 대응하거나, 대용량의 데이터를 저장하고 고속으로 검색하는 기능을 제공하기도 한다. 나아가 데이터베이스 관리 기능을 유저가<br>
-확장할 수도 있어 유연하게 시스템을 개발할 수 있다.</p>
-<h3 id="sinroeseong"><a href="#sinroeseong" class="header-anchor">1.1.3. </a><a class="markdownIt-Anchor" href="#신뢰성"></a> 신뢰성</h3>
-<p>대규모 데이터베이스는 많은 요청에 대응할 수 있도록 만들어져 있다. 이를위해 하드웨어를 여러 대로 구성하여 신뢰성을 높이는 동시에 성능 향상을 꾀하기도 한다. 실제로 일부 DBMS는 컴퓨터 여러 대를 두고, 소프트웨어를 통해 확장성(Scalability)과 부하 분산(load balancing)을 구현한다. 이를 보통 ‘클러스터 구성’ 또는 '스케일 아웃’이라 부른다.</p>
-<p>또한 많은 DBMS가 데이터베이스의 데이터를 다른 저장장치로 내보내거나(export), 반대로 데이터베이스 안에 데이터를 집어넣는 import 기능을 갖췄다. 이때 집어넣기 및 내보내기 기능을 통해 데이터베이스를<br>
-간단하게 백업할 수 있다.</p>
-<h2 id="deiteobeiseureul-jojaghaneun-eoneo-sql"><a href="#deiteobeiseureul-jojaghaneun-eoneo-sql" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#데이터베이스를-조작하는-언어-sql"></a> 데이터베이스를 조작하는 언어 SQL</h2>
-<p>DBMS를 이용하면 간접적으로 데이터베이스를 참조할 수 있고, 혹은 데이터를 추가하거나 삭제, 갱신할 수도 있다. SQL은 IBM이 개발한 SEQUEL이라는 관계형 데이터베이스 조작용 언어를 기반으로 만들어졌다. 현재 ISO등에 의해 표준화가 진행되어, C 언어나 자바와 마찬가지로 표준 언어이다.</p>
-<h3 id="sql-myeongryeongyi-jongryu"><a href="#sql-myeongryeongyi-jongryu" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#sql-명령의-종류"></a> SQL 명령의 종류</h3>
-<p>SQL 명령은 다음과 같이 3가지로 나뉠 수 있다.</p>
-<blockquote>
-<p>DML(Data Manipulation Language)</p>
-</blockquote>
-<p><code>데이터베이스에 새롭게 데이터를 CRUD 할 때 사용한다</code>. SQL의 가장 기본이 되는 명령셋(set) 이다.</p>
-<p><em>SELECT</em><br>
-데이터베이스에 들어 있는 데이터를 조회하거나 검색하기 위한 명령어를 말하는 것으로 RETRIEVE 라고도 함</p>
-<p><em>INSERT, UPDATE, DELETE</em><br>
-데이터베이스의 테이블에 들어 있는 데이터에 변형을 가하는 종류(데이터 삽입, 수정, 삭제)의 명령어들을 말함.</p>
-<blockquote>
-<p>DDL(Data Definition Language)</p>
-</blockquote>
-<p><code>데이터를 정의하는 명령어</code>. 데이터베이스는 <code>데이터 베이스 객체(object)</code>라는 데이터 그릇을 이용하여 데이터를 관리하는데, 이 같은 객체를 만들거나 삭제하는 명령어이다.</p>
-<p><em>CREATE, ALTER,DROP,RENAME,TRUNCATE</em><br>
-테이블과 같은 데이터 구조를 정의하는데 사용되는 명령어들로 (생성, 변경, 삭제, 이름변경) 데이터 구조와 관련된 명령어들을 말함.</p>
-<blockquote>
-<p>DCL(Data Control Language)</p>
-</blockquote>
-<p><code>데이터를 제어하는 명령어</code>. DCL에는 트랜잭션을 제어하는 명령과 데이터 접근권한을 제어하는 명령이 포함되어 있다.</p>
-<p><em>GRANT,REVOKE</em><br>
-데이터베이스에 접근하고 객체들을 사용하도록 권한을 주고 회수하는 명령어들을 말함.</p>
-<blockquote>
-<p>TCL(Transaction Control Language)</p>
-</blockquote>
-<p>트랜잭션 제어어라 칭한다.</p>
+            <h1 id="11-munjayeol-yeonsan"><a href="#11-munjayeol-yeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#11-문자열-연산"></a> 11. 문자열 연산</h1>
+<h2 id="munjayeol-gyeolhab"><a href="#munjayeol-gyeolhab" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#문자열-결합"></a> 문자열 결합</h2>
 <ul>
-<li>COMMIT, ROLLBACK,SAVEPOINT*<br>
-논리적인 작업의 단위를 묶어서 DML에 의해 조작된 결과를 작업단위(트랜잭션) 별로 제어하는 명령어를 말함.</li>
+<li>문자열 결합 사례</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'ABC' || '1234' -&gt; 'ABC1234'</span><br></pre></td></tr></table></figure>
+<ul>
+<li>데이터베이스별 문자열 결합의 차이</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>연산자/함수</th>
+<th>연산</th>
+<th>DB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>문자열결합</td>
+<td>SQL Server</td>
+</tr>
+<tr>
+<td>||</td>
+<td>문자열결합</td>
+<td>Oracle, PostgreSQL</td>
+</tr>
+<tr>
+<td>CONCAT</td>
+<td>문자열결합</td>
+<td>Mysql</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>문자열 결합 예제</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sample35;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(quantity, unit) <span class="keyword">from</span> sample35;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>unit열은 문자열형이고, quantity 열은 INTEGER행의 열입니다.</li>
+<li>문자열 결합시 <code>Mysql</code>에서는 <code>CONCAT</code>을 사용합니다. <code>Oracle은 문자열 결합 ||</code></li>
+</ul>
+<h2 id="substring-hamsu"><a href="#substring-hamsu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#substring-함수"></a> SUBSTRING 함수</h2>
+<ul>
+<li>정의</li>
+</ul>
+<p>문자열의 일부분을 계산해서 반환해주는 함수</p>
+<ul>
+<li>SUBSTRING 함수 예시</li>
+</ul>
+<p>블로그 시스템 업로드 특정 데이터 파싱<br>
+날짜 데이터 포맷 형식의 YYYYMMDD 문자열 데이터 파싱(YYYY, MM, DD)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SUBSTRING('20140125001',1,4) -&gt; '2014'앞 4자리(년) 추출</span><br><span class="line"></span><br><span class="line">SUBSTRING('20140125001',5,2) -&gt; '01' 5째 자리부터 2자리(월) 추출</span><br></pre></td></tr></table></figure>
+<h2 id="trim-hamsu"><a href="#trim-hamsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#trim-함수"></a> TRIM 함수</h2>
+<ul>
+<li>정의</li>
+</ul>
+<p>문자열의 앞뒤로 여분의 스페이스가 있을 경우 공백 제거 함수입니다. 그러나, 문자열 도중에 존재하는 스페이스는 제거되지 않습니다.<br>
+고정길이 문자열에 많이 사용하는 함수(CHAR 문자열형)<br>
+<code>12 45</code> 와 같은 경우를 예를 들 수 있습니다.</p>
+<ul>
+<li>TRIM 함수 예시</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRIM('ABC    ') -&gt; 'ABC'</span><br></pre></td></tr></table></figure>
+<h2 id="character-length-hamsu"><a href="#character-length-hamsu" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#character_length-함수"></a> CHARACTER_LENGTH 함수</h2>
+<ul>
+<li>정의</li>
+</ul>
+<p>문자열의 길이를 계산해 돌려주는 함수입니다. VARCHAR형의 문자열은 가변 길이이므로 길이가 서로 다릅니다.<br>
+이에 따라 <code>CHARACTER_LENGTH</code> 함수를 사용하면 문자열의 길이를 계산할 수 있습니다.<br>
+<code>CHARACTER_LENGTH → CHAR_LENGTH</code>로 함수를 줄여서 사용도 가능합니다.</p>
+<ul>
+<li>OCTET_LENGTH 함수</li>
+</ul>
+<p>문자열의 길이를 바이트 단위로 계산해주는 함수</p>
+<ul>
+<li>문자열 데이터의 특징</li>
+<li>데이터단위는 <code>바이트</code> 단위이며 하나의 데이터가 몇 바이트의 저장공간을 필요로 하는지는 <code>인코드 방식</code> or <code>인코딩 방식</code> 에 따라 결정됩니다.</li>
+<li>즉, 문자를 수치화(인코딩) 하는 방식에 따라서 저장공간의 크기가 달라질 수 있습니다.</li>
+</ul>
+<p>예) 한글 2byte, 알파벳 1byte</p>
+<ul>
+<li>간혹 문자세트(Character set)에 따라 길이가 문자 수로 간주될 수도 있습니다.</li>
+<li>문자 세트(character set)</li>
+<li><code>알파벳 반각문자, 한글 전각문자</code></li>
+<li>반각문자는 전각문자 폭의 절반이며 저장용량 또한 전각문자쪽이 더 크다. 반각의 알파벳이나 숫자의 기호(ASCII 문자)라고 일컫음.</li>
+<li>한글은 <code>EUC-KR, UTF-8</code>등의 <code>인코딩 방식</code>을 사용한다.</li>
+<li>즉, RDBMS에서는 이러한 것들을 <code>문자세트</code>라고 부릅니다.</li>
+<li>CHAR_LENGTH() 함수는 ASCII 문자든 <code>문자 수</code>로 계산되기때문에 사용하는데 큰 지장이 없다. 하지만, OCTET_LENGTH() 함수의 경우 문자수가 아닌 <code>바이트 단위</code>로 길이를 <code>계산</code>하므로 주의가 필요합니다.</li>
+<li>문자세트에서 문자수와 바이트 수</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>문자세트</th>
+<th>문자수</th>
+<th>바이트 수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EUC-KR</td>
+<td>12</td>
+<td>19</td>
+</tr>
+<tr>
+<td>UTF-8</td>
+<td>12</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>EUC-KR ASCII 문자는 1바이트 한글은 2바이트의 용량</li>
+<li>UTF-8에서는 ASCII 문자는 1바이트, 한글은 3바이트의 용량</li>
 </ul>
 
         </div>
@@ -312,18 +381,54 @@ ga('send', 'pageview');
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "1. SQL 데이터베이스 개요",
+        "headline": "11. SQL 문자열 연산",
         "image": "http://gwanhyeon.github.io",
         "keywords": "SQL",
         "genre": "Database SQL",
         "datePublished": "2020-05-13",
         "dateCreated": "2020-05-13",
         "dateModified": "2021-05-13",
-        "url": "http://gwanhyeon.github.io/section-01-데이터베이스와sql/",
-        "description": "1.  1강. 데이터베이스와 SQL
-데이터란 컴퓨터 안에 기록되어 있는 숫자를 의미하여, 이러한 데이터의 집합을 데이터베이스라고 한다. 넓은 의미에서는 '컴퓨터 안에 기록된 모든 것’을 데이터베이스라고 할 수 있다.
-데이터 베이스 내의 데이터는 영구적으로 보존되어야 한다. 주기억장치(컴퓨터 메모리, RAM)에만 데이터를 저장한다면, 전원을 끄는 순간 모든 ",
-        "wordCount": 424
+        "url": "http://gwanhyeon.github.io/SQL-20210513-section-11-sql-문자열연산/",
+        "description": "1.  11. 문자열 연산
+1.1.  문자열 결합
+
+문자열 결합 사례
+
+1'ABC' || '1234' -&gt; 'ABC1234'
+
+데이터베이스별 문자열 결합의 차이
+
+
+
+
+연산자/함수
+연산
+DB
+
+
+
+
++
+문자열결합
+SQL Server
+
+
+||
+문자열결합
+Oracle, PostgreSQL
+
+
+CONCAT
+문자열결합
+Mysql
+
+
+
+
+문자열 결합 예제
+
+1",
+        "wordCount": 314
     }
 </script>
 
@@ -366,20 +471,20 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/section-02-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EA%B8%B0%EC%B4%88/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-12-sql-%EB%82%A0%EC%A7%9C%EC%97%B0%EC%82%B0/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            02. SQL 데이터베이스 기초 명령어
+            12. SQL 날짜 연산
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/Leetcode-20210108-twosum/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">릿코드 two-sum</p>
+        <p class="article-nav-title">10. SQL 사칙연산</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -530,7 +635,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/section-01-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%99%80sql/';
+    var disqus_url = 'http://gwanhyeon.github.io/SQL-20210513-section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/';
     
     (function() {
     var dsq = document.createElement('script');

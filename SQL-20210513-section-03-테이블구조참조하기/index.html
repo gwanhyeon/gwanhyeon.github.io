@@ -4,25 +4,25 @@
     
 
     
-    <title>10. SQL 사칙연산 | GWAN IT Blog</title>
+    <title>03. SQL 테이블 구조 참조 및 자료형 | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="SQL" />
     
-    <meta name="description" content="1.  10. 사칙연산 1.1.  사칙연산    연산자 연산 예     + 덧셈(가산) 1+2-&amp;gt;3   - 뺄셈(감산) 1-2-&amp;gt;-1   * 곱셈(승산) 1*2-&amp;gt;2   &#x2F; 나눗셈(제산) 1&#x2F;2-&amp;gt;05   % 나머지 1%2-&amp;gt;1     연산자 우선순위     우선순위 연산자     1 *&#x2F;%   2 ±      산술 연산자는 곱셈">
+    <meta name="description" content="1.  03. 테이블 구조 참조 및 자료형 1.1.  DESC 명령 앞의 4강에서 SELECT 명령으로 테이블의 데이터를 읽어왔다. 테이블은 한 개 이상의 열로 구성되고, 열을 지정하여 조건을 붙이거나 특정 열의 값을 읽어올 수 있다. 테이블에 어떤 열이 있는지 참조할 수 있다면 SELECT 명령을 작성하기 쉬워진다. 여기에서는 DESC 명령으로 테이블 구">
 <meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="10. SQL 사칙연산">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0&#x2F;index.html">
+<meta property="og:title" content="03. SQL 테이블 구조 참조 및 자료형">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;SQL-20210513-section-03-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B5%AC%EC%A1%B0%EC%B0%B8%EC%A1%B0%ED%95%98%EA%B8%B0&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  10. 사칙연산 1.1.  사칙연산    연산자 연산 예     + 덧셈(가산) 1+2-&amp;gt;3   - 뺄셈(감산) 1-2-&amp;gt;-1   * 곱셈(승산) 1*2-&amp;gt;2   &#x2F; 나눗셈(제산) 1&#x2F;2-&amp;gt;05   % 나머지 1%2-&amp;gt;1     연산자 우선순위     우선순위 연산자     1 *&#x2F;%   2 ±      산술 연산자는 곱셈">
+<meta property="og:description" content="1.  03. 테이블 구조 참조 및 자료형 1.1.  DESC 명령 앞의 4강에서 SELECT 명령으로 테이블의 데이터를 읽어왔다. 테이블은 한 개 이상의 열로 구성되고, 열을 지정하여 조건을 붙이거나 특정 열의 값을 읽어올 수 있다. 테이블에 어떤 열이 있는지 참조할 수 있다면 SELECT 명령을 작성하기 쉬워진다. 여기에서는 DESC 명령으로 테이블 구">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T07:29:41.654Z">
+<meta property="og:updated_time" content="2021-05-13T07:31:45.906Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/section-10-sql-사칙연산/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/sql-20210513-section-03-테이블구조참조하기/"/>
     
 
     
@@ -154,14 +154,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-section-10-sql-사칙연산" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-SQL-20210513-section-03-테이블구조참조하기" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        10. SQL 사칙연산
+        03. SQL 테이블 구조 참조 및 자료형
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/" class="article-date">
-         <time datetime="2020-05-13T07:03:24.000Z" itemprop="datePublished">2020-05-13</time>
+      <a href="/SQL-20210513-section-03-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B5%AC%EC%A1%B0%EC%B0%B8%EC%A1%B0%ED%95%98%EA%B8%B0/" class="article-date">
+         <time datetime="2020-05-13T06:36:25.000Z" itemprop="datePublished">2020-05-13</time>
       </a>
     </div>
 
@@ -194,219 +194,96 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="10-sacigyeonsan"><a href="#10-sacigyeonsan" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#10-사칙연산"></a> 10. 사칙연산</h1>
-<h2 id="sacigyeonsan"><a href="#sacigyeonsan" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#사칙연산"></a> 사칙연산</h2>
+            <h1 id="03-teibeul-gujo-camjo-mic-jaryohyeong"><a href="#03-teibeul-gujo-camjo-mic-jaryohyeong" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#03-테이블-구조-참조-및-자료형"></a> 03. 테이블 구조 참조 및 자료형</h1>
+<h2 id="desc-myeongryeong"><a href="#desc-myeongryeong" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#desc-명령"></a> DESC 명령</h2>
+<p>앞의 4강에서 <strong>SELECT</strong> 명령으로 테이블의 데이터를 읽어왔다. 테이블은 한 개 이상의 열로 구성되고, 열을 지정하여 조건을 붙이거나 특정 열의 값을 읽어올 수 있다. 테이블에 어떤 열이 있는지 참조할 수 있다면 SELECT 명령을 작성하기 쉬워진다. 여기에서는 <strong>DESC</strong> 명령으로 테이블 구조를 참조하는 방법을 알아본다.</p>
+<blockquote>
+<p>아래의 명령을 실행하면 다음과 같은 결과가 나타난다.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC sample;</span><br></pre></td></tr></table></figure>
+<br>
 <table>
 <thead>
 <tr>
-<th>연산자</th>
-<th>연산</th>
-<th>예</th>
+<th>Field</th>
+<th>Type</th>
+<th>Null</th>
+<th>Key</th>
+<th>Default</th>
+<th>Extra</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>+</td>
-<td>덧셈(가산)</td>
-<td>1+2-&gt;3</td>
+<td>no</td>
+<td>int(11)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
 </tr>
 <tr>
-<td>-</td>
-<td>뺄셈(감산)</td>
-<td>1-2-&gt;-1</td>
+<td>name</td>
+<td>varchar(20)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
 </tr>
 <tr>
-<td>*</td>
-<td>곱셈(승산)</td>
-<td>1*2-&gt;2</td>
+<td>birthday</td>
+<td>data</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
 </tr>
 <tr>
-<td>/</td>
-<td>나눗셈(제산)</td>
-<td>1/2-&gt;05</td>
-</tr>
-<tr>
-<td>%</td>
-<td>나머지</td>
-<td>1%2-&gt;1</td>
+<td>address</td>
+<td>varchar(40)</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>연산자 우선순위</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>우선순위</th>
-<th>연산자</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>*/%</td>
-</tr>
-<tr>
-<td>2</td>
-<td>±</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>
-<p>산술 연산자는 곱셈,나눗셈,나머지 그룹과 덧셈,뺄셈 그룹으로 나뉩니다.</p>
-</li>
-<li>
-<p>계산순서는 연산자에 따라 왼쪽에서 오른쪽으로 진행합니다. 우선순위가 같은 연산자들 끼리 연산하는 경우 문제가 되지 않지만 우선순위가 다른 연산자들이 섞여있는 경우는 <code>우선순위가 더 높은쪽</code>으로 계산합니다.</p>
-</li>
-<li>
-<p>우선순위가 같은 경우</p>
-</li>
-</ul>
-<pre class="highlight"><code class="sql">1-2+3=2 (우선순위가 같다면 왼쪽에서 오른쪽으로 계산합니다.)    
-</code></pre>
-<ul>
-<li>우선순위가 다른 경우</li>
-</ul>
-<pre class="highlight"><code class="sql">1+2*3=7 (+보다 *의 우선순위가 높습니다.)    
-</code></pre>
-<h2 id="selectguro-yeonsanhagi"><a href="#selectguro-yeonsanhagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#select구로-연산하기"></a> select구로 연산하기</h2>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> 식<span class="number">1</span>, 식<span class="number">2</span> ... <span class="keyword">from</span> 테이블명    
-</code></pre>
-<ul>
-<li>이 식은 <code>열명, 연산자, 상수</code>로 구성</li>
-<li>가격과 수량으로 금액을 계산하는 경우<br>
-주문금액 = 단가 * 개수</li>
-</ul>
-<p>예) 100원 상품 10개 주문 상품금액 1000원</p>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">from</span> sample34    
-</code></pre>
-<h2 id="yeolyi-byeolmyeong"><a href="#yeolyi-byeolmyeong" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#열의-별명"></a> 열의 별명</h2>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
-</code></pre>
-<ul>
-<li>열의 별명을 붙일때는 예약어 <code>AS</code> 를 사용한다. AS의 약어는 에일리어스(alias)입니다.</li>
-<li>별명은 중복이 되지 않도록 처리 한다.</li>
-<li>AS 예약어 별명은 <code>영어, 숫자, 한글</code> 등으로 지정 가능합니다.</li>
-<li>단, 한글로 지정하는경우 더블쿼트 <code>&quot;&quot;</code> 를 지정해서 사용합니다</li>
-<li>다음과 같이 쓸 수 있습니다.</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> price * quantity <span class="string">"금액"</span> <span class="keyword">from</span> sample34    
-</code></pre>
-<p>이 룰은 ASCII 문자 이외의 것을 포함할 경우 <code>더블쿼트</code>로 둘러싸서 지정합니다.</p>
-<ul>
-<li>문자열 상수는 <code>' '</code> 싱글쿼트로 감싸주고, 데이터베이스 객체명은 <code>&quot; &quot;</code> 더블쿼트로 감싸줍니다.</li>
-</ul>
-<pre class="highlight"><code class="sql">문자열 상수 'ABC', 'KGH' -&gt; 싱글 쿼트    
-데이터베이스 객체명 "sample21" "sample34" -&gt; 더블쿼트    
-</code></pre>
-<ul>
-<li>예약어 같은 경우는 별명을 지정해서 사용할 수 없는데, 그래도 사용해야한다면 <code>&quot; &quot;</code> 더블쿼트를 사용하면 가능합니다.</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> price * quantity <span class="keyword">AS</span> <span class="keyword">select</span> <span class="keyword">from</span> sample34; (예약어 지정 X)    
-<span class="keyword">select</span> price * quantity <span class="keyword">AS</span> <span class="string">"select"</span> <span class="keyword">from</span> sample34; (예약어 지정 O)    
-</code></pre>
-<ul>
-<li>숫자의 경우도 예약어와 겹칠때와 마찬가지로 <code>&quot; &quot;</code> 더블쿼트를 사용하면 피할 수 있습니다.</li>
-<li>오라클 기준으로 이름을 지정하는 할 수 없습니다. 이에 따라 <code>숫자로 객체명이 시작되지 않도록 합니다.</code>(단, mysql에서는 숫자로 시작하는 객체명이 허용됩니다.)</li>
-</ul>
-<h2 id="where-gueseo-yeonsanhagi"><a href="#where-gueseo-yeonsanhagi" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#where-구에서-연산하기"></a> where 구에서 연산하기</h2>
-<ul>
-<li>where 구에서 <code>가격 * 수량</code> 금액을 계산하여 <code>2000원 이상</code>에 해당하는 행을 검색하는 쿼리</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34;    
-<span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
-<span class="keyword">where</span> price * quantity &gt;= <span class="number">2000</span>;    
-</code></pre>
-<ul>
-<li>price * quantity 대신에 amount를 사용하면 어떻게 될까요?</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
-<span class="keyword">where</span> amount &gt;= <span class="number">2000</span>;    
-</code></pre>
-<ul>
-<li>AS 를 써서 별명을 지어줬으니 에러가 발생하지 않을까? 라는 생각을 할 수도 있습니다. 하지만, amount가 존재하지 않는다라는 에러가 발생하게 됩니다.</li>
-<li>데이터베이스 처리순서는 <code>(where구 → select구)</code> 의 순서로 진행됩니다. 즉, where 구의 처리는 select구보다 선행되므로 where 구에서 사용한 별칭을 인식하지 못하게 됩니다.</li>
-<li>다시 말해, <code>where amount &gt;= 2000;</code> 를 실행하고 나서 <code>select *, price * quantity AS amount from sample34</code> 를 실행하기 때문에 amount를 인식하지 못하게 되는 상황이 발생하게 됩니다.</li>
-<li>표준 SQL에서는 내부처리 순서가 따로 정해져 있지 않습니다.</li>
-</ul>
-<h2 id="null-gabsyi-yeonsan"><a href="#null-gabsyi-yeonsan" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#null-값의-연산"></a> NULL 값의 연산</h2>
-<ul>
-<li>
-<p>만약 <code>NULL값</code>을 이용해 <code>NULL+1</code> 과 같은 연산을 사용하면 결과는 어떻게 될까요?</p>
-</li>
-<li>
-<p>어느 정도 짐작을 하셨겠지만, SQL에서는 NULL값을 0으로 인식하지 않습니다. 잘못 생각한 경우라면 NULL값을 1로 생각하여 <code>1</code> 이라는 결과를 얻을 수 있다고 생각하셨을 수도 있습니다.</p>
-</li>
-<li>
-<p>결과적으로, <code>NULL+1</code> 은 1이 아닌 <code>NULL</code> 입니다.</p>
-</li>
-<li>
-<p>다음 연산결과도 같은 결과를 나타냅니다.</p>
-</li>
-</ul>
-<pre class="highlight"><code class="sql">NULL+1    
-1+NULL    
-1+2*NULL    
-1/NULL    
-</code></pre>
-<p>NULL은 0으로 처리 되지 않고, 0을 1로 나누면 <code>'division by zero'</code> 라는 에러를 나타내게 할 것입니다.</p>
-<p>하지만, 1/NULL의 경우는 NULL이 0으로 처리 되지 않아 에러가 발생하지 않고 <code>NULL</code> 의 값을 나타내게 될 것입니다.</p>
-<h2 id="order-bygueseo-yeonsanhagi"><a href="#order-bygueseo-yeonsanhagi" class="header-anchor">1.6. </a><a class="markdownIt-Anchor" href="#order-by구에서-연산하기"></a> order by구에서 연산하기</h2>
-<ul>
-<li>금액을 오름차순, 내림차순을 구현하기 위해서는 어떠한  예약어를 사용하면 될까요?</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34;    
-<span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34 <span class="keyword">order</span> <span class="keyword">by</span> price * quantity <span class="keyword">DESC</span>;    
-</code></pre>
-<ul>
-<li>order by구를 사용하고 옵션으로 <code>DESC(descending)</code>키워드를 사용하면 <code>내림차순 정렬</code>이 되는것을 볼 수 있습니다. <code>오름차순(ascending)</code> 정렬은 예약어 <code>ASC</code>로 사용하면 됩니다.</li>
-<li>order by는 서버에서 내부적으로 가장 나중에 처리 됩니다.</li>
-</ul>
-<h2 id="hamsu"><a href="#hamsu" class="header-anchor">1.7. </a><a class="markdownIt-Anchor" href="#함수"></a> 함수</h2>
-<ul>
-<li>MOD 함수</li>
-</ul>
-<pre class="highlight"><code class="sql">10 % 3 -&gt; 1    
-MOD(10,3) -&gt; 1    
-</code></pre>
-<ul>
-<li>MOD함수를 사용하면 나머지를 쉽게 구할 수 있습니다.</li>
-<li>MOD() 함수는 함수명이 <code>MOD</code>, 인수로 <code>(나누어질 수, 나눌 수)</code>의 형태를 띄게 됩니다.</li>
-</ul>
-<p>예) MOD(10,3)</p>
-<h2 id="round-hamsu"><a href="#round-hamsu" class="header-anchor">1.8. </a><a class="markdownIt-Anchor" href="#round-함수"></a> ROUND 함수</h2>
-<ul>
-<li>부가세나 부가세포함된 금액을 계산할 때 어떤 함수를 사용하면 좋을까요?</li>
-<li>ROUND()함수를 사용하면 단위를 고려한 반올림 처리를 손쉽게 할 수 있습니다.</li>
-</ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> * <span class="keyword">from</span> sample341;    
-<span class="keyword">select</span> amount, <span class="keyword">ROUND</span>(amount) <span class="keyword">from</span> sample341;    
-</code></pre>
-<ul>
-<li>INTEGER형: 정수만 저장 가능 amount열은 DECIMAL형으로 정의되었습니다.</li>
-<li>DECIMAL형은 정수부와 소수부의 자릿수를 지정할 수 있는 자료형입니다. 즉, 소수점을 포함하는 수치를 저장하는 자료형이 됩니다.</li>
-<li>ROUND함수는 <code>소수점 첫째 자리 기준</code>으로 <code>반올림</code> 한 값을 반환합니다. 함수의 두번째 인수로 반올림할 <code>자릿수를 지정</code>할 수도 있습니다.</li>
-</ul>
-<p>단, 인수를 생략할 경우 0으로 간주되고 첫째 자리를 반올림합니다. 1을 지정하면 소수점 둘째 자리를 반올림합니다.</p>
-<ul>
-<li>음수의 경우는 어떻게 할 수 있을까요?</li>
-</ul>
-<p><code>-1 지정시 1단위</code> , <code>-2을 지정하면 10단위</code>를 <code>반올림</code>할 수 있습니다.</p>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> amount, <span class="keyword">ROUND</span>(amount,<span class="number">-2</span>) <span class="keyword">from</span> sample341;    
-</code></pre>
-<p>인수에 -2를 입력하였으니 10단위를 반올림합니다. 예) 5961.69 → 6000(10단위 반올림)</p>
-<ul>
-<li>버림 함수는 어떤것이 있을까요?</li>
-</ul>
-<p>반올림 이외에도 버림을 할 경우가 생길 수 있는데 TRUNCATE() 함수로 계산이 가능합니다.</p>
-<ul>
-<li>그 외 함수</li>
-<li>SIN, COS 삼각함수</li>
-<li>SQRT 루트를 계산하는 함수</li>
-<li>LOG 대수를 계산하는 함수</li>
-</ul>
+<p>이와 같이 DESC 명령으로 테이블에 어떤 열이 정의되어 있는지 알 수 있다. (DESC는 SQL 명령이 아니다)<br>
+간단하게 표시된 내용에 대한 설명을 아래와 같이 요약하였다.</p>
+<blockquote>
+<p><strong>Filed</strong></p>
+</blockquote>
+<p>열 이름이 표시된다.</p>
+<blockquote>
+<p><strong>Type</strong></p>
+</blockquote>
+<p>해당 열의 '<strong>자료형</strong>’을 나타낸다. intsms Integer(정수)를 의미한다. 괄호 안의 숫자는 최대 길이를 나타내는데, 예를 들어 int(11)은 '11자리의 정수값을 저장할 수 있는 자료형’을 의미한다.</p>
+<blockquote>
+<p><strong>Null</strong></p>
+</blockquote>
+<p>NULL 값을 허용할 것인지 아닌지를 나타내는 <strong>제약사항</strong>으로 Yes로 지정하면 NULL 값을 허용하게 된다.</p>
+<blockquote>
+<p><strong>Key</strong></p>
+</blockquote>
+<p>해당 열이 '키’로 지정되어 있는지를 나타낸다.</p>
+<blockquote>
+<p><strong>Default</strong></p>
+</blockquote>
+<p>그 열에 주어진 ‘기본값’ 즉, 생략했을 경우 적용되는 값이다. 테이블에 행을 추가할 때 열의 데이터 값을 생략하면 이 기본값으로 채워진다.</p>
+<h2 id="2-jaryohyeong"><a href="#2-jaryohyeong" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2자료형"></a> 2.자료형</h2>
+<p>테이블은 하나 이상의 열로 구성되며 DESC 명령으로 그 구조를 참조할 수 있다. 열에는 몇 가지 속성을 지정할 수 있고, 그중 가장 중요한 속성은 <em>자료형</em>이다.</p>
+<h3 id="integer-hyeong"><a href="#integer-hyeong" class="header-anchor">1.2.1. </a><a class="markdownIt-Anchor" href="#integer-형"></a> INTEGER 형</h3>
+<p>INTEGER 형은 수치형의 하나로 정수값을 저장할 수 있는 자료형이다. 소수점은 포함할 수 없다.(오라클의 경우 NUMBER(P,S) S가 0인 경우와 같다고 볼 수 있다. P는 소숫점을 포함한 전체 자릿수, S는 소수점 자릿수 의미)</p>
+<h3 id="char-hyeong"><a href="#char-hyeong" class="header-anchor">1.2.2. </a><a class="markdownIt-Anchor" href="#char-형"></a> CHAR 형</h3>
+<p>CHAR 형은 문자열형의 하나로 문자열을 저장할 수 있는 자료형이다. 문자열형에서는 열의 최대 길이를 지정해야 한다. CHAR(10)으로 자료형을 지정했을 경우 최대 10문자로 된 문자열을 저장할 수 있으면 11문자로 된 문자열을 저장할 수 없다. 다음으로 설명할 VARCHAR 형은 저장할 문자열의 길이에 맞춰 저장공간을 가변적으로 사용하여 저장한다. 반면 CHAR 형은 언제나 고정된 길이로 데이터가 저장된다. <br><br>
+그에 따라 ‘고정 길이 문자열’ 자료형이라고 한다. CHAR 형에서는 길이가 고정되기 때문에 최대 길이보다 작은 문자열을 저장할 경우 <strong>공백문자</strong>로 나머지를 채운 후 저장한다. (오라클도 동일)</p>
+<h3 id="varchar-hyeong"><a href="#varchar-hyeong" class="header-anchor">1.2.3. </a><a class="markdownIt-Anchor" href="#varchar-형"></a> VARCHAR 형</h3>
+<p>VARCHAR 형 역시 문자열을 저장할 수 있는 자료형이다. 최대 길이를 지정하는 점은 CHAR 형과 같지만 앞서 말한 것 처럼 데이터 크기에 맞춰 저장공간의 크기도 변경된다.<br>
+그에 따라 ‘가변 길이 문자열’ 자료형이라고 한다. (오라클에서는 VARCHAR2(n) : 오라클에도 VARCHAR가 있지만 사용하지 않음)</p>
+<h3 id="date-hyeong"><a href="#date-hyeong" class="header-anchor">1.2.4. </a><a class="markdownIt-Anchor" href="#date-형"></a> DATE 형</h3>
+<p>DATE 형은 날짜값을 저장할 수 있는 자료형이다. 날짜값이란 '2013년3월23일’과 같이 연월일의 데이터를 저장할 수 있는 형이다. (오라클도 동일 오라클은 DATE에 시분초 까지 포함되어 있다)</p>
+<h3 id="time-hyeong"><a href="#time-hyeong" class="header-anchor">1.2.5. </a><a class="markdownIt-Anchor" href="#time-형"></a> TIME 형</h3>
+<p>TIME 형은 시간을 저장할 수 있는 자료형이다. ex) '12시 30분 20초’와 같이 시분초의 데이터를 저장할 수 있는 형이다. <em>문자열형에는 고정 길이와 가변 길이가 있다</em></p>
 
         </div>
         <footer class="article-footer">
@@ -477,77 +354,18 @@ MOD(10,3) -&gt; 1
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "10. SQL 사칙연산",
+        "headline": "03. SQL 테이블 구조 참조 및 자료형",
         "image": "http://gwanhyeon.github.io",
         "keywords": "SQL",
         "genre": "Database SQL",
         "datePublished": "2020-05-13",
         "dateCreated": "2020-05-13",
         "dateModified": "2021-05-13",
-        "url": "http://gwanhyeon.github.io/section-10-sql-사칙연산/",
-        "description": "1.  10. 사칙연산
-1.1.  사칙연산
-
-
-
-연산자
-연산
-예
-
-
-
-
-+
-덧셈(가산)
-1+2-&gt;3
-
-
--
-뺄셈(감산)
-1-2-&gt;-1
-
-
-*
-곱셈(승산)
-1*2-&gt;2
-
-
-/
-나눗셈(제산)
-1/2-&gt;05
-
-
-%
-나머지
-1%2-&gt;1
-
-
-
-
-연산자 우선순위
-
-
-
-
-우선순위
-연산자
-
-
-
-
-1
-*/%
-
-
-2
-±
-
-
-
-
-
-산술 연산자는 곱셈",
-        "wordCount": 877
+        "url": "http://gwanhyeon.github.io/SQL-20210513-section-03-테이블구조참조하기/",
+        "description": "1.  03. 테이블 구조 참조 및 자료형
+1.1.  DESC 명령
+앞의 4강에서 SELECT 명령으로 테이블의 데이터를 읽어왔다. 테이블은 한 개 이상의 열로 구성되고, 열을 지정하여 조건을 붙이거나 특정 열의 값을 읽어올 수 있다. 테이블에 어떤 열이 있는지 참조할 수 있다면 SELECT 명령을 작성하기 쉬워진다. 여기에서는 DESC 명령으로 테이블 구",
+        "wordCount": 417
     }
 </script>
 
@@ -590,20 +408,20 @@ MOD(10,3) -&gt; 1
         
 <nav id="article-nav">
     
-        <a href="/section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-04-%EA%B2%80%EC%83%89%EC%A1%B0%EA%B1%B4%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            11. SQL 문자열 연산
+            04. SQL 검색 조건 지정하기
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/section-09-sql-%EA%B2%B0%EA%B3%BC%ED%96%89%EC%A0%9C%ED%95%9C%ED%95%98%EA%B8%B0/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-02-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EA%B8%B0%EC%B4%88/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">09. SQL 결과 행 제한하기 LIMIT구</p>
+        <p class="article-nav-title">02. SQL 데이터베이스 기초 명령어</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -754,7 +572,7 @@ MOD(10,3) -&gt; 1
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/';
+    var disqus_url = 'http://gwanhyeon.github.io/SQL-20210513-section-03-%ED%85%8C%EC%9D%B4%EB%B8%94%EA%B5%AC%EC%A1%B0%EC%B0%B8%EC%A1%B0%ED%95%98%EA%B8%B0/';
     
     (function() {
     var dsq = document.createElement('script');
