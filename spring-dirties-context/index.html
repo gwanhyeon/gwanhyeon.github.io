@@ -4,25 +4,25 @@
     
 
     
-    <title>프로그래머스 큰 수 만들기 | GWAN IT Blog</title>
+    <title>Spring @DirtiesContext | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="DFS,알고리즘,그리디,프로그래머스" />
+    <meta name="keywords" content="Spring" />
     
-    <meta name="description" content="1.  문제 링크 1.1.  프로그래머스 큰수만들기 2.  문제 조건 2.1.  문제 설명 어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다. 예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다. 문자열 형식으로 숫자 n">
-<meta name="keywords" content="DFS,알고리즘,그리디,프로그래머스">
+    <meta name="description" content="Spring DirtiesContext 스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 @DirtiesConte">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="프로그래머스 큰 수 만들기">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Programmers-20201009-Programmers-bignumber&#x2F;index.html">
+<meta property="og:title" content="Spring @DirtiesContext">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;spring-dirties-context&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  문제 링크 1.1.  프로그래머스 큰수만들기 2.  문제 조건 2.1.  문제 설명 어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다. 예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다. 문자열 형식으로 숫자 n">
+<meta property="og:description" content="Spring DirtiesContext 스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 @DirtiesConte">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T04:57:28.651Z">
+<meta property="og:updated_time" content="2021-05-14T07:16:30.434Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/programmers-20201009-programmers-bignumber/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/spring-dirties-context/"/>
     
 
     
@@ -149,19 +149,19 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/algorithm/programmers/">Programmers</a>
+    <a class="page-title-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/server/spring/">Spring</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Programmers-20201009-Programmers-bignumber" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-spring-dirties-context" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        프로그래머스 큰 수 만들기
+        Spring @DirtiesContext
         </h1>
     
 
@@ -172,8 +172,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/Programmers-20201009-Programmers-bignumber/" class="article-date">
-         <time datetime="2020-10-09T08:49:42.000Z" itemprop="datePublished">2020-10-09</time>
+      <a href="/spring-dirties-context/" class="article-date">
+         <time datetime="2021-05-14T07:14:33.000Z" itemprop="datePublished">2021-05-14</time>
       </a>
     </div>
 
@@ -183,7 +183,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dfs/" rel="tag">DFS</a>, <a class="tag-link" href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" rel="tag">그리디</a>, <a class="tag-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>, <a class="tag-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a>
+        <a class="tag-link" href="/tags/spring/" rel="tag">Spring</a>
     </div>
 
                 
@@ -194,28 +194,44 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<h2 id="peurogeuraemeoseu-keunsumandeulgi"><a href="#peurogeuraemeoseu-keunsumandeulgi" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#프로그래머스-큰수만들기"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/42883" target="_blank" rel="noopener">프로그래머스 큰수만들기</a></h2>
-<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
-<h3 id="munje-seolmyeong"><a href="#munje-seolmyeong" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#문제-설명"></a> 문제 설명</h3>
-<p>어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.</p>
-<p>예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다.</p>
-<p>문자열 형식으로 숫자 number와 제거할 수의 개수 k가 solution 함수의 매개변수로 주어집니다. number에서 k 개의 수를 제거했을 때 만들 수 있는 수 중 가장 큰 숫자를 문자열 형태로 return 하도록 solution 함수를 완성하세요.</p>
-<h3 id="jehan-jogeon"><a href="#jehan-jogeon" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#제한-조건"></a> 제한 조건</h3>
-<p>number는 1자리 이상, 1,000,000자리 이하인 숫자입니다.<br>
-k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
-<hr>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>숫자로 주어진 문자열에서 - k만큼의 수 만큼을 선택하여 가장 큰 수를 골라주면된다.</li>
-<li>이전에 프로그래머스 소수찾기에서 풀었던 것과 유사하긴 하지만 이것이 더 쉽습니다. DFS를 통하여 <code>number.size() - k</code> 개수만큼 숫자를 선택한다</li>
-<li>basement조건은 선택한 개수와 k개의 개수를 제거한 개수와 같을 경우이다.</li>
-<li>basement조건에 걸리게 되면 check된 값들만 문자열 결합을 통해서 값을 만들어준다. 그 이후 그 값들을 정수로 변환시켜서 최댓값을 구해준다.</li>
-<li>모든 최댓값을 구하게 되었으면 to_string()함수를 이용해서 리턴시켜준다.</li>
-</ul>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> check[<span class="number">1000001</span>];</span><br><span class="line"><span class="keyword">int</span> max_num= <span class="number">0</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">string</span> number,<span class="keyword">int</span> cnt, <span class="keyword">int</span> len, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(len == cnt)&#123;</span><br><span class="line">        <span class="built_in">string</span> str = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;number.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i])&#123;</span><br><span class="line">                str += number[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> res = atoi(str.c_str());</span><br><span class="line">        <span class="comment">// v.push_back(atoi(str.c_str()));</span></span><br><span class="line">        <span class="keyword">if</span>(res &gt; max_num)&#123;</span><br><span class="line">            max_num = res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cnt &gt; len)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;number.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(check[i])&#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        check[i] = <span class="number">1</span>;</span><br><span class="line">        dfs(number, cnt+<span class="number">1</span>, len, k);</span><br><span class="line">        check[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">solution</span><span class="params">(<span class="built_in">string</span> number, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = number.size() - k;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    dfs(number,<span class="number">0</span>, len , k);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> to_string(max_num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>Spring DirtiesContext</p>
+<p>스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 <code>@DirtiesContext</code> 이다.</p>
+<p>이 <code>@DirtiesContext</code> 어노테이션은 테스트를 수행전, 수행후, 각 테스트 케이스마다 수행하기 전, 수행한 이후에 Context를 재생성하는 역할을 한다.</p>
+<blockquote>
+<p>@DirtiesContext</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@DirtiesContext indicates that the underlying Spring ApplicationContext has been dirtied during the execution of a test (that is, the test modified or corrupted it in some manner — for example, by changing the state of a singleton bean) and should be closed. When an application context is marked as dirty, it is removed from the testing framework’s cache and closed. As a consequence, the underlying Spring container is rebuilt for any subsequent test that requires a context with the same configuration metadata.</span><br><span class="line">You can use @DirtiesContext as both a class-level and a method-level annotation within the same class or class hierarchy. In such scenarios, the ApplicationContext is marked as dirty before or after any such annotated method as well as before or after the current test class, depending on the configured methodMode and classMode.</span><br></pre></td></tr></table></figure>
+<p>doc.spring.io에 따르면 @DirtiesContext ApplicationContext 테스트를 실행하는동안 테스트 프레임워크의 캐시를 제거하고 닫게합니다. 결과적으로 기본 Spring Container에 동일한 구성 메타 데이터가 있는 컨텍스트를 필요로하는 후속 테스트를 위해 재 빌드된다고 나와있습니다.</p>
+<p>또한, 클래스 계층 구조내에서 클래스 수준 주석과 메서드 수준 수적으로 모두 사용할 수 있습니다.</p>
+<blockquote>
+<p>클래스 테스트 시작전 Context 재생성</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = BEFORE_CLASS) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>클래스 테스트 이후 Context 재생성</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextDirtyingTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that result in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>모든 테스트 케이스마다 시작하기 이전 Context 재생성</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = BEFORE_EACH_TEST_METHOD) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>모든 테스트케이스가 끝날때 마다 Context 재생성</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = AFTER_EACH_TEST_METHOD) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextDirtyingTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that result in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>특정 케이스 시작전 Context 재생성</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(methodMode = BEFORE_METHOD) </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testProcessWhichRequiresFreshAppCtx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some logic that requires a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>특정 케이스 시작 이후 Context 재생성</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testProcessWhichDirtiesAppCtx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some logic that results in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Reference</p>
+</blockquote>
+<p><a href="https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html" target="_blank" rel="noopener">https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html</a></p>
+<p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext" target="_blank" rel="noopener">https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext</a></p>
 
         </div>
         <footer class="article-footer">
@@ -286,22 +302,17 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "프로그래머스 큰 수 만들기",
+        "headline": "Spring @DirtiesContext",
         "image": "http://gwanhyeon.github.io",
-        "keywords": "DFS 알고리즘 그리디 프로그래머스",
-        "genre": "Algorithm Programmers",
-        "datePublished": "2020-10-09",
-        "dateCreated": "2020-10-09",
-        "dateModified": "2021-05-13",
-        "url": "http://gwanhyeon.github.io/Programmers-20201009-Programmers-bignumber/",
-        "description": "1.  문제 링크
-1.1.  프로그래머스 큰수만들기
-2.  문제 조건
-2.1.  문제 설명
-어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.
-예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다.
-문자열 형식으로 숫자 n",
-        "wordCount": 653
+        "keywords": "Spring",
+        "genre": "Server Spring",
+        "datePublished": "2021-05-14",
+        "dateCreated": "2021-05-14",
+        "dateModified": "2021-05-14",
+        "url": "http://gwanhyeon.github.io/spring-dirties-context/",
+        "description": "Spring DirtiesContext
+스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 @DirtiesConte",
+        "wordCount": 467
     }
 </script>
 
@@ -344,20 +355,10 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
         
 <nav id="article-nav">
     
-        <a href="/Programmers-20201013-Programmers-house-steal/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            프로그래머스 도둑질
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/Programmers-20201009-Programmers-carpet/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/CleanCode-20210502-chapter04-%EC%A3%BC%EC%84%9D/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">프로그래머스 카펫</p>
+        <p class="article-nav-title">CleanCode 04 주석</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -508,7 +509,7 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/Programmers-20201009-Programmers-bignumber/';
+    var disqus_url = 'http://gwanhyeon.github.io/spring-dirties-context/';
     
     (function() {
     var dsq = document.createElement('script');

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2021-05-02T15:44:14.129Z</updated>
+  <updated>2021-05-14T07:16:30.434Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring @DirtiesContext</title>
+    <link href="http://gwanhyeon.github.io/spring-dirties-context/"/>
+    <id>http://gwanhyeon.github.io/spring-dirties-context/</id>
+    <published>2021-05-14T07:14:33.000Z</published>
+    <updated>2021-05-14T07:16:30.434Z</updated>
+    
+    <content type="html"><![CDATA[<p>Spring DirtiesContext</p><p>스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 <code>@DirtiesContext</code> 이다.</p><p>이 <code>@DirtiesContext</code> 어노테이션은 테스트를 수행전, 수행후, 각 테스트 케이스마다 수행하기 전, 수행한 이후에 Context를 재생성하는 역할을 한다.</p><blockquote><p>@DirtiesContext</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@DirtiesContext indicates that the underlying Spring ApplicationContext has been dirtied during the execution of a test (that is, the test modified or corrupted it in some manner — for example, by changing the state of a singleton bean) and should be closed. When an application context is marked as dirty, it is removed from the testing framework’s cache and closed. As a consequence, the underlying Spring container is rebuilt for any subsequent test that requires a context with the same configuration metadata.</span><br><span class="line">You can use @DirtiesContext as both a class-level and a method-level annotation within the same class or class hierarchy. In such scenarios, the ApplicationContext is marked as dirty before or after any such annotated method as well as before or after the current test class, depending on the configured methodMode and classMode.</span><br></pre></td></tr></table></figure><p>doc.spring.io에 따르면 @DirtiesContext ApplicationContext 테스트를 실행하는동안 테스트 프레임워크의 캐시를 제거하고 닫게합니다. 결과적으로 기본 Spring Container에 동일한 구성 메타 데이터가 있는 컨텍스트를 필요로하는 후속 테스트를 위해 재 빌드된다고 나와있습니다.</p><p>또한, 클래스 계층 구조내에서 클래스 수준 주석과 메서드 수준 수적으로 모두 사용할 수 있습니다.</p><blockquote><p>클래스 테스트 시작전 Context 재생성</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = BEFORE_CLASS) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>클래스 테스트 이후 Context 재생성</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextDirtyingTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that result in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>모든 테스트 케이스마다 시작하기 이전 Context 재생성</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = BEFORE_EACH_TEST_METHOD) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>모든 테스트케이스가 끝날때 마다 Context 재생성</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = AFTER_EACH_TEST_METHOD) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextDirtyingTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that result in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>특정 케이스 시작전 Context 재생성</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(methodMode = BEFORE_METHOD) </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testProcessWhichRequiresFreshAppCtx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some logic that requires a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>특정 케이스 시작 이후 Context 재생성</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testProcessWhichDirtiesAppCtx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some logic that results in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>Reference</p></blockquote><p><a href="https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html" target="_blank" rel="noopener">https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html</a></p><p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext" target="_blank" rel="noopener">https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Spring DirtiesContext&lt;/p&gt;
+&lt;p&gt;스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기
+      
+    
+    </summary>
+    
+    
+      <category term="Server" scheme="http://gwanhyeon.github.io/categories/server/"/>
+    
+      <category term="Spring" scheme="http://gwanhyeon.github.io/categories/server/spring/"/>
+    
+    
+      <category term="Spring" scheme="http://gwanhyeon.github.io/tags/spring/"/>
+    
+  </entry>
   
   <entry>
     <title>CleanCode 04 주석</title>
@@ -624,34 +653,6 @@
       <category term="프로그래머스" scheme="http://gwanhyeon.github.io/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/"/>
     
       <category term="힙" scheme="http://gwanhyeon.github.io/tags/%ED%9E%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OS 트랜잭션(transaction), 격리수준(Isolation Level)</title>
-    <link href="http://gwanhyeon.github.io/OS-20210303-os-transaction/"/>
-    <id>http://gwanhyeon.github.io/OS-20210303-os-transaction/</id>
-    <published>2021-03-03T09:12:15.000Z</published>
-    <updated>2021-03-03T09:35:45.280Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="transaction-teuraenjaegsyeon"><a href="#transaction-teuraenjaegsyeon" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#transaction트랜잭션"></a> Transaction(트랜잭션)</h1><blockquote><p>트랜잭션의 성질</p></blockquote><ol><li><p>원자성(Atomicity)</p><p>한 트랜잭션 내에서 실행한 작업들을 하나로 간주한다. 즉, 모두 성공 또는 실패를 뜻합니다.</p></li><li><p>일관성(Consistency)</p><p>트랜잭션은 일관성 있는 데이터베이스 상태를 유지합니다. (Data Integrity)</p></li><li><p>격리성(Isolation)</p><p>동시에 실행되는 트랜잭션들이 서로 영향을 미치지 않도록 격리해야합니다.</p></li><li><p>지속성(Durability)</p><p>트랜잭션을 성공적으로 마치면 결과가 항상 저장되어야 합니다.</p></li></ol><blockquote><p>트랜잭션이란 무엇인가?</p></blockquote><p>스프링에서는 트랜잭션을 처리를 지원하는데 그 중 어노테이션 방식으로 @Transcational을 선언하여 사용하는 방법이 일반적입니다. 즉, 선언적 트랜잭션이라 불리어옵니다.</p><p>클래스나 메서드 위에서 @Transaction이 추가되면, 이 클래스에 트랜잭션 기능이 적용된 프록시 객체가 생성됩니다.</p><p>이 프록시 객체는 @Transcation이 포함된 메소드가 호출 될 경우, PlatformTranscationManager를 사용하여 트랜잭션을 시작하고, 정상 여부에 따라 Commit or Rollback을 진행합니다.</p><h1 id="teuraenjaegsyeon-gyeongjaengsi-munjejeom"><a href="#teuraenjaegsyeon-gyeongjaengsi-munjejeom" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#트랜잭션-경쟁시-문제점"></a> 트랜잭션 경쟁시 문제점</h1><p>다수의 트랜잭션이 동시에 실행되는 상황에서는 트랜잭션 처리방식을 고려해야합니다.</p><h3 id="munje-1dirty-read"><a href="#munje-1dirty-read" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#문제-1dirty-read"></a> 문제 1Dirty Read</h3><p>트랜잭션 A가 어떤 값을 1에서 2로 변경하고 아직 커밋되지 않은 상황에서 트랜잭션 B가 같은 값을 읽는 경우 트랜잭션 B는 2가 조회됩니다.</p><p>트랜잭션 B가 2를 조회한 후 A가 롤백이 된다면 결국 트랜잭션 B는 잘못된 값을 읽게됩니다. 즉, 트랜잭션이 완료되지 않은 시점에서 데이터에 접근을 허용할 경우 발생할 수 있는 데이터 불일치가 발생할 수 있습니다.</p><h3 id="munje-2-non-repeatable-read"><a href="#munje-2-non-repeatable-read" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#문제-2-non-repeatable-read"></a> 문제 2 Non Repeatable Read</h3><p>트랜잭션 A가 어떤값을 1을 읽은후 A는 같은 쿼리를 또 실행할 예정이면 그 사이에 트랜잭션 B가 값 1을 2로 바꾸고 커밋해버리면서 A가 같은 쿼리 두번을 날리는 사이 두 쿼리의 결과가 다르게 되어버립니다.</p><p>즉, 트랜잭션에서 같은 쿼리를 두번 실행했을 때 발생할 수 있는 데이터 불일치 입니다.</p><p>Dirty Read에 비해서 발생할 확률은 적습니다.</p><h3 id="munje-3-phantom-read"><a href="#munje-3-phantom-read" class="header-anchor">2.3. </a><a class="markdownIt-Anchor" href="#문제-3-phantom-read"></a> 문제 3 Phantom Read</h3><p>트랜잭션 A가 어떤 조건을 사용하여 특정 범위의 값 [0,1,2,3,4]를 읽었을 때, 이후 A가 같은 쿼리를 실행예정이라면 그 사이에 트랜잭션 B가 같은 테이블에 값[5,6,7]을 추가해버리면 A가 같은 쿼리 두번을 날리는 사이에 두 쿼리의 결과가 다르게 되어버립니다.</p><p>즉, 한 트랜잭션에서  일정 범위의 레코드를 두번 이상 읽을 때 발생하는 데이터 불일치라고 할 수 있습니다.</p><h1 id="teuraenjaegsyeon-gyeogri-sujun"><a href="#teuraenjaegsyeon-gyeogri-sujun" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#트랜잭션-격리-수준"></a> 트랜잭션 격리 수준</h1><p>격리수준이란 일관성이 없는 데이터를 허용하는 수준을 말합니다.</p><h3 id="default"><a href="#default" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#default"></a> DEFAULT</h3><p>기본 격리수준을 뜻하며 기본값을 뜻합니다. = Database의 Isolation Level을 따릅니다.</p><h3 id="read-uncommited-level-01"><a href="#read-uncommited-level-01" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#read_uncommitedlevel-01"></a> READ_UNCOMMITED(level 01)</h3><p>커밋되지 않은(트랜잭션  처리)중인 데이터에 대한 읽기를 허용</p><p>즉 어떤 사용자가 A라는 데이터를 B라는 데이터로 변경하는 동안 다른 사용자는 B라는 아직 완료되지 않은(Uncommited 혹은 Dirty) 데이터 B를 읽을 수 있습니다.</p><p>Problem1 - Dirty Read가 발생할 수 있습니다.</p><p>Transaction 레벨을 허용하지 않아[ READ_COMMITTED와 SERIALIZABLE만이 적합한 트랜잭션 레벨입니다 ] 라는 오류가 발생한다. 다른 옵션들은 문제 발생하지 않습니다.</p><h3 id="read-commited-level01"><a href="#read-commited-level01" class="header-anchor">3.3. </a><a class="markdownIt-Anchor" href="#read_commitedlevel01"></a> READ_COMMITED(Level01)</h3><p>트랜잭션 커밋이 된 확정 데이터만 읽기를 허용합니다. 그리고 어떤 사용자가 A라는 데이터를 B라는 데이터로 변경하는 동안 다른사용자는 해당 데이터에 접근할 수 없습니다.</p><p>Problem1 - Dirty Read방지</p><h3 id="repeatable-read-level02"><a href="#repeatable-read-level02" class="header-anchor">3.4. </a><a class="markdownIt-Anchor" href="#repeatable_readlevel02"></a> REPEATABLE_READ(Level02)</h3><p>트랜잭션이 완료될 때까지 SELECT 문장이 사용하는 모든 데이터에 shared lock이 걸리므로 다른 사용자는 그 영역에 해당되는 데이터에 대한 수정이 불가능합니다.</p><p>선행 트랜잭션이 읽은 데이터는 트랜잭션이 종료될 때까지 후행 트랜잭션이 갱신하거나 삭제가 불가능 하기때문에 같은 데이터를 두 번 쿼리했을 때 일관성 있는 결과를 리턴합니다.</p><p>Problems2 - Non Repeatable Read 방지</p><h3 id="serializable-level-03"><a href="#serializable-level-03" class="header-anchor">3.5. </a><a class="markdownIt-Anchor" href="#serializablelevel-03"></a> SERIALIZABLE(Level 03)</h3><p>데이터의 일관성 및 동시성을 위해 MVCC(Multi Version COncurrency Control)을 사용하지 않습니다.</p><p>트랜잭션이 완료될 때까지 SELECT 문장이 사용하는 모든 데이터에 shared lock이 걸리므로 다른 사용자는 그 영역에 해당되는 데이터에 대한 수정 및 입력이 불가능합니다.</p><p>problem3 - phantom READ 방지</p><blockquote><p>주의 할점</p></blockquote><p>격리 수준이 올라갈 수록 성능 저하의 우려를 가지고 있습니다.</p><blockquote><p>MVCC?</p></blockquote><p>MVCC는 다중 사용자 데이터베이스 성능을 위한 기술로 데이터 조회시 LOCK을 사용하지 않고 데이터의 버전을 관리해 데이터의 일관성 및 동시성을 높이는 기술입니다.</p><p>트랜잭션이 완료 될 때까지 SELECT 문장이 사용하는 모든 데이터에 shared lock이 걸리므로 다른 사용자는 그 영역에 해당되는 데이터에 대한 수정 및 입력이 불가능합니다.</p><blockquote><p>REFERENCE</p></blockquote><p><a href="https://goddaehee.tistory.com/167" target="_blank" rel="noopener">https://goddaehee.tistory.com/167</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;transaction-teuraenjaegsyeon&quot;&gt;&lt;a href=&quot;#transaction-teuraenjaegsyeon&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href
-      
-    
-    </summary>
-    
-    
-      <category term="OS" scheme="http://gwanhyeon.github.io/categories/os/"/>
-    
-    
-      <category term="트랜잭션" scheme="http://gwanhyeon.github.io/tags/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/"/>
-    
-      <category term="Transaction" scheme="http://gwanhyeon.github.io/tags/transaction/"/>
     
   </entry>
   
