@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/cleancode/</loc>
+        <lastmod>2021-05-14T04:33:56.342Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/database/sql/</loc>
         <lastmod>2021-05-13T07:32:23.824Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -122,13 +129,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/algorithm/%25EC%259E%2590%25EB%25A3%258C%25EA%25B5%25AC%25EC%25A1%25B0%25EB%25A1%25A0/</loc>
         <lastmod>2021-05-13T04:48:23.030Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/cleancode/</loc>
-        <lastmod>2021-05-02T15:44:14.129Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

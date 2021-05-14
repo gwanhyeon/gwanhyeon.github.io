@@ -655,15 +655,15 @@ Ope
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/">Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라</a>
+        <a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/">Effective Java 3/E Item 43 람다보다는 메서드 참조를 사용하라</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  익명클래스 보다는 람다를 사용하라
-자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다.
-1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다.
-문자열을 
+            1.  람다보다는 메서드 참조를 사용하라
+람다가 익명 클래스보다 나은 점 중에서 가장 큰 특징은 간결함입니다. 그런데 자바에는 함수객체를 심지어 람다보다도 더 간결하게 만드는 방법이 있습니다. 바로 메서드 참조(Method reference)입니다.
+다음 코드는 임의의 키와 Integer 값의 매핑을 관리하는 프로그램의 일부입니다.
+키의 인스턴스 개수로 해
         </p>
     </div>
 </article>
@@ -685,15 +685,15 @@ Ope
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/">Effective Java 3/E Item 43 람다보다는 메서드 참조를 사용하라</a>
+        <a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/">Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  람다보다는 메서드 참조를 사용하라
-람다가 익명 클래스보다 나은 점 중에서 가장 큰 특징은 간결함입니다. 그런데 자바에는 함수객체를 심지어 람다보다도 더 간결하게 만드는 방법이 있습니다. 바로 메서드 참조(Method reference)입니다.
-다음 코드는 임의의 키와 Integer 값의 매핑을 관리하는 프로그램의 일부입니다.
-키의 인스턴스 개수로 해
+            1.  익명클래스 보다는 람다를 사용하라
+자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다.
+1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다.
+문자열을 
         </p>
     </div>
 </article>
