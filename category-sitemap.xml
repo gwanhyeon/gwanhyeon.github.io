@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/network/</loc>
+        <lastmod>2021-05-15T16:46:31.656Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/server/spring/</loc>
         <lastmod>2021-05-14T07:16:30.434Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -129,13 +136,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/algorithm/%25EC%259E%2590%25EB%25A3%258C%25EA%25B5%25AC%25EC%25A1%25B0%25EB%25A1%25A0/</loc>
         <lastmod>2021-05-13T04:48:23.030Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/network/</loc>
-        <lastmod>2021-03-10T04:45:54.855Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

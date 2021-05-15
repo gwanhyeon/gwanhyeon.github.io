@@ -5760,7 +5760,7 @@ LAN 드라이버, LAN 장비, LAN카드</p>
 만약에 클라이언트 <code>IP:127.0.0.1의 주소</code>에서 <code>IP:127.0.0.2의 주소</code>로 데이터를 <code>전송</code>한다고 가정해보겠습니다.<br>
 이때 <code>클라이언트</code>는 찾고자하는 <code>서버의 IP를 검색</code>을 진행하면 <code>127.0.0.1의 IP주소</code>를 가지고 인터넷의 노드를 탐색하면서 <code>IP:127.0.0.2의 주소</code>를 찾아서 서버는 해당 클라이언트의 요청을 받고 해당 <code>데이터</code>들을 넘겨주게 됩니다.</p>
 </blockquote>
-<h1 id="ip-internet-protocla-yi-yeoghal"><a href="#ip-internet-protocla-yi-yeoghal" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#ipinternet-protocla의-역할"></a> IP(Internet Protocla)의 역할</h1>
+<h1 id="ip-internet-protocal-yi-yeoghal"><a href="#ip-internet-protocal-yi-yeoghal" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#ipinternet-protocal의-역할"></a> IP(Internet Protocal)의 역할</h1>
 <p><code>인터넷 프로토콜의 역할은</code> <code>지정된 IP주소</code>를 해당 <code>IP 주소(Address)</code>에 데이터를 전달시킵니다. 이때, <code>패킷(Packet)</code>이라는 통신 단위로 데이터를 전달하게 됩니다.</p>
 <h1 id="ip-paekis-packet"><a href="#ip-paekis-packet" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#ip-패킷packet"></a> IP 패킷(Packet)</h1>
 <p><code>IP패킷은</code> <code>출발지 IP</code>와 <code>목적지IP</code>, <code>기타 데이터사항</code>들을 감싸서 데이터를 <code>전송</code>합니다.</p>
