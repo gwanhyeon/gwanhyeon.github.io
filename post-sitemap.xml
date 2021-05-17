@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Network-20210128-network-08-rest-api/</loc>
+        <lastmod>2021-05-17T14:58:11.805Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Network-20210108-network-01-internet-communication/</loc>
         <lastmod>2021-05-15T16:46:31.656Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1258,14 +1266,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/MSA-20210212-01-%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%9D%98%EC%9D%B4%ED%95%B4/</loc>
         <lastmod>2021-02-11T17:35:25.336Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Network-20210128-network-08-rest-api/</loc>
-        <lastmod>2021-01-30T17:00:54.757Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

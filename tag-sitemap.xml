@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/rest/</loc>
+        <lastmod>2021-05-17T14:58:11.805Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/network/</loc>
+        <lastmod>2021-05-17T14:58:11.805Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/ip/</loc>
         <lastmod>2021-05-15T16:46:31.656Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -808,13 +822,6 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/network/</loc>
-        <lastmod>2021-03-10T04:45:54.855Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/tags/msa/</loc>
         <lastmod>2021-03-10T04:41:03.888Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -901,13 +908,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/bulk/</loc>
         <lastmod>2021-02-19T05:08:19.227Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/rest/</loc>
-        <lastmod>2021-01-30T17:00:54.757Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

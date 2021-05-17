@@ -3929,7 +3929,7 @@ Ex) GET,POST,PUT,PATCH,DELETE</p>
 <p>삭제 작업이 성공하면 웹 서버는 프로세스가 성공적으로 처리되었지만 응답 본문에 추가 정보가 포함되지 않았음을 나타내는 <code>HTTP 204 상태 코드로 응답</code>해야 합니다. 리소스가 없는 경우 웹 서버는 <code>HTTP 404(찾을 수 없음)를 반환</code>할 수 있습니다.</p>
 <h1 id="bidonggi-jageob"><a href="#bidonggi-jageob" class="header-anchor">11. </a><a class="markdownIt-Anchor" href="#비동기-작업"></a> 비동기 작업</h1>
 <p>경우에 따라 POST, PUT, PATCH 또는 DELETE 작업을 완료 하는 데 시간이 오래 걸리는 처리가 필요할 수 있습니다. 이 경우 요청 처리가 수락되었지만 아직 완료되지 않았음을 나타내는 <code>HTTP 상태 코드 202(수락됨)를 반환</code>합니다.</p>
-<p>즉, 클라이언트가 상태 엔드포인트를 폴링하여 상태를 모니터링할 수 있도록 비동기 요청의 상태를 반환하는 <code>엔드포인트를 표시</code>해야합니다. <code>202 응답의 Location 헤더에 상태 엔드포인트의 URI를 포함</code>합니다.</p>
+<p>즉, 클라이언트가 상태 엔드포인트를 폴링하여 상태를 모니터링할 수 있도록 비동기 요청의 상태를 반환하는 <code>End-Point 표시</code>해야합니다. <code>202 응답의 Location 헤더에 상태 엔드포인트의 URI를 포함</code>합니다.</p>
 <blockquote>
 <p>엔드포인트 표시 예시</p>
 </blockquote>
