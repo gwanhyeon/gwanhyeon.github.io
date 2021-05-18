@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/CleanCode-20210518-chapter05-%ED%98%95%EC%8B%9D%EB%A7%9E%EC%B6%94%EA%B8%B0/</loc>
+        <lastmod>2021-05-18T15:44:19.715Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Network-20210128-network-08-rest-api/</loc>
         <lastmod>2021-05-17T14:58:11.805Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,7 +32,7 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/spring-dirties-context/</loc>
+        <loc>http://gwanhyeon.github.io/Spring-20210514-spring-dirties-context/</loc>
         <lastmod>2021-05-14T07:16:30.434Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

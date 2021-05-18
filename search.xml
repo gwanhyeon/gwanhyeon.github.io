@@ -1,8 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CleanCode 05 형식 맞추기</title>
+    <url>/CleanCode-20210518-chapter05-%ED%98%95%EC%8B%9D%EB%A7%9E%EC%B6%94%EA%B8%B0/</url>
+    <content><![CDATA[<h1 id="hyeongsigeul-majcuneun-mogjeog"><a href="#hyeongsigeul-majcuneun-mogjeog" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#형식을-맞추는-목적"></a> 형식을 맞추는 목적</h1>
+<p>코드의 형식은 중요하다 너무 중요해서 무시하기 어렵다. 너무나도 중요하므로 융통성 없이 맹목적으로 따르면 안된다. 코드 형식은 의사소통의 일환이다.<br>
+<code>코드의 가독성은 앞으로 바꾸리 코드의 품질에 지대한 영향을 미친다.</code>  오랜시간이 지나 원래 코드의 흔적을 더 이상 찾아보기 어려울 정도로 코드가 바뀌어도 맨 처음 잡아 놓은 구현스타일과 가독성 수준은 유지보수 <code>용이성</code>과 <code>확장성</code>에 계속 영향을 미친다.</p>
+<h1 id="jeogjeolhan-haeng-gilireul-yujihara"><a href="#jeogjeolhan-haeng-gilireul-yujihara" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#적절한-행-길이를-유지하라"></a> 적절한 행 길이를 유지하라</h1>
+<blockquote>
+<p>소스코드는 얼마나 길어야할까요?</p>
+</blockquote>
+<p>JUnit 자바 전체 파일중 대략 1/3이 40줄에서 100줄 조금 넘는 정도이다. 가장 긴 파일은 <code>500줄을 넘지 않으면 평균 200줄</code> 정도를 기록한다. <em>충분히 이정도로 거대한 시스템을 구축할 수 있다는 사실이다.</em> 일반적으로 큰 파일보다는 작은파일이 이해하기 쉽다.</p>
+<h2 id="sinmun-gisaceoreom-jagseonghara"><a href="#sinmun-gisaceoreom-jagseonghara" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#신문-기사처럼-작성하라"></a> 신문 기사처럼 작성하라</h2>
+<p><code>신문기사처럼 이름은 간단하고 설명이 가능하게 짓는다.</code> 그리고 이름만 보고도 올바른 모듈을 살펴보고 있는지 아닌지를 판단할 정도로 신경 써서 짓는다. 소스 파일 첫 부분은 고차원 개념과 알고리즘을 설명한다. 아래로 내려갈수록 의도를 세세하게 묘사한다. 마지막에는 가장 저차원적인 함수와 세부 내역이 나온다.</p>
+<h2 id="gaenyeomeun-bin-haengeuro-bunrihara"><a href="#gaenyeomeun-bin-haengeuro-bunrihara" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#개념은-빈-행으로-분리하라"></a> 개념은 빈 행으로 분리하라</h2>
+<blockquote>
+<p>빈 행을 넣지 않을 경우</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> fitnesse.wikitext.widgets;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoldWidget</span> <span class="keyword">extends</span> <span class="title">ParentWidget</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String REGEXP = <span class="string">"'''.+?'''"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern pattern = Pattern.compile(<span class="string">"'''(.+?)'''"</span>,</span><br><span class="line">        Pattern.MULTILINE + Pattern.DOTALL);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BoldWidget</span><span class="params">(ParentWidget parent, String text)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(parent);</span><br><span class="line">        Matcher match = pattern.matcher(text); match.find(); </span><br><span class="line">        addChildWidgets(match.group(<span class="number">1</span>));&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">render</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123; </span><br><span class="line">        StringBuffer html = <span class="keyword">new</span> StringBuffer(<span class="string">"&lt;b&gt;"</span>);         </span><br><span class="line">        html.append(childHtml()).append(<span class="string">"&lt;/b&gt;"</span>); </span><br><span class="line">        <span class="keyword">return</span> html.toString();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>빈행만으로 훨씬 가독성 좋은 코드를 만들 수 있다.</p>
+<blockquote>
+<p>빈 행을 넣을 경우</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> fitnesse.wikitext.widgets;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.regex.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoldWidget</span> <span class="keyword">extends</span> <span class="title">ParentWidget</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String REGEXP = <span class="string">"'''.+?'''"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern pattern = Pattern.compile(<span class="string">"'''(.+?)'''"</span>, </span><br><span class="line">        Pattern.MULTILINE + Pattern.DOTALL</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BoldWidget</span><span class="params">(ParentWidget parent, String text)</span> <span class="keyword">throws</span> Exception </span>&#123; </span><br><span class="line">        <span class="keyword">super</span>(parent);</span><br><span class="line">        Matcher match = pattern.matcher(text);</span><br><span class="line">        match.find();</span><br><span class="line">        addChildWidgets(match.group(<span class="number">1</span>)); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">render</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123; </span><br><span class="line">        StringBuffer html = <span class="keyword">new</span> StringBuffer(<span class="string">"&lt;b&gt;"</span>); </span><br><span class="line">        html.append(childHtml()).append(<span class="string">"&lt;/b&gt;"</span>); </span><br><span class="line">        <span class="keyword">return</span> html.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="sero-miljibdo"><a href="#sero-miljibdo" class="header-anchor">2.3. </a><a class="markdownIt-Anchor" href="#세로-밀집도"></a> 세로 밀집도</h2>
+<blockquote>
+<p>줄바꿈이 개념을 분리한다면 세로 밀집도는 연관성을 의미한다.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReporterConfig</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String m_className;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Property&gt; m_properties = <span class="keyword">new</span> ArrayList&lt;Property&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addProperty</span><span class="params">(Property property)</span> </span>&#123; </span><br><span class="line">        m_properties.add(property);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="sujig-geori"><a href="#sujig-geori" class="header-anchor">2.4. </a><a class="markdownIt-Anchor" href="#수직-거리"></a> 수직 거리</h2>
+<p>함수 연관관계와 동작방식을 이해하려고 이 함수에서 저 함수를 오가며 소스 파일을 위아래로 뒤지는 실수를 한 경험이 있는가?<br>
+서로 밀접한 개념들은 세로로 가까이 둬야한다. 타당한 근거가 없다면 서로 밀접한 개념은 한 파일에 속해야 마땅하다. 이게 바로 <code>protected 변수를 피해야하는 이유</code>중 하나이다.</p>
+<p>변수선언은 사용하는 위치에서 최대한 가까이 선언한다. 인스턴스변수는 클래스 맨 처음(혹은 끝)에 선언한다.</p>
+<blockquote>
+<p>종속 함수</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WikiPageResponder</span> <span class="keyword">implements</span> <span class="title">SecureResponder</span> </span>&#123; </span><br><span class="line">    <span class="keyword">protected</span> WikiPage page;</span><br><span class="line">    <span class="keyword">protected</span> PageData pageData;</span><br><span class="line">    <span class="keyword">protected</span> String pageTitle;</span><br><span class="line">    <span class="keyword">protected</span> Request request; </span><br><span class="line">    <span class="keyword">protected</span> PageCrawler crawler;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">makeResponse</span><span class="params">(FitNesseContext context, Request request)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String pageName = getPageNameOrDefault(request, <span class="string">"FrontPage"</span>);</span><br><span class="line">        loadPage(pageName, context); </span><br><span class="line">        <span class="keyword">if</span> (page == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> notFoundResponse(context, request); </span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> makePageResponse(context); </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getPageNameOrDefault</span><span class="params">(Request request, String defaultPageName)</span> </span>&#123;</span><br><span class="line">        String pageName = request.getResource(); </span><br><span class="line">        <span class="keyword">if</span> (StringUtil.isBlank(pageName))</span><br><span class="line">            pageName = defaultPageName;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pageName; </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loadPage</span><span class="params">(String resource, FitNesseContext context)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        WikiPagePath path = PathParser.parse(resource);</span><br><span class="line">        crawler = context.root.getPageCrawler();</span><br><span class="line">        crawler.setDeadEndStrategy(<span class="keyword">new</span> VirtualEnabledPageCrawler()); </span><br><span class="line">        page = crawler.getPage(context.root, path);</span><br><span class="line">        <span class="keyword">if</span> (page != <span class="keyword">null</span>)</span><br><span class="line">            pageData = page.getData();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> Response <span class="title">notFoundResponse</span><span class="params">(FitNesseContext context, Request request)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> NotFoundResponder().makeResponse(context, request);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> SimpleResponse <span class="title">makePageResponse</span><span class="params">(FitNesseContext context)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        pageTitle = PathParser.render(crawler.getFullPath(page)); </span><br><span class="line">        String html = makeHtml(context);</span><br><span class="line">        SimpleResponse response = <span class="keyword">new</span> SimpleResponse(); </span><br><span class="line">        response.setMaxAge(<span class="number">0</span>); </span><br><span class="line">        response.setContent(html);</span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><code>종속 함수</code> 한 함수가 다른 함수를 호출한다면 두 함수는 세로로 가까이 배치한다. 또한 가능하다면 호출하는 함수를 호출되는 함수보다 먼저 배치한다. 다음으로 호출하는 함수는 그 아래에 정의한다. 호출되는 함수를 찾기가 쉬워지며 전체 가독성도 높아진다</p>
+<blockquote>
+<p>개념의 유사성</p>
+</blockquote>
+<p>개념적인 친화도가 높을 수록 코드를 가까이 배치한다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Assert</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">assertTrue</span><span class="params">(String message, <span class="keyword">boolean</span> condition)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!condition) </span><br><span class="line">            fail(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">assertTrue</span><span class="params">(<span class="keyword">boolean</span> condition)</span> </span>&#123; </span><br><span class="line">        assertTrue(<span class="keyword">null</span>, condition);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">assertFalse</span><span class="params">(String message, <span class="keyword">boolean</span> condition)</span> </span>&#123; </span><br><span class="line">        assertTrue(message, !condition);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">assertFalse</span><span class="params">(<span class="keyword">boolean</span> condition)</span> </span>&#123; </span><br><span class="line">        assertFalse(<span class="keyword">null</span>, condition);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>친화도가 높은 요인은 여러가지이다. 그 중 하나가 직접적인 종속성이다. 이런 경우에는 종속성은 부차적 요인이므로 종속적인 관게가 없더라도 가까이 배치하도록한다.</p>
+<h1 id="garo-hyeongsig-majcugi"><a href="#garo-hyeongsig-majcugi" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#가로-형식-맞추기"></a> 가로 형식 맞추기</h1>
+<p>한 행은 가로로 얼마나 길어야 적당할까? 프로그래머는 짧은 행을 선호하고 보통 40자 정도가 된다. 약 120자 정도로 제한할 것을 권고한다.</p>
+<blockquote>
+<p>가로 공백과 밀집도</p>
+</blockquote>
+<p>가로로는 공백을 사용해 밀접한 개념과 느슨한 개념을 표현한다. 공백을 넣으면 두가지 주요 요소가 확실히 나뉜다는 사실이다.<br>
+반면, 함수 이름과 이어지는 괄호 사이에는 공백을 넣지 않았다. 함수와 인수는 서로 밀접하기 때문이다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">addLine(lineSize, lineCount);</span><br><span class="line"><span class="keyword">return</span> b*b - <span class="number">4</span>*a*c;</span><br></pre></td></tr></table></figure>
+<p>수식을 읽기가 매우 편하다. 곱셈은 우선순위가 가장 높다. 항 사이에는 공백이 들어간다. 덧셈과 뺄셈은 우선순위가 곱셈보다 낮기때문이다.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> (-b - Math.sqrt(determinant)) / (<span class="number">2</span>*a);</span><br></pre></td></tr></table></figure>
+<p>하지만, 도구에서 없애는 경우가 흔하다</p>
+<blockquote>
+<p>가로 정렬</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FitNesseExpediter</span> <span class="keyword">implements</span> <span class="title">ResponseSender</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>        Socket          socket;</span><br><span class="line">    <span class="keyword">private</span>     InputStream       input;</span><br><span class="line">    <span class="keyword">private</span>     OutputStream       output;</span><br><span class="line">    <span class="keyword">protected</span>     <span class="keyword">long</span>          requestParsingTimeLimit;</span><br><span class="line">    <span class="keyword">private</span>     <span class="keyword">long</span>          requestProgress;</span><br><span class="line">    <span class="keyword">private</span>     <span class="keyword">long</span>          requestParsingDeadline;</span><br><span class="line">    <span class="keyword">private</span>     <span class="keyword">boolean</span>          hasError;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FitNesseExpediter</span><span class="params">(Socket         s,</span></span></span><br><span class="line"><span class="function"><span class="params">                           FitNessContext context)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.context =            context;</span><br><span class="line">    socket =                  s;</span><br><span class="line">    requestParsingTimeLimit = <span class="number">10000</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>깔끔해보일지 모르지만, 엉뚱한 부분을 강조해 진짜 의도가 가려지기때문이다. 예를 들어, 위 선언부를 읽다보면 변수유형은 무시하고 변수이름부터 읽게 된다. 코드 형식을 자동으로 맞춰주는 도구는 대다수가 위와 같은 정렬을 무시한다.</p>
+<h2 id="deulyeosseugi"><a href="#deulyeosseugi" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#들여쓰기"></a> 들여쓰기</h2>
+<p>소스파일은 윤곽도와 계층이 비슷하다. 파일 전체에 적용되는 정보가 있고, 파일 내 개별 클래스에 적용되는 정보가 있고, 클래스 내 각 메서드에 적용되는 정보가 있고, 블록 내 블록에 재귀적으로 적용되는 정보가 있다.<br>
+들여쓰기 한 파일은 한눈에 구조가 들어온다. 때로는 간단한 if문, while문, 짧은 함수에서 들여쓰기 규칙을 무시하고픈 유혹이 생긴다. <code>한 행에 뭉뚱그려놓은 코드를 지양해라!</code></p>
+<h2 id="gajja-beomwi"><a href="#gajja-beomwi" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#가짜-범위"></a> 가짜 범위</h2>
+<p>이상한 세미콜론을 적용하지 말자.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>()</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<h1 id="tim-gyucig"><a href="#tim-gyucig" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#팀-규칙"></a> 팀 규칙</h1>
+<p>팀은 한가지 규칙을 정하고 팀원들은 규칙을 따라야한다. IDE코드 형식기를 설정하거나 규칙을 정해라!</p>
+<h1 id="bab-ajeossiyi-hyeongsig-gyucig"><a href="#bab-ajeossiyi-hyeongsig-gyucig" class="header-anchor">5. </a><a class="markdownIt-Anchor" href="#밥-아저씨의-형식-규칙"></a> 밥 아저씨의 형식 규칙</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodeAnalyzer</span> <span class="keyword">implements</span> <span class="title">JavaFileAnalysis</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> lineCount;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxLineWidth;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> widestLineNumber;</span><br><span class="line">    <span class="keyword">private</span> LineWidthHistogram lineWidthHistogram; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> totalChars;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CodeAnalyzer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        lineWidthHistogram = <span class="keyword">new</span> LineWidthHistogram();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;File&gt; <span class="title">findJavaFiles</span><span class="params">(File parentDirectory)</span> </span>&#123; </span><br><span class="line">        List&lt;File&gt; files = <span class="keyword">new</span> ArrayList&lt;File&gt;(); </span><br><span class="line">        findJavaFiles(parentDirectory, files);</span><br><span class="line">        <span class="keyword">return</span> files;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">findJavaFiles</span><span class="params">(File parentDirectory, List&lt;File&gt; files)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (File file : parentDirectory.listFiles()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (file.getName().endsWith(<span class="string">".java"</span>)) </span><br><span class="line">                files.add(file);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (file.isDirectory()) </span><br><span class="line">                findJavaFiles(file, files);</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">analyzeFile</span><span class="params">(File javaFile)</span> <span class="keyword">throws</span> Exception </span>&#123; </span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(javaFile)); </span><br><span class="line">        String line;</span><br><span class="line">        <span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>)</span><br><span class="line">            measureLine(line); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">measureLine</span><span class="params">(String line)</span> </span>&#123; </span><br><span class="line">        lineCount++;</span><br><span class="line">        <span class="keyword">int</span> lineSize = line.length();</span><br><span class="line">        totalChars += lineSize; </span><br><span class="line">        lineWidthHistogram.addLine(lineSize, lineCount);</span><br><span class="line">        recordWidestLine(lineSize);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">recordWidestLine</span><span class="params">(<span class="keyword">int</span> lineSize)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (lineSize &gt; maxLineWidth) &#123;</span><br><span class="line">            maxLineWidth = lineSize;</span><br><span class="line">            widestLineNumber = lineCount; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLineCount</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> lineCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMaxLineWidth</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> maxLineWidth;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getWidestLineNumber</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> widestLineNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LineWidthHistogram <span class="title">getLineWidthHistogram</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lineWidthHistogram;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getMeanLineWidth</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">double</span>)totalChars/lineCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMedianLineWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Integer[] sortedWidths = getSortedWidths(); </span><br><span class="line">        <span class="keyword">int</span> cumulativeLineCount = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> width : sortedWidths) &#123;</span><br><span class="line">            cumulativeLineCount += lineCountForWidth(width); </span><br><span class="line">            <span class="keyword">if</span> (cumulativeLineCount &gt; lineCount/<span class="number">2</span>)</span><br><span class="line">                <span class="keyword">return</span> width;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">"Cannot get here"</span>); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">lineCountForWidth</span><span class="params">(<span class="keyword">int</span> width)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lineWidthHistogram.getLinesforWidth(width).size();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Integer[] getSortedWidths() &#123;</span><br><span class="line">        Set&lt;Integer&gt; widths = lineWidthHistogram.getWidths(); </span><br><span class="line">        Integer[] sortedWidths = (widths.toArray(<span class="keyword">new</span> Integer[<span class="number">0</span>])); </span><br><span class="line">        Arrays.sort(sortedWidths);</span><br><span class="line">        <span class="keyword">return</span> sortedWidths;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Bob 아저씨의 코드규칙을 참고해보도록 하자!</p>
+<ol>
+<li>함수 () { } 에서 괄호이후 한칸을 띄운다.</li>
+<li>if문이 한줄일 경우 다음칸으로 띄우고 들여쓰기를 하자</li>
+<li>코드의 의미를 명확하게 한다.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>CleanCode</category>
+      </categories>
+      <tags>
+        <tag>CleanCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring @DirtiesContext</title>
-    <url>/spring-dirties-context/</url>
+    <url>/Spring-20210514-spring-dirties-context/</url>
     <content><![CDATA[<p>Spring DirtiesContext</p>
 <p>스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 <code>@DirtiesContext</code> 이다.</p>
 <p>이 <code>@DirtiesContext</code> 어노테이션은 테스트를 수행전, 수행후, 각 테스트 케이스마다 수행하기 전, 수행한 이후에 Context를 재생성하는 역할을 한다.</p>
@@ -261,12 +344,12 @@
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>DFS</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -335,12 +418,12 @@
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>DFS</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -412,11 +495,11 @@
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -444,12 +527,12 @@
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>DFS</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -513,10 +596,10 @@
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -567,11 +650,11 @@ i+1 &lt; n 의 경우를 살펴보면 0+1 &lt; 5, 1+1 &lt; 5, 2+1 &lt; 5, 3+1 &l
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -619,12 +702,12 @@ my += dir[currdir][1]<br>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>DFS</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -1739,8 +1822,8 @@ domain = kgh.org를 지정하여 쿠키를 생성합니다.</p>
       </categories>
       <tags>
         <tag>Codility</tag>
-        <tag>linkedlist</tag>
         <tag>Array</tag>
+        <tag>linkedlist</tag>
       </tags>
   </entry>
   <entry>
@@ -4427,8 +4510,8 @@ HTTP/3, HTTP/1.1을 주로사용하고 하고 점차적으로  HTTP/2, HTTP/3의
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -5359,8 +5442,8 @@ matrix[i][j] is ‘0’ or ‘1’.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>릿코드</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -5444,8 +5527,8 @@ All the integers in s are in the range [1, 300].</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
         <tag>릿코드</tag>
+        <tag>DFS</tag>
         <tag>문자열</tag>
       </tags>
   </entry>
@@ -5803,8 +5886,8 @@ LAN 드라이버, LAN 장비, LAN카드</p>
       </categories>
       <tags>
         <tag>NETWORK</tag>
-        <tag>INTERNET</tag>
         <tag>TCP</tag>
+        <tag>INTERNET</tag>
         <tag>IP</tag>
       </tags>
   </entry>
@@ -5900,9 +5983,9 @@ DFS의 <em>Basement조건</em>은 digits 길이만큼 선택될 수 있기때문
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>DFS</tag>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -5943,76 +6026,8 @@ Output: true</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라</title>
-    <url>/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/</url>
-    <content><![CDATA[<h1 id="igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara"><a href="#igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#익명클래스-보다는-람다를-사용하라"></a> 익명클래스 보다는 람다를 사용하라</h1>
-<p>자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다.</p>
-<p>1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다.<br>
-<code>문자열을 길이순</code>으로 <code>정렬</code>하는데, 정렬을 위한 비교 함수로 <code>익명 클래스</code>로 사용하였습니다.(과거)</p>
-<blockquote>
-<p>익명 클래스의 인스턴스를 함수 객체로 사용합니다.(낡은 기법)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 익명 클래스의 인스턴스를 함수 객체로 사용 - 낡은 기법!!!!</span></span><br><span class="line">Collections.sort(words, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(s1.length(), s2.length());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>전략 패턴처럼, 함수 객체를 사용하는 <code>과거 객체 지향 디자인 패턴</code>에는 <code>익명 클래스</code>면 충분하였습니다. 위의 코드는 <code>Comparator 인터페이스</code>가 <code>정렬</code>을 담당하는 <code>추상전략</code>을 뜻하며, 문자열을 정렬하는 구체적인 전략을 <code>익명 클래스로 구현</code>했습니다.</p>
-<p><code>하지만, 익명클래스 방식은 코드가 너무 길기 때문에 자바는 함수형 프로그래밍에 적합하지 않게 되었습니다.</code></p>
-<blockquote>
-<p>자바 8에서는 어떻게 변화되었을까요?</p>
-</blockquote>
-<p>추상 메서드 하나짜리 인터페이스는 특별한 의미를 인정받아 특별한 대우를 받게 되었습니다. 지금은 함수형 인터페이스라 부르는 이 인터페이스들의 인스턴스를 람다식(lambda expression, 람다)을 사용하여 만들수 있게 된 것입니다. 람다는 함수나 익명 클래스와 개념은 비슷하지만 코드는 훨씬 간결하게 처리할 수 있습니다.</p>
-<blockquote>
-<p>람다식을 함수 객체로 사용(익명 클래스 대체)</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 람다식을 함수 객체로 사용 - 익명 클래스 대체</span></span><br><span class="line"><span class="comment">// comment 타입을 명시해야 코드가 더 명확할때마 제외하고는 람다의 모든 매개변수 타입은 생략하자</span></span><br><span class="line">Collections.sort(words, (s1,s2) -&gt; Integer.compare(s1.length(), s2.length()));</span><br></pre></td></tr></table></figure>
-<p>여기서 람다, 매개변수(s1, s2) 반환값 타입은 각각 <code>Comparator&lt;String&gt;, String, int</code> 이지만 코드에서는 언급이 없습니다. 상황에 따라 컴파일러가 타입을 결정하지 못하는 경우가 있는데 그럴때는 프로그래머가 직접 명시를 해야합니다.</p>
-<p><strong>타입을 명시해야 코드가 더 명확할 때만 제외하고는, 람다의 모든 매개변수 타입은 생략하도록 합니다.</strong></p>
-<p>컴파일러가 타입을 추론하는데 필요한 정보는 대부분 제네릭에서 얻기 때문에 컴파일러는 람다의 타입을 추론할 수 없게 되어, 결국 우리가 일일이 명시해야합니다.</p>
-<blockquote>
-<p>비교자 생성 메서드를 사용하여 이 코드를 더 간결하게 만들어봅시다.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Collections.sort(words, comparingInt(String::length));</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>더 나아가 자바 8때 List 인터페이스에 추가된 sort 메서드를 이용하면 더욱더 짧아집니다.</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">words.sort(comparingInt(String::length));</span><br></pre></td></tr></table></figure>
-<p>람다를 언어 차원에서 지원하면서 기존에는 적합하지 않았던 곳에서도 함수 객체를 실용적으로 사용할 수 있게 되었습니다.</p>
-<p>아이템 34의 Operation 열거타입을 예로 들어봅시다. apply 메서드의 동작이 상수마다 달라야해서 상수별 클래스 몸체를 사용해 각 상수에서 apply 메서드를 재정의합니다.</p>
-<blockquote>
-<p>상수별 클래스 몸체와 데이터를 사용한 열거 타입</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 상수별 클래스 몸체와 데이터를 사용한 열거 타입</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation&#123;</span><br><span class="line"></span><br><span class="line">    PLUS(<span class="string">"+"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    MINUS(<span class="string">"-"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x - y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    TIMES(<span class="string">"*"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x * y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x / y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    Operation(String symbol)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>아이템 34</strong>에서는 상수별 클래스 몸체를 구현하는 방식보다는 <code>열거 타입에 인스턴스 필드를 두는 편이 낫습니다.</code> 람다를 이용하면 후자의 방식, 즉 열거타입의 인스턴스 필드를 이용하는 방식으로 상수별로 다르게 동작하는 코드를 쉽게 구현할 수 있습니다.</p>
-<p>단순히 각 열거 타입의 동작을 람다로 구현해 생성자에 넘기고, 생성자는 이 람다를 인스턴스 필드로 저장해둡니다. 그런 다음 <code>apply 메서드에서 필드에 저장된 람다를 호출하기만 하면 됩니다.</code></p>
-<blockquote>
-<p>함수객체(람다)를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation_lambda&#123;</span><br><span class="line">    PLUS(<span class="string">"+"</span>, (x,y) -&gt; x+y),</span><br><span class="line">    MINUS(<span class="string">"-"</span>, (x,y) -&gt; x-y),</span><br><span class="line">    TIMES(<span class="string">"*"</span>, (x,y) -&gt; x*y),</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>, (x,y) -&gt; x/y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DoubleBinaryOperator op;</span><br><span class="line"></span><br><span class="line">    Operation_lambda(String symbol, DoubleBinaryOperator op)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">        <span class="keyword">this</span>.op = op;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> op.applyAsDouble(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>함수 객체 람다를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입입니다. 열거 타입 상수의 동작을 표현한 람다를 <code>DoubleBinaryOperator 인터페이스</code>변수에 할당하였습니다. <code>java.util.function 패키지가 제공하는 다양한 함수</code> 인터페이스(아이템 44) 중 하나 인수를 받아서 결과를 반환시켜줍니다(double)</p>
-<blockquote>
-<p>핵심 정리</p>
-</blockquote>
-<p>람다 기반 Operation 열거 타입을 보면 상수별 클래스 몸체는 더 이상 사용할 이유가 없다고 느낄지 모르지만, 꼭 그렇지는 않습니다. 메서드나 클래스와 달리 <code>람다는 이름이 없고 문서화도 못한다. 따라서 코드 자체로 동작이 명확히 설명되지 않거나 코드 줄수가 많아지면 람다를 쓰지 말아야합니다</code></p>
-<p><code>람다는 한줄일 때 가장 좋고 길어야 세줄</code> 안에 끝내는게 좋습니다. 열거 타입 생성자 안의 람다는 타입의 인스턴스 멤버에 접근을 할 수 없습니다. 따라서, 상수별 동작을 단 몇줄로 구현하기 어렵거나, <code>인스턴스 필드나 메서드를 사용해야만 하는 상황</code>이라면 <code>상수별 클래스 몸체를 사용</code>해야합니다.</p>
-<p><code>추상클래스의 인스턴스를 만들 때 람다를 쑬 수 없으니, 익명 클래스</code>를 써야합니다. 비슷하게 추상 메서드가 여러 개인 인터페이스의 인스턴스를 만들 때도 익명 클래스를 쓸 수 있습니다.</p>
-<p>마지막으로 람다는 자신을 참조할 수 없습니다. 람다에서의 <code>this 키워드는 바깥 인스턴스</code>를 가리킵니다. 그래서 함수 객체가 자신을 참조해야 한다면 반드시 익명 클래스를 써야합니다. 따라서 람다를 직렬화하는 일은 극히 삼가해야합니다.</p>
-<blockquote>
-<p>요약</p>
-</blockquote>
-<p>자바가 8로 판올림 되면서 작은 함수 객체를 구현하는데 적합한 람다가 도입되었습니다. <code>익명 클래스는(함수형 인터페이스가 아닌) 타입의 인스턴스를 만들 때만 사용해야합니다.</code> 람다는 작은 함수 객체를 아주 쉽게 표현할 수 있어서 함수형 프로그래밍의 지평을 열게 되었습니다.</p>
-<p><a href="https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42" target="_blank" rel="noopener">https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42</a></p>
-]]></content>
-      <categories>
-        <category>Language</category>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>EffectiveJava3/E</tag>
-        <tag>람다</tag>
-        <tag>익명클래스</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -6126,6 +6141,74 @@ Output: true</p>
       </tags>
   </entry>
   <entry>
+    <title>Effective Java 3/E Item 42 익명클래스 보다는 람다를 사용하라</title>
+    <url>/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/</url>
+    <content><![CDATA[<h1 id="igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara"><a href="#igmyeongkeulraeseu-bodaneun-ramdareul-sayonghara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#익명클래스-보다는-람다를-사용하라"></a> 익명클래스 보다는 람다를 사용하라</h1>
+<p>자바에서 함수 타입을 표현할 때 추상 메서드를 하나만 담은 인터페이스를 사용했습니다. 이러한 인터페이스의 인스턴스를 함수 객체(function object)라고 하여, 특정 함수나 동작을 나타내는 데 썼습니다.</p>
+<p>1997년 JDK1.1 이 등장하면서 함수 객체를 만드는 주요 수단은 익명 클래스가 되었습니다.<br>
+<code>문자열을 길이순</code>으로 <code>정렬</code>하는데, 정렬을 위한 비교 함수로 <code>익명 클래스</code>로 사용하였습니다.(과거)</p>
+<blockquote>
+<p>익명 클래스의 인스턴스를 함수 객체로 사용합니다.(낡은 기법)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 익명 클래스의 인스턴스를 함수 객체로 사용 - 낡은 기법!!!!</span></span><br><span class="line">Collections.sort(words, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(s1.length(), s2.length());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>전략 패턴처럼, 함수 객체를 사용하는 <code>과거 객체 지향 디자인 패턴</code>에는 <code>익명 클래스</code>면 충분하였습니다. 위의 코드는 <code>Comparator 인터페이스</code>가 <code>정렬</code>을 담당하는 <code>추상전략</code>을 뜻하며, 문자열을 정렬하는 구체적인 전략을 <code>익명 클래스로 구현</code>했습니다.</p>
+<p><code>하지만, 익명클래스 방식은 코드가 너무 길기 때문에 자바는 함수형 프로그래밍에 적합하지 않게 되었습니다.</code></p>
+<blockquote>
+<p>자바 8에서는 어떻게 변화되었을까요?</p>
+</blockquote>
+<p>추상 메서드 하나짜리 인터페이스는 특별한 의미를 인정받아 특별한 대우를 받게 되었습니다. 지금은 함수형 인터페이스라 부르는 이 인터페이스들의 인스턴스를 람다식(lambda expression, 람다)을 사용하여 만들수 있게 된 것입니다. 람다는 함수나 익명 클래스와 개념은 비슷하지만 코드는 훨씬 간결하게 처리할 수 있습니다.</p>
+<blockquote>
+<p>람다식을 함수 객체로 사용(익명 클래스 대체)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 람다식을 함수 객체로 사용 - 익명 클래스 대체</span></span><br><span class="line"><span class="comment">// comment 타입을 명시해야 코드가 더 명확할때마 제외하고는 람다의 모든 매개변수 타입은 생략하자</span></span><br><span class="line">Collections.sort(words, (s1,s2) -&gt; Integer.compare(s1.length(), s2.length()));</span><br></pre></td></tr></table></figure>
+<p>여기서 람다, 매개변수(s1, s2) 반환값 타입은 각각 <code>Comparator&lt;String&gt;, String, int</code> 이지만 코드에서는 언급이 없습니다. 상황에 따라 컴파일러가 타입을 결정하지 못하는 경우가 있는데 그럴때는 프로그래머가 직접 명시를 해야합니다.</p>
+<p><strong>타입을 명시해야 코드가 더 명확할 때만 제외하고는, 람다의 모든 매개변수 타입은 생략하도록 합니다.</strong></p>
+<p>컴파일러가 타입을 추론하는데 필요한 정보는 대부분 제네릭에서 얻기 때문에 컴파일러는 람다의 타입을 추론할 수 없게 되어, 결국 우리가 일일이 명시해야합니다.</p>
+<blockquote>
+<p>비교자 생성 메서드를 사용하여 이 코드를 더 간결하게 만들어봅시다.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Collections.sort(words, comparingInt(String::length));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>더 나아가 자바 8때 List 인터페이스에 추가된 sort 메서드를 이용하면 더욱더 짧아집니다.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">words.sort(comparingInt(String::length));</span><br></pre></td></tr></table></figure>
+<p>람다를 언어 차원에서 지원하면서 기존에는 적합하지 않았던 곳에서도 함수 객체를 실용적으로 사용할 수 있게 되었습니다.</p>
+<p>아이템 34의 Operation 열거타입을 예로 들어봅시다. apply 메서드의 동작이 상수마다 달라야해서 상수별 클래스 몸체를 사용해 각 상수에서 apply 메서드를 재정의합니다.</p>
+<blockquote>
+<p>상수별 클래스 몸체와 데이터를 사용한 열거 타입</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// comment 상수별 클래스 몸체와 데이터를 사용한 열거 타입</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation&#123;</span><br><span class="line"></span><br><span class="line">    PLUS(<span class="string">"+"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    MINUS(<span class="string">"-"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x - y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    TIMES(<span class="string">"*"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x * y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>)&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x / y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    Operation(String symbol)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>아이템 34</strong>에서는 상수별 클래스 몸체를 구현하는 방식보다는 <code>열거 타입에 인스턴스 필드를 두는 편이 낫습니다.</code> 람다를 이용하면 후자의 방식, 즉 열거타입의 인스턴스 필드를 이용하는 방식으로 상수별로 다르게 동작하는 코드를 쉽게 구현할 수 있습니다.</p>
+<p>단순히 각 열거 타입의 동작을 람다로 구현해 생성자에 넘기고, 생성자는 이 람다를 인스턴스 필드로 저장해둡니다. 그런 다음 <code>apply 메서드에서 필드에 저장된 람다를 호출하기만 하면 됩니다.</code></p>
+<blockquote>
+<p>함수객체(람다)를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Operation_lambda&#123;</span><br><span class="line">    PLUS(<span class="string">"+"</span>, (x,y) -&gt; x+y),</span><br><span class="line">    MINUS(<span class="string">"-"</span>, (x,y) -&gt; x-y),</span><br><span class="line">    TIMES(<span class="string">"*"</span>, (x,y) -&gt; x*y),</span><br><span class="line">    DIVIDE(<span class="string">"/"</span>, (x,y) -&gt; x/y);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String symbol;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DoubleBinaryOperator op;</span><br><span class="line"></span><br><span class="line">    Operation_lambda(String symbol, DoubleBinaryOperator op)&#123;</span><br><span class="line">        <span class="keyword">this</span>.symbol = symbol;</span><br><span class="line">        <span class="keyword">this</span>.op = op;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> symbol;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">apply</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> op.applyAsDouble(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>함수 객체 람다를 인스턴스 필드에 저장해 상수별 동작을 구현한 열거타입입니다. 열거 타입 상수의 동작을 표현한 람다를 <code>DoubleBinaryOperator 인터페이스</code>변수에 할당하였습니다. <code>java.util.function 패키지가 제공하는 다양한 함수</code> 인터페이스(아이템 44) 중 하나 인수를 받아서 결과를 반환시켜줍니다(double)</p>
+<blockquote>
+<p>핵심 정리</p>
+</blockquote>
+<p>람다 기반 Operation 열거 타입을 보면 상수별 클래스 몸체는 더 이상 사용할 이유가 없다고 느낄지 모르지만, 꼭 그렇지는 않습니다. 메서드나 클래스와 달리 <code>람다는 이름이 없고 문서화도 못한다. 따라서 코드 자체로 동작이 명확히 설명되지 않거나 코드 줄수가 많아지면 람다를 쓰지 말아야합니다</code></p>
+<p><code>람다는 한줄일 때 가장 좋고 길어야 세줄</code> 안에 끝내는게 좋습니다. 열거 타입 생성자 안의 람다는 타입의 인스턴스 멤버에 접근을 할 수 없습니다. 따라서, 상수별 동작을 단 몇줄로 구현하기 어렵거나, <code>인스턴스 필드나 메서드를 사용해야만 하는 상황</code>이라면 <code>상수별 클래스 몸체를 사용</code>해야합니다.</p>
+<p><code>추상클래스의 인스턴스를 만들 때 람다를 쑬 수 없으니, 익명 클래스</code>를 써야합니다. 비슷하게 추상 메서드가 여러 개인 인터페이스의 인스턴스를 만들 때도 익명 클래스를 쓸 수 있습니다.</p>
+<p>마지막으로 람다는 자신을 참조할 수 없습니다. 람다에서의 <code>this 키워드는 바깥 인스턴스</code>를 가리킵니다. 그래서 함수 객체가 자신을 참조해야 한다면 반드시 익명 클래스를 써야합니다. 따라서 람다를 직렬화하는 일은 극히 삼가해야합니다.</p>
+<blockquote>
+<p>요약</p>
+</blockquote>
+<p>자바가 8로 판올림 되면서 작은 함수 객체를 구현하는데 적합한 람다가 도입되었습니다. <code>익명 클래스는(함수형 인터페이스가 아닌) 타입의 인스턴스를 만들 때만 사용해야합니다.</code> 람다는 작은 함수 객체를 아주 쉽게 표현할 수 있어서 함수형 프로그래밍의 지평을 열게 되었습니다.</p>
+<p><a href="https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42" target="_blank" rel="noopener">https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42</a></p>
+]]></content>
+      <categories>
+        <category>Language</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>EffectiveJava3/E</tag>
+        <tag>람다</tag>
+        <tag>익명클래스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring MVC @ResponseBody의 역할</title>
     <url>/Spring-20201231-responsebody%EC%9D%98-%EC%97%AD%ED%95%A0/</url>
     <content><![CDATA[<h1 id="responsebody"><a href="#responsebody" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#responsebody"></a> @ResponseBody</h1>
@@ -6234,8 +6317,8 @@ Output: true</p>
         <category>Spring</category>
       </categories>
       <tags>
-        <tag>Spring</tag>
         <tag>환경설정</tag>
+        <tag>Spring</tag>
         <tag>IntelliJ</tag>
       </tags>
   </entry>
@@ -6309,9 +6392,9 @@ Output: true</p>
         <category>Spring</category>
       </categories>
       <tags>
-        <tag>Spring</tag>
         <tag>annotationProcessor</tag>
         <tag>JDK</tag>
+        <tag>Spring</tag>
         <tag>IntelliJ</tag>
         <tag>Error</tag>
       </tags>
@@ -6482,10 +6565,10 @@ Output: -2147483647</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
-        <tag>DP</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
         <tag>부분집합의 합</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -6896,10 +6979,10 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>알고리즘</tag>
-        <tag>구현</tag>
         <tag>DP</tag>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
+        <tag>구현</tag>
       </tags>
   </entry>
   <entry>
@@ -6943,9 +7026,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -7043,9 +7126,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -7095,9 +7178,9 @@ frodoc</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>구현</tag>
       </tags>
   </entry>
@@ -7197,9 +7280,9 @@ check[6] = 3, startVertex[6] = 4</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
@@ -7253,9 +7336,9 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
@@ -7303,9 +7386,9 @@ D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합<br>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
         <tag>순열</tag>
@@ -7455,9 +7538,9 @@ i-&gt;j 로 연결된 리스트가 있다고 가정하면 이것을 인접리스
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>DFS</tag>
         <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>그래프</tag>
         <tag>BFS</tag>
       </tags>
@@ -7514,9 +7597,9 @@ K+1개를 선택하여 DFS를 통해 모든 조건을 구하였던 문자열 값
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>알고리즘</tag>
         <tag>위상정렬</tag>
       </tags>
   </entry>
@@ -7571,8 +7654,8 @@ N의 범위를 살펴보면 <code>N(1≤N≤100,000,000)</code> 의 조건을 �
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
+        <tag>백준</tag>
         <tag>연산</tag>
       </tags>
   </entry>
@@ -7656,9 +7739,9 @@ WWWWWWWWWWBWB</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -7715,9 +7798,9 @@ E    &lt;46, 155&gt;    5<br>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -7758,9 +7841,9 @@ N이 216일 경우 (216+2+1+6) =&gt; 198이 됩니다.<br>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
-        <tag>알고리즘</tag>
       </tags>
   </entry>
   <entry>
@@ -7847,8 +7930,8 @@ k는 1 이상 number의 자릿수 미만인 자연수입니다.</p>
       </categories>
       <tags>
         <tag>DFS</tag>
-        <tag>알고리즘</tag>
         <tag>그리디</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -7899,8 +7982,8 @@ yellow가 24일 경우 나타낼 수 있는 케이스는(24 * 1, 12 * 2, 8 * 3, 
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>완전탐색</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -8064,10 +8147,10 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
         <category>BOJ</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>이분탐색</tag>
+        <tag>백준</tag>
         <tag>BOJ</tag>
+        <tag>이분탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -8103,8 +8186,8 @@ n은 1 이상, 25이하인 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -8181,10 +8264,10 @@ N = 20이하 이므로 O(N^4) = 약 16만</p>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -8414,8 +8497,8 @@ Subscription 메서드는 동기화된 상태로 호출해야합니다. 즉, Sub
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -8718,11 +8801,11 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
+        <tag>브루트포스</tag>
       </tags>
   </entry>
   <entry>
@@ -9302,10 +9385,10 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>SW역량테스트</category>
       </categories>
       <tags>
-        <tag>백준</tag>
         <tag>알고리즘</tag>
-        <tag>BOJ</tag>
+        <tag>백준</tag>
         <tag>삼성SW역량테스트</tag>
+        <tag>BOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -9336,10 +9419,55 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>그리디</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>카카오</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>프로그래머스 K번째수</title>
+    <url>/Programmers-20200910-Programmers-k-number/</url>
+    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
+<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
+<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
+<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
+<ul>
+<li>array의 길이는 1 이상 100 이하입니다.</li>
+<li>array의 각 원소는 1 이상 100 이하입니다.</li>
+<li>commands의 길이는 1 이상 50 이하입니다.</li>
+<li>commands의 각 원소는 길이가 3입니다.</li>
+</ul>
+<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
+<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
+<ul>
+<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
+<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
+<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
+</ul>
+<blockquote>
+<p>K번째수 예시</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
+<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
+<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
+<blockquote>
+<p>시간복잡도<br>
+시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
+O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
+</blockquote>
+<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+        <category>Programmers</category>
+      </categories>
+      <tags>
+        <tag>알고리즘</tag>
+        <tag>프로그래머스</tag>
+        <tag>정렬</tag>
       </tags>
   </entry>
   <entry>
@@ -9390,51 +9518,6 @@ completion의 길이는 participant의 길이보다 1 작습니다.<br>
       <tags>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>프로그래머스 K번째수</title>
-    <url>/Programmers-20200910-Programmers-k-number/</url>
-    <content><![CDATA[<h1 id="munje-ringkeu"><a href="#munje-ringkeu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제-링크"></a> 문제 링크</h1>
-<p><a href="https://programmers.co.kr/learn/courses/30/lessons/42748?language=java" target="_blank" rel="noopener">프로그래머스 K번째수</a></p>
-<h1 id="munje-jogeon"><a href="#munje-jogeon" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#문제-조건"></a> 문제 조건</h1>
-<p>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
-<h3 id="jehansahang"><a href="#jehansahang" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#제한사항"></a> 제한사항</h3>
-<ul>
-<li>array의 길이는 1 이상 100 이하입니다.</li>
-<li>array의 각 원소는 1 이상 100 이하입니다.</li>
-<li>commands의 길이는 1 이상 50 이하입니다.</li>
-<li>commands의 각 원소는 길이가 3입니다.</li>
-</ul>
-<h1 id="keompyuting-sago"><a href="#keompyuting-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅-사고"></a> 컴퓨팅 사고</h1>
-<p>K번째수는 정렬문제입니다. 문제에서 말해주는 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하는 문제입니다.</p>
-<ul>
-<li>i번째 숫자부터 j번째 숫자까지 자르고 나서 ArrayList를 사용하여 값들을 담아주게 하였습니다.</li>
-<li>해당 값들은 Collections.sort()함수를 사용하여 오름차순으로 정렬시켜주었습니다.</li>
-<li>리스트를 순회하면서 리스트의 인덱스값과 k-1값이 같은경우 answer값에 담아주었습니다. 왜 k-1의 값과 인덱스값을 비교하였을까요. i번째는 1부터 시작하고 배열이 0번 인덱스부터 할당되어 있기때문에 이렇게 풀이해주었습니다.</li>
-</ul>
-<blockquote>
-<p>K번째수 예시</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array가 [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>], i = <span class="number">2</span>, j = <span class="number">5</span>, k = <span class="number">3</span>이라면</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. array의 <span class="number">2</span>번째부터 <span class="number">5</span>번째까지 자르면 [<span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>]입니다.</span><br><span class="line"><span class="number">2</span>. <span class="number">1</span>에서 나온 배열을 정렬하면 [<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]입니다.</span><br><span class="line"><span class="number">3</span>. <span class="number">2</span>에서 나온 배열의 <span class="number">3</span>번째 숫자는 <span class="number">5</span>입니다.</span><br></pre></td></tr></table></figure>
-<p>여기서 주의할점은 command가 2차원배열로 주어진다는것입니다. 그렇기때문에 commands [[2, 5, 3], [4, 4, 1], [1, 7, 3]] 의 경우 배열하나당 하나의 경우라고 생각하셔야합니다. return값이 3개를 반환하는것을 보면 확인하실 수 있습니다.</p>
-<p>기존의 값들이 변하면 안되기때문에 해당 배열을 Arrays.copy() 를 사용하였고 List의 값을 매번 경우의 수마다 clear()시켜서 갱신시켜주었습니다. 갱신을 시켜주지 않으면 기존의 값들과 섞여서 올바르지 않은 결과값을 노출합니다.</p>
-<blockquote>
-<p>시간복잡도<br>
-시간복잡도 같은 경우는 command.size를 N, array.size를 M으로 놓으면<br>
-O(N*M) 이라고 할 수 있습니다. command의 길이는 1~50이하, arrays의 길이는 1~100이하 이기때문에 시간복잡도의 5000번의 정도의 연산이 이루어지므로 1초의 시간제한에 문제가 없습니다.</p>
-</blockquote>
-<h1 id="soseu-kodeu"><a href="#soseu-kodeu" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#소스-코드"></a> 소스 코드</h1>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">k</span>번째수 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">4</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;commands.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> copy[] = array.clone();</span><br><span class="line">            <span class="keyword">int</span> start = commands[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = commands[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> k = commands[i][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=start-<span class="number">1</span>; j&lt;end; j++)&#123;</span><br><span class="line">                ans.add(copy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            Collections.sort(ans);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;ans.size(); m++)&#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(m == k-<span class="number">1</span>)&#123;</span><br><span class="line">                    System.out.println(ans.get(k-<span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-        <category>Programmers</category>
-      </categories>
-      <tags>
-        <tag>알고리즘</tag>
-        <tag>프로그래머스</tag>
-        <tag>정렬</tag>
       </tags>
   </entry>
   <entry>
@@ -9689,8 +9772,8 @@ n은 2이상 1000000이하의 자연수입니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -9748,8 +9831,8 @@ Kim은 반드시 seoul 안에 포함되어 있습니다.</p>
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
       </tags>
   </entry>
@@ -9774,8 +9857,8 @@ s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보
         <category>Programmers</category>
       </categories>
       <tags>
-        <tag>알고리즘</tag>
         <tag>문자열</tag>
+        <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>정렬</tag>
       </tags>
@@ -11282,8 +11365,8 @@ Only one valid answer exists.</p>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>완전탐색</tag>
         <tag>릿코드</tag>
+        <tag>완전탐색</tag>
       </tags>
   </entry>
   <entry>
@@ -11322,10 +11405,10 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
         <tag>백트래킹</tag>
-        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -11400,10 +11483,10 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>알고리즘</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
         <tag>백트래킹</tag>
-        <tag>알고리즘</tag>
         <tag>조합</tag>
       </tags>
   </entry>
@@ -11533,10 +11616,10 @@ Only one valid answer exists.</p>
         <category>BOJ</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>브루트포스</tag>
         <tag>백트래킹</tag>
-        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -11609,6 +11692,39 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
+    <title>백준 123더하기 9095</title>
+    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
+    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
+<ul>
+<li>DFS 재귀함수 이용</li>
+<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
+<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
+<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+</ul>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ul>
+<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
+<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
+<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
+<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
+<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+</ul>
+<hr>
+<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
+<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>브루트포스</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 차이를최대로 10819</title>
     <url>/BOJ-20191130-BOJ-maximum-difference-10819/</url>
     <content><![CDATA[<h2 id="baegjun-caireulcoedaero-10819"><a href="#baegjun-caireulcoedaero-10819" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-차이를최대로-10819"></a> <a href="https://www.acmicpc.net/problem/10819" target="_blank" rel="noopener">백준 차이를최대로 10819</a></h2>
@@ -11643,28 +11759,29 @@ Only one valid answer exists.</p>
       </tags>
   </entry>
   <entry>
-    <title>백준 123더하기 9095</title>
-    <url>/BOJ-20191130-BOJ-123-Plus-9095/</url>
-    <content><![CDATA[<h2 id="baegjun-1-2-3deohagi-9095"><a href="#baegjun-1-2-3deohagi-9095" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-123더하기-9095"></a> <a href="https://www.acmicpc.net/problem/9095" target="_blank" rel="noopener">백준 1,2,3더하기 9095</a></h2>
+    <title>백준 일곱난쟁이 2309</title>
+    <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
+    <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
 <h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
 <ul>
-<li>DFS 재귀함수 이용</li>
-<li>vector에 테스트케이스 개수만큼의 값들을 넣어준 후, 반복문을 통해 각 경우에 대한 dfs를 호출하여 최종적으로 리턴되는값은 1,2,3으로 만들 수 있는 n에 대한 경우의 수입니다.</li>
-<li>dfs를 이해하기에 가장 좋은 예중 하나는 n과m문제입니다. 순열과 조합에 대표적인 문제입니다. 이 시리즈들을 모두 재귀로 한번 풀어보시길 바랍니다.<br>
-<a href="https://www.acmicpc.net/workbook/view/2052" target="_blank" rel="noopener">N과 M시리즈 문제집</a></li>
+<li>do while ~ (next_permutation)으로 계속해서 다음 조합의 경우의 수를 찾는다.</li>
+<li>vector v, check변수를 선언하여 permutation을 수행한다. 9명중 7명을 뽑아야하므로 7명만큼 check=true로 변경해서 수행한다. next_permutation을 수행하면서 값들이 계속변경되기 때문에 값이 변경되면서 출력된다.</li>
 </ul>
 <h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
 <ul>
-<li>v == sum 일 경우 1,2,3으로 만들 수 있는 경우의 수 이기때문에 return 1을 해줍니다.</li>
-<li>v &lt; sum 일 경우 return 0으로 현재 들어온 값을 재귀함수 종료시켜줍니다.</li>
-<li>dfs(v,n,sum+1) 1의 경우, dfs(v,n,sum+2) 2의 경우, dfs(v,n,sum+3) 3의 경우입니다.</li>
-<li>1,2,3을 더하는 경우이므로 <code>dfs(v,n,sum+1)+dfs(v,n,sum+2)+dfs(v,n,sum+3)</code> 의 값을 반환시켜주면 현재까지 경우의 수를 반환시켜줍니다.<br>
-<code>언제 종료될것인가의 조건과 그 조건을 넘어섰을때 조건을 잘 생각해서 로직을 구현하여야 합니다.</code></li>
+<li>백설공주를 도와 키를 확인하여 난쟁이를 찾자. 9명의 난쟁이 중에 7명의 난쟁이를 골라 키의 합이 100이 되는 경우를 찾아야한다.</li>
+<li>9명중에 7명을 고르는 것은 9C7 = 9C2와 같은 경우의 수이다.</li>
+<li>9명중 2명을 골랐을때 두명을 고르는 수는 O(N^2) * 난쟁이의 키의 합을 고르는 복잡도 O(N) = O(N^3)의 시간복잡도를 갖는다. N=9명이므로 9^3 = 729의 모든경우의 수에서 찾을 수 있다.</li>
+<li>경우 1)난쟁이가 아닌 9명중 2명을 뽑는 경우를 구해서 sum의 값에서 그 해당 값들을 뺐을때 합이 100인경우를 찾는다.</li>
+<li>경우 2)next_permutation을 돌려서 9명중 7명을 선택해서 그 값이 100일때 그 값들을 출력시켜준다. 이때 check변수를 선언하여 7명을 선택해야하는 경우를 true로 바꾸어주면서 수행한다.</li>
 </ul>
+<p><code>주의해야 할점: 정렬이 되어있는 상태여야 한다.</code></p>
 <hr>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="dfs"><a href="#dfs" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  04_백준_1,2,3더하기_9095.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 30/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v, <span class="keyword">int</span> n,<span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//값에 부합할 경우</span></span><br><span class="line">    <span class="keyword">if</span>(v == sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//값의 범위를 넘어가게되면 그 이외의 값들이 들어가게되기때문에 반드시 필요한 조건</span></span><br><span class="line">    <span class="keyword">if</span>(v &lt; sum)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dfs(v,n,sum+<span class="number">1</span>)+dfs(v,n,sum+<span class="number">2</span>)+dfs(v,n,sum+<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dfs(v[i], n, <span class="number">0</span>) &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ijung-pomun"><a href="#ijung-pomun" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#이중-포문"></a> 이중 포문</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Algorithm</category>
@@ -11696,40 +11813,6 @@ Only one valid answer exists.</p>
 <h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
 <h3 id="modeungyeonguyi-sureul-cajseubnida"><a href="#modeungyeonguyi-sureul-cajseubnida" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#모든경우의-수를-찾습니다"></a> 모든경우의 수를 찾습니다.</h3>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  02_백준_날짜계산_1476.cpp</span></span><br><span class="line"><span class="comment">//  algorithm-level-up</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by kgh on 28/11/2019.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 kgh. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> x,y,z = <span class="number">0</span>;  <span class="comment">// 입력</span></span><br><span class="line">    <span class="keyword">int</span> e=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">1</span>;  <span class="comment">// 지구, 태양, 달</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">1</span>;    <span class="comment">// 연도</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(e == x &amp;&amp; s == y &amp;&amp; m == z)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        e +=<span class="number">1</span>;</span><br><span class="line">        s +=<span class="number">1</span>;</span><br><span class="line">        m +=<span class="number">1</span>;</span><br><span class="line">        sum +=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 지구범위</span></span><br><span class="line">       <span class="keyword">if</span>(e == <span class="number">16</span>)&#123;</span><br><span class="line">           e = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 태양범위</span></span><br><span class="line">       <span class="keyword">if</span>(s == <span class="number">29</span>)&#123;</span><br><span class="line">           s = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">// 달 범위</span></span><br><span class="line">       <span class="keyword">if</span>(m == <span class="number">20</span>)&#123;</span><br><span class="line">           m = <span class="number">1</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Algorithm</category>
-        <category>BOJ</category>
-      </categories>
-      <tags>
-        <tag>백준</tag>
-        <tag>브루트포스</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>백준 일곱난쟁이 2309</title>
-    <url>/BOJ-20191128-BOJ-Seven-Dwarfs-2309/</url>
-    <content><![CDATA[<h2 id="baegjun-ilgobnanjaengi-2309"><a href="#baegjun-ilgobnanjaengi-2309" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#백준-일곱난쟁이-2309"></a> <a href="https://www.acmicpc.net/problem/2309" target="_blank" rel="noopener">백준 일곱난쟁이 2309</a></h2>
-<h2 id="keompyutingjeog-seukil"><a href="#keompyutingjeog-seukil" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-스킬"></a> 컴퓨팅적 스킬</h2>
-<ul>
-<li>do while ~ (next_permutation)으로 계속해서 다음 조합의 경우의 수를 찾는다.</li>
-<li>vector v, check변수를 선언하여 permutation을 수행한다. 9명중 7명을 뽑아야하므로 7명만큼 check=true로 변경해서 수행한다. next_permutation을 수행하면서 값들이 계속변경되기 때문에 값이 변경되면서 출력된다.</li>
-</ul>
-<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
-<ul>
-<li>백설공주를 도와 키를 확인하여 난쟁이를 찾자. 9명의 난쟁이 중에 7명의 난쟁이를 골라 키의 합이 100이 되는 경우를 찾아야한다.</li>
-<li>9명중에 7명을 고르는 것은 9C7 = 9C2와 같은 경우의 수이다.</li>
-<li>9명중 2명을 골랐을때 두명을 고르는 수는 O(N^2) * 난쟁이의 키의 합을 고르는 복잡도 O(N) = O(N^3)의 시간복잡도를 갖는다. N=9명이므로 9^3 = 729의 모든경우의 수에서 찾을 수 있다.</li>
-<li>경우 1)난쟁이가 아닌 9명중 2명을 뽑는 경우를 구해서 sum의 값에서 그 해당 값들을 뺐을때 합이 100인경우를 찾는다.</li>
-<li>경우 2)next_permutation을 돌려서 9명중 7명을 선택해서 그 값이 100일때 그 값들을 출력시켜준다. 이때 check변수를 선언하여 7명을 선택해야하는 경우를 true로 바꾸어주면서 수행한다.</li>
-</ul>
-<p><code>주의해야 할점: 정렬이 되어있는 상태여야 한다.</code></p>
-<hr>
-<h2 id="puli"><a href="#puli" class="header-anchor">4. </a><a class="markdownIt-Anchor" href="#풀이"></a> 풀이</h2>
-<h3 id="ijung-pomun"><a href="#ijung-pomun" class="header-anchor">4.1. </a><a class="markdownIt-Anchor" href="#이중-포문"></a> 이중 포문</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">        sum += v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum - v[i] - v[j] == <span class="number">100</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> z=<span class="number">0</span>; z&lt;n; z++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(i == z || j == z)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="built_in">cout</span> &lt;&lt; v[z] &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="next-permutation-johab"><a href="#next-permutation-johab" class="header-anchor">4.2. </a><a class="markdownIt-Anchor" href="#next_permutation-조합"></a> next_permutation 조합</h3>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n);</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; check(n);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; v[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">        check[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(check[i] == <span class="literal">true</span>)&#123;</span><br><span class="line">                sum += v[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(sum== <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">7</span>; i++)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; v[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Algorithm</category>
@@ -12106,9 +12189,9 @@ Only one valid answer exists.</p>
         <category>자료구조론</category>
       </categories>
       <tags>
+        <tag>DFS</tag>
         <tag>백준</tag>
         <tag>백트래킹</tag>
-        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
