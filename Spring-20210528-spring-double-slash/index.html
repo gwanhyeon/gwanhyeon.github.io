@@ -4,21 +4,25 @@
     
 
     
-    <title>카테고리: Algorithm | GWAN IT Blog</title>
+    <title>Spring Security URL RequestRejectedException 트러블 슈팅 | GWAN IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GWAN IT Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;categories&#x2F;algorithm&#x2F;page&#x2F;3&#x2F;index.html">
+    <meta name="keywords" content="Spring" />
+    
+    <meta name="description" content="1.  The request was rejected because the URL contained a potentially malicious String “&#x2F;&#x2F;” AES256 암호화 키값을 생성하는 과정에서 생긴 트러블 슈팅과정입니다. 해당되는 암호화 키값이 요청 @Pathvariable으로 들어오는 과정에서 해당되는 URL 매핑이 올바르게 진행되지 않은">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Security URL RequestRejectedException 트러블 슈팅">
+<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Spring-20210528-spring-double-slash&#x2F;index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="개발 이야기 &amp; 트렌드 공유와 새로운 기술들을 배우는것을 좋아합니다.">
+<meta property="og:description" content="1.  The request was rejected because the URL contained a potentially malicious String “&#x2F;&#x2F;” AES256 암호화 키값을 생성하는 과정에서 생긴 트러블 슈팅과정입니다. 해당되는 암호화 키값이 요청 @Pathvariable으로 들어오는 과정에서 해당되는 URL 매핑이 올바르게 진행되지 않은">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2021-05-28T11:31:22.918Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/categories/algorithm/page/3/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/spring-20210528-spring-double-slash/"/>
     
 
     
@@ -145,706 +149,157 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-folder-open"></i>카테고리: <em class="page-title-link">Algorithm</em>
+    <a class="page-title-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/server/spring/">Spring</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Spring-20210528-spring-double-slash" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-26T11:22:40.000Z" itemprop="datePublished">2020-10-26</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201026-BOJ-warehouse-polygon/">백준 창고 다각형 2304</a>
+        Spring Security URL RequestRejectedException 트러블 슈팅
         </h1>
     
 
-        <p class="article-excerpt">
-            1.  컴퓨팅적 사고
-
-창고 다각형의 면적이 최소가 되는 값을 찾아내는 문제입니다.
-
-이 문제에서 가장 중요한 점은 좌측과 우측으로 오면서 순차적으로 진행되는 높이보다 값이 같거나 커야합니다. 그래야지 지붕을 만들때 물이 고이지 않도록 만들 수 있게 됩니다.
-문제의 조건을 살펴보면 지붕의 수평 부분은 반드시 어떤 기둥의 윗면과 닿아야 한다. 지붕의 수직 부
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
+            </header>
         
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/Spring-20210528-spring-double-slash/" class="article-date">
+         <time datetime="2021-05-28T11:20:10.000Z" itemprop="datePublished">2021-05-28</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/spring/" rel="tag">Spring</a>
+    </div>
+
+                
+
+                
+
             </div>
-            <div class="date"><time datetime="2020-10-22T14:08:19.000Z" itemprop="datePublished">2020-10-22</time></div>
-        </div>
         
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201022-BOJ-term-project/">백준 텀 프로젝트 9466</a>
-        </h1>
-    
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="the-request-was-rejected-because-the-url-contained-a-potentially-malicious-string"><a href="#the-request-was-rejected-because-the-url-contained-a-potentially-malicious-string" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#the-request-was-rejected-because-the-url-contained-a-potentially-malicious-string"></a> The request was rejected because the URL contained a potentially malicious String “//”</h1>
+<p>AES256 암호화 키값을 생성하는 과정에서 생긴 트러블 슈팅과정입니다. 해당되는 암호화 키값이 요청 @Pathvariable으로 들어오는 과정에서 해당되는 URL 매핑이 올바르게 진행되지 않은 사항이 있었습니다. 비즈니스 로직의 원인으로 보고 요청부분에서 누락된 부분이 없는지 찾아보았습니다.<br>
+특히 Junit5 통합 테스트를 진행하는 도중 어떤 경우는 성공을 하고 어떤 경우는 실패를 하는 경우를 찾아낼 수 있었습니다. 어떻게 같은 코드를 돌리는데 테스트에서 성공과 실패를 번갈아가면서 리턴하는 경우가 있지 라는 생각을 하였고 암호화 키값에서 문제가 발생하는것을 확인하기위해 PostMan에서 직접적으로 요청을 보내보았는데 아래와 같은 Exception이 발생하였습니다.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"</span><br><span class="line">    at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlocklistedUrls(StrictHttpFirewall.java:456) ~[spring-security-web-5.4.5.jar:5.4.5]</span><br><span class="line">    at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:429) ~[spring-security-web-5.4.5.jar:5.4.5]</span><br><span class="line">    at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:196) ~[spring-security-web-5.4.5.jar:5.4.5]</span><br><span class="line">    at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.4.5.jar:5.4.5]</span><br><span class="line">    at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.3.5.jar:5.3.5]</span><br><span class="line">    at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.3.5.jar:5.3.5]</span><br><span class="line">    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.5.jar:5.3.5]</span><br><span class="line">    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.5.jar:5.3.5]</span><br><span class="line">    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.5.jar:5.3.5]</span><br><span class="line">    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.5.jar:5.3.5]</span><br><span class="line">    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.5.jar:5.3.5]</span><br><span class="line">    at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.5.jar:5.3.5]</span><br><span class="line">    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]</span><br><span class="line">    at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]</span><br><span class="line">    at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.44.jar:9.0.44]</span><br><span class="line">    at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]</span><br></pre></td></tr></table></figure>
+<p>Spring Security의 기본적인 정책은 URL에 더블슬래시가 들어가는 것을 허용하지 않으며</p>
+<p>localhost:8080/test/{property} property = ///////#$%^&amp;*( 라고 가정을 하면 해당되는 // 에 해당하는 더블 슬래시가 정책상 firewall에 예외규칙으로 처리되는 문제가 발생하였다.</p>
+<p>Spring Security Config 에서 Double Slash를 허용해주는것을 @Bean으로 등록하여 WebSecurity설정에 추가해주면 해당되는 원인을 해결할 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(WebSecurity web)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    web.httpFirewall(defaultHttpFirewall());</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> HttpFirewall <span class="title">defaultHttpFirewall</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DefaultHttpFirewall();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>또 다른 방식으로는 정규표현식을 사용하여 regex = [^0-9a-zA-Z] or [////]</p>
+<p>자바에서는 슬래쉬 하나를 <code>//</code>로 인식하게 되기때문에 해당되는 것들을 모두 “” 으로 치환을 하면서 해당되는 사항을 트러블슈팅할 수 있었습니다</p>
 
-        <p class="article-excerpt">
-            1.  백준 텀 프로젝트 9466 문제
+        </div>
+        <footer class="article-footer">
+            
 
-1.1.  문제
-이번 가을학기에 ‘문제 해결’ 강의를 신청한 학생들은 텀 프로젝트를 수행해야 한다. 프로젝트 팀원 수에는 제한이 없다. 심지어 모든 학생들이 동일한 팀의 팀원인 경우와 같이 한 팀만 있을 수도 있다. 프로젝트 팀을 구성하기 위해, 모든 학생들은 프로젝트를 함께하고 싶은 학생을 선택해야 한다. (단, 
-        </p>
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
     </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "gwanhyeon Kim"
+        },
+        "headline": "Spring Security URL RequestRejectedException 트러블 슈팅",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "Spring",
+        "genre": "Server Spring",
+        "datePublished": "2021-05-28",
+        "dateCreated": "2021-05-28",
+        "dateModified": "2021-05-28",
+        "url": "http://gwanhyeon.github.io/Spring-20210528-spring-double-slash/",
+        "description": "1.  The request was rejected because the URL contained a potentially malicious String “//”
+AES256 암호화 키값을 생성하는 과정에서 생긴 트러블 슈팅과정입니다. 해당되는 암호화 키값이 요청 @Pathvariable으로 들어오는 과정에서 해당되는 URL 매핑이 올바르게 진행되지 않은 ",
+        "wordCount": 526
+    }
+</script>
+
 </article>
-    
-        </div>
-    
 
+    <section id="comments">
     
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-22T10:46:11.000Z" itemprop="datePublished">2020-10-22</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201022-BOJ-repeat-permutation/">백준 반복 순열 2331</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  백준 반복 순열 2331 문제
-
-1.1.  문제
-다음과 같이 정의된 수열이 있다.
-D[1] = A
-D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합
-예를 들어 A=57, P=2일 때, 수열 D는 {57, 74(=52+72=25+49), 65, 61, 37, 58, 89, 145, 42, 20, 4, 16, 37, …}이 된다. 그 뒤
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-22T05:37:35.000Z" itemprop="datePublished">2020-10-22</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201022-BOJ-permutation-cycle/">백준 순열 사이클 10451</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  백준 순열 사이클 10451 문제
-1.1.  문제
-1부터 N까지 정수 N개로 이루어진 순열을 나타내는 방법은 여러 가지가 있다. 예를 들어, 8개의 수로 이루어진 순열 (3, 2, 7, 8, 1, 4, 5, 6)을 배열을 이용해 표현하면  와 같다. 또는, Figure 1과 같이 방향 그래프로 나타낼 수도 있다.
-순열을 배열을 이용해  로 나타냈다면
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%A1%A0/">자료구조론</a>
-            </div>
-            <div class="date"><time datetime="2020-10-21T13:22:04.000Z" itemprop="datePublished">2020-10-21</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Algorithm-20201021-Algorithm-graph-summary/">그래프 인접행렬, 인접리스트 및 DFS,BFS</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  그래프
-그래프의 정의를 살펴보면 G=(V,E)가 성립하게 됩니다. G: 그래프, V: 정점, E: 간선을 의미합니다.
-2.  경로
-만약 A-&gt;C, A-&gt;B, C-&gt;B, E-&gt;B, C-&gt;E, C-&gt;D, D-&gt;E의 정점과 간선으로 연결된 그래프가 있다고 생각하겠습니다. 이때 정점 A-&gt;B로 가는 경로는 몇가지 
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-21T12:48:55.000Z" itemprop="datePublished">2020-10-21</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201021-BOJ-connected-component/">백준 연결요소의 개수 11724</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  백준 연결요소의 개수 11724 문제
-1.1.  문제
-방향 없는 그래프가 주어졌을 때, 연결 요소 (Connected Component)의 개수를 구하는 프로그램을 작성하시오.
-1.2.  입력
-첫째 줄에 정점의 개수 N과 간선의 개수 M이 주어진다. (1 ≤ N ≤ 1,000, 0 ≤ M ≤ N×(N-1)/2) 둘째 줄부터 M개의 줄에 간선의 양 끝
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-20T09:38:18.000Z" itemprop="datePublished">2020-10-20</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201020-BOJ-inequality-sign/">백준 부등호 2529</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  백준 부등호 2529 문제
-1.1.  문제
-두 종류의 부등호 기호 ‘&lt;’와 ‘&gt;’가 k개 나열된 순서열  A가 있다. 우리는 이 부등호 기호 앞뒤에 서로 다른 한 자릿수 숫자를 넣어서 모든 부등호 관계를 만족시키려고 한다. 예를 들어, 제시된 부등호 순서열 A가 다음과 같다고 하자.
-A =&gt; &lt; &lt; &lt; &gt; &lt
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-19T16:07:15.000Z" itemprop="datePublished">2020-10-20</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201020-BOJ-number-inheritance1/">백준 수 이어쓰기1 1748</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-1.1.  백준 수 이어쓰기1 1748 문제
-1.1.1.  문제
-1부터 N까지의 수를 이어서 쓰면 다음과 같이 새로운 하나의 수를 얻을 수 있다.
-1234567891011121314151617181920212223…
-이렇게 만들어진 새로운 수는 몇 자리 수일까? 이 수의 자릿수를 구하는 프로그램을 작성하시오.
-1.1.2.  입력
-첫째 줄에
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-19T05:20:34.000Z" itemprop="datePublished">2020-10-19</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201019-BOJ-chess-repaint/">백준 체스판 다시칠하기 1018</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-1.1.  백준 체스판 다시칠하기 1018 문제
-2.  문제 조건
-2.1.  문제
-지민이는 자신의 저택에서 MN개의 단위 정사각형으로 나누어져 있는 MN 크기의 보드를 찾았다. 어떤 정사각형은 검은색으로 칠해져 있고, 나머지는 흰색으로 칠해져 있다. 지민이는 이 보드를 잘라서 88 크기의 체스판으로 만들려고 한다.
-체스판은 검은색과 흰색이
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-15T15:03:03.000Z" itemprop="datePublished">2020-10-16</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201016-BOJ-big-body/">백준 덩치 7568</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-1.1.  백준 덩치 문제
-2.  문제 조건
-2.1.  문제
-우리는 사람의 덩치를 키와 몸무게, 이 두 개의 값으로 표현하여 그 등수를 매겨보려고 한다. 어떤 사람의 몸무게가 x kg이고 키가 y cm라면 이 사람의 덩치는 (x,y)로 표시된다. 두 사람 A 와 B의 덩치가 각각 (x,y), (p,q)라고 할 때 x&gt;p 그리고 y&g
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-10-15T13:53:20.000Z" itemprop="datePublished">2020-10-15</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20201015-BOJ-decomposition-sum/">백준 분해합 2231</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-1.1.  백준 분해합 문제
-2.  문제 조건
-2.1.  문제
-어떤 자연수 N이 있을 때, 그 자연수 N의 분해합은 N과 N을 이루는 각 자리수의 합을 의미한다. 어떤 자연수 M의 분해합이 N인 경우, M을 N의 생성자라 한다. 예를 들어, 245의 분해합은 256(=245+2+4+5)이 된다. 따라서 245는 256의 생성자가 된다. 물
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-10-13T13:19:00.000Z" itemprop="datePublished">2020-10-13</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20201013-Programmers-house-steal/">프로그래머스 도둑질</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-1.1.  프로그래머스 도둑질 문제
-2.  문제 조건
-2.1.  문제 설명
-도둑이 어느 마을을 털 계획을 하고 있습니다. 이 마을의 모든 집들은 아래 그림과 같이 동그랗게 배치되어 있습니다.
-각 집들은 서로 인접한 집들과 방범장치가 연결되어 있기 때문에 인접한 두 집을 털면 경보가 울립니다.
-각 집에 있는 돈이 담긴 배열 money가 주어
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-10-09T08:49:42.000Z" itemprop="datePublished">2020-10-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20201009-Programmers-bignumber/">프로그래머스 큰 수 만들기</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-1.1.  프로그래머스 큰수만들기
-2.  문제 조건
-2.1.  문제 설명
-어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.
-예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다.
-문자열 형식으로 숫자 n
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-10-09T08:06:54.000Z" itemprop="datePublished">2020-10-09</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20201009-Programmers-carpet/">프로그래머스 카펫</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-1.1.  프로그래머스 카펫 문제
-2.  문제 조건
-문제 설명
-Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다.
-Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기억하지 못했습니다.
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-09-23T10:54:24.000Z" itemprop="datePublished">2020-09-23</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200923-Programmers-stock-price/">프로그래머스 주식가격</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 주식가격
-2.  문제 조건
-초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요.
-
-제한사항
-prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.
-prices의 길이는 2 이상 100,000 이하
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-09-22T12:30:28.000Z" itemprop="datePublished">2020-09-22</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200922-Programmers-good-shape-sqaure/">프로그래머스 멀쩡한 사각형</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 멀쩡한 사각형
-2.  문제 조건
-가로 길이가 Wcm, 세로 길이가 Hcm인 직사각형 종이가 있습니다. 종이에는 가로, 세로 방향과 평행하게 격자 형태로 선이 그어져 있으며, 모든 격자칸은 1cm x 1cm 크기입니다. 이 종이를 격자 선을 따라 1cm × 1cm의 정사각형으로 잘라 사용할 예정이었는데, 누군가가 이 종이를 대각
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
-            </div>
-            <div class="date"><time datetime="2020-09-22T06:25:26.000Z" itemprop="datePublished">2020-09-22</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/BOJ-20200922-BOJ-number-card/">백준 숫자카드 10815</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-백준 숫자카드 10815
-2.  문제 조건
-
-문제
-숫자 카드는 정수 하나가 적혀져 있는 카드이다. 상근이는 숫자 카드 N개를 가지고 있다. 정수 M개가 주어졌을 때, 이 수가 적혀있는 숫자 카드를 상근이가 가지고 있는지 아닌지를 구하는 프로그램을 작성하시오.
 
 
-입력
-첫째 줄에 상근이가 가지고 있는 숫자 카드의 개수 N(1 ≤ N ≤ 50
-        </p>
-    </div>
-</article>
     
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-09-21T08:57:24.000Z" itemprop="datePublished">2020-09-21</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200921-Programmers-caesar-password/">프로그래머스 시저암호</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 시저암호
-2.  문제 조건
-
-문제 설명
-어떤 문장의 각 알파벳을 일정한 거리만큼 밀어서 다른 알파벳으로 바꾸는 암호화 방식을 시저 암호라고 합니다. 예를 들어 AB는 1만큼 밀면 BC가 되고, 3만큼 밀면 DE가 됩니다. z는 1만큼 밀면 a가 됩니다. 문자열 s와 거리 n을 입력받아 s를 n만큼 민 암호문을 만드는 함수, s
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a>
-            </div>
-            <div class="date"><time datetime="2020-09-18T16:38:59.000Z" itemprop="datePublished">2020-09-19</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Samsung-20210216-baby-shark/">삼성 SW 역량테스트 백준 아기상어 16236</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-삼성 SW 역량테스트 기출 백준 아기상어 16236
-2.  문제 조건
-N×N 크기의 공간에 물고기 M마리와 아기 상어 1마리가 있다. 공간은 1×1 크기의 정사각형 칸으로 나누어져 있다. 한 칸에는 물고기가 최대 1마리 존재한다.
-아기 상어와 물고기는 모두 크기를 가지고 있고, 이 크기는 자연수이다. 가장 처음에 아기 상어의 크기는 2이고
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
-            </div>
-            <div class="date"><time datetime="2020-09-18T13:35:38.000Z" itemprop="datePublished">2020-09-18</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20200918-Programmers-sort-you-want-in-string/">프로그래머스 내마음대로 정렬하기</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  문제 링크
-프로그래머스 내마음대로 정렬하기
-2.  문제 조건
-문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를 들어 strings가 [sun, bed, car]이고 n이 1이면 각 단어의 인덱스 1의 문자 u, e, a로 strings를 정렬합니다.
-제한 조건
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">Page 3 of 5</span>
-        <a class="extend prev" rel="prev" href="/categories/algorithm/page/2/">&laquo;</a><a class="page-number" href="/categories/algorithm/">1</a><a class="page-number" href="/categories/algorithm/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/categories/algorithm/page/4/">4</a><a class="page-number" href="/categories/algorithm/page/5/">5</a><a class="extend next" rel="next" href="/categories/algorithm/page/4/">&raquo;</a>
-    </nav>
+    </section>
 
 
 
@@ -868,6 +323,19 @@ N×N 크기의 공간에 물고기 M마리와 아기 상어 1마리가 있다. �
     </div>
     <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/CleanCode-20210518-chapter05-%ED%98%95%EC%8B%9D%EB%A7%9E%EC%B6%94%EA%B8%B0/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">CleanCode 05 형식 맞추기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -1013,11 +481,13 @@ N×N 크기의 공간에 물고기 M마리와 아기 상어 1마리가 있다. �
     var disqus_shortname = 'kgh-1';
     
     
+    var disqus_url = 'http://gwanhyeon.github.io/Spring-20210528-spring-double-slash/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

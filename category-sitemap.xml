@@ -8,6 +8,20 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/server/spring/</loc>
+        <lastmod>2021-05-28T11:31:22.918Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/server/</loc>
+        <lastmod>2021-05-28T11:31:22.918Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/language/rxjava/</loc>
         <lastmod>2021-05-25T05:05:26.105Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -23,7 +37,7 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/categories/cleancode/</loc>
-        <lastmod>2021-05-18T15:44:19.715Z</lastmod>
+        <lastmod>2021-05-18T15:44:38.273Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -31,20 +45,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/network/</loc>
         <lastmod>2021-05-17T14:58:11.805Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/server/spring/</loc>
-        <lastmod>2021-05-14T07:16:30.434Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/server/</loc>
-        <lastmod>2021-05-14T07:16:30.434Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

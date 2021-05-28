@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Spring-20210528-spring-double-slash/</loc>
+        <lastmod>2021-05-28T11:31:22.918Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/RXJAVA-20200919-RXJAVA-reactive-programming-section02/</loc>
         <lastmod>2021-05-25T05:05:26.105Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,7 +25,7 @@
 
     <url>
         <loc>http://gwanhyeon.github.io/CleanCode-20210518-chapter05-%ED%98%95%EC%8B%9D%EB%A7%9E%EC%B6%94%EA%B8%B0/</loc>
-        <lastmod>2021-05-18T15:44:19.715Z</lastmod>
+        <lastmod>2021-05-18T15:44:38.273Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
