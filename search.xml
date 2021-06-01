@@ -3027,7 +3027,7 @@ BLOB: byte[], java.sql.BLOB</p>
 200: OK, 201: Created(리소스 생성),  202: Accepted(요청접수 처리되었으나 처리 완료 X) - 배치 처리, 204: No Content: 서버가 요청을 성공적으로 수행했지만, 응답 페이로드 본문에 보낼 데이터가 없을때 처리합니다.</p>
 </li>
 </ol>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">HTTP/1.1 201 Created</span><br><span class="line">HTTP/1.1 202 Accepted </span><br><span class="line">HTTP/1.1 200 No Content</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">HTTP/1.1 201 Created</span><br><span class="line">HTTP/1.1 202 Accepted </span><br><span class="line">HTTP/1.1 204 No Content</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>3xx(Redirection)<br>
 요청을 완료하기 위해서는 유저의 에이전트에서 추가 조치가 필요한 상태코드</li>
