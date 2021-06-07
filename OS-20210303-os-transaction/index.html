@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  Transaction(트랜잭션)  트랜잭션의 성질    원자성(Atomicity) 한 트랜잭션 내에서 실행한 작업들을 하나로 간주한다. 즉, 모두 성공 또는 실패를 뜻합니다.   일관성(Consistency) 트랜잭션은 일관성 있는 데이터베이스 상태를 유지합니다. (Data Integrity)   격리성(Isolation) 동시에 실행되는 트랜잭션들">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-03-03T09:35:45.280Z">
+<meta property="og:updated_time" content="2021-06-07T05:15:23.958Z">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -238,7 +238,7 @@ ga('send', 'pageview');
 <p>격리수준이란 일관성이 없는 데이터를 허용하는 수준을 말합니다.</p>
 <h3 id="default"><a href="#default" class="header-anchor">3.1. </a><a class="markdownIt-Anchor" href="#default"></a> DEFAULT</h3>
 <p>기본 격리수준을 뜻하며 기본값을 뜻합니다. = Database의 Isolation Level을 따릅니다.</p>
-<h3 id="read-uncommited-level-01"><a href="#read-uncommited-level-01" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#read_uncommitedlevel-01"></a> READ_UNCOMMITED(level 01)</h3>
+<h3 id="read-uncommited-level-00"><a href="#read-uncommited-level-00" class="header-anchor">3.2. </a><a class="markdownIt-Anchor" href="#read_uncommitedlevel-00"></a> READ_UNCOMMITED(level 00)</h3>
 <p>커밋되지 않은(트랜잭션  처리)중인 데이터에 대한 읽기를 허용</p>
 <p>즉 어떤 사용자가 A라는 데이터를 B라는 데이터로 변경하는 동안 다른 사용자는 B라는 아직 완료되지 않은(Uncommited 혹은 Dirty) 데이터 B를 읽을 수 있습니다.</p>
 <p>Problem1 - Dirty Read가 발생할 수 있습니다.</p>
@@ -343,7 +343,7 @@ ga('send', 'pageview');
         "genre": "OS",
         "datePublished": "2021-03-03",
         "dateCreated": "2021-03-03",
-        "dateModified": "2021-03-03",
+        "dateModified": "2021-06-07",
         "url": "http://gwanhyeon.github.io/OS-20210303-os-transaction/",
         "description": "1.  Transaction(트랜잭션)
 
