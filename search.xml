@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>백준 케빈 베이컨의 6단계 법칙  1389</title>
+    <url>/boj-1389/</url>
+    <content><![CDATA[<h1 id="munje"><a href="#munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제"></a> <a href="https://www.acmicpc.net/problem/1389" target="_blank" rel="noopener">문제</a></h1>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<ol>
+<li>플로이드 워셜 알고리즘</li>
+<li>11403번 경로찾기와 다르게 최단 경로의 비용을 구하는 문제이다.<br>
+예를들면, 1번 노드에서 -&gt; 2번, 3번, 4번, 5번 ,6번을 거쳐간 비용의 총합이다. 단순히 경로찾기문제는 비용이 문제가 아니라 해당되는값이 존재하는지 안존재하는지 여부만 찾았다.</li>
+<li>자기 자신의 값을 0으로 초기화하고 나머지 모든값을 (int)1e9 로 초기화하였다. 최단경로 즉, 최소비용을 구해야하므로 이렇게 초기화시켜준것이다.</li>
+<li>한번 이동할때의 최소비용은 1이므로 입력시 주어진 맵을 1로 갱신하였다.</li>
+<li>거쳐갈수있는 모든경로를 아래와 같이 초기화 하였다.</li>
+<li>map[0][0], map[0][1]…의 경로는 0-&gt;0, 0-&gt;1 0-&gt;2 …의 형식으로 모든 거쳐가는 최단경로비용을 찾는다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(map[i][k] + map[k][j] &lt; map[i][j])&#123;</span><br><span class="line">       map[i][j] = map[i][k] + map[k][j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">boj_1389</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> INF = (<span class="keyword">int</span>)<span class="number">1e9</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] map;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        StringTokenizer st = <span class="keyword">new</span> StringTokenizer(br.readLine());</span><br><span class="line">        <span class="keyword">int</span> n = Integer.parseInt(st.nextToken());</span><br><span class="line">        <span class="keyword">int</span> m = Integer.parseInt(st.nextToken());</span><br><span class="line">        map = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>][n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)&#123;</span><br><span class="line">                map[i][j] = INF;</span><br><span class="line">                <span class="keyword">if</span>(i == j) map[i][j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">            st = <span class="keyword">new</span> StringTokenizer(br.readLine());</span><br><span class="line">            <span class="keyword">int</span> x = Integer.parseInt(st.nextToken());</span><br><span class="line">            <span class="keyword">int</span> y = Integer.parseInt(st.nextToken());</span><br><span class="line">            map[x][y] = <span class="number">1</span>;</span><br><span class="line">            map[y][x] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>; k&lt;=n; k++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(map[i][k] + map[k][j] &lt; map[i][j])&#123;</span><br><span class="line">                        map[i][j] = map[i][k] + map[k][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> answer = INF;</span><br><span class="line">        <span class="keyword">int</span> idx = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)&#123;</span><br><span class="line">                sum += map[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(answer &gt; sum)&#123;</span><br><span class="line">                answer = sum;</span><br><span class="line">                idx = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(idx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+        <category>BOJ</category>
+      </categories>
+      <tags>
+        <tag>백준</tag>
+        <tag>플로이드워셜</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>백준 경로찾기 11403</title>
     <url>/BOJ-20210613-boj-11403/</url>
     <content><![CDATA[<h1 id="gyeongrocajgi-munje"><a href="#gyeongrocajgi-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#경로찾기-문제"></a> <a href="https://www.acmicpc.net/problem/11403" target="_blank" rel="noopener">경로찾기 문제</a></h1>
@@ -4357,8 +4384,8 @@ Ex) GET,POST,PUT,PATCH,DELETE</p>
       </categories>
       <tags>
         <tag>JPA</tag>
-        <tag>Persistence</tag>
         <tag>Entity</tag>
+        <tag>Persistence</tag>
         <tag>Flush</tag>
       </tags>
   </entry>
@@ -12542,8 +12569,8 @@ Only one valid answer exists.</p>
         <tag>알고리즘</tag>
         <tag>프로그래머스</tag>
         <tag>레벨2</tag>
-        <tag>H-INDEX</tag>
         <tag>정렬</tag>
+        <tag>H-INDEX</tag>
       </tags>
   </entry>
   <entry>
