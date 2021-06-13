@@ -3,14 +3,21 @@
 
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/dfs/</loc>
-        <lastmod>2021-06-13T17:29:08.518Z</lastmod>
+        <loc>http://gwanhyeon.github.io/tags/bfs/</loc>
+        <lastmod>2021-06-13T18:06:05.120Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EB%25B0%25B1%25EC%25A4%2580/</loc>
+        <lastmod>2021-06-13T18:06:05.120Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/dfs/</loc>
         <lastmod>2021-06-13T17:29:08.518Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -122,14 +129,14 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/tcp/</loc>
+        <loc>http://gwanhyeon.github.io/tags/internet/</loc>
         <lastmod>2021-05-15T16:46:31.656Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/internet/</loc>
+        <loc>http://gwanhyeon.github.io/tags/tcp/</loc>
         <lastmod>2021-05-15T16:46:31.656Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -537,13 +544,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EC%2597%25B0%25EC%2582%25B0/</loc>
         <lastmod>2021-05-13T05:02:44.716Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/bfs/</loc>
-        <lastmod>2021-05-13T05:02:40.127Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
