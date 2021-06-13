@@ -8,7 +8,15 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/boj-11725/</loc>
+        <loc>http://gwanhyeon.github.io/BOJ-20210613-boj-11403/</loc>
+        <lastmod>2021-06-13T13:00:40.940Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/BOJ-20210613-boj-11725/</loc>
         <lastmod>2021-06-13T12:55:28.829Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
