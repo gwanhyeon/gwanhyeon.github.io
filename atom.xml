@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
-  <updated>2021-06-13T16:44:31.745Z</updated>
+  <updated>2021-06-13T17:29:08.518Z</updated>
   <id>http://gwanhyeon.github.io/</id>
   
   <author>
@@ -17,9 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>백준 순열사이클 10451</title>
+    <link href="http://gwanhyeon.github.io/BOJ-20210614-boj-10451/"/>
+    <id>http://gwanhyeon.github.io/BOJ-20210614-boj-10451/</id>
+    <published>2021-06-13T17:26:47.000Z</published>
+    <updated>2021-06-13T17:29:08.518Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="sunyeolsaikeul-munje"><a href="#sunyeolsaikeul-munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#순열사이클-문제"></a> <a href="https://www.acmicpc.net/problem/10451" target="_blank" rel="noopener">순열사이클 문제</a></h1><h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2><ol><li>순열사이클을 구하는문제이다.</li><li>사이클이 발생하면 dfs를 수행하였을때 모든값들이 check가 되어있을것이다. 따라서, 매번 순회할때마다 체크가 안된지점만 확인을 하면 최종적으로 몇개의 사이클이 만들어지는지를 알 수 있다.<br>테스트케이스로 3, 2, 7, 8, 1, 4, 5, 6일 경우 1~N까지의 수가 매칭이 되어 트리가 생성되는것을 알아야한다.</li><li>DFS내부에서 check에 따른값을 체크하면 올바른 CNT값이 나오지 않아서 고민 후 사이클이 생긴다는것은 하나의 dfs의 경로를 순회하는것과 같은 의미임을 알게되었다.</li></ol><h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">boj_10451</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span>[] isChecked;</span><br><span class="line">    <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; graphList;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        <span class="keyword">int</span> t = Integer.parseInt(br.readLine());</span><br><span class="line">        <span class="keyword">while</span>(t-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> n = Integer.parseInt(br.readLine());</span><br><span class="line">            isChecked = <span class="keyword">new</span> <span class="keyword">boolean</span>[n+<span class="number">1</span>];</span><br><span class="line">            String[] input = br.readLine().split(<span class="string">" "</span>);</span><br><span class="line">            graphList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=n; i++)&#123;</span><br><span class="line">                graphList.add(<span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;input.length; i++)&#123;</span><br><span class="line">                <span class="keyword">int</span> x = i+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">int</span> y = Integer.parseInt(input[i]);</span><br><span class="line">                graphList.get(x).add(y);</span><br><span class="line">                graphList.get(y).add(x);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!isChecked[i]) &#123;</span><br><span class="line">                    findParent(i);</span><br><span class="line">                    cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(cnt);</span><br><span class="line">            Arrays.fill(isChecked,<span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">findParent</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        isChecked[x] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;graphList.get(x).size(); i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> y = graphList.get(x).get(i);</span><br><span class="line">            <span class="keyword">if</span>(!isChecked[y])&#123;</span><br><span class="line">                findParent(y);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;sunyeolsaikeul-munje&quot;&gt;&lt;a href=&quot;#sunyeolsaikeul-munje&quot; class=&quot;header-anchor&quot;&gt;1. &lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#순열사이클-문제&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="Algorithm" scheme="http://gwanhyeon.github.io/categories/algorithm/"/>
+    
+      <category term="BOJ" scheme="http://gwanhyeon.github.io/categories/algorithm/boj/"/>
+    
+    
+      <category term="백준" scheme="http://gwanhyeon.github.io/tags/%EB%B0%B1%EC%A4%80/"/>
+    
+      <category term="DFS" scheme="http://gwanhyeon.github.io/tags/dfs/"/>
+    
+  </entry>
+  
+  <entry>
     <title>백준 케빈 베이컨의 6단계 법칙  1389</title>
-    <link href="http://gwanhyeon.github.io/boj-1389/"/>
-    <id>http://gwanhyeon.github.io/boj-1389/</id>
+    <link href="http://gwanhyeon.github.io/BOJ-20210614-boj-1389/"/>
+    <id>http://gwanhyeon.github.io/BOJ-20210614-boj-1389/</id>
     <published>2021-06-13T16:41:16.000Z</published>
     <updated>2021-06-13T16:44:31.745Z</updated>
     
@@ -628,36 +658,6 @@
       <category term="CleanCode" scheme="http://gwanhyeon.github.io/tags/cleancode/"/>
     
       <category term="의미있는이름" scheme="http://gwanhyeon.github.io/tags/%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>프로그래머스 가장 큰 정사각형 찾기</title>
-    <link href="http://gwanhyeon.github.io/Programmers-20210321-programmers-%EA%B0%80%EC%9E%A5%ED%81%B0%EC%A0%95%EC%82%AC%EA%B0%81%ED%98%95%EC%B0%BE%EA%B8%B0/"/>
-    <id>http://gwanhyeon.github.io/Programmers-20210321-programmers-%EA%B0%80%EC%9E%A5%ED%81%B0%EC%A0%95%EC%82%AC%EA%B0%81%ED%98%95%EC%B0%BE%EA%B8%B0/</id>
-    <published>2021-03-21T08:53:32.000Z</published>
-    <updated>2021-05-13T04:55:37.596Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="peurogeuraemeoseu-gajang-keun-jeongsagaghyeong-cajgi"><a href="#peurogeuraemeoseu-gajang-keun-jeongsagaghyeong-cajgi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#프로그래머스-가장-큰-정사각형-찾기"></a> <a href="https://programmers.co.kr/learn/courses/30/lessons/12905" target="_blank" rel="noopener">프로그래머스 가장 큰 정사각형 찾기</a></h1><h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2><ol><li>보드에서 0인 경우를 제외한다. 0인 경우에는 어떠한 정사각형도 만들 수가 없기때문이다.</li><li>따라서, 대각선(i-1,j-1), 위(i-1,j), 왼쪽(i,j-1)의 위치의 값중 최솟값 +1의 값을 주게해주는데 왜 이러한 값을 구해주는 것일까 잘 생각해보도록 합니다.</li><li>가장 최소가되는 값의 +1의 값으로 진행하면 하나의 정사각형의 최대 변의 길이를 구할 수 있게 되기 때문입니다.<br>이러한식으로 점화식을 도출해내면<br><strong>Math.min(map[i-1][j-1]+1, Math.min(map[i-1][j], map[i][j-1]))+1</strong></li><li>다음과 같이 구할 수 있게 됩니다.<br>결국 우리가 구한값은 가장 큰 정사각형의 변의 길이를 구한것 이므로 해당되는 변의 길이 * 변의 길이 = 넓이를 도출해낼 수 있습니다.</li></ol><h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 가장큰정사각형찾기 </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        solution(<span class="keyword">new</span> <span class="keyword">int</span>[][]&#123;&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>&#125;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solution</span><span class="params">(<span class="keyword">int</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] map = <span class="keyword">new</span> <span class="keyword">int</span>[board.length+<span class="number">1</span>][board[<span class="number">0</span>].length+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;board.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;board[<span class="number">0</span>].length; j++)&#123;</span><br><span class="line">                map[i+<span class="number">1</span>][j+<span class="number">1</span>] = board[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=board.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=board[<span class="number">0</span>].length; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(map[i][j] != <span class="number">0</span>)&#123;</span><br><span class="line">                    <span class="comment">// 가장 최솟값의 + 1 괄호 주의 !</span></span><br><span class="line">                    map[i][j] = Math.min(Math.min(map[i-<span class="number">1</span>][j], map[i][j-<span class="number">1</span>]), map[i-<span class="number">1</span>][j-<span class="number">1</span>])+<span class="number">1</span>;</span><br><span class="line">                    answer = Math.max(answer, map[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(answer);</span><br><span class="line">        <span class="keyword">return</span> answer*answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;peurogeuraemeoseu-gajang-keun-jeongsagaghyeong-cajgi&quot;&gt;&lt;a href=&quot;#peurogeuraemeoseu-gajang-keun-jeongsagaghyeong-cajgi&quot; class=&quot;header-
-      
-    
-    </summary>
-    
-    
-      <category term="Algorithm" scheme="http://gwanhyeon.github.io/categories/algorithm/"/>
-    
-      <category term="Programmers" scheme="http://gwanhyeon.github.io/categories/algorithm/programmers/"/>
-    
-    
-      <category term="DP" scheme="http://gwanhyeon.github.io/tags/dp/"/>
-    
-      <category term="Programmers" scheme="http://gwanhyeon.github.io/tags/programmers/"/>
     
   </entry>
   
