@@ -8,6 +8,20 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/categories/algorithm/boj/</loc>
+        <lastmod>2021-06-13T10:13:56.867Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/algorithm/</loc>
+        <lastmod>2021-06-13T10:13:56.867Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/categories/os/</loc>
         <lastmod>2021-06-07T05:15:23.958Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -85,13 +99,6 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/categories/algorithm/</loc>
-        <lastmod>2021-05-13T05:11:10.330Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://gwanhyeon.github.io/categories/server/jpa/</loc>
         <lastmod>2021-05-13T05:09:28.314Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -115,13 +122,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/algorithm/codility/</loc>
         <lastmod>2021-05-13T05:05:45.537Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/algorithm/boj/</loc>
-        <lastmod>2021-05-13T05:04:23.929Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
