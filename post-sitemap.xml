@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/strategy-design-pattern/</loc>
+        <lastmod>2021-06-17T07:06:31.839Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/adapter-design-pattern/</loc>
+        <lastmod>2021-06-17T07:01:09.379Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/BOJ-20210614-boj-1325/</loc>
         <lastmod>2021-06-14T05:13:05.332Z</lastmod>
         <changefreq>weekly</changefreq>
