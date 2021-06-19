@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hacker Rank Sales By Match</title>
+    <title>HackerRank Sales By Match</title>
     <url>/Hackerrank-20210619-sales-by-match/</url>
     <content><![CDATA[<h1 id="munje"><a href="#munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제"></a> <a href="https://www.hackerrank.com/challenges/sock-merchant/problem?h_l=interview&amp;playlist_slugs%5B%5D=interview-preparation-kit&amp;playlist_slugs%5B%5D=warmup" target="_blank" rel="noopener">문제</a></h1>
 <p>There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.</p>
