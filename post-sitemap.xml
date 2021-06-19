@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/DesignPattern-20210619-template-method-design-pattern/</loc>
+        <lastmod>2021-06-19T13:33:57.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/DesignPattern-20210617-adapter-design-pattern/</loc>
         <lastmod>2021-06-17T07:23:26.139Z</lastmod>
         <changefreq>weekly</changefreq>
