@@ -79,7 +79,7 @@ The hourglass with the maximum sum () is:</p>
 <p>모래시계 1</p>
 </blockquote>
 <p><code>0 0 0</code> 0 0 0<br>
-<code>0 0 0</code> 0 0 0<br>
+0 <code>0</code> 0 0 0 0<br>
 <code>0 0 0</code> 0 0 0<br>
 0 0 0 0 0 0<br>
 0 0 0 0 0 0</p>
@@ -87,7 +87,7 @@ The hourglass with the maximum sum () is:</p>
 <p>모래시계 2</p>
 </blockquote>
 <p>0 <code>0 0 0</code> 0 0<br>
-0 <code>0 0 0</code> 0 0<br>
+0 0 <code>0</code> 0 0 0<br>
 0 <code>0 0 0</code> 0 0<br>
 0 0 0 0 0 0<br>
 0 0 0 0 0 0</p>
@@ -95,7 +95,7 @@ The hourglass with the maximum sum () is:</p>
 <p>모래시계 3</p>
 </blockquote>
 <p>0 0 <code>0 0 0</code> 0<br>
-0 0 <code>0 0 0</code> 0<br>
+0 0 0 <code>0</code> 0 0<br>
 0 0 <code>0 0 0</code> 0<br>
 0 0 0 0 0 0<br>
 0 0 0 0 0 0</p>
@@ -103,7 +103,7 @@ The hourglass with the maximum sum () is:</p>
 <p>모래시계 4</p>
 </blockquote>
 <p>0 0 0 <code>0 0 0</code><br>
-0 0 0 <code>0 0 0</code><br>
+0 0 0 0 <code>0</code> 0<br>
 0 0 0 <code>0 0 0</code><br>
 0 0 0 0 0 0<br>
 0 0 0 0 0 0</p>
