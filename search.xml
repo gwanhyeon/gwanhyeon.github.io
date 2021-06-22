@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>HackerRank Mark and Toys</title>
+    <url>/Hackerrank-20210622-mark-and-toys/</url>
+    <content><![CDATA[<h1 id="munje"><a href="#munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제"></a> <a href="https://www.hackerrank.com/challenges/mark-and-toys/problem?h_l=interview&amp;playlist_slugs%5B%5D=interview-preparation-kit&amp;playlist_slugs%5B%5D=sorting" target="_blank" rel="noopener">문제</a></h1>
+<p>Mark and Jane are very happy after having their first child. Their son loves toys, so Mark wants to buy some. There are a number of different toys lying in front of him, tagged with their prices. Mark has only a certain amount to spend, and he wants to maximize the number of toys he buys with this money. Given a list of toy prices and an amount to spend, determine the maximum number of gifts he can buy.</p>
+<p>Note Each toy can be purchased only once.</p>
+<h3 id="example"><a href="#example" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#example"></a> Example</h3>
+<p>The budget is  units of currency. He can buy items that cost  for , or  for  units. The maximum is  items.</p>
+<h3 id="function-description"><a href="#function-description" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#function-description"></a> Function Description</h3>
+<p>Complete the function maximumToys in the editor below.</p>
+<p>maximumToys has the following parameter(s):</p>
+<p>int prices[n]: the toy prices<br>
+int k: Mark’s budget</p>
+<h3 id="returns"><a href="#returns" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#returns"></a> Returns</h3>
+<p>int: the maximum number of toys<br>
+Input Format</p>
+<p>The first line contains two integers,  and , the number of priced toys and the amount Mark has to spend.<br>
+The next line contains  space-separated integers</p>
+<h3 id="constraints"><a href="#constraints" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#constraints"></a> Constraints</h3>
+<p>1 &lt;= n &lt;= 10^5<br>
+1 &lt;= k &lt;= 10^9<br>
+1 &lt;= prices[i] &lt;= 10^9</p>
+<p>A toy can’t be bought multiple times.</p>
+<h3 id="sample-input"><a href="#sample-input" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#sample-input"></a> Sample Input</h3>
+<p>7 50<br>
+1 12 5 111 200 1000 10</p>
+<h3 id="sample-output"><a href="#sample-output" class="header-anchor">1.6. </a><a class="markdownIt-Anchor" href="#sample-output"></a> Sample Output</h3>
+<p>4</p>
+<h3 id="explanation"><a href="#explanation" class="header-anchor">1.7. </a><a class="markdownIt-Anchor" href="#explanation"></a> Explanation</h3>
+<p>He can buy only  toys at most. These toys have the following prices: .</p>
+<h2 id="keompyutingjeog-sago"><a href="#keompyutingjeog-sago" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#컴퓨팅적-사고"></a> 컴퓨팅적 사고</h2>
+<p>이번 문제는 주어진 예산을 가지고 만들 수 있는 모든 경우의 수 리스트중에서 리스트의 가장 큰 맥시멈 사이즈를 구하는 문제였습니다.</p>
+<p>단순히 이중 포문을 통하여 각각의 모든 경우를 구해주었고, 모든 경우의 값을 더해나가면서 k(budget)의 값을 초과한다는것은 예산으로 아이템을 살 수 없는 경우이기 때문에 해당되는 경우의수에서 종료를 시켜주었습니다.<br>
+각각의 경우의 수, 즉 아이템의 횟수를 매번 체크하여 k의 범위에 있을때 까지만 증가를 시켜주었습니다. 그리고 아이템의 횟수에 대한 값의 최댓값을 매번 구해주었습니다.</p>
+<p>이때 주의 할점은 모든 값을 정렬을 시켜준후 경우의 수를 구해주게 되면 Worst Case O(N^2)의 경우를 모두 확인해보지 않아도 되기때문에 시간복잡도 성능이 용이할 것이라 판단이 됩니다.</p>
+<blockquote>
+<p>Time Complexity</p>
+</blockquote>
+<p>Worst Case : O(N^2)</p>
+<h2 id="soseukodeu"><a href="#soseukodeu" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#소스코드"></a> 소스코드</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.math.*;</span><br><span class="line"><span class="keyword">import</span> java.security.*;</span><br><span class="line"><span class="keyword">import</span> java.text.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"><span class="keyword">import</span> java.util.function.*;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.*;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.*;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.stream.Collectors.joining;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.util.stream.Collectors.toList;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Result</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * Complete the 'maximumToys' function below.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * The function is expected to return an INTEGER.</span></span><br><span class="line"><span class="comment">     * The function accepts following parameters:</span></span><br><span class="line"><span class="comment">     *  1. INTEGER_ARRAY prices</span></span><br><span class="line"><span class="comment">     *  2. INTEGER k</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maximumToys</span><span class="params">(List&lt;Integer&gt; prices, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Write your code here</span></span><br><span class="line">    </span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        Collections.sort(prices);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;prices.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = prices.get(i);</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">boolean</span> isCheck = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;prices.size(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(sum &gt; k)&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    sum += prices.get(j);</span><br><span class="line">                    cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            answer = Math.max(answer, cnt);    </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        BufferedWriter bufferedWriter = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(System.getenv(<span class="string">"OUTPUT_PATH"</span>)));</span><br><span class="line"></span><br><span class="line">        String[] firstMultipleInput = bufferedReader.readLine().replaceAll(<span class="string">"\\s+$"</span>, <span class="string">""</span>).split(<span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> n = Integer.parseInt(firstMultipleInput[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> k = Integer.parseInt(firstMultipleInput[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; prices = Stream.of(bufferedReader.readLine().replaceAll(<span class="string">"\\s+$"</span>, <span class="string">""</span>).split(<span class="string">" "</span>))</span><br><span class="line">            .map(Integer::parseInt)</span><br><span class="line">            .collect(toList());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> result = Result.maximumToys(prices, k);</span><br><span class="line"></span><br><span class="line">        bufferedWriter.write(String.valueOf(result));</span><br><span class="line">        bufferedWriter.newLine();</span><br><span class="line"></span><br><span class="line">        bufferedReader.close();</span><br><span class="line">        bufferedWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+        <category>hackerrank</category>
+      </categories>
+      <tags>
+        <tag>hackerrank</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HackerRank 2d Array ds</title>
     <url>/Hackerrank-20210621-2d-array-ds/</url>
     <content><![CDATA[<h1 id="munje"><a href="#munje" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#문제"></a> <a href="https://www.hackerrank.com/challenges/2d-array/problem?h_l=interview&amp;playlist_slugs%5B%5D=interview-preparation-kit&amp;playlist_slugs%5B%5D=arrays" target="_blank" rel="noopener">문제</a></h1>

@@ -8,8 +8,16 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Hackerrank-20210622-mark-and-toys/</loc>
+        <lastmod>2021-06-22T08:59:30.259Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Hackerrank-20210621-2d-array-ds/</loc>
-        <lastmod>2021-06-21T10:09:51.975Z</lastmod>
+        <lastmod>2021-06-21T10:11:09.810Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
