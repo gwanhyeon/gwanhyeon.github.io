@@ -204,7 +204,7 @@ ga('send', 'pageview');
 
 Redis 설치하기
 
-1234567891011121314$brew install redisWarning: Treating redis as a formula. For the cask, use homebrew/cask/redis==&gt; Downloading https://homebrew.bintray.com/bottles
+123456789101112131415$brew install redisWarning: Treating redis as a formula. For the cask, use homebrew/cask/redis==&gt; Downloading https://homebrew.bintray.com/bottl
         </p>
     </div>
 </article>
@@ -247,8 +247,8 @@ Redis 설치하기
 
 임의의 조건에 따라서 독자적으로 변환 처리를 지정해서 데이터를 변환하고 싶을 때 CASE문을 사용할 수 있다.
 
-1234CASE WHEN 조건식1 THEN 식1     [WHEN 조건식2 THEN 식2...]     [ELSE 식3]   END
-예를 들어, NULL값을 0으로 간주해서 계산하고 싶을 때는 어
+1234CASE WHEN 조건식1 THEN 식1     [WHEN 조건식2 THEN 식2...]     [ELSE 식3]   END  
+예를 들어, NULL값을 0으로 간주해서 계산하고 싶을 때는
         </p>
     </div>
 </article>
@@ -317,7 +317,7 @@ CURRENT-TIMESTAMP로 시스템 날짜 확인
 
 문자열 결합 사례
 
-1'ABC' || '1234' -&gt; 'ABC1234'
+1&#x27;ABC&#x27; || &#x27;1234&#x27; -&gt; &#x27;ABC1234&#x27;
 
 데이터베이스별 문자열 결합의 차이
 
@@ -341,16 +341,7 @@ SQL Server
 Oracle, PostgreSQL
 
 
-CONCAT
-문자열결합
-Mysql
-
-
-
-
-문자열 결합 예제
-
-1
+CONCA
         </p>
     </div>
 </article>
@@ -589,7 +580,7 @@ ORDER BY 구를 사용하여 검색결과의 행 순서를 바꿀 수 있다.
 특정 문자나 문자열이 포함된 데이터를 검색하는 경우 사용
 
 1.1.2.  메타문자 (와일드카드)
-1컬럼명 LIKE &apos;%SQL_&apos;
+1컬럼명 LIKE &#x27;%SQL_&#x27;
 
 임의의 문자 또는 문자열을 의미
 % : 임의의 문자열 (빈 문자열에도 매치함)
@@ -663,9 +654,9 @@ OR로 조건식을 연결하면 어느 쪽이든 조건을 만족하는 행을
 
         <p class="article-excerpt">
             1.  04강 검색 조건 지정하기
-1SELECT 열1, 열2 FROM 테이블명 WHERE 조건식
+1SELECT 열1, 열2 FROM 테이블명 WHERE 조건식 
 통상적인 데이터베이스의 테이블에는 저장된 행이 많을 것이다. 화면에 표시하여 데이터를 확인할 수 있는데, 한번에 볼 수 있는 데이터양은 한정되어 있다. 화면에 표시할 때는 행이나
-열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 '검색’이 빈번하게 일
+열을 선택하여 데이터베이스에서 데이터를 읽어오는, 다시 말해 '검색’이 빈번하게 
         </p>
     </div>
 </article>
@@ -726,14 +717,14 @@ OR로 조건식을 연결하면 어느 쪽이든 조건을 만족하는 행을
 
         <p class="article-excerpt">
             1.  SELECT 명령
-1SELECT * FROM 테이블명
+1SELECT * FROM 테이블명 
 2.  SELECT * FROM 테이블명 실행
 FROM 사이에는 스페이스를 넣어 구분한다. 예를 들어 sample 테이블의 모든 데이터를 조회한다면 아래와 같이 SELECT 명령을 입력해야 한다.
 1SELECT * FROM sample;
 
 주의
 
-만약 SELECT*FROMsample;과 같이 붙여
+만약 SELECT*FROMsample;과 같이 붙
         </p>
     </div>
 </article>

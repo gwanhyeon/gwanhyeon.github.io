@@ -290,7 +290,7 @@ ga('send', 'pageview');
 <pre class="highlight"><code class="sql">1+2*3=7 (+보다 *의 우선순위가 높습니다.)    
 </code></pre>
 <h2 id="selectguro-yeonsanhagi"><a href="#selectguro-yeonsanhagi" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#select구로-연산하기"></a> select구로 연산하기</h2>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> 식<span class="number">1</span>, 식<span class="number">2</span> ... <span class="keyword">from</span> 테이블명    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> 식<span class="hljs-number">1</span>, 식<span class="hljs-number">2</span> ... <span class="hljs-keyword">from</span> 테이블명    
 </code></pre>
 <ul>
 <li>이 식은 <code>열명, 연산자, 상수</code>로 구성</li>
@@ -298,10 +298,10 @@ ga('send', 'pageview');
 주문금액 = 단가 * 개수</li>
 </ul>
 <p>예) 100원 상품 10개 주문 상품금액 1000원</p>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">from</span> sample34    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> *, price * quantity <span class="hljs-keyword">from</span> sample34    
 </code></pre>
 <h2 id="yeolyi-byeolmyeong"><a href="#yeolyi-byeolmyeong" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#열의-별명"></a> 열의 별명</h2>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> *, price * quantity <span class="hljs-keyword">AS</span> amount <span class="hljs-keyword">from</span> sample34    
 </code></pre>
 <ul>
 <li>열의 별명을 붙일때는 예약어 <code>AS</code> 를 사용한다. AS의 약어는 에일리어스(alias)입니다.</li>
@@ -310,7 +310,7 @@ ga('send', 'pageview');
 <li>단, 한글로 지정하는경우 더블쿼트 <code>&quot;&quot;</code> 를 지정해서 사용합니다</li>
 <li>다음과 같이 쓸 수 있습니다.</li>
 </ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> price * quantity <span class="string">"금액"</span> <span class="keyword">from</span> sample34    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> price * quantity <span class="hljs-string">"금액"</span> <span class="hljs-keyword">from</span> sample34    
 </code></pre>
 <p>이 룰은 ASCII 문자 이외의 것을 포함할 경우 <code>더블쿼트</code>로 둘러싸서 지정합니다.</p>
 <ul>
@@ -322,8 +322,8 @@ ga('send', 'pageview');
 <ul>
 <li>예약어 같은 경우는 별명을 지정해서 사용할 수 없는데, 그래도 사용해야한다면 <code>&quot; &quot;</code> 더블쿼트를 사용하면 가능합니다.</li>
 </ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> price * quantity <span class="keyword">AS</span> <span class="keyword">select</span> <span class="keyword">from</span> sample34; (예약어 지정 X)    
-<span class="keyword">select</span> price * quantity <span class="keyword">AS</span> <span class="string">"select"</span> <span class="keyword">from</span> sample34; (예약어 지정 O)    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> price * quantity <span class="hljs-keyword">AS</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">from</span> sample34; (예약어 지정 X)    
+<span class="hljs-keyword">select</span> price * quantity <span class="hljs-keyword">AS</span> <span class="hljs-string">"select"</span> <span class="hljs-keyword">from</span> sample34; (예약어 지정 O)    
 </code></pre>
 <ul>
 <li>숫자의 경우도 예약어와 겹칠때와 마찬가지로 <code>&quot; &quot;</code> 더블쿼트를 사용하면 피할 수 있습니다.</li>
@@ -333,15 +333,15 @@ ga('send', 'pageview');
 <ul>
 <li>where 구에서 <code>가격 * 수량</code> 금액을 계산하여 <code>2000원 이상</code>에 해당하는 행을 검색하는 쿼리</li>
 </ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34;    
-<span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
-<span class="keyword">where</span> price * quantity &gt;= <span class="number">2000</span>;    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> *, price * quantity <span class="hljs-keyword">AS</span> amount <span class="hljs-keyword">from</span> sample34;    
+<span class="hljs-keyword">select</span> *, price * quantity <span class="hljs-keyword">AS</span> amount <span class="hljs-keyword">from</span> sample34    
+<span class="hljs-keyword">where</span> price * quantity &gt;= <span class="hljs-number">2000</span>;    
 </code></pre>
 <ul>
 <li>price * quantity 대신에 amount를 사용하면 어떻게 될까요?</li>
 </ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34    
-<span class="keyword">where</span> amount &gt;= <span class="number">2000</span>;    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> *, price * quantity <span class="hljs-keyword">AS</span> amount <span class="hljs-keyword">from</span> sample34    
+<span class="hljs-keyword">where</span> amount &gt;= <span class="hljs-number">2000</span>;    
 </code></pre>
 <ul>
 <li>AS 를 써서 별명을 지어줬으니 에러가 발생하지 않을까? 라는 생각을 할 수도 있습니다. 하지만, amount가 존재하지 않는다라는 에러가 발생하게 됩니다.</li>
@@ -375,8 +375,8 @@ ga('send', 'pageview');
 <ul>
 <li>금액을 오름차순, 내림차순을 구현하기 위해서는 어떠한  예약어를 사용하면 될까요?</li>
 </ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34;    
-<span class="keyword">select</span> *, price * quantity <span class="keyword">AS</span> amount <span class="keyword">from</span> sample34 <span class="keyword">order</span> <span class="keyword">by</span> price * quantity <span class="keyword">DESC</span>;    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> *, price * quantity <span class="hljs-keyword">AS</span> amount <span class="hljs-keyword">from</span> sample34;    
+<span class="hljs-keyword">select</span> *, price * quantity <span class="hljs-keyword">AS</span> amount <span class="hljs-keyword">from</span> sample34 <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> price * quantity <span class="hljs-keyword">DESC</span>;    
 </code></pre>
 <ul>
 <li>order by구를 사용하고 옵션으로 <code>DESC(descending)</code>키워드를 사용하면 <code>내림차순 정렬</code>이 되는것을 볼 수 있습니다. <code>오름차순(ascending)</code> 정렬은 예약어 <code>ASC</code>로 사용하면 됩니다.</li>
@@ -399,8 +399,8 @@ MOD(10,3) -&gt; 1
 <li>부가세나 부가세포함된 금액을 계산할 때 어떤 함수를 사용하면 좋을까요?</li>
 <li>ROUND()함수를 사용하면 단위를 고려한 반올림 처리를 손쉽게 할 수 있습니다.</li>
 </ul>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> * <span class="keyword">from</span> sample341;    
-<span class="keyword">select</span> amount, <span class="keyword">ROUND</span>(amount) <span class="keyword">from</span> sample341;    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> sample341;    
+<span class="hljs-keyword">select</span> amount, <span class="hljs-keyword">ROUND</span>(amount) <span class="hljs-keyword">from</span> sample341;    
 </code></pre>
 <ul>
 <li>INTEGER형: 정수만 저장 가능 amount열은 DECIMAL형으로 정의되었습니다.</li>
@@ -412,7 +412,7 @@ MOD(10,3) -&gt; 1
 <li>음수의 경우는 어떻게 할 수 있을까요?</li>
 </ul>
 <p><code>-1 지정시 1단위</code> , <code>-2을 지정하면 10단위</code>를 <code>반올림</code>할 수 있습니다.</p>
-<pre class="highlight"><code class="sql"><span class="keyword">select</span> amount, <span class="keyword">ROUND</span>(amount,<span class="number">-2</span>) <span class="keyword">from</span> sample341;    
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">select</span> amount, <span class="hljs-keyword">ROUND</span>(amount,<span class="hljs-number">-2</span>) <span class="hljs-keyword">from</span> sample341;    
 </code></pre>
 <p>인수에 -2를 입력하였으니 10단위를 반올림합니다. 예) 5961.69 → 6000(10단위 반올림)</p>
 <ul>

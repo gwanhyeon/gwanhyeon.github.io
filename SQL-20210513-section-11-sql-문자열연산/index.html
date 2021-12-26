@@ -10,12 +10,12 @@
     
     <meta name="keywords" content="SQL" />
     
-    <meta name="description" content="1.  11. 문자열 연산 1.1.  문자열 결합  문자열 결합 사례  1&#39;ABC&#39; || &#39;1234&#39; -&gt; &#39;ABC1234&#39;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCAT 문자열결합 Mysql     문자열 결합 예제  1">
+    <meta name="description" content="1.  11. 문자열 연산 1.1.  문자열 결합  문자열 결합 사례  1&amp;#x27;ABC&amp;#x27; || &amp;#x27;1234&amp;#x27; -&gt; &amp;#x27;ABC1234&amp;#x27;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="11. SQL 문자열 연산">
 <meta property="og:url" content="http://gwanhyeon.github.io/SQL-20210513-section-11-sql-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  11. 문자열 연산 1.1.  문자열 결합  문자열 결합 사례  1&#39;ABC&#39; || &#39;1234&#39; -&gt; &#39;ABC1234&#39;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCAT 문자열결합 Mysql     문자열 결합 예제  1">
+<meta property="og:description" content="1.  11. 문자열 연산 1.1.  문자열 결합  문자열 결합 사례  1&amp;#x27;ABC&amp;#x27; || &amp;#x27;1234&amp;#x27; -&gt; &amp;#x27;ABC1234&amp;#x27;  데이터베이스별 문자열 결합의 차이     연산자&#x2F;함수 연산 DB     + 문자열결합 SQL Server   || 문자열결합 Oracle, PostgreSQL   CONCA">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-05-13T07:03:36.000Z">
 <meta property="article:modified_time" content="2021-05-13T07:29:17.000Z">
@@ -217,7 +217,7 @@ ga('send', 'pageview');
 <ul>
 <li>문자열 결합 사례</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'ABC' || '1234' -&gt; 'ABC1234'</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;ABC&#x27;</span> <span class="operator">||</span> <span class="string">&#x27;1234&#x27;</span> <span class="operator">-</span><span class="operator">&gt;</span> <span class="string">&#x27;ABC1234&#x27;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>데이터베이스별 문자열 결합의 차이</li>
 </ul>
@@ -250,7 +250,7 @@ ga('send', 'pageview');
 <ul>
 <li>문자열 결합 예제</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> sample35;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">CONCAT</span>(quantity, unit) <span class="keyword">from</span> sample35;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> sample35;</span><br><span class="line"><span class="keyword">select</span> CONCAT(quantity, unit) <span class="keyword">from</span> sample35;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>unit열은 문자열형이고, quantity 열은 INTEGER행의 열입니다.</li>
 <li>문자열 결합시 <code>Mysql</code>에서는 <code>CONCAT</code>을 사용합니다. <code>Oracle은 문자열 결합 ||</code></li>
@@ -265,7 +265,7 @@ ga('send', 'pageview');
 </ul>
 <p>블로그 시스템 업로드 특정 데이터 파싱<br>
 날짜 데이터 포맷 형식의 YYYYMMDD 문자열 데이터 파싱(YYYY, MM, DD)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SUBSTRING('20140125001',1,4) -&gt; '2014'앞 4자리(년) 추출</span><br><span class="line"></span><br><span class="line">SUBSTRING('20140125001',5,2) -&gt; '01' 5째 자리부터 2자리(월) 추출</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SUBSTRING</span>(<span class="string">&#x27;20140125001&#x27;</span>,<span class="number">1</span>,<span class="number">4</span>) <span class="operator">-</span><span class="operator">&gt;</span> <span class="string">&#x27;2014&#x27;</span>앞 <span class="number">4</span>자리(년) 추출</span><br><span class="line"></span><br><span class="line"><span class="built_in">SUBSTRING</span>(<span class="string">&#x27;20140125001&#x27;</span>,<span class="number">5</span>,<span class="number">2</span>) <span class="operator">-</span><span class="operator">&gt;</span> <span class="string">&#x27;01&#x27;</span> <span class="number">5</span>째 자리부터 <span class="number">2</span>자리(월) 추출</span><br></pre></td></tr></table></figure>
 <h2 id="trim-hamsu"><a href="#trim-hamsu" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#trim-함수"></a> TRIM 함수</h2>
 <ul>
 <li>정의</li>
@@ -276,7 +276,7 @@ ga('send', 'pageview');
 <ul>
 <li>TRIM 함수 예시</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRIM('ABC    ') -&gt; 'ABC'</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">TRIM</span>(<span class="string">&#x27;ABC    &#x27;</span>) <span class="operator">-</span><span class="operator">&gt;</span> <span class="string">&#x27;ABC&#x27;</span></span><br></pre></td></tr></table></figure>
 <h2 id="character-length-hamsu"><a href="#character-length-hamsu" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#character_length-함수"></a> CHARACTER_LENGTH 함수</h2>
 <ul>
 <li>정의</li>
@@ -412,7 +412,7 @@ ga('send', 'pageview');
 
 문자열 결합 사례
 
-1'ABC' || '1234' -&gt; 'ABC1234'
+1&#x27;ABC&#x27; || &#x27;1234&#x27; -&gt; &#x27;ABC1234&#x27;
 
 데이터베이스별 문자열 결합의 차이
 
@@ -436,17 +436,8 @@ SQL Server
 Oracle, PostgreSQL
 
 
-CONCAT
-문자열결합
-Mysql
-
-
-
-
-문자열 결합 예제
-
-1",
-        "wordCount": 314
+CONCA",
+        "wordCount": 345
     }
 </script>
 

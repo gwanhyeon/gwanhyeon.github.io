@@ -218,13 +218,13 @@ ga('send', 'pageview');
 <blockquote>
 <p>@DirtiesContext</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@DirtiesContext indicates that the underlying Spring ApplicationContext has been dirtied during the execution of a test (that is, the test modified or corrupted it in some manner — for example, by changing the state of a singleton bean) and should be closed. When an application context is marked as dirty, it is removed from the testing framework’s cache and closed. As a consequence, the underlying Spring container is rebuilt for any subsequent test that requires a context with the same configuration metadata.</span><br><span class="line">You can use @DirtiesContext as both a class-level and a method-level annotation within the same class or class hierarchy. In such scenarios, the ApplicationContext is marked as dirty before or after any such annotated method as well as before or after the current test class, depending on the configured methodMode and classMode.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@DirtiesContext indicates that the underlying Spring ApplicationContext has been dirtied during the execution of a test (that is, the test modified or corrupted it in some manner — for example, by changing the state of a singleton bean) and should be closed. When an application context is marked as dirty, it is removed from the testing framework’s cache and closed. As a consequence, the underlying Spring container is rebuilt for any subsequent test that requires a context with the same configuration metadata.</span><br><span class="line">You can use @DirtiesContext as both a class-level and a method-level annotation within the same class or class hierarchy. In such scenarios, the ApplicationContext is marked as dirty before or after any such annotated method as well as before or after the current test class, depending on the configured methodMode and classMode.</span><br></pre></td></tr></table></figure>
 <p>doc.spring.io에 따르면 @DirtiesContext ApplicationContext 테스트를 실행하는동안 테스트 프레임워크의 캐시를 제거하고 닫게합니다. 결과적으로 기본 Spring Container에 동일한 구성 메타 데이터가 있는 컨텍스트를 필요로하는 후속 테스트를 위해 재 빌드된다고 나와있습니다.</p>
 <p>또한, 클래스 계층 구조내에서 클래스 수준 주석과 메서드 수준 수적으로 모두 사용할 수 있습니다.</p>
 <blockquote>
 <p>클래스 테스트 시작전 Context 재생성</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = BEFORE_CLASS) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext(classMode = BEFORE_CLASS)</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>클래스 테스트 이후 Context 재생성</p>
 </blockquote>
@@ -232,15 +232,15 @@ ga('send', 'pageview');
 <blockquote>
 <p>모든 테스트 케이스마다 시작하기 이전 Context 재생성</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = BEFORE_EACH_TEST_METHOD) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>모든 테스트케이스가 끝날때 마다 Context 재생성</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(classMode = AFTER_EACH_TEST_METHOD) </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextDirtyingTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that result in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext(classMode = AFTER_EACH_TEST_METHOD)</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextDirtyingTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that result in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>특정 케이스 시작전 Context 재생성</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span>(methodMode = BEFORE_METHOD) </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testProcessWhichRequiresFreshAppCtx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some logic that requires a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext(methodMode = BEFORE_METHOD)</span> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testProcessWhichRequiresFreshAppCtx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some logic that requires a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>특정 케이스 시작 이후 Context 재생성</p>
 </blockquote>
@@ -248,8 +248,8 @@ ga('send', 'pageview');
 <blockquote>
 <p>Reference</p>
 </blockquote>
-<p><a href="https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html" target="_blank" rel="noopener">https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html</a></p>
-<p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext" target="_blank" rel="noopener">https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext</a></p>
+<p><a target="_blank" rel="noopener" href="https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html">https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext">https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext</a></p>
 
         </div>
         <footer class="article-footer">
@@ -330,7 +330,7 @@ ga('send', 'pageview');
         "url": "http://gwanhyeon.github.io/Spring-20210514-spring-dirties-context/",
         "description": "Spring DirtiesContext
 스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 @DirtiesConte",
-        "wordCount": 467
+        "wordCount": 463
     }
 </script>
 

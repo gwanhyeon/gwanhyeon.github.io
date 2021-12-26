@@ -215,14 +215,14 @@ ga('send', 'pageview');
             <h1 id="7-sql-oreumcasun-naerimcasun-jeongryeolhagi-desc-asc"><a href="#7-sql-oreumcasun-naerimcasun-jeongryeolhagi-desc-asc" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#7-sql-오름차순-내림차순-정렬하기-desc-asc"></a> 7. SQL 오름차순, 내림차순 정렬하기 (DESC, ASC)</h1>
 <p>ORDER BY 구를 사용하여 검색결과의 행 순서를 바꿀 수 있다.</p>
 <h2 id="order-by-gu"><a href="#order-by-gu" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#order-by-구"></a> ORDER BY 구</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 열명 FROM 테이블 명 WHERE 조건식 ORDER BY</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 열명 FROM 테이블 명 WHERE 조건식 ORDER BY</span><br></pre></td></tr></table></figure>
 <h3 id="order-byro-geomsaeg-gyeolgwa-jeongryeolhagi"><a href="#order-byro-geomsaeg-gyeolgwa-jeongryeolhagi" class="header-anchor">1.1.1. </a><a class="markdownIt-Anchor" href="#order-by로-검색-결과-정렬하기"></a> ORDER BY로 검색 결과 정렬하기</h3>
 <ul>
 <li>지정된 열의 값에 따라 행의 순서가 변경 됩니다.</li>
 </ul>
- <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">WHERE</span> 조건식 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">검색 조건이 필요 없는 경우에는 WHERE 구를 생략하는데 ORDER BY구는 FROM구의 뒤에 지정합니다.</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span><span class="keyword">sql</span></span><br><span class="line"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br></pre></td></tr></table></figure>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">WHERE</span> 조건식 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br><span class="line">```  </span><br><span class="line">검색 조건이 필요 없는 경우에는 <span class="keyword">WHERE</span> 구를 생략하는데 <span class="keyword">ORDER</span> <span class="keyword">BY</span>구는 <span class="keyword">FROM</span>구의 뒤에 지정합니다.</span><br><span class="line">  </span><br><span class="line">```<span class="keyword">sql</span></span><br><span class="line"><span class="keyword">SELECT</span> 열명 <span class="keyword">FROM</span> 테이블명 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 열명</span><br></pre></td></tr></table></figure>
 <p><strong>age 열로 정렬하기</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sample31;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> sample31;</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -249,7 +249,7 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span>  sample31 <span class="keyword">ORDER</span> <span class="keyword">BY</span> age;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span>  sample31 <span class="keyword">ORDER</span> <span class="keyword">BY</span> age;</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -288,7 +288,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>주의할 점</p>
 </blockquote>
-<pre class="highlight"><code class="sql"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> sample311
+<pre class="highlight"><code class="sql"><span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> sample311
 </code></pre>
 <table>
 <thead>

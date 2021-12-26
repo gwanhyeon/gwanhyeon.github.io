@@ -220,13 +220,13 @@ ga('send', 'pageview');
 <p>다음 코드는 임의의 키와 Integer 값의 매핑을 관리하는 프로그램의 일부입니다.</p>
 <p>키의 인스턴스 개수로 해석된다면, 이 프로그램은 멀티셋(multiset)을 구현한게 됩니다.<br>
 <code>이 코드는 키가 맵 안에 없다면 키와 숫자 1을 매핑하고 이미 존재한다면 기존 매핑 값을 증가시킵니다.</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//comment 람다보다도 더 간결하게 만드는 방법은 -&gt; 메서드 참조</span></span><br><span class="line">Map&lt;String,Integer&gt; m = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">//comment java 8 추가된 Map merge 메서드를 사용하기 (키가 없다면 &#123;키,쌍&#125; 그대로저장, 있다면 현재값과 주어진값에 적용후 그 결과로 현재값을 덮어쓴다</span></span><br><span class="line">m.merge(<span class="string">"1"</span>,<span class="number">1</span>,(count, increment)-&gt;count+increment);</span><br><span class="line">System.out.println(m.get(<span class="string">"1"</span>)); <span class="comment">// 1</span></span><br><span class="line">m.merge(<span class="string">"1"</span>,<span class="number">1</span>,(count, increment)-&gt;count+increment);</span><br><span class="line">System.out.println(m.get(<span class="string">"1"</span>)); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//comment 람다보다도 더 간결하게 만드는 방법은 -&gt; 메서드 참조</span></span><br><span class="line">Map&lt;String,Integer&gt; m = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">//comment java 8 추가된 Map merge 메서드를 사용하기 (키가 없다면 &#123;키,쌍&#125; 그대로저장, 있다면 현재값과 주어진값에 적용후 그 결과로 현재값을 덮어쓴다</span></span><br><span class="line">m.merge(<span class="string">&quot;1&quot;</span>,<span class="number">1</span>,(count, increment)-&gt;count+increment);</span><br><span class="line">System.out.println(m.get(<span class="string">&quot;1&quot;</span>)); <span class="comment">// 1</span></span><br><span class="line">m.merge(<span class="string">&quot;1&quot;</span>,<span class="number">1</span>,(count, increment)-&gt;count+increment);</span><br><span class="line">System.out.println(m.get(<span class="string">&quot;1&quot;</span>)); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 <p>자바 8때 Map에 추가된 merge메서드를 사용하였습니다. merge 메서드는 키,값,함수를 인자로 받으며, 주어진 키가 이미 있다면(세번째 인수로 받은) 함수를 현재 값과 주어진 값에 적용한 후에, 그 결과로 현재 값을 덮어씌웁니다.<br>
-<code>즉, 맵에 {키,함수의 결과} 쌍을 저장합니다</code> 이코드는 merge 메서드의 전형적인 쓰임을 잘 보여주고 있습니다.</p>
+<code>즉, 맵에 &#123;키,함수의 결과&#125; 쌍을 저장합니다</code> 이코드는 merge 메서드의 전형적인 쓰임을 잘 보여주고 있습니다.</p>
 <blockquote>
 <p>조금 더 최적화는 어떻게 시킬 수 있을까요?</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// comment 위와 같은 merge기능은 count, increment가 공간을 꽤나 차지하기때문에 이것을 더 쉽게 람다로 바꾸어보자.</span><br><span class="line">m.merge(&quot;1&quot;, 1, Integer::sum);</span><br><span class="line">System.out.println(m.get(&quot;1&quot;)); // 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// comment 위와 같은 merge기능은 count, increment가 공간을 꽤나 차지하기때문에 이것을 더 쉽게 람다로 바꾸어보자.</span><br><span class="line">m.merge(&quot;1&quot;, 1, Integer::sum);</span><br><span class="line">System.out.println(m.get(&quot;1&quot;)); // 3</span><br></pre></td></tr></table></figure>
 <p>매개변수는 직접적으로 크게 하는일이 없기때문에 일 없이 공간을 차지하는 경우가 많습니다. 이때, <code>자바 8이 되면서 Integer 클래스(와 모든 기본타입의 박싱 타입)</code>는 이 람다와 기능이 같은 <code>정적 메서드 sum을 제공</code>하기 시작하였습니다.<br>
 <code>따라서, 람다 대신 이 메서드의 참조를 전달하면 똑같은 결과를 더 보기 좋게 얻을 수 있습니다.</code></p>
 <blockquote>
@@ -309,7 +309,7 @@ ga('send', 'pageview');
 <p>핵심 정리</p>
 </blockquote>
 <p><code>메서드 참조</code>는 람다의 간단명료한 대안이 될 수 있습니다. <code>메서드 참조 쪽이 짧고 명확하다면 메서드 참조를 쓰고, 그렇지 않을 때만 람다를 사용하라</code></p>
-<p><a href="https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item43" target="_blank" rel="noopener">https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item43">https://github.com/gwanhyeon/Effective-Java/tree/main/src/Item42</a></p>
 
         </div>
         <footer class="article-footer">
@@ -392,7 +392,7 @@ ga('send', 'pageview');
 람다가 익명 클래스보다 나은 점 중에서 가장 큰 특징은 간결함입니다. 그런데 자바에는 함수객체를 심지어 람다보다도 더 간결하게 만드는 방법이 있습니다. 바로 메서드 참조(Method reference)입니다.
 다음 코드는 임의의 키와 Integer 값의 매핑을 관리하는 프로그램의 일부입니다.
 키의 인스턴스 개수로 해",
-        "wordCount": 657
+        "wordCount": 655
     }
 </script>
 

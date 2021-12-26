@@ -217,7 +217,7 @@ ga('send', 'pageview');
 <p>JPA는 특정 데이터베이스에 종속되지 않으며 각각 데이터베이스가 제공하는 SQL 문법과 함수는 차이가 있습니다.</p>
 <p>가변문자에서 Mysql은 VARCHAR으로 선언되고 Oracle은 VARCHAR2 으로 사용되면서 문법적 차이가 존재합니다. 그리고 문자열을 자르는 함수같은 경우는 SQL 표준은 SUBSTRING(), Oracle은 SUBSTR()로 사용됩니다. 페이징 처리 같은 경우는 MySQL LIMIT을 사용하고 Oracle은 ROWNUM을 사용합니다.<br>
 JPA Database Dialect는 SQL 표준을 지키지 않는 특정 데이터베이스만의 고유한 기능이라고 할 수 있습니다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">H2: org.hibernate.dialect.H2Dialect</span><br><span class="line">Oracle <span class="number">10</span>g: org.hibernate.dialect.Oracle10gDialect</span><br><span class="line">MySQL: org.hibernate.dialect.MySQL5InnoDBDialect</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">H2: org.hibernate.dialect.H2Dialect</span><br><span class="line">Oracle 10g: org.hibernate.dialect.Oracle10gDialect</span><br><span class="line">MySQL: org.hibernate.dialect.MySQL5InnoDBDialect</span><br></pre></td></tr></table></figure>
 <p>다음과 같이 hibernate.dialect속성을 지정하여 사용할 수 있습니다. Hibernate는 약 40개 이상의 Dialect를 지원합니다.</p>
 <h1 id="jpa-gudongbangsig"><a href="#jpa-gudongbangsig" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#jpa-구동방식"></a> JPA 구동방식</h1>
 <p>Persistance(영속성)가 Maven(META-INF/persistance.xml), Gradle(application.properties,application.yml) 설정 정보를 조회한후 해당 설정정보로 EntityManagerFactory를 생성하여 EntityManagerFactory가 EntityManager를 생성하게 됩니다.</p>
@@ -333,7 +333,7 @@ JPA Database Dialect는 SQL 표준을 지키지 않는 특정 데이터베이스
         "description": "1.  JPA Database Dialect
 JPA는 특정 데이터베이스에 종속되지 않으며 각각 데이터베이스가 제공하는 SQL 문법과 함수는 차이가 있습니다.
 가변문자에서 Mysql은 VARCHAR으로 선언되고 Oracle은 VARCHAR2 으로 사용되면서 문법적 차이가 존재합니다. 그리고 문자열을 자르는 함수같은 경우는 SQL 표준은 SUBSTRING(),",
-        "wordCount": 303
+        "wordCount": 302
     }
 </script>
 

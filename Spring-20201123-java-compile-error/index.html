@@ -240,7 +240,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>homebrew 설치</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>&quot;</span></span><br></pre></td></tr></table></figure>
 <p>해당 명령어를 통해 homebrew를 설치를 진행하였습니다.</p>
 <blockquote>
 <p>OpenJdk 저장소 추가</p>
@@ -251,7 +251,7 @@ ga('send', 'pageview');
 <p>자바 11버전 설치</p>
 </blockquote>
 <p>제가 설치할 자바버전은 11버전이기 때문에</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install adoptopenjdk8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install adoptopenjdk8</span><br></pre></td></tr></table></figure>
 <p>명령어를 통해 설치를 진행하였습니다.</p>
 <blockquote>
 <p>java version</p>
@@ -275,7 +275,7 @@ ga('send', 'pageview');
 <p><code>annotationProcessor은</code> <code>어노테이션의 코드베이스를 검사, 수정 또는 생성하는데 사용</code>됩니다. 따라서, 해당 설정을 같이 진행해주었습니다.</p>
 <p><code>Preference -&gt; Build,Execution,Deployment -&gt; Annotation Processers에서 Enable annotation processing</code> 에 대한 체킹을 처리하여주었고 해당 <code>annotationProcesser</code>가 <code>Gradle</code>에서 올바르게 인식이 가능하도록 <code>Build.gradle</code>파일에 소스코드를 추가시켜주었습니다.</p>
 <p>그리고, build.gradle에서</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">annotationProcessor 'org.projectlombok:lombok'</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">annotationProcessor &#x27;org.projectlombok:lombok&#x27;</span><br></pre></td></tr></table></figure>
 <p>을 추가하고 <code>gradle synchronized</code>설정을 다시 진행해주니 해당 오류를 해결 할 수 있었습니다.</p>
 
         </div>
