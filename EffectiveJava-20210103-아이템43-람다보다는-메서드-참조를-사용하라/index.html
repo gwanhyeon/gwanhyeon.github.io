@@ -11,40 +11,63 @@
     <meta name="keywords" content="EffectiveJava3/E,람다,익명클래스,메서드참조" />
     
     <meta name="description" content="1.  람다보다는 메서드 참조를 사용하라 람다가 익명 클래스보다 나은 점 중에서 가장 큰 특징은 간결함입니다. 그런데 자바에는 함수객체를 심지어 람다보다도 더 간결하게 만드는 방법이 있습니다. 바로 메서드 참조(Method reference)입니다. 다음 코드는 임의의 키와 Integer 값의 매핑을 관리하는 프로그램의 일부입니다. 키의 인스턴스 개수로 해">
-<meta name="keywords" content="EffectiveJava3&#x2F;E,람다,익명클래스,메서드참조">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Effective Java 3&#x2F;E Item 43 람다보다는 메서드 참조를 사용하라">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC&#x2F;index.html">
+<meta property="og:url" content="http://gwanhyeon.github.io/EffectiveJava-20210103-%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A6%E1%86%B743-%E1%84%85%E1%85%A1%E1%86%B7%E1%84%83%E1%85%A1%E1%84%87%E1%85%A9%E1%84%83%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%86%E1%85%A6%E1%84%89%E1%85%A5%E1%84%83%E1%85%B3-%E1%84%8E%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%85%E1%85%A1/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  람다보다는 메서드 참조를 사용하라 람다가 익명 클래스보다 나은 점 중에서 가장 큰 특징은 간결함입니다. 그런데 자바에는 함수객체를 심지어 람다보다도 더 간결하게 만드는 방법이 있습니다. 바로 메서드 참조(Method reference)입니다. 다음 코드는 임의의 키와 Integer 값의 매핑을 관리하는 프로그램의 일부입니다. 키의 인스턴스 개수로 해">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T05:07:12.968Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2021-01-03T09:32:06.000Z">
+<meta property="article:modified_time" content="2021-05-13T05:07:12.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="EffectiveJava3&#x2F;E">
+<meta property="article:tag" content="람다">
+<meta property="article:tag" content="익명클래스">
+<meta property="article:tag" content="메서드참조">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/effectivejava-20210103-아이템43-람다보다는-메서드-참조를-사용하라/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/effectivejava-20210103-아이템43-람다보다는-메서드-참조를-사용하라/"/>
     
 
     
         <link rel="icon" href="/css/images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -62,7 +85,7 @@ ga('send', 'pageview');
     
 
 
-<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -75,10 +98,6 @@ ga('send', 'pageview');
                     <h1 class="logo-wrap">
                         <a href="/" class="logo"></a>
                     </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">GWAN IT Blog</p>
-                        </h2>
                     
                 </div>
                 <div id="header-inner" class="nav-container">
@@ -132,7 +151,9 @@ ga('send', 'pageview');
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -154,7 +175,7 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-EffectiveJava-20210103-아이템43-람다보다는-메서드-참조를-사용하라" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-EffectiveJava-20210103-아이템43-람다보다는-메서드-참조를-사용하라" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -172,7 +193,7 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/" class="article-date">
+      <a href="/EffectiveJava-20210103-%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A6%E1%86%B743-%E1%84%85%E1%85%A1%E1%86%B7%E1%84%83%E1%85%A1%E1%84%87%E1%85%A9%E1%84%83%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%86%E1%85%A6%E1%84%89%E1%85%A5%E1%84%83%E1%85%B3-%E1%84%8E%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%85%E1%85%A1/" class="article-date">
          <time datetime="2021-01-03T09:32:06.000Z" itemprop="datePublished">2021-01-03</time>
       </a>
     </div>
@@ -183,7 +204,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/effectivejava3-e/" rel="tag">EffectiveJava3/E</a>, <a class="tag-link" href="/tags/%EB%9E%8C%EB%8B%A4/" rel="tag">람다</a>, <a class="tag-link" href="/tags/%EB%A9%94%EC%84%9C%EB%93%9C%EC%B0%B8%EC%A1%B0/" rel="tag">메서드참조</a>, <a class="tag-link" href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" rel="tag">익명클래스</a>
+        <a class="tag-link-link" href="/tags/effectivejava3-e/" rel="tag">EffectiveJava3/E</a>, <a class="tag-link-link" href="/tags/%EB%9E%8C%EB%8B%A4/" rel="tag">람다</a>, <a class="tag-link-link" href="/tags/%EB%A9%94%EC%84%9C%EB%93%9C%EC%B0%B8%EC%A1%B0/" rel="tag">메서드참조</a>, <a class="tag-link-link" href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" rel="tag">익명클래스</a>
     </div>
 
                 
@@ -296,7 +317,7 @@ ga('send', 'pageview');
 
 
     <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
     <span class="a2a_divider"></span>
     <a class="a2a_button_facebook"></a>
     <a class="a2a_button_twitter"></a>
@@ -366,7 +387,7 @@ ga('send', 'pageview');
         "datePublished": "2021-01-03",
         "dateCreated": "2021-01-03",
         "dateModified": "2021-05-13",
-        "url": "http://gwanhyeon.github.io/EffectiveJava-20210103-아이템43-람다보다는-메서드-참조를-사용하라/",
+        "url": "http://gwanhyeon.github.io/EffectiveJava-20210103-아이템43-람다보다는-메서드-참조를-사용하라/",
         "description": "1.  람다보다는 메서드 참조를 사용하라
 람다가 익명 클래스보다 나은 점 중에서 가장 큰 특징은 간결함입니다. 그런데 자바에는 함수객체를 심지어 람다보다도 더 간결하게 만드는 방법이 있습니다. 바로 메서드 참조(Method reference)입니다.
 다음 코드는 임의의 키와 Integer 값의 매핑을 관리하는 프로그램의 일부입니다.
@@ -381,7 +402,7 @@ ga('send', 'pageview');
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
@@ -414,7 +435,7 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C42-%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%9E%8C%EB%8B%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/EffectiveJava-20210103-%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A6%E1%86%B742-%E1%84%8B%E1%85%B5%E1%86%A8%E1%84%86%E1%85%A7%E1%86%BC%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A2%E1%84%89%E1%85%B3%E1%84%87%E1%85%A9%E1%84%83%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%85%E1%85%A1%E1%86%B7%E1%84%83%E1%85%A1%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%85%E1%85%A1/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
@@ -425,7 +446,7 @@ ga('send', 'pageview');
     </a>
     
     
-        <a href="/Spring-20201231-responsebody%EC%9D%98-%EC%97%AD%ED%95%A0/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/Spring-20201231-responsebody%E1%84%8B%E1%85%B4-%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%92%E1%85%A1%E1%86%AF/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
         <p class="article-nav-title">Spring MVC @ResponseBody의 역할</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
@@ -445,6 +466,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/aaaa/" class="title">aaaa</a></p>
+                            <p class="item-date"><time datetime="2021-12-26T09:24:02.000Z" itemprop="datePublished">2021-12-26</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -482,15 +512,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
-                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
-                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -523,7 +544,7 @@ ga('send', 'pageview');
             <ul>
                 
                     <li>
-                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
                     </li>
                 
             </ul>
@@ -536,7 +557,7 @@ ga('send', 'pageview');
 
     <h3 class="widget-title">Sponsored</h3>
     <div class="widget">
-        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
     </div>
 
 </div>
@@ -552,7 +573,7 @@ ga('send', 'pageview');
         <footer id="footer">
     <div class="container">
         <div class="container-inner">
-            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
@@ -578,7 +599,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/EffectiveJava-20210103-%EC%95%84%EC%9D%B4%ED%85%9C43-%EB%9E%8C%EB%8B%A4%EB%B3%B4%EB%8B%A4%EB%8A%94-%EB%A9%94%EC%84%9C%EB%93%9C-%EC%B0%B8%EC%A1%B0%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC/';
+    var disqus_url = 'http://gwanhyeon.github.io/EffectiveJava-20210103-%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A6%E1%86%B743-%E1%84%85%E1%85%A1%E1%86%B7%E1%84%83%E1%85%A1%E1%84%87%E1%85%A9%E1%84%83%E1%85%A1%E1%84%82%E1%85%B3%E1%86%AB-%E1%84%86%E1%85%A6%E1%84%89%E1%85%A5%E1%84%83%E1%85%B3-%E1%84%8E%E1%85%A1%E1%86%B7%E1%84%8C%E1%85%A9%E1%84%85%E1%85%B3%E1%86%AF-%E1%84%89%E1%85%A1%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%92%E1%85%A1%E1%84%85%E1%85%A1/';
     
     (function() {
     var dsq = document.createElement('script');
@@ -594,18 +615,38 @@ ga('send', 'pageview');
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
@@ -614,7 +655,9 @@ ga('send', 'pageview');
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

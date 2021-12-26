@@ -11,40 +11,61 @@
     <meta name="keywords" content="CleanCode,의미있는이름" />
     
     <meta name="description" content="소프트웨어 이름은 변수, 함수, 인수, 클래스, 패키지, 소스코드, 디렉터리, jar, war 등 여러 이름을 붙입니다. 이번 장에서는 이름을 잘 짓는 규칙을 알아보도록 하겠습니다. 1.  의도를 분명히 밝혀라 의도가 분명하게 이름을 지으라 라고는 말하기는 쉽지만 생각보다 이름을 짓는것은 쉽지 않다. 좋은 이름을 지으려면 시간이 걸리지만 좋은 이름으로 시간">
-<meta name="keywords" content="CleanCode,의미있는이름">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CleanCode 02 의미있는이름">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;CleanCode-20210514-chapter02-%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84&#x2F;index.html">
+<meta property="og:url" content="http://gwanhyeon.github.io/CleanCode-20210514-chapter02-%E1%84%8B%E1%85%B4%E1%84%86%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%BB%E1%84%82%E1%85%B3%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%85%E1%85%B3%E1%86%B7/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="소프트웨어 이름은 변수, 함수, 인수, 클래스, 패키지, 소스코드, 디렉터리, jar, war 등 여러 이름을 붙입니다. 이번 장에서는 이름을 잘 짓는 규칙을 알아보도록 하겠습니다. 1.  의도를 분명히 밝혀라 의도가 분명하게 이름을 지으라 라고는 말하기는 쉽지만 생각보다 이름을 짓는것은 쉽지 않다. 좋은 이름을 지으려면 시간이 걸리지만 좋은 이름으로 시간">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-14T04:33:41.275Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2021-03-23T01:33:06.000Z">
+<meta property="article:modified_time" content="2021-05-14T04:33:41.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="CleanCode">
+<meta property="article:tag" content="의미있는이름">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/cleancode-20210514-chapter02-의미있는이름/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/cleancode-20210514-chapter02-의미있는이름/"/>
     
 
     
         <link rel="icon" href="/css/images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -62,7 +83,7 @@ ga('send', 'pageview');
     
 
 
-<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -75,10 +96,6 @@ ga('send', 'pageview');
                     <h1 class="logo-wrap">
                         <a href="/" class="logo"></a>
                     </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">GWAN IT Blog</p>
-                        </h2>
                     
                 </div>
                 <div id="header-inner" class="nav-container">
@@ -132,7 +149,9 @@ ga('send', 'pageview');
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -154,7 +173,7 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-CleanCode-20210514-chapter02-의미있는이름" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-CleanCode-20210514-chapter02-의미있는이름" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -172,7 +191,7 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/CleanCode-20210514-chapter02-%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84/" class="article-date">
+      <a href="/CleanCode-20210514-chapter02-%E1%84%8B%E1%85%B4%E1%84%86%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%BB%E1%84%82%E1%85%B3%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%85%E1%85%B3%E1%86%B7/" class="article-date">
          <time datetime="2021-03-23T01:33:06.000Z" itemprop="datePublished">2021-03-23</time>
       </a>
     </div>
@@ -183,7 +202,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/cleancode/" rel="tag">CleanCode</a>, <a class="tag-link" href="/tags/%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84/" rel="tag">의미있는이름</a>
+        <a class="tag-link-link" href="/tags/cleancode/" rel="tag">CleanCode</a>, <a class="tag-link-link" href="/tags/%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84/" rel="tag">의미있는이름</a>
     </div>
 
                 
@@ -333,7 +352,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
 
 
     <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
     <span class="a2a_divider"></span>
     <a class="a2a_button_facebook"></a>
     <a class="a2a_button_twitter"></a>
@@ -403,7 +422,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
         "datePublished": "2021-03-23",
         "dateCreated": "2021-03-23",
         "dateModified": "2021-05-14",
-        "url": "http://gwanhyeon.github.io/CleanCode-20210514-chapter02-의미있는이름/",
+        "url": "http://gwanhyeon.github.io/CleanCode-20210514-chapter02-의미있는이름/",
         "description": "소프트웨어 이름은 변수, 함수, 인수, 클래스, 패키지, 소스코드, 디렉터리, jar, war 등 여러 이름을 붙입니다. 이번 장에서는 이름을 잘 짓는 규칙을 알아보도록 하겠습니다.
 1.  의도를 분명히 밝혀라
 의도가 분명하게 이름을 지으라 라고는 말하기는 쉽지만 생각보다 이름을 짓는것은 쉽지 않다. 좋은 이름을 지으려면 시간이 걸리지만 좋은 이름으로 시간",
@@ -417,7 +436,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
@@ -450,7 +469,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
         
 <nav id="article-nav">
     
-        <a href="/CleanCode-20210514-chapter03-%ED%95%A8%EC%88%98/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/CleanCode-20210514-chapter03-%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
@@ -461,7 +480,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
     </a>
     
     
-        <a href="/Programmers-20210321-programmers-%EA%B0%80%EC%9E%A5%ED%81%B0%EC%A0%95%EC%82%AC%EA%B0%81%ED%98%95%EC%B0%BE%EA%B8%B0/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/Programmers-20210321-programmers-%E1%84%80%E1%85%A1%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8F%E1%85%B3%E1%86%AB%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%89%E1%85%A1%E1%84%80%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A1%E1%86%BD%E1%84%80%E1%85%B5/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
         <p class="article-nav-title">프로그래머스 가장 큰 정사각형 찾기</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
@@ -481,6 +500,15 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/aaaa/" class="title">aaaa</a></p>
+                            <p class="item-date"><time datetime="2021-12-26T09:24:02.000Z" itemprop="datePublished">2021-12-26</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -518,15 +546,6 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
-                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
-                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -559,7 +578,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
             <ul>
                 
                     <li>
-                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
                     </li>
                 
             </ul>
@@ -572,7 +591,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
 
     <h3 class="widget-title">Sponsored</h3>
     <div class="widget">
-        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
     </div>
 
 </div>
@@ -588,7 +607,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
         <footer id="footer">
     <div class="container">
         <div class="container-inner">
-            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
@@ -614,7 +633,7 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/CleanCode-20210514-chapter02-%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84/';
+    var disqus_url = 'http://gwanhyeon.github.io/CleanCode-20210514-chapter02-%E1%84%8B%E1%85%B4%E1%84%86%E1%85%B5%E1%84%8B%E1%85%B5%E1%86%BB%E1%84%82%E1%85%B3%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%85%E1%85%B3%E1%86%B7/';
     
     (function() {
     var dsq = document.createElement('script');
@@ -630,18 +649,38 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
@@ -650,7 +689,9 @@ Manager, Processor,Data,Info와 같은 이름은 피하자</p>
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

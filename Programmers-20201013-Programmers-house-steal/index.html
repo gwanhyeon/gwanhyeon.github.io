@@ -11,14 +11,19 @@
     <meta name="keywords" content="알고리즘,프로그래머스,dp,다이나믹프로그래밍" />
     
     <meta name="description" content="1.  문제 링크 1.1.  프로그래머스 도둑질 문제 2.  문제 조건 2.1.  문제 설명 도둑이 어느 마을을 털 계획을 하고 있습니다. 이 마을의 모든 집들은 아래 그림과 같이 동그랗게 배치되어 있습니다. 각 집들은 서로 인접한 집들과 방범장치가 연결되어 있기 때문에 인접한 두 집을 털면 경보가 울립니다. 각 집에 있는 돈이 담긴 배열 money가 주어">
-<meta name="keywords" content="알고리즘,프로그래머스,dp,다이나믹프로그래밍">
 <meta property="og:type" content="article">
 <meta property="og:title" content="프로그래머스 도둑질">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Programmers-20201013-Programmers-house-steal&#x2F;index.html">
+<meta property="og:url" content="http://gwanhyeon.github.io/Programmers-20201013-Programmers-house-steal/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  문제 링크 1.1.  프로그래머스 도둑질 문제 2.  문제 조건 2.1.  문제 설명 도둑이 어느 마을을 털 계획을 하고 있습니다. 이 마을의 모든 집들은 아래 그림과 같이 동그랗게 배치되어 있습니다. 각 집들은 서로 인접한 집들과 방범장치가 연결되어 있기 때문에 인접한 두 집을 털면 경보가 울립니다. 각 집에 있는 돈이 담긴 배열 money가 주어">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T04:57:12.052Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2020-10-13T13:19:00.000Z">
+<meta property="article:modified_time" content="2021-05-13T04:57:12.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="알고리즘">
+<meta property="article:tag" content="프로그래머스">
+<meta property="article:tag" content="dp">
+<meta property="article:tag" content="다이나믹프로그래밍">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -29,22 +34,40 @@
         <link rel="icon" href="/css/images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -62,7 +85,7 @@ ga('send', 'pageview');
     
 
 
-<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -75,10 +98,6 @@ ga('send', 'pageview');
                     <h1 class="logo-wrap">
                         <a href="/" class="logo"></a>
                     </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">GWAN IT Blog</p>
-                        </h2>
                     
                 </div>
                 <div id="header-inner" class="nav-container">
@@ -132,7 +151,9 @@ ga('send', 'pageview');
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -183,7 +204,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dp/" rel="tag">dp</a>, <a class="tag-link" href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">다이나믹프로그래밍</a>, <a class="tag-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>, <a class="tag-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a>
+        <a class="tag-link-link" href="/tags/dp/" rel="tag">dp</a>, <a class="tag-link-link" href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" rel="tag">다이나믹프로그래밍</a>, <a class="tag-link-link" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag">알고리즘</a>, <a class="tag-link-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a>
     </div>
 
                 
@@ -238,7 +259,7 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
 
 
     <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
     <span class="a2a_divider"></span>
     <a class="a2a_button_facebook"></a>
     <a class="a2a_button_twitter"></a>
@@ -326,7 +347,7 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
@@ -394,6 +415,15 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
                     <li>
                         
                         <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/aaaa/" class="title">aaaa</a></p>
+                            <p class="item-date"><time datetime="2021-12-26T09:24:02.000Z" itemprop="datePublished">2021-12-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
                             <p class="item-title"><a href="/Hackerrank-20210622-mark-and-toys/" class="title">HackerRank Mark and Toys</a></p>
                             <p class="item-date"><time datetime="2021-06-22T08:52:58.000Z" itemprop="datePublished">2021-06-22</time></p>
@@ -424,15 +454,6 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
                             <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
                             <p class="item-title"><a href="/Hackerrank-20210620-repeated-string/" class="title">HackerRank Repeated String</a></p>
                             <p class="item-date"><time datetime="2021-06-20T06:32:18.000Z" itemprop="datePublished">2021-06-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
-                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
-                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
                         </div>
                     </li>
                 
@@ -468,7 +489,7 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
             <ul>
                 
                     <li>
-                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
                     </li>
                 
             </ul>
@@ -481,7 +502,7 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
 
     <h3 class="widget-title">Sponsored</h3>
     <div class="widget">
-        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
     </div>
 
 </div>
@@ -497,7 +518,7 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
         <footer id="footer">
     <div class="container">
         <div class="container-inner">
-            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
@@ -539,18 +560,38 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
@@ -559,7 +600,9 @@ money 배열의 각 원소는 0 이상 1,000 이하인 정수입니다.</p>
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

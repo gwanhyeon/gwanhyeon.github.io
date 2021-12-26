@@ -11,14 +11,20 @@
     <meta name="keywords" content="annotationProcessor,JDK,Spring,IntelliJ,Error" />
     
     <meta name="description" content="1.  문제 IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기가 되었습니다. 이때, 현재 사용중인 1.8.0_161 JDK버전과의 충돌이 발생하였습니다. IntellJ Error: java: invalid source release: 11의 에러가 발생하였습니다. 따라서 해당 에러를 해결하기 위해서 처음에 시도한 방식은 다음과 같습니다.">
-<meta name="keywords" content="annotationProcessor,JDK,Spring,IntelliJ,Error">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IntellJ Error: java: invalid source release: 11">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Spring-20201123-java-compile-error&#x2F;index.html">
+<meta property="og:url" content="http://gwanhyeon.github.io/Spring-20201123-java-compile-error/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  문제 IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기가 되었습니다. 이때, 현재 사용중인 1.8.0_161 JDK버전과의 충돌이 발생하였습니다. IntellJ Error: java: invalid source release: 11의 에러가 발생하였습니다. 따라서 해당 에러를 해결하기 위해서 처음에 시도한 방식은 다음과 같습니다.">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T04:52:23.008Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2020-11-23T10:42:25.000Z">
+<meta property="article:modified_time" content="2021-05-13T04:52:23.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="annotationProcessor">
+<meta property="article:tag" content="JDK">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="IntelliJ">
+<meta property="article:tag" content="Error">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -29,22 +35,40 @@
         <link rel="icon" href="/css/images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -62,7 +86,7 @@ ga('send', 'pageview');
     
 
 
-<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -75,10 +99,6 @@ ga('send', 'pageview');
                     <h1 class="logo-wrap">
                         <a href="/" class="logo"></a>
                     </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">GWAN IT Blog</p>
-                        </h2>
                     
                 </div>
                 <div id="header-inner" class="nav-container">
@@ -132,7 +152,9 @@ ga('send', 'pageview');
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -183,7 +205,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/error/" rel="tag">Error</a>, <a class="tag-link" href="/tags/intellij/" rel="tag">IntelliJ</a>, <a class="tag-link" href="/tags/jdk/" rel="tag">JDK</a>, <a class="tag-link" href="/tags/spring/" rel="tag">Spring</a>, <a class="tag-link" href="/tags/annotationprocessor/" rel="tag">annotationProcessor</a>
+        <a class="tag-link-link" href="/tags/error/" rel="tag">Error</a>, <a class="tag-link-link" href="/tags/intellij/" rel="tag">IntelliJ</a>, <a class="tag-link-link" href="/tags/jdk/" rel="tag">JDK</a>, <a class="tag-link-link" href="/tags/spring/" rel="tag">Spring</a>, <a class="tag-link-link" href="/tags/annotationprocessor/" rel="tag">annotationProcessor</a>
     </div>
 
                 
@@ -262,7 +284,7 @@ ga('send', 'pageview');
 
 
     <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
     <span class="a2a_divider"></span>
     <a class="a2a_button_facebook"></a>
     <a class="a2a_button_twitter"></a>
@@ -345,7 +367,7 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
@@ -378,7 +400,7 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
         
 <nav id="article-nav">
     
-        <a href="/Spring-20201231-springboot-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/Spring-20201231-springboot-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3-%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
@@ -409,6 +431,15 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/aaaa/" class="title">aaaa</a></p>
+                            <p class="item-date"><time datetime="2021-12-26T09:24:02.000Z" itemprop="datePublished">2021-12-26</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -446,15 +477,6 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
-                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
-                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -487,7 +509,7 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
             <ul>
                 
                     <li>
-                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
                     </li>
                 
             </ul>
@@ -500,7 +522,7 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
 
     <h3 class="widget-title">Sponsored</h3>
     <div class="widget">
-        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
     </div>
 
 </div>
@@ -516,7 +538,7 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
         <footer id="footer">
     <div class="container">
         <div class="container-inner">
-            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
@@ -558,18 +580,38 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
@@ -578,7 +620,9 @@ IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

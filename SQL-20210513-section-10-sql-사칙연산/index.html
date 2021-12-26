@@ -10,41 +10,61 @@
     
     <meta name="keywords" content="SQL" />
     
-    <meta name="description" content="1.  10. 사칙연산 1.1.  사칙연산    연산자 연산 예     + 덧셈(가산) 1+2-&amp;gt;3   - 뺄셈(감산) 1-2-&amp;gt;-1   * 곱셈(승산) 1*2-&amp;gt;2   &#x2F; 나눗셈(제산) 1&#x2F;2-&amp;gt;05   % 나머지 1%2-&amp;gt;1     연산자 우선순위     우선순위 연산자     1 *&#x2F;%   2 ±      산술 연산자는 곱셈">
-<meta name="keywords" content="SQL">
+    <meta name="description" content="1.  10. 사칙연산 1.1.  사칙연산    연산자 연산 예     + 덧셈(가산) 1+2-&gt;3   - 뺄셈(감산) 1-2-&gt;-1   * 곱셈(승산) 1*2-&gt;2   &#x2F; 나눗셈(제산) 1&#x2F;2-&gt;05   % 나머지 1%2-&gt;1     연산자 우선순위     우선순위 연산자     1 *&#x2F;%   2 ±      산술 연산자는 곱셈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10. SQL 사칙연산">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;SQL-20210513-section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0&#x2F;index.html">
+<meta property="og:url" content="http://gwanhyeon.github.io/SQL-20210513-section-10-sql-%E1%84%89%E1%85%A1%E1%84%8E%E1%85%B5%E1%86%A8%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  10. 사칙연산 1.1.  사칙연산    연산자 연산 예     + 덧셈(가산) 1+2-&amp;gt;3   - 뺄셈(감산) 1-2-&amp;gt;-1   * 곱셈(승산) 1*2-&amp;gt;2   &#x2F; 나눗셈(제산) 1&#x2F;2-&amp;gt;05   % 나머지 1%2-&amp;gt;1     연산자 우선순위     우선순위 연산자     1 *&#x2F;%   2 ±      산술 연산자는 곱셈">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T07:29:41.654Z">
+<meta property="og:description" content="1.  10. 사칙연산 1.1.  사칙연산    연산자 연산 예     + 덧셈(가산) 1+2-&gt;3   - 뺄셈(감산) 1-2-&gt;-1   * 곱셈(승산) 1*2-&gt;2   &#x2F; 나눗셈(제산) 1&#x2F;2-&gt;05   % 나머지 1%2-&gt;1     연산자 우선순위     우선순위 연산자     1 *&#x2F;%   2 ±      산술 연산자는 곱셈">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2020-05-13T07:03:24.000Z">
+<meta property="article:modified_time" content="2021-05-13T07:29:41.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="SQL">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/sql-20210513-section-10-sql-사칙연산/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/sql-20210513-section-10-sql-사칙연산/"/>
     
 
     
         <link rel="icon" href="/css/images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -62,7 +82,7 @@ ga('send', 'pageview');
     
 
 
-<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -75,10 +95,6 @@ ga('send', 'pageview');
                     <h1 class="logo-wrap">
                         <a href="/" class="logo"></a>
                     </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">GWAN IT Blog</p>
-                        </h2>
                     
                 </div>
                 <div id="header-inner" class="nav-container">
@@ -132,7 +148,9 @@ ga('send', 'pageview');
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -154,7 +172,7 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-SQL-20210513-section-10-sql-사칙연산" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-SQL-20210513-section-10-sql-사칙연산" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -172,7 +190,7 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/SQL-20210513-section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/" class="article-date">
+      <a href="/SQL-20210513-section-10-sql-%E1%84%89%E1%85%A1%E1%84%8E%E1%85%B5%E1%86%A8%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB/" class="article-date">
          <time datetime="2020-05-13T07:03:24.000Z" itemprop="datePublished">2020-05-13</time>
       </a>
     </div>
@@ -183,7 +201,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/sql/" rel="tag">SQL</a>
+        <a class="tag-link-link" href="/tags/sql/" rel="tag">SQL</a>
     </div>
 
                 
@@ -414,7 +432,7 @@ MOD(10,3) -&gt; 1
 
 
     <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
     <span class="a2a_divider"></span>
     <a class="a2a_button_facebook"></a>
     <a class="a2a_button_twitter"></a>
@@ -484,7 +502,7 @@ MOD(10,3) -&gt; 1
         "datePublished": "2020-05-13",
         "dateCreated": "2020-05-13",
         "dateModified": "2021-05-13",
-        "url": "http://gwanhyeon.github.io/SQL-20210513-section-10-sql-사칙연산/",
+        "url": "http://gwanhyeon.github.io/SQL-20210513-section-10-sql-사칙연산/",
         "description": "1.  10. 사칙연산
 1.1.  사칙연산
 
@@ -557,7 +575,7 @@ MOD(10,3) -&gt; 1
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
@@ -590,7 +608,7 @@ MOD(10,3) -&gt; 1
         
 <nav id="article-nav">
     
-        <a href="/SQL-20210513-section-11-sql-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%97%B0%EC%82%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-11-sql-%E1%84%86%E1%85%AE%E1%86%AB%E1%84%8C%E1%85%A1%E1%84%8B%E1%85%A7%E1%86%AF%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
@@ -601,7 +619,7 @@ MOD(10,3) -&gt; 1
     </a>
     
     
-        <a href="/SQL-20210513-section-09-sql-%EA%B2%B0%EA%B3%BC%ED%96%89%EC%A0%9C%ED%95%9C%ED%95%98%EA%B8%B0/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/SQL-20210513-section-09-sql-%E1%84%80%E1%85%A7%E1%86%AF%E1%84%80%E1%85%AA%E1%84%92%E1%85%A2%E1%86%BC%E1%84%8C%E1%85%A6%E1%84%92%E1%85%A1%E1%86%AB%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
         <p class="article-nav-title">09. SQL 결과 행 제한하기 LIMIT구</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
@@ -621,6 +639,15 @@ MOD(10,3) -&gt; 1
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/aaaa/" class="title">aaaa</a></p>
+                            <p class="item-date"><time datetime="2021-12-26T09:24:02.000Z" itemprop="datePublished">2021-12-26</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -658,15 +685,6 @@ MOD(10,3) -&gt; 1
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
-                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
-                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -699,7 +717,7 @@ MOD(10,3) -&gt; 1
             <ul>
                 
                     <li>
-                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
                     </li>
                 
             </ul>
@@ -712,7 +730,7 @@ MOD(10,3) -&gt; 1
 
     <h3 class="widget-title">Sponsored</h3>
     <div class="widget">
-        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
     </div>
 
 </div>
@@ -728,7 +746,7 @@ MOD(10,3) -&gt; 1
         <footer id="footer">
     <div class="container">
         <div class="container-inner">
-            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
@@ -754,7 +772,7 @@ MOD(10,3) -&gt; 1
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/SQL-20210513-section-10-sql-%EC%82%AC%EC%B9%99%EC%97%B0%EC%82%B0/';
+    var disqus_url = 'http://gwanhyeon.github.io/SQL-20210513-section-10-sql-%E1%84%89%E1%85%A1%E1%84%8E%E1%85%B5%E1%86%A8%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A1%E1%86%AB/';
     
     (function() {
     var dsq = document.createElement('script');
@@ -770,18 +788,38 @@ MOD(10,3) -&gt; 1
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
@@ -790,7 +828,9 @@ MOD(10,3) -&gt; 1
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

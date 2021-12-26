@@ -11,17 +11,24 @@
     <meta name="keywords" content="프로세스,스레드,멀티프로세스,멀티스레드,PCB,ContextSwitching" />
     
     <meta name="description" content="1.  프로그램(Program) 어떤 작업을 위해 실행할 수 있는 파일로 정의할 수 있습니다. 2.  프로세스(Process)  의미  사전적 의미로는 컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램 또는 메모리에 올라와 실행되고 있는 프로그램의 인스턴스(독립적 개체) 즉, 운영체제로 부터 시스템 자원을 할당받는 작업의 단위이며 실행된 프로그램을 의미한">
-<meta name="keywords" content="프로세스,스레드,멀티프로세스,멀티스레드,PCB,ContextSwitching">
 <meta property="og:type" content="article">
 <meta property="og:title" content="운영체제 프로세스 스레드 메모리 구조">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;OS-20201116-OS-Process-Thread&#x2F;index.html">
+<meta property="og:url" content="http://gwanhyeon.github.io/OS-20201116-OS-Process-Thread/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  프로그램(Program) 어떤 작업을 위해 실행할 수 있는 파일로 정의할 수 있습니다. 2.  프로세스(Process)  의미  사전적 의미로는 컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램 또는 메모리에 올라와 실행되고 있는 프로그램의 인스턴스(독립적 개체) 즉, 운영체제로 부터 시스템 자원을 할당받는 작업의 단위이며 실행된 프로그램을 의미한">
-<meta property="og:locale" content="ko">
-<meta property="og:image" content="https:&#x2F;&#x2F;encrypted-tbn0.gstatic.com&#x2F;images?q=tbn%3AANd9GcRYwhbEyPQiBjioNBtK0ftojMhvhyy343NGsg&amp;usqp=CAU">
-<meta property="og:updated_time" content="2020-11-16T10:26:37.457Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRYwhbEyPQiBjioNBtK0ftojMhvhyy343NGsg&amp;usqp=CAU">
+<meta property="article:published_time" content="2020-11-16T07:48:50.000Z">
+<meta property="article:modified_time" content="2020-11-16T10:26:37.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="프로세스">
+<meta property="article:tag" content="스레드">
+<meta property="article:tag" content="멀티프로세스">
+<meta property="article:tag" content="멀티스레드">
+<meta property="article:tag" content="PCB">
+<meta property="article:tag" content="ContextSwitching">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;encrypted-tbn0.gstatic.com&#x2F;images?q=tbn%3AANd9GcRYwhbEyPQiBjioNBtK0ftojMhvhyy343NGsg&amp;usqp=CAU">
+<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRYwhbEyPQiBjioNBtK0ftojMhvhyy343NGsg&amp;usqp=CAU">
     
     <!--SEO 검색엔진 적용하기 -->
     <link rel="canonical" href="http://gwanhyeon.github.io/os-20201116-os-process-thread/"/>
@@ -31,22 +38,40 @@
         <link rel="icon" href="/css/images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -64,7 +89,7 @@ ga('send', 'pageview');
     
 
 
-<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -77,10 +102,6 @@ ga('send', 'pageview');
                     <h1 class="logo-wrap">
                         <a href="/" class="logo"></a>
                     </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">GWAN IT Blog</p>
-                        </h2>
                     
                 </div>
                 <div id="header-inner" class="nav-container">
@@ -134,7 +155,9 @@ ga('send', 'pageview');
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -185,7 +208,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/contextswitching/" rel="tag">ContextSwitching</a>, <a class="tag-link" href="/tags/pcb/" rel="tag">PCB</a>, <a class="tag-link" href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">멀티스레드</a>, <a class="tag-link" href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">멀티프로세스</a>, <a class="tag-link" href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">스레드</a>, <a class="tag-link" href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">프로세스</a>
+        <a class="tag-link-link" href="/tags/contextswitching/" rel="tag">ContextSwitching</a>, <a class="tag-link-link" href="/tags/pcb/" rel="tag">PCB</a>, <a class="tag-link-link" href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">멀티스레드</a>, <a class="tag-link-link" href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">멀티프로세스</a>, <a class="tag-link-link" href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" rel="tag">스레드</a>, <a class="tag-link-link" href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" rel="tag">프로세스</a>
     </div>
 
                 
@@ -303,7 +326,7 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
 
 
     <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
     <span class="a2a_divider"></span>
     <a class="a2a_button_facebook"></a>
     <a class="a2a_button_twitter"></a>
@@ -392,7 +415,7 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
@@ -460,6 +483,15 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
                     <li>
                         
                         <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/aaaa/" class="title">aaaa</a></p>
+                            <p class="item-date"><time datetime="2021-12-26T09:24:02.000Z" itemprop="datePublished">2021-12-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
                             <p class="item-title"><a href="/Hackerrank-20210622-mark-and-toys/" class="title">HackerRank Mark and Toys</a></p>
                             <p class="item-date"><time datetime="2021-06-22T08:52:58.000Z" itemprop="datePublished">2021-06-22</time></p>
@@ -490,15 +522,6 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
                             <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
                             <p class="item-title"><a href="/Hackerrank-20210620-repeated-string/" class="title">HackerRank Repeated String</a></p>
                             <p class="item-date"><time datetime="2021-06-20T06:32:18.000Z" itemprop="datePublished">2021-06-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
-                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
-                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
                         </div>
                     </li>
                 
@@ -534,7 +557,7 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
             <ul>
                 
                     <li>
-                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
                     </li>
                 
             </ul>
@@ -547,7 +570,7 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
 
     <h3 class="widget-title">Sponsored</h3>
     <div class="widget">
-        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
     </div>
 
 </div>
@@ -563,7 +586,7 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
         <footer id="footer">
     <div class="container">
         <div class="container-inner">
-            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
@@ -605,18 +628,38 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
@@ -625,7 +668,9 @@ WIndow, Linux 등 많은 운영체제들이 멀티 프로세싱을 지원하고 
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

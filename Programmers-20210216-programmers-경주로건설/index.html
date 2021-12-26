@@ -11,42 +11,63 @@
     <meta name="keywords" content="BFS,프로그래머스" />
     
     <meta name="description" content="1.  프로그래머스 경주로건설  2.  문제 설명  건설회사의 설계사인 죠르디는 고객사로부터 자동차 경주로 건설에 필요한 견적을 의뢰받았습니다. 제공된 경주로 설계 도면에 따르면 경주로 부지는 N x N 크기의 정사각형 격자 형태이며 각 격자는 1 x 1 크기입니다. 설계 도면에는 각 격자의 칸은 0 또는 1 로 채워져 있으며, 0은 칸이 비어 있음을 1은">
-<meta name="keywords" content="BFS,프로그래머스">
 <meta property="og:type" content="article">
 <meta property="og:title" content="프로그래머스 경주로건설">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Programmers-20210216-programmers-%EA%B2%BD%EC%A3%BC%EB%A1%9C%EA%B1%B4%EC%84%A4&#x2F;index.html">
+<meta property="og:url" content="http://gwanhyeon.github.io/Programmers-20210216-programmers-%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%AE%E1%84%85%E1%85%A9%E1%84%80%E1%85%A5%E1%86%AB%E1%84%89%E1%85%A5%E1%86%AF/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
 <meta property="og:description" content="1.  프로그래머스 경주로건설  2.  문제 설명  건설회사의 설계사인 죠르디는 고객사로부터 자동차 경주로 건설에 필요한 견적을 의뢰받았습니다. 제공된 경주로 설계 도면에 따르면 경주로 부지는 N x N 크기의 정사각형 격자 형태이며 각 격자는 1 x 1 크기입니다. 설계 도면에는 각 격자의 칸은 0 또는 1 로 채워져 있으며, 0은 칸이 비어 있음을 1은">
-<meta property="og:locale" content="ko">
-<meta property="og:image" content="https:&#x2F;&#x2F;grepp-programmers.s3.ap-northeast-2.amazonaws.com&#x2F;files&#x2F;production&#x2F;384b9e2a-4eb5-460d-bce2-d12359b03b14&#x2F;kakao_road1.png">
-<meta property="og:updated_time" content="2021-05-13T04:56:05.833Z">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/384b9e2a-4eb5-460d-bce2-d12359b03b14/kakao_road1.png">
+<meta property="article:published_time" content="2021-02-16T09:21:05.000Z">
+<meta property="article:modified_time" content="2021-05-13T04:56:05.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="BFS">
+<meta property="article:tag" content="프로그래머스">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;grepp-programmers.s3.ap-northeast-2.amazonaws.com&#x2F;files&#x2F;production&#x2F;384b9e2a-4eb5-460d-bce2-d12359b03b14&#x2F;kakao_road1.png">
+<meta name="twitter:image" content="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/384b9e2a-4eb5-460d-bce2-d12359b03b14/kakao_road1.png">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/programmers-20210216-programmers-경주로건설/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/programmers-20210216-programmers-경주로건설/"/>
     
 
     
         <link rel="icon" href="/css/images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -64,7 +85,7 @@ ga('send', 'pageview');
     
 
 
-<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -77,10 +98,6 @@ ga('send', 'pageview');
                     <h1 class="logo-wrap">
                         <a href="/" class="logo"></a>
                     </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">GWAN IT Blog</p>
-                        </h2>
                     
                 </div>
                 <div id="header-inner" class="nav-container">
@@ -134,7 +151,9 @@ ga('send', 'pageview');
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -156,7 +175,7 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Programmers-20210216-programmers-경주로건설" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Programmers-20210216-programmers-경주로건설" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -174,7 +193,7 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/Programmers-20210216-programmers-%EA%B2%BD%EC%A3%BC%EB%A1%9C%EA%B1%B4%EC%84%A4/" class="article-date">
+      <a href="/Programmers-20210216-programmers-%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%AE%E1%84%85%E1%85%A9%E1%84%80%E1%85%A5%E1%86%AB%E1%84%89%E1%85%A5%E1%86%AF/" class="article-date">
          <time datetime="2021-02-16T09:21:05.000Z" itemprop="datePublished">2021-02-16</time>
       </a>
     </div>
@@ -185,7 +204,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/bfs/" rel="tag">BFS</a>, <a class="tag-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a>
+        <a class="tag-link-link" href="/tags/bfs/" rel="tag">BFS</a>, <a class="tag-link-link" href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" rel="tag">프로그래머스</a>
     </div>
 
                 
@@ -261,7 +280,7 @@ board    result<br>
 
 
     <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
     <span class="a2a_divider"></span>
     <a class="a2a_button_facebook"></a>
     <a class="a2a_button_twitter"></a>
@@ -331,7 +350,7 @@ board    result<br>
         "datePublished": "2021-02-16",
         "dateCreated": "2021-02-16",
         "dateModified": "2021-05-13",
-        "url": "http://gwanhyeon.github.io/Programmers-20210216-programmers-경주로건설/",
+        "url": "http://gwanhyeon.github.io/Programmers-20210216-programmers-경주로건설/",
         "description": "1.  프로그래머스 경주로건설 
 2.  문제 설명
 
@@ -348,7 +367,7 @@ board    result<br>
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
@@ -392,7 +411,7 @@ board    result<br>
     </a>
     
     
-        <a href="/Programmers-20210216-programmers-%EC%85%94%ED%8B%80%EB%B2%84%EC%8A%A4/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/Programmers-20210216-programmers-%E1%84%89%E1%85%A7%E1%84%90%E1%85%B3%E1%86%AF%E1%84%87%E1%85%A5%E1%84%89%E1%85%B3/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
         <p class="article-nav-title">프로그래머스 셔틀버스</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
@@ -412,6 +431,15 @@ board    result<br>
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/aaaa/" class="title">aaaa</a></p>
+                            <p class="item-date"><time datetime="2021-12-26T09:24:02.000Z" itemprop="datePublished">2021-12-26</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -449,15 +477,6 @@ board    result<br>
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
-                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
-                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -490,7 +509,7 @@ board    result<br>
             <ul>
                 
                     <li>
-                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
                     </li>
                 
             </ul>
@@ -503,7 +522,7 @@ board    result<br>
 
     <h3 class="widget-title">Sponsored</h3>
     <div class="widget">
-        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
     </div>
 
 </div>
@@ -519,7 +538,7 @@ board    result<br>
         <footer id="footer">
     <div class="container">
         <div class="container-inner">
-            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
@@ -545,7 +564,7 @@ board    result<br>
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/Programmers-20210216-programmers-%EA%B2%BD%EC%A3%BC%EB%A1%9C%EA%B1%B4%EC%84%A4/';
+    var disqus_url = 'http://gwanhyeon.github.io/Programmers-20210216-programmers-%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8C%E1%85%AE%E1%84%85%E1%85%A9%E1%84%80%E1%85%A5%E1%86%AB%E1%84%89%E1%85%A5%E1%86%AF/';
     
     (function() {
     var dsq = document.createElement('script');
@@ -561,18 +580,38 @@ board    result<br>
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
@@ -581,7 +620,9 @@ board    result<br>
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

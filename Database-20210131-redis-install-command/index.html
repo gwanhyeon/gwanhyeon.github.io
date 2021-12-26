@@ -10,15 +10,19 @@
     
     <meta name="keywords" content="Redis,Database,Command" />
     
-    <meta name="description" content="1.  1.Mac OS Redis  Redis 설치하기  1234567891011121314$brew install redisWarning: Treating redis as a formula. For the cask, use homebrew&#x2F;cask&#x2F;redis==&amp;gt; Downloading https:&#x2F;&#x2F;homebrew.bintray.com&#x2F;bottles">
-<meta name="keywords" content="Redis,Database,Command">
+    <meta name="description" content="1.  1.Mac OS Redis  Redis 설치하기  1234567891011121314$brew install redisWarning: Treating redis as a formula. For the cask, use homebrew&#x2F;cask&#x2F;redis&#x3D;&#x3D;&gt; Downloading https:&#x2F;&#x2F;homebrew.bintray.com&#x2F;bottles">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis 설치 및 명령어 정리">
-<meta property="og:url" content="http:&#x2F;&#x2F;gwanhyeon.github.io&#x2F;Database-20210131-redis-install-command&#x2F;index.html">
+<meta property="og:url" content="http://gwanhyeon.github.io/Database-20210131-redis-install-command/index.html">
 <meta property="og:site_name" content="GWAN IT Blog">
-<meta property="og:description" content="1.  1.Mac OS Redis  Redis 설치하기  1234567891011121314$brew install redisWarning: Treating redis as a formula. For the cask, use homebrew&#x2F;cask&#x2F;redis==&amp;gt; Downloading https:&#x2F;&#x2F;homebrew.bintray.com&#x2F;bottles">
-<meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2021-05-13T05:06:13.260Z">
+<meta property="og:description" content="1.  1.Mac OS Redis  Redis 설치하기  1234567891011121314$brew install redisWarning: Treating redis as a formula. For the cask, use homebrew&#x2F;cask&#x2F;redis&#x3D;&#x3D;&gt; Downloading https:&#x2F;&#x2F;homebrew.bintray.com&#x2F;bottles">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2021-01-30T16:17:34.000Z">
+<meta property="article:modified_time" content="2021-05-13T05:06:13.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="Database">
+<meta property="article:tag" content="Command">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
@@ -29,22 +33,40 @@
         <link rel="icon" href="/css/images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" href="">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -62,7 +84,7 @@ ga('send', 'pageview');
     
 
 
-<link rel="alternate" href="/atom.xml" title="GWAN IT Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
 </head>
 
 <body>
@@ -75,10 +97,6 @@ ga('send', 'pageview');
                     <h1 class="logo-wrap">
                         <a href="/" class="logo"></a>
                     </h1>
-                    
-                        <h2 class="subtitle-wrap">
-                            <p class="subtitle">GWAN IT Blog</p>
-                        </h2>
                     
                 </div>
                 <div id="header-inner" class="nav-container">
@@ -132,7 +150,9 @@ ga('send', 'pageview');
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -183,7 +203,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/command/" rel="tag">Command</a>, <a class="tag-link" href="/tags/database/" rel="tag">Database</a>, <a class="tag-link" href="/tags/redis/" rel="tag">Redis</a>
+        <a class="tag-link-link" href="/tags/command/" rel="tag">Command</a>, <a class="tag-link-link" href="/tags/database/" rel="tag">Database</a>, <a class="tag-link-link" href="/tags/redis/" rel="tag">Redis</a>
     </div>
 
                 
@@ -346,7 +366,7 @@ ga('send', 'pageview');
 
 
     <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" href="https://www.addtoany.com/share" target="_blank" rel="noopener">Share</a>
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
     <span class="a2a_divider"></span>
     <a class="a2a_button_facebook"></a>
     <a class="a2a_button_twitter"></a>
@@ -432,7 +452,7 @@ Redis 설치하기
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
@@ -465,7 +485,7 @@ Redis 설치하기
         
 <nav id="article-nav">
     
-        <a href="/MSA-20210212-01-%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%EC%9D%98%EC%9D%B4%ED%95%B4/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/MSA-20210212-01-%E1%84%86%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%B3%E1%84%85%E1%85%A9%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3-%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A5%E1%84%8B%E1%85%B4%E1%84%8B%E1%85%B5%E1%84%92%E1%85%A2/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
@@ -476,7 +496,7 @@ Redis 설치하기
     </a>
     
     
-        <a href="/EffectiveJava-20210126-%EC%95%84%EC%9D%B4%ED%85%9C55-%EC%98%B5%EC%85%94%EB%84%90%EB%B0%98%ED%99%98%EC%9D%80-%EC%8B%A0%EC%A4%91%ED%9E%88%ED%95%98%EB%9D%BC/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/EffectiveJava-20210126-%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A6%E1%86%B755-%E1%84%8B%E1%85%A9%E1%86%B8%E1%84%89%E1%85%A7%E1%84%82%E1%85%A5%E1%86%AF%E1%84%87%E1%85%A1%E1%86%AB%E1%84%92%E1%85%AA%E1%86%AB%E1%84%8B%E1%85%B3%E1%86%AB-%E1%84%89%E1%85%B5%E1%86%AB%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%92%E1%85%B5%E1%84%92%E1%85%A1%E1%84%85%E1%85%A1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
         <p class="article-nav-title">Effective Java 3/E Item 55 옵셔널반환은 신중히 하라</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
@@ -496,6 +516,15 @@ Redis 설치하기
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/aaaa/" class="title">aaaa</a></p>
+                            <p class="item-date"><time datetime="2021-12-26T09:24:02.000Z" itemprop="datePublished">2021-12-26</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -533,15 +562,6 @@ Redis 설치하기
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
-                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
-                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -574,7 +594,7 @@ Redis 설치하기
             <ul>
                 
                     <li>
-                        <a href="https://kgh940525.tistory.com" target="_blank" rel="noopener">Tistory</a>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
                     </li>
                 
             </ul>
@@ -587,7 +607,7 @@ Redis 설치하기
 
     <h3 class="widget-title">Sponsored</h3>
     <div class="widget">
-        <a href="https://marcofranssen.nl?adsense_widget" target="_blank" rel="noopener">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
     </div>
 
 </div>
@@ -603,7 +623,7 @@ Redis 설치하기
         <footer id="footer">
     <div class="container">
         <div class="container-inner">
-            <a id="back-to-top" href="javascript:;" target="_blank" rel="noopener"><i class="icon fa fa-angle-up"></i></a>
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
@@ -645,18 +665,38 @@ Redis 설치하기
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
     
     
 
@@ -665,7 +705,9 @@ Redis 설치하기
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>
