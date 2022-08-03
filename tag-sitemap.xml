@@ -3,6 +3,41 @@
 
 
     <url>
+        <loc>http://gwanhyeon.github.io/tags/entity/</loc>
+        <lastmod>2022-08-03T15:38:33.845Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/jpa/</loc>
+        <lastmod>2022-08-03T15:38:33.845Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/flush/</loc>
+        <lastmod>2022-08-03T15:38:12.605Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/persistence/</loc>
+        <lastmod>2022-08-03T15:38:12.605Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/tags/jpql/</loc>
+        <lastmod>2022-08-03T15:37:37.954Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/tags/hackerrank/</loc>
         <lastmod>2021-06-22T08:59:30.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,14 +52,14 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EA%25B7%25B8%25EB%259E%2598%25ED%2594%2584/</loc>
+        <loc>http://gwanhyeon.github.io/tags/%25EB%25B0%25B1%25EC%25A4%2580/</loc>
         <lastmod>2021-06-14T05:13:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/tags/%25EB%25B0%25B1%25EC%25A4%2580/</loc>
+        <loc>http://gwanhyeon.github.io/tags/%25EA%25B7%25B8%25EB%259E%2598%25ED%2594%2584/</loc>
         <lastmod>2021-06-14T05:13:05.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -292,41 +327,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/tags/%25EB%25B6%2580%25EB%25B6%2584%25EC%25A7%2591%25ED%2595%25A9%25EC%259D%2598-%25ED%2595%25A9/</loc>
         <lastmod>2021-05-13T05:10:10.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/entity/</loc>
-        <lastmod>2021-05-13T05:09:28.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/jpa/</loc>
-        <lastmod>2021-05-13T05:09:28.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/flush/</loc>
-        <lastmod>2021-05-13T05:09:22.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/persistence/</loc>
-        <lastmod>2021-05-13T05:09:22.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/tags/jpql/</loc>
-        <lastmod>2021-05-13T05:09:17.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
