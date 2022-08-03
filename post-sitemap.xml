@@ -8,6 +8,30 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Spring-20220804-spring-responsebody/</loc>
+        <lastmod>2022-08-03T15:48:39.109Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/Spring-20220804-springboot-gradle-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0/</loc>
+        <lastmod>2022-08-03T15:47:51.772Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/Spring-20220804-springboot-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/</loc>
+        <lastmod>2022-08-03T15:47:04.593Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/JPA-20220804-jpa-03-entity/</loc>
         <lastmod>2022-08-03T15:38:33.845Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1170,30 +1194,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/Spring-20201123-java-compile-error/</loc>
         <lastmod>2021-05-13T04:52:23.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Spring-20201231-responsebody%E1%84%8B%E1%85%B4-%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%92%E1%85%A1%E1%86%AF/</loc>
-        <lastmod>2021-05-13T04:52:16.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Spring-20201231-springboot-%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A6%E1%86%A8%E1%84%90%E1%85%B3-%E1%84%92%E1%85%AA%E1%86%AB%E1%84%80%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC/</loc>
-        <lastmod>2021-05-13T04:52:09.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/Spring-20201231-springboot-gradle-%E1%84%88%E1%85%A1%E1%84%85%E1%85%B3%E1%84%80%E1%85%A6-%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%92%E1%85%A1%E1%84%80%E1%85%B5/</loc>
-        <lastmod>2021-05-13T04:52:03.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
