@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+    <title>Effective Java 3/E Item 55 옵셔널반환은 신중히 하라 | GWAN IT Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="EffectiveJava3/E,Optional" />
+    
+    <meta name="description" content="1.  옵셔널반환은 신중히 하라 자바 8전에는 메서드가 특정조건에서 값을 반환할 수 없을때 취할 수 있는 선택지가 두가지가 있었다. 예외를 던지거나 null을 반환하는것입니다.  예외  예외의 경우는 스택 추적 전체를 캡처하므로 비용이 만만치 않습니다.  null 반환  null은 반환하면 이런 문제가 생기지 않지만 null을 반환할 수 있는 메서드를 호출">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java 3&#x2F;E Item 55 옵셔널반환은 신중히 하라">
+<meta property="og:url" content="http://gwanhyeon.github.io/EffectiveJava-20210126-%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A6%E1%86%B755-return-optional/index.html">
+<meta property="og:site_name" content="GWAN IT Blog">
+<meta property="og:description" content="1.  옵셔널반환은 신중히 하라 자바 8전에는 메서드가 특정조건에서 값을 반환할 수 없을때 취할 수 있는 선택지가 두가지가 있었다. 예외를 던지거나 null을 반환하는것입니다.  예외  예외의 경우는 스택 추적 전체를 캡처하므로 비용이 만만치 않습니다.  null 반환  null은 반환하면 이런 문제가 생기지 않지만 null을 반환할 수 있는 메서드를 호출">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2021-01-26T12:01:34.000Z">
+<meta property="article:modified_time" content="2021-05-13T05:06:55.000Z">
+<meta property="article:author" content="gwanhyeon Kim">
+<meta property="article:tag" content="EffectiveJava3&#x2F;E">
+<meta property="article:tag" content="Optional">
+<meta name="twitter:card" content="summary">
+    
+    <!--SEO 검색엔진 적용하기 -->
+    <link rel="canonical" href="http://gwanhyeon.github.io/effectivejava-20210126-아이템55-return-optional/"/>
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+    <link rel="stylesheet" type="text/css" href="">
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-151448157-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/feed.xml" title="GWAN IT Blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/">Algorithm</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/boj/">BOJ</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/codility/">Codility</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/programmers/">Programmers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/hackerrank/">hackerrank</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/leetcode/">leetcode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/algorithm/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%A1%A0/">자료구조론</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/cleancode/">CleanCode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/database/">Database</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/database/redis/">Redis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/database/sql/">SQL</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/elk/">ELK</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/">Language</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/designpattern/">DesignPattern</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/kotlin/">Kotlin</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/language/rxjava/">RXJAVA</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/msa/">MSA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/network/">Network</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/os/">OS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/">Server</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/jpa/">JPA</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/server/spring/">Spring</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/language/">Language</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/language/java/">Java</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-EffectiveJava-20210126-아이템55-return-optional" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Effective Java 3/E Item 55 옵셔널반환은 신중히 하라
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/EffectiveJava-20210126-%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A6%E1%86%B755-return-optional/" class="article-date">
+         <time datetime="2021-01-26T12:01:34.000Z" itemprop="datePublished">2021-01-26</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/effectivejava3-e/" rel="tag">EffectiveJava3/E</a>, <a class="tag-link-link" href="/tags/optional/" rel="tag">Optional</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="obsyeoneolbanhwaneun-sinjunghi-hara"><a href="#obsyeoneolbanhwaneun-sinjunghi-hara" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#옵셔널반환은-신중히-하라"></a> 옵셔널반환은 신중히 하라</h1>
+<p>자바 8전에는 메서드가 특정조건에서 값을 반환할 수 없을때 취할 수 있는 선택지가 두가지가 있었다. 예외를 던지거나 null을 반환하는것입니다.</p>
+<blockquote>
+<p>예외</p>
+</blockquote>
+<p>예외의 경우는 스택 추적 전체를 캡처하므로 비용이 만만치 않습니다.</p>
+<blockquote>
+<p>null 반환</p>
+</blockquote>
+<p>null은 반환하면 이런 문제가 생기지 않지만 null을 반환할 수 있는 메서드를 호출할 때는 null이 반환될 일이 절대 없다고 확신하지 않는한) 별도의 null처리 코드를 추가해야합니다. null처리를 무시하고 반환된 null 값을 어딘가에 저장해두면 언젠가 NullPointerException이 발생할 수 있습니다.<br>
+즉, null을 반환하게 한 실제 원인과는 전혀 상관없는 코드일 경우입니다.</p>
+<h1 id="jaba-8yi-deungjang"><a href="#jaba-8yi-deungjang" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#자바-8의-등장"></a> 자바 8의 등장</h1>
+<p>Optional<t>는 null이 아닌 T타입 참조를 하나 담거나, 혹은 아무것도 담지 않을 수 있습니다. 아무것도 담지않은 옵셔널은 '비었다’라고 말하며 반대로 어떤값을 담은 옵셔녈은 비지않았다고 합니다. 옵셔널은 원소를 최대 1개 가질 수 있는 '불변’컬렉션입니다. Optional<t>가 Collection<t>를 구현하지는 않았지만, 원칙적으로는 그렇게 처리합니다.</t></t></t></p>
+<p>보통은 T를 반환해야 하지만 특정 조건에서는 아무것도 반환하지 않아야할 때 T대신에 Optional<t>를 반환하도록 선언하면 됩니다. 그러면 유효한 반환값이 없을때는 빈 결과를 반환하는 메서드가 만들어집니다. 옵셔널을 반환하는 메서드는 예외를 던지는 메서드보다 유연하고 사용하기 쉬우며, null을 반환하는 메서드보다 오류 가능성이 적습니다.</t></p>
+<h2 id="keolregsyeoneseo-coedaesgabseul-guhabnida-keolregsyeoni-bieosseumyeon-yeoereul-deonjibnida"><a href="#keolregsyeoneseo-coedaesgabseul-guhabnida-keolregsyeoni-bieosseumyeon-yeoereul-deonjibnida" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#컬렉션에서-최댓값을-구합니다컬렉션이-비었으면-예외를-던집니다"></a> 컬렉션에서 최댓값을 구합니다(컬렉션이 비었으면 예외를 던집니다)</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Run Configuration -&gt; program arguement설정</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; words = Arrays.asList(args);</span><br><span class="line">    System.out.println(max(words));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 컬렉션에서 최댓값을 구한다 컬렉션이 비었으면 예외를 던진다.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E extends Comparable&lt;E&gt;&gt; <span class="function">E <span class="title">max</span><span class="params">(Collection&lt;E&gt; c)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(c.isEmpty())</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;empty Collection&quot;</span>);</span><br><span class="line">    E result = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">for</span> (E e : c) &#123;</span><br><span class="line">        <span class="keyword">if</span>(result == <span class="keyword">null</span> || e.compareTo(result) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            result = Objects.requireNonNull(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="keolregsyeoneseo-coedaesgabseul-guhae-optionalro-banhwanhabnida"><a href="#keolregsyeoneseo-coedaesgabseul-guhae-optionalro-banhwanhabnida" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#컬렉션에서-최댓값을-구해-optionale로-반환합니다"></a> 컬렉션에서 최댓값을 구해 Optional<e>로 반환합니다.</e></h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 컬렉션에서 최댓값을 구해 Optional&lt;E&gt;로 반환합니다.</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E extends Comparable&lt;E&gt;&gt; <span class="function">Optional&lt;E&gt; <span class="title">max1</span><span class="params">(Collection&lt;E&gt; c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(c.isEmpty())&#123;</span><br><span class="line">        <span class="keyword">return</span> Optional.empty();</span><br><span class="line">    &#125;</span><br><span class="line">    E result = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">for</span> (E e : c) &#123;</span><br><span class="line">        <span class="keyword">if</span>(result == <span class="keyword">null</span> || e.compareTo(result)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            result = Objects.requireNonNull(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Optional.of(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>옵셔널 반환하도록 구현하기는 어렵지는 않지만 적절한 정적 팩터리를 사용해 옵셔널을 생성해주기만 하면됩니다. 이 코드에서는 두 가지 팩터리를 사용했습니다.</p>
+<p>빈 옵셔널은 Optional.empty()로 만들고, 값이 든 옵셔널은 Optional.of(value)로 생성하였습니다. Optional.of(value)에 null을 넣으면 NullPointerException을 던집니다.</p>
+<p>null값도 허용하는 옵셔널을 만드려면 Optional.ofNullable(value)를 사용하면 됩니다. <code>옵셔널을 반환하는 메서드에서는 절대 null을 반환하면 안됩니다.</code> (취지에 어긋납니다)</p>
+<p>스트림의 종단 연산중 상당수가 옵셔널을 반환합니다. 앞의 max메서드를 스트림 버전으로 다시 작성하면 Stream의 max연산이 우리에게 필요한 옵셔널을 생성해줄 것입니다.</p>
+<h2 id="keolregsyeoneseo-coedaesgabseul-guhae-optionalro-banhwanhabnida-stream"><a href="#keolregsyeoneseo-coedaesgabseul-guhae-optionalro-banhwanhabnida-stream" class="header-anchor">2.3. </a><a class="markdownIt-Anchor" href="#컬렉션에서-최댓값을-구해-optionale로-반환합니다-stream"></a> 컬렉션에서 최댓값을 구해 Optional<e>로 반환합니다. (Stream)</e></h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 컬렉션에서 최댓값을 구해 Optional&lt;E&gt;로 반환합니다. (Stream)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E extends Comparable&lt;E&gt;&gt; <span class="function">Optional&lt;E&gt; <span class="title">max2</span><span class="params">(Collection&lt;E&gt; c)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> c.stream().max(Comparator.naturalOrder());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이렇게 스트림 형식으로 간단하게 처리할 수 잇으며 Null을 반환하거나 예외를 던지는 대신 옵셔널 반환을 선택하는 기준은 무엇일까요?</p>
+<p><code>옵셔널은 검사 예외와 취지가 비슷합니다.</code> 즉, 반환값이 없을 수도 있음을 API 사용자에게 명확하게 알려주며 비검사 예외를 던지거나 null을 반환한다면 API 사용자가 그 사실을 인지하지 못해 끔찍한 결과로 이어질 수 있습니다. 하지만 검사 예외를 던지면 클라이언트에서는 반드시 이에 대처하는 코드를 작성해넣어야합니다.</p>
+<p>비슷하게, 메서드가 옵셔널을 반환한다면 클라이언트는 값을 받지 못했을때 취할 행동을 선택해야합니다.</p>
+<h2 id="obsyeoneol-hwalyong-1-gibongabseul-jeonghaedul-su-issda"><a href="#obsyeoneol-hwalyong-1-gibongabseul-jeonghaedul-su-issda" class="header-anchor">2.4. </a><a class="markdownIt-Anchor" href="#옵셔널-활용-1-기본값을-정해둘-수-있다"></a> 옵셔널 활용 1- 기본값을 정해둘 수 있다.</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 코드 55-4 옵셔널 활용 1 - 기본값을 정해둘 수 있습니다.</span></span><br><span class="line">String lastWordInLexicon = max2(words).orElse(<span class="string">&quot;단어 없음...&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>상황에 맞는 예외를 던질 수 있으며 다음 코드에서 실제 예외가 아니라 예외 팩터리를 건넨것에 주목해야합니다. 이렇게 하면 예외가 실제로 발생하지 않는한 예외 생성 비용은 들지 않게 됩니다.</p>
+<h2 id="obsyeoneol-hwalyong-2-weonhaneun-yeoe-gabseul-deonjil-su-issseubnida"><a href="#obsyeoneol-hwalyong-2-weonhaneun-yeoe-gabseul-deonjil-su-issseubnida" class="header-anchor">2.5. </a><a class="markdownIt-Anchor" href="#옵셔널-활용-2-원하는-예외-값을-던질-수-있습니다"></a> 옵셔널 활용 2 - 원하는 예외 값을 던질 수 있습니다.</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 원하는 </span></span><br><span class="line">Toy myToy = max2(toys).orElseThrow(words).orElseThrow(TemperTantrumException::<span class="keyword">new</span>);</span><br></pre></td></tr></table></figure>
+<p>옵셔널이 항상 값이 채워져있다고 확신한다면 그냥 바로 꺼내 사용하는 선택지도 있습니다. 다만 잘못 판단한 것이라면 NoSuchElementException이 발생하게 됩니다.</p>
+<h2 id="obsyeoneol-hwalyong-hangsang-gabsi-caeweojyeo-issdago-gajeonghabnida"><a href="#obsyeoneol-hwalyong-hangsang-gabsi-caeweojyeo-issdago-gajeonghabnida" class="header-anchor">2.6. </a><a class="markdownIt-Anchor" href="#옵셔널-활용-항상-값이-채워져-있다고-가정합니다"></a> 옵셔널 활용 - 항상 값이 채워져 있다고 가정합니다.</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Element lastNobleGas = max2(Elements.NOBLE_GASES).get();</span><br></pre></td></tr></table></figure>
+<p>기본값을 설정하는 비용이 아주 커서 부담이 될 수 있습니다. 그럴때는 Supplier<t>를 인수로 받는 orElseGet을 사용하면 값이 처음 필요할때 Supplier<t>를 사용해 생성하므로 초기 설정 비용을 낮출 수 있습니다.</t></t></p>
+<p>filter, map, flatMap, ifPresent메서드는 기본 메서드로 처리하기 어려워보인다면 API문서를 참조해 이 고급 메서드들이 문제를 해결해줄 수 있을지 검토해보면 됩니다.</p>
+<p>isPresent메서드는 안전 밸브역할의 메서드로, 옵셔널이; 채워져있으면 true, 비어져있으면 false를 반환합니다. 이 메서드로는 원하는 모든 작업을 수행할 수 있지만 신중히 사용해야합니다.</p>
+<p>실제로 isPresent를 쓴 코드 중 상당수는 앞서 언급한 메서드들로 대체할 수 있으며, 그렇게 하면 더 짧고 명확하고 용법에 맞는 코드가 됩니다.</p>
+<h2 id="ispresent-meseodeu"><a href="#ispresent-meseodeu" class="header-anchor">2.7. </a><a class="markdownIt-Anchor" href="#ispresent-메서드"></a> isPresent 메서드</h2>
+<blockquote>
+<p>java 9</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ProcessHandle ph = <span class="keyword">new</span> ProcessHandle() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">pid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Optional&lt;ProcessHandle&gt; <span class="title">parent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Optional.empty();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Stream&lt;ProcessHandle&gt; <span class="title">children</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Stream&lt;ProcessHandle&gt; <span class="title">descendants</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Info <span class="title">info</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CompletableFuture&lt;ProcessHandle&gt; <span class="title">onExit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supportsNormalTermination</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">destroyForcibly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAlive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object other)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(ProcessHandle other)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Optional&lt;ProcessHandle&gt; parentProcess = ph.parent();</span><br><span class="line">System.out.println(<span class="string">&quot;부모 PID&quot;</span> + (parentProcess.isPresent() ? String.valueOf(parentProcess.get().pid()) : <span class="string">&quot;N/A&quot;</span>));</span><br><span class="line">System.out.println(<span class="string">&quot;부모 PID&quot;</span> + (ph.parent().map(h -&gt; String.valueOf(h.pid())).orElse(<span class="string">&quot;N/A&quot;</span>)));</span><br></pre></td></tr></table></figure>
+<p>위 코드는 Optional의 map을 사용하여 다음처럼 다듬을 수 있습니다.</p>
+<p>스트림을 사용한다면 옵셔널들을 Stream(Optional<t>&gt; 로 받아서 그중 채워진 옵셔널들에서 값을 뽑아 Stream<t>에 건네 담아 처리하는 경우가 드물지 않습니다.</t></t></p>
+<blockquote>
+<p>java8</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 자바8 구현 </span></span><br><span class="line">streamOfOptionals</span><br><span class="line">        .filter(Optional::isPresent)</span><br><span class="line">        .map(Optional::get)</span><br></pre></td></tr></table></figure>
+<p>옵셔널에 값이 있다면 (Optional::isPresent) 그 값을 꺼내 (Optional::get) 스트림에 매핑합니다.<br>
+자바9에서는 Optional에 stream()메서드가 추가되었습니다. 이 메서드는 Optional을 stream으로 변환해주는 어댑터 이며 옵셔널에 값이 있으면 그 값을 원소로 담은 스트림으로, 값이 없다면 빈 스트림으로 변환합니다. 이를 stream의 flatMap메서드와 조합하면 명료하게 바꿀 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">streamOfOptionals</span><br><span class="line">    .flatMap(Optional::stream)</span><br></pre></td></tr></table></figure>
+<p>반환 값으로 옵셔널을 사용한다고 무조건 득이되는것이 아닙니다. 컬렉션, 스트림, 배열, 옵셔널과 같은 컨테이너 타입은 옵셔널로 감싸면 안됩니다. 빈 Optional&lt;List<t>&gt;를 반환하기 보다는 빈 List<t>를 반환하는게 더 좋습니다. 빈 컨테이너를 반환하게 되면 클라이언트에서 옵셔널 처리 코드를 넣지 않아도 됩니다.</t></t></p>
+<ul>
+<li>참고<br>
+<a target="_blank" rel="noopener" href="http://ProcessHandle.Info">ProcessHandle.Info</a> 인터페이스의 arguements 메서드는 Optional&lt;String[]&gt;를 반환하는데, 이는 예외적인 경우이니 따라하지 않도록해야합니다.</li>
+</ul>
+<h2 id="eoddeohan-gyeongue-banhwantaibeul-tdaesin-optionalro-seoneonhaeyahalggayo"><a href="#eoddeohan-gyeongue-banhwantaibeul-tdaesin-optionalro-seoneonhaeyahalggayo" class="header-anchor">2.8. </a><a class="markdownIt-Anchor" href="#어떠한-경우에-반환타입을-t대신-optionalt로-선언해야할까요"></a> 어떠한 경우에 반환타입을 T대신 Optional<t>로 선언해야할까요?</t></h2>
+<p>결과가 없을 수 있으며, 클라이언트가 이 상황을 특별하게 처리해야 한다면 Optional<t>를 반환하도록 합니다.</t></p>
+<p>박싱된 기본 타입을 담는 옵셔널은 기본 타입 자체보다 무거울 수밖에 없으며 자바 API설계자는 int, long, double 전용 옵셔널 클래스들을 준비해놨습니다. 바로 OptionalInt, OptionalLong, OptionalDouble입니다. 이 옵셔널들도 Optional<t>가 제공하는 메서드를 거의 다 제공하게 됩니다.</t></p>
+<p>결과적으로 박싱도니 기본 타입을 담은 옵셔널을 반환하는일은 없도록 해야합니다.</p>
+<h2 id="obsyeoneoleul-maebyi-gabseuro-sayonghaji-malja"><a href="#obsyeoneoleul-maebyi-gabseuro-sayonghaji-malja" class="header-anchor">2.9. </a><a class="markdownIt-Anchor" href="#옵셔널을-맵의-값으로-사용하지-말자"></a> 옵셔널을 맵의 값으로 사용하지 말자</h2>
+<p>옵셔널을 맵의 값으로 사용하면 절대안됩니다. 키 자체가 없는 경우나 다른키는 있지만 그 키가 속이 빈 옵셔널인 경우가 있을 수 있기때문에 혼란만 가중시킬 수 있습니다.</p>
+<p>즉, 옵셔널을 컬렉션의 키, 값, 원소나 배열의 원소로 사용하는 게 적절한 상황은 거의 없습니다.</p>
+<h2 id="obsyeoneoleul-inseuteonseu-pildeue-jeojanghaeduneunge-pilyohan-gyeongu"><a href="#obsyeoneoleul-inseuteonseu-pildeue-jeojanghaeduneunge-pilyohan-gyeongu" class="header-anchor">2.10. </a><a class="markdownIt-Anchor" href="#옵셔널을-인스턴스-필드에-저장해두는게-필요한-경우"></a> 옵셔널을 인스턴스 필드에 저장해두는게 필요한 경우?</h2>
+<p>아이템2의 NutritionFacts 클래스의 예제를 보면 선택적 필드의 게터 메서드들이 옵셔널을 반환해주면 좋습니다. 따라서, 이럴때는 필드 자체를 옵셔널도 선언하는것도 좋은 방법중 하나입니다.</p>
+<h1 id="haegsim-jeongri"><a href="#haegsim-jeongri" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#핵심-정리"></a> 핵심 정리</h1>
+<p>값을 반환하지 못할 가능성이 있고, 호출할때마다 반환값이 없을 가능성을 염두하는 메서드라면 옵셔널을 반환해야 할 상황일 수도 있습니다. 하지만, 옵셔널 반환에는 성능저하가 뒤따르니, 성능에 민감한 메서드라면 null을 반환하거나 예외를 던지는 편이 나을 수 있습니다. 그리고 옵셔널을 반환값 이외의 용도로 쓰는 경우는 매우 드뭅니다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+    <div class="a2a_kit a2a_default_style">
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
+    <span class="a2a_divider"></span>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_google_plus"></a>
+    <a class="a2a_button_pinterest"></a>
+    <a class="a2a_button_tumblr"></a>
+</div>
+<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+<style>
+    .a2a_menu {
+        border-radius: 4px;
+    }
+    .a2a_menu a {
+        margin: 2px 0;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 4px;
+        color: inherit !important;
+        font-family: 'Microsoft Yahei';
+    }
+    #a2apage_dropdown {
+        margin: 10px 0;
+    }
+    .a2a_mini_services {
+        padding: 10px;
+    }
+    a.a2a_i,
+    i.a2a_i {
+        width: 122px;
+        line-height: 16px;
+    }
+    a.a2a_i .a2a_svg,
+    a.a2a_more .a2a_svg {
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        vertical-align: top;
+        background-size: 16px;
+    }
+    a.a2a_i {
+        border: none !important;
+    }
+    a.a2a_menu_show_more_less {
+        margin: 0;
+        padding: 10px 0;
+        line-height: 16px;
+    }
+    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+    .a2a_mini_services{*+height:1%;}
+</style>
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "gwanhyeon Kim"
+        },
+        "headline": "Effective Java 3/E Item 55 옵셔널반환은 신중히 하라",
+        "image": "http://gwanhyeon.github.io",
+        "keywords": "EffectiveJava3/E Optional",
+        "genre": "Language Java",
+        "datePublished": "2021-01-26",
+        "dateCreated": "2021-01-26",
+        "dateModified": "2021-05-13",
+        "url": "http://gwanhyeon.github.io/EffectiveJava-20210126-아이템55-return-optional/",
+        "description": "1.  옵셔널반환은 신중히 하라
+자바 8전에는 메서드가 특정조건에서 값을 반환할 수 없을때 취할 수 있는 선택지가 두가지가 있었다. 예외를 던지거나 null을 반환하는것입니다.
+
+예외
+
+예외의 경우는 스택 추적 전체를 캡처하므로 비용이 만만치 않습니다.
+
+null 반환
+
+null은 반환하면 이런 문제가 생기지 않지만 null을 반환할 수 있는 메서드를 호출",
+        "wordCount": 1830
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/gwanhyeon" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/Database-20210131-redis-install-command/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            Redis 설치 및 명령어 정리
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/Network-20210126-network-07-http-api/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">Network HTTP(HyperTextTransferProtocal) API 설계</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
+                            <p class="item-title"><a href="/Hackerrank-20210622-mark-and-toys/" class="title">HackerRank Mark and Toys</a></p>
+                            <p class="item-date"><time datetime="2021-06-22T08:52:58.000Z" itemprop="datePublished">2021-06-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
+                            <p class="item-title"><a href="/Hackerrank-20210621-2d-array-ds/" class="title">HackerRank 2d Array ds</a></p>
+                            <p class="item-date"><time datetime="2021-06-21T09:50:56.000Z" itemprop="datePublished">2021-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
+                            <p class="item-title"><a href="/Hackerrank-20210621-counting-valleys/" class="title">HackerRank Counting Valleys</a></p>
+                            <p class="item-date"><time datetime="2021-06-21T07:53:44.000Z" itemprop="datePublished">2021-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
+                            <p class="item-title"><a href="/Hackerrank-20210620-repeated-string/" class="title">HackerRank Repeated String</a></p>
+                            <p class="item-date"><time datetime="2021-06-20T06:32:18.000Z" itemprop="datePublished">2021-06-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/hackerrank/">hackerrank</a></p>
+                            <p class="item-title"><a href="/Hackerrank-20210620-jumping-on-the-clouds/" class="title">HackerRank Jumping on the clouds</a></p>
+                            <p class="item-date"><time datetime="2021-06-19T16:44:55.000Z" itemprop="datePublished">2021-06-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">Algorithm</a><span class="category-list-count">111</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/boj/">BOJ</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/codility/">Codility</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/programmers/">Programmers</a><span class="category-list-count">38</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/">SW역량테스트</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/hackerrank/">hackerrank</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/leetcode/">leetcode</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%A1%A0/">자료구조론</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/cleancode/">CleanCode</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">Database</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/database/redis/">Redis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/sql/">SQL</a><span class="category-list-count">13</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/elk/">ELK</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/language/">Language</a><span class="category-list-count">20</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/language/designpattern/">DesignPattern</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/language/java/">Java</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/language/kotlin/">Kotlin</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/language/rxjava/">RXJAVA</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/msa/">MSA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">Network</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/os/">OS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/">Server</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/server/jpa/">JPA</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/server/spring/">Spring</a><span class="category-list-count">10</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/aggregation/" style="font-size: 10px;">Aggregation</a> <a href="/tags/annotation/" style="font-size: 10.63px;">Annotation</a> <a href="/tags/array/" style="font-size: 10.63px;">Array</a> <a href="/tags/autoboxing/" style="font-size: 10px;">AutoBoxing</a> <a href="/tags/bfs/" style="font-size: 14.38px;">BFS</a> <a href="/tags/boj/" style="font-size: 16.25px;">BOJ</a> <a href="/tags/bst/" style="font-size: 10px;">BST</a> <a href="/tags/bulk/" style="font-size: 10px;">BULK</a> <a href="/tags/bean/" style="font-size: 10px;">Bean</a> <a href="/tags/crud/" style="font-size: 10px;">CRUD</a> <a href="/tags/cleancode/" style="font-size: 11.88px;">CleanCode</a> <a href="/tags/codility/" style="font-size: 13.13px;">Codility</a> <a href="/tags/collection/" style="font-size: 10px;">Collection</a> <a href="/tags/command/" style="font-size: 10px;">Command</a> <a href="/tags/contextswitching/" style="font-size: 10px;">ContextSwitching</a> <a href="/tags/dfs/" style="font-size: 17.5px;">DFS</a> <a href="/tags/di/" style="font-size: 10.63px;">DI</a> <a href="/tags/dns/" style="font-size: 10px;">DNS</a> <a href="/tags/dp/" style="font-size: 11.88px;">DP</a> <a href="/tags/database/" style="font-size: 10px;">Database</a> <a href="/tags/elk/" style="font-size: 13.75px;">ELK</a> <a href="/tags/effectivejava3-e/" style="font-size: 11.88px;">EffectiveJava3/E</a> <a href="/tags/entity/" style="font-size: 10.63px;">Entity</a> <a href="/tags/error/" style="font-size: 10px;">Error</a> <a href="/tags/flush/" style="font-size: 10px;">Flush</a> <a href="/tags/gc/" style="font-size: 10px;">GC</a> <a href="/tags/gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/h-index/" style="font-size: 10px;">H-INDEX</a> <a href="/tags/http/" style="font-size: 10px;">HTTP</a> <a href="/tags/header/" style="font-size: 10px;">Header</a> <a href="/tags/internet/" style="font-size: 10px;">INTERNET</a> <a href="/tags/ip/" style="font-size: 10px;">IP</a> <a href="/tags/intellij/" style="font-size: 10.63px;">IntelliJ</a> <a href="/tags/ioc/" style="font-size: 10px;">IoC</a> <a href="/tags/jdk/" style="font-size: 10px;">JDK</a> <a href="/tags/jpa/" style="font-size: 11.25px;">JPA</a> <a href="/tags/jpql/" style="font-size: 10px;">JPQL</a> <a href="/tags/jvm/" style="font-size: 10px;">JVM</a> <a href="/tags/java/" style="font-size: 11.25px;">Java</a> <a href="/tags/kotlin/" style="font-size: 11.25px;">Kotlin</a> <a href="/tags/leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/msa/" style="font-size: 11.25px;">MSA</a> <a href="/tags/mapping/" style="font-size: 10px;">Mapping</a> <a href="/tags/metricaggregation/" style="font-size: 10px;">MetricAggregation</a> <a href="/tags/network/" style="font-size: 11.25px;">NETWORK</a> <a href="/tags/network/" style="font-size: 10.63px;">Network</a> <a href="/tags/optional/" style="font-size: 10px;">Optional</a> <a href="/tags/pcb/" style="font-size: 10px;">PCB</a> <a href="/tags/port/" style="font-size: 10px;">PORT</a> <a href="/tags/persistence/" style="font-size: 10px;">Persistence</a> <a href="/tags/programmers/" style="font-size: 10px;">Programmers</a> <a href="/tags/rest/" style="font-size: 10px;">REST</a> <a href="/tags/redis/" style="font-size: 10px;">Redis</a> <a href="/tags/responsebody/" style="font-size: 10px;">ResponseBody</a> <a href="/tags/rxjava/" style="font-size: 10.63px;">RxJava</a> <a href="/tags/sql/" style="font-size: 16.88px;">SQL</a> <a href="/tags/searchfunction/" style="font-size: 10px;">SearchFunction</a> <a href="/tags/set%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" style="font-size: 10px;">Set자료구조</a> <a href="/tags/spring/" style="font-size: 14.38px;">Spring</a> <a href="/tags/springboot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/tcp/" style="font-size: 10.63px;">TCP</a> <a href="/tags/tcp-ip/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/timecomplexity/" style="font-size: 10.63px;">TimeComplexity</a> <a href="/tags/transaction/" style="font-size: 10px;">Transaction</a> <a href="/tags/udp/" style="font-size: 10px;">UDP</a> <a href="/tags/wrapperclass/" style="font-size: 10px;">WrapperClass</a> <a href="/tags/annotationprocessor/" style="font-size: 10px;">annotationProcessor</a> <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/binary/" style="font-size: 10px;">binary</a> <a href="/tags/binarysearch/" style="font-size: 10px;">binarysearch</a> <a href="/tags/cleancode/" style="font-size: 10px;">cleancode</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/environment/" style="font-size: 10px;">environment</a> <a href="/tags/final/" style="font-size: 10px;">final</a> <a href="/tags/hackerrank/" style="font-size: 13.75px;">hackerrank</a> <a href="/tags/http/" style="font-size: 11.25px;">http</a> <a href="/tags/linkedlist/" style="font-size: 10px;">linkedlist</a> <a href="/tags/magicnumber/" style="font-size: 10px;">magicnumber</a> <a href="/tags/network/" style="font-size: 12.5px;">network</a> <a href="/tags/overloading/" style="font-size: 10px;">overloading</a> <a href="/tags/overriding/" style="font-size: 10px;">overriding</a> <a href="/tags/springmvc/" style="font-size: 10px;">springMVC</a> <a href="/tags/thread/" style="font-size: 10px;">thread</a> <a href="/tags/uri/" style="font-size: 10px;">uri</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/urn/" style="font-size: 10px;">urn</a> <a href="/tags/%EA%B0%84%EC%84%A0/" style="font-size: 10px;">간선</a> <a href="/tags/%EA%B2%80%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">검색트리</a> <a href="/tags/%EA%B5%AC%ED%98%84/" style="font-size: 11.88px;">구현</a> <a href="/tags/%EA%B7%B8%EB%9E%98%ED%94%84/" style="font-size: 14.38px;">그래프</a> <a href="/tags/%EA%B7%B8%EB%A6%AC%EB%94%94/" style="font-size: 11.25px;">그리디</a> <a href="/tags/%EA%B9%A8%EB%81%97%ED%95%9C%EC%BD%94%EB%93%9C/" style="font-size: 10px;">깨끗한코드</a> <a href="/tags/%EB%8B%A4%EC%9D%B4%EB%82%98%EB%AF%B9%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10px;">다이나믹프로그래밍</a> <a href="/tags/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC/" style="font-size: 10px;">다익스트라</a> <a href="/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/" style="font-size: 10px;">데이터타입</a> <a href="/tags/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/" style="font-size: 11.25px;">디자인패턴</a> <a href="/tags/%EB%9E%8C%EB%8B%A4/" style="font-size: 10.63px;">람다</a> <a href="/tags/%EB%A0%88%EB%B2%A82/" style="font-size: 11.88px;">레벨2</a> <a href="/tags/%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" style="font-size: 10.63px;">리액티브프로그래밍</a> <a href="/tags/%EB%A6%BF%EC%BD%94%EB%93%9C/" style="font-size: 15.63px;">릿코드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">멀티스레드</a> <a href="/tags/%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">멀티프로세스</a> <a href="/tags/%EB%A9%94%EC%84%9C%EB%93%9C%EC%B0%B8%EC%A1%B0/" style="font-size: 10px;">메서드참조</a> <a href="/tags/%EB%AC%B8%EC%9E%90%EC%97%B4/" style="font-size: 15px;">문자열</a> <a href="/tags/%EB%B0%B1%EC%A4%80/" style="font-size: 19.38px;">백준</a> <a href="/tags/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/" style="font-size: 12.5px;">백트래킹</a> <a href="/tags/%EB%B3%80%EC%88%98/" style="font-size: 10px;">변수</a> <a href="/tags/%EB%B6%80%EB%B6%84%EC%A7%91%ED%95%A9%EC%9D%98-%ED%95%A9/" style="font-size: 10px;">부분집합의 합</a> <a href="/tags/%EB%B8%8C%EB%A3%A8%ED%8A%B8%ED%8F%AC%EC%8A%A4/" style="font-size: 18.13px;">브루트포스</a> <a href="/tags/%EC%82%BC%EC%84%B1sw%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8/" style="font-size: 15.63px;">삼성SW역량테스트</a> <a href="/tags/%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C/" style="font-size: 10px;">상태코드</a> <a href="/tags/%EC%86%8C%EC%88%98/" style="font-size: 10.63px;">소수</a> <a href="/tags/%EC%86%8C%EC%9D%B8%EC%88%98%EB%B6%84%ED%95%B4/" style="font-size: 10px;">소인수분해</a> <a href="/tags/%EC%88%98%ED%95%99/" style="font-size: 10.63px;">수학</a> <a href="/tags/%EC%88%9C%EC%97%B4/" style="font-size: 11.25px;">순열</a> <a href="/tags/%EC%8A%A4%EB%A0%88%EB%93%9C/" style="font-size: 10px;">스레드</a> <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 20px;">알고리즘</a> <a href="/tags/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98/" style="font-size: 10px;">어노테이션</a> <a href="/tags/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%EC%B2%B4/" style="font-size: 10px;">에라토스테네스의체</a> <a href="/tags/%EC%97%B0%EC%82%B0/" style="font-size: 10px;">연산</a> <a href="/tags/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/" style="font-size: 15.63px;">완전탐색</a> <a href="/tags/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90/" style="font-size: 10.63px;">우선순위큐</a> <a href="/tags/%EC%9B%B9%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80/" style="font-size: 10px;">웹브라우저</a> <a href="/tags/%EC%9C%84%EC%83%81%EC%A0%95%EB%A0%AC/" style="font-size: 10px;">위상정렬</a> <a href="/tags/%EC%9C%84%EC%9E%A5/" style="font-size: 10px;">위장</a> <a href="/tags/%EC%9D%98%EB%AF%B8%EC%9E%88%EB%8A%94%EC%9D%B4%EB%A6%84/" style="font-size: 10px;">의미있는이름</a> <a href="/tags/%EC%9D%B4%EB%B6%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이분탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89/" style="font-size: 10px;">이진탐색</a> <a href="/tags/%EC%9D%B4%EC%A7%84%ED%83%90%EC%83%89%ED%8A%B8%EB%A6%AC/" style="font-size: 10px;">이진탐색트리</a> <a href="/tags/%EC%9D%B5%EB%AA%85%ED%81%B4%EB%9E%98%EC%8A%A4/" style="font-size: 10.63px;">익명클래스</a> <a href="/tags/%EC%9D%B8%EC%A0%91%EB%A6%AC%EC%8A%A4%ED%8A%B8/" style="font-size: 10.63px;">인접리스트</a> <a href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" style="font-size: 10px;">정규표현식</a> <a href="/tags/%EC%A0%95%EB%A0%AC/" style="font-size: 12.5px;">정렬</a> <a href="/tags/%EC%A0%9C%EB%84%A4%EB%A6%AD/" style="font-size: 10px;">제네릭</a> <a href="/tags/%EC%A1%B0%ED%95%A9/" style="font-size: 10px;">조합</a> <a href="/tags/%EC%A3%BC%EC%84%9D/" style="font-size: 10px;">주석</a> <a href="/tags/%EC%B9%B4%EC%B9%B4%EC%98%A4/" style="font-size: 11.88px;">카카오</a> <a href="/tags/%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94/" style="font-size: 10px;">컴포넌트 스캔</a> <a href="/tags/%EC%BF%BC%EB%93%9C%EC%95%95%EC%B6%95/" style="font-size: 10px;">쿼드압축</a> <a href="/tags/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98/" style="font-size: 10px;">트랜잭션</a> <a href="/tags/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/" style="font-size: 18.75px;">프로그래머스</a> <a href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" style="font-size: 10px;">프로세스</a> <a href="/tags/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%9B%8C%EC%85%9C/" style="font-size: 10.63px;">플로이드워셜</a> <a href="/tags/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%9B%8C%EC%85%9C%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" style="font-size: 10px;">플로이드워셜알고리즘</a> <a href="/tags/%ED%95%A8%EC%88%98/" style="font-size: 10px;">함수</a> <a href="/tags/%ED%95%B4%EC%8B%9C/" style="font-size: 10.63px;">해시</a> <a href="/tags/%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95/" style="font-size: 10.63px;">환경설정</a> <a href="/tags/%ED%9E%99/" style="font-size: 10.63px;">힙</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://kgh940525.tistory.com">Tistory</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+                <div class="widget-wrap widget-float">
+
+    <h3 class="widget-title">Sponsored</h3>
+    <div class="widget">
+        <a target="_blank" rel="noopener" href="https://marcofranssen.nl?adsense_widget">This widget is sponsored by, Marco Franssen, main contributor to this theme.</a>
+    </div>
+
+</div>
+
+            
+        
+    </div>    
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2024 gwanhyeon Kim</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'kgh-1';
+    
+    
+    var disqus_url = 'http://gwanhyeon.github.io/EffectiveJava-20210126-%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%90%E1%85%A6%E1%86%B755-return-optional/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
