@@ -175,7 +175,7 @@ ga('send', 'pageview');
         
         <section class="archives-wrap">
             <div class="archive-year-wrap">
-                <a href="/archives/2021" class="archive-year"><i class="icon fa fa-calendar-o"></i>2021</a>
+                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
             </div>
             <div class="archives">
     
@@ -188,22 +188,20 @@ ga('send', 'pageview');
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/elk/">ELK</a>
+            <a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/spring/">Spring</a>
             </div>
-            <div class="date"><time datetime="2021-02-19T05:11:20.000Z" itemprop="datePublished">2021-02-19</time></div>
+            <div class="date"><time datetime="2020-11-23T10:42:25.000Z" itemprop="datePublished">2020-11-23</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/ELK-20210219-elk-mapping/">ELK 엘라스틱 서치 Mapping</a>
+        <a href="/Spring-20201123-java-compile-error/">IntellJ Error: java: invalid source release: 11</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  ELK 엘라스틱서치 MAPPING
-ELK에서 말하는 개념은 RDS에서 스키마와 동일한 의미를 가지고 있습니다.
-Mapping없이 ELK 데이터를 넣는것은 상당히 위험하고 Document Mapping이 되어있지않다면 Date, String과 같은 구별이 가지않을 수 있습니다.
-잘못지정된 타입같은 경우 Kibana를 사용하여 데이터를 분리하여 보여주고
+            1.  문제
+IntellJ에서 JDK 버전이 다른 프로젝트를 진행하는 경우가 생기가 되었습니다. 이때, 현재 사용중인 1.8.0_161 JDK버전과의 충돌이 발생하였습니다. IntellJ Error: java: invalid source release: 11의 에러가 발생하였습니다. 따라서 해당 에러를 해결하기 위해서 처음에 시도한 방식은 다음과 같습니다.
         </p>
     </div>
 </article>
@@ -218,102 +216,26 @@ Mapping없이 ELK 데이터를 넣는것은 상당히 위험하고 Document Mapp
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/elk/">ELK</a>
+            <a class="article-category-link" href="/categories/os/">OS</a>
             </div>
-            <div class="date"><time datetime="2021-02-19T04:57:51.000Z" itemprop="datePublished">2021-02-19</time></div>
+            <div class="date"><time datetime="2020-11-16T07:48:50.000Z" itemprop="datePublished">2020-11-16</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/ELK-20210219-elk-bulk/">ELK 엘라스틱서치 BULK</a>
+        <a href="/OS-20201116-OS-Process-Thread/">운영체제 프로세스 스레드 메모리 구조</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  ELK 엘라스틱서치 BULK
+            1.  프로그램(Program)
+어떤 작업을 위해 실행할 수 있는 파일로 정의할 수 있습니다.
+2.  프로세스(Process)
 
-Elastic BULK란 무엇일까요?
+의미
 
-간단히 말해 여러개의 Document를 한번에 ElasticSearch에 넣는 방식을 말합니다.
-그러면 바로 실습으로 알아보도록 하겠습니다.
-제가 사용할 실습 json파일은 다음과 같습니다.
-12345678910111213141516171819202122232425262728293
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/elk/">ELK</a>
-            </div>
-            <div class="date"><time datetime="2021-02-19T04:18:53.000Z" itemprop="datePublished">2021-02-19</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/ELK-20210219-elk-crud/">ELK 엘라스틱서치 Data CRUD</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  엘라스틱서치 데이터 입력 조회 삭제 (GET, POST, PUT, DELETE)
-이번 시간에 살펴볼 내용은 엘라스틱서치에서 Data CRUD를 실습해보는 시간을 가져보겠습니다.
-그전에 엘라스틱서피와 RDS와의 차이점을 살펴보겠습니다.
-
-ELASTIC SEARCH VS RDS
-
-
-
-
-Elastic Search
-RDS
-
-
-
-
-Index
-Database
-
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/elk/">ELK</a>
-            </div>
-            <div class="date"><time datetime="2021-02-19T02:43:32.000Z" itemprop="datePublished">2021-02-19</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/ELK-20210219-elk-install/">ELK 엘라스틱서치 정의 및 설치하기</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  Homebrew
-Homebrew는 자유-오픈 소스 소프트웨어 패키지 관리 시스템의 하나로서 애플의 macOS 운영 체제의 소프트웨어 설치를 단순하게 만들어준다. 원래 맥스 호웰(Max Howell)이 개발한 이 패키지 관리자는 루비 온 웨일즈 공동체에서 인기를 얻었으며 확장성으로 호평을 받았습니다.홈브루는 쉬운 사용성, 명령 줄로의 통합이 가능하므로
+사전적 의미로는 컴퓨터에서 연속적으로 실행되고 있는 컴퓨터 프로그램 또는 메모리에 올라와 실행되고 있는 프로그램의 인스턴스(독립적 개체)
+즉, 운영체제로 부터 시스템 자원을 할당받는 작업의 단위이며 실행된 프로그램을 의미한
         </p>
     </div>
 </article>
@@ -332,91 +254,22 @@ Homebrew는 자유-오픈 소스 소프트웨어 패키지 관리 시스템의 �
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/language/java/">Java</a>
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/leetcode/">leetcode</a>
             </div>
-            <div class="date"><time datetime="2021-02-18T07:22:53.000Z" itemprop="datePublished">2021-02-18</time></div>
+            <div class="date"><time datetime="2020-11-15T12:42:42.000Z" itemprop="datePublished">2020-11-15</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Java-20210218-multi-thread-java/">Java MultiThread(멀티스레드) 고려사항</a>
+        <a href="/Leetcode-20201115-leetcode-maximum-subarray/">릿코드 maximum subarray</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  Multi Thread 고려사항
-MultiThread를 구현하는 대표적인방법은 두가지가 있습니다.
-
-java.lang.Thread 클래스를 상속받아서 구현하는 방법
-java.lang.Runnable 인터페이스를 구현해서 개발하는 방법
-
-
-Field Member
-
-필드의 의미는 클래스에 변수를 정의하는 공간을 의미합니다. 하지만, 객체가 여러 스레드가
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/language/java/">Java</a>
-            </div>
-            <div class="date"><time datetime="2021-02-18T06:57:33.000Z" itemprop="datePublished">2021-02-18</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Java-20210218-wrapper-class-auto-boxing-java/">Java Wrapper Class, Auto Boxing</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  Wrapper Class
-Wrapper Class란?
-자바의 자료형은 크게 기본 타입(primitive type)과 참조 타입(reference type)으로 나누어집니다.
-대표적으로 기본 타입은 char, int, float, double, boolean 등이 있고 참조 타입은 class, interface 등이 있는데 프로그래밍을 하다 보면 기본
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/language/java/">Java</a>
-            </div>
-            <div class="date"><time datetime="2021-02-18T04:27:38.000Z" itemprop="datePublished">2021-02-18</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/Java-20210218-magic-number-final-java/">Java 클린코드 매직넘버 이슈 및 final 키워드</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            1.  매직넘버를 직접 작성하는것을 지양하라
-소스코드를 보다보면 특정한 숫자 매직넘버(Magic Number)를 직접 작성하는 나쁜 스타일의 코드를 볼 수 있습니다.
-만약에 캐싱으로 캐싱값들을 강제로 업데이트하는 로직이 있다고 가정해보겠습니다. 여기에서 캐시에 대한 시간값을 지정했다고 가정하면 다음과 같이 코드를 작성하는것이 올바른 코드 일까요? 아닙니다.
+            1.  릿코드 maximum-subarray
+2.  문제
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+Follow up: If you have figured 
         </p>
     </div>
 </article>
@@ -433,22 +286,30 @@ Wrapper Class란?
             <div class="category">
             <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
             </div>
-            <div class="date"><time datetime="2021-02-16T09:21:05.000Z" itemprop="datePublished">2021-02-16</time></div>
+            <div class="date"><time datetime="2020-11-15T12:38:46.000Z" itemprop="datePublished">2020-11-15</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20210216-programmers-racetrack/">프로그래머스 경주로건설</a>
+        <a href="/Programmers-20201115-Programmers-length-of-visit/">프로그래머스 방문길이</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  프로그래머스 경주로건설 
-2.  문제 설명
+            1.  프로그래머스 방문길이
+1.1.  컴퓨팅적 사고
 
-건설회사의 설계사인 죠르디는 고객사로부터 자동차 경주로 건설에 필요한 견적을 의뢰받았습니다.
-제공된 경주로 설계 도면에 따르면 경주로 부지는 N x N 크기의 정사각형 격자 형태이며 각 격자는 1 x 1 크기입니다.
-설계 도면에는 각 격자의 칸은 0 또는 1 로 채워져 있으며, 0은 칸이 비어 있음을 1은
+맵 시작점
+
+
+음수의 값을 사용하기 싫었기 때문에 전체의 맵을 10x10으로 생각하여 시작점은 (5,5)에서 시작한다고 가정하였습니다.
+
+
+간선 체크
+
+
+간선보다는 정점을 체킹하는 형식으로 진행하였으나 중복점을 체킹하기가 어려워 간선풀이로 변경 Set자료구조를 사용하여 처리하였습니다.
+시작 x, y 도
         </p>
     </div>
 </article>
@@ -469,22 +330,152 @@ Wrapper Class란?
             <div class="category">
             <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
             </div>
-            <div class="date"><time datetime="2021-02-16T09:15:13.000Z" itemprop="datePublished">2021-02-16</time></div>
+            <div class="date"><time datetime="2020-11-14T13:27:38.000Z" itemprop="datePublished">2020-11-14</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/Programmers-20210216-programmers-shuttle-bus/">프로그래머스 셔틀버스</a>
+        <a href="/Programmers-20201114-Programmers-delivery/">프로그래머스 배달</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  프로그래머스 셔틀버스 
+            1.  프로그래머스 배달
+1.1.  문제 설명
+N개의 마을로 이루어진 나라가 있습니다. 이 나라의 각 마을에는 1부터 N까지의 번호가 각각 하나씩 부여되어 있습니다. 각 마을은 양방향으로 통행할 수 있는 도로로 연결되어 있는데, 서로 다른 마을 간에 이동할 때는 이 도로를 지나야 합니다. 도로를 지날 때 걸리는 시간은 도로별로 다릅니다. 현재 1번 마을에 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/programmers/">Programmers</a>
+            </div>
+            <div class="date"><time datetime="2020-11-12T07:27:34.000Z" itemprop="datePublished">2020-11-12</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/Programmers-20201112-Programmers-bad-user/">프로그래머스 불량사용자</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  프로그래머스 카카오 불량사용자
+1.1.  문제 조건
+1.1.1.  문제 설명
+개발팀 내에서 이벤트 개발을 담당하고 있는 무지는 최근 진행된 카카오이모티콘 이벤트에 비정상적인 방법으로 당첨을 시도한 응모자들을 발견하였습니다. 이런 응모자들을 따로 모아 불량 사용자라는 이름으로 목록을 만들어서 당첨 처리 시 제외하도록 이벤트 당첨자 담당자인 프로도 에게
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%A1%A0/">자료구조론</a>
+            </div>
+            <div class="date"><time datetime="2020-10-29T11:43:23.000Z" itemprop="datePublished">2020-10-29</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/Algorithm-20201029-Algorithm-Eratosthenes/">알고리즘 에라토스테네스의 체, 소수, 소인수분해</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  소수(Prime Number)
+1.1.  소수의 정의
+소수란 약수가 1과 자기 자신밖에 없는수를 일컫는 말입니다.
+1.2.  소수의 특징
+
+N이 소수가 되려면 2&lt;= N &lt;= N-1 2보다 크거나 같고, N-1보다 작거나 같은 자연수로 나누어 떨어지면 안됩니다.
+그 이유는 N의 약수중에서 가장 큰것은 N/2보다 작거나 같기 때문입니다.
+N
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-27T05:47:44.000Z" itemprop="datePublished">2020-10-27</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201027-BOJ-continuous-sum/">백준 연속합 1912</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  백준 연속합 1912 문제
+
 1.1.  문제
-셔틀버스
-카카오에서는 무료 셔틀버스를 운행하기 때문에 판교역에서 편하게 사무실로 올 수 있다. 카카오의 직원은 서로를 '크루’라고 부르는데, 아침마다 많은 크루들이 이 셔틀을 이용하여 출근한다.
-이 문제에서는 편의를 위해 셔틀은 다음과 같은 규칙으로 운행한다고 가정하자.
-셔틀은 09:00부터 총 n회 t분 간격
+n개의 정수로 이루어진 임의의 수열이 주어진다. 우리는 이 중 연속된 몇 개의 수를 선택해서 구할 수 있는 합 중 가장 큰 합을 구하려고 한다. 단, 수는 한 개 이상 선택해야 한다.
+예를 들어서 10, -4, 3, 1, 5, 6, -35, 12, 21, -1 이라는 수열이 주어졌다고 하자. 여기서 정답은
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-27T05:23:18.000Z" itemprop="datePublished">2020-10-27</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201027-BOJ-colored-paper/">백준 색종이 2563</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  백준 색종이 2563 문제
+
+1.1.  문제
+가로, 세로의 크기가 각각 100인 정사각형 모양의 흰색 도화지가 있다. 이 도화지 위에 가로, 세로의 크기가 각각 10인 정사각형 모양의 검은색 색종이를 색종이의 변과 도화지의 변이 평행하도록 붙인다. 이러한 방식으로 색종이를 한 장 또는 여러 장 붙인 후 색종이가 붙은 검은 영역의 넓이를 구하는 프로그
         </p>
     </div>
 </article>
@@ -499,22 +490,361 @@ Wrapper Class란?
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/msa/">MSA</a>
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
             </div>
-            <div class="date"><time datetime="2021-02-11T14:59:08.000Z" itemprop="datePublished">2021-02-11</time></div>
+            <div class="date"><time datetime="2020-10-26T12:05:30.000Z" itemprop="datePublished">2020-10-26</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/MSA-20210212-02-msa-architecture/">02 마이크로서비스 아키텍처</a>
+        <a href="/BOJ-20201026-BOJ-rain-water/">백준 빗물 14719</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1.  마이크로서비스 아키텍처
-1.1.  마이크로서비스 아키텍처의 개념
-마이크로서비스 아키텍처(microservice architecture)는 마이크로서비스가 실행 될 수 있는 아키텍처를 뜻합니다. 마이크로서비스, 즉 아주 작은 단위로 동작하는 서비스가 구동되도록 시스템 및 소프트웨어의 구성과 구성 요소간의 관계를 정의한 아키텍처입니다.
-마이크로서비스 아
+            1.  백준 빗물 14719 문제
+
+1.1.  문제
+2차원 세계에 블록이 쌓여있다. 비가 오면 블록 사이에 빗물이 고인다.
+
+
+비는 충분히 많이 온다. 고이는 빗물의 총량은 얼마일까?
+1.2.  입력
+첫 번째 줄에는 2차원 세계의 세로 길이 H과 2차원 세계의 가로 길이 W가 주어진다. (1 ≤ H, W ≤ 500)
+두 번째 줄에는 블록이 쌓인 높이를 의미
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-26T11:22:40.000Z" itemprop="datePublished">2020-10-26</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201026-BOJ-warehouse-polygon/">백준 창고 다각형 2304</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  컴퓨팅적 사고
+
+창고 다각형의 면적이 최소가 되는 값을 찾아내는 문제입니다.
+
+이 문제에서 가장 중요한 점은 좌측과 우측으로 오면서 순차적으로 진행되는 높이보다 값이 같거나 커야합니다. 그래야지 지붕을 만들때 물이 고이지 않도록 만들 수 있게 됩니다.
+문제의 조건을 살펴보면 지붕의 수평 부분은 반드시 어떤 기둥의 윗면과 닿아야 한다. 지붕의 수직 부
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-22T14:08:19.000Z" itemprop="datePublished">2020-10-22</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201022-BOJ-term-project/">백준 텀 프로젝트 9466</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  백준 텀 프로젝트 9466 문제
+
+1.1.  문제
+이번 가을학기에 ‘문제 해결’ 강의를 신청한 학생들은 텀 프로젝트를 수행해야 한다. 프로젝트 팀원 수에는 제한이 없다. 심지어 모든 학생들이 동일한 팀의 팀원인 경우와 같이 한 팀만 있을 수도 있다. 프로젝트 팀을 구성하기 위해, 모든 학생들은 프로젝트를 함께하고 싶은 학생을 선택해야 한다. (단, 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-22T10:46:11.000Z" itemprop="datePublished">2020-10-22</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201022-BOJ-repeat-permutation/">백준 반복 순열 2331</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  백준 반복 순열 2331 문제
+
+1.1.  문제
+다음과 같이 정의된 수열이 있다.
+D[1] = A
+D[n] = D[n-1]의 각 자리의 숫자를 P번 곱한 수들의 합
+예를 들어 A=57, P=2일 때, 수열 D는 {57, 74(=52+72=25+49), 65, 61, 37, 58, 89, 145, 42, 20, 4, 16, 37, …}이 된다. 그 뒤
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-22T05:37:35.000Z" itemprop="datePublished">2020-10-22</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201022-BOJ-permutation-cycle/">백준 순열 사이클 10451</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  백준 순열 사이클 10451 문제
+1.1.  문제
+1부터 N까지 정수 N개로 이루어진 순열을 나타내는 방법은 여러 가지가 있다. 예를 들어, 8개의 수로 이루어진 순열 (3, 2, 7, 8, 1, 4, 5, 6)을 배열을 이용해 표현하면  와 같다. 또는, Figure 1과 같이 방향 그래프로 나타낼 수도 있다.
+순열을 배열을 이용해  로 나타냈다면
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EB%A1%A0/">자료구조론</a>
+            </div>
+            <div class="date"><time datetime="2020-10-21T13:22:04.000Z" itemprop="datePublished">2020-10-21</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/Algorithm-20201021-Algorithm-graph-summary/">그래프 인접행렬, 인접리스트 및 DFS,BFS</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  그래프
+그래프의 정의를 살펴보면 G=(V,E)가 성립하게 됩니다. G: 그래프, V: 정점, E: 간선을 의미합니다.
+2.  경로
+만약 A-&gt;C, A-&gt;B, C-&gt;B, E-&gt;B, C-&gt;E, C-&gt;D, D-&gt;E의 정점과 간선으로 연결된 그래프가 있다고 생각하겠습니다. 이때 정점 A-&gt;B로 가는 경로는 몇가지 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-21T12:48:55.000Z" itemprop="datePublished">2020-10-21</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201021-BOJ-connected-component/">백준 연결요소의 개수 11724</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  백준 연결요소의 개수 11724 문제
+1.1.  문제
+방향 없는 그래프가 주어졌을 때, 연결 요소 (Connected Component)의 개수를 구하는 프로그램을 작성하시오.
+1.2.  입력
+첫째 줄에 정점의 개수 N과 간선의 개수 M이 주어진다. (1 ≤ N ≤ 1,000, 0 ≤ M ≤ N×(N-1)/2) 둘째 줄부터 M개의 줄에 간선의 양 끝
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-20T09:38:18.000Z" itemprop="datePublished">2020-10-20</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201020-BOJ-inequality-sign/">백준 부등호 2529</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  백준 부등호 2529 문제
+1.1.  문제
+두 종류의 부등호 기호 ‘&lt;’와 ‘&gt;’가 k개 나열된 순서열  A가 있다. 우리는 이 부등호 기호 앞뒤에 서로 다른 한 자릿수 숫자를 넣어서 모든 부등호 관계를 만족시키려고 한다. 예를 들어, 제시된 부등호 순서열 A가 다음과 같다고 하자.
+A =&gt; &lt; &lt; &lt; &gt; &lt
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-19T16:07:15.000Z" itemprop="datePublished">2020-10-20</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201020-BOJ-number-inheritance1/">백준 수 이어쓰기1 1748</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  문제 링크
+1.1.  백준 수 이어쓰기1 1748 문제
+1.1.1.  문제
+1부터 N까지의 수를 이어서 쓰면 다음과 같이 새로운 하나의 수를 얻을 수 있다.
+1234567891011121314151617181920212223…
+이렇게 만들어진 새로운 수는 몇 자리 수일까? 이 수의 자릿수를 구하는 프로그램을 작성하시오.
+1.1.2.  입력
+첫째 줄에
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-19T05:20:34.000Z" itemprop="datePublished">2020-10-19</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201019-BOJ-chess-repaint/">백준 체스판 다시칠하기 1018</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  문제 링크
+1.1.  백준 체스판 다시칠하기 1018 문제
+2.  문제 조건
+2.1.  문제
+지민이는 자신의 저택에서 MN개의 단위 정사각형으로 나누어져 있는 MN 크기의 보드를 찾았다. 어떤 정사각형은 검은색으로 칠해져 있고, 나머지는 흰색으로 칠해져 있다. 지민이는 이 보드를 잘라서 88 크기의 체스판으로 만들려고 한다.
+체스판은 검은색과 흰색이
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/algorithm/">Algorithm</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/algorithm/boj/">BOJ</a>
+            </div>
+            <div class="date"><time datetime="2020-10-15T15:03:03.000Z" itemprop="datePublished">2020-10-16</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/BOJ-20201016-BOJ-big-body/">백준 덩치 7568</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            1.  문제 링크
+1.1.  백준 덩치 문제
+2.  문제 조건
+2.1.  문제
+우리는 사람의 덩치를 키와 몸무게, 이 두 개의 값으로 표현하여 그 등수를 매겨보려고 한다. 어떤 사람의 몸무게가 x kg이고 키가 y cm라면 이 사람의 덩치는 (x,y)로 표시된다. 두 사람 A 와 B의 덩치가 각각 (x,y), (p,q)라고 할 때 x&gt;p 그리고 y&g
         </p>
     </div>
 </article>
@@ -527,8 +857,8 @@ Wrapper Class란?
 
 
     <nav id="page-nav">
-        <span class="pages">Page 6 of 19</span>
-        <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/7/">&raquo;</a>
+        <span class="pages">Page 6 of 10</span>
+        <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">&raquo;</a>
     </nav>
 
 
