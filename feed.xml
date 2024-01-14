@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>GWAN IT Blog</title>
+  <title>Gwanhyeon IT Blog</title>
   
-  <subtitle>GWAN IT Blog</subtitle>
+  <subtitle>Gwanhyeon IT Blog</subtitle>
   <link href="/feed.xml" rel="self"/>
   
   <link href="http://gwanhyeon.github.io/"/>
