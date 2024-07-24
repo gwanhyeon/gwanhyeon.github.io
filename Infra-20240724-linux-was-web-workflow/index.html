@@ -4,21 +4,21 @@
     
 
     
-    <title>WEB WAS는 어떻게 동작할까? | Gwanhyeon IT Blog</title>
+    <title>리눅스 WEB WAS는 어떻게 동작할까? | Gwanhyeon IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content="WEB,WAS" />
     
-    <meta name="description" content="1.  1. WEB WAS의 동작과정   클라이언트 요청 수신 웹 서버는 클라이언트로부터 HTTP 요청을 받습니다. 이 요청은 주로 웹 브라우저를 통해 발생합니다.   요청 분석 웹 서버는 받은 요청을 분석하여 요청된 자원 및 요청 방식(CRUD)를 확인합니다.   정적 자원 처리 요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니">
+    <meta name="description" content="1.  WEB WAS의 동작과정   클라이언트 요청 수신 웹 서버는 클라이언트로부터 HTTP 요청을 받습니다. 이 요청은 주로 웹 브라우저를 통해 발생합니다.   요청 분석 웹 서버는 받은 요청을 분석하여 요청된 자원 및 요청 방식(CRUD)를 확인합니다.   정적 자원 처리 요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WEB WAS는 어떻게 동작할까?">
+<meta property="og:title" content="리눅스 WEB WAS는 어떻게 동작할까?">
 <meta property="og:url" content="http://gwanhyeon.github.io/Infra-20240724-linux-was-web-workflow/index.html">
 <meta property="og:site_name" content="Gwanhyeon IT Blog">
-<meta property="og:description" content="1.  1. WEB WAS의 동작과정   클라이언트 요청 수신 웹 서버는 클라이언트로부터 HTTP 요청을 받습니다. 이 요청은 주로 웹 브라우저를 통해 발생합니다.   요청 분석 웹 서버는 받은 요청을 분석하여 요청된 자원 및 요청 방식(CRUD)를 확인합니다.   정적 자원 처리 요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니">
+<meta property="og:description" content="1.  WEB WAS의 동작과정   클라이언트 요청 수신 웹 서버는 클라이언트로부터 HTTP 요청을 받습니다. 이 요청은 주로 웹 브라우저를 통해 발생합니다.   요청 분석 웹 서버는 받은 요청을 분석하여 요청된 자원 및 요청 방식(CRUD)를 확인합니다.   정적 자원 처리 요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2024-07-24T14:35:27.000Z">
-<meta property="article:modified_time" content="2024-07-24T14:46:53.995Z">
+<meta property="article:modified_time" content="2024-07-24T14:50:31.957Z">
 <meta property="article:author" content="gwanhyeon Kim">
 <meta property="article:tag" content="WEB">
 <meta property="article:tag" content="WAS">
@@ -180,7 +180,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-        WEB WAS는 어떻게 동작할까?
+        리눅스 WEB WAS는 어떻게 동작할까?
         </h1>
     
 
@@ -213,7 +213,7 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="1-web-wasyi-dongjaggwajeong"><a href="#1-web-wasyi-dongjaggwajeong" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#1-web-was의-동작과정"></a> 1. WEB WAS의 동작과정</h1>
+            <h1 id="web-wasyi-dongjaggwajeong"><a href="#web-wasyi-dongjaggwajeong" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#web-was의-동작과정"></a> WEB WAS의 동작과정</h1>
 <ol>
 <li>
 <p>클라이언트 요청 수신<br>
@@ -252,7 +252,7 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
 <p>요약</p>
 </blockquote>
 <p>전체적으로 보면 웹서버(Apache)에서 보통 정적 파일 요청을 담당하고 리버스 프록시를 통해 동적자원을 처리하는 WAS로 로드밸런싱 처리를 진행하고 Database, Transaction 등 여러 서비스와의 통신을 담당한 후 다시 웹서버로 자원을 전송하여 웹서버는 응답값을 클라이언트에 전송하는 과정을 가지게 됩니다.</p>
-<h1 id="2-wasyi-seoljeongpaileun-mueosi-isseulgga"><a href="#2-wasyi-seoljeongpaileun-mueosi-isseulgga" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#2-was의-설정파일은-무엇이-있을까"></a> 2. WAS의 설정파일은 무엇이 있을까?</h1>
+<h1 id="wasyi-seoljeongpaileun-mueosi-isseulgga"><a href="#wasyi-seoljeongpaileun-mueosi-isseulgga" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#was의-설정파일은-무엇이-있을까"></a> WAS의 설정파일은 무엇이 있을까?</h1>
 <ol>
 <li>
 <p><strong>server.xml</strong>:<br>
@@ -342,7 +342,7 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "WEB WAS는 어떻게 동작할까?",
+        "headline": "리눅스 WEB WAS는 어떻게 동작할까?",
         "image": "http://gwanhyeon.github.io",
         "keywords": "WEB WAS",
         "genre": "Server Infra",
@@ -350,7 +350,7 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
         "dateCreated": "2024-07-24",
         "dateModified": "2024-07-24",
         "url": "http://gwanhyeon.github.io/Infra-20240724-linux-was-web-workflow/",
-        "description": "1.  1. WEB WAS의 동작과정
+        "description": "1.  WEB WAS의 동작과정
 
 
 클라이언트 요청 수신
@@ -362,8 +362,9 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
 
 
 정적 자원 처리
-요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니",
-        "wordCount": 318
+요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니다.
+",
+        "wordCount": 316
     }
 </script>
 
@@ -432,7 +433,7 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/infra/">Infra</a></p>
-                            <p class="item-title"><a href="/Infra-20240724-linux-was-web-workflow/" class="title">WEB WAS는 어떻게 동작할까?</a></p>
+                            <p class="item-title"><a href="/Infra-20240724-linux-was-web-workflow/" class="title">리눅스 WEB WAS는 어떻게 동작할까?</a></p>
                             <p class="item-date"><time datetime="2024-07-24T14:35:27.000Z" itemprop="datePublished">2024-07-24</time></p>
                         </div>
                     </li>

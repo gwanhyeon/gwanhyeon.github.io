@@ -10,15 +10,15 @@
     
     <meta name="keywords" content="WEB,WAS" />
     
-    <meta name="description" content="1.  리눅스에서 Apache Gateway 설정하기 1.1.  1. Apache 설치 12sudo apt updatesudo apt install apache2 1.2.  2. proxy module 활성화 12sudo a2enmod proxysudo a2enmod proxy_http 리버스 프록시 설정을 진행합니다. a2enmod는 리버스 프록시 설정을">
+    <meta name="description" content="1.  리눅스에서 Apache Gateway 설정하기 1.1.  Apache 설치 12sudo apt updatesudo apt install apache2 1.2.  proxy module 활성화 12sudo a2enmod proxysudo a2enmod proxy_http 리버스 프록시 설정을 진행합니다. a2enmod는 리버스 프록시 설정을 활성화 시">
 <meta property="og:type" content="article">
 <meta property="og:title" content="리눅스 Apache 웹서버 게이트웨이 설정">
 <meta property="og:url" content="http://gwanhyeon.github.io/Infra-20240724-linux-apache-gateway-configuration/index.html">
 <meta property="og:site_name" content="Gwanhyeon IT Blog">
-<meta property="og:description" content="1.  리눅스에서 Apache Gateway 설정하기 1.1.  1. Apache 설치 12sudo apt updatesudo apt install apache2 1.2.  2. proxy module 활성화 12sudo a2enmod proxysudo a2enmod proxy_http 리버스 프록시 설정을 진행합니다. a2enmod는 리버스 프록시 설정을">
+<meta property="og:description" content="1.  리눅스에서 Apache Gateway 설정하기 1.1.  Apache 설치 12sudo apt updatesudo apt install apache2 1.2.  proxy module 활성화 12sudo a2enmod proxysudo a2enmod proxy_http 리버스 프록시 설정을 진행합니다. a2enmod는 리버스 프록시 설정을 활성화 시">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2024-07-24T14:10:32.000Z">
-<meta property="article:modified_time" content="2024-07-24T14:34:18.294Z">
+<meta property="article:modified_time" content="2024-07-24T14:50:18.213Z">
 <meta property="article:author" content="gwanhyeon Kim">
 <meta property="article:tag" content="WEB">
 <meta property="article:tag" content="WAS">
@@ -214,23 +214,23 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <h1 id="rinugseueseo-apache-gateway-seoljeonghagi"><a href="#rinugseueseo-apache-gateway-seoljeonghagi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#리눅스에서-apache-gateway-설정하기"></a> 리눅스에서 Apache Gateway 설정하기</h1>
-<h3 id="1-apache-seolci"><a href="#1-apache-seolci" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-apache-설치"></a> 1. Apache 설치</h3>
+<h3 id="apache-seolci"><a href="#apache-seolci" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#apache-설치"></a> Apache 설치</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install apache2</span><br></pre></td></tr></table></figure>
-<h3 id="2-proxy-module-hwalseonghwa"><a href="#2-proxy-module-hwalseonghwa" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-proxy-module-활성화"></a> 2. proxy module 활성화</h3>
+<h3 id="proxy-module-hwalseonghwa"><a href="#proxy-module-hwalseonghwa" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#proxy-module-활성화"></a> proxy module 활성화</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo a2enmod proxy</span><br><span class="line">sudo a2enmod proxy_http</span><br></pre></td></tr></table></figure>
 <p>리버스 프록시 설정을 진행합니다. a2enmod는 리버스 프록시 설정을 활성화 시켜주는 명령어입니다.</p>
-<h3 id="3-apache-seoljeong-pail"><a href="#3-apache-seoljeong-pail" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-apache-설정-파일"></a> 3. Apache 설정 파일</h3>
+<h3 id="apache-seoljeong-pail"><a href="#apache-seoljeong-pail" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#apache-설정-파일"></a> Apache 설정 파일</h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apache2/sites-available/000-default.conf</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    ServerAdmin webmaster@localhost</span><br><span class="line">    DocumentRoot /var/www/html</span><br><span class="line"></span><br><span class="line">    ProxyPass / &#123;실제 WAS Domain&#125;</span><br><span class="line">    ProxyPassReverse / &#123;실제 WAS Domain&#125;</span><br><span class="line"></span><br><span class="line">    ErrorLog $&#123;APACHE_LOG_DIR&#125;/error.log</span><br><span class="line">    CustomLog $&#123;APACHE_LOG_DIR&#125;/access.log combined</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="4-apache-jaegidong"><a href="#4-apache-jaegidong" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-apache-재기동"></a> 4. Apache 재기동</h3>
+<h3 id="apache-jaegidong"><a href="#apache-jaegidong" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#apache-재기동"></a> Apache 재기동</h3>
 <p>아파치 재기동을 해주지 않으면 시스템 설정이 처리되지 않습니다. 반드시 진행해주셔야합니다.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apache2ctl configtest</span><br><span class="line">sudo systemctl restart apache2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>이렇게 처리되면 웹서버인 Apache에서 클라이언트의 요청을 WAS 리버스 프록시를 통해 전달하게 됩니다.</p>
 <h1 id="apache-web-seobeoyi-gasang-hoseuteu-virtual-host-mic-ssl-seoljeong"><a href="#apache-web-seobeoyi-gasang-hoseuteu-virtual-host-mic-ssl-seoljeong" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#apache-웹-서버의-가상-호스트virtual-host-및-ssl-설정"></a> Apache 웹 서버의 가상 호스트(Virtual Host) 및 SSL 설정</h1>
-<h3 id="1-httpd-vhosts-conf"><a href="#1-httpd-vhosts-conf" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#1httpd-vhostsconf"></a> 1.httpd-vhosts.conf</h3>
+<h3 id="httpd-vhosts-conf"><a href="#httpd-vhosts-conf" class="header-anchor">2.1. </a><a class="markdownIt-Anchor" href="#httpd-vhostsconf"></a> httpd-vhosts.conf</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">    ServerAdmin admin@example.com</span><br><span class="line">    DocumentRoot &quot;/var/www/example&quot;</span><br><span class="line">    ServerName &#123;test.com&#125;</span><br><span class="line">    ErrorLog &quot;/var/log/httpd/example-error.log&quot;</span><br><span class="line">    CustomLog &quot;/var/log/httpd/example-access.log&quot; common</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
 <p>해당 설정을 통해 ServerName : <a target="_blank" rel="noopener" href="http://test.com">test.com</a> 도메인에 대해서 HTTP 80 포트 요청 처리를 하는 가상호스트를 정의할 수 있습니다.</p>
-<h3 id="2-httpd-ssl-conf"><a href="#2-httpd-ssl-conf" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#2-httpd-sslconf"></a> 2. httpd-ssl.conf</h3>
+<h3 id="httpd-ssl-conf"><a href="#httpd-ssl-conf" class="header-anchor">2.2. </a><a class="markdownIt-Anchor" href="#httpd-sslconf"></a> httpd-ssl.conf</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost _default_:443&gt;</span><br><span class="line">    ServerAdmin admin@example.com</span><br><span class="line">    DocumentRoot &quot;/var/www/secure&quot;</span><br><span class="line">    ServerName secure.example.com</span><br><span class="line">    SSLEngine on.                                       ---- SSL 인증서와 개인키 파일을 지정해서 처리합니다. </span><br><span class="line">    SSLCertificateFile &quot;/path/to/your_domain_name.crt&quot;</span><br><span class="line">    SSLCertificateKeyFile &quot;/path/to/your_private.key&quot;</span><br><span class="line">    SSLCertificateChainFile &quot;/path/to/DigiCertCA.crt&quot;</span><br><span class="line">    ErrorLog &quot;/var/log/httpd/secure-error.log&quot;</span><br><span class="line">    CustomLog &quot;/var/log/httpd/secure-access.log&quot; common</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
 <p>이 파일은 Apache 웹 서버에서 SSL/TLS 암호화 통신을 설정하는 데 사용되고, 주로 HTTPS를 지원하는 웹사이트를 설정하기 위해 사용됩니다. SSL을 사용하여 데이터 전송을 암호화하고 보안을 강화할 수 있습니다. 그리고 SSL 설정을 할 수 있는데, crt, key 파일 설정을 통해 SSL을 적용할 수 있습니다.</p>
 <h1 id="geiteuwei-seoljeonggwayi-caijeom"><a href="#geiteuwei-seoljeonggwayi-caijeom" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#게이트웨이-설정과의-차이점"></a> 게이트웨이 설정과의 차이점</h1>
@@ -317,12 +317,12 @@ ga('send', 'pageview');
         "dateModified": "2024-07-24",
         "url": "http://gwanhyeon.github.io/Infra-20240724-linux-apache-gateway-configuration/",
         "description": "1.  리눅스에서 Apache Gateway 설정하기
-1.1.  1. Apache 설치
+1.1.  Apache 설치
 12sudo apt updatesudo apt install apache2
-1.2.  2. proxy module 활성화
+1.2.  proxy module 활성화
 12sudo a2enmod proxysudo a2enmod proxy_http
-리버스 프록시 설정을 진행합니다. a2enmod는 리버스 프록시 설정을",
-        "wordCount": 539
+리버스 프록시 설정을 진행합니다. a2enmod는 리버스 프록시 설정을 활성화 시",
+        "wordCount": 534
     }
 </script>
 
@@ -369,7 +369,7 @@ ga('send', 'pageview');
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            WEB WAS는 어떻게 동작할까?
+            리눅스 WEB WAS는 어떻게 동작할까?
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
@@ -401,7 +401,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/infra/">Infra</a></p>
-                            <p class="item-title"><a href="/Infra-20240724-linux-was-web-workflow/" class="title">WEB WAS는 어떻게 동작할까?</a></p>
+                            <p class="item-title"><a href="/Infra-20240724-linux-was-web-workflow/" class="title">리눅스 WEB WAS는 어떻게 동작할까?</a></p>
                             <p class="item-date"><time datetime="2024-07-24T14:35:27.000Z" itemprop="datePublished">2024-07-24</time></p>
                         </div>
                     </li>
