@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Infra-20240724-linux-apache-gateway-configuration/</loc>
+        <lastmod>2024-07-24T14:28:50.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Spring-20220804-spring-responsebody/</loc>
         <lastmod>2022-08-03T15:48:39.109Z</lastmod>
         <changefreq>weekly</changefreq>
