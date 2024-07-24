@@ -4,28 +4,27 @@
     
 
     
-    <title>리눅스 WEB WAS는 어떻게 동작할까? | Gwanhyeon IT Blog</title>
+    <title>리눅스 crontab 스케줄링 | Gwanhyeon IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="WEB,WAS" />
+    <meta name="keywords" content="Infra" />
     
-    <meta name="description" content="1.  WEB WAS의 동작과정   클라이언트 요청 수신 웹 서버는 클라이언트로부터 HTTP 요청을 받습니다. 이 요청은 주로 웹 브라우저를 통해 발생합니다.   요청 분석 웹 서버는 받은 요청을 분석하여 요청된 자원 및 요청 방식(CRUD)를 확인합니다.   정적 자원 처리 요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니다.">
+    <meta name="description" content="1.  Crontab 정의  crontab은 리눅스 및 유닉스 계열 운영체제에서 주기적으로 명령어나 스크립트를 실행하기 위해 사용하는 스케줄링 도구입니다. cron은 시스템의 백그라운드에서 동작하며, 정해진 시간과 주기에 따라 사용자나 시스템의 작업을 자동으로 수행합니다. crontab은 이러한 작업을 설정하고 관리하는 데 사용되는 파일 또는 명령어를 의미">
 <meta property="og:type" content="article">
-<meta property="og:title" content="리눅스 WEB WAS는 어떻게 동작할까?">
-<meta property="og:url" content="http://gwanhyeon.github.io/Infra-20240724-linux-was-web-workflow/index.html">
+<meta property="og:title" content="리눅스 crontab 스케줄링">
+<meta property="og:url" content="http://gwanhyeon.github.io/Infra-20240610-linux-crontab/index.html">
 <meta property="og:site_name" content="Gwanhyeon IT Blog">
-<meta property="og:description" content="1.  WEB WAS의 동작과정   클라이언트 요청 수신 웹 서버는 클라이언트로부터 HTTP 요청을 받습니다. 이 요청은 주로 웹 브라우저를 통해 발생합니다.   요청 분석 웹 서버는 받은 요청을 분석하여 요청된 자원 및 요청 방식(CRUD)를 확인합니다.   정적 자원 처리 요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니다.">
+<meta property="og:description" content="1.  Crontab 정의  crontab은 리눅스 및 유닉스 계열 운영체제에서 주기적으로 명령어나 스크립트를 실행하기 위해 사용하는 스케줄링 도구입니다. cron은 시스템의 백그라운드에서 동작하며, 정해진 시간과 주기에 따라 사용자나 시스템의 작업을 자동으로 수행합니다. crontab은 이러한 작업을 설정하고 관리하는 데 사용되는 파일 또는 명령어를 의미">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2024-07-24T14:35:27.000Z">
-<meta property="article:modified_time" content="2024-07-24T14:51:32.376Z">
+<meta property="article:published_time" content="2024-06-10T14:52:34.000Z">
+<meta property="article:modified_time" content="2024-07-24T15:00:06.622Z">
 <meta property="article:author" content="gwanhyeon Kim">
-<meta property="article:tag" content="WEB">
-<meta property="article:tag" content="WAS">
+<meta property="article:tag" content="Infra">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/infra-20240724-linux-was-web-workflow/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/infra-20240610-linux-crontab/"/>
     
 
     
@@ -173,14 +172,14 @@ ga('send', 'pageview');
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Infra-20240724-linux-was-web-workflow" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Infra-20240610-linux-crontab" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        리눅스 WEB WAS는 어떻게 동작할까?
+        리눅스 crontab 스케줄링
         </h1>
     
 
@@ -191,8 +190,8 @@ ga('send', 'pageview');
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/Infra-20240724-linux-was-web-workflow/" class="article-date">
-         <time datetime="2024-07-24T14:35:27.000Z" itemprop="datePublished">2024-07-24</time>
+      <a href="/Infra-20240610-linux-crontab/" class="article-date">
+         <time datetime="2024-06-10T14:52:34.000Z" itemprop="datePublished">2024-06-10</time>
       </a>
     </div>
 
@@ -202,7 +201,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/was/" rel="tag">WAS</a>, <a class="tag-link-link" href="/tags/web/" rel="tag">WEB</a>
+        <a class="tag-link-link" href="/tags/infra/" rel="tag">Infra</a>
     </div>
 
                 
@@ -213,65 +212,52 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="web-wasyi-dongjaggwajeong"><a href="#web-wasyi-dongjaggwajeong" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#web-was의-동작과정"></a> WEB WAS의 동작과정</h1>
-<ol>
-<li>
-<p>클라이언트 요청 수신<br>
-웹 서버는 클라이언트로부터 HTTP 요청을 받습니다. 이 요청은 주로 웹 브라우저를 통해 발생합니다.</p>
-</li>
-<li>
-<p>요청 분석<br>
-웹 서버는 받은 요청을 분석하여 요청된 자원 및 요청 방식(CRUD)를 확인합니다.</p>
-</li>
-<li>
-<p>정적 자원 처리<br>
-요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니다.</p>
-</li>
-<li>
-<p>동적 자원 처리<br>
-요청된 자원이 동적인 경우(Servlet) 에는 웹 서버가 WAS로 해당 요청을 전달합니다.</p>
-</li>
-<li>
-<p>WAS로 요청 전달<br>
-웹 서버는 동적 자원에 대한 요청을 WAS로 전달합니다. 이때 일반적으로 HTTP, HTTPS 등을 통해 통신합니다.</p>
-</li>
-<li>
-<p>요청 처리<br>
-WAS는 받은 요청을 처리하고, DB(Mybatis, JPA 등)다른 서비스와의 통신을 통해 요청에 대한 응답을 생성합니다.</p>
-</li>
-<li>
-<p>응답 전송<br>
-WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
-</li>
-<li>
-<p>클라이언트 응답<br>
-웹 서버는 받은 응답을 클라이언트에게 전달하여 사용자에게 보여줍니다.</p>
-</li>
-</ol>
-<blockquote>
-<p>요약</p>
-</blockquote>
-<p>전체적으로 보면 웹서버(Apache)에서 보통 정적 파일 요청을 담당하고 리버스 프록시를 통해 동적자원을 처리하는 WAS로 로드밸런싱 처리를 진행하고 Database, Transaction 등 여러 서비스와의 통신을 담당한 후 다시 웹서버로 자원을 전송하여 웹서버는 응답값을 클라이언트에 전송하는 과정을 가지게 됩니다.</p>
-<h1 id="wasyi-seoljeongpaileun-mueosi-isseulgga"><a href="#wasyi-seoljeongpaileun-mueosi-isseulgga" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#was의-설정파일은-무엇이-있을까"></a> WAS의 설정파일은 무엇이 있을까?</h1>
-<ol>
-<li>
-<p><strong>server.xml</strong>:<br>
-톰캣의 주요 설정 파일 중 하나로, <code>톰캣 서버의 설정</code>을 담당합니다. 일반적으로 <strong><code>&lt;톰캣 설치 디렉토리&gt;/conf/server.xml</code></strong> 경로에 위치합니다. 이 파일에서는 <code>포트, 가상 호스트, SSL 설정</code> 등을 관리할 수 있습니다. 주의해야 할 점은, 이 파일을 수정할 때 톰캣을 다시 시작해야 변경 사항이 적용됩니다.</p>
-</li>
-<li>
-<p><strong>web.xml</strong>:<br>
-웹 애플리케이션의 설정 파일로, 각 웹 애플리케이션마다 별도로 존재합니다. 일반적으로 각 웹 애플리케이션의 <strong><code>WEB-INF/web.xml</code></strong> 경로에 위치합니다. 이 파일에서는 <code>서블릿 매핑, 필터 설정, 에러 페이지</code> 등과 같은 웹 애플리케이션의 세부적인 설정을 관리할 수 있습니다.</p>
-</li>
-<li>
-<p><strong>context.xml</strong>:<br>
-톰캣 컨텍스트의 설정 파일로, 각 웹 애플리케이션마다 별도로 존재합니다. 일반적으로 각 웹 애플리케이션의 <strong><code>META-INF/context.xml</code></strong> 경로에 위치합니다. 이 파일에서는 <code>데이터베이스 연결 설정, 리소스 설정</code> 등과 같은 컨텍스트 수준의 설정을 관리할 수 있습니다.</p>
-</li>
-<li>
-<p><strong><a target="_blank" rel="noopener" href="http://setenv.sh">setenv.sh</a></strong>:<br>
-이 파일은 톰캣 실행 환경 변수를 설정하는 데 사용됩니다. 주로 <code>메모리 설정 (예: JVM 메모리 크기), 시스템 속성, 환경 변수</code> 등을 설정할 때 사용됩니다. 이 파일은 <strong><code>&lt;톰캣 설치 디렉토리&gt;/bin/</code></strong> 경로에 있으며, 필요에 따라 생성하고 수정할 수 있습니다.</p>
-</li>
-</ol>
-<p>주로 WAS(Tomcat)에서 설정 파일들의 특성을 알아보았습니다. 이것들은 실무에서 반드시 알아야할 필수불가결한 중요한 요소라고 생각이 됩니다. 운영시 인프라 이러한 WAS 설정파일에 대한 이해는 여러 장애상황에서 빠른 대응이 가능할 것으로 보여집니다.</p>
+            <h1 id="crontab-jeongyi"><a href="#crontab-jeongyi" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#crontab-정의"></a> Crontab 정의</h1>
+<ul>
+<li><code>crontab</code>은 리눅스 및 유닉스 계열 운영체제에서 주기적으로 명령어나 스크립트를 실행하기 위해 사용하는 스케줄링 도구입니다.</li>
+<li><code>cron</code>은 시스템의 백그라운드에서 동작하며, 정해진 시간과 주기에 따라 사용자나 시스템의 작업을 자동으로 수행합니다.</li>
+<li><code>crontab</code>은 이러한 작업을 설정하고 관리하는 데 사용되는 파일 또는 명령어를 의미합니다.</li>
+<li>주로 시스템 Batch 시스템에 사용되며 <code>crontab</code>을 사용하면 시스템 관리 및 반복 작업을 자동화 할 수 있습니다.</li>
+</ul>
+<h3 id="1-gibon-gaenyeomgwa-gujo"><a href="#1-gibon-gaenyeomgwa-gujo" class="header-anchor">1.1. </a><a class="markdownIt-Anchor" href="#1-기본-개념과-구조"></a> 1. <strong>기본 개념과 구조</strong></h3>
+<p><code>crontab</code> 파일에는 작업 스케줄과 실행할 명령어가 포함되어 있습니다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* * * * * command</span><br><span class="line">┬ ┬ ┬ ┬ ┬</span><br><span class="line">│ │ │ │ │</span><br><span class="line">│ │ │ │ └─ 요일 (0-7, 0과 7은 일요일)</span><br><span class="line">│ │ │ └── 월 (1-12)</span><br><span class="line">│ │ └─── 일 (1-31)</span><br><span class="line">│ └──── 시 (0-23)</span><br><span class="line">└───── 분 (0-59)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>*</code> (별표)는 모든 가능한 값을 의미합니다.</li>
+<li>숫자는 해당 시간/날짜에 작업을 실행함을 의미합니다.</li>
+<li><code>command</code>는 실행할 명령어 또는 스크립트를 나타냅니다.</li>
+</ul>
+<p>예를 들어, <code>0 2 * * * /path/to/backup.sh</code>는 매일 오전 2시에 <code>backup.sh</code> 스크립트를 실행합니다.</p>
+<h3 id="2-crontab-myeongryeongeo"><a href="#2-crontab-myeongryeongeo" class="header-anchor">1.2. </a><a class="markdownIt-Anchor" href="#2-crontab-명령어"></a> 2. <strong>crontab 명령어</strong></h3>
+<p><code>crontab</code> 명령어를 사용하여 작업을 관리할 수 있습니다.</p>
+<ul>
+<li><code>crontab -e</code>: 현재 사용자의 <code>crontab</code> 파일을 편집합니다. 기본 텍스트 편집기가 열리며, 여기서 작업을 추가하거나 수정할 수 있습니다.</li>
+<li><code>crontab -l</code>: 현재 사용자의 <code>crontab</code>을 목록으로 표시합니다.</li>
+<li><code>crontab -r</code>: 현재 사용자의 <code>crontab</code>을 삭제합니다.</li>
+<li><code>crontab -u username -e</code>: 다른 사용자의 <code>crontab</code>을 편집합니다(관리자 권한 필요).</li>
+</ul>
+<h3 id="3-seukejul-hyeongsig-yesi"><a href="#3-seukejul-hyeongsig-yesi" class="header-anchor">1.3. </a><a class="markdownIt-Anchor" href="#3-스케줄-형식-예시"></a> 3. <strong>스케줄 형식 예시</strong></h3>
+<ul>
+<li><code>0 0 * * *</code> : 매일 자정(00:00)에 실행.</li>
+<li><code>*/5 * * * *</code> : 매 5분마다 실행.</li>
+<li><code>0 9 * * 1-5</code> : 월요일부터 금요일까지 매일 아침 9시에 실행.</li>
+<li><code>0 0 1 * *</code> : 매월 1일 자정에 실행.</li>
+</ul>
+<h3 id="4-teugbyeol-munjayeol"><a href="#4-teugbyeol-munjayeol" class="header-anchor">1.4. </a><a class="markdownIt-Anchor" href="#4-특별-문자열"></a> 4. <strong>특별 문자열</strong></h3>
+<p><code>crontab</code>은 특별 문자열을 지원하여 일반적인 스케줄링을 더 쉽게 설정할 수 있습니다.</p>
+<ul>
+<li><code>@reboot</code>: 시스템이 부팅될 때마다 실행.</li>
+<li><code>@daily</code> 또는 <code>@midnight</code>: 매일 자정에 실행.</li>
+<li><code>@hourly</code>: 매 시간 정각에 실행.</li>
+<li><code>@weekly</code>: 매주 일요일 자정에 실행.</li>
+<li><code>@monthly</code>: 매월 1일 자정에 실행.</li>
+<li><code>@yearly</code> 또는 <code>@annually</code>: 매년 1월 1일 자정에 실행.</li>
+</ul>
+<h3 id="5-hwangyeong-byeonsuwa-culryeog"><a href="#5-hwangyeong-byeonsuwa-culryeog" class="header-anchor">1.5. </a><a class="markdownIt-Anchor" href="#5-환경-변수와-출력"></a> 5. <strong>환경 변수와 출력</strong></h3>
+<p><code>crontab</code>에서 사용되는 명령어는 사용자의 환경 변수를 따릅니다. 필요 시 명시적으로 설정해야 합니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 2 * * * /path/to/script.sh &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>위 예시에서 <code>&gt; /dev/null 2&gt;&amp;1</code>는 모든 출력과 오류를 무시할 수 있습니다. 특히 find 명령어를 사용할때 Permission 권한으로 인한 여러 출력오류를 나타나지 않게 할 수 있습니다.</p>
+<p>주로 다양한 배치시스템이 백오피스나 매일, 매주, 매달마다 집계가 필요한 시스템 쿼리를 사용해야할 경우, crontab을 사용하면 효율적으로 관리가 가능합니다.</p>
 
         </div>
         <footer class="article-footer">
@@ -342,29 +328,20 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
             "@type": "Person",
             "name": "gwanhyeon Kim"
         },
-        "headline": "리눅스 WEB WAS는 어떻게 동작할까?",
+        "headline": "리눅스 crontab 스케줄링",
         "image": "http://gwanhyeon.github.io",
-        "keywords": "WEB WAS",
+        "keywords": "Infra",
         "genre": "Server Infra",
-        "datePublished": "2024-07-24",
-        "dateCreated": "2024-07-24",
-        "dateModified": "2024-07-24",
-        "url": "http://gwanhyeon.github.io/Infra-20240724-linux-was-web-workflow/",
-        "description": "1.  WEB WAS의 동작과정
+        "datePublished": "2024-06-10",
+        "dateCreated": "2024-06-10",
+        "dateModified": "2024-07-25",
+        "url": "http://gwanhyeon.github.io/Infra-20240610-linux-crontab/",
+        "description": "1.  Crontab 정의
 
-
-클라이언트 요청 수신
-웹 서버는 클라이언트로부터 HTTP 요청을 받습니다. 이 요청은 주로 웹 브라우저를 통해 발생합니다.
-
-
-요청 분석
-웹 서버는 받은 요청을 분석하여 요청된 자원 및 요청 방식(CRUD)를 확인합니다.
-
-
-정적 자원 처리
-요청된 자원이 정적인 경우(이미지 파일) 웹 서버 자체적으로 자원을 찾아냅니다.
-",
-        "wordCount": 314
+crontab은 리눅스 및 유닉스 계열 운영체제에서 주기적으로 명령어나 스크립트를 실행하기 위해 사용하는 스케줄링 도구입니다.
+cron은 시스템의 백그라운드에서 동작하며, 정해진 시간과 주기에 따라 사용자나 시스템의 작업을 자동으로 수행합니다.
+crontab은 이러한 작업을 설정하고 관리하는 데 사용되는 파일 또는 명령어를 의미",
+        "wordCount": 380
     }
 </script>
 
@@ -407,20 +384,10 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
         
 <nav id="article-nav">
     
-        <a href="/Infra-20240724-linux-crontab/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            리눅스 crontab 스케줄링
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/Infra-20240724-linux-apache-gateway-configuration/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/Infra-20240524-linux-was-web-workflow/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">리눅스 Apache 웹서버 게이트웨이 설정</p>
+        <p class="article-nav-title">리눅스 WEB WAS는 어떻게 동작할까?</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -443,8 +410,8 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/infra/">Infra</a></p>
-                            <p class="item-title"><a href="/Infra-20240724-linux-crontab/" class="title">리눅스 crontab 스케줄링</a></p>
-                            <p class="item-date"><time datetime="2024-07-24T14:52:34.000Z" itemprop="datePublished">2024-07-24</time></p>
+                            <p class="item-title"><a href="/Infra-20240610-linux-crontab/" class="title">리눅스 crontab 스케줄링</a></p>
+                            <p class="item-date"><time datetime="2024-06-10T14:52:34.000Z" itemprop="datePublished">2024-06-10</time></p>
                         </div>
                     </li>
                 
@@ -452,8 +419,8 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/infra/">Infra</a></p>
-                            <p class="item-title"><a href="/Infra-20240724-linux-was-web-workflow/" class="title">리눅스 WEB WAS는 어떻게 동작할까?</a></p>
-                            <p class="item-date"><time datetime="2024-07-24T14:35:27.000Z" itemprop="datePublished">2024-07-24</time></p>
+                            <p class="item-title"><a href="/Infra-20240524-linux-was-web-workflow/" class="title">리눅스 WEB WAS는 어떻게 동작할까?</a></p>
+                            <p class="item-date"><time datetime="2024-05-24T13:35:27.000Z" itemprop="datePublished">2024-05-24</time></p>
                         </div>
                     </li>
                 
@@ -461,8 +428,8 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/infra/">Infra</a></p>
-                            <p class="item-title"><a href="/Infra-20240724-linux-apache-gateway-configuration/" class="title">리눅스 Apache 웹서버 게이트웨이 설정</a></p>
-                            <p class="item-date"><time datetime="2024-07-24T14:10:32.000Z" itemprop="datePublished">2024-07-24</time></p>
+                            <p class="item-title"><a href="/Infra-20240424-linux-apache-gateway-configuration/" class="title">리눅스 Apache 웹서버 게이트웨이 설정</a></p>
+                            <p class="item-date"><time datetime="2024-04-24T05:10:32.000Z" itemprop="datePublished">2024-04-24</time></p>
                         </div>
                     </li>
                 
@@ -567,7 +534,7 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/Infra-20240724-linux-was-web-workflow/';
+    var disqus_url = 'http://gwanhyeon.github.io/Infra-20240610-linux-crontab/';
     
     (function() {
     var dsq = document.createElement('script');
