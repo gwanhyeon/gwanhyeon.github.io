@@ -3734,7 +3734,7 @@ WAS는 처리한 결과를 다시 웹 서버로 전송합니다.</p>
 톰캣 컨텍스트의 설정 파일로, 각 웹 애플리케이션마다 별도로 존재합니다. 일반적으로 각 웹 애플리케이션의 <strong><code>META-INF/context.xml</code></strong> 경로에 위치합니다. 이 파일에서는 <code>데이터베이스 연결 설정, 리소스 설정</code> 등과 같은 컨텍스트 수준의 설정을 관리할 수 있습니다.</p>
 </li>
 <li>
-<p><strong><a href="http://setenv.sh">setenv.sh</a> 또는 setenv.bat</strong>:<br>
+<p><strong><a href="http://setenv.sh">setenv.sh</a></strong>:<br>
 이 파일은 톰캣 실행 환경 변수를 설정하는 데 사용됩니다. 주로 <code>메모리 설정 (예: JVM 메모리 크기), 시스템 속성, 환경 변수</code> 등을 설정할 때 사용됩니다. 이 파일은 <strong><code>&lt;톰캣 설치 디렉토리&gt;/bin/</code></strong> 경로에 있으며, 필요에 따라 생성하고 수정할 수 있습니다.</p>
 </li>
 </ol>
