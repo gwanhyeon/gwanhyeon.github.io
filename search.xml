@@ -13510,4 +13510,40 @@ DI를 위한 빈 팩토리에 엔터프라이즈 애플리케이션을 개발하
         <tag>IntelliJ</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Network NAS 마운트</title>
+    <url>/Network-20240729-network-nas/</url>
+    <content><![CDATA[<p>실무에서 개발을 하다보면 파일 시스템(File System) NAS와 마운트하여 WAS와 NAS간 네트워크 공유를 설정하여 데이터에 접근을 하게됩니다.</p>
+<p>파일 시스템에 접근하는 방식은 크게 네가지로 들 수 있습니다.</p>
+<ol>
+<li><strong>NAS 마운트</strong>:<br>
+NAS 서버의 파일 시스템을 WAS 서버에 마운트하여 로컬 파일 시스템처럼 사용하는 것입니다. 이를 위해 NFS(Network File System) 또는 SMB(Server Message Block)와 같은 프로토콜을 사용하여 NAS 공유를 WAS 서버에 마운트합니다.</li>
+<li><strong>네트워크 공유</strong>:<br>
+NAS서버에서 파일 공유하고 WAS 서버에서 해당 자원에 접근하게 됩니다. 이를 위해 WAS 서버에서 NAS 공유에 대한 네트워크 경로 및 인증정보를 통해서 접근합니다.</li>
+<li><strong>FTP 또는 SCP 등의 프로토콜 사용</strong>:<br>
+NAS 서버에서 FTP(File Transfer Protocol) 또는 SCP(Secure Copy Protocol)와 같은 프로토콜을 사용하여 파일을 WAS 서버로 전송할 수 있습니다. 고전적인 배포방식에서 jar, war 파일을 직접 scp로 접근하여 처리하게 하는 시스템도 다수 있습니다.</li>
+<li><strong>웹 서비스를 통한 접근</strong>:<br>
+NAS 서버에서 웹 서비스를 실행하여 WAS 서버에서 HTTP 또는 HTTPS를 통해 리소스에 접근하게 됩니다.</li>
+</ol>
+<h1 id="nfsreul-tonghan-nas-maunteu"><a href="#nfsreul-tonghan-nas-maunteu" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#nfs를-통한-nas-마운트"></a> NFS를 통한 NAS 마운트</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nfs-common</span><br><span class="line">sudo mount -t nfs [NAS_IP]:[공유_디렉토리_경로] [로컬_마운트_폴더]</span><br><span class="line"></span><br><span class="line">ex) sudo mount -t nfs 192.168.1.100:/sharedFileDirectory /mnt/nas</span><br><span class="line"></span><br><span class="line">/sharedFileDirectory 공유 디렉터리에서 /mnt/nas 로컬 경로에 마운트</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="smbreul-tonghan-nas-maunteu"><a href="#smbreul-tonghan-nas-maunteu" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#smb를-통한-nas-마운트"></a> SMB를 통한 NAS 마운트</h1>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install cifs-utils</span><br><span class="line"></span><br><span class="line">sudo mount -t cifs //192.168.1.100/shared /mnt/cifs -o username=gwanhyeon,password=1234,uid=1000,gid=1000</span><br><span class="line"></span><br><span class="line">NAS IP 주소가 192.168.1.100이고, 공유 이름이 shared이며, 로컬 시스템에서는 /mnt/cifs 폴더에 마운트하고 싶다고 가정합시다. 사용자 이름은 gwanhyeon이고 비밀번호는 1234이며, 로컬 사용자 ID와 그룹 ID는 각각 1000 이라는 의미를 갖습니다.</span><br></pre></td></tr></table></figure>
+<h1 id="manyag-yeoreogaeyi-naseu-gyeongroga-jonjaehal-gyeonguneun-eoddeohge-halgga"><a href="#manyag-yeoreogaeyi-naseu-gyeongroga-jonjaehal-gyeonguneun-eoddeohge-halgga" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#만약-여러개의-나스-경로가-존재할-경우는-어떻게-할까"></a> 만약 여러개의 나스 경로가 존재할 경우는 어떻게 할까?</h1>
+<p>glusterfs를 설치하여 해당되는 나스 경로를 볼륨 클러스터를 생성해줍니다.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install glusterfs-server -y</span><br><span class="line">sudo gluster peer probe nas2</span><br><span class="line">sudo gluster peer probe nas3</span><br><span class="line">sudo gluster volume create gv0 replica 3 nas1:/data nas2:/data nas3:/data force</span><br><span class="line">sudo gluster volume start gv0</span><br><span class="line"></span><br><span class="line">gv0의 볼륨을 생성한 후 /data 각 서버의 디렉터리이며 모든 파일이 3개의 서버에 복제시킨다는 의미입니다.</span><br></pre></td></tr></table></figure>
+<p>클라이언트에서 sudo mount -t glusterfs nas1:/gv0 /mnt/glusterfs 의 명령어로 볼륨을 마운트 할 수 있습니다.</p>
+<blockquote>
+<p>참고</p>
+</blockquote>
+<p>윈도우에서는 기본적으로 NFS를 지원하지 않기 때문에 클라이언트 소프트웨어를 직접 설치하여 사용해야합니다.</p>
+]]></content>
+      <categories>
+        <category>Network</category>
+      </categories>
+      <tags>
+        <tag>network</tag>
+        <tag>nas</tag>
+      </tags>
+  </entry>
 </search>

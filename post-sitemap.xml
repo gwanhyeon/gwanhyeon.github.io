@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Network-20240729-network-nas/</loc>
+        <lastmod>2024-07-29T14:23:53.771Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Infra-20240610-linux-crontab/</loc>
         <lastmod>2024-07-24T15:00:06.622Z</lastmod>
         <changefreq>weekly</changefreq>
