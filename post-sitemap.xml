@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Spring-20240730-spring-tdd-mockmvc/</loc>
+        <lastmod>2024-07-30T14:38:03.059Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Network-20240729-network-nas/</loc>
         <lastmod>2024-07-29T14:23:53.771Z</lastmod>
         <changefreq>weekly</changefreq>
