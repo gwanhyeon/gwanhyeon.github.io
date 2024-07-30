@@ -4,27 +4,20 @@
     
 
     
-    <title>Spring @DirtiesContext | Gwanhyeon IT Blog</title>
+    <title>아카이브: 2023/9 | Gwanhyeon IT Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="Spring" />
-    
-    <meta name="description" content="Spring DirtiesContext 스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 @DirtiesConte">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Spring @DirtiesContext">
-<meta property="og:url" content="http://gwanhyeon.github.io/Spring-20210514-spring-dirties-context/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Gwanhyeon IT Blog">
+<meta property="og:url" content="http://gwanhyeon.github.io/archives/2023/09/index.html">
 <meta property="og:site_name" content="Gwanhyeon IT Blog">
-<meta property="og:description" content="Spring DirtiesContext 스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 @DirtiesConte">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2021-05-14T07:14:33.000Z">
-<meta property="article:modified_time" content="2021-05-14T07:16:30.000Z">
 <meta property="article:author" content="gwanhyeon Kim">
-<meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
     
     <!--SEO 검색엔진 적용하기 -->
-    <link rel="canonical" href="http://gwanhyeon.github.io/spring-20210514-spring-dirties-context/"/>
+    <link rel="canonical" href="http://gwanhyeon.github.io/archives/2023/09/"/>
     
 
     
@@ -167,185 +160,56 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/server/spring/">Spring</a>
+    <i class="icon fa fa-archive"></i>아카이브: 2023/9
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-Spring-20210514-spring-dirties-context" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2023" class="archive-year"><i class="icon fa fa-calendar-o"></i>2023</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/language/">Language</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/language/kotlin/">Kotlin</a>
+            </div>
+            <div class="date"><time datetime="2023-09-16T14:50:58.000Z" itemprop="datePublished">2023-09-16</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        Spring @DirtiesContext
+        <a href="/Kotlin-20230916-Kotlin-envirenment-01/">01.What is Kotlin and Why use it?</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-    <div class="article-date">
-      <i class="fa fa-calendar"></i>
-      <a href="/Spring-20210514-spring-dirties-context/" class="article-date">
-         <time datetime="2021-05-14T07:14:33.000Z" itemprop="datePublished">2021-05-14</time>
-      </a>
+        <p class="article-excerpt">
+            1.  Kotlin이란?
+JetBrains에서 개발 한 정적으로 형식화 된 프로그래밍 언어입니다. 자바에 대한 기본지식 있다면 Kotilin을 금방 배울 수 있습니다.
+Kotlin과 자바는 상호 운용이 가능하므로 프로젝트에서 함께 사용할 수 있으며 Kotlin에서 자바 코드를 효율적으로 다시 작성할 수 있습니다. Kotlin은 특히 Java보다 간결합니다.
+        </p>
     </div>
-
-
-                
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/spring/" rel="tag">Spring</a>
-    </div>
-
-                
-
-                
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <p>Spring DirtiesContext</p>
-<p>스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 <code>@DirtiesContext</code> 이다.</p>
-<p>이 <code>@DirtiesContext</code> 어노테이션은 테스트를 수행전, 수행후, 각 테스트 케이스마다 수행하기 전, 수행한 이후에 Context를 재생성하는 역할을 한다.</p>
-<blockquote>
-<p>@DirtiesContext</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@DirtiesContext indicates that the underlying Spring ApplicationContext has been dirtied during the execution of a test (that is, the test modified or corrupted it in some manner — for example, by changing the state of a singleton bean) and should be closed. When an application context is marked as dirty, it is removed from the testing framework’s cache and closed. As a consequence, the underlying Spring container is rebuilt for any subsequent test that requires a context with the same configuration metadata.</span><br><span class="line">You can use @DirtiesContext as both a class-level and a method-level annotation within the same class or class hierarchy. In such scenarios, the ApplicationContext is marked as dirty before or after any such annotated method as well as before or after the current test class, depending on the configured methodMode and classMode.</span><br></pre></td></tr></table></figure>
-<p>doc.spring.io에 따르면 @DirtiesContext ApplicationContext 테스트를 실행하는동안 테스트 프레임워크의 캐시를 제거하고 닫게합니다. 결과적으로 기본 Spring Container에 동일한 구성 메타 데이터가 있는 컨텍스트를 필요로하는 후속 테스트를 위해 재 빌드된다고 나와있습니다.</p>
-<p>또한, 클래스 계층 구조내에서 클래스 수준 주석과 메서드 수준 수적으로 모두 사용할 수 있습니다.</p>
-<blockquote>
-<p>클래스 테스트 시작전 Context 재생성</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext(classMode = BEFORE_CLASS)</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>클래스 테스트 이후 Context 재생성</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextDirtyingTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that result in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>모든 테스트 케이스마다 시작하기 이전 Context 재생성</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FreshContextTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that require a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>모든 테스트케이스가 끝날때 마다 Context 재생성</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext(classMode = AFTER_EACH_TEST_METHOD)</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContextDirtyingTests</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some tests that result in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>특정 케이스 시작전 Context 재생성</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext(methodMode = BEFORE_METHOD)</span> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testProcessWhichRequiresFreshAppCtx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some logic that requires a new Spring container</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>특정 케이스 시작 이후 Context 재생성</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DirtiesContext</span> </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testProcessWhichDirtiesAppCtx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// some logic that results in the Spring container being dirtied</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Reference</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html">https://shortstories.gitbooks.io/studybook/content/dirtiescontext.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext">https://docs.spring.io/spring-framework/docs/current/reference/html/testing.html#spring-testing-annotation-dirtiescontext</a></p>
-
-        </div>
-        <footer class="article-footer">
-            
-
-
-    <div class="a2a_kit a2a_default_style">
-    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share">Share</a>
-    <span class="a2a_divider"></span>
-    <a class="a2a_button_facebook"></a>
-    <a class="a2a_button_twitter"></a>
-    <a class="a2a_button_google_plus"></a>
-    <a class="a2a_button_pinterest"></a>
-    <a class="a2a_button_tumblr"></a>
-</div>
-<script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
-<style>
-    .a2a_menu {
-        border-radius: 4px;
-    }
-    .a2a_menu a {
-        margin: 2px 0;
-        font-size: 14px;
-        line-height: 16px;
-        border-radius: 4px;
-        color: inherit !important;
-        font-family: 'Microsoft Yahei';
-    }
-    #a2apage_dropdown {
-        margin: 10px 0;
-    }
-    .a2a_mini_services {
-        padding: 10px;
-    }
-    a.a2a_i,
-    i.a2a_i {
-        width: 122px;
-        line-height: 16px;
-    }
-    a.a2a_i .a2a_svg,
-    a.a2a_more .a2a_svg {
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        vertical-align: top;
-        background-size: 16px;
-    }
-    a.a2a_i {
-        border: none !important;
-    }
-    a.a2a_menu_show_more_less {
-        margin: 0;
-        padding: 10px 0;
-        line-height: 16px;
-    }
-    .a2a_mini_services:after{content:".";display:block;height:0;clear:both;visibility:hidden}
-    .a2a_mini_services{*+height:1%;}
-</style>
-
-
-        </footer>
-    </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "gwanhyeon Kim"
-        },
-        "headline": "Spring @DirtiesContext",
-        "image": "http://gwanhyeon.github.io",
-        "keywords": "Spring",
-        "genre": "Server Spring",
-        "datePublished": "2021-05-14",
-        "dateCreated": "2021-05-14",
-        "dateModified": "2021-05-14",
-        "url": "http://gwanhyeon.github.io/Spring-20210514-spring-dirties-context/",
-        "description": "Spring DirtiesContext
-스프링 단위 테스트 진행시 단독으로 수행되던 코드들이 통합테스트시에 Context를 공유하여 올바른 값이 도출되지 않는 경우가 있다. 그 이유는 하나의 Spring TEST Context에서 기존의 Context를 재사용함에 따라 발생하는 문제이다. 이러한 문제들을 해결하기 위하여 필요한것들이 @DirtiesConte",
-        "wordCount": 463
-    }
-</script>
-
 </article>
-
-    <section id="comments">
     
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
-
+        </div>
     
-    </section>
+
+
+    </div></section>
 
 
 
@@ -370,29 +234,6 @@ ga('send', 'pageview');
     <div class="github-card" data-github="gwanhyeon" data-width="400" data-height="151" data-theme="default"></div>
     <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
     
-        
-<nav id="article-nav">
-    
-        <a href="/CleanCode-20210518-chapter05/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            CleanCode 05 형식 맞추기
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/CleanCode-20210502-chapter04/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">CleanCode 04 주석</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
-    
     <div class="widgets-container">
         
             
@@ -404,15 +245,6 @@ ga('send', 'pageview');
         <h3 class="widget-title">최근 글</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/spring/">Spring</a></p>
-                            <p class="item-title"><a href="/Spring-20240730-spring-tdd-mockmvc/" class="title">Spring TDD(MockMVC)</a></p>
-                            <p class="item-date"><time datetime="2024-07-30T14:26:52.000Z" itemprop="datePublished">2024-07-30</time></p>
-                        </div>
-                    </li>
                 
                     <li>
                         
@@ -447,6 +279,15 @@ ga('send', 'pageview');
                             <p class="item-category"><a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/infra/">Infra</a></p>
                             <p class="item-title"><a href="/Infra-20240424-linux-apache-gateway-configuration/" class="title">리눅스 Apache 웹서버 게이트웨이 설정</a></p>
                             <p class="item-date"><time datetime="2024-04-24T05:10:32.000Z" itemprop="datePublished">2024-04-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/server/">Server</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/server/spring/">Spring</a></p>
+                            <p class="item-title"><a href="/Spring-20240114-spring-dirties-context/" class="title">Spring @DirtiesContext</a></p>
+                            <p class="item-date"><time datetime="2024-01-14T07:14:33.000Z" itemprop="datePublished">2024-01-14</time></p>
                         </div>
                     </li>
                 
@@ -533,13 +374,11 @@ ga('send', 'pageview');
     var disqus_shortname = 'kgh-1';
     
     
-    var disqus_url = 'http://gwanhyeon.github.io/Spring-20210514-spring-dirties-context/';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
