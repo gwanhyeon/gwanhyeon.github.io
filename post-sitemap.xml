@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>http://gwanhyeon.github.io/Infra-20240801-server-kakao-map-api/</loc>
+        <lastmod>2024-08-01T14:57:26.969Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://gwanhyeon.github.io/Spring-20240114-spring-dirties-context/</loc>
         <lastmod>2024-07-30T14:42:03.753Z</lastmod>
         <changefreq>weekly</changefreq>

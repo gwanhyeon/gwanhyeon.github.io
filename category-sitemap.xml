@@ -8,14 +8,21 @@
     </url>
 
     <url>
-        <loc>http://gwanhyeon.github.io/categories/server/spring/</loc>
-        <lastmod>2024-07-30T14:42:03.753Z</lastmod>
+        <loc>http://gwanhyeon.github.io/categories/server/infra/</loc>
+        <lastmod>2024-08-01T14:57:26.969Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://gwanhyeon.github.io/categories/server/</loc>
+        <lastmod>2024-08-01T14:57:26.969Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://gwanhyeon.github.io/categories/server/spring/</loc>
         <lastmod>2024-07-30T14:42:03.753Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -45,13 +52,6 @@
     <url>
         <loc>http://gwanhyeon.github.io/categories/network/</loc>
         <lastmod>2024-07-29T14:23:53.771Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://gwanhyeon.github.io/categories/server/infra/</loc>
-        <lastmod>2024-07-24T15:00:06.622Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
