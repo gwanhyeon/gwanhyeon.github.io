@@ -10,15 +10,15 @@
     
     <meta name="keywords" content="Server,API" />
     
-    <meta name="description" content="1.  KAKAO MAP API 트러블 슈팅 이번 시간에는 실무에서 카카오맵 API를 사용하면서 있었던 트러블 슈팅과정에 대해서 설명해보고자 한다. 현재 운영중인 서비스에서는 카카오맵을 사용한 데이터처리를 하고 있는중이다. 현재 AOS&#x2F;IOS 웹뷰를 통해서 카카오맵 API를 사용중에 있으며 어느 순간 개발계쪽에 iOS 환경에서 API 호출이 원활하게 이루어">
+    <meta name="description" content="1.  KAKAO MAP API 트러블 슈팅 이번 시간에는 실무에서 카카오맵 API를 사용하면서 있었던 트러블 슈팅과정에 대해서 설명해보고자 한다. 2.  Trouble 현재 운영중인 서비스에서는 카카오맵을 사용한 데이터처리를 하고 있는중이다. 현재 AOS&#x2F;IOS 웹뷰를 통해서 카카오맵 API를 사용중에 있으며 어느 순간 개발계쪽에 iOS 환경에서 API">
 <meta property="og:type" content="article">
 <meta property="og:title" content="카카오 맵 API 연동 트러블 슈팅">
 <meta property="og:url" content="http://gwanhyeon.github.io/Infra-20240801-server-kakao-map-api/index.html">
 <meta property="og:site_name" content="Gwanhyeon IT Blog">
-<meta property="og:description" content="1.  KAKAO MAP API 트러블 슈팅 이번 시간에는 실무에서 카카오맵 API를 사용하면서 있었던 트러블 슈팅과정에 대해서 설명해보고자 한다. 현재 운영중인 서비스에서는 카카오맵을 사용한 데이터처리를 하고 있는중이다. 현재 AOS&#x2F;IOS 웹뷰를 통해서 카카오맵 API를 사용중에 있으며 어느 순간 개발계쪽에 iOS 환경에서 API 호출이 원활하게 이루어">
+<meta property="og:description" content="1.  KAKAO MAP API 트러블 슈팅 이번 시간에는 실무에서 카카오맵 API를 사용하면서 있었던 트러블 슈팅과정에 대해서 설명해보고자 한다. 2.  Trouble 현재 운영중인 서비스에서는 카카오맵을 사용한 데이터처리를 하고 있는중이다. 현재 AOS&#x2F;IOS 웹뷰를 통해서 카카오맵 API를 사용중에 있으며 어느 순간 개발계쪽에 iOS 환경에서 API">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2024-08-01T14:39:06.000Z">
-<meta property="article:modified_time" content="2024-08-01T14:57:26.969Z">
+<meta property="article:modified_time" content="2024-08-01T14:59:19.838Z">
 <meta property="article:author" content="gwanhyeon Kim">
 <meta property="article:tag" content="Server">
 <meta property="article:tag" content="API">
@@ -215,11 +215,11 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <h1 id="kakao-map-api-teureobeul-syuting"><a href="#kakao-map-api-teureobeul-syuting" class="header-anchor">1. </a><a class="markdownIt-Anchor" href="#kakao-map-api-트러블-슈팅"></a> KAKAO MAP API 트러블 슈팅</h1>
 <p>이번 시간에는 실무에서 카카오맵 API를 사용하면서 있었던 트러블 슈팅과정에 대해서 설명해보고자 한다.</p>
+<h1 id="trouble"><a href="#trouble" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#trouble"></a> Trouble</h1>
 <p>현재 운영중인 서비스에서는 카카오맵을 사용한 데이터처리를 하고 있는중이다. 현재 AOS/IOS 웹뷰를 통해서 카카오맵 API를 사용중에 있으며 어느 순간 개발계쪽에 iOS 환경에서 API 호출이 원활하게 이루어지지 않은 상황이 생겼다. 원활하게 해당되는 API를 호출하면서 스크립트를 로드하지 못하는 상황이었다.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;https://dapi.kakao.com/v2/maps/sdk.js?appkey=&#123;javascript app key&#125;&amp;libraries=services,clusterer,drawing&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="shooting"><a href="#shooting" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#shooting"></a> Shooting</h1>
 <p>시도해본 해결 방법은 다음과 같습니다.</p>
-<p>현재 IOS만 동작되지 않는 상황이며, 관련해서 추가해야할 부분이나 고민해야할 부분이 있는지 검토 부탁드립니다.</p>
-<h1 id="trouble"><a href="#trouble" class="header-anchor">2. </a><a class="markdownIt-Anchor" href="#trouble"></a> Trouble</h1>
 <ol>
 <li>API 키 문제</li>
 </ol>
@@ -248,7 +248,6 @@ ga('send', 'pageview');
 </li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">지도호출이 성공한 케이스는</span><br><span class="line"></span><br><span class="line">앱 정보에 정상적으로 등록한 도메인 ([https:<span class="comment">//s](https://s/)* 로 시작하는) 으로부터 호출로 보이고</span></span><br><span class="line"></span><br><span class="line">호출이 실패한 케이스는 앱정보에 등록되지 않은 도메인 ([http:<span class="comment">//172](http://0.0.0.172/).* 로 시작하는) 으로부터의 호출입니다.</span></span><br><span class="line"></span><br><span class="line">해당 앱정보를 확인하니</span><br><span class="line"></span><br><span class="line">호출이 발생하는 IP 가 앱설정 &gt; 플랫폼 &gt; Web 에는 없으나</span><br><span class="line"></span><br><span class="line">고급설정 &gt; 허용 서버 IP 주소 에는 포함된 것으로 보입니다.</span><br><span class="line"></span><br><span class="line">도메인이 없는 IP 형식이라도 Javascript 지도를 호출하기 위해서는 플랫폼 &gt; Web 정보에 포함되어 있어야 합니다.</span><br><span class="line"></span><br><span class="line">허용 서버 IP 주소는 REST API 등을 서버 to 서버 호출 시 제한하기 위한 목적입니다.</span><br></pre></td></tr></table></figure>
-<h1 id="shooting"><a href="#shooting" class="header-anchor">3. </a><a class="markdownIt-Anchor" href="#shooting"></a> Shooting</h1>
 <p>문의 결과 다음과 같은 답변을 받을 수 있었고, 웹 플랫폼쪽에 등록된 inbound 규칙을 다시 확인하게 되었다. 도메인은 정상 등록되어있었지만, 직접 호출하는 웹서버(172.x.x.x)에 대한 규칙은 빠져있는것을 확인하였다.<br>
 이 <a target="_blank" rel="noopener" href="https://172.x.x.xn--x-pq6f">https://172.x.x.x에</a> 대한 도메인을 직접 추가해주고 나서야 해당되는 kakao map API를 정상 호출하는것을 확인 할 수 있었다.</p>
 <p>직접 내가 카카오쪽에 문의를 하여 답변을 얻고 문의를 계속해나가면서 해결해나갈 수 있었고 여러 인바운드, 도메인 허용 규칙에 대해서 한번더 생각해볼 수 있던 기회가 되었다. 타사의 API를 사용하여 서비스를 구현할때는 여러가지 고려해야할 요소가 많은것으로 보여진다.</p>
@@ -332,8 +331,9 @@ ga('send', 'pageview');
         "url": "http://gwanhyeon.github.io/Infra-20240801-server-kakao-map-api/",
         "description": "1.  KAKAO MAP API 트러블 슈팅
 이번 시간에는 실무에서 카카오맵 API를 사용하면서 있었던 트러블 슈팅과정에 대해서 설명해보고자 한다.
-현재 운영중인 서비스에서는 카카오맵을 사용한 데이터처리를 하고 있는중이다. 현재 AOS/IOS 웹뷰를 통해서 카카오맵 API를 사용중에 있으며 어느 순간 개발계쪽에 iOS 환경에서 API 호출이 원활하게 이루어",
-        "wordCount": 366
+2.  Trouble
+현재 운영중인 서비스에서는 카카오맵을 사용한 데이터처리를 하고 있는중이다. 현재 AOS/IOS 웹뷰를 통해서 카카오맵 API를 사용중에 있으며 어느 순간 개발계쪽에 iOS 환경에서 API ",
+        "wordCount": 354
     }
 </script>
 
